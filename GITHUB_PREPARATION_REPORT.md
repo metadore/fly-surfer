@@ -524,3 +524,77 @@ tests/test_simulator.py
 tests/test_subgraph.py
 tests/test_synapse_model.py
 ```
+
+---
+
+## Post-commit incident and recovery (2026-11-04)
+
+### What happened
+
+The initial commit `dec22bc` ("feat: add FlyWire connectome simulation and
+benchmarks") was pushed to `origin/main`. It added 64 project files but **did
+not contain the project `README.md`**. The repository instead still carries the
+remote vision document at `Readme.md`.
+
+Cause: at 16:39 the branch was moved with `git reset` to `origin/main`. On this
+case-insensitive Windows filesystem, checking out the remote `Readme.md`
+overwrote the local `README.md` with 63,485 bytes of vision-document text. The
+subsequent `git add` therefore tracked `Readme.md` (vision document) and never
+saw the 14,935-byte project README.
+
+No backup of the README remained in the working tree. The original content was
+recovered from the dangling blob `47519e08`, whose SHA-256 is
+`6277ffbb3db8e0b1be9bb320d44ff0f894a07ff04d6ea698efd03fe5a9ef9b10` — identical
+to the hash recorded before staging. The README was restored byte-for-byte and
+has not been edited.
+
+### Corrective change staged (not committed)
+
+| Status | Path | Note |
+|---|---|---|
+| `A` | `README.md` | Original project README, restored byte-for-byte (SHA-256 verified) |
+| `R100` | `Readme.md` → `docs/PROJECT_VISION.md` | Remote vision document preserved, content unchanged |
+| `M` | `.gitignore` | Added `references/` |
+
+This resolves the case collision that existed before the first push: the
+repository can now hold `README.md` and the vision document in distinct,
+non-colliding paths.
+
+### New untracked directory: `references/`
+
+The repository now contains 70 cloned third-party files totalling
+**208,839,820 bytes (199.2 MiB)**, across `references/fly-brain-main/`,
+`references/fly-hero-master/` and `references/Drosophila_brain_model-main/`.
+The largest file is a 100,804,642-byte (96.1 MiB) Parquet table; the largest
+archive is 86,630,944 bytes. Each clone carries its own `LICENSE`.
+
+Handling: excluded via `references/` in `.gitignore`. These are reference
+clones, not project source. The 96.1 MiB Parquet file sits just under GitHub's
+100 MiB hard per-file limit, so a future `git add .` would risk a rejected push
+and a large object in history. Nothing was deleted, moved or modified.
+
+### Verification after recovery
+
+- `git show :README.md | sha256sum` → `6277ffbb3db8e0b1be9bb320d44ff0f894a07ff04d6ea698efd03fe5a9ef9b10`
+- `git check-ignore -v references/fly-brain-main/.../2025_Connectivity_783.parquet` → `.gitignore:78:references/`
+- `git status --porcelain` → only the three staged corrective entries, no untracked files
+- No raw dataset, cache, log or credential staged
+
+### Proposed corrective commit message
+
+```text
+fix: restore project README and preserve vision document
+
+The initial commit was created after a reset to origin/main; on a
+case-insensitive checkout the remote Readme.md (vision document)
+overwrote the local README.md, so the project README was never
+committed.
+
+- restore README.md byte-for-byte (SHA-256 6277ffbb...)
+- move the existing Readme.md content to docs/PROJECT_VISION.md
+- ignore references/ (208.8 MB of cloned third-party repositories)
+
+Data, processed artifacts and experiment outputs are unchanged.
+```
+
+Commit and push still require explicit approval.

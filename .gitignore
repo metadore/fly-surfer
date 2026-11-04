@@ -74,6 +74,9 @@ experiments/**/scratch/
 *.h5
 *.hdf5
 
+# Cloned third-party reference repositories (large, separately licensed)
+references/
+
 # Intentionally tracked research artifacts (not ignored):
 #   datasets/manifest.json
 #   datasets/processed/connectome.npz
