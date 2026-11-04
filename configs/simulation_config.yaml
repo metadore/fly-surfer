@@ -1,0 +1,70 @@
+# FLY-SURFER Phase 2 simulation configuration.
+#
+# SCIENTIFIC STATUS OF EACH BLOCK
+#   connectome      measured structural data (FlyWire FAFB v783 materialisation)
+#   synapse         computational approximation over structural synapse counts
+#   external_input  experimenter-controlled stimulation, not sensory input
+#   experiment      sampling and reporting choices
+#
+# Structural synapse counts are NOT physiological conductances. The weight
+# transformation below is an explicit modelling choice, not a measurement.
+
+connectome:
+  path: datasets/processed/connectome.npz
+
+simulation:
+  duration_ms: 1000.0
+  dt_ms: 0.5
+  seed: 20261104
+  progress_interval_ms: 100.0
+  diagnostics_interval_steps: 200
+  max_recorded_spikes: 2000000
+  save_activity: true
+
+synapse:
+  # weight_pa = weight_scale_pa_per_synapse * syn_count ** weight_exponent
+  # A structural edge is the sum of synaptic contacts across neuropils.
+  # The scale is a calibration choice for the model current regime; it is not
+  # a measured conductance. It was chosen on the 800-neuron sample so that a
+  # subset of non-stimulated neurons is recruited without runaway firing.
+  weight_transform: power
+  weight_scale_pa_per_synapse: 12.0
+  weight_exponent: 0.75
+  # Exponential current decay; separate time constants for the two sign pools.
+  tau_exc_ms: 5.0
+  tau_inh_ms: 8.0
+  # Uniform propagation latency, rounded to whole timesteps. The minimum
+  # effective latency is one timestep (0.5 ms here).
+  delay_ms: 1.0
+  # Neurotransmitter predictions are coarse presynaptic classes. They are used
+  # only to choose an assumed sign, never as a claim about postsynaptic effect.
+  nt_signs:
+    ACH: excitatory
+    GLUT: excitatory
+    GABA: inhibitory
+    DA: unknown
+    SER: unknown
+    OCT: unknown
+  unknown_nt_sign: excitatory
+  unlabeled_sign: excitatory
+
+external_input:
+  background_current_pa: 0.0
+  noise_std_pa: 0.0
+  stimulus:
+    enabled: true
+    n_neurons: 64
+    selection: highest_degree   # highest_degree | random
+    current_pa: 180.0
+    start_ms: 100.0
+    end_ms: 800.0
+
+experiment:
+  n_neurons: 800
+  sampling_seed: 42
+  min_degree: 5
+  candidate_seeds_per_class: 3
+  random_candidate_seeds: 10
+  output_dir: experiments/results/initial
+  raster_max_points: 300000
+  raster_dpi: 150

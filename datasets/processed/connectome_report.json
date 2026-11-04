@@ -1,0 +1,264 @@
+{
+ "schema_version": 1,
+ "generated_at_utc": "2026-11-04T08:39:40+00:00",
+ "source": {
+  "connection_table": "datasets/raw/connections/connections_princeton.csv.gz",
+  "reference_nodes": "datasets/raw/neurons/neurons.csv.gz",
+  "audit_manifest": "datasets/manifest.json",
+  "threshold": 5,
+  "threshold_rule": "keep every row of every directed pair whose summed syn_count across neuropils is >= 5; never filter individual rows",
+  "edge_weight": "sum of syn_count across neuropils for one directed pair"
+ },
+ "node_index": {
+  "n_nodes": 139255,
+  "rule": "0-based position in ascending root_id order",
+  "annotated": 119597,
+  "nt_type_missing": 19658,
+  "with_position": 139255,
+  "without_position": 0,
+  "position_rule": "mean of distinct sampled coordinate rows per neuron (not synapse positions)",
+  "position_stats": {
+   "coordinate_rows": 238909,
+   "parsed_rows": 238909,
+   "unparsed_rows": 0,
+   "unique_rows_used": 225588,
+   "exact_duplicate_rows_removed": 13321,
+   "neurons_with_position": 139255,
+   "neurons_without_position": 0
+  }
+ },
+ "edges": {
+  "n_edges": 3732460,
+  "n_synapses": 50666648,
+  "weight_min": 5,
+  "weight_max": 2633,
+  "weight_mean": 13.575,
+  "source_rows": 5342446,
+  "rows_per_pair_max": 20,
+  "self_connections": 0,
+  "most_common_weights": [
+   {
+    "synapses": 5,
+    "edges": 730388
+   },
+   {
+    "synapses": 6,
+    "edges": 522351
+   },
+   {
+    "synapses": 7,
+    "edges": 390029
+   },
+   {
+    "synapses": 8,
+    "edges": 299737
+   },
+   {
+    "synapses": 9,
+    "edges": 235890
+   },
+   {
+    "synapses": 10,
+    "edges": 188461
+   },
+   {
+    "synapses": 11,
+    "edges": 154869
+   },
+   {
+    "synapses": 12,
+    "edges": 127927
+   },
+   {
+    "synapses": 13,
+    "edges": 107444
+   },
+   {
+    "synapses": 14,
+    "edges": 91130
+   }
+  ]
+ },
+ "degree": {
+  "out": {
+   "total": 3732460,
+   "mean": 26.803,
+   "min": 0,
+   "max": 6523,
+   "percentiles": {
+    "0": 0,
+    "25": 9,
+    "50": 17,
+    "75": 31,
+    "90": 54,
+    "95": 75,
+    "99": 170,
+    "100": 6523
+   }
+  },
+  "in": {
+   "total": 3732460,
+   "mean": 26.803,
+   "min": 0,
+   "max": 6261,
+   "percentiles": {
+    "0": 0,
+    "25": 7,
+    "50": 14,
+    "75": 26,
+    "90": 59,
+    "95": 96,
+    "99": 214,
+    "100": 6261
+   }
+  },
+  "isolated_nodes": 671,
+  "isolated_root_id_samples": [
+   720575940602953388,
+   720575940603605024,
+   720575940603776702,
+   720575940604705481,
+   720575940604810668,
+   720575940605057922,
+   720575940605305010,
+   720575940605400032,
+   720575940605634220,
+   720575940606007280
+  ]
+ },
+ "reciprocity": {
+  "directed_pairs_with_reverse": 620180,
+  "fraction": 0.166159,
+  "unordered_reciprocal_pairs": 310090
+ },
+ "audit_cross_check": {
+  "status": "PASS",
+  "checks": [
+   {
+    "name": "n_nodes",
+    "expected": 139255,
+    "actual": 139255,
+    "pass": true
+   },
+   {
+    "name": "n_edges",
+    "expected": 3732460,
+    "actual": 3732460,
+    "pass": true
+   },
+   {
+    "name": "n_synapses",
+    "expected": 50666648,
+    "actual": 50666648,
+    "pass": true
+   },
+   {
+    "name": "source_rows",
+    "expected": 5342446,
+    "actual": 5342446,
+    "pass": true
+   },
+   {
+    "name": "weight_min",
+    "expected": 5,
+    "actual": 5,
+    "pass": true
+   },
+   {
+    "name": "weight_max",
+    "expected": 2633,
+    "actual": 2633,
+    "pass": true
+   },
+   {
+    "name": "reciprocal_directed",
+    "expected": 620180,
+    "actual": 620180,
+    "pass": true
+   },
+   {
+    "name": "reciprocal_unordered",
+    "expected": 310090,
+    "actual": 310090,
+    "pass": true
+   },
+   {
+    "name": "used_nodes",
+    "expected": 138584,
+    "actual": 138584,
+    "pass": true
+   },
+   {
+    "name": "self_connections",
+    "expected": 0,
+    "actual": 0,
+    "pass": true
+   },
+   {
+    "name": "nodes_accounted_for",
+    "expected": 139255,
+    "actual": 139255,
+    "pass": true
+   }
+  ]
+ },
+ "artifact_roundtrip": {
+  "path": "datasets/processed/connectome.npz",
+  "loaded": true,
+  "checks": {
+   "n_nodes": true,
+   "n_edges": true,
+   "n_synapses": true,
+   "no_self_loops": true,
+   "weights_positive": true,
+   "out_csr_consistent": true,
+   "in_csr_consistent": true,
+   "in_order_sorted": true
+  },
+  "failures": []
+ },
+ "outputs": {
+  "connectome": {
+   "path": "datasets/processed/connectome.npz",
+   "bytes": 28013212
+  },
+  "nodes": {
+   "path": "datasets/processed/nodes.csv.gz",
+   "bytes": 9550849,
+   "rows": 139255,
+   "columns": [
+    "node_index",
+    "root_id",
+    "name",
+    "group",
+    "nt_type",
+    "nt_type_score",
+    "da_avg",
+    "ser_avg",
+    "gaba_avg",
+    "glut_avg",
+    "ach_avg",
+    "oct_avg",
+    "flow",
+    "super_class",
+    "class",
+    "sub_class",
+    "hemilineage",
+    "side",
+    "nerve",
+    "primary_type",
+    "additional_types",
+    "length_nm",
+    "area_nm",
+    "size_nm",
+    "connectivity_tag",
+    "label_count",
+    "labels",
+    "x",
+    "y",
+    "z"
+   ]
+  }
+ },
+ "duration_seconds": 41.51
+}

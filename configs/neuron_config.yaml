@@ -1,0 +1,26 @@
+# Leaky integrate-and-fire parameters.
+#
+# These are ASSUMED values chosen for stable, readable simulations. They are
+# not measured membrane properties of FAFB neurons. Units follow the standard
+# electrophysiology convention: capacitance pF, conductance nS, potential mV,
+# current pA, time ms. With these units C/g is already in milliseconds.
+#
+#   tau_m = capacitance_pf / leak_conductance_ns = 20 ms
+#   rheobase = (threshold_mv - resting_potential_mv) * leak_conductance_ns
+#           = 150 pA
+#
+# Integration uses the exact exponential-Euler solution of the passive
+# membrane over each timestep, so it is stable for any positive timestep.
+# The timestep is configured in simulation_config.yaml.
+neuron:
+  capacitance_pf: 200.0
+  leak_conductance_ns: 10.0
+  resting_potential_mv: -65.0
+  threshold_mv: -50.0
+  reset_potential_mv: -68.0
+  refractory_ms: 2.0
+  initial_potential_mv: -65.0
+  # Floor representing unmodelled leak and voltage-gated currents. Without it,
+  # sustained synaptic inhibition can drive a purely passive LIF membrane far
+  # below any physiological range. This is an assumption, not a measurement.
+  minimum_potential_mv: -90.0

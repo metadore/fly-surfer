@@ -1,0 +1,7 @@
+# Preserve LF line endings for reproducible text and checksums across platforms.
+* text=auto eol=lf
+
+# Large research artifacts are binary; never apply line-ending conversion.
+*.png binary
+*.npz binary
+*.gz binary

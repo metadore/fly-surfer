@@ -1,0 +1,68 @@
+# Phase 2.5 scalability benchmark suite.
+#
+# All subset sizes use the same sampling seed and simulation protocol so their
+# measurements are comparable. The 139,255-neuron run uses the validated full
+# graph without sampling and without extraction.
+#
+# Scientific status: connectome is measured structure; membrane, synapse and
+# input parameters are model assumptions; activity is simulated, not recorded.
+
+connectome:
+  path: datasets/processed/connectome.npz
+
+neuron_config: configs/neuron_config.yaml
+
+simulation:
+  duration_ms: 200.0
+  dt_ms: 0.5
+  seed: 20261104
+  progress_interval_ms: 0.0
+  diagnostics_interval_steps: 50
+  # 5M spikes costs 40 MB of preallocated buffers. Exceeding it raises instead
+  # of silently dropping spikes.
+  max_recorded_spikes: 5000000
+
+synapse:
+  weight_transform: power
+  weight_scale_pa_per_synapse: 12.0
+  weight_exponent: 0.75
+  tau_exc_ms: 5.0
+  tau_inh_ms: 8.0
+  delay_ms: 1.0
+  nt_signs:
+    ACH: excitatory
+    GLUT: excitatory
+    GABA: inhibitory
+    DA: unknown
+    SER: unknown
+    OCT: unknown
+  unknown_nt_sign: excitatory
+  unlabeled_sign: excitatory
+
+external_input:
+  background_current_pa: 0.0
+  noise_std_pa: 0.0
+  stimulus:
+    enabled: true
+    n_neurons: 64
+    selection: highest_degree
+    current_pa: 180.0
+    start_ms: 50.0
+    end_ms: 150.0
+
+sampling:
+  sizes: [800, 5000, 20000, 50000]
+  full_size: 139255
+  seed: 42
+  min_degree: 5
+  candidate_seeds_per_class: 3
+  random_candidate_seeds: 10
+
+benchmark:
+  output_dir: experiments/phase_2_5
+  repeat_reproducibility_size: 800
+  subset_timeout_seconds: 600
+  full_timeout_seconds: 900
+  # Refuse the full run rather than risk paging/termination when the machine
+  # has less free memory than this. The reason is written to the report.
+  min_available_memory_gb_full: 0.75
