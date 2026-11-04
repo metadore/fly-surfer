@@ -1815,3 +1815,411 @@ The central experiment is to preserve biologically derived connectivity, introdu
   <strong>FLY-SURFER</strong><br>
   A Computational Neuroscience Experiment
 </p>
+# 5. Open-Source Repositories and Research References
+
+FLY-SURFER will build upon existing open-source research, computational neuroscience implementations, connectome processing libraries, and game-playing frameworks.
+
+The following repositories will serve as technical references, implementation foundations, or supporting tools.
+
+We will distinguish between:
+
+* Direct dependencies: Libraries imported into our implementation.
+* Research references: Projects studied to understand existing approaches.
+* Adaptation candidates: Implementations whose components may be adapted after reviewing their licences.
+* Experimental baselines: Existing implementations used for performance comparisons.
+
+We will not blindly combine entire repositories. Every adopted component must be evaluated for compatibility with our dataset, architecture, scientific assumptions, and licensing requirements.
+
+## 5.1 Biological Brain Simulation
+
+### 1. Fly Hero
+
+Repository: https://github.com/bsgelman/fly-hero
+
+Priority: VERY HIGH
+
+Purpose:
+
+This is one of our most important research references.
+
+Fly Hero demonstrates a connectome-derived spiking neural network learning to play a rhythm game through dopamine-inspired synaptic learning.
+
+We will study:
+
+* Connectome extraction.
+* Neuron representation.
+* Leaky Integrate-and-Fire simulation.
+* Synaptic connectivity.
+* Dopamine-related learning.
+* Reward prediction error.
+* Neural activity monitoring.
+* Randomised connectivity controls.
+* Game-to-neural-network interfaces.
+* Experimental comparisons.
+
+Particular files worth investigating:
+
+* `flyhero/sim.py`
+* `flyhero/agents.py`
+* `flyhero/game.py`
+* `flyhero/run_experiments.py`
+* `tools/extract_subgraph.py`
+
+Our objective is to understand how the biological network is connected to a game environment and how its internal learning mechanism operates.
+
+We will not assume that its architecture can be transferred unchanged to Subway Surfers.
+
+### 2. Eon Systems – Fly Brain
+
+Repository: https://github.com/eonsystemspbc/fly-brain
+
+Priority: VERY HIGH
+
+Purpose:
+
+Provides a whole-brain FlyWire-based leaky integrate-and-fire simulation.
+
+We will investigate:
+
+* Whole-brain connectivity processing.
+* Sparse connectivity representations.
+* Neuron activation.
+* Neuron silencing.
+* Neural simulation backends.
+* CPU/GPU execution.
+* Spike recording.
+* Simulation benchmarking.
+
+This repository is particularly useful for understanding how to scale a connectome-derived neural simulation.
+
+### 3. Drosophila Brain Model
+
+Repository: https://github.com/philshiu/Drosophila_brain_model
+
+Priority: HIGH
+
+Purpose:
+
+Reference implementation associated with connectome-based Drosophila neural modelling.
+
+We will study:
+
+* LIF mathematical implementation.
+* Neural activation.
+* Neuron silencing.
+* Connectome-based simulation.
+* Spike generation.
+* Neuronal response analysis.
+
+This will help validate our own neuron and synapse implementations.
+
+### 4. Awesome Fly
+
+Repository: https://github.com/cobanov/awesome-fly
+
+Priority: HIGH
+
+Purpose:
+
+A curated collection of fruit-fly connectome projects.
+
+We will use it to discover:
+
+* Existing brain simulations.
+* Game-playing experiments.
+* Connectome visualisation tools.
+* Biological body simulations.
+* Visual processing implementations.
+* Additional research resources.
+
+This repository will remain our discovery reference throughout development.
+
+---
+
+## 5.2 FlyWire Dataset Processing
+
+### 5. FlyWire Annotations
+
+Repository: https://github.com/flyconnectome/flywire_annotations
+
+Purpose:
+
+* Neuronal classifications.
+* Cell type annotations.
+* Neuronal metadata.
+* Biological naming.
+* Annotation interpretation.
+
+We will use the annotations to understand which neuronal populations are represented in our connectivity dataset.
+
+### 6. NAVIS
+
+Repository: https://github.com/navis-org/navis
+
+Purpose:
+
+* Neuron morphology analysis.
+* Neuron skeleton visualisation.
+* Morphological transformations.
+* Neural structure exploration.
+* Neuroanatomical analysis.
+
+### 7. FAFBSEG-PY
+
+Repository: https://github.com/navis-org/fafbseg-py
+
+Purpose:
+
+* FlyWire/FAFB segmentation access.
+* Neuron annotations.
+* Connectivity-related queries.
+* Segmentation analysis.
+* Integration with NAVIS.
+
+This is particularly relevant because our primary dataset is FAFB.
+
+### 8. CAVEclient
+
+Repository: https://github.com/CAVEconnectome/CAVEclient
+
+Purpose:
+
+* Accessing versioned connectome information.
+* Querying annotations.
+* Accessing connectome services.
+* Working with versioned biological datasets.
+
+We will use it where additional programmatic access is needed.
+
+### 9. Codex
+
+Repository: https://github.com/murthylab/codex
+
+Purpose:
+
+* Exploring the FlyWire connectome.
+* Visualising neurons.
+* Investigating connectivity.
+* Exploring neuronal annotations.
+
+This will help us inspect biological pathways before extracting computational circuits.
+
+---
+
+## 5.3 Neural Simulation Frameworks
+
+### 10. Brian2
+
+Repository: https://github.com/brian-team/brian2
+
+Priority: PRIMARY SIMULATION FRAMEWORK
+
+Purpose:
+
+Brian2 will be our initial framework for implementing spiking neurons.
+
+We will use it for:
+
+* LIF neuron equations.
+* Synaptic models.
+* Spike generation.
+* Neural populations.
+* Simulation monitoring.
+* Time-stepped neural dynamics.
+
+We will first benchmark small networks before deciding whether larger simulations require another backend.
+
+### 11. FlyGym
+
+Repository: https://github.com/NeLy-EPFL/flygym
+
+Purpose:
+
+* Sensorimotor environment research.
+* Embodied fly simulations.
+* Biological movement.
+* Sensory processing interfaces.
+* Motor behaviour experiments.
+
+We will investigate how biological sensory and motor systems can be connected to simulated environments.
+
+### 12. FlyBody
+
+Repository: https://github.com/TuragaLab/flybody
+
+Purpose:
+
+* Anatomical body simulation.
+* Movement modelling.
+* Motor control.
+* Physics-based biological environments.
+
+This is an optional research reference rather than a mandatory dependency.
+
+### 13. FlyVis
+
+Repository: https://github.com/TuragaLab/flyvis
+
+Purpose:
+
+* Connectome-constrained visual processing.
+* Visual neuron modelling.
+* Neural responses to visual stimuli.
+* Visual system analysis.
+
+This is particularly relevant to our future objective of converting Subway Surfers screenshots into biologically motivated neural sensory signals.
+
+---
+
+## 5.4 Reinforcement Learning and Machine Learning
+
+### 14. Gymnasium
+
+Repository: https://github.com/Farama-Foundation/Gymnasium
+
+Purpose:
+
+* Standardised game environment interfaces.
+* Observation spaces.
+* Action spaces.
+* Reward functions.
+* Episode management.
+
+We will use Gymnasium-compatible interfaces for our experimental game environment.
+
+### 15. Stable-Baselines3
+
+Repository: https://github.com/DLR-RM/stable-baselines3
+
+Purpose:
+
+* PPO implementation.
+* DQN implementation.
+* Reinforcement-learning baselines.
+* Conventional AI comparisons.
+
+We will use conventional reinforcement-learning agents as experimental controls.
+
+The primary objective remains investigating the connectome-derived neural network.
+
+### 16. PyTorch
+
+Repository: https://github.com/pytorch/pytorch
+
+Purpose:
+
+* Supporting trainable components.
+* Neural readout experiments.
+* GPU computation.
+* Numerical analysis.
+* Alternative neural simulation implementations.
+
+PyTorch will not automatically replace the biological connectivity architecture.
+
+---
+
+## 5.5 Computer Vision and Game Interaction
+
+### 17. OpenCV
+
+Repository: https://github.com/opencv/opencv
+
+Purpose:
+
+* Screenshot processing.
+* Image segmentation.
+* Obstacle detection.
+* Lane identification.
+* Distance estimation.
+* Visual feature extraction.
+
+### 18. PyAutoGUI
+
+Repository: https://github.com/asweigart/pyautogui
+
+Purpose:
+
+* Keyboard control.
+* Action execution.
+* Browser game interaction.
+* Automated input testing.
+
+### 19. Playwright
+
+Repository: https://github.com/microsoft/playwright
+
+Purpose:
+
+* Browser automation.
+* Game page management.
+* Browser-based testing.
+* Controlled browser interaction.
+
+We will select the appropriate browser interaction method after examining the actual game environment.
+
+---
+
+# 5.6 Repository Adoption Strategy
+
+Not every repository will become a dependency.
+
+Our adoption strategy is:
+
+| Repository             | Classification                        | Development phase |
+| ---------------------- | ------------------------------------- | ----------------- |
+| Fly Hero               | Research and implementation reference | Phase 1–8         |
+| Eon Fly Brain          | Simulation reference                  | Phase 2           |
+| Drosophila Brain Model | Mathematical reference                | Phase 2           |
+| Awesome Fly            | Research discovery                    | All phases        |
+| FlyWire Annotations    | Data support                          | Phase 1           |
+| NAVIS                  | Optional dependency                   | Phase 1           |
+| FAFBSEG-PY             | Data support                          | Phase 1           |
+| CAVEclient             | Optional data access                  | Phase 1           |
+| Codex                  | Visual exploration                    | Phase 1           |
+| Brian2                 | Direct dependency                     | Phase 2           |
+| FlyGym                 | Experimental reference                | Phase 3–8         |
+| FlyBody                | Optional reference                    | Phase 4           |
+| FlyVis                 | Visual processing reference           | Phase 3           |
+| Gymnasium              | Direct dependency                     | Phase 7           |
+| Stable-Baselines3      | Experimental dependency               | Phase 8           |
+| PyTorch                | Supporting framework                  | Phase 2–8         |
+| OpenCV                 | Direct dependency                     | Phase 3 and 9     |
+| PyAutoGUI              | Direct dependency                     | Phase 9           |
+| Playwright             | Optional dependency                   | Phase 9           |
+
+---
+
+# 5.7 Licensing and Attribution
+
+Before copying code, adapting implementations, or redistributing modified components, we must inspect the individual repository licences.
+
+Important considerations:
+
+* Preserve original copyright notices.
+* Follow applicable attribution requirements.
+* Distinguish original code from adapted code.
+* Record the exact repository commit used.
+* Respect the licences of biological datasets.
+* Follow the FlyWire publication citation guidelines.
+* Avoid redistributing large datasets without permission.
+
+The FLY-SURFER repository will maintain a `THIRD_PARTY_NOTICES.md` file documenting external code, dependencies, licences, and attribution.
+
+---
+
+# 5.8 Recommended Initial Reading Order
+
+We will study the repositories in this order:
+
+1. Fly Hero — understand the complete brain-to-game architecture.
+2. Drosophila Brain Model — understand the mathematical neuron implementation.
+3. Eon Fly Brain — understand large-scale simulation.
+4. FlyWire Annotations — understand the biological dataset.
+5. FAFBSEG-PY and NAVIS — understand data processing.
+6. Brian2 — implement our own spiking network.
+7. FlyVis — investigate visual processing.
+8. Gymnasium — create the controlled game environment.
+9. Stable-Baselines3 — establish conventional AI baselines.
+10. OpenCV and Playwright/PyAutoGUI — integrate the browser game.
+
+**Important:** These repositories are research resources, not a requirement to install every project. We will install only the dependencies needed for the current development phase.
