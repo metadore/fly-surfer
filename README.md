@@ -271,7 +271,7 @@ report and memory report).
 - The high non-stimulated spike share at large sizes may indicate excessive
   excitatory coupling under the current assumptions; it is not a biological result.
 
-## Recommended next milestone
+## Recommended 
 
 The full-connectome performance envelope is now measured: 400 steps in 2.92 s
 at 139,255 neurons with a 270.8 MB process peak. Phase 3 should add explicit
