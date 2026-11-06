@@ -77,6 +77,9 @@ experiments/**/scratch/
 # Cloned third-party reference repositories (large, separately licensed)
 references/
 
+# Local model weights and exported checkpoints. Never commit.
+models/
+
 # Intentionally tracked research artifacts (not ignored):
 #   datasets/manifest.json
 #   datasets/processed/connectome.npz

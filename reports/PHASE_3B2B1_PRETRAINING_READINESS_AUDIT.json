@@ -1,0 +1,492 @@
+{
+  "phase": "3B.2B.1",
+  "title": "Pre-training readiness audit",
+  "generated_at_utc": "2026-11-06",
+  "mode": "audit_only",
+  "overall_status": "BLOCKED",
+  "verdict": "Not ready to train. The dataset contract is valid, but no export, YOLO11-tested training/decoding configuration, accepted licence decision, or Git exclusion of model weights exists.",
+  "project_root": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER",
+  "checkpoint_path": "models/YOLO11/yolo11n.pt",
+  "yolox_reference_path": "references/YOLOX-main/YOLOX-main",
+  "protected_artifacts": {
+    "readme_sha256": "6277ffbb3db8e0b1be9bb320d44ff0f894a07ff04d6ea698efd03fe5a9ef9b10",
+    "readme_status": "PASS",
+    "split_manifest_sha256": "ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d",
+    "split_manifest_status": "PASS",
+    "raw_dataset_modified": false,
+    "connectome_modified": false,
+    "references_modified": false,
+    "staged_changes": false,
+    "commit_or_push": false,
+    "existing_reports_overwritten": false,
+    "files_created": [
+      "reports/PHASE_3B2B1_PRETRAINING_READINESS_AUDIT.md",
+      "reports/PHASE_3B2B1_PRETRAINING_READINESS_AUDIT.json"
+    ]
+  },
+  "audit_a_model_weights": {
+    "status": "PASS",
+    "ready_for_transfer_learning": "BLOCKED",
+    "facts": {
+      "exists": true,
+      "size_bytes": 5613764,
+      "sha256": "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1",
+      "container": "ZIP / PyTorch archive",
+      "zip_member_count": 507,
+      "pickle_member": "yolo11n/data.pkl",
+      "pickle_member_bytes": 203281,
+      "tensor_members": "yolo11n/data/0 .. yolo11n/data/502",
+      "archive_version": 3,
+      "ultralytics_version": "8.2.100",
+      "checkpoint_date": "2024-09-25T21:10:26",
+      "licence_metadata": "AGPL-3.0 License (https://ultralytics.com/license)",
+      "model_class_markers": ["DetectionModel", "ultralytics.nn.tasks", "coco", "names", "yolo11n.yaml"],
+      "pickle_unpickled": false,
+      "sidecar_licence_or_hash_file": false,
+      "git_ignored": false,
+      "git_tracked": false,
+      "git_status_entry": "?? models/YOLO11/yolo11n.pt"
+    },
+    "findings": [
+      "Genuine modern Ultralytics detection checkpoint consistent with YOLO11n.",
+      "Stock COCO-pretrained style metadata; not a Subway Surfers detector.",
+      "Class names and training arguments live inside data.pkl and were not unpickled.",
+      "Loading requires ultralytics, which is not installed.",
+      "No official-release checksum was available offline."
+    ]
+  },
+  "audit_b_yolox_repository": {
+    "status": "PASS",
+    "approved_for_use": "BLOCKED",
+    "facts": {
+      "path": "references/YOLOX-main/YOLOX-main",
+      "nested_extraction": true,
+      "zip_path": "references/YOLOX-main.zip",
+      "zip_size_bytes": 4490945,
+      "zip_entry_count": 229,
+      "file_count": 169,
+      "setup_py": true,
+      "requirements_txt": true,
+      "exps": true,
+      "yolox": true,
+      "tools": true,
+      "licence": "Apache-2.0",
+      "version": "0.3.0",
+      "python_requires": ">=3.6",
+      "weights_present": false,
+      "installed_or_executed": false,
+      "requirements": [
+        "numpy (unpinned)",
+        "torch>=1.7",
+        "opencv_python",
+        "loguru",
+        "tqdm",
+        "torchvision",
+        "thop",
+        "ninja",
+        "tabulate",
+        "psutil",
+        "tensorboard",
+        "pycocotools>=2.0.2",
+        "onnx>=1.13.0",
+        "onnx-simplifier==0.4.10"
+      ]
+    },
+    "findings": [
+      "Complete source extraction, not a partial download.",
+      "YOLOX-Nano and YOLOX-Tiny configs exist under exps/default.",
+      "No .pth, .pt, .onnx or .ckpt weights are present.",
+      "YOLOX remains a read-only alternative reference, not an approved dependency."
+    ]
+  },
+  "audit_c_dataset_contract": {
+    "status": "PASS",
+    "independent_test_split": "FAIL",
+    "manifest": "reports/PHASE_3B1_SPLIT_MANIFEST.json",
+    "manifest_sha256": "ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d",
+    "dataset_version": 15,
+    "dataset_root": "datasets/external/subway surfers/roboflow_v15_yolov8/subway surfers object dataset.v15-added.yolov8",
+    "raw_images_on_disk": 2328,
+    "curated_images": 2316,
+    "quarantined_images": 12,
+    "curated_boxes": 8666,
+    "train_images": 1188,
+    "train_boxes": 4704,
+    "valid_images": 1128,
+    "valid_boxes": 3962,
+    "n_classes": 14,
+    "class_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    "class_names": [
+      "boots-powerup",
+      "boxtrain",
+      "jump-barrier",
+      "jump-electric",
+      "jump-hedge",
+      "jump-roll-barrier",
+      "jump-trash",
+      "ledge",
+      "pogstick-powerup",
+      "ramp",
+      "roll-barrier",
+      "train",
+      "undercover-barrier",
+      "wall"
+    ],
+    "groups": {
+      "subwayavitomp4": {"images": 501, "boxes": 1798, "split": "train"},
+      "subwayedited2": {"images": 392, "boxes": 1580, "split": "train"},
+      "subwayedtied": {"images": 295, "boxes": 1326, "split": "train"},
+      "datasetfootage": {"images": 504, "boxes": 1681, "split": "valid"},
+      "subwayy1_1": {"images": 624, "boxes": 2281, "split": "valid"}
+    },
+    "group_atomic": true,
+    "cross_split_adjacent_frame_pairs": 0,
+    "assignments": 2316,
+    "assignment_unique_keys": true,
+    "assignment_images_resolve": 2316,
+    "assignment_labels_resolve": 2316,
+    "empty_labels_in_assignments": 0,
+    "out_of_range_class_ids": 0,
+    "quarantined_in_assignments": 0,
+    "curated_plus_quarantined_equals_raw": true,
+    "exclusions": {
+      "total": 12,
+      "probable_gap": 9,
+      "isolated_plausible": 3,
+      "groups": {"subwayedtied": 9, "subwayy1_1": 3},
+      "all_resolve": true,
+      "all_empty_labels": true
+    },
+    "original_roboflow_split_used_as_evaluation_split": false,
+    "evidence_original_split_not_used": {
+      "raw_train_folder_assigned_valid": 903,
+      "raw_valid_folder_assigned_train": 275
+    },
+    "per_class": [
+      {"id": 0, "name": "boots-powerup", "train_boxes": 24, "train_images": 24, "valid_boxes": 0, "valid_images": 0},
+      {"id": 1, "name": "boxtrain", "train_boxes": 625, "train_images": 482, "valid_boxes": 749, "valid_images": 538},
+      {"id": 2, "name": "jump-barrier", "train_boxes": 254, "train_images": 221, "valid_boxes": 163, "valid_images": 148},
+      {"id": 3, "name": "jump-electric", "train_boxes": 14, "train_images": 14, "valid_boxes": 0, "valid_images": 0},
+      {"id": 4, "name": "jump-hedge", "train_boxes": 18, "train_images": 17, "valid_boxes": 26, "valid_images": 21},
+      {"id": 5, "name": "jump-roll-barrier", "train_boxes": 407, "train_images": 359, "valid_boxes": 356, "valid_images": 287},
+      {"id": 6, "name": "jump-trash", "train_boxes": 34, "train_images": 33, "valid_boxes": 62, "valid_images": 44},
+      {"id": 7, "name": "ledge", "train_boxes": 87, "train_images": 57, "valid_boxes": 48, "valid_images": 32},
+      {"id": 8, "name": "pogstick-powerup", "train_boxes": 53, "train_images": 53, "valid_boxes": 65, "valid_images": 65},
+      {"id": 9, "name": "ramp", "train_boxes": 606, "train_images": 444, "valid_boxes": 617, "valid_images": 501},
+      {"id": 10, "name": "roll-barrier", "train_boxes": 147, "train_images": 141, "valid_boxes": 162, "valid_images": 149},
+      {"id": 11, "name": "train", "train_boxes": 1617, "train_images": 883, "valid_boxes": 1174, "valid_images": 839},
+      {"id": 12, "name": "undercover-barrier", "train_boxes": 196, "train_images": 84, "valid_boxes": 19, "valid_images": 15},
+      {"id": 13, "name": "wall", "train_boxes": 622, "train_images": 279, "valid_boxes": 521, "valid_images": 247}
+    ],
+    "all_train_classes_represented": true,
+    "unevaluable_classes": ["boots-powerup", "jump-electric"],
+    "low_support_classes": ["undercover-barrier", "jump-hedge", "ledge", "jump-trash", "pogstick-powerup"],
+    "class_schema_matches_manifest": true,
+    "raw_data_yaml_test_split": "../test/images",
+    "test_split_exists": false,
+    "splits_present": ["train", "valid"],
+    "findings": [
+      "All manifest counts, paths, quarantine exclusions and group assignments were recomputed from disk.",
+      "The split is group-atomic and does not use the original Roboflow folders.",
+      "Two classes have zero validation boxes and are undefined, not zero.",
+      "No independent test split is possible with five recordings."
+    ]
+  },
+  "audit_d_colab_export": {
+    "status": "FAIL",
+    "directory_exists": false,
+    "path": "datasets/exports",
+    "checklist": {
+      "dataset_yaml": "FAIL",
+      "images_train": "FAIL",
+      "images_valid": "FAIL",
+      "labels_train": "FAIL",
+      "labels_valid": "FAIL",
+      "image_label_correspondence": "FAIL",
+      "class_ordering": "FAIL",
+      "counts_1188_4704_1128_3962": "FAIL",
+      "no_quarantined_images": "FAIL",
+      "no_duplicates": "FAIL",
+      "portable_relative_paths": "FAIL",
+      "cc_by_4_0_attribution": "FAIL",
+      "export_manifest_with_hashes": "FAIL"
+    },
+    "export_script_exists": false,
+    "findings": [
+      "No dataset.yaml, image tree, label tree or attribution bundle exists outside the raw dataset.",
+      "Phase 3B.1 curation tooling does not materialize a training tree."
+    ],
+    "required_layout": {
+      "path": ".",
+      "train": "images/train",
+      "val": "images/valid",
+      "nc": 14,
+      "names_order": "must equal manifest class_names"
+    }
+  },
+  "audit_e_detector": {
+    "status": "PASS",
+    "yolo11_end_to_end": "BLOCKED",
+    "components": {
+      "detector_protocol": {"status": "PASS", "location": "perception/detector.py:20"},
+      "mock_detector": {"status": "PASS", "location": "perception/detector.py:52", "test_only": true},
+      "detector_config": {"status": "PASS", "location": "perception/detector_config.py:47"},
+      "missing_model_error": {"status": "PASS", "verified": true},
+      "letterbox_and_inverse": {"status": "PASS", "location": "perception/inference.py:35,80"},
+      "yolo_raw_decode": {"status": "PASS", "location": "perception/inference.py:273"},
+      "nms": {"status": "PASS", "location": "perception/inference.py:163,194"},
+      "confidence_filtering": {"status": "PASS", "location": "perception/inference.py:559"},
+      "class_mapping": {"status": "PASS", "location": "perception/detector_config.py:150"},
+      "sha256_verification": {"status": "PASS", "location": "perception/inference.py:489"},
+      "onnx_runtime_backend": {"status": "PASS", "location": "perception/inference.py:467"},
+      "ultralytics_pt_backend": {"status": "FAIL", "location": null},
+      "real_model_test": {"status": "BLOCKED", "location": null}
+    },
+    "shipped_config": {
+      "backend": "onnx",
+      "model_path": null,
+      "input_size": [416, 416],
+      "has_objectness": true,
+      "class_activation": "sigmoid",
+      "class_id_map": [],
+      "providers": ["CPUExecutionProvider"]
+    },
+    "yolo11_gaps": [
+      "Only ONNX Runtime loading exists; a .pt checkpoint cannot be passed to it.",
+      "has_objectness must be false for a standard YOLO11 export (4 + nc columns).",
+      "input_size should be [640, 640], not [416, 416].",
+      "class_activation is validated but not applied by decode_yolo_raw.",
+      "Identity class mapping is correct only if trained output order matches the manifest.",
+      "No ONNX file or real weights have been exercised."
+    ],
+    "compatible_conventions": [
+      "114 grey letterbox padding matches Ultralytics.",
+      "RGB [0, 1] NCHW input matches prepare_input.",
+      "Class-aware NMS runs before class-ID mapping."
+    ]
+  },
+  "audit_f_evaluation": {
+    "status": "PASS",
+    "yolo11_path": "BLOCKED",
+    "capabilities": {
+      "precision_recall_f1": "PASS",
+      "ap50": "PASS",
+      "ap50_95": "PASS",
+      "per_class": "PASS",
+      "confusion_matrix": "PASS",
+      "false_positive_taxonomy": "PASS",
+      "false_negative_taxonomy": "PASS",
+      "latency": "PASS",
+      "peak_memory": "PASS",
+      "bootstrap_confidence_intervals": "PASS",
+      "grouped_validation": "PASS",
+      "fixed_split": "PASS",
+      "logo_folds": "PASS",
+      "independent_test_split": "FAIL",
+      "ultralytics_results_adapter": "FAIL",
+      "real_predictions_evaluated": "BLOCKED"
+    },
+    "inputs_supported": [
+      "--model with OnnxRuntimeDetector",
+      "--predictions JSON mapping image paths to normalized boxes"
+    ],
+    "findings": [
+      "The harness consumes EvaluationBox mappings, not Ultralytics Results objects.",
+      "No converter from results.csv, model.predict output or best.pt exists.",
+      "The fixed valid split is model selection; LOGO folds estimate group sensitivity."
+    ]
+  },
+  "audit_g_environment": {
+    "status": "FAIL",
+    "colab_spec_status": "PASS",
+    "colab_training": "BLOCKED",
+    "local": {
+      "python": "3.13.14",
+      "torch": "2.10.0+cpu",
+      "cuda_available": false,
+      "cuda_version": null,
+      "onnxruntime": "1.29.0",
+      "onnxruntime_providers": ["AzureExecutionProvider", "CPUExecutionProvider"],
+      "torchvision_installed": false,
+      "opencv_installed": false,
+      "ultralytics_installed": false,
+      "onnx_installed": false,
+      "gpu": "NVIDIA GeForce RTX 3050 Laptop, 4096 MiB, driver 592.27",
+      "cpu_physical": 6,
+      "cpu_logical": 12,
+      "ram_total_gib": 15.34,
+      "ram_available_gib": 3.31,
+      "disk_free_gib": 37.15,
+      "disk_total_gib": 463.81,
+      "pip_check": [
+        "esptool 5.1.0 requires cryptography>=43.0.0, installed 41.0.7",
+        "streamlit 1.51.0 requires protobuf<7,>=3.20, installed 7.36.2"
+      ]
+    },
+    "requirements_declared": {
+      "numpy": "2.3.4",
+      "pandas": "2.3.3",
+      "matplotlib": "3.10.7",
+      "PyYAML": "6.0.3",
+      "psutil": "7.1.2",
+      "pytest": "7.4.3"
+    },
+    "undeclared_imports_used_by_code": ["torch", "Pillow", "onnxruntime"],
+    "local_training_feasible": false,
+    "colab_proposal": {
+      "runtime": "GPU T4 16 GB or better",
+      "python": "3.10-3.12",
+      "packages": [
+        "CUDA-enabled torch",
+        "matching torchvision",
+        "pinned ultralytics",
+        "numpy",
+        "PyYAML",
+        "Pillow",
+        "opencv-python-headless",
+        "onnx",
+        "onnxruntime"
+      ],
+      "input_size": 640,
+      "outputs": ["best.pt", "last.pt", "results.csv", "run metadata", "ONNX export"],
+      "provenance": ["package versions", "export hash", "manifest hash", "git commit"],
+      "executed": false
+    }
+  },
+  "audit_h_licensing": {
+    "status": "BLOCKED",
+    "facts": {
+      "dataset_licence": "CC BY 4.0",
+      "dataset_workspace": "horizon-cgt2k",
+      "dataset_version": 15,
+      "dataset_attribution_in_project_notices": false,
+      "yolo11_licence": "AGPL-3.0",
+      "yolo11_licence_evidence": "checkpoint metadata string",
+      "yolox_licence": "Apache-2.0",
+      "yolox_weights_present": false,
+      "accepted_licence_decision_recorded": false,
+      "official_checkpoint_checksum_verified": false,
+      "game_ip_rights_addressed": false
+    },
+    "notes": [
+      "CC BY 4.0 requires attribution; the export must carry the dataset source and licence.",
+      "AGPL network-use copyleft implications require an owner decision.",
+      "No legal conclusion is asserted.",
+      "The dataset is game imagery; the uploader's CC BY 4.0 declaration does not settle underlying IP rights."
+    ]
+  },
+  "audit_i_git_safety": {
+    "status": "FAIL",
+    "branch": "main",
+    "staged_changes": false,
+    "commit_or_push": false,
+    "checkpoint_tracked": false,
+    "checkpoint_ignored": false,
+    "checkpoint_status_entry": "?? models/YOLO11/yolo11n.pt",
+    "weights_tracked": false,
+    "raw_dataset_tracked": false,
+    "raw_dataset_ignore_rule": "datasets/external/subway surfers/",
+    "references_ignored": true,
+    "export_directory_exists": false,
+    "export_ignore_rule": false,
+    "pre_existing_modifications_preserved": [
+      ".gitignore (+3 lines)",
+      "brain/brain_simulator.py (+28 lines)",
+      "sensory/game_state.py (+285/-1 lines)"
+    ],
+    "status_entry_count": 43,
+    "required_actions": [
+      "Ignore models/ or models/**/*.pt before creating or downloading any checkpoint.",
+      "Decide whether datasets/exports/ is ignored or tracked as a manifest-only directory."
+    ]
+  },
+  "readiness_classification": {
+    "already_implemented": [
+      "Detector protocol and MockDetector",
+      "ONNX Runtime detector with letterbox, inverse mapping, decoding, NMS, confidence filtering and class mapping",
+      "Detector configuration and optional SHA-256 verification",
+      "Evaluation harness with all requested metrics and grouped validation",
+      "Dataset curation and manifest lookup",
+      "Perception, observation, tracking and temporal layers"
+    ],
+    "verified_working": [
+      "Manifest counts, path resolution, quarantine exclusion and group atomicity",
+      "Perception class schema matches the manifest",
+      "Missing-model error is explicit",
+      "Checkpoint is a valid Ultralytics archive",
+      "YOLOX extraction is complete and Apache-2.0",
+      "Root README and manifest hashes match",
+      "No staged changes and no tracked weights"
+    ],
+    "implemented_not_tested_with_yolo11": [
+      "OnnxRuntimeDetector end-to-end",
+      "decode_yolo_raw on a real [1, 4+nc, anchors] export",
+      "Evaluation harness with real predictions",
+      "14-class identity class mapping",
+      "Latency and memory measurements on real inference"
+    ],
+    "missing": [
+      "datasets/exports/ and all expected contents",
+      "Export tooling and verification",
+      "Ultralytics ONNX export step",
+      "Ultralytics .pt detector adapter or approved ONNX-only workflow",
+      "Ultralytics results to prediction JSON converter",
+      "YOLO11-specific detector config (has_objectness false, 640 input)",
+      "Colab notebook or environment manifest",
+      "Recorded licence decision and dataset attribution",
+      "Git ignore rule for model weights and export policy",
+      "Independent test split (structurally impossible with five recordings)"
+    ],
+    "blocked_pending_approval": [
+      "Installing Ultralytics or any training dependency",
+      "Accepting AGPL-3.0 or choosing the Apache-2.0 YOLOX fallback",
+      "Creating the dataset export",
+      "Training on Colab and downloading weights",
+      "Committing any checkpoint or export",
+      "Making detector or perception claims"
+    ]
+  },
+  "gates": {
+    "curated_dataset_valid_and_leakage_free": "PASS",
+    "independent_test_split_available": "FAIL",
+    "colab_export_exists_and_verified": "FAIL",
+    "class_mapping_verified": "PASS",
+    "trained_model_class_mapping_verified": "BLOCKED",
+    "yolo11_training_config_tested": "BLOCKED",
+    "yolo11_decoding_and_evaluation_tested": "BLOCKED",
+    "colab_environment_specified": "PASS",
+    "licensing_decision_and_attribution": "BLOCKED",
+    "git_safety_for_weights_and_exports": "FAIL",
+    "reproducible_evaluation_plan": "PASS"
+  },
+  "next_actions": [
+    {"order": 1, "action": "Approve the licensing route (AGPL-3.0 YOLO11 or Apache-2.0 YOLOX fallback) and record dataset CC BY 4.0 attribution in THIRD_PARTY_NOTICES.md and REFERENCES.md.", "requires_approval": true},
+    {"order": 2, "action": "Add models/ or models/**/*.pt to .gitignore, decide the datasets/exports/ policy, and verify with git check-ignore.", "requires_approval": true},
+    {"order": 3, "action": "Implement an export script that reads only the split manifest and copies 1,188 train and 1,128 valid images and labels into datasets/exports/yolo11_v15 with a portable dataset.yaml and attribution.", "requires_approval": true},
+    {"order": 4, "action": "Verify export counts, class order, quarantine exclusion, label correspondence, filename collisions and record an export SHA-256 manifest.", "requires_approval": false},
+    {"order": 5, "action": "Add a YOLO11 ONNX export step or an Ultralytics .pt adapter; set has_objectness false and input_size [640, 640]; add a synthetic [1, 18, 8400] decode test.", "requires_approval": true},
+    {"order": 6, "action": "Add an Ultralytics results to prediction JSON / EvaluationBox adapter.", "requires_approval": false},
+    {"order": 7, "action": "Prepare a pinned Colab notebook, verify CUDA, upload the verified export and record hashes, seed and pre-registered hyperparameters.", "requires_approval": true},
+    {"order": 8, "action": "Fine-tune from yolo11n.pt, save best.pt, results.csv and run metadata, then export ONNX at 640.", "requires_approval": true},
+    {"order": 9, "action": "Evaluate locally on the fixed valid split, report per-class support, mark boots-powerup and jump-electric unevaluable, optionally run five LOGO folds.", "requires_approval": false},
+    {"order": 10, "action": "Report results as group-held-out validation, not test performance; keep connectome integration out of scope until perception gates pass.", "requires_approval": false}
+  ],
+  "risks": [
+    "Weights could be committed accidentally because models/ is not ignored.",
+    "Export could drift from the manifest and leak groups.",
+    "Original Roboflow folder names could be mistaken for the split.",
+    "YOLO11 output could be mis-decoded with objectness enabled.",
+    "Class order mismatch would invalidate every per-class metric.",
+    "boots-powerup and jump-electric have no validation boxes.",
+    "Fixed valid results could be overstated as test performance.",
+    "AGPL obligations and game imagery rights are unresolved.",
+    "Colab sessions are ephemeral and can lose runs.",
+    "The dataset is small and class-imbalanced, so variance will be high."
+  ],
+  "hard_blockers": [
+    "No dataset export.",
+    "No YOLO11-tested training or decoding configuration.",
+    "No accepted licensing decision or dataset attribution record.",
+    "Model weights are not excluded from Git."
+  ]
+}
