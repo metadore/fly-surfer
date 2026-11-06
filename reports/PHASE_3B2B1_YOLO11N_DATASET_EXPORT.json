@@ -1,0 +1,402 @@
+{
+  "phase": "3B.2B.1",
+  "report": "reports/PHASE_3B2B1_YOLO11N_DATASET_EXPORT.md",
+  "status": "PASS",
+  "date": "2026-11-06",
+  "project_root": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER",
+  "source_manifest": {
+    "path": "reports/PHASE_3B1_SPLIT_MANIFEST.json",
+    "sha256": "ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d",
+    "dataset_root": "datasets/external/subway surfers/roboflow_v15_yolov8/subway surfers object dataset.v15-added.yolov8",
+    "dataset_version": 15,
+    "source_data_yaml_sha256": "f6e51bf674b4dfbbb51866a0d56ad85c7cb55b51032cf0ec95a8d9aa2b7be423"
+  },
+  "export": {
+    "directory": "datasets/exports/phase_3b2b1_yolo11n",
+    "zip": "datasets/exports/phase_3b2b1_yolo11n.zip",
+    "created_at_utc": "2026-11-06T15:23:36+00:00",
+    "script": "experiments/phase_3b/export_yolo11_dataset.py",
+    "verification_mode": "PASS",
+    "verification_only_mode": "PASS"
+  },
+  "counts": {
+    "source_images": 2328,
+    "curated_images": 2316,
+    "train_images": 1188,
+    "valid_images": 1128,
+    "quarantined_images": 12,
+    "classes": 14,
+    "total_boxes": 8666,
+    "train_boxes": 4704,
+    "valid_boxes": 3962,
+    "images_without_boxes": 0,
+    "image_dimensions": {
+      "606x1050": 2316
+    },
+    "files": {
+      "images": 2316,
+      "labels": 2316,
+      "dataset_yaml": 1,
+      "provenance_files": 4,
+      "total": 4637,
+      "checksum_entries": 4636
+    }
+  },
+  "source_split_mismatches": {
+    "train_to_train": 913,
+    "train_to_valid": 903,
+    "valid_to_train": 275,
+    "valid_to_valid": 225,
+    "total": 2316
+  },
+  "per_class": [
+    {
+      "id": 0,
+      "name": "boots-powerup",
+      "train_boxes": 24,
+      "train_images": 24,
+      "valid_boxes": 0,
+      "valid_images": 0
+    },
+    {
+      "id": 1,
+      "name": "boxtrain",
+      "train_boxes": 625,
+      "train_images": 482,
+      "valid_boxes": 749,
+      "valid_images": 538
+    },
+    {
+      "id": 2,
+      "name": "jump-barrier",
+      "train_boxes": 254,
+      "train_images": 221,
+      "valid_boxes": 163,
+      "valid_images": 148
+    },
+    {
+      "id": 3,
+      "name": "jump-electric",
+      "train_boxes": 14,
+      "train_images": 14,
+      "valid_boxes": 0,
+      "valid_images": 0
+    },
+    {
+      "id": 4,
+      "name": "jump-hedge",
+      "train_boxes": 18,
+      "train_images": 17,
+      "valid_boxes": 26,
+      "valid_images": 21
+    },
+    {
+      "id": 5,
+      "name": "jump-roll-barrier",
+      "train_boxes": 407,
+      "train_images": 359,
+      "valid_boxes": 356,
+      "valid_images": 287
+    },
+    {
+      "id": 6,
+      "name": "jump-trash",
+      "train_boxes": 34,
+      "train_images": 33,
+      "valid_boxes": 62,
+      "valid_images": 44
+    },
+    {
+      "id": 7,
+      "name": "ledge",
+      "train_boxes": 87,
+      "train_images": 57,
+      "valid_boxes": 48,
+      "valid_images": 32
+    },
+    {
+      "id": 8,
+      "name": "pogstick-powerup",
+      "train_boxes": 53,
+      "train_images": 53,
+      "valid_boxes": 65,
+      "valid_images": 65
+    },
+    {
+      "id": 9,
+      "name": "ramp",
+      "train_boxes": 606,
+      "train_images": 444,
+      "valid_boxes": 617,
+      "valid_images": 501
+    },
+    {
+      "id": 10,
+      "name": "roll-barrier",
+      "train_boxes": 147,
+      "train_images": 141,
+      "valid_boxes": 162,
+      "valid_images": 149
+    },
+    {
+      "id": 11,
+      "name": "train",
+      "train_boxes": 1617,
+      "train_images": 883,
+      "valid_boxes": 1174,
+      "valid_images": 839
+    },
+    {
+      "id": 12,
+      "name": "undercover-barrier",
+      "train_boxes": 196,
+      "train_images": 84,
+      "valid_boxes": 19,
+      "valid_images": 15
+    },
+    {
+      "id": 13,
+      "name": "wall",
+      "train_boxes": 622,
+      "train_images": 279,
+      "valid_boxes": 521,
+      "valid_images": 247
+    }
+  ],
+  "train_only_classes": [
+    "boots-powerup",
+    "jump-electric"
+  ],
+  "groups": {
+    "subwayavitomp4": {
+      "split": "train",
+      "images": 501,
+      "boxes": 1798,
+      "quarantined": 0
+    },
+    "subwayedited2": {
+      "split": "train",
+      "images": 392,
+      "boxes": 1580,
+      "quarantined": 0
+    },
+    "subwayedtied": {
+      "split": "train",
+      "images": 295,
+      "boxes": 1326,
+      "quarantined": 9
+    },
+    "datasetfootage": {
+      "split": "valid",
+      "images": 504,
+      "boxes": 1681,
+      "quarantined": 0
+    },
+    "subwayy1_1": {
+      "split": "valid",
+      "images": 624,
+      "boxes": 2281,
+      "quarantined": 3
+    }
+  },
+  "train_groups": [
+    "subwayavitomp4",
+    "subwayedited2",
+    "subwayedtied"
+  ],
+  "valid_groups": [
+    "datasetfootage",
+    "subwayy1_1"
+  ],
+  "quarantine": {
+    "count": 12,
+    "by_reason": {
+      "probable_gap": 9,
+      "isolated_plausible": 3
+    },
+    "by_group": {
+      "subwayedtied": 9,
+      "subwayy1_1": 3
+    },
+    "frames": {
+      "subwayedtied": [
+        293,
+        294,
+        295,
+        296,
+        297,
+        298,
+        299,
+        300,
+        301
+      ],
+      "subwayy1_1": [
+        213,
+        217,
+        262
+      ]
+    },
+    "exported": 0,
+    "repaired": false,
+    "derived_manifest_marks_status_quarantined": true
+  },
+  "integrity": {
+    "images_readable": 2316,
+    "labels_present": 2316,
+    "one_label_per_image": true,
+    "empty_labels_in_export": 0,
+    "five_field_rows": true,
+    "class_ids_in_range_0_13": true,
+    "normalized_coordinates_valid": true,
+    "boxes_within_bounds": true,
+    "unexpected_files": 0,
+    "duplicate_output_paths": 0,
+    "overwritten_files": 0,
+    "missing_files": 0,
+    "source_destination_sha256_matches": 4632,
+    "manifest_entries_exported_exactly_once": 2316,
+    "group_in_both_splits": 0,
+    "original_roboflow_split_used": false,
+    "renamed_files": 0
+  },
+  "yaml": {
+    "path": "dataset.yaml",
+    "path_field": ".",
+    "train": "train/images",
+    "val": "valid/images",
+    "nc": 14,
+    "names": [
+      "boots-powerup",
+      "boxtrain",
+      "jump-barrier",
+      "jump-electric",
+      "jump-hedge",
+      "jump-roll-barrier",
+      "jump-trash",
+      "ledge",
+      "pogstick-powerup",
+      "ramp",
+      "roll-barrier",
+      "train",
+      "undercover-barrier",
+      "wall"
+    ],
+    "ids_contiguous_0_13": true,
+    "class_mapping_matches_audited_metadata": true,
+    "paths_resolve_from_export_root": true,
+    "paths_resolve_after_zip_extraction": true,
+    "test_split_present": false
+  },
+  "checksums": {
+    "file": "provenance/SHA256SUMS.txt",
+    "entries": 4636,
+    "covers_itself": false,
+    "relative_paths": true,
+    "all_directory_hashes_match": true,
+    "all_zip_member_hashes_match": true,
+    "sha256": "fd1b0711685e8ea77eff9b8e2281742e70cc3547449dd1e8b03707e965fe5cf2",
+    "dataset_yaml_sha256": "f5278011ebb0879b29ff468a0a189c3dda99b17dcf6afdeb288b6c428aeb3810",
+    "attribution_sha256": "5290ac7664c662d71c255ade0edb88e49428e25a14228b81374de47381abfe0d",
+    "split_manifest_sha256": "7f288906e504f18f0cf59d1fba6182e22e73f74c4d495aa9d716bbdbe31e3739",
+    "dataset_summary_sha256": "173ddca8c1fbf61a8330749ac5d204f9c4805b870885c310c446eb513a5a9891"
+  },
+  "zip": {
+    "path": "datasets/exports/phase_3b2b1_yolo11n.zip",
+    "bytes": 211529060,
+    "mib": 201.73,
+    "sha256": "c04058ad49b6160e14b2fc20633b6929e5603fa72208996144f22238bcb39eff",
+    "testzip_pass": true,
+    "members": 4638,
+    "files": 4637,
+    "root": "phase_3b2b1_yolo11n/",
+    "root_directory_entry_present": true,
+    "dataset_yaml_present": true,
+    "checksum_file_present": true,
+    "entries_outside_root": 0,
+    "checkpoint_members": 0,
+    "deterministic_timestamps": "1980-01-01"
+  },
+  "tests": {
+    "new_file": "tests/test_export_yolo11.py",
+    "new_tests_passed": 15,
+    "full_suite_command": "python -B -m pytest -q",
+    "full_suite_passed": 280,
+    "full_suite_duration_seconds": 20.35,
+    "existing_tests_modified": false
+  },
+  "licences": {
+    "dataset": {
+      "name": "Subway Surfers Object Dataset",
+      "licence": "CC BY 4.0",
+      "workspace": "horizon-cgt2k",
+      "project": "subway-surfers-object-dataset",
+      "version": 15,
+      "original_export_date": "2024-05-05",
+      "original_export_time": "06:32 GMT",
+      "source_url": "https://universe.roboflow.com/horizon-cgt2k/subway-surfers-object-dataset/dataset/15",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "publisher": "Provided by a Roboflow user",
+      "attribution_file": "datasets/exports/phase_3b2b1_yolo11n/provenance/attribution.txt",
+      "attribution_present": true,
+      "independent_test_set": false
+    },
+    "model": {
+      "path": "models/YOLO11/yolo11n.pt",
+      "bytes": 5613764,
+      "licence": "AGPL-3.0",
+      "included_in_dataset": false,
+      "included_in_zip": false
+    }
+  },
+  "known_limitations": [
+    "There is no independent test split; validation is group-held-out development data.",
+    "boots-powerup and jump-electric have zero validation boxes and are unevaluable on this split.",
+    "Low validation support: undercover-barrier 19 boxes/15 images, jump-hedge 26/21, ledge 48/32, jump-trash 62/44, pogstick-powerup 65/65.",
+    "The 12 empty labels were quarantined, not repaired; empty is not evidence of an empty scene.",
+    "Original annotations are copied unchanged, including any errors that survived curation.",
+    "Player, coins, lanes and metric distance are not annotated and are not part of this export.",
+    "The source data.yaml declares a test path but no test images exist; the export has no test split.",
+    "The ZIP is about 202 MiB, so Colab upload may require Google Drive.",
+    "No detector was trained or evaluated; this report makes no accuracy or generalisation claim."
+  ],
+  "colab_steps": [
+    "Upload datasets/exports/phase_3b2b1_yolo11n.zip to Colab or Google Drive.",
+    "Extract with: !unzip -q /content/drive/MyDrive/phase_3b2b1_yolo11n.zip -d /content/datasets",
+    "Verify with: !cd /content/datasets/phase_3b2b1_yolo11n && sha256sum -c provenance/SHA256SUMS.txt",
+    "Install Ultralytics in Colab with: !pip install -q ultralytics",
+    "Upload models/YOLO11/yolo11n.pt separately if transfer learning is intended; it is not in the ZIP and is AGPL-3.0.",
+    "Train with YOLO('yolo11n.pt').train(data='/content/datasets/phase_3b2b1_yolo11n/dataset.yaml', epochs=50, imgsz=640, batch=16).",
+    "Validate with model.val(data='/content/datasets/phase_3b2b1_yolo11n/dataset.yaml', split='val').",
+    "Report per-class support; do not report accuracy for boots-powerup or jump-electric on this split.",
+    "Retain provenance/attribution.txt and the CC BY 4.0 notice on redistribution."
+  ],
+  "protection": {
+    "readme_sha256": "6277ffbb3db8e0b1be9bb320d44ff0f894a07ff04d6ea698efd03fe5a9ef9b10",
+    "readme_unchanged": true,
+    "source_manifest_unchanged": true,
+    "datasets_raw_unchanged": true,
+    "connectome_unchanged": true,
+    "external_dataset_unchanged": true,
+    "references_unchanged": true,
+    "checkpoint_unchanged": true,
+    "original_annotations_unchanged": true,
+    "original_data_yaml_unchanged": true
+  },
+  "prohibitions_observed": {
+    "packages_installed": false,
+    "weights_downloaded": false,
+    "training_started": false,
+    "onnx_exported": false,
+    "perception_pipeline_modified": false,
+    "game_state_modified": false,
+    "sensory_encoders_modified": false,
+    "connectome_modified": false,
+    "simulator_modified": false,
+    "original_dataset_modified": false,
+    "root_readme_modified": false,
+    "git_write_operations": false,
+    "existing_project_files_deleted": false,
+    "accuracy_or_generalisation_claimed": false
+  },
+  "zip_path_absolute": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\exports\\phase_3b2b1_yolo11n.zip"
+}

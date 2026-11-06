@@ -1,0 +1,955 @@
+{
+ "phase": "3B.1",
+ "generated_at_utc": "2026-11-04T18:35:20+00:00",
+ "dataset": {
+  "requested_path": "datasets\\external\\subway surfers\\roboflow_v15_yolov8",
+  "discovered_root": "datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8",
+  "version": 15,
+  "class_names": [
+   "boots-powerup",
+   "boxtrain",
+   "jump-barrier",
+   "jump-electric",
+   "jump-hedge",
+   "jump-roll-barrier",
+   "jump-trash",
+   "ledge",
+   "pogstick-powerup",
+   "ramp",
+   "roll-barrier",
+   "train",
+   "undercover-barrier",
+   "wall"
+  ],
+  "splits_present": [
+   "train",
+   "valid"
+  ]
+ },
+ "policy": {
+  "exclude": "all",
+  "probable_gap_max_bracket_gap": 3
+ },
+ "groups": {
+  "datasetfootage": {
+   "prefixes": [
+    "datasetfootage"
+   ],
+   "images": 504,
+   "train_images": 403,
+   "valid_images": 101,
+   "boxes": 1681,
+   "empty_labels": 0,
+   "unique_frame_ids": 504,
+   "duplicate_frame_ids": 0,
+   "extra_images_on_duplicate_ids": 0,
+   "duplicate_id_pairs_cross_split": 0,
+   "frame_min": 0,
+   "frame_max": 503,
+   "contiguous_runs": 1,
+   "longest_contiguous_run": 504,
+   "median_frame_gap": 1,
+   "max_frame_gap": 1
+  },
+  "subwayavitomp4": {
+   "prefixes": [
+    "subwayavitomp4"
+   ],
+   "images": 501,
+   "train_images": 350,
+   "valid_images": 151,
+   "boxes": 1798,
+   "empty_labels": 0,
+   "unique_frame_ids": 501,
+   "duplicate_frame_ids": 0,
+   "extra_images_on_duplicate_ids": 0,
+   "duplicate_id_pairs_cross_split": 0,
+   "frame_min": 34,
+   "frame_max": 1202,
+   "contiguous_runs": 304,
+   "longest_contiguous_run": 5,
+   "median_frame_gap": 2.0,
+   "max_frame_gap": 14
+  },
+  "subwayedited2": {
+   "prefixes": [
+    "subwayedited2"
+   ],
+   "images": 392,
+   "train_images": 313,
+   "valid_images": 79,
+   "boxes": 1580,
+   "empty_labels": 0,
+   "unique_frame_ids": 392,
+   "duplicate_frame_ids": 0,
+   "extra_images_on_duplicate_ids": 0,
+   "duplicate_id_pairs_cross_split": 0,
+   "frame_min": 11,
+   "frame_max": 402,
+   "contiguous_runs": 1,
+   "longest_contiguous_run": 392,
+   "median_frame_gap": 1,
+   "max_frame_gap": 1
+  },
+  "subwayedtied": {
+   "prefixes": [
+    "subwayedtied"
+   ],
+   "images": 304,
+   "train_images": 258,
+   "valid_images": 46,
+   "boxes": 1326,
+   "empty_labels": 9,
+   "unique_frame_ids": 304,
+   "duplicate_frame_ids": 0,
+   "extra_images_on_duplicate_ids": 0,
+   "duplicate_id_pairs_cross_split": 0,
+   "frame_min": 0,
+   "frame_max": 303,
+   "contiguous_runs": 1,
+   "longest_contiguous_run": 304,
+   "median_frame_gap": 1,
+   "max_frame_gap": 1
+  },
+  "subwayy1_1": {
+   "prefixes": [
+    "subwayy1_1"
+   ],
+   "images": 627,
+   "train_images": 501,
+   "valid_images": 126,
+   "boxes": 2281,
+   "empty_labels": 3,
+   "unique_frame_ids": 331,
+   "duplicate_frame_ids": 296,
+   "extra_images_on_duplicate_ids": 296,
+   "duplicate_id_pairs_cross_split": 91,
+   "frame_min": 0,
+   "frame_max": 330,
+   "contiguous_runs": 1,
+   "longest_contiguous_run": 331,
+   "median_frame_gap": 1.0,
+   "max_frame_gap": 1
+  }
+ },
+ "exclusions": [
+  {
+   "path": "train/images/subwayedtied_mp4-293_jpg.rf.e8b37a118b7921ba1b7e4b6625a8b4ef.jpg",
+   "group": "subwayedtied",
+   "split": "train",
+   "canonical_id": "subwayedtied",
+   "frame": 293,
+   "classification": "probable_gap",
+   "run_start": 293,
+   "run_end": 301,
+   "run_length": 9,
+   "left_nonempty_frame": 292,
+   "left_nonempty_objects": 4,
+   "right_nonempty_frame": 302,
+   "right_nonempty_objects": 5,
+   "same_frame_labelled_copies": 0
+  },
+  {
+   "path": "train/images/subwayedtied_mp4-294_jpg.rf.a555cc4efc79cf02119873f37b61fdb5.jpg",
+   "group": "subwayedtied",
+   "split": "train",
+   "canonical_id": "subwayedtied",
+   "frame": 294,
+   "classification": "probable_gap",
+   "run_start": 293,
+   "run_end": 301,
+   "run_length": 9,
+   "left_nonempty_frame": 292,
+   "left_nonempty_objects": 4,
+   "right_nonempty_frame": 302,
+   "right_nonempty_objects": 5,
+   "same_frame_labelled_copies": 0
+  },
+  {
+   "path": "train/images/subwayedtied_mp4-295_jpg.rf.6676f55f6b8fd5a1bee458d8212c4c5e.jpg",
+   "group": "subwayedtied",
+   "split": "train",
+   "canonical_id": "subwayedtied",
+   "frame": 295,
+   "classification": "probable_gap",
+   "run_start": 293,
+   "run_end": 301,
+   "run_length": 9,
+   "left_nonempty_frame": 292,
+   "left_nonempty_objects": 4,
+   "right_nonempty_frame": 302,
+   "right_nonempty_objects": 5,
+   "same_frame_labelled_copies": 0
+  },
+  {
+   "path": "train/images/subwayedtied_mp4-296_jpg.rf.c027851308c9ba6dd3a3c1b61918792c.jpg",
+   "group": "subwayedtied",
+   "split": "train",
+   "canonical_id": "subwayedtied",
+   "frame": 296,
+   "classification": "probable_gap",
+   "run_start": 293,
+   "run_end": 301,
+   "run_length": 9,
+   "left_nonempty_frame": 292,
+   "left_nonempty_objects": 4,
+   "right_nonempty_frame": 302,
+   "right_nonempty_objects": 5,
+   "same_frame_labelled_copies": 0
+  },
+  {
+   "path": "train/images/subwayedtied_mp4-297_jpg.rf.0a382f11225bcf2582e33dbc7c2c7a50.jpg",
+   "group": "subwayedtied",
+   "split": "train",
+   "canonical_id": "subwayedtied",
+   "frame": 297,
+   "classification": "probable_gap",
+   "run_start": 293,
+   "run_end": 301,
+   "run_length": 9,
+   "left_nonempty_frame": 292,
+   "left_nonempty_objects": 4,
+   "right_nonempty_frame": 302,
+   "right_nonempty_objects": 5,
+   "same_frame_labelled_copies": 0
+  },
+  {
+   "path": "valid/images/subwayedtied_mp4-298_jpg.rf.9be6154adb7965b0e6f97155d44e7998.jpg",
+   "group": "subwayedtied",
+   "split": "valid",
+   "canonical_id": "subwayedtied",
+   "frame": 298,
+   "classification": "probable_gap",
+   "run_start": 293,
+   "run_end": 301,
+   "run_length": 9,
+   "left_nonempty_frame": 292,
+   "left_nonempty_objects": 4,
+   "right_nonempty_frame": 302,
+   "right_nonempty_objects": 5,
+   "same_frame_labelled_copies": 0
+  },
+  {
+   "path": "train/images/subwayedtied_mp4-299_jpg.rf.160b2350a8fed35c65b7b801a404fe99.jpg",
+   "group": "subwayedtied",
+   "split": "train",
+   "canonical_id": "subwayedtied",
+   "frame": 299,
+   "classification": "probable_gap",
+   "run_start": 293,
+   "run_end": 301,
+   "run_length": 9,
+   "left_nonempty_frame": 292,
+   "left_nonempty_objects": 4,
+   "right_nonempty_frame": 302,
+   "right_nonempty_objects": 5,
+   "same_frame_labelled_copies": 0
+  },
+  {
+   "path": "train/images/subwayedtied_mp4-300_jpg.rf.a7a9543dc44b91f538cc243c37c1c87f.jpg",
+   "group": "subwayedtied",
+   "split": "train",
+   "canonical_id": "subwayedtied",
+   "frame": 300,
+   "classification": "probable_gap",
+   "run_start": 293,
+   "run_end": 301,
+   "run_length": 9,
+   "left_nonempty_frame": 292,
+   "left_nonempty_objects": 4,
+   "right_nonempty_frame": 302,
+   "right_nonempty_objects": 5,
+   "same_frame_labelled_copies": 0
+  },
+  {
+   "path": "train/images/subwayedtied_mp4-301_jpg.rf.26304064cfbdf50acf93e0c1cdeebdda.jpg",
+   "group": "subwayedtied",
+   "split": "train",
+   "canonical_id": "subwayedtied",
+   "frame": 301,
+   "classification": "probable_gap",
+   "run_start": 293,
+   "run_end": 301,
+   "run_length": 9,
+   "left_nonempty_frame": 292,
+   "left_nonempty_objects": 4,
+   "right_nonempty_frame": 302,
+   "right_nonempty_objects": 5,
+   "same_frame_labelled_copies": 0
+  },
+  {
+   "path": "train/images/subwayy1_1_mp4-213_jpg.rf.40c6ee09a4ba0ce3ba060d7d43b2426a.jpg",
+   "group": "subwayy1_1",
+   "split": "train",
+   "canonical_id": "subwayy1_1",
+   "frame": 213,
+   "classification": "isolated_plausible",
+   "run_start": 213,
+   "run_end": 213,
+   "run_length": 1,
+   "left_nonempty_frame": 212,
+   "left_nonempty_objects": 4,
+   "right_nonempty_frame": 214,
+   "right_nonempty_objects": 4,
+   "same_frame_labelled_copies": 1
+  },
+  {
+   "path": "valid/images/subwayy1_1_mp4-217_jpg.rf.e9ba8683da07dfb4e7f2cb610d5dcac8.jpg",
+   "group": "subwayy1_1",
+   "split": "valid",
+   "canonical_id": "subwayy1_1",
+   "frame": 217,
+   "classification": "isolated_plausible",
+   "run_start": 217,
+   "run_end": 217,
+   "run_length": 1,
+   "left_nonempty_frame": 216,
+   "left_nonempty_objects": 4,
+   "right_nonempty_frame": 218,
+   "right_nonempty_objects": 4,
+   "same_frame_labelled_copies": 1
+  },
+  {
+   "path": "valid/images/subwayy1_1_mp4-262_jpg.rf.b122b7576b4b1d5a5d71b4be5bea83c9.jpg",
+   "group": "subwayy1_1",
+   "split": "valid",
+   "canonical_id": "subwayy1_1",
+   "frame": 262,
+   "classification": "isolated_plausible",
+   "run_start": 262,
+   "run_end": 262,
+   "run_length": 1,
+   "left_nonempty_frame": 261,
+   "left_nonempty_objects": 3,
+   "right_nonempty_frame": 263,
+   "right_nonempty_objects": 3,
+   "same_frame_labelled_copies": 1
+  }
+ ],
+ "fixed_split": {
+  "train_groups": [
+   "subwayavitomp4",
+   "subwayedited2",
+   "subwayedtied"
+  ],
+  "valid_groups": [
+   "datasetfootage",
+   "subwayy1_1"
+  ],
+  "train": {
+   "images": 1188,
+   "boxes": 4704,
+   "missing_classes": [],
+   "classes_without_images": []
+  },
+  "valid": {
+   "images": 1128,
+   "boxes": 3962,
+   "missing_classes": [
+    "boots-powerup",
+    "jump-electric"
+   ],
+   "classes_without_images": [
+    "boots-powerup",
+    "jump-electric"
+   ]
+  }
+ },
+ "logo_folds": [
+  {
+   "fold": 1,
+   "valid_group": "datasetfootage",
+   "train_groups": [
+    "subwayavitomp4",
+    "subwayedited2",
+    "subwayedtied",
+    "subwayy1_1"
+   ],
+   "train_images": 1812,
+   "valid_images": 504,
+   "train_boxes": 6985,
+   "valid_boxes": 1681,
+   "train_missing_classes": [],
+   "valid_missing_classes": [
+    "boots-powerup",
+    "jump-electric",
+    "jump-trash",
+    "ledge",
+    "undercover-barrier"
+   ],
+   "classes_untrainable_in_fold": [],
+   "classes_unevaluable_in_fold": [
+    "boots-powerup",
+    "jump-electric",
+    "jump-trash",
+    "ledge",
+    "undercover-barrier"
+   ]
+  },
+  {
+   "fold": 2,
+   "valid_group": "subwayavitomp4",
+   "train_groups": [
+    "datasetfootage",
+    "subwayedited2",
+    "subwayedtied",
+    "subwayy1_1"
+   ],
+   "train_images": 1815,
+   "valid_images": 501,
+   "train_boxes": 6868,
+   "valid_boxes": 1798,
+   "train_missing_classes": [],
+   "valid_missing_classes": [
+    "boots-powerup"
+   ],
+   "classes_untrainable_in_fold": [],
+   "classes_unevaluable_in_fold": [
+    "boots-powerup"
+   ]
+  },
+  {
+   "fold": 3,
+   "valid_group": "subwayedited2",
+   "train_groups": [
+    "datasetfootage",
+    "subwayavitomp4",
+    "subwayedtied",
+    "subwayy1_1"
+   ],
+   "train_images": 1924,
+   "valid_images": 392,
+   "train_boxes": 7086,
+   "valid_boxes": 1580,
+   "train_missing_classes": [],
+   "valid_missing_classes": [
+    "boots-powerup"
+   ],
+   "classes_untrainable_in_fold": [],
+   "classes_unevaluable_in_fold": [
+    "boots-powerup"
+   ]
+  },
+  {
+   "fold": 4,
+   "valid_group": "subwayedtied",
+   "train_groups": [
+    "datasetfootage",
+    "subwayavitomp4",
+    "subwayedited2",
+    "subwayy1_1"
+   ],
+   "train_images": 2021,
+   "valid_images": 295,
+   "train_boxes": 7340,
+   "valid_boxes": 1326,
+   "train_missing_classes": [
+    "boots-powerup"
+   ],
+   "valid_missing_classes": [
+    "jump-electric",
+    "jump-hedge",
+    "jump-trash",
+    "ledge",
+    "undercover-barrier"
+   ],
+   "classes_untrainable_in_fold": [
+    "boots-powerup"
+   ],
+   "classes_unevaluable_in_fold": [
+    "jump-electric",
+    "jump-hedge",
+    "jump-trash",
+    "ledge",
+    "undercover-barrier"
+   ]
+  },
+  {
+   "fold": 5,
+   "valid_group": "subwayy1_1",
+   "train_groups": [
+    "datasetfootage",
+    "subwayavitomp4",
+    "subwayedited2",
+    "subwayedtied"
+   ],
+   "train_images": 1692,
+   "valid_images": 624,
+   "train_boxes": 6385,
+   "valid_boxes": 2281,
+   "train_missing_classes": [],
+   "valid_missing_classes": [
+    "boots-powerup",
+    "jump-electric"
+   ],
+   "classes_untrainable_in_fold": [],
+   "classes_unevaluable_in_fold": [
+    "boots-powerup",
+    "jump-electric"
+   ]
+  }
+ ],
+ "warnings": [],
+ "limitations": [
+  "Only five filename groups exist, so no independent test split can be formed.",
+  "subwayy1_1 contains two recordings that share frame IDs; it is treated as one atomic group.",
+  "boots-powerup occurs only in subwayedtied, so it cannot be both trained and evaluated in a group-held-out split.",
+  "Class roles are derived from declared names and are not verified game mechanics.",
+  "Empty labels are quarantined, not repaired; the dataset remains unmodified.",
+  "Box geometry is not a calibrated distance measure."
+ ],
+ "class_coverage_by_group": {
+  "datasetfootage": {
+   "per_class": {
+    "boots-powerup": {
+     "boxes": 0,
+     "images": 0
+    },
+    "boxtrain": {
+     "boxes": 421,
+     "images": 290
+    },
+    "jump-barrier": {
+     "boxes": 52,
+     "images": 51
+    },
+    "jump-electric": {
+     "boxes": 0,
+     "images": 0
+    },
+    "jump-hedge": {
+     "boxes": 1,
+     "images": 1
+    },
+    "jump-roll-barrier": {
+     "boxes": 150,
+     "images": 133
+    },
+    "jump-trash": {
+     "boxes": 0,
+     "images": 0
+    },
+    "ledge": {
+     "boxes": 0,
+     "images": 0
+    },
+    "pogstick-powerup": {
+     "boxes": 2,
+     "images": 2
+    },
+    "ramp": {
+     "boxes": 244,
+     "images": 209
+    },
+    "roll-barrier": {
+     "boxes": 45,
+     "images": 41
+    },
+    "train": {
+     "boxes": 542,
+     "images": 404
+    },
+    "undercover-barrier": {
+     "boxes": 0,
+     "images": 0
+    },
+    "wall": {
+     "boxes": 224,
+     "images": 109
+    }
+   },
+   "missing_classes": [
+    "boots-powerup",
+    "jump-electric",
+    "jump-trash",
+    "ledge",
+    "undercover-barrier"
+   ]
+  },
+  "subwayavitomp4": {
+   "per_class": {
+    "boots-powerup": {
+     "boxes": 0,
+     "images": 0
+    },
+    "boxtrain": {
+     "boxes": 290,
+     "images": 217
+    },
+    "jump-barrier": {
+     "boxes": 87,
+     "images": 87
+    },
+    "jump-electric": {
+     "boxes": 2,
+     "images": 2
+    },
+    "jump-hedge": {
+     "boxes": 5,
+     "images": 5
+    },
+    "jump-roll-barrier": {
+     "boxes": 184,
+     "images": 157
+    },
+    "jump-trash": {
+     "boxes": 9,
+     "images": 9
+    },
+    "ledge": {
+     "boxes": 9,
+     "images": 5
+    },
+    "pogstick-powerup": {
+     "boxes": 6,
+     "images": 6
+    },
+    "ramp": {
+     "boxes": 180,
+     "images": 123
+    },
+    "roll-barrier": {
+     "boxes": 70,
+     "images": 68
+    },
+    "train": {
+     "boxes": 746,
+     "images": 377
+    },
+    "undercover-barrier": {
+     "boxes": 159,
+     "images": 59
+    },
+    "wall": {
+     "boxes": 51,
+     "images": 28
+    }
+   },
+   "missing_classes": [
+    "boots-powerup"
+   ]
+  },
+  "subwayedited2": {
+   "per_class": {
+    "boots-powerup": {
+     "boxes": 0,
+     "images": 0
+    },
+    "boxtrain": {
+     "boxes": 166,
+     "images": 127
+    },
+    "jump-barrier": {
+     "boxes": 97,
+     "images": 78
+    },
+    "jump-electric": {
+     "boxes": 12,
+     "images": 12
+    },
+    "jump-hedge": {
+     "boxes": 13,
+     "images": 12
+    },
+    "jump-roll-barrier": {
+     "boxes": 161,
+     "images": 140
+    },
+    "jump-trash": {
+     "boxes": 25,
+     "images": 24
+    },
+    "ledge": {
+     "boxes": 78,
+     "images": 52
+    },
+    "pogstick-powerup": {
+     "boxes": 10,
+     "images": 10
+    },
+    "ramp": {
+     "boxes": 132,
+     "images": 97
+    },
+    "roll-barrier": {
+     "boxes": 37,
+     "images": 33
+    },
+    "train": {
+     "boxes": 348,
+     "images": 242
+    },
+    "undercover-barrier": {
+     "boxes": 37,
+     "images": 25
+    },
+    "wall": {
+     "boxes": 464,
+     "images": 197
+    }
+   },
+   "missing_classes": [
+    "boots-powerup"
+   ]
+  },
+  "subwayedtied": {
+   "per_class": {
+    "boots-powerup": {
+     "boxes": 24,
+     "images": 24
+    },
+    "boxtrain": {
+     "boxes": 169,
+     "images": 138
+    },
+    "jump-barrier": {
+     "boxes": 70,
+     "images": 56
+    },
+    "jump-electric": {
+     "boxes": 0,
+     "images": 0
+    },
+    "jump-hedge": {
+     "boxes": 0,
+     "images": 0
+    },
+    "jump-roll-barrier": {
+     "boxes": 62,
+     "images": 62
+    },
+    "jump-trash": {
+     "boxes": 0,
+     "images": 0
+    },
+    "ledge": {
+     "boxes": 0,
+     "images": 0
+    },
+    "pogstick-powerup": {
+     "boxes": 37,
+     "images": 37
+    },
+    "ramp": {
+     "boxes": 294,
+     "images": 224
+    },
+    "roll-barrier": {
+     "boxes": 40,
+     "images": 40
+    },
+    "train": {
+     "boxes": 523,
+     "images": 264
+    },
+    "undercover-barrier": {
+     "boxes": 0,
+     "images": 0
+    },
+    "wall": {
+     "boxes": 107,
+     "images": 54
+    }
+   },
+   "missing_classes": [
+    "jump-electric",
+    "jump-hedge",
+    "jump-trash",
+    "ledge",
+    "undercover-barrier"
+   ]
+  },
+  "subwayy1_1": {
+   "per_class": {
+    "boots-powerup": {
+     "boxes": 0,
+     "images": 0
+    },
+    "boxtrain": {
+     "boxes": 328,
+     "images": 248
+    },
+    "jump-barrier": {
+     "boxes": 111,
+     "images": 97
+    },
+    "jump-electric": {
+     "boxes": 0,
+     "images": 0
+    },
+    "jump-hedge": {
+     "boxes": 25,
+     "images": 20
+    },
+    "jump-roll-barrier": {
+     "boxes": 206,
+     "images": 154
+    },
+    "jump-trash": {
+     "boxes": 62,
+     "images": 44
+    },
+    "ledge": {
+     "boxes": 48,
+     "images": 32
+    },
+    "pogstick-powerup": {
+     "boxes": 63,
+     "images": 63
+    },
+    "ramp": {
+     "boxes": 373,
+     "images": 292
+    },
+    "roll-barrier": {
+     "boxes": 117,
+     "images": 108
+    },
+    "train": {
+     "boxes": 632,
+     "images": 435
+    },
+    "undercover-barrier": {
+     "boxes": 19,
+     "images": 15
+    },
+    "wall": {
+     "boxes": 297,
+     "images": 138
+    }
+   },
+   "missing_classes": [
+    "boots-powerup",
+    "jump-electric"
+   ]
+  }
+ },
+ "class_roles": {
+  "train": "collision_large",
+  "boxtrain": "collision_large",
+  "jump-barrier": "collision_low",
+  "jump-electric": "collision_low",
+  "jump-hedge": "collision_low",
+  "jump-roll-barrier": "collision_low",
+  "jump-trash": "collision_low",
+  "roll-barrier": "collision_overhead",
+  "undercover-barrier": "collision_overhead",
+  "ramp": "terrain",
+  "ledge": "terrain",
+  "wall": "boundary",
+  "boots-powerup": "powerup",
+  "pogstick-powerup": "powerup"
+ },
+ "missing_modalities": {
+  "player": "unlabelled in v15",
+  "coin": "no class and no boxes in v15",
+  "lane": "no lane or rail annotations",
+  "distance": "no metric distance labels; box size is an uncalibrated proxy"
+ },
+ "duplicate_frame_ids": {
+  "subwayy1_1": {
+   "duplicate_frame_ids": 296,
+   "extra_images_on_duplicate_ids": 296,
+   "duplicate_id_pairs_cross_split": 91,
+   "examples": [
+    {
+     "canonical_id": "subwayy1_1_mp4-0",
+     "copies": [
+      {
+       "split": "train",
+       "path": "train/images/subwayy1_1_mp4-0_jpg.rf.17eae02384e39b0805110edaec33247c.jpg",
+       "objects": 2
+      },
+      {
+       "split": "valid",
+       "path": "valid/images/subwayy1_1_mp4-0_jpg.rf.285e6c9d9b148df74e4b1cc88a23fe7b.jpg",
+       "objects": 3
+      }
+     ]
+    },
+    {
+     "canonical_id": "subwayy1_1_mp4-1",
+     "copies": [
+      {
+       "split": "train",
+       "path": "train/images/subwayy1_1_mp4-1_jpg.rf.140bc9116ce2da854972f1380e0a749e.jpg",
+       "objects": 3
+      },
+      {
+       "split": "train",
+       "path": "train/images/subwayy1_1_mp4-1_jpg.rf.6883ee882351bc660fc7781fd46b681d.jpg",
+       "objects": 2
+      }
+     ]
+    },
+    {
+     "canonical_id": "subwayy1_1_mp4-2",
+     "copies": [
+      {
+       "split": "train",
+       "path": "train/images/subwayy1_1_mp4-2_jpg.rf.c47e9be274789200f3cac01bca509231.jpg",
+       "objects": 3
+      },
+      {
+       "split": "train",
+       "path": "train/images/subwayy1_1_mp4-2_jpg.rf.cd10d099981d6cb04398bca321ef404d.jpg",
+       "objects": 2
+      }
+     ]
+    },
+    {
+     "canonical_id": "subwayy1_1_mp4-3",
+     "copies": [
+      {
+       "split": "train",
+       "path": "train/images/subwayy1_1_mp4-3_jpg.rf.0d37dcbea462f253ba83eeb9739c41ad.jpg",
+       "objects": 3
+      },
+      {
+       "split": "train",
+       "path": "train/images/subwayy1_1_mp4-3_jpg.rf.f8540be3bf3cbd31c6770a3733bbb2f3.jpg",
+       "objects": 2
+      }
+     ]
+    },
+    {
+     "canonical_id": "subwayy1_1_mp4-4",
+     "copies": [
+      {
+       "split": "train",
+       "path": "train/images/subwayy1_1_mp4-4_jpg.rf.11988ff8303d19060059140327b00db9.jpg",
+       "objects": 3
+      },
+      {
+       "split": "valid",
+       "path": "valid/images/subwayy1_1_mp4-4_jpg.rf.f0046fd3e65fc608879108f376febc75.jpg",
+       "objects": 2
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "duplicate_id_similarity": {
+  "subwayy1_1": {
+   "pairs": 296,
+   "min_distance": 9,
+   "p25_distance": 23,
+   "median_distance": 26.0,
+   "p75_distance": 29,
+   "max_distance": 39,
+   "distance_histogram_le_4": 0,
+   "distance_histogram_5_to_8": 0,
+   "distance_histogram_9_to_16": 13,
+   "distance_over_16": 283,
+   "cross_split_pairs": 91,
+   "label_identical_pairs": 0
+  }
+ },
+ "empty_label_summary": {
+  "total": 12,
+  "probable_gap": 9,
+  "isolated_plausible": 3
+ },
+ "command": "python.exe experiments/phase_3b/curate_dataset.py --dataset datasets/external/subway surfers/roboflow_v15_yolov8 --config configs/phase_3b1_curation.yaml --json reports/PHASE_3B1_DATASET_CURATION.json --manifest reports/PHASE_3B1_SPLIT_MANIFEST.json"
+}

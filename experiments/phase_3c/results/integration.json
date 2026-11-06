@@ -1,0 +1,774 @@
+{
+ "seed": 20261106,
+ "generated_at_utc": "2026-11-06T02:57:06.544438+00:00",
+ "runtime_s": 6.806,
+ "environment": {
+  "python": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.3.4"
+ },
+ "graph": {
+  "n_neurons": 139255,
+  "n_edges": 3732460,
+  "n_synapses": 50666648,
+  "n_stimulated_neurons": 138
+ },
+ "config": {
+  "sensory": {
+   "dt_ms": 0.5,
+   "duration_ms": 300.0,
+   "transition_ms": 50.0,
+   "seed": 20261104,
+   "max_recorded_spikes": 5000000,
+   "progress_interval_ms": 100.0,
+   "diagnostics_interval_steps": 200,
+   "output_dir": "experiments/phase_3",
+   "current_pa_default": 200.0
+  },
+  "tracking": {
+   "iou_threshold": 0.3,
+   "gate_distance": 0.35,
+   "duplicate_iou": 0.75,
+   "max_age": 2,
+   "min_hits": 2,
+   "history_limit": 32,
+   "class_aware": true,
+   "max_tracks": 128,
+   "retired_limit": 64
+  },
+  "features": {
+   "distance_change_threshold": 0.02,
+   "confidence_floor": 0.25,
+   "event_cooldown_frames": 2,
+   "frame_interval_ms": 33.333333333333336,
+   "gap_threshold_ms": 100.0,
+   "velocity_epsilon": 1e-09
+  },
+  "scheduler": {
+   "version": "phase_3c_temporal_scheduler_v1",
+   "max_hold_ms": 250.0,
+   "pulse_gain": 0.5,
+   "pulse_decay_ms": 150.0
+  },
+  "amplitudes_pa": {
+   "player_lane": 200.0,
+   "player_speed": 200.0,
+   "jumping": 200.0,
+   "rolling": 200.0,
+   "obstacle_present": 200.0,
+   "obstacle_lane": 200.0,
+   "obstacle_distance": 200.0,
+   "obstacle_type": 200.0,
+   "train_present": 200.0,
+   "train_lane": 200.0,
+   "train_distance": 200.0,
+   "coin_present": 200.0,
+   "coin_lane": 200.0,
+   "coin_distance": 200.0
+  }
+ },
+ "frame_audit": [
+  {
+   "frame_index": 0,
+   "time_ms": 0.0,
+   "accepted": 3,
+   "rejected": 0,
+   "scene_objects": 3,
+   "observations": 3,
+   "features": {
+    "player_lane": 1,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 1.0,
+    "obstacle_lane": 0,
+    "obstacle_distance": 0.329412,
+    "obstacle_type": 0,
+    "train_present": 1.0,
+    "train_lane": 1,
+    "train_distance": 0.823529,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   }
+  },
+  {
+   "frame_index": 1,
+   "time_ms": 33.333333333333336,
+   "accepted": 3,
+   "rejected": 0,
+   "scene_objects": 3,
+   "observations": 3,
+   "features": {
+    "player_lane": 1,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 1.0,
+    "obstacle_lane": 0,
+    "obstacle_distance": 0.329412,
+    "obstacle_type": 0,
+    "train_present": 1.0,
+    "train_lane": 1,
+    "train_distance": 0.784706,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   }
+  },
+  {
+   "frame_index": 2,
+   "time_ms": 66.66666666666667,
+   "accepted": 3,
+   "rejected": 0,
+   "scene_objects": 3,
+   "observations": 3,
+   "features": {
+    "player_lane": 1,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 1.0,
+    "obstacle_lane": 0,
+    "obstacle_distance": 0.329412,
+    "obstacle_type": 0,
+    "train_present": 1.0,
+    "train_lane": 1,
+    "train_distance": 0.745882,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   }
+  },
+  {
+   "frame_index": 3,
+   "time_ms": 100.0,
+   "accepted": 4,
+   "rejected": 0,
+   "scene_objects": 4,
+   "observations": 4,
+   "features": {
+    "player_lane": 1,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 1.0,
+    "obstacle_lane": 0,
+    "obstacle_distance": 0.329412,
+    "obstacle_type": 0,
+    "train_present": 1.0,
+    "train_lane": 1,
+    "train_distance": 0.707059,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   }
+  },
+  {
+   "frame_index": 4,
+   "time_ms": 133.33333333333334,
+   "accepted": 3,
+   "rejected": 0,
+   "scene_objects": 3,
+   "observations": 3,
+   "features": {
+    "player_lane": 1,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 1.0,
+    "obstacle_lane": 0,
+    "obstacle_distance": 0.329412,
+    "obstacle_type": 0,
+    "train_present": 1.0,
+    "train_lane": 1,
+    "train_distance": 0.668235,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   }
+  },
+  {
+   "frame_index": 5,
+   "time_ms": 166.66666666666669,
+   "accepted": 2,
+   "rejected": 0,
+   "scene_objects": 2,
+   "observations": 2,
+   "features": {
+    "player_lane": 1,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 1.0,
+    "obstacle_lane": 0,
+    "obstacle_distance": 0.329412,
+    "obstacle_type": 0,
+    "train_present": 0.0,
+    "train_lane": null,
+    "train_distance": null,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   }
+  },
+  {
+   "frame_index": 6,
+   "time_ms": 200.0,
+   "accepted": 3,
+   "rejected": 0,
+   "scene_objects": 3,
+   "observations": 3,
+   "features": {
+    "player_lane": 1,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 1.0,
+    "obstacle_lane": 0,
+    "obstacle_distance": 0.329412,
+    "obstacle_type": 0,
+    "train_present": 1.0,
+    "train_lane": 1,
+    "train_distance": 0.590588,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   }
+  },
+  {
+   "frame_index": 7,
+   "time_ms": 233.33333333333334,
+   "accepted": 3,
+   "rejected": 0,
+   "scene_objects": 3,
+   "observations": 3,
+   "features": {
+    "player_lane": 1,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 1.0,
+    "obstacle_lane": 0,
+    "obstacle_distance": 0.329412,
+    "obstacle_type": 0,
+    "train_present": 1.0,
+    "train_lane": 1,
+    "train_distance": 0.551765,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   }
+  },
+  {
+   "frame_index": 8,
+   "time_ms": 266.6666666666667,
+   "accepted": 3,
+   "rejected": 0,
+   "scene_objects": 3,
+   "observations": 3,
+   "features": {
+    "player_lane": 1,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 1.0,
+    "obstacle_lane": 0,
+    "obstacle_distance": 0.329412,
+    "obstacle_type": 0,
+    "train_present": 1.0,
+    "train_lane": 1,
+    "train_distance": 0.512941,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   }
+  },
+  {
+   "frame_index": 9,
+   "time_ms": 300.0,
+   "accepted": 3,
+   "rejected": 0,
+   "scene_objects": 3,
+   "observations": 3,
+   "features": {
+    "player_lane": 1,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 1.0,
+    "obstacle_lane": 0,
+    "obstacle_distance": 0.329412,
+    "obstacle_type": 0,
+    "train_present": 1.0,
+    "train_lane": 1,
+    "train_distance": 0.474118,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   }
+  }
+ ],
+ "temporal": {
+  "n_frames": 10,
+  "track_ids": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "lifecycle_counts": {
+   "appeared": 3,
+   "persisting": 16,
+   "approaching": 7,
+   "receding": 0,
+   "disappeared": 0,
+   "occluded": 1,
+   "uncertain": 7
+  },
+  "n_events": 10,
+  "events": [
+   {
+    "event": "uncertain",
+    "track_id": 1,
+    "class_name": "train",
+    "lane": 1,
+    "frame_index": 0,
+    "time_ms": 0.0,
+    "distance_proxy": 0.823529,
+    "is_pulse": false
+   },
+   {
+    "event": "uncertain",
+    "track_id": 2,
+    "class_name": "jump-barrier",
+    "lane": 0,
+    "frame_index": 0,
+    "time_ms": 0.0,
+    "distance_proxy": 0.329412,
+    "is_pulse": false
+   },
+   {
+    "event": "uncertain",
+    "track_id": 3,
+    "class_name": "ledge",
+    "lane": 2,
+    "frame_index": 0,
+    "time_ms": 0.0,
+    "distance_proxy": 0.164706,
+    "is_pulse": false
+   },
+   {
+    "event": "appeared",
+    "track_id": 1,
+    "class_name": "train",
+    "lane": 1,
+    "frame_index": 1,
+    "time_ms": 33.333333333333336,
+    "distance_proxy": 0.784706,
+    "is_pulse": true
+   },
+   {
+    "event": "appeared",
+    "track_id": 2,
+    "class_name": "jump-barrier",
+    "lane": 0,
+    "frame_index": 1,
+    "time_ms": 33.333333333333336,
+    "distance_proxy": 0.329412,
+    "is_pulse": true
+   },
+   {
+    "event": "appeared",
+    "track_id": 3,
+    "class_name": "ledge",
+    "lane": 2,
+    "frame_index": 1,
+    "time_ms": 33.333333333333336,
+    "distance_proxy": 0.164706,
+    "is_pulse": false
+   },
+   {
+    "event": "approaching",
+    "track_id": 1,
+    "class_name": "train",
+    "lane": 1,
+    "frame_index": 2,
+    "time_ms": 66.66666666666667,
+    "distance_proxy": 0.745882,
+    "is_pulse": true
+   },
+   {
+    "event": "uncertain",
+    "track_id": 4,
+    "class_name": "train",
+    "lane": 2,
+    "frame_index": 3,
+    "time_ms": 100.0,
+    "distance_proxy": 0.941176,
+    "is_pulse": false
+   },
+   {
+    "event": "occluded",
+    "track_id": 1,
+    "class_name": "train",
+    "lane": 1,
+    "frame_index": 5,
+    "time_ms": 166.66666666666669,
+    "distance_proxy": 0.668235,
+    "is_pulse": false
+   },
+   {
+    "event": "approaching",
+    "track_id": 1,
+    "class_name": "train",
+    "lane": 1,
+    "frame_index": 6,
+    "time_ms": 200.0,
+    "distance_proxy": 0.590588,
+    "is_pulse": true
+   }
+  ],
+  "final_game_state": {
+   "time_ms": 300.0,
+   "features": {
+    "player_lane": 1,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 1.0,
+    "obstacle_lane": 0,
+    "obstacle_distance": 0.329412,
+    "obstacle_type": 0,
+    "train_present": 1.0,
+    "train_lane": 1,
+    "train_distance": 0.474118,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   }
+  },
+  "unrepresented_tracks": [
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "notes": [
+   [
+    "1 tracked object(s) are not representable by the single-object GameState."
+   ],
+   [
+    "1 tracked object(s) are not representable by the single-object GameState."
+   ],
+   [
+    "1 tracked object(s) are not representable by the single-object GameState."
+   ],
+   [
+    "1 tracked object(s) are not representable by the single-object GameState."
+   ],
+   [
+    "Train state uses track 1's last observation (1 missed frame(s)).",
+    "1 tracked object(s) are not representable by the single-object GameState."
+   ],
+   [
+    "1 tracked object(s) are not representable by the single-object GameState."
+   ],
+   [
+    "1 tracked object(s) are not representable by the single-object GameState."
+   ],
+   [
+    "1 tracked object(s) are not representable by the single-object GameState."
+   ],
+   [
+    "1 tracked object(s) are not representable by the single-object GameState."
+   ]
+  ]
+ },
+ "scheduler": {
+  "n_frames": 10,
+  "n_stimulated_neurons": 138,
+  "horizon_ms": 550.0,
+  "memory_bytes": 16672,
+  "signature_sha256": "7108911cbe7a124312945cac137d35476671f4cb266425c8a2e525c8321cce21",
+  "statistics": {
+   "max_frame_current_pa": 9262.998898,
+   "max_pulse_current_pa": 3680.279486,
+   "max_per_neuron_current_pa": 200.0,
+   "peak_frame_feature_current_pa": {
+    "player_lane": 800.0,
+    "player_speed": 1096.360925,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 1200.0,
+    "obstacle_lane": 800.0,
+    "obstacle_distance": 1070.394432,
+    "obstacle_type": 1200.0,
+    "train_present": 1200.0,
+    "train_lane": 800.0,
+    "train_distance": 1096.24354,
+    "coin_present": 0.0,
+    "coin_lane": 0.0,
+    "coin_distance": 0.0
+   },
+   "peak_pulse_feature_current_pa": {
+    "player_lane": 0.0,
+    "player_speed": 0.0,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 600.0,
+    "obstacle_lane": 400.0,
+    "obstacle_distance": 535.197216,
+    "obstacle_type": 600.0,
+    "train_present": 600.0,
+    "train_lane": 400.0,
+    "train_distance": 545.08227,
+    "coin_present": 0.0,
+    "coin_lane": 0.0,
+    "coin_distance": 0.0
+   },
+   "n_frames": 10,
+   "n_pulse_events": 4,
+   "active_features": [
+    "player_lane",
+    "player_speed",
+    "jumping",
+    "rolling",
+    "obstacle_present",
+    "obstacle_lane",
+    "obstacle_distance",
+    "obstacle_type",
+    "train_present",
+    "train_lane",
+    "train_distance",
+    "coin_present",
+    "coin_lane",
+    "coin_distance"
+   ],
+   "n_active_features": 14
+  },
+  "features": [
+   "player_lane",
+   "player_speed",
+   "jumping",
+   "rolling",
+   "obstacle_present",
+   "obstacle_lane",
+   "obstacle_distance",
+   "obstacle_type",
+   "train_present",
+   "train_lane",
+   "train_distance",
+   "coin_present",
+   "coin_lane",
+   "coin_distance"
+  ],
+  "peak_current_pa": {
+   "player_lane": 800.0,
+   "player_speed": 1096.360925,
+   "jumping": 0.0,
+   "rolling": 0.0,
+   "obstacle_present": 1799.333333,
+   "obstacle_lane": 1199.555556,
+   "obstacle_distance": 1604.996984,
+   "obstacle_type": 1799.333333,
+   "train_present": 2264.0,
+   "train_lane": 1509.333333,
+   "train_distance": 1932.355091,
+   "coin_present": 0.0,
+   "coin_lane": 0.0,
+   "coin_distance": 0.0
+  },
+  "mean_current_pa": {
+   "player_lane": 800.0,
+   "player_speed": 1096.360925,
+   "jumping": 0.0,
+   "rolling": 0.0,
+   "obstacle_present": 1216.139767,
+   "obstacle_lane": 810.759845,
+   "obstacle_distance": 1084.791029,
+   "obstacle_type": 1216.139767,
+   "train_present": 1499.500832,
+   "train_lane": 999.667221,
+   "train_distance": 1319.739877,
+   "coin_present": 0.0,
+   "coin_lane": 0.0,
+   "coin_distance": 0.0
+  }
+ },
+ "simulation": {
+  "duration_ms": 300.5,
+  "n_steps": 601,
+  "wall_runtime_s": 1.2279,
+  "steps_per_second_wall": 489.45,
+  "activity": {
+   "duration_ms": 300.5,
+   "n_neurons": 139255,
+   "n_spikes": 560,
+   "active_neurons": 73,
+   "silent_neurons": 139182,
+   "active_fraction": 0.000524,
+   "mean_rate_hz": 0.0134,
+   "rate_percentiles_hz": {
+    "50": 0.0,
+    "90": 0.0,
+    "95": 0.0,
+    "99": 0.0,
+    "100": 46.589
+   },
+   "population_rate_hz": 0.013,
+   "population_rate_peak_hz": 0.0302,
+   "spike_capacity": 500000
+  },
+  "activity_by_stimulation": {
+   "stimulated_neurons": 138,
+   "stimulated_active_neurons": 46,
+   "stimulated_spikes": 444,
+   "non_stimulated_active_neurons": 27,
+   "non_stimulated_spikes": 116,
+   "non_stimulated_spike_fraction": 0.207143
+  },
+  "synapses": {
+   "excitatory_edges": 2955795,
+   "inhibitory_edges": 776665,
+   "excitatory_neurons": 123238,
+   "inhibitory_neurons": 16017,
+   "silent_neurons": 0,
+   "effective_delay_ms": 1.0,
+   "spike_transmissions": 6106,
+   "transmissions_per_spike": 10.904
+  },
+  "diagnostics": {
+   "finite_state": true,
+   "min_membrane_mv": -80.7115,
+   "max_membrane_mv": -50.0935,
+   "max_abs_membrane_mv": 80.7115,
+   "max_abs_total_current_pa": 1715.3608
+  },
+  "memory": {
+   "graph_arrays_bytes": 66264361,
+   "neuron_state_bytes": 1671060,
+   "synapse_state_bytes": 33341055,
+   "synapse_arrays_bytes": 31112975,
+   "delay_buffer_bytes": 2228080,
+   "spike_recorder_bytes": 4000000,
+   "retained_arrays_bytes": 105276476,
+   "recorder_capacity": 500000,
+   "recorder_capacity_bytes": 4000000,
+   "max_out_degree": 6523,
+   "single_hub_propagation_temporary_bytes": 3420396,
+   "worst_case_propagation_temporary_bytes": 48131640,
+   "components_mb": {
+    "graph_arrays": 63.1946,
+    "neuron_state": 1.5936,
+    "synapse_state": 31.7965,
+    "delay_buffers": 2.1249,
+    "spike_recorder": 3.8147
+   },
+   "retained_arrays_mb": 100.3995,
+   "single_hub_propagation_temporary_mb": 3.2619,
+   "worst_case_propagation_temporary_mb": 45.9019
+  },
+  "spikes_total": 560,
+  "spikes_stimulated": 444,
+  "spikes_unstimulated": 116,
+  "spikes_by_feature": {
+   "player_lane": 36,
+   "player_speed": 24,
+   "jumping": 0,
+   "rolling": 0,
+   "obstacle_present": 62,
+   "obstacle_lane": 41,
+   "obstacle_distance": 31,
+   "obstacle_type": 60,
+   "train_present": 84,
+   "train_lane": 56,
+   "train_distance": 50,
+   "coin_present": 0,
+   "coin_lane": 0,
+   "coin_distance": 0
+  }
+ },
+ "duration_sensitivity": {
+  "protocol": {
+   "duration_ms": 300.5,
+   "spikes_total": 560,
+   "spikes_stimulated": 444,
+   "spikes_unstimulated": 116,
+   "wall_runtime_s": 1.2279
+  },
+  "probe": {
+   "duration_ms": 400.0,
+   "spikes_total": 233203,
+   "spikes_stimulated": 564,
+   "spikes_unstimulated": 232639,
+   "wall_runtime_s": 3.0631
+  },
+  "note": "The same scheduled drive was held past the reported protocol to expose duration sensitivity. The protocol result is taken at the scripted sequence length, matching the Phase 3A.5 calibration duration; the probe is an observation only and is not interpreted as perception performance."
+ },
+ "determinism": {
+  "scheduler_signature_equal": true,
+  "spike_counts_equal": true,
+  "activity_equal": true
+ },
+ "protected_hashes": {
+  "README.md": {
+   "path": "README.md",
+   "expected": "6277ffbb3db8e0b1be9bb320d44ff0f894a07ff04d6ea698efd03fe5a9ef9b10",
+   "actual": "6277ffbb3db8e0b1be9bb320d44ff0f894a07ff04d6ea698efd03fe5a9ef9b10",
+   "match": true
+  },
+  "split_manifest": {
+   "path": "reports\\PHASE_3B1_SPLIT_MANIFEST.json",
+   "expected": "ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d",
+   "actual": "ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d",
+   "match": true
+  },
+  "connectome_npz": {
+   "path": "datasets\\processed\\connectome.npz",
+   "expected": "3f568f24e3d77134a8d2d38f82856b8d685c310a1b0cfe941a1c95eeab5f33d8",
+   "actual": "3f568f24e3d77134a8d2d38f82856b8d685c310a1b0cfe941a1c95eeab5f33d8",
+   "match": true
+  },
+  "v15_data_yaml": {
+   "path": "datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\data.yaml",
+   "expected": "f6e51bf674b4dfbbb51866a0d56ad85c7cb55b51032cf0ec95a8d9aa2b7be423",
+   "actual": "f6e51bf674b4dfbbb51866a0d56ad85c7cb55b51032cf0ec95a8d9aa2b7be423",
+   "match": true
+  }
+ },
+ "action_selection": "none; the chain ends at sensory current injection",
+ "checks": {
+  "all_frames_processed": true,
+  "no_detections_rejected": true,
+  "train_and_obstacle_tracked": true,
+  "train_appeared": true,
+  "train_approaching": true,
+  "train_occluded": true,
+  "flicker_never_confirmed": true,
+  "terrain_tracked_but_unrepresented": true,
+  "fourteen_features": true,
+  "scheduler_targets_mapped_neurons": true,
+  "pulse_events_scheduled": true,
+  "scheduler_deterministic": true,
+  "simulation_spikes_deterministic": true,
+  "activity_matches": true,
+  "simulation_stable_at_protocol_duration": true,
+  "protected_hashes_match": true
+ },
+ "limitations": [
+  "Detections are scripted, not produced by a trained model.",
+  "The detector placeholder ignores pixels; no visual recognition is demonstrated.",
+  "Distance and lane labels are image geometry, not game measurements.",
+  "The connectome mapping is an experimental input interface over predicted annotations, not an identified sensory pathway.",
+  "Spikes are model output under configured assumptions, not measured biological activity.",
+  "The protocol stops at the scripted sequence length (300 ms plus one timestep). A duration-sensitivity probe is recorded in the payload; extended runs are not presented as perception evidence.",
+  "No action is selected anywhere in this chain."
+ ]
+}

@@ -1,0 +1,75 @@
+{
+  "phase": "3B",
+  "report": "evaluation",
+  "status": {
+    "harness": "pass",
+    "trained_detector_metrics": "blocked"
+  },
+  "generated_at_utc": "2026-11-06",
+  "protocol": {
+    "source": "reports/PHASE_3B2B0_DETECTOR_FEASIBILITY.md section 5",
+    "split_source": "reports/PHASE_3B1_SPLIT_MANIFEST.json",
+    "test_split": false,
+    "fixed_split_role": "model selection",
+    "logo_role": "variance and group sensitivity",
+    "iou_threshold": 0.5,
+    "iou_sweep": [0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95],
+    "operating_confidence": 0.25,
+    "evaluation_confidence_floor": 0.05,
+    "confusion_matrix": "class-agnostic IoU 0.5 with background",
+    "bootstrap": {"resamples": 1000, "seed": 20261105},
+    "low_support_boxes": 20
+  },
+  "harness": {
+    "module": "perception/evaluation.py",
+    "cli": "experiments/phase_3b/evaluate_detector.py",
+    "metrics": [
+      "per_class_precision_recall_f1",
+      "micro_and_macro_aggregates",
+      "ap50_per_class",
+      "map50",
+      "map50_95",
+      "confusion_matrix",
+      "false_positive_taxonomy",
+      "false_negative_taxonomy",
+      "bootstrap_confidence_intervals",
+      "latency_p50_p95_p99",
+      "peak_memory"
+    ],
+    "tests": 13
+  },
+  "recorded_result": {
+    "file": "experiments/phase_3b/results/detector_evaluation.json",
+    "status": "blocked",
+    "predictions_source": null,
+    "metrics": null,
+    "latency": null,
+    "n_images": 1128,
+    "n_ground_truth_boxes": 3962,
+    "unevaluable_classes": ["boots-powerup", "jump-electric"],
+    "low_support_classes": {"undercover-barrier": 19},
+    "process_peak_memory_mb": 56.96,
+    "process_peak_memory_is_detector_measurement": false
+  },
+  "not_reported": [
+    "no trained-detector precision",
+    "no trained-detector recall or F1",
+    "no trained-detector mAP",
+    "no trained-detector latency",
+    "no trained-detector model size",
+    "no validation result described as test performance"
+  ],
+  "preconditions_for_metrics": [
+    "approved checkpoint license and SHA-256",
+    "approved dependencies and passing resource smoke test",
+    "frozen protocol and operating-point rule",
+    "predictions at confidence floor 0.05 on the fixed valid split",
+    "support counts and split name on every table"
+  ],
+  "limitations": [
+    "harness has not processed a real model's predictions",
+    "distance proxy and lane assignment are geometric conversions",
+    "mAP does not measure lane, distance, temporal stability or latency",
+    "no independent test split exists"
+  ]
+}

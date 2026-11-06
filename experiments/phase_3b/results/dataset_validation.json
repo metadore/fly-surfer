@@ -1,0 +1,676 @@
+{
+  "phase": "3B.1",
+  "generated_at_utc": "2026-11-05T17:15:49+00:00",
+  "status": "PASS",
+  "validation": {
+    "dataset_root": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8",
+    "manifest": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\reports\\PHASE_3B1_SPLIT_MANIFEST.json",
+    "manifest_sha256": "ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d",
+    "class_names": [
+      "boots-powerup",
+      "boxtrain",
+      "jump-barrier",
+      "jump-electric",
+      "jump-hedge",
+      "jump-roll-barrier",
+      "jump-trash",
+      "ledge",
+      "pogstick-powerup",
+      "ramp",
+      "roll-barrier",
+      "train",
+      "undercover-barrier",
+      "wall"
+    ],
+    "n_images": 2316,
+    "n_boxes": 8666,
+    "n_excluded": 12,
+    "groups": [
+      "datasetfootage",
+      "subwayavitomp4",
+      "subwayedited2",
+      "subwayedtied",
+      "subwayy1_1"
+    ],
+    "fixed_split": {
+      "train_groups": [
+        "subwayavitomp4",
+        "subwayedited2",
+        "subwayedtied"
+      ],
+      "valid_groups": [
+        "datasetfootage",
+        "subwayy1_1"
+      ]
+    },
+    "logo_folds": [
+      {
+        "fold": 1,
+        "valid_group": "datasetfootage",
+        "train_groups": [
+          "subwayavitomp4",
+          "subwayedited2",
+          "subwayedtied",
+          "subwayy1_1"
+        ],
+        "n_train_images": 1812,
+        "n_valid_images": 504,
+        "n_train_boxes": 6985,
+        "n_valid_boxes": 1681
+      },
+      {
+        "fold": 2,
+        "valid_group": "subwayavitomp4",
+        "train_groups": [
+          "datasetfootage",
+          "subwayedited2",
+          "subwayedtied",
+          "subwayy1_1"
+        ],
+        "n_train_images": 1815,
+        "n_valid_images": 501,
+        "n_train_boxes": 6868,
+        "n_valid_boxes": 1798
+      },
+      {
+        "fold": 3,
+        "valid_group": "subwayedited2",
+        "train_groups": [
+          "datasetfootage",
+          "subwayavitomp4",
+          "subwayedtied",
+          "subwayy1_1"
+        ],
+        "n_train_images": 1924,
+        "n_valid_images": 392,
+        "n_train_boxes": 7086,
+        "n_valid_boxes": 1580
+      },
+      {
+        "fold": 4,
+        "valid_group": "subwayedtied",
+        "train_groups": [
+          "datasetfootage",
+          "subwayavitomp4",
+          "subwayedited2",
+          "subwayy1_1"
+        ],
+        "n_train_images": 2021,
+        "n_valid_images": 295,
+        "n_train_boxes": 7340,
+        "n_valid_boxes": 1326
+      },
+      {
+        "fold": 5,
+        "valid_group": "subwayy1_1",
+        "train_groups": [
+          "datasetfootage",
+          "subwayavitomp4",
+          "subwayedited2",
+          "subwayedtied"
+        ],
+        "n_train_images": 1692,
+        "n_valid_images": 624,
+        "n_train_boxes": 6385,
+        "n_valid_boxes": 2281
+      }
+    ],
+    "attribution": {
+      "version": 15,
+      "requested_path": "datasets\\external\\subway surfers\\roboflow_v15_yolov8",
+      "discovered_root": "datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8",
+      "policy": {
+        "exclude": "all",
+        "probable_gap_max_bracket_gap": 3
+      },
+      "limitations": [
+        "Only five filename groups exist, so no independent test split can be formed.",
+        "subwayy1_1 contains two recordings that share frame IDs; it is treated as one atomic group.",
+        "boots-powerup occurs only in subwayedtied, so it cannot be both trained and evaluated in a group-held-out split.",
+        "Class roles are derived from declared names and are not verified game mechanics.",
+        "Empty labels are quarantined, not repaired; the dataset remains unmodified.",
+        "Box geometry is not a calibrated distance measure."
+      ]
+    },
+    "split_source": "curation_manifest_filename_groups",
+    "dataset_modified": false
+  },
+  "splits": {
+    "train": {
+      "name": "train",
+      "images": 1188,
+      "boxes": 4704,
+      "images_without_boxes": 0,
+      "per_class_boxes": {
+        "boots-powerup": 24,
+        "boxtrain": 625,
+        "jump-barrier": 254,
+        "jump-electric": 14,
+        "jump-hedge": 18,
+        "jump-roll-barrier": 407,
+        "jump-trash": 34,
+        "ledge": 87,
+        "pogstick-powerup": 53,
+        "ramp": 606,
+        "roll-barrier": 147,
+        "train": 1617,
+        "undercover-barrier": 196,
+        "wall": 622
+      },
+      "per_class_images": {
+        "boots-powerup": 24,
+        "boxtrain": 482,
+        "jump-barrier": 221,
+        "jump-electric": 14,
+        "jump-hedge": 17,
+        "jump-roll-barrier": 359,
+        "jump-trash": 33,
+        "ledge": 57,
+        "pogstick-powerup": 53,
+        "ramp": 444,
+        "roll-barrier": 141,
+        "train": 883,
+        "undercover-barrier": 84,
+        "wall": 279
+      },
+      "missing_classes": []
+    },
+    "valid": {
+      "name": "valid",
+      "images": 1128,
+      "boxes": 3962,
+      "images_without_boxes": 0,
+      "per_class_boxes": {
+        "boots-powerup": 0,
+        "boxtrain": 749,
+        "jump-barrier": 163,
+        "jump-electric": 0,
+        "jump-hedge": 26,
+        "jump-roll-barrier": 356,
+        "jump-trash": 62,
+        "ledge": 48,
+        "pogstick-powerup": 65,
+        "ramp": 617,
+        "roll-barrier": 162,
+        "train": 1174,
+        "undercover-barrier": 19,
+        "wall": 521
+      },
+      "per_class_images": {
+        "boots-powerup": 0,
+        "boxtrain": 538,
+        "jump-barrier": 148,
+        "jump-electric": 0,
+        "jump-hedge": 21,
+        "jump-roll-barrier": 287,
+        "jump-trash": 44,
+        "ledge": 32,
+        "pogstick-powerup": 65,
+        "ramp": 501,
+        "roll-barrier": 149,
+        "train": 839,
+        "undercover-barrier": 15,
+        "wall": 247
+      },
+      "missing_classes": [
+        "boots-powerup",
+        "jump-electric"
+      ]
+    }
+  },
+  "folds": [
+    {
+      "fold": 1,
+      "valid_group": "datasetfootage",
+      "train": {
+        "name": "fold_1_train",
+        "images": 1812,
+        "boxes": 6985,
+        "images_without_boxes": 0,
+        "per_class_boxes": {
+          "boots-powerup": 24,
+          "boxtrain": 953,
+          "jump-barrier": 365,
+          "jump-electric": 14,
+          "jump-hedge": 43,
+          "jump-roll-barrier": 613,
+          "jump-trash": 96,
+          "ledge": 135,
+          "pogstick-powerup": 116,
+          "ramp": 979,
+          "roll-barrier": 264,
+          "train": 2249,
+          "undercover-barrier": 215,
+          "wall": 919
+        },
+        "per_class_images": {
+          "boots-powerup": 24,
+          "boxtrain": 730,
+          "jump-barrier": 318,
+          "jump-electric": 14,
+          "jump-hedge": 37,
+          "jump-roll-barrier": 513,
+          "jump-trash": 77,
+          "ledge": 89,
+          "pogstick-powerup": 116,
+          "ramp": 736,
+          "roll-barrier": 249,
+          "train": 1318,
+          "undercover-barrier": 99,
+          "wall": 417
+        },
+        "missing_classes": []
+      },
+      "valid": {
+        "name": "fold_1_valid",
+        "images": 504,
+        "boxes": 1681,
+        "images_without_boxes": 0,
+        "per_class_boxes": {
+          "boots-powerup": 0,
+          "boxtrain": 421,
+          "jump-barrier": 52,
+          "jump-electric": 0,
+          "jump-hedge": 1,
+          "jump-roll-barrier": 150,
+          "jump-trash": 0,
+          "ledge": 0,
+          "pogstick-powerup": 2,
+          "ramp": 244,
+          "roll-barrier": 45,
+          "train": 542,
+          "undercover-barrier": 0,
+          "wall": 224
+        },
+        "per_class_images": {
+          "boots-powerup": 0,
+          "boxtrain": 290,
+          "jump-barrier": 51,
+          "jump-electric": 0,
+          "jump-hedge": 1,
+          "jump-roll-barrier": 133,
+          "jump-trash": 0,
+          "ledge": 0,
+          "pogstick-powerup": 2,
+          "ramp": 209,
+          "roll-barrier": 41,
+          "train": 404,
+          "undercover-barrier": 0,
+          "wall": 109
+        },
+        "missing_classes": [
+          "boots-powerup",
+          "jump-electric",
+          "jump-trash",
+          "ledge",
+          "undercover-barrier"
+        ]
+      }
+    },
+    {
+      "fold": 2,
+      "valid_group": "subwayavitomp4",
+      "train": {
+        "name": "fold_2_train",
+        "images": 1815,
+        "boxes": 6868,
+        "images_without_boxes": 0,
+        "per_class_boxes": {
+          "boots-powerup": 24,
+          "boxtrain": 1084,
+          "jump-barrier": 330,
+          "jump-electric": 12,
+          "jump-hedge": 39,
+          "jump-roll-barrier": 579,
+          "jump-trash": 87,
+          "ledge": 126,
+          "pogstick-powerup": 112,
+          "ramp": 1043,
+          "roll-barrier": 239,
+          "train": 2045,
+          "undercover-barrier": 56,
+          "wall": 1092
+        },
+        "per_class_images": {
+          "boots-powerup": 24,
+          "boxtrain": 803,
+          "jump-barrier": 282,
+          "jump-electric": 12,
+          "jump-hedge": 33,
+          "jump-roll-barrier": 489,
+          "jump-trash": 68,
+          "ledge": 84,
+          "pogstick-powerup": 112,
+          "ramp": 822,
+          "roll-barrier": 222,
+          "train": 1345,
+          "undercover-barrier": 40,
+          "wall": 498
+        },
+        "missing_classes": []
+      },
+      "valid": {
+        "name": "fold_2_valid",
+        "images": 501,
+        "boxes": 1798,
+        "images_without_boxes": 0,
+        "per_class_boxes": {
+          "boots-powerup": 0,
+          "boxtrain": 290,
+          "jump-barrier": 87,
+          "jump-electric": 2,
+          "jump-hedge": 5,
+          "jump-roll-barrier": 184,
+          "jump-trash": 9,
+          "ledge": 9,
+          "pogstick-powerup": 6,
+          "ramp": 180,
+          "roll-barrier": 70,
+          "train": 746,
+          "undercover-barrier": 159,
+          "wall": 51
+        },
+        "per_class_images": {
+          "boots-powerup": 0,
+          "boxtrain": 217,
+          "jump-barrier": 87,
+          "jump-electric": 2,
+          "jump-hedge": 5,
+          "jump-roll-barrier": 157,
+          "jump-trash": 9,
+          "ledge": 5,
+          "pogstick-powerup": 6,
+          "ramp": 123,
+          "roll-barrier": 68,
+          "train": 377,
+          "undercover-barrier": 59,
+          "wall": 28
+        },
+        "missing_classes": [
+          "boots-powerup"
+        ]
+      }
+    },
+    {
+      "fold": 3,
+      "valid_group": "subwayedited2",
+      "train": {
+        "name": "fold_3_train",
+        "images": 1924,
+        "boxes": 7086,
+        "images_without_boxes": 0,
+        "per_class_boxes": {
+          "boots-powerup": 24,
+          "boxtrain": 1208,
+          "jump-barrier": 320,
+          "jump-electric": 2,
+          "jump-hedge": 31,
+          "jump-roll-barrier": 602,
+          "jump-trash": 71,
+          "ledge": 57,
+          "pogstick-powerup": 108,
+          "ramp": 1091,
+          "roll-barrier": 272,
+          "train": 2443,
+          "undercover-barrier": 178,
+          "wall": 679
+        },
+        "per_class_images": {
+          "boots-powerup": 24,
+          "boxtrain": 893,
+          "jump-barrier": 291,
+          "jump-electric": 2,
+          "jump-hedge": 26,
+          "jump-roll-barrier": 506,
+          "jump-trash": 53,
+          "ledge": 37,
+          "pogstick-powerup": 108,
+          "ramp": 848,
+          "roll-barrier": 257,
+          "train": 1480,
+          "undercover-barrier": 74,
+          "wall": 329
+        },
+        "missing_classes": []
+      },
+      "valid": {
+        "name": "fold_3_valid",
+        "images": 392,
+        "boxes": 1580,
+        "images_without_boxes": 0,
+        "per_class_boxes": {
+          "boots-powerup": 0,
+          "boxtrain": 166,
+          "jump-barrier": 97,
+          "jump-electric": 12,
+          "jump-hedge": 13,
+          "jump-roll-barrier": 161,
+          "jump-trash": 25,
+          "ledge": 78,
+          "pogstick-powerup": 10,
+          "ramp": 132,
+          "roll-barrier": 37,
+          "train": 348,
+          "undercover-barrier": 37,
+          "wall": 464
+        },
+        "per_class_images": {
+          "boots-powerup": 0,
+          "boxtrain": 127,
+          "jump-barrier": 78,
+          "jump-electric": 12,
+          "jump-hedge": 12,
+          "jump-roll-barrier": 140,
+          "jump-trash": 24,
+          "ledge": 52,
+          "pogstick-powerup": 10,
+          "ramp": 97,
+          "roll-barrier": 33,
+          "train": 242,
+          "undercover-barrier": 25,
+          "wall": 197
+        },
+        "missing_classes": [
+          "boots-powerup"
+        ]
+      }
+    },
+    {
+      "fold": 4,
+      "valid_group": "subwayedtied",
+      "train": {
+        "name": "fold_4_train",
+        "images": 2021,
+        "boxes": 7340,
+        "images_without_boxes": 0,
+        "per_class_boxes": {
+          "boots-powerup": 0,
+          "boxtrain": 1205,
+          "jump-barrier": 347,
+          "jump-electric": 14,
+          "jump-hedge": 44,
+          "jump-roll-barrier": 701,
+          "jump-trash": 96,
+          "ledge": 135,
+          "pogstick-powerup": 81,
+          "ramp": 929,
+          "roll-barrier": 269,
+          "train": 2268,
+          "undercover-barrier": 215,
+          "wall": 1036
+        },
+        "per_class_images": {
+          "boots-powerup": 0,
+          "boxtrain": 882,
+          "jump-barrier": 313,
+          "jump-electric": 14,
+          "jump-hedge": 38,
+          "jump-roll-barrier": 584,
+          "jump-trash": 77,
+          "ledge": 89,
+          "pogstick-powerup": 81,
+          "ramp": 721,
+          "roll-barrier": 250,
+          "train": 1458,
+          "undercover-barrier": 99,
+          "wall": 472
+        },
+        "missing_classes": [
+          "boots-powerup"
+        ]
+      },
+      "valid": {
+        "name": "fold_4_valid",
+        "images": 295,
+        "boxes": 1326,
+        "images_without_boxes": 0,
+        "per_class_boxes": {
+          "boots-powerup": 24,
+          "boxtrain": 169,
+          "jump-barrier": 70,
+          "jump-electric": 0,
+          "jump-hedge": 0,
+          "jump-roll-barrier": 62,
+          "jump-trash": 0,
+          "ledge": 0,
+          "pogstick-powerup": 37,
+          "ramp": 294,
+          "roll-barrier": 40,
+          "train": 523,
+          "undercover-barrier": 0,
+          "wall": 107
+        },
+        "per_class_images": {
+          "boots-powerup": 24,
+          "boxtrain": 138,
+          "jump-barrier": 56,
+          "jump-electric": 0,
+          "jump-hedge": 0,
+          "jump-roll-barrier": 62,
+          "jump-trash": 0,
+          "ledge": 0,
+          "pogstick-powerup": 37,
+          "ramp": 224,
+          "roll-barrier": 40,
+          "train": 264,
+          "undercover-barrier": 0,
+          "wall": 54
+        },
+        "missing_classes": [
+          "jump-electric",
+          "jump-hedge",
+          "jump-trash",
+          "ledge",
+          "undercover-barrier"
+        ]
+      }
+    },
+    {
+      "fold": 5,
+      "valid_group": "subwayy1_1",
+      "train": {
+        "name": "fold_5_train",
+        "images": 1692,
+        "boxes": 6385,
+        "images_without_boxes": 0,
+        "per_class_boxes": {
+          "boots-powerup": 24,
+          "boxtrain": 1046,
+          "jump-barrier": 306,
+          "jump-electric": 14,
+          "jump-hedge": 19,
+          "jump-roll-barrier": 557,
+          "jump-trash": 34,
+          "ledge": 87,
+          "pogstick-powerup": 55,
+          "ramp": 850,
+          "roll-barrier": 192,
+          "train": 2159,
+          "undercover-barrier": 196,
+          "wall": 846
+        },
+        "per_class_images": {
+          "boots-powerup": 24,
+          "boxtrain": 772,
+          "jump-barrier": 272,
+          "jump-electric": 14,
+          "jump-hedge": 18,
+          "jump-roll-barrier": 492,
+          "jump-trash": 33,
+          "ledge": 57,
+          "pogstick-powerup": 55,
+          "ramp": 653,
+          "roll-barrier": 182,
+          "train": 1287,
+          "undercover-barrier": 84,
+          "wall": 388
+        },
+        "missing_classes": []
+      },
+      "valid": {
+        "name": "fold_5_valid",
+        "images": 624,
+        "boxes": 2281,
+        "images_without_boxes": 0,
+        "per_class_boxes": {
+          "boots-powerup": 0,
+          "boxtrain": 328,
+          "jump-barrier": 111,
+          "jump-electric": 0,
+          "jump-hedge": 25,
+          "jump-roll-barrier": 206,
+          "jump-trash": 62,
+          "ledge": 48,
+          "pogstick-powerup": 63,
+          "ramp": 373,
+          "roll-barrier": 117,
+          "train": 632,
+          "undercover-barrier": 19,
+          "wall": 297
+        },
+        "per_class_images": {
+          "boots-powerup": 0,
+          "boxtrain": 248,
+          "jump-barrier": 97,
+          "jump-electric": 0,
+          "jump-hedge": 20,
+          "jump-roll-barrier": 154,
+          "jump-trash": 44,
+          "ledge": 32,
+          "pogstick-powerup": 63,
+          "ramp": 292,
+          "roll-barrier": 108,
+          "train": 435,
+          "undercover-barrier": 15,
+          "wall": 138
+        },
+        "missing_classes": [
+          "boots-powerup",
+          "jump-electric"
+        ]
+      }
+    }
+  ],
+  "excluded": [
+    "train/images/subwayedtied_mp4-293_jpg.rf.e8b37a118b7921ba1b7e4b6625a8b4ef.jpg",
+    "train/images/subwayedtied_mp4-294_jpg.rf.a555cc4efc79cf02119873f37b61fdb5.jpg",
+    "train/images/subwayedtied_mp4-295_jpg.rf.6676f55f6b8fd5a1bee458d8212c4c5e.jpg",
+    "train/images/subwayedtied_mp4-296_jpg.rf.c027851308c9ba6dd3a3c1b61918792c.jpg",
+    "train/images/subwayedtied_mp4-297_jpg.rf.0a382f11225bcf2582e33dbc7c2c7a50.jpg",
+    "train/images/subwayedtied_mp4-299_jpg.rf.160b2350a8fed35c65b7b801a404fe99.jpg",
+    "train/images/subwayedtied_mp4-300_jpg.rf.a7a9543dc44b91f538cc243c37c1c87f.jpg",
+    "train/images/subwayedtied_mp4-301_jpg.rf.26304064cfbdf50acf93e0c1cdeebdda.jpg",
+    "train/images/subwayy1_1_mp4-213_jpg.rf.40c6ee09a4ba0ce3ba060d7d43b2426a.jpg",
+    "valid/images/subwayedtied_mp4-298_jpg.rf.9be6154adb7965b0e6f97155d44e7998.jpg",
+    "valid/images/subwayy1_1_mp4-217_jpg.rf.e9ba8683da07dfb4e7f2cb610d5dcac8.jpg",
+    "valid/images/subwayy1_1_mp4-262_jpg.rf.b122b7576b4b1d5a5d71b4be5bea83c9.jpg"
+  ],
+  "checks": {
+    "annotations_parsed": true,
+    "boxes_within_normalised_image": true,
+    "duplicate_boxes": 0,
+    "empty_included_labels": 0,
+    "manifest_split_consistent": true,
+    "image_files_opened": true
+  }
+}

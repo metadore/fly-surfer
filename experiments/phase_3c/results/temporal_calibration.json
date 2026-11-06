@@ -1,0 +1,1760 @@
+{
+ "seed": 20261106,
+ "trials_per_family": 5,
+ "config": {
+  "tracking": {
+   "iou_threshold": 0.3,
+   "gate_distance": 0.35,
+   "duplicate_iou": 0.75,
+   "max_age": 2,
+   "min_hits": 2,
+   "history_limit": 32,
+   "class_aware": true,
+   "max_tracks": 128,
+   "retired_limit": 64
+  },
+  "features": {
+   "distance_change_threshold": 0.02,
+   "confidence_floor": 0.25,
+   "event_cooldown_frames": 2,
+   "frame_interval_ms": 33.333333333333336,
+   "gap_threshold_ms": 100.0,
+   "velocity_epsilon": 1e-09
+  },
+  "scheduler": {
+   "version": "phase_3c_temporal_scheduler_v1",
+   "max_hold_ms": 250.0,
+   "pulse_gain": 0.5,
+   "pulse_decay_ms": 150.0
+  },
+  "currents_pa": {
+   "player_lane": 200.0,
+   "player_speed": 200.0,
+   "jumping": 200.0,
+   "rolling": 200.0,
+   "obstacle_present": 200.0,
+   "obstacle_lane": 200.0,
+   "obstacle_distance": 200.0,
+   "obstacle_type": 200.0,
+   "train_present": 200.0,
+   "train_lane": 200.0,
+   "train_distance": 200.0,
+   "coin_present": 200.0,
+   "coin_lane": 200.0,
+   "coin_distance": 200.0
+  }
+ },
+ "families": {
+  "static": {
+   "description": "A single stationary train; no motion events are expected.",
+   "n_sequences": 5,
+   "event_counts": {
+    "expected": {
+     "appeared": 5,
+     "approaching": 0,
+     "receding": 0,
+     "occluded": 0,
+     "disappeared": 0
+    },
+    "emitted": {
+     "appeared": 5,
+     "approaching": 0,
+     "receding": 0,
+     "occluded": 0,
+     "disappeared": 0
+    }
+   },
+   "event_metrics": {
+    "appeared": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "approaching": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "receding": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "occluded": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "disappeared": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    }
+   },
+   "uncertainty_events": 5,
+   "micro": {
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "event_latency_ms": {
+    "appeared": {
+     "n": 5,
+     "mean": 33.333333,
+     "p50": 33.333333,
+     "p95": 33.333333,
+     "p99": 33.333333,
+     "max": 33.333333
+    },
+    "approaching": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "receding": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "occluded": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "disappeared": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    }
+   },
+   "direction_accuracy": {
+    "correct": 95,
+    "total": 95,
+    "accuracy": 1.0,
+    "by_label": {
+     "approach": {
+      "correct": 0,
+      "total": 0,
+      "accuracy": null
+     },
+     "recede": {
+      "correct": 0,
+      "total": 0,
+      "accuracy": null
+     },
+     "persist": {
+      "correct": 95,
+      "total": 95,
+      "accuracy": 1.0
+     }
+    }
+   },
+   "tracking": {
+    "visible_frames": 100,
+    "matched_visible_frames": 95,
+    "continuity": 0.95,
+    "id_switches": 0
+   },
+   "scheduler": {
+    "construction_ms_mean": 3.41462,
+    "construction_ms_max": 10.3993,
+    "apply_us": {
+     "n": 3175,
+     "mean": 5.462583,
+     "p50": 3.6,
+     "p95": 10.0,
+     "p99": 11.926,
+     "max": 709.3
+    },
+    "n_pulse_events": 5,
+    "n_steps": 3175
+   }
+  },
+  "approaching": {
+   "description": "A train whose distance proxy decreases each frame.",
+   "n_sequences": 5,
+   "event_counts": {
+    "expected": {
+     "appeared": 5,
+     "approaching": 5,
+     "receding": 0,
+     "occluded": 0,
+     "disappeared": 0
+    },
+    "emitted": {
+     "appeared": 5,
+     "approaching": 5,
+     "receding": 0,
+     "occluded": 0,
+     "disappeared": 0
+    }
+   },
+   "event_metrics": {
+    "appeared": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "approaching": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "receding": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "occluded": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "disappeared": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    }
+   },
+   "uncertainty_events": 5,
+   "micro": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "event_latency_ms": {
+    "appeared": {
+     "n": 5,
+     "mean": 33.333333,
+     "p50": 33.333333,
+     "p95": 33.333333,
+     "p99": 33.333333,
+     "max": 33.333333
+    },
+    "approaching": {
+     "n": 5,
+     "mean": 0.0,
+     "p50": 0.0,
+     "p95": 0.0,
+     "p99": 0.0,
+     "max": 0.0
+    },
+    "receding": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "occluded": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "disappeared": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    }
+   },
+   "direction_accuracy": {
+    "correct": 105,
+    "total": 105,
+    "accuracy": 1.0,
+    "by_label": {
+     "approach": {
+      "correct": 80,
+      "total": 80,
+      "accuracy": 1.0
+     },
+     "recede": {
+      "correct": 0,
+      "total": 0,
+      "accuracy": null
+     },
+     "persist": {
+      "correct": 25,
+      "total": 25,
+      "accuracy": 1.0
+     }
+    }
+   },
+   "tracking": {
+    "visible_frames": 110,
+    "matched_visible_frames": 105,
+    "continuity": 0.954545,
+    "id_switches": 0
+   },
+   "scheduler": {
+    "construction_ms_mean": 1.54466,
+    "construction_ms_max": 1.5769,
+    "apply_us": {
+     "n": 3505,
+     "mean": 5.269986,
+     "p50": 3.5,
+     "p95": 7.7,
+     "p99": 13.596,
+     "max": 738.6
+    },
+    "n_pulse_events": 10,
+    "n_steps": 3505
+   }
+  },
+  "receding": {
+   "description": "A train whose distance proxy increases each frame.",
+   "n_sequences": 5,
+   "event_counts": {
+    "expected": {
+     "appeared": 5,
+     "approaching": 0,
+     "receding": 5,
+     "occluded": 0,
+     "disappeared": 0
+    },
+    "emitted": {
+     "appeared": 5,
+     "approaching": 0,
+     "receding": 5,
+     "occluded": 0,
+     "disappeared": 0
+    }
+   },
+   "event_metrics": {
+    "appeared": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "approaching": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "receding": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "occluded": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "disappeared": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    }
+   },
+   "uncertainty_events": 5,
+   "micro": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "event_latency_ms": {
+    "appeared": {
+     "n": 5,
+     "mean": 33.333333,
+     "p50": 33.333333,
+     "p95": 33.333333,
+     "p99": 33.333333,
+     "max": 33.333333
+    },
+    "approaching": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "receding": {
+     "n": 5,
+     "mean": 0.0,
+     "p50": 0.0,
+     "p95": 0.0,
+     "p99": 0.0,
+     "max": 0.0
+    },
+    "occluded": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "disappeared": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    }
+   },
+   "direction_accuracy": {
+    "correct": 105,
+    "total": 105,
+    "accuracy": 1.0,
+    "by_label": {
+     "approach": {
+      "correct": 0,
+      "total": 0,
+      "accuracy": null
+     },
+     "recede": {
+      "correct": 69,
+      "total": 69,
+      "accuracy": 1.0
+     },
+     "persist": {
+      "correct": 36,
+      "total": 36,
+      "accuracy": 1.0
+     }
+    }
+   },
+   "tracking": {
+    "visible_frames": 110,
+    "matched_visible_frames": 105,
+    "continuity": 0.954545,
+    "id_switches": 0
+   },
+   "scheduler": {
+    "construction_ms_mean": 2.34114,
+    "construction_ms_max": 3.0796,
+    "apply_us": {
+     "n": 3505,
+     "mean": 5.930014,
+     "p50": 5.4,
+     "p95": 13.9,
+     "p99": 16.396,
+     "max": 524.6
+    },
+    "n_pulse_events": 10,
+    "n_steps": 3505
+   }
+  },
+  "sudden_appearance": {
+   "description": "Empty frames followed by a persistent train.",
+   "n_sequences": 5,
+   "event_counts": {
+    "expected": {
+     "appeared": 5,
+     "approaching": 0,
+     "receding": 0,
+     "occluded": 0,
+     "disappeared": 0
+    },
+    "emitted": {
+     "appeared": 5,
+     "approaching": 0,
+     "receding": 0,
+     "occluded": 0,
+     "disappeared": 0
+    }
+   },
+   "event_metrics": {
+    "appeared": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "approaching": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "receding": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "occluded": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "disappeared": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    }
+   },
+   "uncertainty_events": 5,
+   "micro": {
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "event_latency_ms": {
+    "appeared": {
+     "n": 5,
+     "mean": 33.333333,
+     "p50": 33.333333,
+     "p95": 33.333333,
+     "p99": 33.333333,
+     "max": 33.333333
+    },
+    "approaching": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "receding": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "occluded": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "disappeared": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    }
+   },
+   "direction_accuracy": {
+    "correct": 86,
+    "total": 86,
+    "accuracy": 1.0,
+    "by_label": {
+     "approach": {
+      "correct": 0,
+      "total": 0,
+      "accuracy": null
+     },
+     "recede": {
+      "correct": 0,
+      "total": 0,
+      "accuracy": null
+     },
+     "persist": {
+      "correct": 86,
+      "total": 86,
+      "accuracy": 1.0
+     }
+    }
+   },
+   "tracking": {
+    "visible_frames": 91,
+    "matched_visible_frames": 86,
+    "continuity": 0.945055,
+    "id_switches": 0
+   },
+   "scheduler": {
+    "construction_ms_mean": 1.67192,
+    "construction_ms_max": 1.8739,
+    "apply_us": {
+     "n": 3505,
+     "mean": 4.226277,
+     "p50": 3.4,
+     "p95": 8.18,
+     "p99": 11.896,
+     "max": 27.1
+    },
+    "n_pulse_events": 5,
+    "n_steps": 3505
+   }
+  },
+  "disappearance": {
+   "description": "A confirmed train stops being detected.",
+   "n_sequences": 5,
+   "event_counts": {
+    "expected": {
+     "appeared": 5,
+     "approaching": 0,
+     "receding": 0,
+     "occluded": 5,
+     "disappeared": 5
+    },
+    "emitted": {
+     "appeared": 5,
+     "approaching": 0,
+     "receding": 0,
+     "occluded": 5,
+     "disappeared": 5
+    }
+   },
+   "event_metrics": {
+    "appeared": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "approaching": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "receding": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "occluded": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "disappeared": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   },
+   "uncertainty_events": 5,
+   "micro": {
+    "tp": 15,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "event_latency_ms": {
+    "appeared": {
+     "n": 5,
+     "mean": 33.333333,
+     "p50": 33.333333,
+     "p95": 33.333333,
+     "p99": 33.333333,
+     "max": 33.333333
+    },
+    "approaching": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "receding": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "occluded": {
+     "n": 5,
+     "mean": 0.0,
+     "p50": 0.0,
+     "p95": 0.0,
+     "p99": 0.0,
+     "max": 0.0
+    },
+    "disappeared": {
+     "n": 5,
+     "mean": 66.666667,
+     "p50": 66.666667,
+     "p95": 66.666667,
+     "p99": 66.666667,
+     "max": 66.666667
+    }
+   },
+   "direction_accuracy": {
+    "correct": 49,
+    "total": 49,
+    "accuracy": 1.0,
+    "by_label": {
+     "approach": {
+      "correct": 0,
+      "total": 0,
+      "accuracy": null
+     },
+     "recede": {
+      "correct": 0,
+      "total": 0,
+      "accuracy": null
+     },
+     "persist": {
+      "correct": 49,
+      "total": 49,
+      "accuracy": 1.0
+     }
+    }
+   },
+   "tracking": {
+    "visible_frames": 54,
+    "matched_visible_frames": 49,
+    "continuity": 0.907407,
+    "id_switches": 0
+   },
+   "scheduler": {
+    "construction_ms_mean": 1.63818,
+    "construction_ms_max": 1.8775,
+    "apply_us": {
+     "n": 3840,
+     "mean": 3.955208,
+     "p50": 3.4,
+     "p95": 5.6,
+     "p99": 6.6,
+     "max": 32.7
+    },
+    "n_pulse_events": 5,
+    "n_steps": 3840
+   }
+  },
+  "two_objects": {
+   "description": "A train and an obstacle moving in opposite directions.",
+   "n_sequences": 5,
+   "event_counts": {
+    "expected": {
+     "appeared": 10,
+     "approaching": 5,
+     "receding": 5,
+     "occluded": 0,
+     "disappeared": 0
+    },
+    "emitted": {
+     "appeared": 10,
+     "approaching": 5,
+     "receding": 5,
+     "occluded": 0,
+     "disappeared": 0
+    }
+   },
+   "event_metrics": {
+    "appeared": {
+     "tp": 10,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "approaching": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "receding": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "occluded": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "disappeared": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    }
+   },
+   "uncertainty_events": 10,
+   "micro": {
+    "tp": 20,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "event_latency_ms": {
+    "appeared": {
+     "n": 10,
+     "mean": 33.333333,
+     "p50": 33.333333,
+     "p95": 33.333333,
+     "p99": 33.333333,
+     "max": 33.333333
+    },
+    "approaching": {
+     "n": 5,
+     "mean": 0.0,
+     "p50": 0.0,
+     "p95": 0.0,
+     "p99": 0.0,
+     "max": 0.0
+    },
+    "receding": {
+     "n": 5,
+     "mean": 0.0,
+     "p50": 0.0,
+     "p95": 0.0,
+     "p99": 0.0,
+     "max": 0.0
+    },
+    "occluded": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "disappeared": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    }
+   },
+   "direction_accuracy": {
+    "correct": 190,
+    "total": 190,
+    "accuracy": 1.0,
+    "by_label": {
+     "approach": {
+      "correct": 95,
+      "total": 95,
+      "accuracy": 1.0
+     },
+     "recede": {
+      "correct": 95,
+      "total": 95,
+      "accuracy": 1.0
+     },
+     "persist": {
+      "correct": 0,
+      "total": 0,
+      "accuracy": null
+     }
+    }
+   },
+   "tracking": {
+    "visible_frames": 200,
+    "matched_visible_frames": 190,
+    "continuity": 0.95,
+    "id_switches": 0
+   },
+   "scheduler": {
+    "construction_ms_mean": 1.72112,
+    "construction_ms_max": 1.9815,
+    "apply_us": {
+     "n": 3175,
+     "mean": 6.865291,
+     "p50": 3.5,
+     "p95": 11.8,
+     "p99": 28.552,
+     "max": 997.3
+    },
+    "n_pulse_events": 20,
+    "n_steps": 3175
+   }
+  },
+  "temporary_occlusion": {
+   "description": "A confirmed obstacle missed for two frames, then recovered.",
+   "n_sequences": 5,
+   "event_counts": {
+    "expected": {
+     "appeared": 5,
+     "approaching": 10,
+     "receding": 0,
+     "occluded": 5,
+     "disappeared": 0
+    },
+    "emitted": {
+     "appeared": 5,
+     "approaching": 10,
+     "receding": 0,
+     "occluded": 5,
+     "disappeared": 0
+    }
+   },
+   "event_metrics": {
+    "appeared": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "approaching": {
+     "tp": 10,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "receding": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "occluded": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "disappeared": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    }
+   },
+   "uncertainty_events": 5,
+   "micro": {
+    "tp": 20,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "event_latency_ms": {
+    "appeared": {
+     "n": 5,
+     "mean": 33.333333,
+     "p50": 33.333333,
+     "p95": 33.333333,
+     "p99": 33.333333,
+     "max": 33.333333
+    },
+    "approaching": {
+     "n": 10,
+     "mean": 0.0,
+     "p50": 0.0,
+     "p95": 0.0,
+     "p99": 0.0,
+     "max": 0.0
+    },
+    "receding": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "occluded": {
+     "n": 5,
+     "mean": 0.0,
+     "p50": 0.0,
+     "p95": 0.0,
+     "p99": 0.0,
+     "max": 0.0
+    },
+    "disappeared": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    }
+   },
+   "direction_accuracy": {
+    "correct": 105,
+    "total": 105,
+    "accuracy": 1.0,
+    "by_label": {
+     "approach": {
+      "correct": 85,
+      "total": 85,
+      "accuracy": 1.0
+     },
+     "recede": {
+      "correct": 0,
+      "total": 0,
+      "accuracy": null
+     },
+     "persist": {
+      "correct": 20,
+      "total": 20,
+      "accuracy": 1.0
+     }
+    }
+   },
+   "tracking": {
+    "visible_frames": 110,
+    "matched_visible_frames": 105,
+    "continuity": 0.954545,
+    "id_switches": 0
+   },
+   "scheduler": {
+    "construction_ms_mean": 1.89934,
+    "construction_ms_max": 2.4205,
+    "apply_us": {
+     "n": 3840,
+     "mean": 5.269115,
+     "p50": 3.7,
+     "p95": 8.1,
+     "p99": 17.361,
+     "max": 109.1
+    },
+    "n_pulse_events": 15,
+    "n_steps": 3840
+   }
+  },
+  "noisy_detections": {
+   "description": "Jittered boxes, variable confidence and distant false positives.",
+   "n_sequences": 5,
+   "event_counts": {
+    "expected": {
+     "appeared": 5,
+     "approaching": 5,
+     "receding": 0,
+     "occluded": 0,
+     "disappeared": 0
+    },
+    "emitted": {
+     "appeared": 5,
+     "approaching": 5,
+     "receding": 0,
+     "occluded": 0,
+     "disappeared": 0
+    }
+   },
+   "event_metrics": {
+    "appeared": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "approaching": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "receding": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "occluded": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "disappeared": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    }
+   },
+   "uncertainty_events": 40,
+   "micro": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "event_latency_ms": {
+    "appeared": {
+     "n": 5,
+     "mean": 33.333333,
+     "p50": 33.333333,
+     "p95": 33.333333,
+     "p99": 33.333333,
+     "max": 33.333333
+    },
+    "approaching": {
+     "n": 5,
+     "mean": 0.0,
+     "p50": 0.0,
+     "p95": 0.0,
+     "p99": 0.0,
+     "max": 0.0
+    },
+    "receding": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "occluded": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "disappeared": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    }
+   },
+   "direction_accuracy": {
+    "correct": 91,
+    "total": 95,
+    "accuracy": 0.957895,
+    "by_label": {
+     "approach": {
+      "correct": 91,
+      "total": 95,
+      "accuracy": 0.957895
+     },
+     "recede": {
+      "correct": 0,
+      "total": 0,
+      "accuracy": null
+     },
+     "persist": {
+      "correct": 0,
+      "total": 0,
+      "accuracy": null
+     }
+    }
+   },
+   "tracking": {
+    "visible_frames": 100,
+    "matched_visible_frames": 95,
+    "continuity": 0.95,
+    "id_switches": 0
+   },
+   "scheduler": {
+    "construction_ms_mean": 1.47554,
+    "construction_ms_max": 1.7391,
+    "apply_us": {
+     "n": 3175,
+     "mean": 5.609228,
+     "p50": 3.5,
+     "p95": 7.9,
+     "p99": 17.326,
+     "max": 1315.4
+    },
+    "n_pulse_events": 10,
+    "n_steps": 3175
+   }
+  },
+  "irregular_intervals": {
+   "description": "Uneven timestamps including intervals above the gap threshold.",
+   "n_sequences": 5,
+   "event_counts": {
+    "expected": {
+     "appeared": 5,
+     "approaching": 5,
+     "receding": 0,
+     "occluded": 0,
+     "disappeared": 0
+    },
+    "emitted": {
+     "appeared": 5,
+     "approaching": 5,
+     "receding": 0,
+     "occluded": 0,
+     "disappeared": 0
+    }
+   },
+   "event_metrics": {
+    "appeared": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "approaching": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "receding": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "occluded": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "disappeared": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    }
+   },
+   "uncertainty_events": 5,
+   "micro": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "event_latency_ms": {
+    "appeared": {
+     "n": 5,
+     "mean": 90.0,
+     "p50": 90.0,
+     "p95": 144.0,
+     "p99": 148.8,
+     "max": 150.0
+    },
+    "approaching": {
+     "n": 5,
+     "mean": 0.0,
+     "p50": 0.0,
+     "p95": 0.0,
+     "p99": 0.0,
+     "max": 0.0
+    },
+    "receding": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "occluded": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "disappeared": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    }
+   },
+   "direction_accuracy": {
+    "correct": 95,
+    "total": 95,
+    "accuracy": 1.0,
+    "by_label": {
+     "approach": {
+      "correct": 76,
+      "total": 76,
+      "accuracy": 1.0
+     },
+     "recede": {
+      "correct": 0,
+      "total": 0,
+      "accuracy": null
+     },
+     "persist": {
+      "correct": 19,
+      "total": 19,
+      "accuracy": 1.0
+     }
+    }
+   },
+   "tracking": {
+    "visible_frames": 100,
+    "matched_visible_frames": 95,
+    "continuity": 0.95,
+    "id_switches": 0
+   },
+   "scheduler": {
+    "construction_ms_mean": 1.6192,
+    "construction_ms_max": 2.3303,
+    "apply_us": {
+     "n": 8555,
+     "mean": 3.982314,
+     "p50": 3.4,
+     "p95": 6.8,
+     "p99": 9.2,
+     "max": 71.2
+    },
+    "n_pulse_events": 10,
+    "n_steps": 8555
+   }
+  },
+  "missing_frames": {
+   "description": "Periodic one- and two-frame detector dropouts.",
+   "n_sequences": 5,
+   "event_counts": {
+    "expected": {
+     "appeared": 10,
+     "approaching": 30,
+     "receding": 0,
+     "occluded": 25,
+     "disappeared": 5
+    },
+    "emitted": {
+     "appeared": 10,
+     "approaching": 30,
+     "receding": 0,
+     "occluded": 25,
+     "disappeared": 5
+    }
+   },
+   "event_metrics": {
+    "appeared": {
+     "tp": 10,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "approaching": {
+     "tp": 30,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "receding": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "occluded": {
+     "tp": 25,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "disappeared": {
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   },
+   "uncertainty_events": 10,
+   "micro": {
+    "tp": 70,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "event_latency_ms": {
+    "appeared": {
+     "n": 10,
+     "mean": 33.333333,
+     "p50": 33.333333,
+     "p95": 33.333333,
+     "p99": 33.333333,
+     "max": 33.333333
+    },
+    "approaching": {
+     "n": 30,
+     "mean": 0.0,
+     "p50": 0.0,
+     "p95": 0.0,
+     "p99": 0.0,
+     "max": 0.0
+    },
+    "receding": {
+     "n": 0,
+     "mean": null,
+     "p50": null,
+     "p95": null,
+     "p99": null,
+     "max": null
+    },
+    "occluded": {
+     "n": 25,
+     "mean": 0.0,
+     "p50": 0.0,
+     "p95": 0.0,
+     "p99": 0.0,
+     "max": 0.0
+    },
+    "disappeared": {
+     "n": 5,
+     "mean": 66.666667,
+     "p50": 66.666667,
+     "p95": 66.666667,
+     "p99": 66.666667,
+     "max": 66.666667
+    }
+   },
+   "direction_accuracy": {
+    "correct": 90,
+    "total": 90,
+    "accuracy": 1.0,
+    "by_label": {
+     "approach": {
+      "correct": 80,
+      "total": 80,
+      "accuracy": 1.0
+     },
+     "recede": {
+      "correct": 0,
+      "total": 0,
+      "accuracy": null
+     },
+     "persist": {
+      "correct": 10,
+      "total": 10,
+      "accuracy": 1.0
+     }
+    }
+   },
+   "tracking": {
+    "visible_frames": 100,
+    "matched_visible_frames": 90,
+    "continuity": 0.9,
+    "id_switches": 5
+   },
+   "scheduler": {
+    "construction_ms_mean": 2.56712,
+    "construction_ms_max": 4.2074,
+    "apply_us": {
+     "n": 4840,
+     "mean": 6.835496,
+     "p50": 5.8,
+     "p95": 12.6,
+     "p99": 17.6,
+     "max": 507.5
+    },
+    "n_pulse_events": 40,
+    "n_steps": 4840
+   }
+  }
+ },
+ "aggregate": {
+  "n_families": 10,
+  "n_sequences": 50,
+  "event_metrics": {
+   "appeared": {
+    "tp": 60,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "approaching": {
+    "tp": 60,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "receding": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "occluded": {
+    "tp": 35,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "disappeared": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   }
+  },
+  "micro": {
+   "tp": 175,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "direction_accuracy": {
+   "correct": 1011,
+   "total": 1015,
+   "accuracy": 0.996059
+  },
+  "tracking": {
+   "visible_frames": 1075,
+   "matched_visible_frames": 1015,
+   "continuity": 0.944186,
+   "id_switches": 5
+  },
+  "scheduler_apply_us": {
+   "n": 41115,
+   "mean": 5.195021,
+   "p50": 3.5,
+   "p95": 9.5,
+   "p99": 15.7,
+   "max": 1315.4
+  }
+ },
+ "adversarial": {
+  "noise_only": {
+   "expectation": "single-frame false positives never confirm or emit object events",
+   "pass": true,
+   "observed": {
+    "event_counts": {
+     "appeared": 0,
+     "persisting": 0,
+     "approaching": 0,
+     "receding": 0,
+     "disappeared": 0,
+     "occluded": 0,
+     "uncertain": 40
+    },
+    "forbidden_events": []
+   }
+  },
+  "duplicate_detections": {
+   "expectation": "same-class duplicates are suppressed and create one track",
+   "pass": true,
+   "observed": {
+    "appeared_events": 1,
+    "distinct_track_ids": [
+     1
+    ],
+    "matched_visible_frames": 11,
+    "visible_frames": 12
+   }
+  },
+  "single_frame_dropout": {
+   "expectation": "one miss is OCCLUDED, not DISAPPEARED, and the track id is stable",
+   "pass": true,
+   "observed": {
+    "event_counts": {
+     "appeared": 1,
+     "approaching": 0,
+     "receding": 0,
+     "occluded": 1,
+     "disappeared": 0
+    },
+    "id_switches": 0
+   }
+  },
+  "threshold_boundary_noise": {
+   "expectation": "sub-threshold jitter does not emit direction events",
+   "pass": true,
+   "observed": {
+    "approaching": 0,
+    "receding": 0
+   }
+  },
+  "timestamp_regression": {
+   "expectation": "non-increasing timestamps are rejected",
+   "pass": true,
+   "observed": {
+    "raised": true
+   }
+  },
+  "stale_frame_hold": {
+   "expectation": "drive is held up to max_hold_ms, then stops without new frames",
+   "pass": true,
+   "observed": {
+    "at_last_frame_ms": 300.0,
+    "at_last_plus_150ms": 0.0,
+    "max_hold_ms": 100.0
+   }
+  }
+ },
+ "determinism": {
+  "repeated": true,
+  "identical": true
+ },
+ "generated_at_utc": "2026-11-06T02:47:07.760076+00:00",
+ "environment": {
+  "python": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.3.4"
+ },
+ "limitations": [
+  "Sequences are synthetic and use idealized boxes; they are not detector output.",
+  "Expected events implement the documented lifecycle and direction rules from ground-truth boxes. Agreement therefore checks rule consistency, not independently recorded game events.",
+  "The direction hold suppresses re-emission after a quiet run no longer than the event cooldown; this is a configured debounce, not evidence about fly motion processing.",
+  "Direction labels use the uncalibrated bottom-edge distance proxy.",
+  "Tracking continuity counts the first tentative frame as unmatched and every frame of a gap as unmatched, so it cannot reach 1.0.",
+  "A track that is lost for longer than max_age is re-created with a new identifier; those re-identifications are reported as ID switches rather than hidden.",
+  "Scheduler latency measures Python scheduling overhead only; no connectome is simulated in this calibration.",
+  "The ten families are a design probe, not a representative sample of the game."
+ ]
+}

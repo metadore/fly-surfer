@@ -1,0 +1,121 @@
+{
+  "phase": "3B",
+  "report": "integration",
+  "status": {
+    "scripted_detection_integration": "pass",
+    "trained_detector_integration": "blocked"
+  },
+  "generated_at_utc": "2026-11-06",
+  "chain": [
+    "RawDetection",
+    "DetectionValidator",
+    "PerceivedScene",
+    "GameStateAdapter",
+    "GameState",
+    "SpatialFeatureBridge",
+    "FrameObservations",
+    "TemporalSequenceProcessor",
+    "TemporalActivationScheduler",
+    "BrainSimulator"
+  ],
+  "observation_contract": {
+    "class": "perception.observations.VisualObservation",
+    "fields": [
+      "object_index",
+      "class_id",
+      "class_name",
+      "role",
+      "game_state_role",
+      "lane",
+      "bbox_screen",
+      "bbox_normalized",
+      "center",
+      "relative_horizontal_position",
+      "relative_vertical_position",
+      "distance_proxy",
+      "normalized_proximity",
+      "confidence",
+      "valid",
+      "invalid_reason",
+      "visibility",
+      "frame_id",
+      "timestamp_ms",
+      "clamped",
+      "raw_index",
+      "source"
+    ],
+    "multi_object": true,
+    "frame_observations_methods": [
+      "obstacles",
+      "trains",
+      "coins",
+      "player_objects",
+      "other_objects",
+      "valid_observations",
+      "invalid_observations"
+    ]
+  },
+  "backwards_compatibility": {
+    "game_state_schema": "unchanged Phase 3A single-object schema",
+    "selection": "nearest eligible object per kind",
+    "unrepresented_objects": "recorded with class, role, lane and reason",
+    "player_labels": "absent; player_known=false",
+    "coin_labels": "absent; coins_available=false",
+    "encoders_changed": false,
+    "neuron_mapping_changed": false,
+    "biological_roles_invented": false
+  },
+  "class_roles": {
+    "train": ["train", "boxtrain"],
+    "obstacle_low": ["jump-barrier", "jump-electric", "jump-hedge", "jump-roll-barrier", "jump-trash"],
+    "obstacle_high": ["roll-barrier", "undercover-barrier"],
+    "tracked_not_representable": ["ledge", "ramp"],
+    "unsupported": ["boots-powerup", "pogstick-powerup", "wall"]
+  },
+  "scripted_end_to_end": {
+    "command": "python experiments/phase_3c/integration_check.py",
+    "frames": 10,
+    "rejected_detections": 0,
+    "events": 10,
+    "track_ids": 4,
+    "checks_passed": 16,
+    "checks_total": 16,
+    "checks": {
+      "all_frames_processed": true,
+      "no_detections_rejected": true,
+      "train_and_obstacle_tracked": true,
+      "train_appeared": true,
+      "train_approaching": true,
+      "train_occluded": true,
+      "flicker_never_confirmed": true,
+      "terrain_tracked_but_unrepresented": true,
+      "fourteen_features": true,
+      "scheduler_targets_mapped_neurons": true,
+      "pulse_events_scheduled": true,
+      "scheduler_deterministic": true,
+      "simulation_spikes_deterministic": true,
+      "activity_matches": true,
+      "simulation_stable_at_protocol_duration": true,
+      "protected_hashes_match": true
+    },
+    "result_file": "experiments/phase_3c/results/integration.json"
+  },
+  "tests": {
+    "test_dataset_interface": 8,
+    "test_detector_backend": 12,
+    "test_observations": 12,
+    "test_perception": 38,
+    "test_evaluation": 13,
+    "test_tracking": 12,
+    "test_curation": 6,
+    "test_integration_3b_3c": 5,
+    "total_suite": 265
+  },
+  "limitations": [
+    "detections are scripted or from MockDetector, not recognised from pixels",
+    "lane assignment and distance are image geometry",
+    "downstream encoding uses the nearest object of each kind",
+    "player and coin states are unknown",
+    "no real detector error has been propagated into the neural chain"
+  ]
+}

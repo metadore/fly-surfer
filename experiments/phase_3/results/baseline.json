@@ -1,0 +1,10 @@
+{
+ "duration_ms": 300.0,
+ "n_steps": 600,
+ "wall_runtime_s": 1.9325,
+ "steps_per_second": 310.48,
+ "n_spikes": 0,
+ "active_neurons": 0,
+ "retained_arrays_mb": 134.7317,
+ "rss_delta_mb": -1.504
+}

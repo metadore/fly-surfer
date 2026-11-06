@@ -1,0 +1,258 @@
+# FLY-SURFER Phase 3A sensory encoding configuration.
+#
+# STATUS OF EACH BLOCK
+#   features / mapping   computational encoding choice and experimental input
+#                        populations, NOT measured sensory anatomy or physiology
+#   mapping pools        predicted FlyWire annotations from the validated artifact
+#   protocols            experimenter-defined game states
+#
+# Activations encoded below are dimensionless in [baseline, amplitude]. They
+# are not firing rates and not currents. The scheduler converts them to pA.
+# Peak current 200 pA is above the LIF rheobase of 150 pA for these neuron
+# parameters, which is why only the most strongly tuned neurons fire.
+
+sensory:
+  dt_ms: 0.5
+  duration_ms: 300.0
+  transition_ms: 50.0
+  seed: 20261104
+  max_recorded_spikes: 5000000
+  progress_interval_ms: 100.0
+  diagnostics_interval_steps: 200
+  output_dir: experiments/phase_3
+  current_pa_default: 200.0
+
+# Gaussian coding:
+#   r_i(x) = baseline + (amplitude - baseline) * exp(-(x - mu_i)^2 / (2 sigma^2))
+#   sigma = sigma_fraction * (maximum - minimum)
+features:
+  player_lane:
+    kind: lane
+    lanes: 3
+    neurons_per_lane: 4
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  player_speed:
+    kind: gaussian
+    n_neurons: 12
+    minimum: 0.0
+    maximum: 1.0
+    sigma_fraction: 0.2
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  jumping:
+    kind: boolean
+    n_neurons: 6
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  rolling:
+    kind: boolean
+    n_neurons: 6
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  obstacle_present:
+    kind: boolean
+    n_neurons: 6
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  obstacle_lane:
+    kind: lane
+    lanes: 3
+    neurons_per_lane: 4
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  obstacle_distance:
+    kind: gaussian
+    n_neurons: 12
+    minimum: 0.0
+    maximum: 1.0
+    sigma_fraction: 0.2
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  obstacle_type:
+    kind: lane
+    lanes: 2
+    neurons_per_lane: 6
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  train_present:
+    kind: boolean
+    n_neurons: 6
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  train_lane:
+    kind: lane
+    lanes: 3
+    neurons_per_lane: 4
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  train_distance:
+    kind: gaussian
+    n_neurons: 12
+    minimum: 0.0
+    maximum: 1.0
+    sigma_fraction: 0.2
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  coin_present:
+    kind: boolean
+    n_neurons: 6
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  coin_lane:
+    kind: lane
+    lanes: 3
+    neurons_per_lane: 4
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  coin_distance:
+    kind: gaussian
+    n_neurons: 12
+    minimum: 0.0
+    maximum: 1.0
+    sigma_fraction: 0.2
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+
+mapping:
+  seed: 20261104
+  allow_duplicates: false
+  # Predicted annotations only. `class=visual` covers optic-lobe and visual
+  # neurons; the side label is used for the three lane pools. `mechanosensory`
+  # is used for body-state features as an experimental choice.
+  pools:
+    visual_left:
+      class: [visual]
+      side: [left]
+    visual_center:
+      class: [visual]
+      side: [center]
+    visual_right:
+      class: [visual]
+      side: [right]
+    visual_any:
+      class: [visual]
+    mechanosensory:
+      class: [mechanosensory]
+  # Allocation order is the order below. Groups sharing a pool receive
+  # disjoint neurons. Lane groups are consumed in lane-code order.
+  populations:
+    player_lane:
+      lane_pools:
+        left: visual_left
+        center: visual_center
+        right: visual_right
+      neurons_per_lane: 4
+    obstacle_lane:
+      lane_pools:
+        left: visual_left
+        center: visual_center
+        right: visual_right
+      neurons_per_lane: 4
+    train_lane:
+      lane_pools:
+        left: visual_left
+        center: visual_center
+        right: visual_right
+      neurons_per_lane: 4
+    coin_lane:
+      lane_pools:
+        left: visual_left
+        center: visual_center
+        right: visual_right
+      neurons_per_lane: 4
+    obstacle_type:
+      lane_pools:
+        low: visual_any
+        high: visual_any
+      neurons_per_lane: 6
+    jumping:
+      pool: mechanosensory
+      n_neurons: 6
+    rolling:
+      pool: mechanosensory
+      n_neurons: 6
+    player_speed:
+      pool: visual_any
+      n_neurons: 12
+    obstacle_present:
+      pool: visual_any
+      n_neurons: 6
+    obstacle_distance:
+      pool: visual_any
+      n_neurons: 12
+    train_present:
+      pool: visual_any
+      n_neurons: 6
+    train_distance:
+      pool: visual_any
+      n_neurons: 12
+    coin_present:
+      pool: visual_any
+      n_neurons: 6
+    coin_distance:
+      pool: visual_any
+      n_neurons: 12
+
+protocols:
+  baseline_state:
+    player:
+      lane: center
+      speed: 0.5
+      jumping: false
+      rolling: false
+
+  single_feature:
+    obstacle_distance: [0.90, 0.55, 0.15]
+    obstacle_lane: [left, center, right]
+    coin_distance: [0.90, 0.55, 0.15]
+    player_speed: [0.20, 0.50, 0.90]
+    jumping: [false, true]
+    rolling: [false, true]
+
+  combinations:
+    - name: obstacle_and_coin_other_lane
+      state:
+        obstacle: {present: true, lane: left, distance: 0.30, obstacle_type: low}
+        coin: {present: true, lane: right, distance: 0.40}
+    - name: train_and_player_center
+      state:
+        player: {lane: center, speed: 0.5, jumping: false, rolling: false}
+        train: {present: true, lane: center, distance: 0.20}
+    - name: high_speed_obstacle_near
+      state:
+        player: {lane: center, speed: 0.90, jumping: false, rolling: false}
+        obstacle: {present: true, lane: center, distance: 0.20, obstacle_type: high}
+    - name: obstacle_and_coin_same_lane
+      state:
+        obstacle: {present: true, lane: left, distance: 0.30, obstacle_type: low}
+        coin: {present: true, lane: left, distance: 0.45}
+    - name: jumping_train_approach
+      state:
+        player: {lane: center, speed: 0.6, jumping: true, rolling: false}
+        train: {present: true, lane: center, distance: 0.30}
+
+  sequences:
+    obstacle_approach:
+      step_ms: 200.0
+      lane: center
+      distances: [0.95, 0.60, 0.25, null]
+      obstacle_type: low
+    coin_approach:
+      step_ms: 200.0
+      lane: right
+      distances: [0.95, 0.60, 0.25, null]

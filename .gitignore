@@ -9,6 +9,9 @@
 # Raw FlyWire source data (15 gzip files, ~388 MB compressed). Never commit.
 datasets/raw/**
 
+# Third-party visual datasets kept local for auditing. Never commit.
+datasets/external/subway surfers/
+
 # Incomplete downloads and temporary archives
 *.crdownload
 *.part
@@ -88,3 +91,7 @@ models/
 #   experiments/**/results/*.json
 #   experiments/**/plots/*.png
 #   experiments/**/reports/*.md
+
+# Local YOLO11 training export; upload separately to Google Drive.
+datasets/exports/phase_3b2b1_yolo11n/
+datasets/exports/phase_3b2b1_yolo11n.zip

@@ -1,0 +1,108 @@
+{
+  "phase": "3C",
+  "report": "evaluation",
+  "status": {
+    "synthetic_temporal_evaluation": "pass",
+    "scripted_end_to_end_integration": "pass",
+    "trained_detector_sequence_replay": "blocked"
+  },
+  "generated_at_utc": "2026-11-06",
+  "artifacts": {
+    "calibration": "experiments/phase_3c/results/temporal_calibration.json",
+    "integration": "experiments/phase_3c/results/integration.json"
+  },
+  "calibration_summary": {
+    "seed": 20261106,
+    "families": 10,
+    "trials_per_family": 5,
+    "sequences": 50,
+    "event_micro": {"tp": 175, "fp": 0, "fn": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+    "direction_accuracy": 0.996059,
+    "tracking_continuity": 0.944186,
+    "id_switches": 5,
+    "adversarial_checks_passed": 6,
+    "adversarial_checks_total": 6,
+    "determinism_identical": true,
+    "scheduler_apply": {"n": 41115, "mean_us": 5.195021, "p50_us": 3.5, "p95_us": 9.5, "p99_us": 15.7, "max_us": 1315.4}
+  },
+  "integration": {
+    "command": "python experiments/phase_3c/integration_check.py",
+    "seed": 20261106,
+    "frames": 10,
+    "rejected_detections": 0,
+    "events": 10,
+    "track_ids": 4,
+    "game_state_features": 14,
+    "duration_ms": 300.5,
+    "n_steps": 601,
+    "dt_ms": 0.5,
+    "spikes_total": 560,
+    "spikes_stimulated": 444,
+    "spikes_non_stimulated": 116,
+    "non_stimulated_fraction": 0.207143,
+    "active_neurons": 73,
+    "n_neurons": 139255,
+    "n_edges": 3732460,
+    "n_synapses": 50666648,
+    "simulation_wall_s": 1.2279,
+    "steps_per_second": 489.45,
+    "max_abs_total_current_pa": 1715.3608,
+    "per_neuron_peak_current_pa": 200.0,
+    "scheduler_horizon_ms": 550.0,
+    "scheduler_memory_bytes": 16672,
+    "retained_arrays_mb": 100.3995,
+    "checks_passed": 16,
+    "checks_total": 16,
+    "determinism": {
+      "scheduler_signature_equal": true,
+      "spike_counts_equal": true,
+      "activity_equal": true
+    },
+    "events": [
+      {"event": "uncertain", "class_name": "train", "lane": 1, "frame_index": 0},
+      {"event": "uncertain", "class_name": "jump-barrier", "lane": 0, "frame_index": 0},
+      {"event": "uncertain", "class_name": "ledge", "lane": 2, "frame_index": 0},
+      {"event": "appeared", "class_name": "train", "lane": 1, "frame_index": 1},
+      {"event": "appeared", "class_name": "jump-barrier", "lane": 0, "frame_index": 1},
+      {"event": "appeared", "class_name": "ledge", "lane": 2, "frame_index": 1},
+      {"event": "approaching", "class_name": "train", "lane": 1, "frame_index": 2},
+      {"event": "uncertain", "class_name": "train", "lane": 2, "frame_index": 3},
+      {"event": "occluded", "class_name": "train", "lane": 1, "frame_index": 5},
+      {"event": "approaching", "class_name": "train", "lane": 1, "frame_index": 6}
+    ],
+    "final_game_state": {
+      "time_ms": 300.0,
+      "player_lane": 1,
+      "player_speed": 0.5,
+      "obstacle_present": 1.0,
+      "obstacle_lane": 0,
+      "obstacle_distance": 0.329412,
+      "obstacle_type": 0,
+      "train_present": 1.0,
+      "train_lane": 1,
+      "train_distance": 0.474118,
+      "coin_present": 0.0
+    }
+  },
+  "duration_sensitivity": {
+    "protocol": {"duration_ms": 300.5, "spikes_total": 560, "spikes_stimulated": 444, "spikes_non_stimulated": 116},
+    "probe": {"duration_ms": 400.0, "spikes_total": 233203, "spikes_stimulated": 564, "spikes_non_stimulated": 232639},
+    "observation": "recurrent high-activity regime entered between 300.5 and 400 ms of sustained drive in this configuration",
+    "used_for_reported_result": false
+  },
+  "not_evaluated": [
+    "trained detector input",
+    "real game recording replay",
+    "independent temporal ground truth",
+    "biological coding",
+    "perception pipeline latency"
+  ],
+  "limitations": [
+    "synthetic and scripted boxes are idealized",
+    "30 fps assumption and uncalibrated distance proxy",
+    "scripted scenes test plumbing, not perception quality",
+    "single-object GameState downstream",
+    "long sustained synthetic drive is not a validated operating regime"
+  ],
+  "tests": {"total_suite": 265}
+}

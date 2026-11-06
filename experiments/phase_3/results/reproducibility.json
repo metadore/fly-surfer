@@ -1,0 +1,30 @@
+{
+ "condition": "combined_obstacle_and_coin_other_lane",
+ "processes": 2,
+ "parent": {
+  "input_hash": "1f24d59f87499a4bc9d85dcddd2d51735c4f1869a713c9222266f3ae4eea55d4",
+  "spike_hash": "452c3662d132d25d8c8ab798c27bc12afb7d2864d6993d32f791fdc8cea64b4b",
+  "n_spikes": 285,
+  "spike_transmissions": 1574
+ },
+ "process_a": {
+  "input_hash": "1f24d59f87499a4bc9d85dcddd2d51735c4f1869a713c9222266f3ae4eea55d4",
+  "spike_hash": "452c3662d132d25d8c8ab798c27bc12afb7d2864d6993d32f791fdc8cea64b4b",
+  "n_spikes": 285,
+  "spike_transmissions": 1574,
+  "condition": "combined_obstacle_and_coin_other_lane"
+ },
+ "process_b": {
+  "input_hash": "1f24d59f87499a4bc9d85dcddd2d51735c4f1869a713c9222266f3ae4eea55d4",
+  "spike_hash": "452c3662d132d25d8c8ab798c27bc12afb7d2864d6993d32f791fdc8cea64b4b",
+  "n_spikes": 285,
+  "spike_transmissions": 1574,
+  "condition": "combined_obstacle_and_coin_other_lane"
+ },
+ "input_equal": true,
+ "spikes_equal": true,
+ "transmissions_equal": true,
+ "passed": true,
+ "spike_count": 285,
+ "reason": null
+}

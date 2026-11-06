@@ -1,0 +1,1573 @@
+{
+ "phase": "3B.02",
+ "generated_at_utc": "2026-11-04T18:19:15+00:00",
+ "command": "python.exe experiments/phase_3b/audit_dataset.py --dataset datasets/external/subway surfers/roboflow_v15_yolov8 --outdir experiments/phase_3b --json reports/PHASE_3B02_V15_DATASET_AUDIT.json --previews experiments/phase_3b/previews_v15 --preview-count 8 --phase 3B.02",
+ "environment": {
+  "python": "3.13.14",
+  "platform": "win32",
+  "pillow": "12.0.0",
+  "pyyaml": "6.0.3"
+ },
+ "dataset": {
+  "requested_path": "datasets\\external\\subway surfers\\roboflow_v15_yolov8",
+  "discovered_root": "datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8",
+  "layout_notes": [
+   "requested directory contains a nested dataset root named 'subway surfers object dataset.v15-added.yolov8'"
+  ],
+  "folder_bytes": 215392200,
+  "disk": {
+   "total": 498014875648,
+   "used": 495268339712,
+   "free": 2746535936
+  },
+  "zip": []
+ },
+ "metadata": {
+  "files": [
+   "data.yaml",
+   "README.dataset.txt",
+   "README.roboflow.txt"
+  ],
+  "data_yaml": {
+   "present": true,
+   "paths": [
+    "data.yaml"
+   ],
+   "names": [
+    "boots-powerup",
+    "boxtrain",
+    "jump-barrier",
+    "jump-electric",
+    "jump-hedge",
+    "jump-roll-barrier",
+    "jump-trash",
+    "ledge",
+    "pogstick-powerup",
+    "ramp",
+    "roll-barrier",
+    "train",
+    "undercover-barrier",
+    "wall"
+   ],
+   "payload": {
+    "train": "../train/images",
+    "val": "../valid/images",
+    "test": "../test/images",
+    "nc": 14,
+    "names": [
+     "boots-powerup",
+     "boxtrain",
+     "jump-barrier",
+     "jump-electric",
+     "jump-hedge",
+     "jump-roll-barrier",
+     "jump-trash",
+     "ledge",
+     "pogstick-powerup",
+     "ramp",
+     "roll-barrier",
+     "train",
+     "undercover-barrier",
+     "wall"
+    ],
+    "roboflow": {
+     "workspace": "horizon-cgt2k",
+     "project": "subway-surfers-object-dataset",
+     "version": 15,
+     "license": "CC BY 4.0",
+     "url": "https://universe.roboflow.com/horizon-cgt2k/subway-surfers-object-dataset/dataset/15"
+    }
+   },
+   "error": null
+  },
+  "declared_split_paths": {
+   "train": "../train/images",
+   "val": "../valid/images",
+   "test": "../test/images"
+  },
+  "present_splits": [
+   "train",
+   "valid"
+  ]
+ },
+ "inventory": {
+  "file_count": 4659,
+  "image_count": 2328,
+  "label_file_count": 2328,
+  "extension_counts": {
+   ".jpg": 2328,
+   ".txt": 2330,
+   ".yaml": 1
+  },
+  "image_extension_counts": {
+   ".jpg": 2328
+  },
+  "label_extension_counts": {
+   ".txt": 2328
+  },
+  "total_bytes": 215392200,
+  "image_bytes": 214699661,
+  "split_counts": {
+   "train": {
+    "images": 1825,
+    "labels": 1825,
+    "objects": 6844,
+    "images_missing_labels": 0
+   },
+   "valid": {
+    "images": 503,
+    "labels": 503,
+    "objects": 1822,
+    "images_missing_labels": 0
+   }
+  }
+ },
+ "images": {
+  "dimensions": [
+   {
+    "width": 606,
+    "height": 1050,
+    "count": 2328
+   }
+  ],
+  "formats": {
+   "JPEG": 2328
+  },
+  "modes": {
+   "RGB": 2328
+  },
+  "corrupt": [],
+  "size_bytes": {
+   "count": 2328,
+   "min": 45932.0,
+   "p01": 60613.37,
+   "p05": 70885.25,
+   "p25": 86039.0,
+   "p50": 94255.5,
+   "p75": 99842.25,
+   "p95": 107757.85,
+   "p99": 112349.64,
+   "max": 118175.0,
+   "mean": 92224.940292,
+   "std": 11117.467755
+  }
+ },
+ "classes": {
+  "declared_names": [
+   "boots-powerup",
+   "boxtrain",
+   "jump-barrier",
+   "jump-electric",
+   "jump-hedge",
+   "jump-roll-barrier",
+   "jump-trash",
+   "ledge",
+   "pogstick-powerup",
+   "ramp",
+   "roll-barrier",
+   "train",
+   "undercover-barrier",
+   "wall"
+  ],
+  "declared_count": 14,
+  "observed_ids": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13
+  ],
+  "observed_min": 0,
+  "observed_max": 13,
+  "rows": [
+   {
+    "class_id": 0,
+    "declared_name": "boots-powerup",
+    "objects": 24,
+    "images": 24,
+    "per_split": {
+     "train": 20,
+     "valid": 4
+    }
+   },
+   {
+    "class_id": 1,
+    "declared_name": "boxtrain",
+    "objects": 1374,
+    "images": 1020,
+    "per_split": {
+     "train": 1081,
+     "valid": 293
+    }
+   },
+   {
+    "class_id": 2,
+    "declared_name": "jump-barrier",
+    "objects": 417,
+    "images": 369,
+    "per_split": {
+     "train": 326,
+     "valid": 91
+    }
+   },
+   {
+    "class_id": 3,
+    "declared_name": "jump-electric",
+    "objects": 14,
+    "images": 14,
+    "per_split": {
+     "train": 9,
+     "valid": 5
+    }
+   },
+   {
+    "class_id": 4,
+    "declared_name": "jump-hedge",
+    "objects": 44,
+    "images": 38,
+    "per_split": {
+     "train": 36,
+     "valid": 8
+    }
+   },
+   {
+    "class_id": 5,
+    "declared_name": "jump-roll-barrier",
+    "objects": 763,
+    "images": 646,
+    "per_split": {
+     "train": 623,
+     "valid": 140
+    }
+   },
+   {
+    "class_id": 6,
+    "declared_name": "jump-trash",
+    "objects": 96,
+    "images": 77,
+    "per_split": {
+     "train": 76,
+     "valid": 20
+    }
+   },
+   {
+    "class_id": 7,
+    "declared_name": "ledge",
+    "objects": 135,
+    "images": 89,
+    "per_split": {
+     "train": 109,
+     "valid": 26
+    }
+   },
+   {
+    "class_id": 8,
+    "declared_name": "pogstick-powerup",
+    "objects": 118,
+    "images": 118,
+    "per_split": {
+     "train": 86,
+     "valid": 32
+    }
+   },
+   {
+    "class_id": 9,
+    "declared_name": "ramp",
+    "objects": 1223,
+    "images": 945,
+    "per_split": {
+     "train": 987,
+     "valid": 236
+    }
+   },
+   {
+    "class_id": 10,
+    "declared_name": "roll-barrier",
+    "objects": 309,
+    "images": 290,
+    "per_split": {
+     "train": 256,
+     "valid": 53
+    }
+   },
+   {
+    "class_id": 11,
+    "declared_name": "train",
+    "objects": 2791,
+    "images": 1722,
+    "per_split": {
+     "train": 2155,
+     "valid": 636
+    }
+   },
+   {
+    "class_id": 12,
+    "declared_name": "undercover-barrier",
+    "objects": 215,
+    "images": 99,
+    "per_split": {
+     "train": 178,
+     "valid": 37
+    }
+   },
+   {
+    "class_id": 13,
+    "declared_name": "wall",
+    "objects": 1143,
+    "images": 526,
+    "per_split": {
+     "train": 902,
+     "valid": 241
+    }
+   }
+  ],
+  "imbalance": {
+   "total_objects": 8666,
+   "n_classes_observed": 14,
+   "largest_class_objects": 2791,
+   "smallest_class_objects": 14,
+   "max_min_ratio": 199.3571
+  },
+  "undeclared_class_objects": []
+ },
+ "annotations": {
+  "object_count": 8666,
+  "empty_label_files": [
+   "train\\images\\subwayedtied_mp4-293_jpg.rf.e8b37a118b7921ba1b7e4b6625a8b4ef.jpg",
+   "train\\images\\subwayedtied_mp4-294_jpg.rf.a555cc4efc79cf02119873f37b61fdb5.jpg",
+   "train\\images\\subwayedtied_mp4-295_jpg.rf.6676f55f6b8fd5a1bee458d8212c4c5e.jpg",
+   "train\\images\\subwayedtied_mp4-296_jpg.rf.c027851308c9ba6dd3a3c1b61918792c.jpg",
+   "train\\images\\subwayedtied_mp4-297_jpg.rf.0a382f11225bcf2582e33dbc7c2c7a50.jpg",
+   "train\\images\\subwayedtied_mp4-299_jpg.rf.160b2350a8fed35c65b7b801a404fe99.jpg",
+   "train\\images\\subwayedtied_mp4-300_jpg.rf.a7a9543dc44b91f538cc243c37c1c87f.jpg",
+   "train\\images\\subwayedtied_mp4-301_jpg.rf.26304064cfbdf50acf93e0c1cdeebdda.jpg",
+   "train\\images\\subwayy1_1_mp4-213_jpg.rf.40c6ee09a4ba0ce3ba060d7d43b2426a.jpg",
+   "valid\\images\\subwayedtied_mp4-298_jpg.rf.9be6154adb7965b0e6f97155d44e7998.jpg",
+   "valid\\images\\subwayy1_1_mp4-217_jpg.rf.e9ba8683da07dfb4e7f2cb610d5dcac8.jpg",
+   "valid\\images\\subwayy1_1_mp4-262_jpg.rf.b122b7576b4b1d5a5d71b4be5bea83c9.jpg"
+  ],
+  "missing_label_files": [],
+  "orphan_label_files": [],
+  "malformed_lines": [],
+  "duplicate_lines": [],
+  "out_of_range_objects": [],
+  "boxes_outside_image": [],
+  "images_with_objects": 2316,
+  "images_without_objects": 12,
+  "multi_object_images": 2189
+ },
+ "boxes": {
+  "width": {
+   "count": 8666,
+   "min": 0.014125,
+   "p01": 0.026106,
+   "p05": 0.0463,
+   "p25": 0.083998,
+   "p50": 0.147112,
+   "p75": 0.299674,
+   "p95": 0.564402,
+   "p99": 0.693465,
+   "max": 0.950495,
+   "mean": 0.20806,
+   "std": 0.163587
+  },
+  "height": {
+   "count": 8666,
+   "min": 0.01179,
+   "p01": 0.019183,
+   "p05": 0.030433,
+   "p25": 0.058555,
+   "p50": 0.109467,
+   "p75": 0.29521,
+   "p95": 0.698152,
+   "p99": 0.874328,
+   "max": 0.979048,
+   "mean": 0.214864,
+   "std": 0.222151
+  },
+  "area": {
+   "count": 8666,
+   "min": 0.000347,
+   "p01": 0.000756,
+   "p05": 0.001565,
+   "p25": 0.004911,
+   "p50": 0.016054,
+   "p75": 0.093947,
+   "p95": 0.309888,
+   "p99": 0.404124,
+   "max": 0.653347,
+   "mean": 0.070839,
+   "std": 0.10412
+  },
+  "objects_per_image": [
+   {
+    "objects": 0,
+    "images": 12
+   },
+   {
+    "objects": 1,
+    "images": 127
+   },
+   {
+    "objects": 2,
+    "images": 365
+   },
+   {
+    "objects": 3,
+    "images": 595
+   },
+   {
+    "objects": 4,
+    "images": 585
+   },
+   {
+    "objects": 5,
+    "images": 343
+   },
+   {
+    "objects": 6,
+    "images": 184
+   },
+   {
+    "objects": 7,
+    "images": 79
+   },
+   {
+    "objects": 8,
+    "images": 30
+   },
+   {
+    "objects": 9,
+    "images": 8
+   }
+  ]
+ },
+ "spatial": {
+  "center_x_histogram": {
+   "bins": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+   ],
+   "counts": [
+    173,
+    954,
+    988,
+    2476,
+    1953,
+    729,
+    479,
+    706,
+    201,
+    7
+   ]
+  },
+  "center_y_histogram": {
+   "bins": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+   ],
+   "counts": [
+    0,
+    0,
+    5,
+    5014,
+    1505,
+    609,
+    904,
+    398,
+    179,
+    52
+   ]
+  },
+  "center_x": {
+   "count": 8666,
+   "min": 0.024208,
+   "p01": 0.076786,
+   "p05": 0.143824,
+   "p25": 0.302719,
+   "p50": 0.392261,
+   "p75": 0.495578,
+   "p95": 0.75842,
+   "p99": 0.837965,
+   "max": 0.917558,
+   "mean": 0.411193,
+   "std": 0.17836
+  },
+  "center_y": {
+   "count": 8666,
+   "min": 0.275324,
+   "p01": 0.306755,
+   "p05": 0.31831,
+   "p25": 0.335555,
+   "p50": 0.381229,
+   "p75": 0.495936,
+   "p95": 0.734245,
+   "p99": 0.872461,
+   "max": 0.983067,
+   "mean": 0.439722,
+   "std": 0.141122
+  }
+ },
+ "duplicates": {
+  "exact_image_groups": 0,
+  "exact_image_duplicate_images": 0,
+  "exact_image_examples": [],
+  "exact_cross_split_groups": 0,
+  "exact_label_groups": 1,
+  "exact_label_duplicate_files": 12,
+  "near_threshold": 4,
+  "near_pair_count": 224,
+  "near_cross_split_count": 58,
+  "near_cross_split_adjacent_count": 35,
+  "near_cross_split_images_by_split": {
+   "train": 54,
+   "valid": 42
+  },
+  "near_pairs": [
+   {
+    "distance": 0,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-20_jpg.rf.aa593f211b5a454970833054775321b2.jpg",
+    "right_split": "train",
+    "right": "train\\images\\datasetfootage_mp4-361_jpg.rf.cd619a8b56458556de8ff3240aaf960b.jpg",
+    "left_frame": 20,
+    "right_frame": 361,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 341
+   },
+   {
+    "distance": 0,
+    "left_split": "train",
+    "left": "train\\images\\subwayavitomp4_mp4-504_jpg.rf.a4311e5b8e12eaa0d37476ff1cc33e8a.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayavitomp4_mp4-505_jpg.rf.5877527807be6cd30513c138dc73399a.jpg",
+    "left_frame": 504,
+    "right_frame": 505,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 0,
+    "left_split": "train",
+    "left": "train\\images\\subwayedtied_mp4-10_jpg.rf.3af61cf1dc0fa3100e3f4820e35dd5c7.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayedtied_mp4-9_jpg.rf.c3c02dea154a54255c1f3cb59b4c0ecb.jpg",
+    "left_frame": 10,
+    "right_frame": 9,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 0,
+    "left_split": "train",
+    "left": "train\\images\\subwayedtied_mp4-128_jpg.rf.16849935db8d5898c618cedf5c2a6131.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\subwayedtied_mp4-129_jpg.rf.28fb745115f615b3f37cd28e5a98b308.jpg",
+    "left_frame": 128,
+    "right_frame": 129,
+    "cross_split": true,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 0,
+    "left_split": "valid",
+    "left": "valid\\images\\subwayedtied_mp4-143_jpg.rf.6933ca259fd83c4bdacdaf522e75ebf7.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\subwayedtied_mp4-144_jpg.rf.4c3d5bd25f15168b9b640a4790961934.jpg",
+    "left_frame": 143,
+    "right_frame": 144,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 1,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-156_jpg.rf.023e56d20e2db75f7210bc7633d47f6f.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\datasetfootage_mp4-155_jpg.rf.ceeb1da71219246bd19d0f9fc2cce8e0.jpg",
+    "left_frame": 156,
+    "right_frame": 155,
+    "cross_split": true,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 1,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-230_jpg.rf.c00567dfa46a507c977461af155fcc09.jpg",
+    "right_split": "train",
+    "right": "train\\images\\datasetfootage_mp4-231_jpg.rf.e9e3bcb4c0a1bfd12515e976ee87f961.jpg",
+    "left_frame": 230,
+    "right_frame": 231,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 1,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-312_jpg.rf.d026bb372ea62b8d4254d4cb977c23fb.jpg",
+    "right_split": "train",
+    "right": "train\\images\\datasetfootage_mp4-313_jpg.rf.de8e496de971d68e0bd4cdb0464b6701.jpg",
+    "left_frame": 312,
+    "right_frame": 313,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 1,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-502_jpg.rf.02d3a77588f055511bc27f11f1910a42.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\datasetfootage_mp4-503_jpg.rf.e7bbe5b1e74c8bfabb94163cdaf587c8.jpg",
+    "left_frame": 502,
+    "right_frame": 503,
+    "cross_split": true,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 1,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-95_jpg.rf.46069789f8d0a947fcdf7908aee88900.jpg",
+    "right_split": "train",
+    "right": "train\\images\\datasetfootage_mp4-96_jpg.rf.132a56efc4f05436c15395024a6bbcbc.jpg",
+    "left_frame": 95,
+    "right_frame": 96,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 1,
+    "left_split": "train",
+    "left": "train\\images\\subwayavitomp4_mp4-1056_jpg.rf.4071d3b6956088ed3767e1e597ecdc81.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayavitomp4_mp4-1057_jpg.rf.297730d971f4778a21f4fe75c879949d.jpg",
+    "left_frame": 1056,
+    "right_frame": 1057,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 1,
+    "left_split": "train",
+    "left": "train\\images\\subwayavitomp4_mp4-351_jpg.rf.b77ad4b167a1f7a08328686f89d82bf1.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayavitomp4_mp4-352_jpg.rf.43aa90973e8f69e5ac1a9d2fc77f19b1.jpg",
+    "left_frame": 351,
+    "right_frame": 352,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 1,
+    "left_split": "train",
+    "left": "train\\images\\subwayavitomp4_mp4-386_jpg.rf.13a353ebcc83c2693611a188ff7a8235.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\subwayavitomp4_mp4-384_jpg.rf.5f3020d50088741a190ce00492c9a9a6.jpg",
+    "left_frame": 386,
+    "right_frame": 384,
+    "cross_split": true,
+    "same_sequence": true,
+    "frame_gap": 2
+   },
+   {
+    "distance": 1,
+    "left_split": "train",
+    "left": "train\\images\\subwayedited2_mp4-166_jpg.rf.108149739f0449069b5fa944a86bb014.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayedtied_mp4-169_jpg.rf.311b956bd264e1e8a93a93d55661f2d9.jpg",
+    "left_frame": 166,
+    "right_frame": 169,
+    "cross_split": false,
+    "same_sequence": false,
+    "frame_gap": null
+   },
+   {
+    "distance": 1,
+    "left_split": "train",
+    "left": "train\\images\\subwayedited2_mp4-195_jpg.rf.ec51993cf553ca665d92080434ab9e17.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\subwayy1_1_mp4-168_jpg.rf.ba34163ed78d531e6b51e866ced111ab.jpg",
+    "left_frame": 195,
+    "right_frame": 168,
+    "cross_split": true,
+    "same_sequence": false,
+    "frame_gap": null
+   },
+   {
+    "distance": 1,
+    "left_split": "train",
+    "left": "train\\images\\subwayedited2_mp4-281_jpg.rf.84334567c07ddfd2237def7622164cd5.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\subwayedited2_mp4-268_jpg.rf.05cddeb322aa88d667e195bdf7228961.jpg",
+    "left_frame": 281,
+    "right_frame": 268,
+    "cross_split": true,
+    "same_sequence": true,
+    "frame_gap": 13
+   },
+   {
+    "distance": 1,
+    "left_split": "train",
+    "left": "train\\images\\subwayedtied_mp4-258_jpg.rf.bb0b06c1670059dad64c911fb555b018.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayedtied_mp4-259_jpg.rf.6babe302bac111927e1a127de2d596b6.jpg",
+    "left_frame": 258,
+    "right_frame": 259,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 1,
+    "left_split": "train",
+    "left": "train\\images\\subwayy1_1_mp4-226_jpg.rf.5e6af0d5d2484231ad6a0503cff18b16.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\subwayy1_1_mp4-168_jpg.rf.ba34163ed78d531e6b51e866ced111ab.jpg",
+    "left_frame": 226,
+    "right_frame": 168,
+    "cross_split": true,
+    "same_sequence": true,
+    "frame_gap": 58
+   },
+   {
+    "distance": 1,
+    "left_split": "valid",
+    "left": "valid\\images\\datasetfootage_mp4-154_jpg.rf.4c17eee7123916fc3b5affa535c62cd5.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\datasetfootage_mp4-155_jpg.rf.ceeb1da71219246bd19d0f9fc2cce8e0.jpg",
+    "left_frame": 154,
+    "right_frame": 155,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 1,
+    "left_split": "valid",
+    "left": "valid\\images\\datasetfootage_mp4-74_jpg.rf.63977293890fb1086c54b614acd195ee.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\datasetfootage_mp4-75_jpg.rf.2af0a34f59c69968638b5ffb65b7d56b.jpg",
+    "left_frame": 74,
+    "right_frame": 75,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 1,
+    "left_split": "valid",
+    "left": "valid\\images\\subwayavitomp4_mp4-612_jpg.rf.cc881d5257146eaa053a5373d03310a0.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\subwayavitomp4_mp4-613_jpg.rf.b3740f062e2b8030ffe3e79e191451e5.jpg",
+    "left_frame": 612,
+    "right_frame": 613,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-156_jpg.rf.023e56d20e2db75f7210bc7633d47f6f.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\datasetfootage_mp4-154_jpg.rf.4c17eee7123916fc3b5affa535c62cd5.jpg",
+    "left_frame": 156,
+    "right_frame": 154,
+    "cross_split": true,
+    "same_sequence": true,
+    "frame_gap": 2
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-181_jpg.rf.a6b832af1da62673a184d138b91a4a46.jpg",
+    "right_split": "train",
+    "right": "train\\images\\datasetfootage_mp4-357_jpg.rf.ac931987208f98e6aef7f0eaf74d0014.jpg",
+    "left_frame": 181,
+    "right_frame": 357,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 176
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-20_jpg.rf.aa593f211b5a454970833054775321b2.jpg",
+    "right_split": "train",
+    "right": "train\\images\\datasetfootage_mp4-212_jpg.rf.99746c117c0c5178b7672b38f119a7d2.jpg",
+    "left_frame": 20,
+    "right_frame": 212,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 192
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-212_jpg.rf.99746c117c0c5178b7672b38f119a7d2.jpg",
+    "right_split": "train",
+    "right": "train\\images\\datasetfootage_mp4-361_jpg.rf.cd619a8b56458556de8ff3240aaf960b.jpg",
+    "left_frame": 212,
+    "right_frame": 361,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 149
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-233_jpg.rf.6c5fcf6cc492e9b8754811ea0cd1bf51.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayedtied_mp4-3_jpg.rf.68ceb79dca87a5833c46cf0fab6b5d03.jpg",
+    "left_frame": 233,
+    "right_frame": 3,
+    "cross_split": false,
+    "same_sequence": false,
+    "frame_gap": null
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-302_jpg.rf.0191852b59ce9b1b1f8f782d7a2440d2.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\subwayy1_1_mp4-0_jpg.rf.285e6c9d9b148df74e4b1cc88a23fe7b.jpg",
+    "left_frame": 302,
+    "right_frame": 0,
+    "cross_split": true,
+    "same_sequence": false,
+    "frame_gap": null
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-311_jpg.rf.42264185d56af411551e6cf558855d16.jpg",
+    "right_split": "train",
+    "right": "train\\images\\datasetfootage_mp4-313_jpg.rf.de8e496de971d68e0bd4cdb0464b6701.jpg",
+    "left_frame": 311,
+    "right_frame": 313,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 2
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-313_jpg.rf.de8e496de971d68e0bd4cdb0464b6701.jpg",
+    "right_split": "train",
+    "right": "train\\images\\datasetfootage_mp4-314_jpg.rf.0408793ba0b2ca658cfe65ed97ae3dff.jpg",
+    "left_frame": 313,
+    "right_frame": 314,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\datasetfootage_mp4-437_jpg.rf.85be79bfa1e254bc3223f543e0457102.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\datasetfootage_mp4-438_jpg.rf.c9d8a84f5f5d84dcc9fd705c1a3fc674.jpg",
+    "left_frame": 437,
+    "right_frame": 438,
+    "cross_split": true,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayavitomp4_mp4-1064_jpg.rf.8011d6525408ef40efb127aafdf4d31e.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayavitomp4_mp4-1065_jpg.rf.77ea5a09f8e0cd6d864258bff443155c.jpg",
+    "left_frame": 1064,
+    "right_frame": 1065,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayavitomp4_mp4-166_jpg.rf.ff5efe84e7a39ea808668877fc70b5d2.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayavitomp4_mp4-167_jpg.rf.5cfed6796f3f39d1924bfd9ba7fc729d.jpg",
+    "left_frame": 166,
+    "right_frame": 167,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayavitomp4_mp4-259_jpg.rf.41202dc51db7a549d4cfde21fc240598.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\subwayavitomp4_mp4-258_jpg.rf.10b148a716ef6f58a4927c9c7a3b1bd1.jpg",
+    "left_frame": 259,
+    "right_frame": 258,
+    "cross_split": true,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayavitomp4_mp4-411_jpg.rf.af683ac32dac16c20c53e318fe6da8de.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayavitomp4_mp4-412_jpg.rf.703122cd782a8c12d105e7fafacf865a.jpg",
+    "left_frame": 411,
+    "right_frame": 412,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayavitomp4_mp4-472_jpg.rf.12c2cd062843cedba2769319e31374b3.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayavitomp4_mp4-495_jpg.rf.0c9717032fff58008b895f3260f8e0b0.jpg",
+    "left_frame": 472,
+    "right_frame": 495,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 23
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayavitomp4_mp4-483_jpg.rf.63dc1737d9c4b84aba8f0888431a760a.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayavitomp4_mp4-504_jpg.rf.a4311e5b8e12eaa0d37476ff1cc33e8a.jpg",
+    "left_frame": 483,
+    "right_frame": 504,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 21
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayavitomp4_mp4-483_jpg.rf.63dc1737d9c4b84aba8f0888431a760a.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayavitomp4_mp4-505_jpg.rf.5877527807be6cd30513c138dc73399a.jpg",
+    "left_frame": 483,
+    "right_frame": 505,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 22
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayavitomp4_mp4-484_jpg.rf.a3ef63298bb90dca92b8db484b612a98.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\subwayavitomp4_mp4-530_jpg.rf.96c7557abf80dfad752c9e4526a3fbd2.jpg",
+    "left_frame": 484,
+    "right_frame": 530,
+    "cross_split": true,
+    "same_sequence": true,
+    "frame_gap": 46
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayedited2_mp4-14_jpg.rf.26d51e59fc8c1a2f12829bdc4bb2773a.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayedtied_mp4-16_jpg.rf.1ffb1684e2eca7fa7c8c033ceccc2724.jpg",
+    "left_frame": 14,
+    "right_frame": 16,
+    "cross_split": false,
+    "same_sequence": false,
+    "frame_gap": null
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayedited2_mp4-151_jpg.rf.4d60cc1da09527b2450b804b60043576.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayy1_1_mp4-163_jpg.rf.4aa158b35f4cbeb1cf5c56404d93069e.jpg",
+    "left_frame": 151,
+    "right_frame": 163,
+    "cross_split": false,
+    "same_sequence": false,
+    "frame_gap": null
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayedited2_mp4-163_jpg.rf.a6bf919f6a1eb9ef8204a6c20aeb0063.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayedited2_mp4-215_jpg.rf.71667b2b4e0eec3c937e8ef0ef9fb42e.jpg",
+    "left_frame": 163,
+    "right_frame": 215,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 52
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayedited2_mp4-165_jpg.rf.f933fbc7cab5cea8d195748d6ca95dc8.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayedtied_mp4-165_jpg.rf.425faba2e502ea9e1f2840c7f9f27eba.jpg",
+    "left_frame": 165,
+    "right_frame": 165,
+    "cross_split": false,
+    "same_sequence": false,
+    "frame_gap": null
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayedited2_mp4-166_jpg.rf.108149739f0449069b5fa944a86bb014.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayy1_1_mp4-154_jpg.rf.4f29bd8f2c57d77cc78d3831d9e058f1.jpg",
+    "left_frame": 166,
+    "right_frame": 154,
+    "cross_split": false,
+    "same_sequence": false,
+    "frame_gap": null
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayedited2_mp4-195_jpg.rf.ec51993cf553ca665d92080434ab9e17.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayedited2_mp4-319_jpg.rf.d699c255c4b0ae4c55e545807fd45e57.jpg",
+    "left_frame": 195,
+    "right_frame": 319,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 124
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayedited2_mp4-195_jpg.rf.ec51993cf553ca665d92080434ab9e17.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayy1_1_mp4-226_jpg.rf.5e6af0d5d2484231ad6a0503cff18b16.jpg",
+    "left_frame": 195,
+    "right_frame": 226,
+    "cross_split": false,
+    "same_sequence": false,
+    "frame_gap": null
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayedited2_mp4-318_jpg.rf.ebd04276b95751c2cdc365e34f66696b.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayy1_1_mp4-167_jpg.rf.e03f703dd5baa06cce57e320feb499c2.jpg",
+    "left_frame": 318,
+    "right_frame": 167,
+    "cross_split": false,
+    "same_sequence": false,
+    "frame_gap": null
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayedited2_mp4-320_jpg.rf.275f90202230802afb6270f7addcfa19.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayy1_1_mp4-169_jpg.rf.33c2cf4c6ea80d011f6d4de0cd280f8e.jpg",
+    "left_frame": 320,
+    "right_frame": 169,
+    "cross_split": false,
+    "same_sequence": false,
+    "frame_gap": null
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayedtied_mp4-128_jpg.rf.16849935db8d5898c618cedf5c2a6131.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayedtied_mp4-130_jpg.rf.79fd7ec0848806d4d01e401a36d7fb27.jpg",
+    "left_frame": 128,
+    "right_frame": 130,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 2
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayedtied_mp4-130_jpg.rf.79fd7ec0848806d4d01e401a36d7fb27.jpg",
+    "right_split": "valid",
+    "right": "valid\\images\\subwayedtied_mp4-129_jpg.rf.28fb745115f615b3f37cd28e5a98b308.jpg",
+    "left_frame": 130,
+    "right_frame": 129,
+    "cross_split": true,
+    "same_sequence": true,
+    "frame_gap": 1
+   },
+   {
+    "distance": 2,
+    "left_split": "train",
+    "left": "train\\images\\subwayedtied_mp4-135_jpg.rf.6735791e6e528bfe6ab61fb7536b422d.jpg",
+    "right_split": "train",
+    "right": "train\\images\\subwayedtied_mp4-136_jpg.rf.0bc7f411279aa9302f712b8235de21aa.jpg",
+    "left_frame": 135,
+    "right_frame": 136,
+    "cross_split": false,
+    "same_sequence": true,
+    "frame_gap": 1
+   }
+  ]
+ },
+ "overlaps": {
+  "pair_count_iou_ge_0p50": 6,
+  "pair_count_iou_ge_0p80": 0,
+  "same_class_iou_ge_0p80": 0,
+  "different_class_iou_ge_0p80": 0,
+  "images_with_iou_ge_0p80": 0,
+  "examples": [
+   {
+    "image": "train\\images\\subwayedited2_mp4-301_jpg.rf.06dab80bc3d46ca485e25a3b69a8701e.jpg",
+    "left_line": 2,
+    "right_line": 3,
+    "left_class": 11,
+    "right_class": 12,
+    "same_class": false,
+    "iou": 0.639805
+   },
+   {
+    "image": "train\\images\\subwayedited2_mp4-383_jpg.rf.35743a167af83e8f3e4592a8027d312b.jpg",
+    "left_line": 3,
+    "right_line": 4,
+    "left_class": 11,
+    "right_class": 10,
+    "same_class": false,
+    "iou": 0.55607
+   },
+   {
+    "image": "valid\\images\\subwayedited2_mp4-17_jpg.rf.f560cbc04bd41586996cb90e8193bc7a.jpg",
+    "left_line": 1,
+    "right_line": 3,
+    "left_class": 13,
+    "right_class": 1,
+    "same_class": false,
+    "iou": 0.553354
+   },
+   {
+    "image": "train\\images\\subwayedited2_mp4-103_jpg.rf.93cbfe2f112ab99a328a9402a8458b73.jpg",
+    "left_line": 2,
+    "right_line": 3,
+    "left_class": 11,
+    "right_class": 11,
+    "same_class": true,
+    "iou": 0.524426
+   },
+   {
+    "image": "train\\images\\subwayedited2_mp4-283_jpg.rf.2ac50ecb3ef31760e3e52d8217acea1b.jpg",
+    "left_line": 4,
+    "right_line": 5,
+    "left_class": 11,
+    "right_class": 12,
+    "same_class": false,
+    "iou": 0.505859
+   },
+   {
+    "image": "train\\images\\subwayavitomp4_mp4-476_jpg.rf.8417adfcbba38b1807d70c2d6dff0895.jpg",
+    "left_line": 4,
+    "right_line": 5,
+    "left_class": 11,
+    "right_class": 12,
+    "same_class": false,
+    "iou": 0.502831
+   }
+  ]
+ },
+ "geometry": {
+  "area_vs_center_y_pearson": 0.704101,
+  "area_vs_center_y_spearman": 0.648929,
+  "area_vs_bottom_edge_spearman": 0.859446,
+  "near_field_center_x_histogram": {
+   "bins": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+   ],
+   "counts": [
+    60,
+    387,
+    61,
+    130,
+    194,
+    43,
+    175,
+    370,
+    111,
+    3
+   ]
+  }
+ },
+ "sequence": {
+  "video_sequences": {
+   "datasetfootage": 504,
+   "subwayavitomp4": 501,
+   "subwayedited2": 392,
+   "subwayedtied": 304,
+   "subwayy1_1": 627
+  },
+  "frame_ranges": {
+   "train": {
+    "min": 0,
+    "max": 1150,
+    "count": 1825
+   },
+   "valid": {
+    "min": 0,
+    "max": 1202,
+    "count": 503
+   }
+  },
+  "frame_ranges_by_sequence": {
+   "datasetfootage": {
+    "min": 0,
+    "max": 503,
+    "count": 504,
+    "splits": [
+     "train",
+     "valid"
+    ]
+   },
+   "subwayavitomp4": {
+    "min": 34,
+    "max": 1202,
+    "count": 501,
+    "splits": [
+     "train",
+     "valid"
+    ]
+   },
+   "subwayedited2": {
+    "min": 11,
+    "max": 402,
+    "count": 392,
+    "splits": [
+     "train",
+     "valid"
+    ]
+   },
+   "subwayedtied": {
+    "min": 0,
+    "max": 303,
+    "count": 304,
+    "splits": [
+     "train",
+     "valid"
+    ]
+   },
+   "subwayy1_1": {
+    "min": 0,
+    "max": 330,
+    "count": 331,
+    "splits": [
+     "train",
+     "valid"
+    ]
+   }
+  },
+  "all_frames": {
+   "min": 0,
+   "max": 1202
+  },
+  "adjacent_frame_pairs_total": 1724,
+  "adjacent_frame_pairs_cross_split": 554,
+  "adjacent_frame_cross_split_examples": [
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 0,
+    "right_frame": 1,
+    "left_split": "train",
+    "right_split": "valid"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 1,
+    "right_frame": 2,
+    "left_split": "valid",
+    "right_split": "train"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 3,
+    "right_frame": 4,
+    "left_split": "train",
+    "right_split": "valid"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 4,
+    "right_frame": 5,
+    "left_split": "valid",
+    "right_split": "train"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 6,
+    "right_frame": 7,
+    "left_split": "train",
+    "right_split": "valid"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 7,
+    "right_frame": 8,
+    "left_split": "valid",
+    "right_split": "train"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 15,
+    "right_frame": 16,
+    "left_split": "train",
+    "right_split": "valid"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 17,
+    "right_frame": 18,
+    "left_split": "valid",
+    "right_split": "train"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 18,
+    "right_frame": 19,
+    "left_split": "train",
+    "right_split": "valid"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 19,
+    "right_frame": 20,
+    "left_split": "valid",
+    "right_split": "train"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 23,
+    "right_frame": 24,
+    "left_split": "train",
+    "right_split": "valid"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 25,
+    "right_frame": 26,
+    "left_split": "valid",
+    "right_split": "train"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 27,
+    "right_frame": 28,
+    "left_split": "train",
+    "right_split": "valid"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 28,
+    "right_frame": 29,
+    "left_split": "valid",
+    "right_split": "train"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 40,
+    "right_frame": 41,
+    "left_split": "train",
+    "right_split": "valid"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 41,
+    "right_frame": 42,
+    "left_split": "valid",
+    "right_split": "train"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 42,
+    "right_frame": 43,
+    "left_split": "train",
+    "right_split": "valid"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 44,
+    "right_frame": 45,
+    "left_split": "valid",
+    "right_split": "train"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 45,
+    "right_frame": 46,
+    "left_split": "train",
+    "right_split": "valid"
+   },
+   {
+    "sequence": "datasetfootage",
+    "left_frame": 46,
+    "right_frame": 47,
+    "left_split": "valid",
+    "right_split": "train"
+   }
+  ]
+ },
+ "previews": [
+  {
+   "split": "train",
+   "source": "train\\images\\datasetfootage_mp4-482_jpg.rf.10d4d1a678bbef1486dcaf915c757dcb.jpg",
+   "objects": 9,
+   "preview": "experiments\\phase_3b\\previews_v15\\train_01_datasetfootage_mp4-482_jpg.rf.10d4d1a678bbef1486dcaf915c757dcb.jpg"
+  },
+  {
+   "split": "train",
+   "source": "train\\images\\datasetfootage_mp4-103_jpg.rf.49eb7c77bd38e88df21df1f1b22e9bd1.jpg",
+   "objects": 1,
+   "preview": "experiments\\phase_3b\\previews_v15\\train_02_datasetfootage_mp4-103_jpg.rf.49eb7c77bd38e88df21df1f1b22e9bd1.jpg"
+  },
+  {
+   "split": "train",
+   "source": "train\\images\\subwayedtied_mp4-117_jpg.rf.8ba1cfd5f1b028fecdfeaf8914915256.jpg",
+   "objects": 7,
+   "preview": "experiments\\phase_3b\\previews_v15\\train_03_subwayedtied_mp4-117_jpg.rf.8ba1cfd5f1b028fecdfeaf8914915256.jpg"
+  },
+  {
+   "split": "train",
+   "source": "train\\images\\subwayy1_1_mp4-309_jpg.rf.ad3209592e63e98c439278d56332faf2.jpg",
+   "objects": 1,
+   "preview": "experiments\\phase_3b\\previews_v15\\train_04_subwayy1_1_mp4-309_jpg.rf.ad3209592e63e98c439278d56332faf2.jpg"
+  },
+  {
+   "split": "train",
+   "source": "train\\images\\subwayedtied_mp4-53_jpg.rf.ff3d3d8ee2b923cf6047782414d840ae.jpg",
+   "objects": 3,
+   "preview": "experiments\\phase_3b\\previews_v15\\train_05_subwayedtied_mp4-53_jpg.rf.ff3d3d8ee2b923cf6047782414d840ae.jpg"
+  },
+  {
+   "split": "train",
+   "source": "train\\images\\datasetfootage_mp4-392_jpg.rf.97bfca44fc71f43d6f814bfa28aa1eb2.jpg",
+   "objects": 4,
+   "preview": "experiments\\phase_3b\\previews_v15\\train_06_datasetfootage_mp4-392_jpg.rf.97bfca44fc71f43d6f814bfa28aa1eb2.jpg"
+  },
+  {
+   "split": "train",
+   "source": "train\\images\\subwayedtied_mp4-212_jpg.rf.461e70f31863687eb35a66bfcc3e5e7f.jpg",
+   "objects": 4,
+   "preview": "experiments\\phase_3b\\previews_v15\\train_07_subwayedtied_mp4-212_jpg.rf.461e70f31863687eb35a66bfcc3e5e7f.jpg"
+  },
+  {
+   "split": "train",
+   "source": "train\\images\\datasetfootage_mp4-263_jpg.rf.fce146e9379c39ab435821634b4d684c.jpg",
+   "objects": 3,
+   "preview": "experiments\\phase_3b\\previews_v15\\train_08_datasetfootage_mp4-263_jpg.rf.fce146e9379c39ab435821634b4d684c.jpg"
+  },
+  {
+   "split": "valid",
+   "source": "valid\\images\\datasetfootage_mp4-334_jpg.rf.f23ccbeb94a91170eaecf5b8e459e5d0.jpg",
+   "objects": 8,
+   "preview": "experiments\\phase_3b\\previews_v15\\valid_01_datasetfootage_mp4-334_jpg.rf.f23ccbeb94a91170eaecf5b8e459e5d0.jpg"
+  },
+  {
+   "split": "valid",
+   "source": "valid\\images\\datasetfootage_mp4-100_jpg.rf.6fdcbaf6491ec78d26db6ffd49b1539b.jpg",
+   "objects": 1,
+   "preview": "experiments\\phase_3b\\previews_v15\\valid_02_datasetfootage_mp4-100_jpg.rf.6fdcbaf6491ec78d26db6ffd49b1539b.jpg"
+  },
+  {
+   "split": "valid",
+   "source": "valid\\images\\subwayy1_1_mp4-40_jpg.rf.d94fb65fc681696dca26c4429aced598.jpg",
+   "objects": 4,
+   "preview": "experiments\\phase_3b\\previews_v15\\valid_03_subwayy1_1_mp4-40_jpg.rf.d94fb65fc681696dca26c4429aced598.jpg"
+  },
+  {
+   "split": "valid",
+   "source": "valid\\images\\subwayavitomp4_mp4-732_jpg.rf.a5a252c82e1595c8c0f52610c8ff23cf.jpg",
+   "objects": 1,
+   "preview": "experiments\\phase_3b\\previews_v15\\valid_04_subwayavitomp4_mp4-732_jpg.rf.a5a252c82e1595c8c0f52610c8ff23cf.jpg"
+  },
+  {
+   "split": "valid",
+   "source": "valid\\images\\subwayavitomp4_mp4-389_jpg.rf.e3cf0dc6fdd4f28afb7b83bcf9d24ead.jpg",
+   "objects": 1,
+   "preview": "experiments\\phase_3b\\previews_v15\\valid_05_subwayavitomp4_mp4-389_jpg.rf.e3cf0dc6fdd4f28afb7b83bcf9d24ead.jpg"
+  },
+  {
+   "split": "valid",
+   "source": "valid\\images\\subwayy1_1_mp4-197_jpg.rf.0167ed9fefc2f0b06550a0db39361e5d.jpg",
+   "objects": 6,
+   "preview": "experiments\\phase_3b\\previews_v15\\valid_06_subwayy1_1_mp4-197_jpg.rf.0167ed9fefc2f0b06550a0db39361e5d.jpg"
+  },
+  {
+   "split": "valid",
+   "source": "valid\\images\\datasetfootage_mp4-472_jpg.rf.9acddf02b3d32e42f681017505c3858e.jpg",
+   "objects": 4,
+   "preview": "experiments\\phase_3b\\previews_v15\\valid_07_datasetfootage_mp4-472_jpg.rf.9acddf02b3d32e42f681017505c3858e.jpg"
+  },
+  {
+   "split": "valid",
+   "source": "valid\\images\\subwayavitomp4_mp4-671_jpg.rf.28dfd11207d076a21a1a3b3aa8247eb1.jpg",
+   "objects": 3,
+   "preview": "experiments\\phase_3b\\previews_v15\\valid_08_subwayavitomp4_mp4-671_jpg.rf.28dfd11207d076a21a1a3b3aa8247eb1.jpg"
+  }
+ ],
+ "warnings": [],
+ "limitations": [
+  "Class semantics are unresolved when data.yaml is absent; numeric IDs are reported without names.",
+  "Bounding-box size is an image-space proxy and is not calibrated physical distance.",
+  "Perceptual hashes detect visual similarity, not confirmed duplicate provenance.",
+  "The audit does not train, evaluate or infer any detector.",
+  "Frame ordering is inferred from filenames; no timestamp metadata is present."
+ ]
+}

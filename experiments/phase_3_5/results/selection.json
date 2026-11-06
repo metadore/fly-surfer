@@ -1,0 +1,19 @@
+{
+ "amplitude_pa": 200.0,
+ "sigma_fraction": 0.2,
+ "population_size": 4,
+ "mapping_seed": 20261104,
+ "baseline": 0.0,
+ "amplitudes_considered": [
+  200.0
+ ],
+ "sources": {
+  "amplitude": "fallback_no_ordered_amplitude",
+  "tuning": "fallback_no_ordered_tuning",
+  "population": "ordered"
+ },
+ "fallbacks": [
+  "amplitude",
+  "tuning"
+ ]
+}

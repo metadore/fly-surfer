@@ -1,0 +1,109 @@
+{
+  "phase": "3C",
+  "report": "temporal_architecture",
+  "status": "pass",
+  "generated_at_utc": "2026-11-06",
+  "chain": [
+    "FrameObservations",
+    "MultiObjectTracker",
+    "TemporalFeatureEncoder",
+    "TemporalFrame",
+    "TemporalActivationScheduler",
+    "BrainSimulator"
+  ],
+  "tracking": {
+    "iou_threshold": 0.3,
+    "gate_distance": 0.35,
+    "duplicate_iou": 0.75,
+    "max_age_frames": 2,
+    "min_hits": 2,
+    "history_limit": 32,
+    "class_aware": true,
+    "max_tracks": 128,
+    "retired_limit": 64,
+    "states": ["tentative", "confirmed", "occluded", "lost"]
+  },
+  "features": {
+    "distance_change_threshold": 0.02,
+    "confidence_floor": 0.25,
+    "event_cooldown_frames": 2,
+    "frame_interval_ms": 33.333333333333336,
+    "gap_threshold_ms": 100.0,
+    "per_track": [
+      "delta_x",
+      "delta_y",
+      "velocity_x",
+      "velocity_y",
+      "distance_proxy",
+      "previous_distance_proxy",
+      "distance_delta",
+      "approaching",
+      "receding",
+      "visibility",
+      "valid",
+      "hits",
+      "misses",
+      "confirmed",
+      "is_new"
+    ]
+  },
+  "lifecycle": {
+    "states": ["appeared", "persisting", "approaching", "receding", "disappeared", "occluded", "uncertain"],
+    "pulse_events": ["appeared", "approaching", "receding"],
+    "transition_rules": [
+      "tentative or below-confidence-floor track -> uncertain",
+      "new confirmed track -> appeared once",
+      "distance-proxy decrease >= threshold -> approaching",
+      "distance-proxy increase >= threshold -> receding",
+      "confirmed track without significant change -> persisting; a run no longer than the cooldown keeps the previous direction",
+      "missed association within max_age -> occluded on first miss",
+      "missed association beyond max_age -> disappeared once"
+    ],
+    "direction_hold": "configured debounce, not a biological claim"
+  },
+  "scheduler": {
+    "class": "sensory.temporal_scheduler.TemporalActivationScheduler",
+    "version": "phase_3c_temporal_scheduler_v1",
+    "max_hold_ms": 250.0,
+    "pulse_gain": 0.5,
+    "pulse_decay_ms": 150.0,
+    "drive_amplitude_pa": 200.0,
+    "components": [
+      "sample_and_hold newest frame at or before simulation time",
+      "linearly decaying pulses from appeared/approaching/receding"
+    ],
+    "additive_only": true,
+    "stale_frames": "no drive after max_hold_ms; no extrapolation",
+    "timestamp_policy": "absolute frame timestamps; irregular intervals and dropped frames do not shift the schedule",
+    "signature_fields": ["indices", "frame_values", "frame_times", "pulse_values", "pulse_onsets"]
+  },
+  "interfaces": {
+    "game_state_schema_changed": false,
+    "brain_simulator_contract": "apply(step, time_ms, current_pa)",
+    "phase_3a_scheduler_changed": false,
+    "phase_3a5_baseline_changed": false,
+    "new_parameters_versioned": true,
+    "action_selection": "none"
+  },
+  "determinism": {
+    "same_signature_for_same_inputs": true,
+    "same_spike_counts_for_same_seed": true,
+    "non_increasing_timestamps_rejected": true
+  },
+  "tests": {
+    "test_tracking": 12,
+    "test_temporal": 20,
+    "test_temporal_scheduler": 13,
+    "test_temporal_calibration": 12,
+    "test_integration_3b_3c": 5,
+    "total_suite": 265
+  },
+  "limitations": [
+    "no trained detector output replayed",
+    "distance proxy is uncalibrated",
+    "occlusion is inferred from missed associations",
+    "single-object GameState downstream",
+    "pulse drive is extra input, not a biological event code",
+    "no action, motor decoding, learning or reward"
+  ]
+}

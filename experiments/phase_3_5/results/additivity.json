@@ -1,0 +1,26 @@
+{
+ "baseline_spikes": 0,
+ "obstacle_spikes": 9,
+ "coin_spikes": 23,
+ "combined_spikes": 32,
+ "obstacle_excess": 9,
+ "coin_excess": 23,
+ "combined_excess": 32,
+ "expected_additive": 32,
+ "additivity_index": 0.0,
+ "by_feature": {
+  "obstacle_distance": {
+   "single_spikes": 9,
+   "combined_spikes": 9,
+   "excess_single": 9,
+   "shift": 0
+  },
+  "coin_distance": {
+   "single_spikes": 23,
+   "combined_spikes": 23,
+   "excess_single": 23,
+   "shift": 0
+  }
+ },
+ "interpretation": "index 0 is additive; positive means super-additive; negative means sub-additive. Network recurrence affects this value."
+}

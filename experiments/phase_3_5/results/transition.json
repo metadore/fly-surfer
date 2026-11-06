@@ -1,0 +1,39 @@
+{
+ "rows": [
+  {
+   "transition_ms": 0.0,
+   "spikes": 4,
+   "active_neurons": 2,
+   "first_latency_ms": 38.0,
+   "max_total_current_pa": 289.493025
+  },
+  {
+   "transition_ms": 10.0,
+   "spikes": 4,
+   "active_neurons": 2,
+   "first_latency_ms": 38.0,
+   "max_total_current_pa": 289.493025
+  },
+  {
+   "transition_ms": 25.0,
+   "spikes": 4,
+   "active_neurons": 2,
+   "first_latency_ms": 38.0,
+   "max_total_current_pa": 289.493025
+  },
+  {
+   "transition_ms": 50.0,
+   "spikes": 4,
+   "active_neurons": 2,
+   "first_latency_ms": 38.0,
+   "max_total_current_pa": 289.493025
+  },
+  {
+   "transition_ms": 100.0,
+   "spikes": 3,
+   "active_neurons": 1,
+   "first_latency_ms": 38.0,
+   "max_total_current_pa": 289.493025
+  }
+ ]
+}

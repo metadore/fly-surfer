@@ -1,0 +1,132 @@
+{
+  "phase": "3B/3C",
+  "report": "final_verification",
+  "generated_at_utc": "2026-11-06",
+  "overall": {
+    "phase_3b": "partial: scripted chain implemented, trained detector blocked",
+    "phase_3c": "pass on synthetic and scripted data; real-sequence replay blocked",
+    "trained_detector_acceptance": "blocked",
+    "action_selection": "none"
+  },
+  "status_table": {
+    "3B.0_dataset_audit": "pass",
+    "3B.0.2_v15_dataset_audit": "pass",
+    "3B.1_curation_and_split": "pass",
+    "3B.1_dataset_validation": "pass",
+    "3B.2A_perception_interface": "pass",
+    "3B.2B.0_detector_selection": "pass_design",
+    "3B.2B.1_training": "blocked",
+    "3B.4_observation_layer": "pass",
+    "3B.5_encoder_connection": "pass",
+    "3B.6_evaluation_harness": "pass",
+    "3B.6_trained_detector_metrics": "blocked",
+    "3C_tracking_and_features": "pass",
+    "3C_activation_scheduler": "pass",
+    "3C_synthetic_calibration": "pass",
+    "3C_real_sequence_evaluation": "blocked",
+    "3B_3C_end_to_end_integration": "pass_scripted",
+    "trained_detector_acceptance": "blocked"
+  },
+  "tests": {
+    "total": 265,
+    "phase_3b_3c_subtotal": 151,
+    "preexisting": 114,
+    "result": "265 passed in 6.70s",
+    "removed_or_weakened": false
+  },
+  "measurements": {
+    "dataset": {
+      "curated_images": 2316,
+      "boxes": 8666,
+      "train_images": 1188,
+      "train_boxes": 4704,
+      "valid_images": 1128,
+      "valid_boxes": 3962,
+      "unevaluable_classes": ["boots-powerup", "jump-electric"]
+    },
+    "temporal_calibration": {
+      "seed": 20261106,
+      "sequences": 50,
+      "event_micro": {"tp": 175, "fp": 0, "fn": 0, "f1": 1.0},
+      "direction_accuracy": 0.996059,
+      "continuity": 0.944186,
+      "id_switches": 5,
+      "adversarial_checks_passed": 6,
+      "scheduler_apply_p95_us": 9.5,
+      "determinism_identical": true
+    },
+    "integration": {
+      "seed": 20261106,
+      "frames": 10,
+      "events": 10,
+      "track_ids": 4,
+      "duration_ms": 300.5,
+      "n_steps": 601,
+      "spikes_total": 560,
+      "spikes_stimulated": 444,
+      "spikes_non_stimulated": 116,
+      "active_neurons": 73,
+      "n_neurons": 139255,
+      "simulation_wall_s": 1.2279,
+      "checks_passed": 16,
+      "checks_total": 16,
+      "determinism": true
+    },
+    "duration_sensitivity": {
+      "protocol_ms": 300.5,
+      "protocol_spikes": 560,
+      "probe_ms": 400.0,
+      "probe_spikes": 233203,
+      "probe_non_stimulated_spikes": 232639,
+      "interpreted_as_perception_result": false
+    }
+  },
+  "blockers": [
+    "no weight license approved and no weight downloaded",
+    "new detector dependencies not approved",
+    "NanoDet training stack conflicts with Python 3.13 / PyTorch 2.10",
+    "1.02 GiB available RAM and 2.19 GiB free disk at audit time",
+    "no training run approved"
+  ],
+  "protected_hashes": {
+    "README.md": {"sha256": "6277ffbb3db8e0b1be9bb320d44ff0f894a07ff04d6ea698efd03fe5a9ef9b10", "match": true},
+    "reports/PHASE_3B1_SPLIT_MANIFEST.json": {"sha256": "ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d", "match": true},
+    "datasets/processed/connectome.npz": {"sha256": "3f568f24e3d77134a8d2d38f82856b8d685c310a1b0cfe941a1c95eeab5f33d8", "match": true},
+    "v15_data.yaml": {"sha256": "f6e51bf674b4dfbbb51866a0d56ad85c7cb55b51032cf0ec95a8d9aa2b7be423", "match": true}
+  },
+  "git": {
+    "staged_changes": false,
+    "commits": false,
+    "pushes": false,
+    "deletions": 0,
+    "tracked_modifications": [
+      ".gitignore",
+      "brain/brain_simulator.py",
+      "sensory/game_state.py"
+    ],
+    "new_work_uncommitted": true
+  },
+  "files": {
+    "perception_modules": 20,
+    "phase_3b_experiments": ["audit_dataset.py", "curate_dataset.py", "evaluate_detector.py", "run_inference.py", "validate_dataset.py"],
+    "phase_3c_experiments": ["integration_check.py", "temporal_calibration.py"],
+    "phase_3c_scheduler": "sensory/temporal_scheduler.py",
+    "configs": ["configs/perception_config.yaml", "configs/detector_config.yaml"],
+    "reports": [
+      "reports/PHASE_3B_DATASET_AND_DETECTOR.md",
+      "reports/PHASE_3B_EVALUATION.md",
+      "reports/PHASE_3B_INTEGRATION.md",
+      "reports/PHASE_3C_TEMPORAL_ARCHITECTURE.md",
+      "reports/PHASE_3C_CALIBRATION.md",
+      "reports/PHASE_3C_EVALUATION.md",
+      "reports/PHASE_3B_3C_FINAL_VERIFICATION.md"
+    ]
+  },
+  "recommendation": [
+    "keep trained-detector acceptance blocked until approval and resource gates are resolved",
+    "run a one-epoch or one-batch smoke test before any full training",
+    "replay real sequences through Phase 3C only after a detector exists",
+    "do not describe current results as perception accuracy or biological coding",
+    "treat the sustained-drive high-activity regime as a separate research question"
+  ]
+}

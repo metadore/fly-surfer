@@ -1,0 +1,36 @@
+{
+ "rows": [
+  {
+   "condition": "a5_control_coin_amp100",
+   "feature": "coin_distance",
+   "amplitude_pa": 100.0,
+   "spikes": 0,
+   "active_neurons": 0,
+   "recruitment_fraction": 0.0
+  },
+  {
+   "condition": "a5_control_coin_amp300",
+   "feature": "coin_distance",
+   "amplitude_pa": 300.0,
+   "spikes": 63,
+   "active_neurons": 5,
+   "recruitment_fraction": 0.416667
+  },
+  {
+   "condition": "a5_control_player_amp100",
+   "feature": "player_speed",
+   "amplitude_pa": 100.0,
+   "spikes": 0,
+   "active_neurons": 0,
+   "recruitment_fraction": 0.0
+  },
+  {
+   "condition": "a5_control_player_amp300",
+   "feature": "player_speed",
+   "amplitude_pa": 300.0,
+   "spikes": 64,
+   "active_neurons": 6,
+   "recruitment_fraction": 0.5
+  }
+ ]
+}

@@ -1,0 +1,62 @@
+{
+  "phase": "3C",
+  "report": "calibration",
+  "status": "pass",
+  "scope": "synthetic sequences; rule consistency, not independent recognition",
+  "generated_at_utc": "2026-11-06",
+  "seed": 20261106,
+  "trials_per_family": 5,
+  "n_families": 10,
+  "n_sequences": 50,
+  "artifact": "experiments/phase_3c/results/temporal_calibration.json",
+  "families": {
+    "static": {"micro": {"tp": 5, "fp": 0, "fn": 0, "f1": 1.0}, "direction_accuracy": 1.0, "continuity": 0.95, "id_switches": 0},
+    "approaching": {"micro": {"tp": 10, "fp": 0, "fn": 0, "f1": 1.0}, "direction_accuracy": 1.0, "continuity": 0.954545, "id_switches": 0},
+    "receding": {"micro": {"tp": 10, "fp": 0, "fn": 0, "f1": 1.0}, "direction_accuracy": 1.0, "continuity": 0.954545, "id_switches": 0},
+    "sudden_appearance": {"micro": {"tp": 5, "fp": 0, "fn": 0, "f1": 1.0}, "direction_accuracy": 1.0, "continuity": 0.945055, "id_switches": 0},
+    "disappearance": {"micro": {"tp": 15, "fp": 0, "fn": 0, "f1": 1.0}, "direction_accuracy": 1.0, "continuity": 0.907407, "id_switches": 0},
+    "two_objects": {"micro": {"tp": 20, "fp": 0, "fn": 0, "f1": 1.0}, "direction_accuracy": 1.0, "continuity": 0.95, "id_switches": 0},
+    "temporary_occlusion": {"micro": {"tp": 20, "fp": 0, "fn": 0, "f1": 1.0}, "direction_accuracy": 1.0, "continuity": 0.954545, "id_switches": 0},
+    "noisy_detections": {"micro": {"tp": 10, "fp": 0, "fn": 0, "f1": 1.0}, "direction_accuracy": 0.957895, "continuity": 0.95, "id_switches": 0},
+    "irregular_intervals": {"micro": {"tp": 10, "fp": 0, "fn": 0, "f1": 1.0}, "direction_accuracy": 1.0, "continuity": 0.95, "id_switches": 0},
+    "missing_frames": {"micro": {"tp": 70, "fp": 0, "fn": 0, "f1": 1.0}, "direction_accuracy": 1.0, "continuity": 0.9, "id_switches": 5}
+  },
+  "aggregate": {
+    "micro": {"tp": 175, "fp": 0, "fn": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+    "event_metrics": {
+      "appeared": {"tp": 60, "fp": 0, "fn": 0, "f1": 1.0},
+      "approaching": {"tp": 60, "fp": 0, "fn": 0, "f1": 1.0},
+      "receding": {"tp": 10, "fp": 0, "fn": 0, "f1": 1.0},
+      "occluded": {"tp": 35, "fp": 0, "fn": 0, "f1": 1.0},
+      "disappeared": {"tp": 10, "fp": 0, "fn": 0, "f1": 1.0}
+    },
+    "direction_accuracy": {"correct": 1011, "total": 1015, "accuracy": 0.996059},
+    "tracking": {"visible_frames": 1075, "matched_visible_frames": 1015, "continuity": 0.944186, "id_switches": 5},
+    "scheduler_apply_us": {"n": 41115, "mean": 5.195021, "p50": 3.5, "p95": 9.5, "p99": 15.7, "max": 1315.4}
+  },
+  "adversarial": {
+    "noise_only": {"pass": true, "uncertain_events": 40, "confirmed_events": 0},
+    "duplicate_detections": {"pass": true, "appeared": 1, "distinct_track_ids": 1, "matched_visible_frames": 11, "visible_frames": 12},
+    "single_frame_dropout": {"pass": true, "appeared": 1, "occluded": 1, "disappeared": 0, "id_switches": 0},
+    "threshold_boundary_noise": {"pass": true, "approaching": 0, "receding": 0},
+    "timestamp_regression": {"pass": true, "raised": true},
+    "stale_frame_hold": {"pass": true, "at_last_frame_ms": 300.0, "at_last_plus_150ms": 0.0, "max_hold_ms": 100.0}
+  },
+  "determinism": {"repeated": true, "identical": true},
+  "interpretation": [
+    "perfect event F1 reflects rule consistency on synthetic boxes",
+    "direction misses are 4 of 1015 and occur only in the noisy family",
+    "continuity cannot reach 1.0 because the first tentative frame and gaps count as unmatched",
+    "five ID switches follow losses longer than max_age"
+  ],
+  "limitations": [
+    "synthetic idealized boxes, not detector output",
+    "expected events implement the documented rules from ground-truth boxes",
+    "direction hold is a configured debounce, not biological evidence",
+    "direction labels use an uncalibrated distance proxy",
+    "continuity below 1.0 by construction",
+    "tracks lost beyond max_age get a new ID",
+    "scheduler latency excludes the connectome",
+    "ten families are a design probe, not a representative game sample"
+  ]
+}

@@ -79,6 +79,7 @@ class BrainSimulator:
         background_current_pa: float = 0.0,
         noise_std_pa: float = 0.0,
         stimulus: Stimulus | None = None,
+        input_schedule=None,
         max_recorded_spikes: int = 2_000_000,
         progress_interval_ms: float = 100.0,
         diagnostics_interval_steps: int = 200,
@@ -94,6 +95,21 @@ class BrainSimulator:
             raise ValueError("diagnostics_interval_steps must be positive")
         if stimulus is not None and int(stimulus.indices.max()) >= graph.n_nodes:
             raise ValueError("stimulus index outside the graph")
+        if input_schedule is not None:
+            if not hasattr(input_schedule, "apply") or not hasattr(
+                input_schedule, "stimulated_indices"
+            ):
+                raise TypeError(
+                    "input_schedule must provide apply(step, time_ms, current) "
+                    "and stimulated_indices"
+                )
+            schedule_indices = np.asarray(
+                input_schedule.stimulated_indices, dtype=np.int64
+            )
+            if schedule_indices.size == 0:
+                raise ValueError("input_schedule must target at least one neuron")
+            if int(schedule_indices.max()) >= graph.n_nodes:
+                raise ValueError("input schedule targets a neuron outside the graph")
 
         self.graph = graph
         self.neuron_params = neuron_params
@@ -104,6 +120,7 @@ class BrainSimulator:
         self.background_current_pa = float(background_current_pa)
         self.noise_std_pa = float(noise_std_pa)
         self.stimulus = stimulus
+        self.input_schedule = input_schedule
         self.progress_interval_ms = float(progress_interval_ms)
         self.diagnostics_interval_steps = int(diagnostics_interval_steps)
         self.profile_timing = bool(profile_timing)
@@ -232,6 +249,8 @@ class BrainSimulator:
             current += self.synapses.synaptic_current_pa
             if self.stimulus is not None and stim_start <= step < stim_end:
                 current[self.stimulus.indices] += self.stimulus.current_pa
+            if self.input_schedule is not None:
+                self.input_schedule.apply(step, step * self.dt_ms, current)
             max_current = max(max_current, float(np.abs(current).max()))
             if profile:
                 timing["input_s"] += clock() - mark
@@ -322,6 +341,10 @@ class BrainSimulator:
         stimulated = np.zeros(self.n_neurons, dtype=bool)
         if self.stimulus is not None:
             stimulated[self.stimulus.indices] = True
+        if self.input_schedule is not None:
+            stimulated[
+                np.asarray(self.input_schedule.stimulated_indices, dtype=np.int64)
+            ] = True
         stimulated_activity = {
             "stimulated_neurons": int(stimulated.sum()),
             "stimulated_active_neurons": int(
@@ -374,6 +397,11 @@ class BrainSimulator:
                 "synapse": asdict(self.synapse_params),
             },
             "stimulus": stimulus,
+            "input_schedule": (
+                self.input_schedule.describe()
+                if self.input_schedule is not None
+                else None
+            ),
             "synapses": {
                 "excitatory_edges": excitatory,
                 "inhibitory_edges": inhibitory,

@@ -1,0 +1,128 @@
+{
+  "phase": "3B.6",
+  "generated_at_utc": "2026-11-05T17:37:48.578561+00:00",
+  "status": "blocked",
+  "claim": "No trained detector metrics are produced without approved weights or supplied predictions.",
+  "selection": {
+    "split": "valid",
+    "fold": null
+  },
+  "dataset": {
+    "dataset_root": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8",
+    "manifest": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\reports\\PHASE_3B1_SPLIT_MANIFEST.json",
+    "manifest_sha256": "ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d",
+    "class_names": [
+      "boots-powerup",
+      "boxtrain",
+      "jump-barrier",
+      "jump-electric",
+      "jump-hedge",
+      "jump-roll-barrier",
+      "jump-trash",
+      "ledge",
+      "pogstick-powerup",
+      "ramp",
+      "roll-barrier",
+      "train",
+      "undercover-barrier",
+      "wall"
+    ]
+  },
+  "support": {
+    "images": 1128,
+    "boxes": 3962,
+    "images_without_boxes": 0,
+    "per_class_boxes": {
+      "boots-powerup": 0,
+      "boxtrain": 749,
+      "jump-barrier": 163,
+      "jump-electric": 0,
+      "jump-hedge": 26,
+      "jump-roll-barrier": 356,
+      "jump-trash": 62,
+      "ledge": 48,
+      "pogstick-powerup": 65,
+      "ramp": 617,
+      "roll-barrier": 162,
+      "train": 1174,
+      "undercover-barrier": 19,
+      "wall": 521
+    },
+    "per_class_images": {
+      "boots-powerup": 0,
+      "boxtrain": 538,
+      "jump-barrier": 148,
+      "jump-electric": 0,
+      "jump-hedge": 21,
+      "jump-roll-barrier": 287,
+      "jump-trash": 44,
+      "ledge": 32,
+      "pogstick-powerup": 65,
+      "ramp": 501,
+      "roll-barrier": 149,
+      "train": 839,
+      "undercover-barrier": 15,
+      "wall": 247
+    },
+    "missing_classes": [
+      "boots-powerup",
+      "jump-electric"
+    ],
+    "low_support_classes": [
+      "undercover-barrier"
+    ],
+    "unevaluable_classes": [
+      "boots-powerup",
+      "jump-electric"
+    ]
+  },
+  "protocol": {
+    "source": "reports/PHASE_3B2B0_DETECTOR_FEASIBILITY.md section 5",
+    "split_source": "reports/PHASE_3B1_SPLIT_MANIFEST.json",
+    "test_split": false,
+    "fixed_split_role": "model selection",
+    "logo_role": "variance and group sensitivity",
+    "iou_threshold": 0.5,
+    "iou_sweep": [
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.9,
+      0.95
+    ],
+    "operating_confidence": 0.25,
+    "evaluation_confidence_floor": 0.05,
+    "confusion_matrix": "class-agnostic IoU 0.5 with background",
+    "bootstrap": {
+      "resamples": 1000,
+      "seed": 20261105
+    },
+    "low_support_boxes": 20,
+    "excluded_images": 12,
+    "rules": [
+      "Never use Roboflow train/valid folder names as the split.",
+      "Never train or evaluate on quarantined images.",
+      "Do not tune on LOGO validation.",
+      "Do not describe validation results as independent test performance.",
+      "Report per-fold results, not only a pooled mean."
+    ]
+  },
+  "predictions_source": null,
+  "metrics": null,
+  "latency": null,
+  "memory": {
+    "peak_wset_mb": 56.96,
+    "rss_mb": 56.96,
+    "platform_note": "peak_wset is available on Windows; on other platforms only RSS is reported."
+  },
+  "limitations": [
+    "There is no independent test split; these are held-out recordings, not an independent test set.",
+    "Player and coin classes are absent from the dataset.",
+    "boots-powerup and jump-electric have no validation images in the fixed split, so their validation AP is undefined."
+  ]
+}

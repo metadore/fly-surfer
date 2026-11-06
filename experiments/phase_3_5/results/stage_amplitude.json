@@ -1,0 +1,3422 @@
+{
+ "stage": "amplitude",
+ "errors": [],
+ "groups": [
+  {
+   "parameters": {
+    "amplitude_pa": 100.0
+   },
+   "analysis": {
+    "distances": [
+     0.15,
+     0.55,
+     0.9
+    ],
+    "spike_counts": [
+     0,
+     0,
+     0
+    ],
+    "spikes_per_neuron": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "recruitment_fractions": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "max_recruitment_fraction": 0.0,
+    "saturated": false,
+    "responsive": false,
+    "eligible": false,
+    "ordered": false,
+    "weakly_ordered": true,
+    "direction": "flat",
+    "spearman_rho": 0.0,
+    "d_prime_proxy": 0.0,
+    "dynamic_range": 0,
+    "distinct_levels": 1,
+    "score_rank": [
+     0,
+     0.0,
+     1,
+     0
+    ]
+   },
+   "conditions": [
+    {
+     "name": "a5_1_amp100_dist0p15",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 100.0,
+      "distance": 0.15
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 0,
+        "active_neurons": 0,
+        "recruitment_fraction": 0.0,
+        "spikes_per_neuron": 0.0,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": null,
+         "median_ms": null,
+         "p95_ms": null
+        }
+       }
+      },
+      "total_feature_spikes": 0,
+      "total_active_feature_neurons": 0
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 139255,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 0.0
+      },
+      "population_rate_hz": 0.0,
+      "population_rate_peak_hz": 0.0,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 462.060147,
+      "max_per_neuron_current_pa": 98.742478,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 462.060147,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.245,
+      "steps_per_second": 481.9,
+      "wall_runtime_s": 1.2656,
+      "steps_per_second_wall": 474.08
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 195.184,
+      "rss_after_run_mb": 193.934,
+      "rss_delta_mb": -1.25,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "de97a0da6b2148ce29e4922080ea2067785eaf6de86ce477fc7184d76f743106",
+      "spike_hash": "6c018c7a9cd398039ca8d167684fff4731de21cbbd95676181a512243776aec0",
+      "n_spikes": 0,
+      "spike_transmissions": 0
+     }
+    },
+    {
+     "name": "a5_1_amp100_dist0p55",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 100.0,
+      "distance": 0.55
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 0,
+        "active_neurons": 0,
+        "recruitment_fraction": 0.0,
+        "spikes_per_neuron": 0.0,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": null,
+         "median_ms": null,
+         "p95_ms": null
+        }
+       }
+      },
+      "total_feature_spikes": 0,
+      "total_active_feature_neurons": 0
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 139255,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 0.0
+      },
+      "population_rate_hz": 0.0,
+      "population_rate_peak_hz": 0.0,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 547.284575,
+      "max_per_neuron_current_pa": 99.974177,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 547.284575,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.4234,
+      "steps_per_second": 421.5,
+      "wall_runtime_s": 1.4482,
+      "steps_per_second_wall": 414.32
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 226.547,
+      "rss_after_run_mb": 227.488,
+      "rss_delta_mb": 0.941,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "f6ad90310830d0c387b159099d329867338563ec4a2ed37fef980b9cf1bff45b",
+      "spike_hash": "6c018c7a9cd398039ca8d167684fff4731de21cbbd95676181a512243776aec0",
+      "n_spikes": 0,
+      "spike_transmissions": 0
+     }
+    },
+    {
+     "name": "a5_1_amp100_dist0p90",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 100.0,
+      "distance": 0.9
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 0,
+        "active_neurons": 0,
+        "recruitment_fraction": 0.0,
+        "spikes_per_neuron": 0.0,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": null,
+         "median_ms": null,
+         "p95_ms": null
+        }
+       }
+      },
+      "total_feature_spikes": 0,
+      "total_active_feature_neurons": 0
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 139255,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 0.0
+      },
+      "population_rate_hz": 0.0,
+      "population_rate_peak_hz": 0.0,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 423.749397,
+      "max_per_neuron_current_pa": 99.896748,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 423.749397,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.4131,
+      "steps_per_second": 424.6,
+      "wall_runtime_s": 1.4287,
+      "steps_per_second_wall": 419.97
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 228.117,
+      "rss_after_run_mb": 228.023,
+      "rss_delta_mb": -0.094,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "c382923297d91d7e140e024fe5f4747259fc3d63bb90c94631a47fbfad38b217",
+      "spike_hash": "6c018c7a9cd398039ca8d167684fff4731de21cbbd95676181a512243776aec0",
+      "n_spikes": 0,
+      "spike_transmissions": 0
+     }
+    }
+   ]
+  },
+  {
+   "parameters": {
+    "amplitude_pa": 125.0
+   },
+   "analysis": {
+    "distances": [
+     0.15,
+     0.55,
+     0.9
+    ],
+    "spike_counts": [
+     0,
+     0,
+     0
+    ],
+    "spikes_per_neuron": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "recruitment_fractions": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "max_recruitment_fraction": 0.0,
+    "saturated": false,
+    "responsive": false,
+    "eligible": false,
+    "ordered": false,
+    "weakly_ordered": true,
+    "direction": "flat",
+    "spearman_rho": 0.0,
+    "d_prime_proxy": 0.0,
+    "dynamic_range": 0,
+    "distinct_levels": 1,
+    "score_rank": [
+     0,
+     0.0,
+     1,
+     0
+    ]
+   },
+   "conditions": [
+    {
+     "name": "a5_1_amp125_dist0p15",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 125.0,
+      "distance": 0.15
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 0,
+        "active_neurons": 0,
+        "recruitment_fraction": 0.0,
+        "spikes_per_neuron": 0.0,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": null,
+         "median_ms": null,
+         "p95_ms": null
+        }
+       }
+      },
+      "total_feature_spikes": 0,
+      "total_active_feature_neurons": 0
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 139255,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 0.0
+      },
+      "population_rate_hz": 0.0,
+      "population_rate_peak_hz": 0.0,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 577.575184,
+      "max_per_neuron_current_pa": 123.428097,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 577.575184,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.0754,
+      "steps_per_second": 557.9,
+      "wall_runtime_s": 1.1002,
+      "steps_per_second_wall": 545.37
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 231.797,
+      "rss_after_run_mb": 229.215,
+      "rss_delta_mb": -2.582,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "260eeabcb03a5d92c84831e0055d39314c2670294556df92da973801a7586e06",
+      "spike_hash": "6c018c7a9cd398039ca8d167684fff4731de21cbbd95676181a512243776aec0",
+      "n_spikes": 0,
+      "spike_transmissions": 0
+     }
+    },
+    {
+     "name": "a5_1_amp125_dist0p55",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 125.0,
+      "distance": 0.55
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 0,
+        "active_neurons": 0,
+        "recruitment_fraction": 0.0,
+        "spikes_per_neuron": 0.0,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": null,
+         "median_ms": null,
+         "p95_ms": null
+        }
+       }
+      },
+      "total_feature_spikes": 0,
+      "total_active_feature_neurons": 0
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 139255,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 0.0
+      },
+      "population_rate_hz": 0.0,
+      "population_rate_peak_hz": 0.0,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 684.105718,
+      "max_per_neuron_current_pa": 124.967721,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 684.105718,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.3746,
+      "steps_per_second": 436.5,
+      "wall_runtime_s": 1.3909,
+      "steps_per_second_wall": 431.36
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 232.09,
+      "rss_after_run_mb": 227.676,
+      "rss_delta_mb": -4.414,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "e5bf5b639b981e26b951fc7ef87bdba6a1edf2636664abb19282047b0ae36953",
+      "spike_hash": "6c018c7a9cd398039ca8d167684fff4731de21cbbd95676181a512243776aec0",
+      "n_spikes": 0,
+      "spike_transmissions": 0
+     }
+    },
+    {
+     "name": "a5_1_amp125_dist0p90",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 125.0,
+      "distance": 0.9
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 0,
+        "active_neurons": 0,
+        "recruitment_fraction": 0.0,
+        "spikes_per_neuron": 0.0,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": null,
+         "median_ms": null,
+         "p95_ms": null
+        }
+       }
+      },
+      "total_feature_spikes": 0,
+      "total_active_feature_neurons": 0
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 139255,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 0.0
+      },
+      "population_rate_hz": 0.0,
+      "population_rate_peak_hz": 0.0,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 529.686746,
+      "max_per_neuron_current_pa": 124.870934,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 529.686746,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.1104,
+      "steps_per_second": 540.3,
+      "wall_runtime_s": 1.1347,
+      "steps_per_second_wall": 528.79
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 226.738,
+      "rss_after_run_mb": 227.645,
+      "rss_delta_mb": 0.906,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "f50355209a7335558107a3ae580cccdffccfd3402e7fadbdee574d6e792751df",
+      "spike_hash": "6c018c7a9cd398039ca8d167684fff4731de21cbbd95676181a512243776aec0",
+      "n_spikes": 0,
+      "spike_transmissions": 0
+     }
+    }
+   ]
+  },
+  {
+   "parameters": {
+    "amplitude_pa": 150.0
+   },
+   "analysis": {
+    "distances": [
+     0.15,
+     0.55,
+     0.9
+    ],
+    "spike_counts": [
+     0,
+     0,
+     0
+    ],
+    "spikes_per_neuron": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "recruitment_fractions": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "max_recruitment_fraction": 0.0,
+    "saturated": false,
+    "responsive": false,
+    "eligible": false,
+    "ordered": false,
+    "weakly_ordered": true,
+    "direction": "flat",
+    "spearman_rho": 0.0,
+    "d_prime_proxy": 0.0,
+    "dynamic_range": 0,
+    "distinct_levels": 1,
+    "score_rank": [
+     0,
+     0.0,
+     1,
+     0
+    ]
+   },
+   "conditions": [
+    {
+     "name": "a5_1_amp150_dist0p15",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 150.0,
+      "distance": 0.15
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 0,
+        "active_neurons": 0,
+        "recruitment_fraction": 0.0,
+        "spikes_per_neuron": 0.0,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": null,
+         "median_ms": null,
+         "p95_ms": null
+        }
+       }
+      },
+      "total_feature_spikes": 0,
+      "total_active_feature_neurons": 0
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 139255,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 0.0
+      },
+      "population_rate_hz": 0.0,
+      "population_rate_peak_hz": 0.0,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 693.090221,
+      "max_per_neuron_current_pa": 148.113717,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 693.090221,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.2355,
+      "steps_per_second": 485.6,
+      "wall_runtime_s": 1.2617,
+      "steps_per_second_wall": 475.55
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 233.094,
+      "rss_after_run_mb": 229.078,
+      "rss_delta_mb": -4.016,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "bc8eb689c3806367a2dd43cee52367c0aedb39fb0d4a9c089b2e07c90df90e00",
+      "spike_hash": "6c018c7a9cd398039ca8d167684fff4731de21cbbd95676181a512243776aec0",
+      "n_spikes": 0,
+      "spike_transmissions": 0
+     }
+    },
+    {
+     "name": "a5_1_amp150_dist0p55",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 150.0,
+      "distance": 0.55
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 0,
+        "active_neurons": 0,
+        "recruitment_fraction": 0.0,
+        "spikes_per_neuron": 0.0,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": null,
+         "median_ms": null,
+         "p95_ms": null
+        }
+       }
+      },
+      "total_feature_spikes": 0,
+      "total_active_feature_neurons": 0
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 139255,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 0.0
+      },
+      "population_rate_hz": 0.0,
+      "population_rate_peak_hz": 0.0,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 820.926862,
+      "max_per_neuron_current_pa": 149.961265,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 820.926862,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.1735,
+      "steps_per_second": 511.3,
+      "wall_runtime_s": 1.188,
+      "steps_per_second_wall": 505.05
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 230.859,
+      "rss_after_run_mb": 228.637,
+      "rss_delta_mb": -2.223,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "040d50e0104224d744edf7b1e413b28c62d05df41f7654f065ea7d5d6ed8fa17",
+      "spike_hash": "6c018c7a9cd398039ca8d167684fff4731de21cbbd95676181a512243776aec0",
+      "n_spikes": 0,
+      "spike_transmissions": 0
+     }
+    },
+    {
+     "name": "a5_1_amp150_dist0p90",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 150.0,
+      "distance": 0.9
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 0,
+        "active_neurons": 0,
+        "recruitment_fraction": 0.0,
+        "spikes_per_neuron": 0.0,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": null,
+         "median_ms": null,
+         "p95_ms": null
+        }
+       }
+      },
+      "total_feature_spikes": 0,
+      "total_active_feature_neurons": 0
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 139255,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 0.0
+      },
+      "population_rate_hz": 0.0,
+      "population_rate_peak_hz": 0.0,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 635.624096,
+      "max_per_neuron_current_pa": 149.845121,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 635.624096,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.2202,
+      "steps_per_second": 491.7,
+      "wall_runtime_s": 1.2388,
+      "steps_per_second_wall": 484.34
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 226.543,
+      "rss_after_run_mb": 228.449,
+      "rss_delta_mb": 1.906,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "97eab6c4af5ab95459b3cca71eef6b5575528f892724cdfe028b8e4fbfbcc7bd",
+      "spike_hash": "6c018c7a9cd398039ca8d167684fff4731de21cbbd95676181a512243776aec0",
+      "n_spikes": 0,
+      "spike_transmissions": 0
+     }
+    }
+   ]
+  },
+  {
+   "parameters": {
+    "amplitude_pa": 175.0
+   },
+   "analysis": {
+    "distances": [
+     0.15,
+     0.55,
+     0.9
+    ],
+    "spike_counts": [
+     12,
+     14,
+     14
+    ],
+    "spikes_per_neuron": [
+     1.0,
+     1.166667,
+     1.166667
+    ],
+    "recruitment_fractions": [
+     0.166667,
+     0.25,
+     0.25
+    ],
+    "max_recruitment_fraction": 0.25,
+    "saturated": false,
+    "responsive": true,
+    "eligible": true,
+    "ordered": false,
+    "weakly_ordered": true,
+    "direction": "increasing_with_distance",
+    "spearman_rho": 0.866025,
+    "d_prime_proxy": 0.5547,
+    "dynamic_range": 2,
+    "distinct_levels": 2,
+    "score_rank": [
+     0,
+     0.5547001962252291,
+     2,
+     2
+    ]
+   },
+   "conditions": [
+    {
+     "name": "a5_1_amp175_dist0p15",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 175.0,
+      "distance": 0.15
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 12,
+        "active_neurons": 2,
+        "recruitment_fraction": 0.166667,
+        "spikes_per_neuron": 1.0,
+        "population_vector": [
+         0,
+         6,
+         6,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": 41.0,
+         "median_ms": 161.5,
+         "p95_ms": 280.65
+        }
+       }
+      },
+      "total_feature_spikes": 12,
+      "total_active_feature_neurons": 2
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 12,
+      "active_neurons": 2,
+      "silent_neurons": 139253,
+      "active_fraction": 1.4e-05,
+      "mean_rate_hz": 0.0003,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 20.0
+      },
+      "population_rate_hz": 0.0003,
+      "population_rate_peak_hz": 0.0014,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 808.605258,
+      "max_per_neuron_current_pa": 172.799336,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 808.605258,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.3117,
+      "steps_per_second": 457.4,
+      "wall_runtime_s": 1.3331,
+      "steps_per_second_wall": 450.1
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 232.859,
+      "rss_after_run_mb": 229.012,
+      "rss_delta_mb": -3.848,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "670b360892987bb0c0485c27945a5b90e6557b9b80072b912ed5a40966232483",
+      "spike_hash": "3496321829c6af6ca9a1693e0f6aa1011e72e57e82e2e06ad22084b08d217386",
+      "n_spikes": 12,
+      "spike_transmissions": 54
+     }
+    },
+    {
+     "name": "a5_1_amp175_dist0p55",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 175.0,
+      "distance": 0.55
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 14,
+        "active_neurons": 3,
+        "recruitment_fraction": 0.25,
+        "spikes_per_neuron": 1.166667,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         4,
+         6,
+         4,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": 39.0,
+         "median_ms": 153.0,
+         "p95_ms": 264.6
+        }
+       }
+      },
+      "total_feature_spikes": 14,
+      "total_active_feature_neurons": 3
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 14,
+      "active_neurons": 3,
+      "silent_neurons": 139252,
+      "active_fraction": 2.2e-05,
+      "mean_rate_hz": 0.0003,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 20.0
+      },
+      "population_rate_hz": 0.0003,
+      "population_rate_peak_hz": 0.0007,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 957.748006,
+      "max_per_neuron_current_pa": 174.95481,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 957.748006,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.6121,
+      "steps_per_second": 372.2,
+      "wall_runtime_s": 1.6403,
+      "steps_per_second_wall": 365.79
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 231.945,
+      "rss_after_run_mb": 227.586,
+      "rss_delta_mb": -4.359,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "7f002cda20e899051f40ebd39fc937386eac5a9423073a69ef1010efe7da79b3",
+      "spike_hash": "d4c3ce3d93622e9956f99049c014ff7f15a85668ee2fc9fb0fe30bac6c2745dc",
+      "n_spikes": 14,
+      "spike_transmissions": 56
+     }
+    },
+    {
+     "name": "a5_1_amp175_dist0p90",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 175.0,
+      "distance": 0.9
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 14,
+        "active_neurons": 3,
+        "recruitment_fraction": 0.25,
+        "spikes_per_neuron": 1.166667,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         5,
+         6,
+         3
+        ],
+        "latency_ms": {
+         "first_ms": 39.5,
+         "median_ms": 159.5,
+         "p95_ms": 270.175
+        }
+       }
+      },
+      "total_feature_spikes": 14,
+      "total_active_feature_neurons": 3
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 14,
+      "active_neurons": 3,
+      "silent_neurons": 139252,
+      "active_fraction": 2.2e-05,
+      "mean_rate_hz": 0.0003,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 20.0
+      },
+      "population_rate_hz": 0.0003,
+      "population_rate_peak_hz": 0.0014,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 741.561445,
+      "max_per_neuron_current_pa": 174.819308,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 741.561445,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.6068,
+      "steps_per_second": 373.4,
+      "wall_runtime_s": 1.6285,
+      "steps_per_second_wall": 368.44
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 229.328,
+      "rss_after_run_mb": 228.648,
+      "rss_delta_mb": -0.68,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "e01dce8f256b7f02c6d3bf2f3246ccfddf317c5fae38f33ae293bd22051d57c1",
+      "spike_hash": "ba88157d943f3894ad5f7ac19590939fde3957cd6cf1f062f592a5bd1a6569a6",
+      "n_spikes": 14,
+      "spike_transmissions": 61
+     }
+    }
+   ]
+  },
+  {
+   "parameters": {
+    "amplitude_pa": 200.0
+   },
+   "analysis": {
+    "distances": [
+     0.15,
+     0.55,
+     0.9
+    ],
+    "spike_counts": [
+     24,
+     23,
+     23
+    ],
+    "spikes_per_neuron": [
+     2.0,
+     1.916667,
+     1.916667
+    ],
+    "recruitment_fractions": [
+     0.333333,
+     0.25,
+     0.25
+    ],
+    "max_recruitment_fraction": 0.333333,
+    "saturated": false,
+    "responsive": true,
+    "eligible": true,
+    "ordered": false,
+    "weakly_ordered": true,
+    "direction": "decreasing_with_distance",
+    "spearman_rho": -0.866025,
+    "d_prime_proxy": 0.206284,
+    "dynamic_range": 1,
+    "distinct_levels": 2,
+    "score_rank": [
+     0,
+     0.20628424925175867,
+     2,
+     1
+    ]
+   },
+   "conditions": [
+    {
+     "name": "a5_1_amp200_dist0p15",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 200.0,
+      "distance": 0.15
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 24,
+        "active_neurons": 4,
+        "recruitment_fraction": 0.333333,
+        "spikes_per_neuron": 2.0,
+        "population_vector": [
+         2,
+         8,
+         9,
+         5,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": 29.0,
+         "median_ms": 156.25,
+         "p95_ms": 276.575
+        }
+       }
+      },
+      "total_feature_spikes": 24,
+      "total_active_feature_neurons": 4
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 24,
+      "active_neurons": 4,
+      "silent_neurons": 139251,
+      "active_fraction": 2.9e-05,
+      "mean_rate_hz": 0.0006,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 30.0
+      },
+      "population_rate_hz": 0.0006,
+      "population_rate_peak_hz": 0.0022,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 924.120294,
+      "max_per_neuron_current_pa": 197.484956,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 924.120294,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.3511,
+      "steps_per_second": 444.1,
+      "wall_runtime_s": 1.3693,
+      "steps_per_second_wall": 438.19
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 234.207,
+      "rss_after_run_mb": 229.207,
+      "rss_delta_mb": -5.0,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "7ea10c73aebbe28763336422f150cf9109a9db7b0c6c0b9095bb1b19d027ef5c",
+      "spike_hash": "e03f05665a2723cb0a1c672e149e08a3d51eed5f1423e32f1d3a1b80e9b1b35a",
+      "n_spikes": 24,
+      "spike_transmissions": 117
+     }
+    },
+    {
+     "name": "a5_1_amp200_dist0p55",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 200.0,
+      "distance": 0.55
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 23,
+        "active_neurons": 3,
+        "recruitment_fraction": 0.25,
+        "spikes_per_neuron": 1.916667,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         7,
+         9,
+         7,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": 28.0,
+         "median_ms": 158.0,
+         "p95_ms": 284.6
+        }
+       }
+      },
+      "total_feature_spikes": 23,
+      "total_active_feature_neurons": 3
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 23,
+      "active_neurons": 3,
+      "silent_neurons": 139252,
+      "active_fraction": 2.2e-05,
+      "mean_rate_hz": 0.0006,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 30.0
+      },
+      "population_rate_hz": 0.0006,
+      "population_rate_peak_hz": 0.0014,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 1094.56915,
+      "max_per_neuron_current_pa": 199.948354,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 1094.56915,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.4892,
+      "steps_per_second": 402.9,
+      "wall_runtime_s": 1.5096,
+      "steps_per_second_wall": 397.47
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 230.953,
+      "rss_after_run_mb": 227.703,
+      "rss_delta_mb": -3.25,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "16ff477f510e6e75c496f7e44f628d4d718d54fb44529101d363f28c8965705e",
+      "spike_hash": "f984b08e7f3fc2eb04ccf0385e416c73463977f3223542d5c73b970d69870aef",
+      "n_spikes": 23,
+      "spike_transmissions": 92
+     }
+    },
+    {
+     "name": "a5_1_amp200_dist0p90",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 200.0,
+      "distance": 0.9
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 23,
+        "active_neurons": 3,
+        "recruitment_fraction": 0.25,
+        "spikes_per_neuron": 1.916667,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         7,
+         9,
+         7
+        ],
+        "latency_ms": {
+         "first_ms": 28.0,
+         "median_ms": 158.0,
+         "p95_ms": 285.7
+        }
+       }
+      },
+      "total_feature_spikes": 23,
+      "total_active_feature_neurons": 3
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 23,
+      "active_neurons": 3,
+      "silent_neurons": 139252,
+      "active_fraction": 2.2e-05,
+      "mean_rate_hz": 0.0006,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 30.0
+      },
+      "population_rate_hz": 0.0006,
+      "population_rate_peak_hz": 0.0014,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 847.498794,
+      "max_per_neuron_current_pa": 199.793495,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 847.498794,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.4491,
+      "steps_per_second": 414.0,
+      "wall_runtime_s": 1.4721,
+      "steps_per_second_wall": 407.59
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 230.57,
+      "rss_after_run_mb": 227.703,
+      "rss_delta_mb": -2.867,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "2e784b21ebdc7505152b14bf71f42949526e58238104d18ddaed4707db675f01",
+      "spike_hash": "3bf74374c8913f2d4e35c6505ef484bf60f869143faf37470798ea1f9c143f8a",
+      "n_spikes": 23,
+      "spike_transmissions": 104
+     }
+    }
+   ]
+  },
+  {
+   "parameters": {
+    "amplitude_pa": 225.0
+   },
+   "analysis": {
+    "distances": [
+     0.15,
+     0.55,
+     0.9
+    ],
+    "spike_counts": [
+     35,
+     32,
+     33
+    ],
+    "spikes_per_neuron": [
+     2.916667,
+     2.666667,
+     2.75
+    ],
+    "recruitment_fractions": [
+     0.333333,
+     0.333333,
+     0.333333
+    ],
+    "max_recruitment_fraction": 0.333333,
+    "saturated": false,
+    "responsive": true,
+    "eligible": true,
+    "ordered": false,
+    "weakly_ordered": false,
+    "direction": "decreasing_with_distance",
+    "spearman_rho": -0.5,
+    "d_prime_proxy": 0.342997,
+    "dynamic_range": 3,
+    "distinct_levels": 3,
+    "score_rank": [
+     0,
+     0.34299717028501764,
+     3,
+     3
+    ]
+   },
+   "conditions": [
+    {
+     "name": "a5_1_amp225_dist0p15",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 225.0,
+      "distance": 0.15
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 35,
+        "active_neurons": 4,
+        "recruitment_fraction": 0.333333,
+        "spikes_per_neuron": 2.916667,
+        "population_vector": [
+         6,
+         10,
+         11,
+         8,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": 22.5,
+         "median_ms": 157.5,
+         "p95_ms": 285.85
+        }
+       }
+      },
+      "total_feature_spikes": 35,
+      "total_active_feature_neurons": 4
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 35,
+      "active_neurons": 4,
+      "silent_neurons": 139251,
+      "active_fraction": 2.9e-05,
+      "mean_rate_hz": 0.0008,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 36.6667
+      },
+      "population_rate_hz": 0.0008,
+      "population_rate_peak_hz": 0.0022,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 1039.635331,
+      "max_per_neuron_current_pa": 222.170575,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 1039.635331,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.4655,
+      "steps_per_second": 409.4,
+      "wall_runtime_s": 1.4955,
+      "steps_per_second_wall": 401.2
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 232.004,
+      "rss_after_run_mb": 229.191,
+      "rss_delta_mb": -2.812,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "758e59587aa02c3e569ed37a0dfa981b0669b6e9b3aefbba48b2c864106b66fc",
+      "spike_hash": "887589cb93857b7e8dbaa21dec5dd6977f70be75d9c5e3ab0ff6ffdca2788868",
+      "n_spikes": 35,
+      "spike_transmissions": 187
+     }
+    },
+    {
+     "name": "a5_1_amp225_dist0p55",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 225.0,
+      "distance": 0.55
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 32,
+        "active_neurons": 4,
+        "recruitment_fraction": 0.333333,
+        "spikes_per_neuron": 2.666667,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         9,
+         11,
+         9,
+         3,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": 22.0,
+         "median_ms": 153.75,
+         "p95_ms": 277.875
+        }
+       }
+      },
+      "total_feature_spikes": 32,
+      "total_active_feature_neurons": 4
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 32,
+      "active_neurons": 4,
+      "silent_neurons": 139251,
+      "active_fraction": 2.9e-05,
+      "mean_rate_hz": 0.0008,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 36.6667
+      },
+      "population_rate_hz": 0.0008,
+      "population_rate_peak_hz": 0.0022,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 1231.390293,
+      "max_per_neuron_current_pa": 224.941898,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 1231.390293,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.6122,
+      "steps_per_second": 372.2,
+      "wall_runtime_s": 1.6431,
+      "steps_per_second_wall": 365.16
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 232.082,
+      "rss_after_run_mb": 227.688,
+      "rss_delta_mb": -4.395,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "f2ea2d83e07e7c0f46966040a1b604bb4c946c06f0eb8c7e25a576ba001af7c7",
+      "spike_hash": "6ebc9652fc19ccc8300693c26e8b163ae48d047bfed6cfdd9c53d1fd9c98d830",
+      "n_spikes": 32,
+      "spike_transmissions": 131
+     }
+    },
+    {
+     "name": "a5_1_amp225_dist0p90",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 225.0,
+      "distance": 0.9
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 33,
+        "active_neurons": 4,
+        "recruitment_fraction": 0.333333,
+        "spikes_per_neuron": 2.75,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         4,
+         9,
+         11,
+         9
+        ],
+        "latency_ms": {
+         "first_ms": 22.5,
+         "median_ms": 155.0,
+         "p95_ms": 287.9
+        }
+       }
+      },
+      "total_feature_spikes": 33,
+      "total_active_feature_neurons": 4
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 33,
+      "active_neurons": 4,
+      "silent_neurons": 139251,
+      "active_fraction": 2.9e-05,
+      "mean_rate_hz": 0.0008,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 36.6667
+      },
+      "population_rate_hz": 0.0008,
+      "population_rate_peak_hz": 0.0022,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 953.436143,
+      "max_per_neuron_current_pa": 224.767682,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 953.436143,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.4349,
+      "steps_per_second": 418.1,
+      "wall_runtime_s": 1.4652,
+      "steps_per_second_wall": 409.51
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 226.68,
+      "rss_after_run_mb": 228.711,
+      "rss_delta_mb": 2.031,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "66ee44ba12f8a9119ed049cfcd1808213ff82d18dcdb1ca69faae0bdab066b78",
+      "spike_hash": "523b1ccb4f2fa621fbd811fb222230ab2560cd49664182775dc8642bc9fc2234",
+      "n_spikes": 33,
+      "spike_transmissions": 152
+     }
+    }
+   ]
+  },
+  {
+   "parameters": {
+    "amplitude_pa": 250.0
+   },
+   "analysis": {
+    "distances": [
+     0.15,
+     0.55,
+     0.9
+    ],
+    "spike_counts": [
+     43,
+     46,
+     41
+    ],
+    "spikes_per_neuron": [
+     3.583333,
+     3.833333,
+     3.416667
+    ],
+    "recruitment_fractions": [
+     0.333333,
+     0.416667,
+     0.333333
+    ],
+    "max_recruitment_fraction": 0.416667,
+    "saturated": false,
+    "responsive": true,
+    "eligible": true,
+    "ordered": false,
+    "weakly_ordered": false,
+    "direction": "decreasing_with_distance",
+    "spearman_rho": -0.5,
+    "d_prime_proxy": 0.308607,
+    "dynamic_range": 5,
+    "distinct_levels": 3,
+    "score_rank": [
+     0,
+     0.3086066999241838,
+     3,
+     5
+    ]
+   },
+   "conditions": [
+    {
+     "name": "a5_1_amp250_dist0p15",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 250.0,
+      "distance": 0.15
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 43,
+        "active_neurons": 4,
+        "recruitment_fraction": 0.333333,
+        "spikes_per_neuron": 3.583333,
+        "population_vector": [
+         8,
+         12,
+         13,
+         10,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": 19.0,
+         "median_ms": 157.0,
+         "p95_ms": 287.15
+        }
+       }
+      },
+      "total_feature_spikes": 43,
+      "total_active_feature_neurons": 4
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 43,
+      "active_neurons": 4,
+      "silent_neurons": 139251,
+      "active_fraction": 2.9e-05,
+      "mean_rate_hz": 0.001,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 43.3333
+      },
+      "population_rate_hz": 0.001,
+      "population_rate_peak_hz": 0.0022,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 1155.150368,
+      "max_per_neuron_current_pa": 246.856195,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 1155.150368,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.3625,
+      "steps_per_second": 440.4,
+      "wall_runtime_s": 1.3934,
+      "steps_per_second_wall": 430.6
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 234.035,
+      "rss_after_run_mb": 229.195,
+      "rss_delta_mb": -4.84,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "ee61cf15f5454ec8bc71abaf618afc1ec89179b7f44f922f197ca736869de85b",
+      "spike_hash": "7f284f62963881a583daf2191cc2d26329ada952f4a284d8851fa9db9fba6235",
+      "n_spikes": 43,
+      "spike_transmissions": 233
+     }
+    },
+    {
+     "name": "a5_1_amp250_dist0p55",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 250.0,
+      "distance": 0.55
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 46,
+        "active_neurons": 5,
+        "recruitment_fraction": 0.416667,
+        "spikes_per_neuron": 3.833333,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         5,
+         11,
+         13,
+         11,
+         6,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": 18.5,
+         "median_ms": 154.25,
+         "p95_ms": 286.25
+        }
+       }
+      },
+      "total_feature_spikes": 46,
+      "total_active_feature_neurons": 5
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 46,
+      "active_neurons": 5,
+      "silent_neurons": 139250,
+      "active_fraction": 3.6e-05,
+      "mean_rate_hz": 0.0011,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 43.3333
+      },
+      "population_rate_hz": 0.0011,
+      "population_rate_peak_hz": 0.0029,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 1368.211437,
+      "max_per_neuron_current_pa": 249.935442,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 1368.211437,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.5328,
+      "steps_per_second": 391.5,
+      "wall_runtime_s": 1.563,
+      "steps_per_second_wall": 383.88
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 230.969,
+      "rss_after_run_mb": 227.727,
+      "rss_delta_mb": -3.242,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "54c7130f62dc08d97c8331ed72ca162b7dacbca01896bcc103d7607f85e0f166",
+      "spike_hash": "b62e9b3957f1d6dded9e09876e42b3be240978f9f471724b0d972654a107e2b4",
+      "n_spikes": 46,
+      "spike_transmissions": 185
+     }
+    },
+    {
+     "name": "a5_1_amp250_dist0p90",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 250.0,
+      "distance": 0.9
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 41,
+        "active_neurons": 4,
+        "recruitment_fraction": 0.333333,
+        "spikes_per_neuron": 3.416667,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         6,
+         11,
+         13,
+         11
+        ],
+        "latency_ms": {
+         "first_ms": 18.5,
+         "median_ms": 153.5,
+         "p95_ms": 276.5
+        }
+       }
+      },
+      "total_feature_spikes": 41,
+      "total_active_feature_neurons": 4
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 41,
+      "active_neurons": 4,
+      "silent_neurons": 139251,
+      "active_fraction": 2.9e-05,
+      "mean_rate_hz": 0.001,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 43.3333
+      },
+      "population_rate_hz": 0.001,
+      "population_rate_peak_hz": 0.0022,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 1059.373493,
+      "max_per_neuron_current_pa": 249.741869,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 1059.373493,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.5877,
+      "steps_per_second": 377.9,
+      "wall_runtime_s": 1.6161,
+      "steps_per_second_wall": 371.26
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 230.594,
+      "rss_after_run_mb": 227.727,
+      "rss_delta_mb": -2.867,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "6d2e41cbf6f25dd0209aa47cb10009861cdd486ae831d9defa319635ec1a0863",
+      "spike_hash": "e953ef541199d3e4471d7750a4b4a411e31face5868341bd812cebb387377aad",
+      "n_spikes": 41,
+      "spike_transmissions": 190
+     }
+    }
+   ]
+  },
+  {
+   "parameters": {
+    "amplitude_pa": 300.0
+   },
+   "analysis": {
+    "distances": [
+     0.15,
+     0.55,
+     0.9
+    ],
+    "spike_counts": [
+     62,
+     63,
+     55
+    ],
+    "spikes_per_neuron": [
+     5.166667,
+     5.25,
+     4.583333
+    ],
+    "recruitment_fractions": [
+     0.416667,
+     0.416667,
+     0.333333
+    ],
+    "max_recruitment_fraction": 0.416667,
+    "saturated": false,
+    "responsive": true,
+    "eligible": true,
+    "ordered": false,
+    "weakly_ordered": false,
+    "direction": "decreasing_with_distance",
+    "spearman_rho": -0.5,
+    "d_prime_proxy": 0.915209,
+    "dynamic_range": 8,
+    "distinct_levels": 3,
+    "score_rank": [
+     0,
+     0.9152086306448588,
+     3,
+     8
+    ]
+   },
+   "conditions": [
+    {
+     "name": "a5_1_amp300_dist0p15",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 300.0,
+      "distance": 0.15
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 62,
+        "active_neurons": 5,
+        "recruitment_fraction": 0.416667,
+        "spikes_per_neuron": 5.166667,
+        "population_vector": [
+         11,
+         16,
+         16,
+         13,
+         6,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": 14.5,
+         "median_ms": 153.0,
+         "p95_ms": 283.425
+        }
+       }
+      },
+      "total_feature_spikes": 62,
+      "total_active_feature_neurons": 5
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 62,
+      "active_neurons": 5,
+      "silent_neurons": 139250,
+      "active_fraction": 3.6e-05,
+      "mean_rate_hz": 0.0015,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 53.3333
+      },
+      "population_rate_hz": 0.0015,
+      "population_rate_peak_hz": 0.0029,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 1386.180442,
+      "max_per_neuron_current_pa": 296.227434,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 1386.180442,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.43,
+      "steps_per_second": 419.6,
+      "wall_runtime_s": 1.455,
+      "steps_per_second_wall": 412.38
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 232.164,
+      "rss_after_run_mb": 229.152,
+      "rss_delta_mb": -3.012,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "504de734ade25e8fc73740ec42ca82da0558ed5c76fa8514d6d28380aab67eb7",
+      "spike_hash": "f7ff2bdadbc4289593a08244b7c88fa2f99975df5488fbee62b5cff6b679e25a",
+      "n_spikes": 62,
+      "spike_transmissions": 324
+     }
+    },
+    {
+     "name": "a5_1_amp300_dist0p55",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 300.0,
+      "distance": 0.55
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 63,
+        "active_neurons": 5,
+        "recruitment_fraction": 0.416667,
+        "spikes_per_neuron": 5.25,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         8,
+         14,
+         17,
+         15,
+         9,
+         0,
+         0,
+         0
+        ],
+        "latency_ms": {
+         "first_ms": 14.0,
+         "median_ms": 154.0,
+         "p95_ms": 278.75
+        }
+       }
+      },
+      "total_feature_spikes": 63,
+      "total_active_feature_neurons": 5
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 63,
+      "active_neurons": 5,
+      "silent_neurons": 139250,
+      "active_fraction": 3.6e-05,
+      "mean_rate_hz": 0.0015,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 56.6667
+      },
+      "population_rate_hz": 0.0015,
+      "population_rate_peak_hz": 0.0029,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 1641.853724,
+      "max_per_neuron_current_pa": 299.922531,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 1641.853724,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.5022,
+      "steps_per_second": 399.4,
+      "wall_runtime_s": 1.5282,
+      "steps_per_second_wall": 392.61
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 232.02,
+      "rss_after_run_mb": 227.672,
+      "rss_delta_mb": -4.348,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "ebe75962ea01354338697b913c6be94c4fef5c177ce35b3bd09e9eab98eab3ce",
+      "spike_hash": "b539f39d5c4aed07e4823261125f5f05943bace9dc3c2e12537ab27a83ae3c06",
+      "n_spikes": 63,
+      "spike_transmissions": 254
+     }
+    },
+    {
+     "name": "a5_1_amp300_dist0p90",
+     "stage": "amplitude",
+     "factors": {
+      "amplitude_pa": 300.0,
+      "distance": 0.9
+     },
+     "calibration": {
+      "by_feature": {
+       "obstacle_distance": {
+        "n_neurons": 12,
+        "spikes": 55,
+        "active_neurons": 4,
+        "recruitment_fraction": 0.333333,
+        "spikes_per_neuron": 4.583333,
+        "population_vector": [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         9,
+         15,
+         17,
+         14
+        ],
+        "latency_ms": {
+         "first_ms": 14.0,
+         "median_ms": 152.5,
+         "p95_ms": 278.6
+        }
+       }
+      },
+      "total_feature_spikes": 55,
+      "total_active_feature_neurons": 4
+     },
+     "activity": {
+      "duration_ms": 300.0,
+      "n_neurons": 139255,
+      "n_spikes": 55,
+      "active_neurons": 4,
+      "silent_neurons": 139251,
+      "active_fraction": 2.9e-05,
+      "mean_rate_hz": 0.0013,
+      "rate_percentiles_hz": {
+       "50": 0.0,
+       "90": 0.0,
+       "95": 0.0,
+       "99": 0.0,
+       "100": 56.6667
+      },
+      "population_rate_hz": 0.0013,
+      "population_rate_peak_hz": 0.0029,
+      "spike_capacity": 5000000
+     },
+     "input": {
+      "max_total_current_pa": 1271.248191,
+      "max_per_neuron_current_pa": 299.690243,
+      "peak_feature_current_pa": {
+       "player_lane": 0.0,
+       "player_speed": 0.0,
+       "jumping": 0.0,
+       "rolling": 0.0,
+       "obstacle_present": 0.0,
+       "obstacle_lane": 0.0,
+       "obstacle_distance": 1271.248191,
+       "obstacle_type": 0.0,
+       "train_present": 0.0,
+       "train_lane": 0.0,
+       "train_distance": 0.0,
+       "coin_present": 0.0,
+       "coin_lane": 0.0,
+       "coin_distance": 0.0
+      },
+      "active_features": [
+       "obstacle_distance"
+      ],
+      "n_active_features": 1
+     },
+     "simulation": {
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "n_steps": 600,
+      "seed": 20261104,
+      "runtime_s": 1.3433,
+      "steps_per_second": 446.6,
+      "wall_runtime_s": 1.3665,
+      "steps_per_second_wall": 439.08
+     },
+     "memory": {
+      "graph_arrays_bytes": 66264361,
+      "neuron_state_bytes": 1671060,
+      "synapse_state_bytes": 33341055,
+      "synapse_arrays_bytes": 31112975,
+      "delay_buffer_bytes": 2228080,
+      "spike_recorder_bytes": 40000000,
+      "retained_arrays_bytes": 141276476,
+      "recorder_capacity": 5000000,
+      "recorder_capacity_bytes": 40000000,
+      "max_out_degree": 6523,
+      "single_hub_propagation_temporary_bytes": 3420396,
+      "worst_case_propagation_temporary_bytes": 48131640,
+      "components_mb": {
+       "graph_arrays": 63.1946,
+       "neuron_state": 1.5936,
+       "synapse_state": 31.7965,
+       "delay_buffers": 2.1249,
+       "spike_recorder": 38.147
+      },
+      "retained_arrays_mb": 134.7317,
+      "single_hub_propagation_temporary_mb": 3.2619,
+      "worst_case_propagation_temporary_mb": 45.9019,
+      "rss_before_run_mb": 226.715,
+      "rss_after_run_mb": 227.645,
+      "rss_delta_mb": 0.93,
+      "sensory_arrays_bytes": 2216
+     },
+     "digest": {
+      "input_hash": "07554a6e6c49ea8a6ac90f926c2aa7961c28240fea7f817d562465cce0279978",
+      "spike_hash": "c6daf927822c64f9b84447b66bd9be9a2ef8501fc9d43f9992298ce324465052",
+      "n_spikes": 55,
+      "spike_transmissions": 255
+     }
+    }
+   ]
+  }
+ ]
+}

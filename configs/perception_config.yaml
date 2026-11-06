@@ -1,0 +1,68 @@
+# Phase 3B.2A visual-perception configuration.
+#
+# This file describes the v15 detector schema and the geometry used to convert
+# a screenshot into the existing Phase 3A GameState. It sets up no model,
+# downloads no weights and integrates nothing into the neural simulator.
+#
+# Class roles below are hypotheses derived from the declared v15 names (the
+# same policy as configs/phase_3b1_curation.yaml). They are not verified game
+# mechanics, and a detector trained on this dataset does not establish them.
+#
+# v15 has no player class and no coin class. Those modalities are declared
+# empty so downstream code records them as unavailable instead of inventing
+# them.
+
+preprocessing:
+  # Fractions of the original screenshot removed from each edge. Zero by
+  # default: screenshots are not assumed to share cropping or resolution.
+  crop_left_fraction: 0.0
+  crop_right_fraction: 0.0
+  crop_top_fraction: 0.0
+  crop_bottom_fraction: 0.0
+  # null keeps the original viewport size. Set [width, height] to resize the
+  # detector input; boxes are mapped back to screen pixels automatically.
+  resize: null
+  mode: RGB
+
+validation:
+  confidence_threshold: 0.25
+  min_box_pixels: 2.0
+  min_area_fraction: 0.0
+  # Out-of-bounds boxes beyond this tolerance are rejected, not clamped.
+  bounds_tolerance_pixels: 0.0
+
+lanes:
+  n_lanes: 3
+  # Normalised viewport x coordinates for left | center | right.
+  boundaries: [0.0, 0.3333333333333333, 0.6666666666666666, 1.0]
+  # A lane is "touched" at this fraction of the box width. If several lanes
+  # are touched, the largest must reach majority_fraction to be assigned;
+  # otherwise the object stays unassigned.
+  min_overlap_fraction: 0.15
+  majority_fraction: 0.75
+
+distance:
+  # Uncalibrated image geometry: 0 near the bottom of the viewport, 1 at the
+  # horizon fraction. Not a metric or in-game distance.
+  mode: bottom_edge_proxy
+  horizon_fraction: 0.15
+
+# v15 class order (IDs are the YOLO class indices in data.yaml).
+classes:
+  - {id: 0, name: boots-powerup, role: powerup, game_state_role: unsupported}
+  - {id: 1, name: boxtrain, role: train, game_state_role: train}
+  - {id: 2, name: jump-barrier, role: obstacle, game_state_role: obstacle_low}
+  - {id: 3, name: jump-electric, role: obstacle, game_state_role: obstacle_low}
+  - {id: 4, name: jump-hedge, role: obstacle, game_state_role: obstacle_low}
+  - {id: 5, name: jump-roll-barrier, role: obstacle, game_state_role: obstacle_low}
+  - {id: 6, name: jump-trash, role: obstacle, game_state_role: obstacle_low}
+  - {id: 7, name: ledge, role: terrain, game_state_role: unsupported}
+  - {id: 8, name: pogstick-powerup, role: powerup, game_state_role: unsupported}
+  - {id: 9, name: ramp, role: terrain, game_state_role: unsupported}
+  - {id: 10, name: roll-barrier, role: obstacle, game_state_role: obstacle_high}
+  - {id: 11, name: train, role: train, game_state_role: train}
+  - {id: 12, name: undercover-barrier, role: obstacle, game_state_role: obstacle_high}
+  - {id: 13, name: wall, role: boundary, game_state_role: unsupported}
+
+player_class_ids: []
+coin_class_ids: []

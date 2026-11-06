@@ -1,0 +1,278 @@
+{
+ "selection": {
+  "amplitude_pa": 200.0,
+  "sigma_fraction": 0.2,
+  "population_size": 4,
+  "mapping_seed": 20261104,
+  "baseline": 0.0,
+  "amplitudes_considered": [
+   200.0
+  ],
+  "sources": {
+   "amplitude": "fallback_no_ordered_amplitude",
+   "tuning": "fallback_no_ordered_tuning",
+   "population": "ordered"
+  },
+  "fallbacks": [
+   "amplitude",
+   "tuning"
+  ]
+ },
+ "criteria": {
+  "checks": {
+   "no_failures": true,
+   "reproducibility_passed": true,
+   "ordered_in_at_least_two_seeds": true,
+   "responsive_high_level": true,
+   "not_fully_saturated": true,
+   "avoids_sub_rheobase": true,
+   "additivity_reported": true,
+   "runtime_reported": true
+  },
+  "additivity_defined": true,
+  "seed_summary": {
+   "seeds": [
+    20261104,
+    20261105,
+    20261106
+   ],
+   "ordered_seeds": [
+    20261104,
+    20261105,
+    20261106
+   ],
+   "n_ordered_seeds": 3,
+   "passed": true,
+   "counts_by_distance": {
+    "0.15": {
+     "values": [
+      2,
+      2,
+      2
+     ],
+     "mean": 2.0,
+     "std": 0.0
+    },
+    "0.55": {
+     "values": [
+      6,
+      6,
+      6
+     ],
+     "mean": 6.0,
+     "std": 0.0
+    },
+    "0.9": {
+     "values": [
+      7,
+      7,
+      7
+     ],
+     "mean": 7.0,
+     "std": 0.0
+    }
+   }
+  },
+  "selected_amplitude_analysis": {
+   "distances": [
+    0.15,
+    0.55,
+    0.9
+   ],
+   "spike_counts": [
+    24,
+    23,
+    23
+   ],
+   "spikes_per_neuron": [
+    2.0,
+    1.916667,
+    1.916667
+   ],
+   "recruitment_fractions": [
+    0.333333,
+    0.25,
+    0.25
+   ],
+   "max_recruitment_fraction": 0.333333,
+   "saturated": false,
+   "responsive": true,
+   "eligible": true,
+   "ordered": false,
+   "weakly_ordered": true,
+   "direction": "decreasing_with_distance",
+   "spearman_rho": -0.866025,
+   "d_prime_proxy": 0.206284,
+   "dynamic_range": 1,
+   "distinct_levels": 2,
+   "score_rank": [
+    0,
+    0.20628424925175867,
+    2,
+    1
+   ]
+  },
+  "selected_population_analysis": {
+   "distances": [
+    0.15,
+    0.55,
+    0.9
+   ],
+   "spike_counts": [
+    2,
+    6,
+    7
+   ],
+   "spikes_per_neuron": [
+    0.5,
+    1.5,
+    1.75
+   ],
+   "recruitment_fractions": [
+    0.25,
+    0.25,
+    0.25
+   ],
+   "max_recruitment_fraction": 0.25,
+   "saturated": false,
+   "responsive": true,
+   "eligible": true,
+   "ordered": true,
+   "weakly_ordered": true,
+   "direction": "increasing_with_distance",
+   "spearman_rho": 1.0,
+   "d_prime_proxy": 2.357023,
+   "dynamic_range": 5,
+   "distinct_levels": 3,
+   "score_rank": [
+    1,
+    2.3570226039551585,
+    3,
+    5
+   ]
+  },
+  "passed": true
+ },
+ "seeds": {
+  "seeds": [
+   20261104,
+   20261105,
+   20261106
+  ],
+  "ordered_seeds": [
+   20261104,
+   20261105,
+   20261106
+  ],
+  "n_ordered_seeds": 3,
+  "passed": true,
+  "counts_by_distance": {
+   "0.15": {
+    "values": [
+     2,
+     2,
+     2
+    ],
+    "mean": 2.0,
+    "std": 0.0
+   },
+   "0.55": {
+    "values": [
+     6,
+     6,
+     6
+    ],
+    "mean": 6.0,
+    "std": 0.0
+   },
+   "0.9": {
+    "values": [
+     7,
+     7,
+     7
+    ],
+    "mean": 7.0,
+    "std": 0.0
+   }
+  }
+ },
+ "additivity": {
+  "baseline_spikes": 0,
+  "obstacle_spikes": 9,
+  "coin_spikes": 23,
+  "combined_spikes": 32,
+  "obstacle_excess": 9,
+  "coin_excess": 23,
+  "combined_excess": 32,
+  "expected_additive": 32,
+  "additivity_index": 0.0,
+  "by_feature": {
+   "obstacle_distance": {
+    "single_spikes": 9,
+    "combined_spikes": 9,
+    "excess_single": 9,
+    "shift": 0
+   },
+   "coin_distance": {
+    "single_spikes": 23,
+    "combined_spikes": 23,
+    "excess_single": 23,
+    "shift": 0
+   }
+  },
+  "interpretation": "index 0 is additive; positive means super-additive; negative means sub-additive. Network recurrence affects this value."
+ },
+ "baseline_activation": {
+  "rows": [
+   {
+    "baseline": 0.0,
+    "spike_counts": [
+     2,
+     6,
+     7
+    ],
+    "ordered": true,
+    "d_prime_proxy": 2.357023,
+    "max_recruitment_fraction": 0.25
+   },
+   {
+    "baseline": 0.1,
+    "spike_counts": [
+     4,
+     6,
+     7
+    ],
+    "ordered": true,
+    "d_prime_proxy": 1.279204,
+    "max_recruitment_fraction": 0.25
+   },
+   {
+    "baseline": 0.2,
+    "spike_counts": [
+     5,
+     6,
+     7
+    ],
+    "ordered": true,
+    "d_prime_proxy": 0.816497,
+    "max_recruitment_fraction": 0.25
+   }
+  ],
+  "ordered_baselines": [
+   0.0,
+   0.1,
+   0.2
+  ]
+ },
+ "performance": {
+  "baseline_runtime_s": 1.1752,
+  "baseline_steps_per_second": 510.53,
+  "sensory_mean_runtime_s": 1.4214,
+  "sensory_mean_steps_per_second": 425.61,
+  "added_runtime_s": 0.2462,
+  "added_runtime_fraction": 0.209479,
+  "retained_arrays_mb": 134.7317,
+  "mean_rss_delta_mb": -2.228,
+  "n_conditions_compared": 84
+ }
+}

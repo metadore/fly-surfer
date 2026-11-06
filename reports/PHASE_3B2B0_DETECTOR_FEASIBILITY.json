@@ -1,0 +1,1128 @@
+{
+  "phase": "3B.2B.0",
+  "title": "Detector Selection and Experiment Design",
+  "generated_at_utc": "2026-11-05T16:58:51+00:00",
+  "status": "audit_and_design_only",
+  "scope": "Detector feasibility, hardware audit, curated-dataset feasibility, evaluation protocol, game-specific metrics and integration design for a future trained detector.",
+  "non_goals": [
+    "No model training",
+    "No weight download",
+    "No package installation or upgrade",
+    "No dataset or annotation modification",
+    "No changes to the perception architecture",
+    "No integration with the neural simulator, sensory scheduler, neural activity or plasticity",
+    "No claim of biological perception"
+  ],
+  "hardware": {
+    "cpu": {
+      "name": "AMD Ryzen 5 5600H with Radeon Graphics",
+      "physical_cores": 6,
+      "logical_cores": 12
+    },
+    "ram": {
+      "total_gib": 15.34,
+      "available_gib_at_audit": 1.02,
+      "note": "Available memory fluctuates with other applications."
+    },
+    "disk": {
+      "drive": "C:",
+      "total_gib": 463.8,
+      "free_gib_at_audit": 2.19
+    },
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+      "total_mib": 4096,
+      "free_mib_at_audit": 3955,
+      "driver_version": "592.27",
+      "cuda_available": false,
+      "torch_version": "2.10.0+cpu",
+      "torch_cuda_version": null,
+      "nvcc_present": false,
+      "onnxruntime_providers": [
+        "AzureExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "missing_information": [
+        "GPU board partner",
+        "GPU clocks and power limit",
+        "GPU memory type and bandwidth",
+        "PCIe generation",
+        "CUDA compute capability"
+      ]
+    },
+    "os": {
+      "platform": "Windows",
+      "version": "10.0.26200",
+      "architecture": "x64"
+    },
+    "feasible_model_sizes": {
+      "note": "Size envelopes, not latency guarantees.",
+      "cpu_inference": {
+        "usable_now": true,
+        "comfortable": "0.9-2.6M params, about 1-1.5 GFLOPs at 416 (NanoDet-Plus-m, YOLOX-Nano)",
+        "marginal": "2.6-5M params, about 6-9 GFLOPs at 640 (YOLO11n, YOLOv8n, YOLOX-Tiny); measure latency",
+        "not_suitable": "20M params / 60 GFLOPs (RT-DETR-R18) for per-frame use"
+      },
+      "gpu_inference": {
+        "usable_now": false,
+        "reason": "No CUDA-enabled framework installed.",
+        "counterfactual_estimate": "With a CUDA stack, 0.9-5M params at 416-640 batch 1 would likely fit in 4 GB; a 20M-parameter RT-DETR inference might fit but is untested."
+      }
+    }
+  },
+  "software": {
+    "python": "3.13.14",
+    "torch": "2.10.0+cpu",
+    "onnxruntime": "1.29.0",
+    "tensorflow": "2.21.0",
+    "pillow": "12.0.0",
+    "numpy": "2.3.4",
+    "pyyaml": "6.0.3",
+    "psutil": "7.1.2",
+    "torchvision_installed": false,
+    "opencv_installed": false,
+    "ultralytics_installed": false
+  },
+  "feasibility_consequences": [
+    {
+      "workload": "CPU inference, NanoDet or YOLOX-Nano at 416",
+      "feasible_now": "likely",
+      "constraint": "Latency unmeasured; RAM sufficient for inference."
+    },
+    {
+      "workload": "CPU inference, YOLO11n or YOLOv8n at 640",
+      "feasible_now": "likely_but_slower",
+      "constraint": "Must be measured; no real-time claim."
+    },
+    {
+      "workload": "CPU training, nano model at 416",
+      "feasible_now": "unverified_likely_blocked",
+      "constraint": "1.02 GiB available RAM is below a safe training budget."
+    },
+    {
+      "workload": "GPU training or inference",
+      "feasible_now": "no",
+      "constraint": "No CUDA-enabled PyTorch or ONNX Runtime; installing one exceeds current free disk."
+    },
+    {
+      "workload": "RT-DETR-R18 training or inference",
+      "feasible_now": "no",
+      "constraint": "20M parameters, 60 GFLOPs, transformer training cost."
+    }
+  ],
+  "detector_candidates": [
+    {
+      "name": "NanoDet-Plus-m",
+      "license": "Apache-2.0",
+      "params_millions": 1.17,
+      "flops_g": [
+        0.9,
+        1.52
+      ],
+      "input_resolutions": [
+        320,
+        416
+      ],
+      "coco_map_50_95": [
+        27.0,
+        30.4
+      ],
+      "vendor_cpu_latency_ms": [
+        5.25,
+        8.32
+      ],
+      "vendor_cpu": "Intel i7-8700",
+      "weight_size": "2.3 MB FP16",
+      "training_labels": [
+        "YOLO Darknet TXT",
+        "Pascal VOC XML",
+        "COCO JSON"
+      ],
+      "native_yolo_format": true,
+      "training_environment_notes": "Requirements pin torch>=1.10,<2.0 and pytorch-lightning>=1.9,<2.0; incompatible with Python 3.13 / torch 2.10 without a separate environment or relaxed, untested pins.",
+      "source": "https://github.com/RangiLyu/nanodet"
+    },
+    {
+      "name": "NanoDet-Plus-m-1.5x",
+      "license": "Apache-2.0",
+      "params_millions": 2.44,
+      "flops_g": [
+        1.75,
+        2.97
+      ],
+      "input_resolutions": [
+        320,
+        416
+      ],
+      "coco_map_50_95": [
+        29.9,
+        34.1
+      ],
+      "vendor_cpu_latency_ms": [
+        7.21,
+        11.5
+      ],
+      "vendor_cpu": "Intel i7-8700",
+      "weight_size": "4.7 MB FP16",
+      "training_labels": [
+        "YOLO Darknet TXT",
+        "Pascal VOC XML",
+        "COCO JSON"
+      ],
+      "native_yolo_format": true,
+      "training_environment_notes": "Same pinned old training stack as NanoDet-Plus-m.",
+      "source": "https://github.com/RangiLyu/nanodet"
+    },
+    {
+      "name": "YOLOX-Nano",
+      "license": "Apache-2.0",
+      "params_millions": 0.91,
+      "flops_g": [
+        1.08
+      ],
+      "input_resolutions": [
+        416
+      ],
+      "coco_map_50_95": [
+        25.8
+      ],
+      "vendor_cpu_latency_ms": null,
+      "third_party_arm_latency_ms": 23.08,
+      "weight_size": "about 1.8 MB FP16",
+      "training_labels": [
+        "COCO JSON"
+      ],
+      "native_yolo_format": false,
+      "training_environment_notes": "requirements allow torch>=1.7 with no upper pin, but need torchvision, OpenCV, pycocotools, thop and onnxsim; Python 3.13 compatibility is unverified.",
+      "source": "https://github.com/Megvii-BaseDetection/YOLOX"
+    },
+    {
+      "name": "YOLOX-Tiny",
+      "license": "Apache-2.0",
+      "params_millions": 5.06,
+      "flops_g": [
+        6.45
+      ],
+      "input_resolutions": [
+        416
+      ],
+      "coco_map_50_95": [
+        32.8
+      ],
+      "vendor_cpu_latency_ms": null,
+      "weight_size": "about 10 MB FP16 (computed)",
+      "training_labels": [
+        "COCO JSON"
+      ],
+      "native_yolo_format": false,
+      "training_environment_notes": "Same stack as YOLOX-Nano; about six times the training compute of Nano.",
+      "source": "https://github.com/Megvii-BaseDetection/YOLOX"
+    },
+    {
+      "name": "YOLO11n",
+      "license": "AGPL-3.0",
+      "params_millions": 2.6,
+      "flops_g": [
+        6.5
+      ],
+      "input_resolutions": [
+        640
+      ],
+      "coco_map_50_95": [
+        39.5
+      ],
+      "vendor_cpu_latency_ms": 56.1,
+      "vendor_gpu_latency_ms_t4": 1.5,
+      "weight_size": "about 5-7 MB checkpoint",
+      "training_labels": [
+        "YOLO TXT"
+      ],
+      "native_yolo_format": true,
+      "training_environment_notes": "Requires ultralytics and torchvision; PyTorch 2.10 / Python 3.13 compatibility likely but unverified in this audit.",
+      "source": "https://docs.ultralytics.com/models/yolo11/"
+    },
+    {
+      "name": "YOLOv8n",
+      "license": "AGPL-3.0",
+      "params_millions": 3.2,
+      "flops_g": [
+        8.7
+      ],
+      "input_resolutions": [
+        640
+      ],
+      "coco_map_50_95": [
+        37.3
+      ],
+      "vendor_cpu_latency_ms": 80.4,
+      "weight_size": "6.53 MB checkpoint",
+      "training_labels": [
+        "YOLO TXT"
+      ],
+      "native_yolo_format": true,
+      "training_environment_notes": "Requires ultralytics and torchvision.",
+      "source": "https://docs.ultralytics.com/models/yolov8/"
+    },
+    {
+      "name": "RT-DETR-R18",
+      "license": "Apache-2.0",
+      "params_millions": 20.0,
+      "flops_g": [
+        60.0
+      ],
+      "input_resolutions": [
+        640
+      ],
+      "coco_map_50_95": [
+        46.5
+      ],
+      "vendor_cpu_latency_ms": null,
+      "weight_size": "about 80 MB FP32 (computed)",
+      "training_labels": [
+        "COCO JSON"
+      ],
+      "native_yolo_format": false,
+      "training_environment_notes": "Paddle/PyTorch stack; not suitable for this CPU-only 4 GB laptop.",
+      "source": "https://github.com/lyuwenyu/RT-DETR"
+    }
+  ],
+  "screened_out": [
+    {
+      "name": "EfficientDet-Lite0",
+      "reason": "TF Object Detection API / TFRecord pipeline, not YOLO-format; large training integration cost."
+    },
+    {
+      "name": "YOLOv7-tiny",
+      "reason": "GPL-3.0."
+    },
+    {
+      "name": "YOLOv5n",
+      "reason": "AGPL-3.0 and older architecture."
+    },
+    {
+      "name": "SSD MobileNet / SSDLite",
+      "reason": "COCO/TF or torchvision training pipeline; no YOLO-format path; weaker small-object behavior."
+    },
+    {
+      "name": "Newer Ultralytics generations",
+      "reason": "Same AGPL-3.0 constraint; not evaluated in detail."
+    }
+  ],
+  "ranked_shortlist": [
+    {
+      "rank": 1,
+      "model": "NanoDet-Plus-m",
+      "input": "416x416",
+      "rationale": "Best size/accuracy/latency balance, Apache-2.0, native YOLO labels, 2.3 MB FP16. Training requires a separate environment or external hardware."
+    },
+    {
+      "rank": 2,
+      "model": "YOLOX-Nano",
+      "input": "416x416",
+      "rationale": "Apache-2.0, smallest training stack with no upper PyTorch pin; lower COCO accuracy and requires COCO JSON conversion."
+    },
+    {
+      "rank": 3,
+      "model": "YOLOX-Tiny",
+      "input": "416x416",
+      "rationale": "Higher accuracy than YOLOX-Nano and still CPU-plausible, at about six times the compute and training cost."
+    },
+    {
+      "rank": 4,
+      "model": "YOLO11n",
+      "input": "640x640",
+      "rationale": "Best tooling and highest accuracy in the shortlist, but AGPL-3.0 and a slower 640 input."
+    },
+    {
+      "rank": 5,
+      "model": "YOLOv8n",
+      "input": "640x640",
+      "rationale": "Mature but AGPL-3.0 and slower than YOLO11n."
+    },
+    {
+      "rank": 6,
+      "model": "RT-DETR-R18",
+      "input": "640x640",
+      "rationale": "Permissive but far too heavy for this CPU-only, 4 GB-laptop environment."
+    }
+  ],
+  "local_training_ranking": [
+    {
+      "rank": 1,
+      "model": "YOLOX-Nano",
+      "note": "No upper PyTorch pin; smoke test required; Python 3.13 compatibility unverified."
+    },
+    {
+      "rank": 2,
+      "model": "YOLOX-Tiny",
+      "note": "Same path, higher cost."
+    },
+    {
+      "rank": 3,
+      "model": "YOLO11n",
+      "note": "Technically easiest, but AGPL-3.0."
+    },
+    {
+      "rank": 4,
+      "model": "YOLOv8n",
+      "note": "Technically easy, AGPL-3.0, slower."
+    },
+    {
+      "rank": 5,
+      "model": "NanoDet-Plus",
+      "note": "Blocked by pinned torch<2.0 and pytorch-lightning<2.0; requires a separate Python 3.10 environment or relaxed pins."
+    }
+  ],
+  "dataset": {
+    "manifest_path": "reports/PHASE_3B1_SPLIT_MANIFEST.json",
+    "manifest_sha256": "ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d",
+    "raw_images": 2328,
+    "raw_labels": 2328,
+    "curated_images": 2316,
+    "curated_boxes": 8666,
+    "excluded_images": 12,
+    "exclusion_reasons": {
+      "probable_gap": 9,
+      "ambiguous_empty_label": 3
+    },
+    "image_size": {
+      "width": 606,
+      "height": 1050,
+      "mode": "RGB",
+      "all_images_same_size": true
+    },
+    "groups": [
+      {
+        "name": "subwayavitomp4",
+        "images": 501,
+        "boxes": 1798,
+        "split": "train"
+      },
+      {
+        "name": "subwayedited2",
+        "images": 392,
+        "boxes": 1580,
+        "split": "train"
+      },
+      {
+        "name": "subwayedtied",
+        "images": 295,
+        "boxes": 1326,
+        "split": "train"
+      },
+      {
+        "name": "datasetfootage",
+        "images": 504,
+        "boxes": 1681,
+        "split": "valid"
+      },
+      {
+        "name": "subwayy1_1",
+        "images": 624,
+        "boxes": 2281,
+        "split": "valid"
+      }
+    ],
+    "fixed_split": {
+      "train_groups": [
+        "subwayavitomp4",
+        "subwayedited2",
+        "subwayedtied"
+      ],
+      "valid_groups": [
+        "datasetfootage",
+        "subwayy1_1"
+      ],
+      "train_images": 1188,
+      "train_boxes": 4704,
+      "valid_images": 1128,
+      "valid_boxes": 3962,
+      "empty_labels_in_included_images": 0,
+      "max_boxes_per_image": 9,
+      "cross_split_groups": [],
+      "cross_split_adjacent_pairs": 0
+    },
+    "per_class": [
+      {
+        "id": 0,
+        "name": "boots-powerup",
+        "game_state_role": "unsupported",
+        "train_boxes": 24,
+        "train_images": 24,
+        "valid_boxes": 0,
+        "valid_images": 0,
+        "median_height_px": 31.7,
+        "p10_height_px": 20.6,
+        "fraction_height_lt_10px_at_416": 0.292
+      },
+      {
+        "id": 1,
+        "name": "boxtrain",
+        "game_state_role": "train",
+        "train_boxes": 625,
+        "train_images": 482,
+        "valid_boxes": 749,
+        "valid_images": 538,
+        "median_height_px": 141.6,
+        "p10_height_px": 49.5,
+        "fraction_height_lt_10px_at_416": 0.001
+      },
+      {
+        "id": 2,
+        "name": "jump-barrier",
+        "game_state_role": "obstacle_low",
+        "train_boxes": 254,
+        "train_images": 221,
+        "valid_boxes": 163,
+        "valid_images": 148,
+        "median_height_px": 41.6,
+        "p10_height_px": 20.6,
+        "fraction_height_lt_10px_at_416": 0.187
+      },
+      {
+        "id": 3,
+        "name": "jump-electric",
+        "game_state_role": "obstacle_low",
+        "train_boxes": 14,
+        "train_images": 14,
+        "valid_boxes": 0,
+        "valid_images": 0,
+        "median_height_px": 43.9,
+        "p10_height_px": 15.5,
+        "fraction_height_lt_10px_at_416": 0.286
+      },
+      {
+        "id": 4,
+        "name": "jump-hedge",
+        "game_state_role": "obstacle_low",
+        "train_boxes": 18,
+        "train_images": 17,
+        "valid_boxes": 26,
+        "valid_images": 21,
+        "median_height_px": 49.9,
+        "p10_height_px": 22.5,
+        "fraction_height_lt_10px_at_416": 0.159
+      },
+      {
+        "id": 5,
+        "name": "jump-roll-barrier",
+        "game_state_role": "obstacle_low",
+        "train_boxes": 407,
+        "train_images": 359,
+        "valid_boxes": 356,
+        "valid_images": 287,
+        "median_height_px": 57.1,
+        "p10_height_px": 27.4,
+        "fraction_height_lt_10px_at_416": 0.073
+      },
+      {
+        "id": 6,
+        "name": "jump-trash",
+        "game_state_role": "obstacle_low",
+        "train_boxes": 34,
+        "train_images": 33,
+        "valid_boxes": 62,
+        "valid_images": 44,
+        "median_height_px": 46.7,
+        "p10_height_px": 21.7,
+        "fraction_height_lt_10px_at_416": 0.177
+      },
+      {
+        "id": 7,
+        "name": "ledge",
+        "game_state_role": "unsupported",
+        "train_boxes": 87,
+        "train_images": 57,
+        "valid_boxes": 48,
+        "valid_images": 32,
+        "median_height_px": 35.7,
+        "p10_height_px": 16.9,
+        "fraction_height_lt_10px_at_416": 0.348
+      },
+      {
+        "id": 8,
+        "name": "pogstick-powerup",
+        "game_state_role": "unsupported",
+        "train_boxes": 53,
+        "train_images": 53,
+        "valid_boxes": 65,
+        "valid_images": 65,
+        "median_height_px": 65.2,
+        "p10_height_px": 33.1,
+        "fraction_height_lt_10px_at_416": 0.008
+      },
+      {
+        "id": 9,
+        "name": "ramp",
+        "game_state_role": "unsupported",
+        "train_boxes": 606,
+        "train_images": 444,
+        "valid_boxes": 617,
+        "valid_images": 501,
+        "median_height_px": 116.2,
+        "p10_height_px": 51.9,
+        "fraction_height_lt_10px_at_416": 0.0
+      },
+      {
+        "id": 10,
+        "name": "roll-barrier",
+        "game_state_role": "obstacle_high",
+        "train_boxes": 147,
+        "train_images": 141,
+        "valid_boxes": 162,
+        "valid_images": 149,
+        "median_height_px": 109.3,
+        "p10_height_px": 49.4,
+        "fraction_height_lt_10px_at_416": 0.003
+      },
+      {
+        "id": 11,
+        "name": "train",
+        "game_state_role": "train",
+        "train_boxes": 1617,
+        "train_images": 883,
+        "valid_boxes": 1174,
+        "valid_images": 839,
+        "median_height_px": 180.0,
+        "p10_height_px": 50.0,
+        "fraction_height_lt_10px_at_416": 0.0
+      },
+      {
+        "id": 12,
+        "name": "undercover-barrier",
+        "game_state_role": "obstacle_high",
+        "train_boxes": 196,
+        "train_images": 84,
+        "valid_boxes": 19,
+        "valid_images": 15,
+        "median_height_px": 79.0,
+        "p10_height_px": 34.8,
+        "fraction_height_lt_10px_at_416": 0.014
+      },
+      {
+        "id": 13,
+        "name": "wall",
+        "game_state_role": "unsupported",
+        "train_boxes": 622,
+        "train_images": 279,
+        "valid_boxes": 521,
+        "valid_images": 247,
+        "median_height_px": 157.6,
+        "p10_height_px": 72.9,
+        "fraction_height_lt_10px_at_416": 0.0
+      }
+    ],
+    "role_aggregates": [
+      {
+        "role": "obstacle_low",
+        "train_boxes": 727,
+        "valid_boxes": 607
+      },
+      {
+        "role": "obstacle_high",
+        "train_boxes": 343,
+        "valid_boxes": 181
+      },
+      {
+        "role": "train",
+        "train_boxes": 2242,
+        "valid_boxes": 1923
+      },
+      {
+        "role": "unsupported",
+        "train_boxes": 1392,
+        "valid_boxes": 1251
+      }
+    ],
+    "classes_unevaluable_in_fixed_valid": [
+      "boots-powerup",
+      "jump-electric"
+    ],
+    "low_support_classes_valid": [
+      {
+        "name": "jump-hedge",
+        "valid_boxes": 26
+      },
+      {
+        "name": "undercover-barrier",
+        "valid_boxes": 19
+      },
+      {
+        "name": "jump-trash",
+        "valid_boxes": 62
+      },
+      {
+        "name": "ledge",
+        "valid_boxes": 48
+      },
+      {
+        "name": "pogstick-powerup",
+        "valid_boxes": 65
+      }
+    ],
+    "logo_folds": [
+      {
+        "fold": 1,
+        "valid_group": "datasetfootage",
+        "valid_images": 504,
+        "valid_boxes": 1681,
+        "valid_missing_classes": [
+          "boots-powerup",
+          "jump-electric",
+          "jump-trash",
+          "ledge",
+          "undercover-barrier"
+        ],
+        "train_missing_classes": [],
+        "untrainable_classes": []
+      },
+      {
+        "fold": 2,
+        "valid_group": "subwayavitomp4",
+        "valid_images": 501,
+        "valid_boxes": 1798,
+        "valid_missing_classes": [
+          "boots-powerup"
+        ],
+        "train_missing_classes": [],
+        "untrainable_classes": []
+      },
+      {
+        "fold": 3,
+        "valid_group": "subwayedited2",
+        "valid_images": 392,
+        "valid_boxes": 1580,
+        "valid_missing_classes": [
+          "boots-powerup"
+        ],
+        "train_missing_classes": [],
+        "untrainable_classes": []
+      },
+      {
+        "fold": 4,
+        "valid_group": "subwayedtied",
+        "valid_images": 295,
+        "valid_boxes": 1326,
+        "valid_missing_classes": [
+          "jump-electric",
+          "jump-hedge",
+          "jump-trash",
+          "ledge",
+          "undercover-barrier"
+        ],
+        "train_missing_classes": [
+          "boots-powerup"
+        ],
+        "untrainable_classes": [
+          "boots-powerup"
+        ]
+      },
+      {
+        "fold": 5,
+        "valid_group": "subwayy1_1",
+        "valid_images": 624,
+        "valid_boxes": 2281,
+        "valid_missing_classes": [
+          "boots-powerup",
+          "jump-electric"
+        ],
+        "train_missing_classes": [],
+        "untrainable_classes": []
+      }
+    ],
+    "temporal_data": {
+      "valid_adjacent_frame_pairs": 833,
+      "train_adjacent_frame_pairs": 881,
+      "object_identity_labels": false,
+      "valid_adjacent_frame_pairs_is_upper_bound": true,
+      "note": "subwayy1_1 contains two recordings with colliding frame IDs, so some f/f+1 filename pairs may cross recordings."
+    },
+    "unavailable_modalities": [
+      "player boxes and state",
+      "coin boxes",
+      "lane labels",
+      "metric distance",
+      "speed",
+      "jump state",
+      "roll state",
+      "temporal object identities"
+    ],
+    "consequence": "The first experiment is 14-class obstacle/train detection on group-held-out footage, not complete game perception."
+  },
+  "evaluation": {
+    "data_rules": [
+      "Resolve every image through the Phase 3B.1 manifest; never use the Roboflow folder split.",
+      "Never train or evaluate on the 12 quarantined images.",
+      "Assert group-atomicity before every run.",
+      "Keep raw images, labels, data.yaml and manifest read-only; write derived annotations outside the raw dataset.",
+      "Record hashes of manifest, data.yaml, derived annotations and weights."
+    ],
+    "protocol": {
+      "primary_run": "Train on fixed train groups, select and report on fixed valid groups.",
+      "variance": "Train one model per LOGO fold and report mean +/- standard deviation across held-out groups.",
+      "test_split": "None; no independent test split exists or can be formed from five recordings.",
+      "tuning": "Hyperparameters and operating point selected on fixed valid only; not on LOGO validation.",
+      "partial_logo": "If fewer than five folds are run, report exactly which folds and do not claim a five-fold variance estimate."
+    },
+    "pre_registered_selection_rule": "Maximise macro recall over obstacle_low, obstacle_high and train at IoU 0.5, subject to micro precision >= 0.80. If unattainable, report best F1 and state that the constraint failed.",
+    "metrics": [
+      "Precision, recall and F1 at IoU 0.5 (micro and macro) with support counts",
+      "AP@0.5 per class and mAP@0.5 over supported classes",
+      "mAP@0.5:0.95 per class and overall",
+      "Per-class AP with support counts; flag classes with fewer than 20 validation boxes",
+      "Confusion matrix at IoU 0.5 including background and false negatives",
+      "False-positive taxonomy: duplicate, localization, background, class confusion",
+      "False-negative taxonomy: no prediction, below threshold, localization, class mismatch",
+      "Precision-recall curves over a confidence sweep",
+      "Detector-only and full-pipeline latency (p50, p95, p99)",
+      "Peak process memory (RSS); VRAM only if a CUDA runtime is active",
+      "Bootstrap 95% confidence intervals over images"
+    ],
+    "threshold_policy": {
+      "pipeline_validation_threshold": 0.25,
+      "evaluation_score_floor": 0.05,
+      "report_at": [
+        0.25,
+        "selected_operating_point"
+      ],
+      "nms": "Class-wise, fixed IoU threshold (0.5 or 0.6) and fixed maximum detections, recorded per model."
+    },
+    "latency_protocol": {
+      "batch_size": 1,
+      "warmup_iterations": 20,
+      "measured_images_minimum": 200,
+      "thread_count": "fixed and recorded",
+      "latency_scopes": [
+        "detector_only",
+        "pipeline_without_image_decode",
+        "end_to_end_with_image_decode"
+      ],
+      "reference_budgets_ms": [
+        16.7,
+        33.3,
+        50.0
+      ],
+      "budget_caveat": "Game frame rate is not verified; reference budgets are not game requirements."
+    },
+    "reproducibility": [
+      "Fixed seeds",
+      "Run-to-run variation reported",
+      "Git commit, manifest hash, config hash, derived-label hash, weight hash",
+      "Package versions, hardware, thread count, exact commands and training duration"
+    ],
+    "claims_not_allowed": [
+      "The detector perceives the game",
+      "The detector generalises beyond the measured groups",
+      "mAP proves lane understanding, distance estimation or temporal continuity",
+      "Detector accuracy demonstrates biological perception or neural coding",
+      "Validation performance is independent test performance"
+    ]
+  },
+  "game_metrics": [
+    {
+      "metric": "obstacle_recall",
+      "measurable_now": true,
+      "definition": "Micro recall over GT boxes with configured game_state_role obstacle_low or obstacle_high.",
+      "caveat": "Roles are name-derived hypotheses."
+    },
+    {
+      "metric": "train_recall",
+      "measurable_now": true,
+      "definition": "Micro recall over boxtrain and train.",
+      "caveat": null
+    },
+    {
+      "metric": "per_lane_recall_precision",
+      "measurable_now": true,
+      "definition": "Assign GT and predicted boxes with the same LaneAssigner; report per lane.",
+      "caveat": "Measures detection conditional on geometric lane, not true lane semantics."
+    },
+    {
+      "metric": "lane_assignment_agreement",
+      "measurable_now": true,
+      "definition": "Fraction of matched detections whose assigned lane equals the GT box's assigned lane.",
+      "caveat": "Same geometry on both sides; not independent lane truth."
+    },
+    {
+      "metric": "lane_assignment_accuracy",
+      "measurable_now": false,
+      "definition": "Agreement with human-verified lane labels.",
+      "caveat": "Requires new manual annotation."
+    },
+    {
+      "metric": "distance_proxy_error",
+      "measurable_now": true,
+      "definition": "MAE and bias between predicted and GT bottom_edge_distance for matched boxes.",
+      "caveat": "Measures box-bottom accuracy, not game or metric distance."
+    },
+    {
+      "metric": "temporal_stability",
+      "measurable_now": "partial",
+      "definition": "Detection persistence, class-flip rate, lane-flip rate and box jitter across adjacent frames.",
+      "caveat": "833 candidate adjacent-frame pairs in valid is an upper bound: subwayy1_1 collides frame IDs across two recordings. No object-identity ground truth; requires new association code."
+    },
+    {
+      "metric": "near_obstacle_false_negatives",
+      "measurable_now": true,
+      "definition": "FN rate for obstacle_low/obstacle_high boxes with distance proxy <= 0.4.",
+      "caveat": "Dangerous is a design threshold, not a verified game rule; report sensitivity at 0.3/0.4/0.5."
+    },
+    {
+      "metric": "end_to_end_latency",
+      "measurable_now": true,
+      "definition": "Pipeline time per frame, p50/p95/p99.",
+      "caveat": "No verified game frame-rate requirement."
+    },
+    {
+      "metric": "downstream_gamestate_agreement",
+      "measurable_now": true,
+      "definition": "Agreement between predicted and GT-derived GameState (presence, type, lane, distance bucket, nearest-object selection).",
+      "caveat": "GT-derived GameState is a deterministic label conversion, not true game state."
+    },
+    {
+      "metric": "player_detection",
+      "measurable_now": false,
+      "definition": null,
+      "caveat": "No player labels."
+    },
+    {
+      "metric": "coin_detection",
+      "measurable_now": false,
+      "definition": null,
+      "caveat": "No coin labels."
+    },
+    {
+      "metric": "speed_jump_roll",
+      "measurable_now": false,
+      "definition": null,
+      "caveat": "Not observable from one frame."
+    },
+    {
+      "metric": "biological_perception",
+      "measurable_now": false,
+      "definition": null,
+      "caveat": "Outside the scope of this project phase."
+    }
+  ],
+  "integration": {
+    "contract": "Detector.detect(frame: ImageFrame) returns records in processed-image pixels; describe() returns JSON-safe metadata with test_only=false.",
+    "algorithm_steps": [
+      "Read frame.pixels as RGB PIL and convert to NumPy.",
+      "Letterbox to model input, preserving aspect ratio and recording scale and padding.",
+      "Convert color order and normalization to match training exactly.",
+      "Run ONNX Runtime CPU (preferred) or PyTorch backend.",
+      "Decode boxes, scores and class IDs.",
+      "Apply class-wise NMS with a fixed IoU threshold.",
+      "Undo letterbox to processed-image pixels.",
+      "Return RawDetection values with integer class IDs and float coordinates.",
+      "Do not clamp or drop malformed boxes; let DetectionValidator reject them."
+    ],
+    "preprocessing": {
+      "perception_config_crop": "none",
+      "perception_config_resize": "none",
+      "detector_letterbox": "internal to the detector",
+      "color_order_risk": "Perception supplies RGB; many OpenCV training pipelines use BGR. Choose one convention, record it and add a parity test.",
+      "must_record": [
+        "pad value",
+        "interpolation",
+        "mean/std",
+        "input size",
+        "stride alignment",
+        "uint8 vs float32"
+      ]
+    },
+    "class_ids": {
+      "ids": "0-13 in configs/perception_config.yaml order",
+      "load_time_check": "Class count, order and names must match ClassSchema; fail fast on mismatch; never remap."
+    },
+    "confidence_nms": {
+      "evaluation_floor": 0.05,
+      "pipeline_threshold": 0.25,
+      "nms": "class-wise, fixed IoU and max detections",
+      "test_time_augmentation": "not used in the first experiment"
+    },
+    "bbox_conversion": {
+      "format": "x1, y1, x2, y2 in model-input pixels",
+      "inverse_letterbox": "x = (x_model - pad_x) / scale",
+      "clipping": "Do not clip to content; out-of-bounds boxes must be rejected by the validator."
+    },
+    "device": {
+      "default": "CPUExecutionProvider",
+      "cuda": "Fail clearly if requested and unavailable; never silently fall back while reporting GPU use.",
+      "threads": "explicit and recorded",
+      "batch_size": 1
+    },
+    "model_loading": {
+      "path": "explicit local path",
+      "auto_download": false,
+      "sha256": "verify before loading",
+      "weights_in_git": false,
+      "metadata_sidecar": [
+        "code license",
+        "weight license/source",
+        "export command"
+      ]
+    },
+    "errors": [
+      "Weight file missing -> load error",
+      "Weight hash mismatch -> provenance error",
+      "Class list mismatch -> schema error",
+      "Unsupported input -> input error",
+      "Backend failure -> inference error",
+      "Structurally invalid output -> decode error",
+      "No detections -> empty list, a legitimate result"
+    ],
+    "timing": "perf_counter around detect; synchronize CUDA if used; model load time reported separately.",
+    "interface_additions_recommended_not_implemented": [
+      "Optional warmup()",
+      "Structured describe() metadata for weight hash, license, runtime, provider, input size and color order",
+      "Shared detector exception base class",
+      "Optional detector section in perception_config.yaml"
+    ],
+    "scientific_boundary": [
+      "Detector is a measurement instrument, not a model of the fly brain.",
+      "No import of brain_simulator, sensory scheduler or neural mapping.",
+      "No connection to neural activity or reward-modulated plasticity.",
+      "Fixed-connectome baseline and Phase 3A calibration remain untouched."
+    ]
+  },
+  "risks": [
+    "No independent test split; all scores are group-held-out validation.",
+    "Training environment is memory- and disk-constrained; NanoDet's pinned PyTorch/Lightning versions conflict with Python 3.13 / torch 2.10.",
+    "GPU is present but unusable for ML without a CUDA stack that exceeds free disk.",
+    "Small objects: p10 heights of several obstacle classes are 15-27 px, becoming 6-11 px at 416 square.",
+    "Severe class imbalance: 1,617 train boxes versus 14 jump-electric and 24 boots-powerup train boxes.",
+    "Zero fixed-valid support for boots-powerup and jump-electric.",
+    "Class roles are name-derived hypotheses, not verified mechanics.",
+    "No player, coin, lane, distance, speed, jump or roll labels.",
+    "subwayy1_1 contains two recordings with colliding frame IDs and 296 duplicate-ID pairs; effective sample size is smaller than the image count.",
+    "Fixed validation uses recordings absent from training; scores are cross-recording, not random-sample estimates.",
+    "RGB/BGR, letterbox or normalization mismatch can silently reduce accuracy.",
+    "ONNX export drift can change decode/NMS behavior; parity testing is mandatory.",
+    "Ultralytics models are AGPL-3.0 and require a licensing decision.",
+    "mAP does not measure lane behavior, distance, temporal stability or latency.",
+    "Single-frame detections can flicker; temporal association is not implemented.",
+    "Vendor CPU latency numbers are not directly comparable to this machine."
+  ],
+  "resource_estimates": {
+    "model_artifact": {
+      "nanodet_plus_m": "2.3 MB FP16, about 4.7 MB FP32",
+      "yolox_nano": "about 1.8 MB FP16",
+      "onnx_export": "same order as the weight file"
+    },
+    "derived_annotations_mb": "2-10",
+    "logs_and_checkpoints_mb": "20-100",
+    "new_python_310_environment_gb": "1.5-2.5",
+    "cuda_pytorch_stack_gb": "2.5-3+",
+    "inference_rss_mb": "300-800",
+    "training_rss_gb": "1.5-4",
+    "cpu_latency_ms": {
+      "nanodet_plus_m_416": "10-25",
+      "yolox_nano_416": "15-35",
+      "yolo11n_640": "60-120"
+    },
+    "training_time": {
+      "nano_model_100_epochs_cpu_hours": "2-10",
+      "five_logo_folds_hours": "10-50"
+    },
+    "notes": [
+      "All values are planning estimates, not measurements.",
+      "A one-epoch or fixed-batch smoke test must replace them before a full run.",
+      "The 1.02 GiB available RAM at audit time is likely insufficient for training."
+    ]
+  },
+  "recommendation": {
+    "decision": "modify",
+    "summary": "The detector choice and evaluation protocol are ready, but Phase 3B.2B.1 must not start until the environment, dependency and weight-download preconditions are resolved.",
+    "preferred_model": "NanoDet-Plus-m at 416x416, Apache-2.0, starting from COCO pretrained weights after license verification and download approval.",
+    "fallback_if_local_training_required": "YOLOX-Nano at 416x416, subject to a one-epoch smoke test; YOLOX-Tiny for higher accuracy.",
+    "not_recommended_now": [
+      "YOLO11n/YOLOv8n unless AGPL-3.0 is accepted",
+      "RT-DETR-R18 on this hardware"
+    ],
+    "runtime": "ONNX Runtime CPU, batch 1, explicit local weights, no auto-download.",
+    "scope": "14-class v15 detection with obstacle/train emphasis; not complete game perception.",
+    "preconditions": [
+      "Free at least about 4 GB of RAM and 5 GB of disk, or plan external training.",
+      "Choose a training environment: separate Python 3.10 for NanoDet, a smoke-tested YOLOX path, or external GPU training with ONNX weights brought back.",
+      "Approve every new package and version before installation; do not upgrade existing PyTorch, NumPy, Pillow or ONNX Runtime without a separate decision.",
+      "Verify checkpoint license and source, record SHA-256, and download only with approval; do not commit weights.",
+      "Approve the derived-annotation directory and keep raw dataset, data.yaml and manifest read-only.",
+      "Freeze the fixed-split/LOGO protocol and the pre-registered operating-point rule before inspecting results.",
+      "Pass a one-epoch or fixed-batch smoke test with measured time, peak RSS and disk use before full training."
+    ],
+    "stop_condition": "If the preconditions cannot be met, stop before training and retain the design. Do not reduce the scientific protocol silently to fit the machine.",
+    "must_not_happen": [
+      "Train on the Roboflow folder split",
+      "Describe validation as test performance",
+      "Report COCO mAP as v15 accuracy",
+      "Infer unlabelled player, coin, lane, speed or distance ground truth",
+      "Connect the detector to the simulator, scheduler or plasticity code",
+      "Claim biological perception from detection accuracy",
+      "Begin Phase 3B.2B.1 without explicit approval"
+    ]
+  },
+  "verification": {
+    "files_created": [
+      "reports/PHASE_3B2B0_DETECTOR_FEASIBILITY.md",
+      "reports/PHASE_3B2B0_DETECTOR_FEASIBILITY.json"
+    ],
+    "files_modified": [],
+    "dependencies_installed_or_upgraded": [],
+    "model_trained": false,
+    "weights_downloaded": false,
+    "weights_found_in_workspace": [],
+    "protected_hashes": {
+      "README.md": "6277ffbb3db8e0b1be9bb320d44ff0f894a07ff04d6ea698efd03fe5a9ef9b10",
+      "v15_data_yaml": "f6e51bf674b4dfbbb51866a0d56ad85c7cb55b51032cf0ec95a8d9aa2b7be423",
+      "split_manifest": "ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d",
+      "connectome_npz": "3f568f24e3d77134a8d2d38f82856b8d685c310a1b0cfe941a1c95eeab5f33d8"
+    },
+    "raw_dataset": {
+      "images": 2328,
+      "labels": 2328,
+      "original_split_counts": {
+        "train": 1825,
+        "valid": 503
+      },
+      "modified": false
+    },
+    "tests": {
+      "command": "python -m pytest -q",
+      "result": "158 passed in 12.53s"
+    },
+    "git": {
+      "staged": false,
+      "committed": false,
+      "new_untracked_reports": [
+        "reports/PHASE_3B2B0_DETECTOR_FEASIBILITY.md",
+        "reports/PHASE_3B2B0_DETECTOR_FEASIBILITY.json"
+      ],
+      "pre_existing_tracked_modifications": [
+        ".gitignore",
+        "brain/brain_simulator.py",
+        "sensory/game_state.py"
+      ],
+      "status_collapsed_entry": "?? reports/ (the whole reports directory is untracked; it contains the two new files)"
+    },
+    "weights_search_note": "Bounded maxdepth-4 workspace search; no model directories found."
+  },
+  "sources": [
+    "https://github.com/RangiLyu/nanodet",
+    "https://github.com/RangiLyu/nanodet/blob/main/LICENSE",
+    "https://github.com/Megvii-BaseDetection/YOLOX",
+    "https://docs.ultralytics.com/models/yolo11/",
+    "https://docs.ultralytics.com/models/yolov8/",
+    "https://github.com/lyuwenyu/RT-DETR",
+    "https://github.com/lyuwenyu/RT-DETR/blob/main/LICENSE"
+  ],
+  "detector_weight_availability": {
+    "downloaded": false,
+    "nanodet": "Repository release links and linked Google Drive entries",
+    "yolox": "GitHub releases",
+    "ultralytics": "Official Ultralytics assets",
+    "rtdetr": "Official repository and Hugging Face",
+    "storage_recommendation": "Local artifact directory outside version control; SHA-256 and license sidecar; never commit weights.",
+    "size_range_mb": "2-80"
+  }
+}

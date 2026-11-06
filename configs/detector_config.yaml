@@ -1,0 +1,48 @@
+# Phase 3B detector backend configuration.
+#
+# No weights are stored in this repository and nothing is downloaded
+# automatically. `model_path` is null until an approved, licence-verified
+# checkpoint is placed outside Git. Constructing the detector without it fails
+# with an explicit error; the rest of the perception layer still runs on
+# scripted detections.
+#
+# The output layout is model-family specific. `yolo_raw` expects one tensor of
+# anchors as [cx, cy, w, h, objectness?, class scores...]. `boxes_scores`
+# expects an already-decoded [x1, y1, x2, y2, score, class_id] tensor.
+# `nanodet_plus` expects per-stride class/regression tensors and is unit
+# tested against synthetic tensors, not yet against real NanoDet weights.
+
+detector:
+  backend: onnx
+  model_path: null
+  # SHA-256 of the local artifact, verified at load time when set.
+  model_sha256: null
+  input_size: [416, 416]
+  resize_mode: letterbox
+  pad_value: 114
+  color_order: rgb
+
+  output:
+    layout: yolo_raw
+    has_objectness: true
+    # Coordinates produced by the model: input pixels or fractions of input.
+    box_format: pixels
+    class_activation: sigmoid
+    nanodet:
+      strides: [8, 16, 32]
+      reg_max: 7
+      num_priors: 1
+      output_order: cls_reg
+
+  decoding:
+    confidence_threshold: 0.25
+    nms_iou_threshold: 0.45
+    max_detections: 300
+    # Model class index -> v15 class id (see perception_config.yaml).
+    # Empty means identity. Use -1 to ignore an output class.
+    class_id_map: []
+
+  runtime:
+    # CPU only in this environment; CUDA is not available to torch or ORT.
+    providers: [CPUExecutionProvider]
+    intra_op_threads: 1

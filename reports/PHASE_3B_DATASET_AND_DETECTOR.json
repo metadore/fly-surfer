@@ -1,0 +1,105 @@
+{
+  "phase": "3B",
+  "report": "dataset_and_detector",
+  "status": {
+    "dataset_contract": "pass",
+    "dataset_validation": "pass",
+    "detector_selection": "pass",
+    "trained_detector_acceptance": "blocked"
+  },
+  "generated_at_utc": "2026-11-06",
+  "dataset": {
+    "source": "datasets/external/subway surfers/roboflow_v15_yolov8/subway surfers object dataset.v15-added.yolov8",
+    "manifest": "reports/PHASE_3B1_SPLIT_MANIFEST.json",
+    "manifest_sha256": "ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d",
+    "raw_images": 2328,
+    "raw_label_files": 2328,
+    "quarantined_empty_labels": 12,
+    "curated_images": 2316,
+    "curated_boxes": 8666,
+    "classes": 14,
+    "image_width": 606,
+    "image_height": 1050,
+    "groups": 5,
+    "cross_split_groups": 0,
+    "fixed_split": {
+      "train": {"images": 1188, "boxes": 4704},
+      "valid": {"images": 1128, "boxes": 3962}
+    },
+    "logo_folds": 5,
+    "unevaluable_classes": ["boots-powerup", "jump-electric"],
+    "low_support_valid_classes": {
+      "undercover-barrier": 19,
+      "jump-hedge": 26,
+      "ledge": 48,
+      "jump-trash": 62,
+      "pogstick-powerup": 65
+    },
+    "missing_label_types": [
+      "player",
+      "coin",
+      "lane",
+      "metric_distance",
+      "speed",
+      "jump",
+      "roll",
+      "temporal_identity"
+    ]
+  },
+  "detector_selection": {
+    "preferred": {
+      "model": "NanoDet-Plus-m",
+      "input": "416x416",
+      "license": "Apache-2.0",
+      "parameters_m": 1.17,
+      "status": "training blocked by environment"
+    },
+    "fallback": {
+      "model": "YOLOX-Nano",
+      "input": "416x416",
+      "license": "Apache-2.0",
+      "status": "requires dependency approval and one-epoch smoke test"
+    },
+    "rejected": {
+      "YOLO11n": "AGPL-3.0 licensing decision not taken",
+      "YOLOv8n": "AGPL-3.0 licensing decision not taken",
+      "RT-DETR-R18": "20M parameters, 60 GFLOPs, not CPU-only 4 GB candidate"
+    },
+    "runtime_target": "ONNX Runtime 1.29.0 CPUExecutionProvider, batch 1, local weights only"
+  },
+  "environment": {
+    "python": "3.13.14",
+    "torch": "2.10.0+cpu",
+    "torch_cuda_available": false,
+    "onnxruntime": "1.29.0",
+    "available_ram_gib": 1.02,
+    "free_disk_gib": 2.19,
+    "torchvision_installed": false,
+    "opencv_installed": false,
+    "ultralytics_installed": false,
+    "packages_installed_or_upgraded": false
+  },
+  "blockers": [
+    "no weight license approved and no weight downloaded",
+    "new detector dependencies not approved",
+    "NanoDet training stack conflicts with Python 3.13 / PyTorch 2.10",
+    "available RAM and free disk below a safe training budget",
+    "no training run approved"
+  ],
+  "not_done": [
+    "no training command was run",
+    "no weight file was downloaded",
+    "no package was installed, upgraded or removed",
+    "no trained-detector metric is reported"
+  ],
+  "placeholder": {
+    "name": "MockDetector",
+    "purpose": "plumbing tests only; ignores pixels",
+    "is_accuracy_baseline": false
+  },
+  "evidence": {
+    "dataset_validation": "experiments/phase_3b/results/dataset_validation.json",
+    "detector_evaluation": "experiments/phase_3b/results/detector_evaluation.json",
+    "feasibility": "reports/PHASE_3B2B0_DETECTOR_FEASIBILITY.md"
+  }
+}

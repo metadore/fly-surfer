@@ -1,0 +1,56 @@
+# Phase 3B.1 — dataset curation and grouped split policy (v15).
+# Read by experiments/phase_3b/curate_dataset.py. No dataset file is modified.
+
+dataset:
+  root: datasets/external/subway surfers/roboflow_v15_yolov8
+
+# Atomic source groups. A group is the smallest unit that may not appear on
+# both sides of a split. Prefixes come from the filename segment before
+# "_mp4-". subwayy1_1 is one atomic group even though it contains two
+# recordings that collide on frame IDs (see the curation report).
+groups:
+  datasetfootage: [datasetfootage]
+  subwayavitomp4: [subwayavitomp4]
+  subwayedited2: [subwayedited2]
+  subwayedtied: [subwayedtied]
+  subwayy1_1: [subwayy1_1]
+
+# Development split for Phase 3B.2 prototyping. Chosen so that training
+# contains all 14 classes (boots-powerup occurs only in subwayedtied) and
+# related edited variants stay on the same side.
+fixed_split:
+  train: [subwayavitomp4, subwayedited2, subwayedtied]
+  valid: [datasetfootage, subwayy1_1]
+
+empty_label_policy:
+  # Conservative: every empty label is quarantined until re-annotated.
+  # probable_gap = >=2 consecutive empty frames bracketed by non-empty
+  # neighbours; isolated_plausible = single empty frame.
+  exclude: all
+  probable_gap_max_bracket_gap: 3
+
+# Name-derived roles. These are hypotheses for the future GameState mapping,
+# not verified game mechanics. All 14 classes remain detection targets.
+class_roles:
+  train: collision_large
+  boxtrain: collision_large
+  jump-barrier: collision_low
+  jump-electric: collision_low
+  jump-hedge: collision_low
+  jump-roll-barrier: collision_low
+  jump-trash: collision_low
+  roll-barrier: collision_overhead
+  undercover-barrier: collision_overhead
+  ramp: terrain
+  ledge: terrain
+  wall: boundary
+  boots-powerup: powerup
+  pogstick-powerup: powerup
+
+# Modalities the dataset does not provide. Listed so downstream phases do not
+# assume they exist.
+missing_modalities:
+  player: unlabelled in v15
+  coin: no class and no boxes in v15
+  lane: no lane or rail annotations
+  distance: no metric distance labels; box size is an uncalibrated proxy

@@ -1,0 +1,412 @@
+{
+ "phase": "3A",
+ "generated_at_utc": "2026-11-04T12:55:35+00:00",
+ "condition": "single_coin_distance_0p15",
+ "protocol": "single",
+ "description": "coin at distance 0.15 in the player lane",
+ "timeline": [
+  {
+   "start_ms": 0.0,
+   "state": {
+    "player_lane": 1,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 0.0,
+    "obstacle_lane": null,
+    "obstacle_distance": null,
+    "obstacle_type": null,
+    "train_present": 0.0,
+    "train_lane": null,
+    "train_distance": null,
+    "coin_present": 1.0,
+    "coin_lane": 1,
+    "coin_distance": 0.15
+   }
+  }
+ ],
+ "active_features": [
+  "coin_present",
+  "coin_lane",
+  "coin_distance"
+ ],
+ "metrics": {
+  "condition": "single_coin_distance_0p15",
+  "protocol": "single",
+  "description": "coin at distance 0.15 in the player lane",
+  "duration_ms": 300.0,
+  "dt_ms": 0.5,
+  "n_steps": 600,
+  "seed": 20261104,
+  "active_features": [
+   "coin_present",
+   "coin_lane",
+   "coin_distance"
+  ],
+  "n_stimulated_neurons": 30,
+  "activity": {
+   "duration_ms": 300.0,
+   "n_neurons": 139255,
+   "n_spikes": 114,
+   "active_neurons": 14,
+   "silent_neurons": 139241,
+   "active_fraction": 0.000101,
+   "mean_rate_hz": 0.0027,
+   "rate_percentiles_hz": {
+    "50": 0.0,
+    "90": 0.0,
+    "95": 0.0,
+    "99": 0.0,
+    "100": 30.0
+   },
+   "population_rate_hz": 0.0027,
+   "population_rate_peak_hz": 0.0086,
+   "spike_capacity": 5000000
+  },
+  "activity_by_stimulation": {
+   "stimulated_neurons": 30,
+   "stimulated_active_neurons": 14,
+   "stimulated_spikes": 114,
+   "non_stimulated_active_neurons": 0,
+   "non_stimulated_spikes": 0,
+   "non_stimulated_spike_fraction": 0.0
+  },
+  "stimulated_spikes_by_feature": {
+   "coin_present": 54,
+   "coin_lane": 36,
+   "coin_distance": 24
+  },
+  "synapses": {
+   "excitatory_edges": 2955795,
+   "inhibitory_edges": 776665,
+   "excitatory_neurons": 123238,
+   "inhibitory_neurons": 16017,
+   "silent_neurons": 0,
+   "effective_delay_ms": 1.0,
+   "spike_transmissions": 585,
+   "transmissions_per_spike": 5.132
+  },
+  "diagnostics": {
+   "finite_state": true,
+   "min_membrane_mv": -70.8562,
+   "max_membrane_mv": -50.0049,
+   "max_abs_membrane_mv": 70.8562,
+   "max_abs_total_current_pa": 292.4259
+  },
+  "simulation": {
+   "duration_ms": 300.0,
+   "dt_ms": 0.5,
+   "n_steps": 600,
+   "seed": 20261104,
+   "runtime_s": 3.1126,
+   "steps_per_second": 192.8,
+   "wall_runtime_s": 3.1526,
+   "steps_per_second_wall": 190.32
+  },
+  "memory": {
+   "graph_arrays_bytes": 66264361,
+   "neuron_state_bytes": 1671060,
+   "synapse_state_bytes": 33341055,
+   "synapse_arrays_bytes": 31112975,
+   "delay_buffer_bytes": 2228080,
+   "spike_recorder_bytes": 40000000,
+   "retained_arrays_bytes": 141276476,
+   "recorder_capacity": 5000000,
+   "recorder_capacity_bytes": 40000000,
+   "max_out_degree": 6523,
+   "single_hub_propagation_temporary_bytes": 3420396,
+   "worst_case_propagation_temporary_bytes": 48131640,
+   "components_mb": {
+    "graph_arrays": 63.1946,
+    "neuron_state": 1.5936,
+    "synapse_state": 31.7965,
+    "delay_buffers": 2.1249,
+    "spike_recorder": 38.147
+   },
+   "retained_arrays_mb": 134.7317,
+   "single_hub_propagation_temporary_mb": 3.2619,
+   "worst_case_propagation_temporary_mb": 45.9019,
+   "rss_before_run_mb": 463.277,
+   "rss_after_run_mb": 459.773,
+   "rss_delta_mb": -3.504,
+   "sensory_arrays_bytes": 2216
+  },
+  "input": {
+   "max_total_current_pa": 2924.120294,
+   "max_per_neuron_current_pa": 200.0,
+   "peak_feature_current_pa": {
+    "player_lane": 0.0,
+    "player_speed": 0.0,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 0.0,
+    "obstacle_lane": 0.0,
+    "obstacle_distance": 0.0,
+    "obstacle_type": 0.0,
+    "train_present": 0.0,
+    "train_lane": 0.0,
+    "train_distance": 0.0,
+    "coin_present": 1200.0,
+    "coin_lane": 800.0,
+    "coin_distance": 924.120294
+   },
+   "active_features": [
+    "coin_present",
+    "coin_lane",
+    "coin_distance"
+   ],
+   "n_active_features": 3
+  }
+ },
+ "schedule": {
+  "kind": "sensory_population_schedule",
+  "dt_ms": 0.5,
+  "duration_ms": 300.0,
+  "transition_ms": 50.0,
+  "onset_ms": 0.0,
+  "offset_ms": 300.0,
+  "n_features": 14,
+  "active_features": [
+   "coin_present",
+   "coin_lane",
+   "coin_distance"
+  ],
+  "n_stimulated_neurons": 30,
+  "features": {
+   "player_lane": {
+    "n_neurons": 12,
+    "current_pa": 200.0,
+    "root_ids": [
+     720575940627897886,
+     720575940628801512,
+     720575940618842196,
+     720575940622967902,
+     720575940632292748,
+     720575940607293570,
+     720575940614913698,
+     720575940620491028,
+     720575940622190452,
+     720575940635653786,
+     720575940608031154,
+     720575940627860105
+    ]
+   },
+   "player_speed": {
+    "n_neurons": 12,
+    "current_pa": 200.0,
+    "root_ids": [
+     720575940613703282,
+     720575940630280062,
+     720575940631276764,
+     720575940636748911,
+     720575940628409231,
+     720575940624178323,
+     720575940622132656,
+     720575940626065447,
+     720575940619896374,
+     720575940661106305,
+     720575940623721496,
+     720575940625736435
+    ]
+   },
+   "jumping": {
+    "n_neurons": 6,
+    "current_pa": 200.0,
+    "root_ids": [
+     720575940603639724,
+     720575940627314088,
+     720575940640231131,
+     720575940615540841,
+     720575940622234211,
+     720575940618590262
+    ]
+   },
+   "rolling": {
+    "n_neurons": 6,
+    "current_pa": 200.0,
+    "root_ids": [
+     720575940625624464,
+     720575940631367776,
+     720575940633243034,
+     720575940620822893,
+     720575940617434086,
+     720575940633621017
+    ]
+   },
+   "obstacle_present": {
+    "n_neurons": 6,
+    "current_pa": 200.0,
+    "root_ids": [
+     720575940631368441,
+     720575940612702426,
+     720575940626685232,
+     720575940633147167,
+     720575940623923336,
+     720575940638844223
+    ]
+   },
+   "obstacle_lane": {
+    "n_neurons": 12,
+    "current_pa": 200.0,
+    "root_ids": [
+     720575940630837292,
+     720575940631439734,
+     720575940627378178,
+     720575940645614871,
+     720575940610377284,
+     720575940625023467,
+     720575940630229442,
+     720575940613735139,
+     720575940635065184,
+     720575940612831857,
+     720575940627970058,
+     720575940632050986
+    ]
+   },
+   "obstacle_distance": {
+    "n_neurons": 12,
+    "current_pa": 200.0,
+    "root_ids": [
+     720575940628230223,
+     720575940632256015,
+     720575940624132095,
+     720575940632208971,
+     720575940631392220,
+     720575940621975206,
+     720575940628302609,
+     720575940629017606,
+     720575940609386251,
+     720575940628443947,
+     720575940629022961,
+     720575940638273758
+    ]
+   },
+   "obstacle_type": {
+    "n_neurons": 12,
+    "current_pa": 200.0,
+    "root_ids": [
+     720575940621932454,
+     720575940631420665,
+     720575940625943310,
+     720575940638002142,
+     720575940627963146,
+     720575940606462566,
+     720575940631077180,
+     720575940629741827,
+     720575940609692683,
+     720575940617419350,
+     720575940631594491,
+     720575940612972211
+    ]
+   },
+   "train_present": {
+    "n_neurons": 6,
+    "current_pa": 200.0,
+    "root_ids": [
+     720575940628819953,
+     720575940618295842,
+     720575940613169817,
+     720575940624027160,
+     720575940627120190,
+     720575940622433524
+    ]
+   },
+   "train_lane": {
+    "n_neurons": 12,
+    "current_pa": 200.0,
+    "root_ids": [
+     720575940621571974,
+     720575940631702347,
+     720575940623313110,
+     720575940631507052,
+     720575940639391165,
+     720575940620871339,
+     720575940615893058,
+     720575940628540359,
+     720575940633149215,
+     720575940611743608,
+     720575940638181086,
+     720575940622825221
+    ]
+   },
+   "train_distance": {
+    "n_neurons": 12,
+    "current_pa": 200.0,
+    "root_ids": [
+     720575940619336512,
+     720575940622940492,
+     720575940617513589,
+     720575940634434273,
+     720575940619242053,
+     720575940619253573,
+     720575940612685205,
+     720575940633835437,
+     720575940618615586,
+     720575940622610928,
+     720575940630129767,
+     720575940631207276
+    ]
+   },
+   "coin_present": {
+    "n_neurons": 6,
+    "current_pa": 200.0,
+    "root_ids": [
+     720575940631969295,
+     720575940622958156,
+     720575940629827600,
+     720575940627799677,
+     720575940618317030,
+     720575940634964761
+    ]
+   },
+   "coin_lane": {
+    "n_neurons": 12,
+    "current_pa": 200.0,
+    "root_ids": [
+     720575940615051304,
+     720575940635624383,
+     720575940638577215,
+     720575940623338966,
+     720575940628203944,
+     720575940630757750,
+     720575940630693676,
+     720575940635754603,
+     720575940620961729,
+     720575940625512171,
+     720575940620493141,
+     720575940633380909
+    ]
+   },
+   "coin_distance": {
+    "n_neurons": 12,
+    "current_pa": 200.0,
+    "root_ids": [
+     720575940615577250,
+     720575940622105008,
+     720575940619575163,
+     720575940634195923,
+     720575940621591131,
+     720575940629282665,
+     720575940633046343,
+     720575940631658839,
+     720575940616855820,
+     720575940614619944,
+     720575940625892284,
+     720575940605634220
+    ]
+   }
+  },
+  "segments": [
+   {
+    "start_ms": 0.0,
+    "state_time_ms": 0.0
+   }
+  ]
+ },
+ "digest": {
+  "input_hash": "5d7f3efceca0692cc49517788eab18254d4f6dce36a7da72d5535c6b8b78551e",
+  "spike_hash": "992320fc248ef7cf563eceb491ebd80d5caac415f1544cb8069d2ba8938d32f7",
+  "n_spikes": 114,
+  "spike_transmissions": 585
+ }
+}
