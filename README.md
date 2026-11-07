@@ -1,4 +1,4 @@
-# FLY-SURFER
+# FLY-SURFER development plan
 
 A spiking neural simulation layer built on the validated FlyWire FAFB connectome.
 The connectome supplies **measured structure**; the membrane, synapses, sign
