@@ -1,0 +1,198 @@
+{
+ "phase": "4G.1",
+ "generated_at_utc": "2026-11-08T06:18:33+00:00",
+ "software": {
+  "python": "3.13.14",
+  "numpy": "2.3.4",
+  "pandas": "2.3.3",
+  "pyarrow": "21.0.0",
+  "platform": "Windows-11-10.0.26200-SP0"
+ },
+ "graph": {
+  "path": "datasets/processed/banc_v888/banc_graph_t5.npz",
+  "threshold": 5,
+  "n_nodes": 172433,
+  "n_edges": 1535710,
+  "n_synapses": 18552546,
+  "fields_present": {
+   "root_ids": true,
+   "banc_ids": true,
+   "positions": true,
+   "position_mask": true,
+   "out_indptr": true,
+   "edge_src": true,
+   "edge_dst": true,
+   "edge_weight": true,
+   "in_indptr": true,
+   "in_edge_idx": true,
+   "threshold": true,
+   "meta": true
+  },
+  "fields_missing_for_simulator": [
+   "vocabulary",
+   "nt_code"
+  ],
+  "dtypes": {
+   "root_ids": "int64",
+   "edge_src": "int32",
+   "edge_dst": "int32",
+   "edge_weight": "int32",
+   "out_indptr": "int64",
+   "in_indptr": "int64",
+   "in_edge_idx": "int32"
+  },
+  "indexing": {
+   "node_index": "position in ascending banc_888_id order",
+   "banc_id_type": "int64 in memory, decimal string on disk",
+   "root_ids_strictly_ascending": true,
+   "self_edges": 0,
+   "isolated_nodes": 24320
+  }
+ },
+ "simulator": {
+  "brain_simulator_signature": "(self, graph, neuron_params: 'LIFParameters', synapse_params: 'SynapseParameters', dt_ms: 'float' = 0.5, duration_ms: 'float' = 1000.0, seed: 'int' = 0, background_current_pa: 'float' = 0.0, noise_std_pa: 'float' = 0.0, stimulus: 'Stimulus | None' = None, input_schedule=None, max_recorded_spikes: 'int' = 2000000, progress_interval_ms: 'float' = 100.0, diagnostics_interval_steps: 'int' = 200, profile_timing: 'bool' = False) -> 'None'",
+  "synapse_model_signature": "(self, graph, params: 'SynapseParameters', dt_ms: 'float') -> 'None'",
+  "simulator_requires_on_graph": {
+   "n_nodes": "node count for LIFPopulation, recorder and CSR validation",
+   "out_indptr": "SynapseModel reads outgoing edge ranges",
+   "edge_dst": "SynapseModel destination of every outgoing edge",
+   "edge_weight": "SynapseModel structural weight (synapse count)",
+   "vocabulary": "SynapseModel reads graph.vocabulary['nt_type']",
+   "nt_code": "SynapseModel reads per-neuron transmitter codes",
+   "root_ids": "summary reports stimulus root IDs",
+   "edge_weight.sum()": "summary reports the structural synapse total"
+  },
+  "probe_on_banc_t5": {
+   "attempted": true,
+   "failed": true,
+   "error_type": "AttributeError",
+   "error_message": "'BancConnectome' object has no attribute 'vocabulary'",
+   "traceback_tail": [
+    {
+     "file": "audit_interfaces.py",
+     "line": 72,
+     "function": "_probe_simulator"
+    },
+    {
+     "file": "brain_simulator.py",
+     "line": 128,
+     "function": "__init__"
+    },
+    {
+     "file": "synapse_model.py",
+     "line": 91,
+     "function": "__init__"
+    }
+   ]
+  }
+ },
+ "decoder": {
+  "motor_decoder_signature": "(self, populations: 'MotorPopulations', config: 'DecoderConfig | None' = None) -> 'None'",
+  "decode_recorder_signature": "(self, recorder, start_ms: 'float', end_ms: 'float', *, include_partial: 'bool' = True) -> 'list[ActionDecision]'",
+  "decoder_attributes_read": [
+   "recorder.n_neurons",
+   "recorder.spike_times_ms",
+   "recorder.spike_neuron_indices"
+  ],
+  "recorder_probe": {
+   "n_neurons": 172433,
+   "n_spikes": 2,
+   "decisions": 1,
+   "state": "NEUTRAL",
+   "neutral": true
+  },
+  "populations_n_neurons": 172433,
+  "populations_match_graph": true,
+  "populations": {
+   "LEFT": 185,
+   "RIGHT": 186,
+   "JUMP": 20
+  }
+ },
+ "node_table": {
+  "columns_used_by_simulation": [
+   "node_index",
+   "banc_888_id",
+   "neurotransmitter_verified",
+   "neurotransmitter_predicted",
+   "neurotransmitter_score"
+  ],
+  "columns_present_in_head": [
+   "node_index",
+   "banc_888_id",
+   "neurotransmitter_verified",
+   "neurotransmitter_predicted",
+   "neurotransmitter_score"
+  ],
+  "annotation_source": "published BANC v888 metadata, left-joined by banc_888_id"
+ },
+ "reusable": [
+  {
+   "component": "brain.neuron_model.LIFPopulation",
+   "why": "graph-agnostic vectorised LIF; constructed from n_neurons, parameters and dt only",
+   "verified": "constructor accepts (n_neurons, LIFParameters, dt_ms)"
+  },
+  {
+   "component": "brain.neural_activity.SpikeRecorder",
+   "why": "graph-agnostic preallocated spike recorder; its arrays are exactly what MotorDecoder.decode_recorder reads",
+   "verified": "recorder probe decoded with the Phase 4F decoder"
+  },
+  {
+   "component": "brain.neuron_model.LIFParameters",
+   "why": "frozen parameter dataclass with rheobase and tau properties",
+   "verified": "rheobase_pa = 150.0 pA"
+  },
+  {
+   "component": "brain.banc_graph.BancConnectome",
+   "why": "already provides the CSR adjacency, node order and weights",
+   "verified": "t5 graph has 172433 nodes and 1535710 edges"
+  },
+  {
+   "component": "motor.populations / motor.motor_decoder",
+   "why": "Phase 4F components must be reused unchanged",
+   "verified": "populations match graph node count; decode_recorder accepted a recorder"
+  }
+ ],
+ "adapters_needed": [
+  {
+   "adapter": "signed edge weights",
+   "reason": "BancConnectome carries int32 synapse counts and no transmitter vocabulary; SynapseModel expects a per-neuron sign array and transmitter metadata"
+  },
+  {
+   "adapter": "BANC simulation loop",
+   "reason": "BrainSimulator is bound to SynapseModel, whose constructor fails on BancConnectome; a separate loop must own the BANC edge arrays, current state and delay buffers"
+  },
+  {
+   "adapter": "transmitter-scoped weight arrays",
+   "reason": "excitatory and inhibitory edge arrays must be built once per policy so unknown-sign edges can be excluded without changing the graph artifact"
+  },
+  {
+   "adapter": "experiment result serialisation",
+   "reason": "every result must carry graph threshold, policy, seed and decoder configuration explicitly"
+  }
+ ],
+ "untouched": [
+  "brain/neuron_model.py",
+  "brain/synapse_model.py",
+  "brain/brain_simulator.py",
+  "brain/neural_activity.py",
+  "brain/banc_graph.py",
+  "datasets/processed/banc_v888/*",
+  "datasets/processed/* (FAFB artifacts)",
+  "datasets/external/* (raw BANC and FAFB data)",
+  "motor/populations.py",
+  "motor/motor_decoder.py",
+  "configs/motor_decoder.yaml",
+  "experiments/phase_4f/*",
+  "README.md"
+ ],
+ "risks": [
+  "Structural synapse counts are not conductances; any weight scale is a modelling assumption, not a physiological estimate.",
+  "Presynaptic transmitter identity does not fix the postsynaptic effect; signs are modelling priors.",
+  "Recurrent excitation without calibrated inhibition can produce an avalanche; the simulator must cap spikes and check finite state.",
+  "The full t1 graph has 11.6M edges; naive dense operations would exceed memory, so only sparse CSR gathers are allowed.",
+  "A propagated decoder label would still be a computational output, not evidence of biological motor control."
+ ],
+ "verdict": "READY WITH ADAPTERS",
+ "blocking_issues": []
+}

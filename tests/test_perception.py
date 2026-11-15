@@ -245,6 +245,100 @@ def test_bounds_tolerance_clamps_explicitly() -> None:
     assert detection.normalized_box.x1 == 0.0
 
 
+def test_exact_viewport_boundary_is_accepted_without_clipping() -> None:
+    frame = make_frame(300, 600)
+    config = make_config(
+        validation=ValidationConfig(bounds_tolerance_pixels=1.0)
+    )
+    result = validate(
+        [RawDetection(0, 0.9, 0, 0, 300, 600)], config=config, frame=frame
+    )
+    detection = result.accepted[0]
+    assert detection.clamped is False
+    assert detection.clip_distance_pixels == 0.0
+    assert detection.raw_box_pixels == pytest.approx((0, 0, 300, 600))
+    assert detection.clipped_box_pixels == pytest.approx((0, 0, 300, 600))
+
+
+def test_subpixel_overflow_is_accepted_and_both_boxes_are_recorded() -> None:
+    frame = make_frame(300, 600)
+    config = make_config(
+        validation=ValidationConfig(bounds_tolerance_pixels=1.0)
+    )
+    result = validate(
+        [RawDetection(0, 0.9, -0.5, 0, 50, 50)], config=config, frame=frame
+    )
+    detection = result.accepted[0]
+    assert detection.clamped is True
+    assert detection.clip_distance_pixels == pytest.approx(0.5)
+    assert detection.raw_box_pixels == pytest.approx((-0.5, 0, 50, 50))
+    assert detection.clipped_box_pixels == pytest.approx((0, 0, 50, 50))
+    payload = detection.as_dict()
+    assert payload["geometry"]["raw_box_pixels"] == pytest.approx(
+        [-0.5, 0, 50, 50]
+    )
+    assert payload["geometry"]["clipped_box_pixels"] == pytest.approx(
+        [0, 0, 50, 50]
+    )
+    assert payload["geometry"]["clip_distance_pixels"] == pytest.approx(0.5)
+
+
+def test_overflow_above_one_pixel_is_rejected_with_original_coordinates() -> None:
+    frame = make_frame(300, 600)
+    config = make_config(
+        validation=ValidationConfig(bounds_tolerance_pixels=1.0)
+    )
+    result = validate(
+        [RawDetection(0, 0.9, -1.5, 0, 50, 50)], config=config, frame=frame
+    )
+    assert not result.accepted
+    rejection = result.rejected[0]
+    assert rejection.reason is RejectionReason.OUT_OF_BOUNDS
+    assert rejection.raw is not None
+    assert rejection.raw.as_dict()["bbox"] == pytest.approx([-1.5, 0, 50, 50])
+    assert "1.500 px" in rejection.detail
+
+
+def test_negative_coordinates_beyond_tolerance_are_rejected() -> None:
+    frame = make_frame(300, 600)
+    config = make_config(
+        validation=ValidationConfig(bounds_tolerance_pixels=1.0)
+    )
+    result = validate(
+        [RawDetection(0, 0.9, -10, 0, 50, 50)], config=config, frame=frame
+    )
+    assert not result.accepted
+    assert result.rejected[0].reason is RejectionReason.OUT_OF_BOUNDS
+
+
+def test_degenerate_box_is_rejected_before_bounds_handling() -> None:
+    frame = make_frame(300, 600)
+    config = make_config(
+        validation=ValidationConfig(bounds_tolerance_pixels=1.0)
+    )
+    result = validate(
+        [RawDetection(0, 0.9, -0.5, 0, -1.0, 50)], config=config, frame=frame
+    )
+    assert not result.accepted
+    assert result.rejected[0].reason is RejectionReason.DEGENERATE_BOX
+
+
+def test_box_that_collapses_after_clipping_is_rejected() -> None:
+    frame = make_frame(300, 600)
+    config = make_config(
+        validation=ValidationConfig(
+            bounds_tolerance_pixels=1.0, min_box_pixels=0.5
+        )
+    )
+    result = validate(
+        [RawDetection(0, 0.9, -1.0, 10, -0.5, 50)], config=config, frame=frame
+    )
+    assert not result.accepted
+    rejection = result.rejected[0]
+    assert rejection.reason is RejectionReason.DEGENERATE_BOX
+    assert "after clamping" in rejection.detail
+
+
 # ---------------------------------------------------------------------------
 # Lane assignment
 # ---------------------------------------------------------------------------

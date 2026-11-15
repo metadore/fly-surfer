@@ -6,6 +6,10 @@ pandas==2.3.3
 matplotlib==3.10.7
 PyYAML==6.0.3
 psutil==7.1.2
+# Image loading for perception preprocessing.
+Pillow==12.0.0
+# CPU ONNX Runtime backend for the Phase 3B detector (no GPU package).
+onnxruntime==1.29.0
 
 # Test tooling. pytest.ini disables the anyio plugin for this environment.
 pytest==7.4.3

@@ -1,0 +1,144 @@
+# Phase 4G.2 - BANC transmitter-sign and structural edge-weight policy.
+#
+# SCIENTIFIC STATUS OF EACH BLOCK
+#   annotations    published BANC v888 labels (verified and predicted columns)
+#   sign_policy    an explicit modelling prior, NOT a measured postsynaptic effect
+#   weight_policy  a transformation of integer synapse counts, NOT a conductance
+#   unknowns       structural connections the declared policy cannot sign
+#
+# Excitatory and inhibitory labels describe an assumed presynaptic release
+# class. They are not evidence that a given transmitter excites or inhibits a
+# particular postsynaptic partner: receptor identity, cotransmission, chloride
+# reversal and neuromodulation are not modelled.
+
+version: 1
+phase: 4G.2
+dataset: banc_v888
+generated_by: experiments/phase_4g/audit_synapse_policy.py
+
+graphs:
+  artifact_dir: datasets/processed/banc_v888
+  node_table: datasets/processed/banc_v888/banc_nodes.csv.gz
+  thresholds: [1, 5, 10]
+  primary_threshold: 5
+  weight_column: count
+  excluded_weight_columns:
+    - norm   # count / post_count target fraction, not synaptic strength
+
+transmitter_sign_policy:
+  # Only the verified column may carry a sign in the primary policy.
+  primary_source: neurotransmitter_verified
+  verified_excitatory:
+    - acetylcholine
+    - glutamate
+  verified_inhibitory:
+    - gaba
+    - glycine
+  # Verified labels that name only these transmitters do not determine a
+  # classical fast sign and stay unknown.
+  modulators:
+    - dopamine
+    - serotonin
+    - octopamine
+    - tyramine
+    - histamine
+    - nitric_oxide
+  # A verified label naming both an excitatory and an inhibitory transmitter is
+  # a conflict; conflicts are not resolved arbitrarily.
+  conflict_policy: unknown
+  modulator_only_policy: unknown
+  # Predicted labels are a separate sensitivity condition, never primary.
+  predicted_fallback: false
+  # Structural edges from unknown-sign neurons carry zero current in the
+  # primary simulation and are counted explicitly in every result.
+  unknown_edge_policy: exclude
+
+unknown_edge_strategies:
+  primary_exclusion:
+    strategy: A
+    description: >-
+      Edges whose presynaptic neuron has no verified sign are omitted from the
+      primary propagation experiment and reported as excluded.
+    consequence: >-
+      The primary result is conditional on the verified-sign subgraph; it does
+      not describe the whole connectome.
+  predicted_sensitivity:
+    strategy: B
+    description: >-
+      A sensitivity condition repeats the primary experiment with predicted
+      transmitter labels allowed to supply a sign for neurons without verified
+      labels.
+    consequence: >-
+      Any difference between the two conditions measures dependence on
+      unverified annotation, not a biological effect.
+  neutral_zero:
+    strategy: C
+    description: >-
+      Retaining unknown-sign edges with zero current weight. This is
+      numerically identical to exclusion and is documented only to make the
+      equivalence explicit; it is not run as a separate condition.
+    consequence: Same spikes and currents as strategy A.
+
+weight_policy:
+  # weight_pa = scale_pa * count ** exponent, optionally capped.
+  # `count` is the integer edge-level synapse count from the Phase 4D graph.
+  primary:
+    transform: power
+    exponent: 0.75
+    scale_pa: 5.0
+    cap_pa: 300.0
+  rationale: >-
+    The power transform compresses the heavy tail of structural synapse counts
+    without discarding it. scale_pa = 5.0 is a declared model calibration: a
+    structural edge with count 20 contributes about 47 pA, roughly one third of
+    the 150 pA rheobase of the assumed LIF neuron, so temporal summation of
+    several inputs is required to fire. The 300 pA cap (twice rheobase) bounds
+    the contribution of hub edges. None of these numbers is a measured
+    conductance.
+  sensitivity:
+    - name: linear_capped
+      parameters:
+        transform: linear
+        exponent: 1.0
+        scale_pa: 0.5
+        cap_pa: 300.0
+    - name: log1p
+      parameters:
+        transform: log1p
+        exponent: 1.0
+        scale_pa: 10.0
+        cap_pa: null
+    - name: power_half
+      parameters:
+        transform: power
+        exponent: 0.5
+        scale_pa: 5.0
+        cap_pa: 300.0
+    - name: power_1
+      parameters:
+        transform: power
+        exponent: 1.0
+        scale_pa: 0.5
+        cap_pa: 300.0
+    - name: uncapped_power
+      parameters:
+        transform: power
+        exponent: 0.75
+        scale_pa: 5.0
+        cap_pa: null
+
+calibration:
+  declared_scale_pa: 5.0
+  grid: [0.5, 1.0, 2.0, 5.0, 20.0, 50.0]
+  selection_rule: >-
+    The scale is fixed before any motor-decoder result is inspected. It may be
+    changed only on the basis of baseline quiescence (no spontaneous firing
+    without stimulation) and non-saturating recruitment, never on the basis of
+    a decoder label.
+  status: declared, not tuned against decoder outputs
+
+interpretation:
+  - Synapse count is not synaptic conductance.
+  - A predicted transmitter is not a verified transmitter.
+  - A verified transmitter label does not establish the postsynaptic effect.
+  - Excluded edges are a declared limitation, not evidence about biology.

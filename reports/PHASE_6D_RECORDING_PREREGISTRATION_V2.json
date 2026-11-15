@@ -1,0 +1,698 @@
+{
+  "schema_version": "2.0",
+  "document": {
+    "id": "phase_6d_recording_preregistration_v2",
+    "phase": "6D",
+    "revision": 2,
+    "status": "DESIGN_ONLY_NOT_EXECUTED",
+    "date": "2026-11-11",
+    "project_root": "C:/Users/Hp/fruitfly/FLY-SURFER",
+    "markdown_companion": "reports/PHASE_6D_RECORDING_PREREGISTRATION_V2.md",
+    "correction_matrix": "reports/PHASE_6D_AUDIT_CORRECTION_MATRIX.md",
+    "scope": "Corrected pre-registration resolving all 36 issues (U1-U36) and all seven blocking findings (A1-A7) of the independent audit. No simulation, recording, training or instrumentation was performed or implemented.",
+    "audit_resolved": "reports/PHASE_6D_INDEPENDENT_AUDIT.md",
+    "final_status": "READY_WITH_REMAINING_LIMITATIONS"
+  },
+  "supersedes": {
+    "markdown": "reports/PHASE_6D_RECORDING_PREREGISTRATION.md",
+    "json": "reports/PHASE_6D_RECORDING_PREREGISTRATION.json",
+    "markdown_sha256": "e27db60c1ba5c80cac033508610fc8d2e817aa3aef9d8a9f59f2c841ffbe748c",
+    "json_sha256": "c3fd6fad0ace629e293a7bb86fa5552dcae72a2f1e8410edf8f5bc45633e7036",
+    "audit_sha256": "19c75033c792a6e9e0d3ebee6fbc0a4b9f69236fc19bc68cb90d393f3503c622",
+    "originals_modified": false
+  },
+  "non_claims": [
+    "Mutual information does not establish causation.",
+    "A decoder label does not establish a motor command.",
+    "A simulated spike is not a biological spike.",
+    "A positive propagation pilot does not establish that the fly behaves the same way.",
+    "A structural edge does not establish functional transmission.",
+    "Direct first-hop injection is a capability control, not evidence of natural sensory propagation.",
+    "No Stage R result can be promoted above evidence grade E1-E2."
+  ],
+  "blocking_findings_resolved": {
+    "A1": {
+      "defect": "d* fixed at P1; P2 read only at d*",
+      "correction": "P1a, P1, P2a, P2b read at all four drives from the same 964 runs; d* is the lowest drive at which all four pass, frozen before any downstream outcome",
+      "section": "8.3, 8.4",
+      "status": "resolved"
+    },
+    "A2": {
+      "defect": "P2 conflates first and second hop and used a zero-tolerance control rule",
+      "correction": "Split into P2a (H2), P2b (DESC2, 9 first-hop DNs excluded), P2c (charge form), P2s (feature specificity); presence gates are screens with stated effect-size floors and a sensitivity curve",
+      "section": "8.4, 9",
+      "status": "resolved"
+    },
+    "A3": {
+      "defect": "2,688 unique seeds contradicts the paired design",
+      "correction": "672 unique noise seeds, 2,688 condition-runs, 672 trials per condition, paired by seed",
+      "section": "8.6, 10.1, 11.3",
+      "status": "resolved"
+    },
+    "A4": {
+      "defect": "43 distinct events are 43 records from 24 tracks",
+      "correction": "24 distinct (class, track) pairs; track-level resampling; OBST_NEAR not estimable",
+      "section": "8.5, 10.1, 11.6",
+      "status": "resolved_limitation_retained",
+      "retained_item": "RA-3"
+    },
+    "A5": {
+      "defect": "Stage S 0.05-bit criterion below the 40-cluster MDE",
+      "correction": "134 independent substrate clusters; MDE 0.0498 bits at alpha 0.005; proxy SD declared with a realized-MDE fallback",
+      "section": "8.7, 10.5",
+      "status": "resolved_limitation_retained",
+      "retained_item": "RA-6"
+    },
+    "A6": {
+      "defect": "O2 samples post-step _V, which is -68 mV for a spiking neuron",
+      "correction": "Threshold substitution or pre-reset sampling, spiked flag, copy-on-record, zero RNG consumption, one recorder, install/restore, declared time base; T1-T12",
+      "section": "7.4, 7.5",
+      "status": "resolved"
+    },
+    "A7": {
+      "defect": "Archived event times cannot occur inside a 300 ms trial",
+      "correction": "Declared event-time transform: trial_time_ms = 50.0, decay_ms = 100.0, original archive time retained in field 11",
+      "section": "7.3, 8.5",
+      "status": "resolved"
+    }
+  },
+  "substrate": {
+    "stage_p_r": "BANC v888 threshold-5 signed graph",
+    "stage_s": "Phase 5 synthetic 36-node task graph",
+    "connectome_identity": {
+      "name": "banc_v888",
+      "n_nodes": 172433,
+      "n_edges": 1535710,
+      "n_synapses": 18552546,
+      "signed_edges": 683100,
+      "signed_fraction": 0.4448,
+      "threshold": 5,
+      "graph_sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192",
+      "node_sha256": "144a2eb09aa1ed2be4f07eff589a6158e98cfe4f18b52db7feef4d2272953e5f"
+    }
+  },
+  "populations": {
+    "STIM": 232,
+    "H1": 607,
+    "H1D": 9,
+    "H2": 3576,
+    "DESC": 1316,
+    "DESC2": 1307,
+    "MOT": 805,
+    "ACT": 391,
+    "ACT_detail": {
+      "LEFT": 185,
+      "RIGHT": 186,
+      "JUMP": 20
+    },
+    "CUE": 32,
+    "ACTN": 4,
+    "structural_notes": {
+      "first_hop_motor_targets": 0,
+      "motor_neurons_at_two_hops": 4,
+      "first_hop_signed_edges": 662
+    }
+  },
+  "recruitment_code": {
+    "levels": 4,
+    "rules": {
+      "0": "zero active neurons",
+      "1": "1 to ceil(n/100) active",
+      "2": "ceil(n/100)+1 to ceil(n/10) active",
+      "3": "above ceil(n/10) active"
+    },
+    "scope": "BANC populations only",
+    "three_level_variant": "withdrawn"
+  },
+  "stimulus_corpus": {
+    "source": "experiments/phase_3b/results/phase_3b2c_real_sequence_replay.json",
+    "archived_events": 215,
+    "feature_carrying_events": 43,
+    "distinct_tracks": 24,
+    "median_distance": 0.653686,
+    "levels": {
+      "TRAIN_NEAR": {
+        "records": 20,
+        "tracks": 13
+      },
+      "TRAIN_FAR": {
+        "records": 15,
+        "tracks": 11
+      },
+      "OBST_NEAR": {
+        "records": 2,
+        "tracks": 1
+      },
+      "OBST_FAR": {
+        "records": 6,
+        "tracks": 5
+      }
+    },
+    "per_level_track_sum": 30,
+    "cross_level_tracks": 6,
+    "cross_level_explanation": "Five train tracks cross the 0.653686 median; jump-roll-barrier track 11 spans both obstacle halves. The union is 24.",
+    "archive_time_range_ms": [
+      66.6667,
+      3266.6667
+    ],
+    "event_time_transform": {
+      "rule": "archive_time_ms -> trial_time_ms = 50.0 for every selected event",
+      "decay_ms": 100.0,
+      "stimulus_onset_ms": 50.0,
+      "stimulus_offset_ms": 150.0,
+      "current_ends_at_offset": true
+    },
+    "allocation": "round-robin over the level's distinct tracks, then over the track's records",
+    "obst_near_frames_ms": [
+      1066.6667,
+      1166.6667
+    ],
+    "obst_near_distances": [
+      0.61655,
+      0.483462
+    ]
+  },
+  "trial": {
+    "duration_ms": 300.0,
+    "dt_ms": 0.5,
+    "noise_std_pa": 50.0,
+    "background_current_pa": 0.0,
+    "delay_ms": 1.0,
+    "decoder_window_ms": 50.0,
+    "decoder_windows_ms": [
+      [50.0, 100.0],
+      [100.0, 150.0],
+      [150.0, 200.0],
+      [200.0, 250.0],
+      [250.0, 300.0]
+    ],
+    "bin_ms": 10.0,
+    "bins": 30,
+    "time_base": "spike at (step_index + 1) * 0.5 ms; bin and window edges lower-inclusive",
+    "stage_s": {
+      "episodes_per_stream": 240,
+      "train_episodes": 160,
+      "eval_episodes": 80,
+      "checkpoint_episode": 160,
+      "eta_train": 1.0,
+      "eta_eval": 0.0
+    }
+  },
+  "design_constants": {
+    "mde_bits": 0.05,
+    "max_bias_floor_bits": 0.0167,
+    "alpha_family": 0.05,
+    "alpha_gate_presence": 0.0125,
+    "alpha_specificity_each": 0.025,
+    "permutations": 5000,
+    "bootstrap_resamples": 2000,
+    "bootstrap_seed": 20261110,
+    "p_floor": 0.0002,
+    "min_support_per_level": 20,
+    "max_exclusion": 0.005,
+    "determinism_repeat_fraction": 0.05,
+    "min_entropy_for_nmi_bits": 0.05,
+    "e7_window_ms_primary": 10.0,
+    "e7_window_ms_sensitivity": [5.0, 20.0],
+    "stage_s_min_clusters_for_target_mde": 134
+  },
+  "gates": [
+    {
+      "id": "P0",
+      "name": "integrity",
+      "pass": "all 964 records complete every mandatory field (<= 0.5% exclusion per arm); 5% re-run reproduces spike_hash; archived 4H condition B and C hashes reproduced; no SpikeCapacityExceeded; all recorded potential arrays finite",
+      "fail": "any unexplained determinism mismatch or silent truncation, or > 0.5% exclusion in any arm",
+      "inconclusive": "not applicable",
+      "fatal": true
+    },
+    {
+      "id": "P1a",
+      "name": "STIM activation",
+      "read_at": [200, 400, 800, 1200],
+      "pass": "at some drive REAL STIM prevalence >= 20/40 and one-sided Fisher p < 0.0125 vs NO_STIM",
+      "fail": "no drive activates STIM while DIRECT_INJECTION at >= 400 pA drives H1: drive/encoder failure; both silent: model-regime limit",
+      "inconclusive": "effect carried by one seed half with opposite sign in the other",
+      "fatal": true
+    },
+    {
+      "id": "P1",
+      "name": "first-hop propagation",
+      "read_at": [200, 400, 800, 1200],
+      "pass": "at some drive REAL H1 prevalence >= 10/40 and Fisher p < 0.0125 vs NO_STIM",
+      "fail": "no drive passes",
+      "inconclusive": "test passes but effect-size floor not met",
+      "fatal": true
+    },
+    {
+      "id": "P2a",
+      "name": "second-hop propagation (screen)",
+      "read_at": [200, 400, 800, 1200],
+      "pass": "at some drive REAL H2 prevalence >= 6/40 and REAL - NO_STIM >= 4/40",
+      "fail": "no drive passes: stop; report no second-hop propagation detected under this design",
+      "inconclusive": "H2 degenerate while DESC2 passes",
+      "fatal": true
+    },
+    {
+      "id": "P2b",
+      "name": "descending beyond first hop (screen)",
+      "read_at": [200, 400, 800, 1200],
+      "pass": "at some drive REAL DESC2 prevalence >= 2/40 and REAL - NO_STIM >= 2/40",
+      "fail": "no drive passes: H3/H4 untestable; not a stop if P2a passed",
+      "inconclusive": "all DESC spikes in the nine H1D neurons",
+      "fatal": false
+    },
+    {
+      "id": "P2c",
+      "name": "charge form",
+      "read_at": ["d_star"],
+      "pass": "REAL > PEAK_MATCHED_RECT on H2 union DESC2 prevalence, paired by seed, one-sided p < 0.025",
+      "fail": "propagation is charge-driven; the pattern-specificity claim is withdrawn",
+      "inconclusive": "both zero: not estimable",
+      "fatal": false
+    },
+    {
+      "id": "P2s",
+      "name": "feature specificity",
+      "read_at": ["d_star"],
+      "pass": "REAL > SHUFFLED_MASK on H2 union DESC2 prevalence, paired by seed, one-sided p < 0.025",
+      "fail": "propagation is not feature-specific; H2/H3 descriptive",
+      "inconclusive": "both zero: not estimable",
+      "fatal": false
+    },
+    {
+      "id": "P3",
+      "name": "decoder reachability",
+      "read_at": ["d_star"],
+      "pass": ">= 1 post-stimulus REAL window non-NEUTRAL and every NO_STIM and PEAK_MATCHED_RECT window NEUTRAL",
+      "fail": "no REAL window non-NEUTRAL: H5 untestable; H1-H4 proceed",
+      "inconclusive": "REAL and a control both non-NEUTRAL: decoder endpoints leave the confirmatory family",
+      "fatal": false
+    },
+    {
+      "id": "P3a",
+      "name": "motor recruitment",
+      "read_at": ["d_star"],
+      "pass": ">= 1 REAL trial has >= 1 MOT spike and no NO_STIM trial does",
+      "fail": "no MOT spike in any REAL trial: H4 untestable",
+      "inconclusive": "MOT spikes only in controls",
+      "fatal": false
+    }
+  ],
+  "gate_sensitivity": [
+    {"gate": "P1", "contrast": "0.50 vs 0.05", "power": 0.99},
+    {"gate": "P1", "contrast": "0.30 vs 0.02", "power": 0.88},
+    {"gate": "P1", "contrast": "0.20 vs 0.02", "power": 0.49},
+    {"gate": "P2a", "contrast": "0.30 vs 0.05", "power": 0.99},
+    {"gate": "P2a", "contrast": "0.20 vs 0.02", "power": 0.83},
+    {"gate": "P2a", "contrast": "0.15 vs 0.02", "power": 0.56},
+    {"gate": "P2a", "contrast": "0.10 vs 0.02", "power": 0.20},
+    {"gate": "P2b", "contrast": "0.10 vs 0.02", "power": 0.92},
+    {"gate": "P2b", "contrast": "0.05 vs 0.00", "power": 0.60}
+  ],
+  "d_star_rule": {
+    "candidates_pa": [200, 400, 800, 1200],
+    "definition": "lowest drive at which P1a, P1, P2a and P2b all pass",
+    "freeze_point": "after presence gates at all four drives, before P2c, P2s, P3, P3a and before any Stage R outcome",
+    "evidence": "gate-decision file written and SHA-256'd at G4"
+  },
+  "conditions": [
+    {"id": "P_REAL", "stage": "P", "drives_pa": [200, 400, 800, 1200], "trials_per_drive": 40, "runs": 160, "role": "measurement of interest"},
+    {"id": "P_NO_STIM", "stage": "P", "drives_pa": [200, 400, 800, 1200], "trials_per_drive": 40, "runs": 160, "role": "spontaneous baseline"},
+    {"id": "P_PEAK_MATCHED_RECT", "stage": "P", "drives_pa": [200, 400, 800, 1200], "trials_per_drive": 40, "runs": 160, "role": "charge-form control"},
+    {"id": "P_SHUFFLED_MASK", "stage": "P", "drives_pa": [200, 400, 800, 1200], "trials_per_drive": 40, "runs": 160, "role": "feature-specificity control"},
+    {"id": "P_MATCHED_CHARGE", "stage": "P", "drives_pa": [200, 400, 800, 1200], "trials_per_drive": 40, "runs": 160, "role": "descriptive subthreshold floor"},
+    {"id": "DIRECT_INJECTION", "stage": "P", "drives_pa": [200, 400, 800, 1200], "trials_per_drive": 40, "runs": 160, "role": "capability control only; in no gate or endpoint"},
+    {"id": "SINGLE_H1_SPIKE", "stage": "P", "runs": 4, "role": "per-spike calibration only; in no gate or endpoint"},
+    {"id": "REAL", "stage": "R", "drive": "d_star", "trials": 672, "role": "measurement of interest"},
+    {"id": "SHUFFLED_MASK", "stage": "R", "drive": "d_star", "trials": 672, "role": "bijective payload permutation across the 43 records"},
+    {"id": "PEAK_MATCHED_RECT", "stage": "R", "drive": "d_star", "trials": 672, "role": "rectangular 50-150 ms charge-form control"},
+    {"id": "NO_STIM", "stage": "R", "drive": "none", "trials": 672, "role": "spontaneous baseline"},
+    {"id": "RANDOM_MAPPING", "stage": "R", "drive": "d_star", "trials": 40, "role": "descriptive only"},
+    {"id": "fixed_complete", "stage": "S", "substrate_seeds": 134, "episodes": 32160},
+    {"id": "plastic_complete", "stage": "S", "substrate_seeds": 134, "episodes": 32160}
+  ],
+  "stage_r": {
+    "unique_noise_seeds": 672,
+    "condition_runs": 2688,
+    "repeat_runs": 136,
+    "repeat_split": {"recording_enabled": 68, "recording_disabled": 68},
+    "descriptive_runs": 40,
+    "total_runs": 2864,
+    "pairing": "seed reused across R1-R4; RANDOM_MAPPING paired on 40 of the same seeds",
+    "shuffled_mask_behaviour": "shuffle_feature_identities permutes payloads across events, preserving timestamps; the mapping is not permuted; per-trial injected charge is recorded and used as a covariate in E4/E5"
+  },
+  "stage_s": {
+    "substrate": "Phase 5 task graph, TaskConfig(n_cues=4, cue_neurons=8, action_neurons=1), 36 nodes",
+    "substrate_seeds": 134,
+    "episodes_per_stream": 240,
+    "total_episodes": 64320,
+    "evaluation_rows": 21440,
+    "independent_clusters": 134,
+    "phase_5f_relation": "new replicate, not a reproduction",
+    "phase_5f_direction": "plastic success minus fixed success positive"
+  },
+  "stages": [
+    {"id": "P", "runs": 964, "wall_time_hours": 0.68, "storage_mb": 130, "gate": "P0, P1a, P1, P2a, P2b, P2c, P2s, P3, P3a"},
+    {"id": "R", "runs": 2864, "wall_time_hours": 2.02, "storage_mb": 387, "gate": "recording integrity and 68/68 equivalence"},
+    {"id": "S", "episodes": 64320, "wall_time_hours": 0.88, "storage_mb": 402, "gate": "Stage S integrity and Phase 5F direction"},
+    {"id": "A", "new_simulations": 0, "wall_time_hours": 0.5, "storage_mb": 10, "gate": "none"}
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "level": "sensory input to stimulated sensory neurons",
+      "predictor": {"name": "S", "levels": 4, "definition": "entity x distance half at 0.653686"},
+      "response": {"name": "R_STIM", "levels": 4, "definition": "recruitment code of STIM in [50,300) ms"},
+      "table": [4, 4],
+      "n": 672,
+      "bias_floor_bits": 0.009661,
+      "stages": ["P gate P1a", "R E1 E2"],
+      "null": "I(S; R_STIM) = 0; REAL prevalence equals NO_STIM",
+      "criterion": "corrected MI above its own permutation q95, track-cluster CI excluding zero, >= 2 observed levels",
+      "controls": ["NO_STIM", "PEAK_MATCHED_RECT", "SHUFFLED_MASK", "label permutation"]
+    },
+    {
+      "id": "H2",
+      "level": "sensory neurons to first-hop populations",
+      "predictor": {"name": "R_STIM", "levels": 4},
+      "response": {"name": "R_H1", "levels": 4, "population_size": 607},
+      "table": [4, 4],
+      "n": 672,
+      "bias_floor_bits": 0.009661,
+      "stages": ["P gate P1", "R E3 E4"],
+      "null": "I(R_STIM; R_H1) = 0; REAL H1 prevalence equals NO_STIM",
+      "criterion": "information criterion and presence gate P1",
+      "controls": ["NO_STIM", "PEAK_MATCHED_RECT", "SHUFFLED_MASK"]
+    },
+    {
+      "id": "H3",
+      "level": "downstream activity beyond the first hop",
+      "predictor": {"name": "S", "levels": 4},
+      "response": {"name": "R_H2DESC", "levels": 4, "population": "H2 union DESC2", "population_size": 4883},
+      "table": [4, 4],
+      "n": 672,
+      "bias_floor_bits": 0.009661,
+      "stages": ["P gates P2a P2b P2c P2s", "R E5 E6"],
+      "null": "I(S; R_H2DESC) = 0; REAL prevalence equals NO_STIM",
+      "criterion": "P2a and P2b presence, P2c and P2s specificity, E5/E6 above their permutation nulls",
+      "controls": ["NO_STIM", "PEAK_MATCHED_RECT", "SHUFFLED_MASK"]
+    },
+    {
+      "id": "H4",
+      "level": "descending activity to motor neurons",
+      "predictor": {"name": "descending spiking in the same trial"},
+      "response": {"name": "per-trial DESC->MOT indicator within 10 ms"},
+      "table": [4, 2],
+      "n": 672,
+      "bias_floor_bits": null,
+      "bias_floor_note": "the confirmatory statistic is a paired proportion; no bias floor applies",
+      "stages": ["P gate P3a", "R E7"],
+      "null": "paired proportion difference between REAL and NO_STIM is zero",
+      "criterion": "P3a passed and the paired difference excludes zero",
+      "sensitivity_windows_ms": [5.0, 20.0]
+    },
+    {
+      "id": "H5",
+      "level": "population activity to decoder-mediated action",
+      "predictor": {"name": "R_MOT", "levels": 4},
+      "response": {"name": "A", "levels": 4, "definition": "last non-NEUTRAL decoder state in [50,300) ms, else NEUTRAL; one value per trial"},
+      "table": [4, 4],
+      "n": 672,
+      "bias_floor_bits": 0.009661,
+      "stages": ["P gate P3", "R E8 E9"],
+      "null": "I(R_MOT; A) = 0",
+      "criterion": "correctly labelled estimate only; never a motor-control or biological claim",
+      "controls": ["decoder ablation with seeded pool permutation"]
+    },
+    {
+      "id": "H6",
+      "level": "neural code under fixed versus plastic weights",
+      "substrate": "Phase 5 synthetic 36-node task graph",
+      "predictor": {"name": "CUE", "levels": 4},
+      "response": {"name": "A_neural", "levels": 5, "definition": "argmax evaluation spike count over four action neurons, fifth level for none, ties to the lowest index"},
+      "table": [4, 5],
+      "n": 21440,
+      "clusters": 134,
+      "bias_floor_bits": 0.000404,
+      "stages": ["S E10"],
+      "null": "I(CUE; A_neural) is equal in fixed_complete and plastic_complete",
+      "criterion": "paired cluster-level difference exceeds the realized MDE and its interval excludes zero"
+    }
+  ],
+  "endpoints": [
+    {"id": "E1", "hypothesis": "H1", "estimand": "proportion of trials with >= 1 STIM spike", "unit": "trial", "n": 672, "test": "paired McNemar REAL vs NO_STIM", "gate": "P1a"},
+    {"id": "E2", "hypothesis": "H1", "estimand": "median STIM spike count per trial", "unit": "trial", "n": 672, "test": "Wilcoxon signed-rank", "gate": "P1a"},
+    {"id": "E3", "hypothesis": "H2", "estimand": "proportion of trials with >= 1 H1 spike", "unit": "trial", "n": 672, "test": "paired McNemar", "gate": "P1"},
+    {"id": "E4", "hypothesis": "H2", "estimand": "I(S; R_H1)", "unit": "trial and track", "n": 672, "clusters": 24, "test": "corrected MI vs permutation q95; track bootstrap; paired condition permutation", "gate": "P1"},
+    {"id": "E5", "hypothesis": "H3", "estimand": "I(S; R_H2DESC)", "unit": "trial and track", "n": 672, "clusters": 24, "test": "as E4", "gate": "P2a and P2b"},
+    {"id": "E6", "hypothesis": "H3", "estimand": "I(S; R_H2 | H1 recruited)", "unit": "trial", "test": "conditional MI with per-stratum floor", "gate": "P2a and P2b"},
+    {"id": "E7", "hypothesis": "H4", "estimand": "per-trial DESC->MOT indicator within 10 ms", "unit": "trial", "n": 672, "test": "paired McNemar", "gate": "P3a"},
+    {"id": "E8", "hypothesis": "H5", "estimand": "I(S; decoded state)", "unit": "trial", "n": 672, "test": "corrected MI vs permutation q95", "gate": "P3"},
+    {"id": "E9", "hypothesis": "H5", "estimand": "I(R_MOT; decoded state)", "unit": "trial", "n": 672, "test": "descriptive, no p-value", "gate": "P3"},
+    {"id": "E10", "hypothesis": "H6", "estimand": "paired difference in I(CUE; A_neural)", "unit": "substrate cluster", "n": 21440, "clusters": 134, "test": "cluster bootstrap", "gate": "Stage S integrity"}
+  ],
+  "independence_units": {
+    "noise_seed": {"count": 672, "valid_for": ["trial-level pairing", "reproducibility"]},
+    "condition_run": {"count": 2864, "note": "2,688 + 40 + 136; descriptive only", "valid_for": ["run accounting"]},
+    "trial": {"count": 672, "per_condition": true, "valid_for": ["stimulus-locked comparisons", "label permutation"]},
+    "stimulus_track": {"count": 24, "valid_for": ["corpus-level resampling"], "not_valid_for": ["per-level OBST_NEAR inference"]},
+    "substrate_seed": {"count": 134, "valid_for": ["Stage S cluster inference"]},
+    "neuron": {"valid_for": ["descriptive only"], "never": true},
+    "time_bin": {"valid_for": ["descriptive only"], "never": true},
+    "spike": {"valid_for": ["descriptive only"], "never": true}
+  },
+  "sample_size": {
+    "n_stage_r_per_condition": 672,
+    "trials_per_level": 168,
+    "cells_4x4": 42,
+    "cells_6x4": 28,
+    "multiple": 48,
+    "derivation": "lcm(16,24) = 48; smallest multiple of 48 >= 648 is 672 = 48 x 14",
+    "confirmatory_rows_needed": 389,
+    "bias_floor_table": [
+      {"table": "4x4", "df": 9, "n_for_floor_0p0167": 389, "floor_at_672": 0.009661, "floor_at_21440": 0.000303},
+      {"table": "4x3", "df": 6, "n_for_floor_0p0167": 260, "floor_at_672": 0.006441, "floor_at_21440": 0.000202},
+      {"table": "4x5", "df": 12, "n_for_floor_0p0167": 519, "floor_at_672": 0.012881, "floor_at_21440": 0.000404},
+      {"table": "6x4", "df": 15, "n_for_floor_0p0167": 648, "floor_at_672": 0.016102, "floor_at_21440": 0.000505}
+    ],
+    "trial_level_power": [
+      {"table": "4x4", "se_bits": 0.004554, "mde_bits_alpha_0p05": 0.0128, "mde_bits_alpha_0p005": 0.0166},
+      {"table": "6x4", "se_bits": 0.005880, "mde_bits_alpha_0p05": 0.0165, "mde_bits_alpha_0p005": 0.0215}
+    ],
+    "stage_s_power": [
+      {"clusters": 40, "se": 0.0250, "mde_alpha_0p05": 0.0700, "mde_alpha_0p005": 0.0912, "power_at_0p05": 0.21},
+      {"clusters": 79, "se": 0.0178, "mde_alpha_0p05": 0.0498, "mde_alpha_0p005": 0.0649, "power_at_0p05": null},
+      {"clusters": 134, "se": 0.0137, "mde_alpha_0p05": 0.0383, "mde_alpha_0p005": 0.0498, "power_at_0p05": 0.803}
+    ],
+    "stage_s_sd_proxy_bits": 0.15813337,
+    "realized_mde_rule": "if the observed between-substrate SD at 134 clusters implies an MDE above 0.05 bits, E10 is demoted to exploratory before its result is examined"
+  },
+  "resources": {
+    "anchors": {
+      "banc_run_seconds_median": 2.54,
+      "banc_run_seconds_range": [1.66, 4.30],
+      "phase5_episodes_per_second": 20.3,
+      "banc_bytes_per_trial": 135000,
+      "stage_s_bytes_per_episode": 6250,
+      "optional_bytes_per_trial": 550000
+    },
+    "stage_p": {"runs": 964, "hours": 0.68, "mb": 130},
+    "stage_r": {"runs": 2864, "hours": 2.02, "mb": 387},
+    "stage_s": {"episodes": 64320, "hours": 0.88, "mb": 402},
+    "stage_a": {"hours": 0.5, "mb": 10},
+    "totals": {
+      "banc_runs": 3828,
+      "episodes": 64320,
+      "mandatory_hours": 4.08,
+      "mandatory_mb": 929,
+      "optional_diagnostics_mb": 2504,
+      "optional_total_gb": 2.5,
+      "hard_storage_budget_gb": 2.7
+    },
+    "memory": {
+      "peak_gib_estimate": [0.3, 0.5],
+      "free_gib_at_phase_6a_audit": 0.97,
+      "concurrency": "one process; concurrency only if > 1.5 GiB free, at most two workers",
+      "abort_below_free_gib": 0.75,
+      "status": "estimate_not_measured"
+    },
+    "new_code_lines_estimate": [2580, 3700]
+  },
+  "schema": {
+    "mandatory_fields": [
+      "trial_id",
+      "stage",
+      "random_seed",
+      "condition",
+      "recording_enabled",
+      "connectome_identity",
+      "threshold",
+      "root_ids",
+      "population_labels",
+      "stimulus_identity",
+      "stimulus_onset_ms",
+      "stimulus_offset_ms",
+      "spike_times_ms",
+      "spike_neuron_indices",
+      "n_neurons",
+      "spike_counts",
+      "population_counts",
+      "binned_activity",
+      "decoder_windows",
+      "task_outcome",
+      "reward",
+      "prediction_error",
+      "plasticity_traces",
+      "effective_weights",
+      "spike_hash",
+      "config_hash",
+      "software_version",
+      "provenance"
+    ],
+    "optional_fields": ["panel_node_ids", "membrane_potential_mv_panel", "synaptic_current_pa_panel"],
+    "optional_rejected": ["full_population_potential_trajectory"],
+    "mandatory_schema_rows": 27,
+    "mandatory_field_names": 28,
+    "field_count_note": "Row 12 carries stimulus_onset_ms and stimulus_offset_ms; row 21 carries reward and prediction_error. panel_node_ids is optional.",
+    "largest_mandatory_array": "(7 populations, 30 bins)",
+    "dense_formats": "excluded by design"
+  },
+  "instrumentation_contract": {
+    "clauses": 12,
+    "threshold_rule": "substitute threshold_mv for returned spike indices, or sample the potential before the -68 mV reset; record a spiked flag; never record -68 mV as the spike value",
+    "copy_rule": "copy every retained array; _V, _exc, _inh and last_active_edges are mutated in place",
+    "rng_rule": "zero RNG consumption",
+    "install_rule": "install and restore in try/finally; a second install is a loud error",
+    "recorder_rule": "one recorder; BancSimulator.run already calls recorder.record",
+    "callback_rule": "the Stage S callback returns None, otherwise it replaces the reward",
+    "time_base_rule": "spikes at (step+1) x 0.5 ms; edges lower-inclusive",
+    "tests": [
+      {"id": "T1", "name": "recording on/off spike hash", "pass": "archived 4H condition B and C hashes reproduced with and without the wrapper"},
+      {"id": "T2", "name": "recording on/off repeat", "pass": "two recorder runs identical; disabled run has the same spike hash"},
+      {"id": "T3", "name": "zero RNG consumption", "pass": "no-op and real recorder at the same seed produce identical hashes"},
+      {"id": "T4", "name": "step contract", "pass": "signature (self, current_pa) and integer index array; failure names the wrapper"},
+      {"id": "T5", "name": "copy on record", "pass": "mutating _V or _exc after recording leaves the panel unchanged"},
+      {"id": "T6", "name": "threshold representation", "pass": "a spiking neuron is never recorded at -68 mV"},
+      {"id": "T7", "name": "capacity", "pass": "over-capacity raises SpikeCapacityExceeded and the trial is marked failed"},
+      {"id": "T8", "name": "time base", "pass": "step-0 spike stamped 0.5 ms; bin and window edges match the declared base"},
+      {"id": "T9", "name": "plastic callback neutrality", "pass": "a None-returning callback leaves reward, weights and hash unchanged; a numeric return changes the reward"},
+      {"id": "T10", "name": "install and restore", "pass": "an exception inside run() restores sim.neurons.step; a second install raises"},
+      {"id": "T11", "name": "no production edits", "pass": "git diff restricted to the three permitted paths; README hash unchanged"},
+      {"id": "T12", "name": "memory bound", "pass": "the O1 guard rejects full-population recording; panel buffer <= 275 kB per trial"}
+    ],
+    "gates_requiring_tests": "T1-T4 before G2"
+  },
+  "panel_rule": {
+    "stim": 232,
+    "h1_top_by_mean_input_current": 200,
+    "desc_top_by_mean_input_current": 20,
+    "decoder_pool": 6,
+    "max_nodes": 458,
+    "tie_break": "ascending local index",
+    "selection_data": "archived 4H condition B; no Stage P outcome enters it",
+    "recorded_in_fields": [10, 27]
+  },
+  "controls": [
+    {"id": "C1", "name": "spontaneous baseline", "condition": "NO_STIM", "rules_out": "downstream spikes are spontaneous"},
+    {"id": "C2", "name": "peak-matched rectangular charge", "condition": "PEAK_MATCHED_RECT", "rules_out": "the response is driven by total charge rather than its form", "replaces": "MATCHED_CHARGE"},
+    {"id": "C3", "name": "shuffled payload", "condition": "SHUFFLED_MASK", "rules_out": "propagation is generic to any payload"},
+    {"id": "C4", "name": "direct first-hop injection", "condition": "DIRECT_INJECTION", "rules_out": "a null is caused by the sensory drive rather than the H1->H2 synapse", "evidence_status": "capability control only"},
+    {"id": "C5", "name": "single first-hop spike", "condition": "SINGLE_H1_SPIKE", "rules_out": "propagation requires many simultaneous H1 spikes by construction"},
+    {"id": "C6", "name": "fixed-weight paired condition", "condition": "fixed_complete", "rules_out": "a Stage S difference is caused by substrate or protocol"},
+    {"id": "C7", "name": "eta-zero reproduction", "rules_out": "evaluation altered the stored traces"},
+    {"id": "C8", "name": "archive replay", "rules_out": "the instrumentation changed the simulator", "asserts": "archived 4H condition B and C spike_sha256"},
+    {"id": "C9", "name": "decoder neutrality in controls", "rules_out": "the decoder fires on noise or uniform charge"},
+    {"id": "C10", "name": "label permutation null", "rules_out": "observed MI is expected from marginals alone", "draws": 5000},
+    {"id": "C11", "name": "seed-split reproducibility", "rules_out": "an effect is carried by a few seeds", "split": [336, 336]},
+    {"id": "C12", "name": "blinded analysis", "rules_out": "analyst degrees of freedom"},
+    {"id": "C13", "name": "decoder ablation", "rules_out": "the H5 estimate reflects something other than the decoder wiring"}
+  ],
+  "risks": [
+    {"id": "R1", "risk": "propagation never appears at any drive", "likelihood": "high", "impact": "high"},
+    {"id": "R2", "risk": "descending and motor populations structurally unreachable", "likelihood": "high", "impact": "high"},
+    {"id": "R3", "risk": "24 tracks and 43 events; OBST_NEAR is one track", "likelihood": "certain", "impact": "medium"},
+    {"id": "R4", "risk": "the step wrapper changes simulator behaviour", "likelihood": "low", "impact": "high"},
+    {"id": "R5", "risk": "memory pressure", "likelihood": "medium", "impact": "medium"},
+    {"id": "R6", "risk": "float32 summation order varies", "likelihood": "low", "impact": "medium"},
+    {"id": "R7", "risk": "bias floor is an approximation for sparse tables", "likelihood": "medium", "impact": "medium"},
+    {"id": "R8", "risk": "effective stimulus n is 24 tracks", "likelihood": "certain", "impact": "medium"},
+    {"id": "R9", "risk": "d_star selected from pilot data", "likelihood": "certain", "impact": "low"},
+    {"id": "R10", "risk": "MATCHED_CHARGE is subthreshold", "likelihood": "certain", "impact": "low", "mitigation": "demoted to descriptive"},
+    {"id": "R11", "risk": "NO_STIM has no variance", "likelihood": "high", "impact": "medium"},
+    {"id": "R12", "risk": "Stage S is a different substrate", "likelihood": "certain", "impact": "medium"},
+    {"id": "R13", "risk": "no independent re-implementation", "likelihood": "certain", "impact": "medium"},
+    {"id": "R14", "risk": "a pathological run stalls the campaign", "likelihood": "low", "impact": "medium"},
+    {"id": "R15", "risk": "decoder endpoints are circular", "likelihood": "certain", "impact": "medium"},
+    {"id": "R16", "risk": "stimulus re-anchored to 50 ms", "likelihood": "certain", "impact": "low"},
+    {"id": "R17", "risk": "no neuromodulation, adaptation or cell types", "likelihood": "certain", "impact": "medium"},
+    {"id": "R18", "risk": "recorder overhead unmeasured", "likelihood": "medium", "impact": "medium"},
+    {"id": "R19", "risk": "Stage S SD is a proxy", "likelihood": "certain", "impact": "medium"}
+  ],
+  "retained_unresolved": [
+    {"id": "RA-1", "item": "whether any tested drive produces second-hop propagation", "handling": "P2a/P2b stop rule; a failure is a documented stop"},
+    {"id": "RA-2", "item": "whether descending or motor populations are reachable", "handling": "P3/P3a; untestable is a reported outcome"},
+    {"id": "RA-3", "item": "generalisation beyond 24 tracks; OBST_NEAR beyond one track", "handling": "track-cluster intervals; OBST_NEAR descriptive"},
+    {"id": "RA-4", "item": "peak memory with the panel enabled", "handling": "single process; pre-flight checks; resume from manifest"},
+    {"id": "RA-5", "item": "recorder wall-time overhead", "handling": "first 40 Stage R runs time the campaign; re-plan if median > 3.5 s"},
+    {"id": "RA-6", "item": "Stage S between-substrate SD is a proxy", "handling": "realized-MDE rule; E10 demoted if MDE > 0.05 bits"},
+    {"id": "RA-7", "item": "behavioural validity of the decoder", "handling": "E8/E9 labelled decoder-mediated; excluded from the verdict above E2"}
+  ],
+  "approval_gates": [
+    {"id": "G0", "question": "is this revision approved as the protocol of record", "evidence": "V2 MD, V2 JSON and matrix with hashes"},
+    {"id": "G1", "question": "is the schedule and configuration fixed", "evidence": "config reproduces every constant; trial_schedule unit-tested"},
+    {"id": "G2", "question": "does instrumentation leave the simulator unchanged", "evidence": "T1-T12; archived 4H B and C hashes; git status limited; README hash"},
+    {"id": "G3", "question": "does Stage P run to completion", "evidence": "P0 passes on 964 records; gate decision written"},
+    {"id": "G3b", "question": "optional escalation if the null is driven by too-coarse sampling", "evidence": "200 runs at 1600 and 2000 pA, REAL vs NO_STIM, 40 trials each; exploratory", "optional": true},
+    {"id": "G4", "question": "is the gate decision frozen", "evidence": "d_star and all gates with control bounds, SHA-256'd"},
+    {"id": "G5", "question": "is Stage R complete and valid", "evidence": "2,864 records; 136 repeats agree; exclusion <= 0.5%"},
+    {"id": "G6", "question": "is Stage S complete and valid", "evidence": "64,320 episodes; 134 substrates; eta=0 hashes agree"},
+    {"id": "G7", "question": "is the analysis frozen before prose", "evidence": "results JSON SHA-256 recorded"}
+  ],
+  "historical_evidence_preserved": {
+    "phase_4h": {
+      "spikes_max_trial": 3562,
+      "first_hop_current_reach": "473/607",
+      "closest_first_hop_potential_mv": -56.926,
+      "second_hop_current_pa": 0.0,
+      "first_hop_descending_neurons": 9,
+      "uniform_charge_pa_per_neuron": 46.696
+    },
+    "phase_5": {
+      "fraction_learned": 0.795,
+      "evaluation_fraction": 0.945,
+      "success_difference": 0.15,
+      "p_value": 0.00195,
+      "effect_size_dz": 2.012,
+      "substrate_seed": 20261114
+    },
+    "phase_6b_6c": {
+      "c06_difference_bits": -0.086,
+      "c06_p_value": 0.125,
+      "c06_sd_bits": 0.15813337,
+      "c06_se_bits": 0.05000616,
+      "c06_floor_bits": 0.16230319
+    }
+  },
+  "audit_matrix": {
+    "issues_total": 36,
+    "resolved": 29,
+    "resolved_limitation_retained": 2,
+    "adopted_with_stated_deviation": 4,
+    "not_adopted_justified": 1,
+    "blocking_findings_total": 7,
+    "blocking_findings_resolved": 7
+  },
+  "consistency": {
+    "md_json_counts_agree": true,
+    "stale_cross_references": 0,
+    "historical_numbers_altered": false,
+    "protected_files_modified": false,
+    "staged": false,
+    "committed": false,
+    "pushed": false,
+    "simulation_executed": false,
+    "recording_executed": false,
+    "training_executed": false,
+    "instrumentation_implemented": false
+  }
+}

@@ -1,0 +1,549 @@
+{
+ "phase": "5D",
+ "status": "complete",
+ "generated_at_utc": "2026-11-09T16:31:03+00:00",
+ "command": {
+  "quick": false,
+  "skip_banc": false,
+  "module": "experiments.phase_5.run_plasticity_unit_experiments"
+ },
+ "software": {
+  "python": "3.13.14",
+  "numpy": "2.3.4",
+  "pandas": "2.3.3",
+  "platform": "Windows-11-10.0.26200-SP0"
+ },
+ "config": {
+  "path": "configs/plasticity.yaml",
+  "sha256": "f4674cee4656526511e9e14d92d626bdc81f3a70abacba96d7f393251bc1ba20",
+  "digest": "20326602b22b517ef2bed9dfc9e0e27c121ee419b22f303fc06ef0b8633791b1",
+  "description": {
+   "weights": {
+    "bounds": {
+     "lower_factor": 0.5,
+     "upper_factor": 2.0,
+     "absolute_min_pa": null,
+     "absolute_max_pa": null,
+     "max_abs_update_pa": 5.0,
+     "interpretation": "relative bounds are a declared modelling choice around the initial structural weight; they are not fitted"
+    },
+    "fixed_mode_eta": 0.0,
+    "primary_threshold": 5
+   },
+   "rule": {
+    "eta": 0.01,
+    "update_cadence": "reward_event",
+    "weight_decay_per_ms": 0.0,
+    "normalization": "none",
+    "abort_on_sign_flip": true,
+    "rule": "delta_w = eta * delta_t * e_ij",
+    "normalization_status": "declared exclusion: normalization would couple edges and change the eta = 0 contract, so it is not implemented"
+   },
+   "simulation": {
+    "dt_ms": 0.5,
+    "duration_ms": 100.0,
+    "tau_exc_ms": 5.0,
+    "tau_inh_ms": 8.0,
+    "delay_ms": 1.0,
+    "background_current_pa": 0.0,
+    "noise_std_pa": 0.0,
+    "max_recorded_spikes": 200000
+   },
+   "traces": {
+    "tau_e_ms": 20.0,
+    "dt_ms": 0.5,
+    "decay_per_step": 0.975309912028,
+    "prune_threshold": 0.0001,
+    "prune_interval_steps": 50,
+    "coincidence": "delay_matched",
+    "dtype": "float32"
+   }
+  }
+ },
+ "toy_rule": {
+  "n_edges_updated": 5,
+  "expected_deltas_pa": [
+   -0.2,
+   -0.4,
+   -0.6000000000000001,
+   -0.2,
+   -0.1
+  ],
+  "applied_deltas_pa": [
+   -0.20000000298023224,
+   -0.4000000059604645,
+   -0.6000000238418579,
+   -0.20000000298023224,
+   -0.10000000149011612
+  ],
+  "max_abs_error_pa": 2.3841857821338408e-08,
+  "arithmetic_matches_declared_rule": true,
+  "negative_rpe_reduced_weights": true,
+  "eta_zero_no_op": true,
+  "bounds": {
+   "lower_factor": 0.5,
+   "upper_factor": 2.0,
+   "absolute_min_pa": null,
+   "absolute_max_pa": null,
+   "max_abs_update_pa": null,
+   "interpretation": "relative bounds are a declared modelling choice around the initial structural weight; they are not fitted"
+  }
+ },
+ "synthetic_equivalence": {
+  "graph": {
+   "n_nodes": 64,
+   "n_edges": 800,
+   "n_plastic": 502,
+   "seed": 5
+  },
+  "simulation": {
+   "duration_ms": 50.0,
+   "n_steps": 100,
+   "dt_ms": 0.5,
+   "seed": 7,
+   "noise_std_pa": 25.0,
+   "stimulated_neurons": 16,
+   "stimulation_pa": 500.0,
+   "reward_steps": [
+    33,
+    99
+   ]
+  },
+  "fixed_runtime_s": 0.0174,
+  "conditions": {
+   "traces_enabled": {
+    "spike_hash": "be6e3a7f12606f1362fe4f085cd3f297041e511b32307519fc9fed5373ca23e8",
+    "fixed_spike_hash": "be6e3a7f12606f1362fe4f085cd3f297041e511b32307519fc9fed5373ca23e8",
+    "hashes_identical": true,
+    "n_spikes": 77,
+    "n_transmissions": 947,
+    "n_update_events": 2,
+    "n_updates": 0,
+    "weight_delta_digest": "dcbe2cbe7f0cf500ecdfeea8d18acb03854948ad940d31e6b6b6907ac2e87f10",
+    "initial_weight_digest": "ece2325aa28fb436cc20b0da694dad438a8c332423535891d9b5c1e7835dc27c",
+    "effective_equals_initial": true,
+    "runtime_s": 0.0135,
+    "traces": {
+     "enabled": true,
+     "n_coincident_tags": 10,
+     "n_pushed_edges": 582,
+     "n_delivered_edges": 565,
+     "memory_bytes": 4052,
+     "n_traces": 502,
+     "n_touched": 9,
+     "n_nonzero": 9,
+     "touched_fraction": 0.017928287,
+     "nonzero_fraction": 0.017928287,
+     "l1": 3.296798268,
+     "max": 0.825793192,
+     "decay_per_step": 0.975309912028,
+     "tau_e_ms": 20.0,
+     "prune_threshold": 0.0001,
+     "clock": 100,
+     "storage": "lazy edge-indexed float arrays",
+     "capacity_bytes": 4016,
+     "digest": "32aa9fd353fad3e9b795ade7577f255cb3d614550a2c899082a3cfc75be8bbd3",
+     "increment_unit": "one per coincident pre/post spike pair in the declared convention"
+    }
+   },
+   "traces_disabled": {
+    "spike_hash": "be6e3a7f12606f1362fe4f085cd3f297041e511b32307519fc9fed5373ca23e8",
+    "fixed_spike_hash": "be6e3a7f12606f1362fe4f085cd3f297041e511b32307519fc9fed5373ca23e8",
+    "hashes_identical": true,
+    "n_spikes": 77,
+    "n_transmissions": 947,
+    "n_update_events": 0,
+    "n_updates": 0,
+    "weight_delta_digest": "dcbe2cbe7f0cf500ecdfeea8d18acb03854948ad940d31e6b6b6907ac2e87f10",
+    "initial_weight_digest": "ece2325aa28fb436cc20b0da694dad438a8c332423535891d9b5c1e7835dc27c",
+    "effective_equals_initial": true,
+    "runtime_s": 0.0111,
+    "traces": {
+     "enabled": false,
+     "reason": "traces disabled by the experiment condition"
+    }
+   }
+  },
+  "all_hashes_identical": true
+ },
+ "synthetic_plastic_smoke": {
+  "configuration": {
+   "eta": 0.02,
+   "bounds": {
+    "lower_factor": 0.5,
+    "upper_factor": 2.0,
+    "absolute_min_pa": null,
+    "absolute_max_pa": null,
+    "max_abs_update_pa": 5.0,
+    "interpretation": "relative bounds are a declared modelling choice around the initial structural weight; they are not fitted"
+   },
+   "duration_ms": 80.0,
+   "n_steps": 160,
+   "reward_steps": [
+    53,
+    159
+   ],
+   "reward_magnitudes": [
+    1.0,
+    -1.0
+   ],
+   "stimulated_neurons": 16,
+   "noise_std_pa": 40.0
+  },
+  "n_spikes": 123,
+  "spike_hash": "152ba21fe2b90df3d55fc6538f57ba497a40d1782eeaa98c5d6a3293a162268f",
+  "runtime_s": 0.0232,
+  "steps_per_second": 6903.8,
+  "update_summary": {
+   "n_update_events": 2,
+   "n_changed_events": 2,
+   "sum_abs_applied_pa": 0.166756574064,
+   "max_abs_applied_pa": 0.034148123115,
+   "clamp_hits": 0,
+   "update_clip_hits": 0,
+   "sign_violations": 0,
+   "decayed_edges": 0,
+   "mean_abs_delta_t": 1.0,
+   "max_abs_delta_t": 1.0
+  },
+  "update_records": [
+   {
+    "step": 53,
+    "eta": 0.02,
+    "delta_t": 1.0,
+    "n_slots": 6,
+    "n_updates": 6,
+    "sum_applied_pa": 0.083455923013,
+    "sum_abs_applied_pa": 0.083455923013,
+    "max_abs_applied_pa": 0.019999999553,
+    "mean_eligibility": 0.695466034,
+    "max_eligibility": 1.0,
+    "clamp_hits": 0,
+    "update_clip_hits": 0,
+    "sign_violations": 0,
+    "decayed_edges": 0
+   },
+   {
+    "step": 159,
+    "eta": 0.02,
+    "delta_t": -1.0,
+    "n_slots": 12,
+    "n_updates": 12,
+    "sum_applied_pa": -0.083300651051,
+    "sum_abs_applied_pa": 0.083300651051,
+    "max_abs_applied_pa": 0.034148123115,
+    "mean_eligibility": 0.347086059,
+    "max_eligibility": 1.707406247,
+    "clamp_hits": 0,
+    "update_clip_hits": 0,
+    "sign_violations": 0,
+    "decayed_edges": 0
+   }
+  ],
+  "traces": {
+   "enabled": true,
+   "n_coincident_tags": 15,
+   "n_pushed_edges": 928,
+   "n_delivered_edges": 928,
+   "memory_bytes": 4064,
+   "n_traces": 502,
+   "n_touched": 12,
+   "n_nonzero": 12,
+   "touched_fraction": 0.023904382,
+   "nonzero_fraction": 0.023904382,
+   "l1": 4.165032702,
+   "max": 1.707406247,
+   "decay_per_step": 0.975309912028,
+   "tau_e_ms": 20.0,
+   "prune_threshold": 0.0001,
+   "clock": 160,
+   "storage": "lazy edge-indexed float arrays",
+   "capacity_bytes": 4016,
+   "digest": "bcb71ec24ee4def01e02008c0854b5127623817bbf7e05c3bb7e1a5866dbce53",
+   "increment_unit": "one per coincident pre/post spike pair in the declared convention"
+  },
+  "weights": {
+   "model": "separated_structural_initial_learned_effective_weights",
+   "bounds": {
+    "lower_factor": 0.5,
+    "upper_factor": 2.0,
+    "absolute_min_pa": null,
+    "absolute_max_pa": null,
+    "max_abs_update_pa": 5.0,
+    "interpretation": "relative bounds are a declared modelling choice around the initial structural weight; they are not fitted"
+   },
+   "n_edges": 800,
+   "n_plastic": 502,
+   "n_excitatory": 299,
+   "n_inhibitory": 203,
+   "n_unknown": 298,
+   "structural_synapses": 8511,
+   "initial_sum_pa": 14148.737869,
+   "effective_sum_pa": 14148.738027,
+   "delta_sum_pa": 0.000155272,
+   "delta_abs_sum_pa": 0.150419725,
+   "delta_max_abs_pa": 0.034148123,
+   "n_changed_edges": 12,
+   "changed_edge_share": 0.023904382,
+   "saturated_edges": 0,
+   "relative_delta": {
+    "mean": -0.00020933,
+    "min": -0.004060919,
+    "max": 0.0013746
+   },
+   "cumulative_clamp_hits": 0,
+   "cumulative_update_clips": 0,
+   "n_update_calls": 2,
+   "digests": {
+    "structural": "2eaab704c810a011e79a0f06ae6f36bc5e89ecfc41f11d89cf90b0cd7651030f",
+    "initial": "ece2325aa28fb436cc20b0da694dad438a8c332423535891d9b5c1e7835dc27c",
+    "learned_delta": "a098d97d89c10368ecc09f7386eb6200f93a350c3af08111f9ebf7b825897feb",
+    "effective": "18c68378524131418c11669716003529006a7dca4c387e79ec03fe546232e767"
+   },
+   "classification": "computational weight state; pA values are transformed synapse counts, not conductances"
+  },
+  "invariants": {
+   "deltas_finite": true,
+   "effective_finite": true,
+   "deltas_zero_off_plastic": true,
+   "excitatory_channel_only": true,
+   "inhibitory_channel_only": true,
+   "effective_non_negative": true,
+   "effective_matches_layers": true,
+   "within_declared_bounds": true
+  },
+  "structural_digest": "2eaab704c810a011e79a0f06ae6f36bc5e89ecfc41f11d89cf90b0cd7651030f",
+  "initial_digest": "ece2325aa28fb436cc20b0da694dad438a8c332423535891d9b5c1e7835dc27c",
+  "delta_digest": "a098d97d89c10368ecc09f7386eb6200f93a350c3af08111f9ebf7b825897feb",
+  "effective_digest": "18c68378524131418c11669716003529006a7dca4c387e79ec03fe546232e767",
+  "sign_preserved": true,
+  "structural_counts_immutable": true,
+  "memory": {
+   "weight_state_bytes": 28016,
+   "engine_bytes": 11280,
+   "neuron_state_bytes": 768,
+   "synapse_state_bytes": 7936,
+   "synapse_arrays_bytes": 512,
+   "shared_effective_weight_bytes": 6400,
+   "delay_buffer_bytes": 1024,
+   "spike_recorder_bytes": 800000,
+   "retained_arrays_bytes": 841600,
+   "components_mb": {
+    "weight_state": 0.0267,
+    "engine": 0.0108,
+    "neuron_state": 0.0007,
+    "synapse_state": 0.0076,
+    "spike_recorder": 0.7629
+   },
+   "retained_arrays_mb": 0.8026
+  },
+  "process_memory": {
+   "rss_mb": 98.9676,
+   "peak_wset_mb": 98.9676
+  }
+ },
+ "checkpoint": {
+  "n_update_events": 2,
+  "n_changed_edges_from_run": 0,
+  "fixture_update_applied": true,
+  "n_changed_edges_saved": 4,
+  "checkpoint_step": 50,
+  "checkpoint_graph_checksum": "10141f9fc478c14a98902c6257991c20c747f5d00be5e0d389ffaeee16ccf797",
+  "expected_graph_checksum": "10141f9fc478c14a98902c6257991c20c747f5d00be5e0d389ffaeee16ccf797",
+  "round_trip_ok": true,
+  "traces_restored": true,
+  "wrong_graph_rejected": true,
+  "wrong_graph_reason": "checkpoint belongs to a different structural graph",
+  "tamper_rejected": true,
+  "tamper_reason": "checkpoint learned deltas do not match their digest",
+  "tamper_left_state_untouched": true
+ },
+ "banc_equivalence": {
+  "available": true,
+  "graph": {
+   "path": "datasets/processed/banc_v888/banc_graph_t5.npz",
+   "sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192",
+   "threshold": 5,
+   "n_nodes": 172433,
+   "n_edges": 1535710,
+   "n_synapses": 18552546,
+   "n_plastic_edges": 683100
+  },
+  "simulation": {
+   "duration_ms": 30.0,
+   "n_steps": 60,
+   "seed": 20261114,
+   "stimulated_neurons": 64,
+   "stimulation_pa": 300.0,
+   "reward_steps": [
+    30,
+    59
+   ]
+  },
+  "load_s": 4.0717,
+  "conditions": {
+   "no_noise": {
+    "noise_std_pa": 0.0,
+    "fixed_spike_hash": "4fc92a14bbf3fd8535717b447bac54c8d43fe8e41031aa1c3f060ea8625bc30c",
+    "plastic_spike_hash": "4fc92a14bbf3fd8535717b447bac54c8d43fe8e41031aa1c3f060ea8625bc30c",
+    "hashes_identical": true,
+    "fixed_spikes": 64,
+    "plastic_spikes": 64,
+    "n_transmissions": 3,
+    "n_update_events": 2,
+    "n_updates": 0,
+    "weight_state_construction_s": 0.0637,
+    "fixed_runtime_s": 0.2778,
+    "plastic_runtime_s": 0.4608,
+    "plastic_steps_per_second": 130.2,
+    "delta_digest": "b88628a13b6355a344f84fd87bef6e1b48859526215235ca22e29ae412863c63",
+    "initial_digest": "8d19c706f66cb933f3660b96eba922cfa2ecf9a4649676b748e1a677172c08bb",
+    "effective_digest": "dc544f7aad1ca7182f827a6a93f756c3a77fa6f0968df358353cd173e4a8025e",
+    "effective_equals_initial": true,
+    "structural_equals_graph": true,
+    "memory": {
+     "weight_state_bytes": 51536100,
+     "engine_bytes": 17072440,
+     "neuron_state_bytes": 2069196,
+     "synapse_state_bytes": 16424072,
+     "synapse_arrays_bytes": 1379464,
+     "shared_effective_weight_bytes": 12285680,
+     "delay_buffer_bytes": 2758928,
+     "spike_recorder_bytes": 4000000,
+     "retained_arrays_bytes": 78816128,
+     "components_mb": {
+      "weight_state": 49.1487,
+      "engine": 16.2815,
+      "neuron_state": 1.9733,
+      "synapse_state": 15.6632,
+      "spike_recorder": 3.8147
+     },
+     "retained_arrays_mb": 75.1649
+    },
+    "traces": {
+     "enabled": true,
+     "n_coincident_tags": 0,
+     "n_pushed_edges": 0,
+     "n_delivered_edges": 0,
+     "memory_bytes": 5464800,
+     "n_traces": 683100,
+     "n_touched": 0,
+     "n_nonzero": 0,
+     "touched_fraction": 0.0,
+     "nonzero_fraction": 0.0,
+     "l1": 0.0,
+     "max": 0.0,
+     "decay_per_step": 0.975309912028,
+     "tau_e_ms": 20.0,
+     "prune_threshold": 0.0001,
+     "clock": 60,
+     "storage": "lazy edge-indexed float arrays",
+     "capacity_bytes": 5464800,
+     "digest": "84b4b8db87630d5fdc0e42852ccf3b358e015fd0fcc69cb8c25c7fa8a06d9631",
+     "increment_unit": "one per coincident pre/post spike pair in the declared convention"
+    },
+    "process_memory": {
+     "rss_mb": 253.6653,
+     "peak_wset_mb": 296.4275
+    }
+   },
+   "background_noise": {
+    "noise_std_pa": 25.0,
+    "fixed_spike_hash": "b2e70eaf6d1bfb735e64962b5840bad70c54f35c639da260f4c0e441abcde38b",
+    "plastic_spike_hash": "b2e70eaf6d1bfb735e64962b5840bad70c54f35c639da260f4c0e441abcde38b",
+    "hashes_identical": true,
+    "fixed_spikes": 64,
+    "plastic_spikes": 64,
+    "n_transmissions": 3,
+    "n_update_events": 2,
+    "n_updates": 0,
+    "weight_state_construction_s": 0.0593,
+    "fixed_runtime_s": 0.4664,
+    "plastic_runtime_s": 0.6584,
+    "plastic_steps_per_second": 91.1,
+    "delta_digest": "b88628a13b6355a344f84fd87bef6e1b48859526215235ca22e29ae412863c63",
+    "initial_digest": "8d19c706f66cb933f3660b96eba922cfa2ecf9a4649676b748e1a677172c08bb",
+    "effective_digest": "dc544f7aad1ca7182f827a6a93f756c3a77fa6f0968df358353cd173e4a8025e",
+    "effective_equals_initial": true,
+    "structural_equals_graph": true,
+    "memory": {
+     "weight_state_bytes": 51536100,
+     "engine_bytes": 17072440,
+     "neuron_state_bytes": 2069196,
+     "synapse_state_bytes": 16424072,
+     "synapse_arrays_bytes": 1379464,
+     "shared_effective_weight_bytes": 12285680,
+     "delay_buffer_bytes": 2758928,
+     "spike_recorder_bytes": 4000000,
+     "retained_arrays_bytes": 78816128,
+     "components_mb": {
+      "weight_state": 49.1487,
+      "engine": 16.2815,
+      "neuron_state": 1.9733,
+      "synapse_state": 15.6632,
+      "spike_recorder": 3.8147
+     },
+     "retained_arrays_mb": 75.1649
+    },
+    "traces": {
+     "enabled": true,
+     "n_coincident_tags": 0,
+     "n_pushed_edges": 0,
+     "n_delivered_edges": 0,
+     "memory_bytes": 5464800,
+     "n_traces": 683100,
+     "n_touched": 0,
+     "n_nonzero": 0,
+     "touched_fraction": 0.0,
+     "nonzero_fraction": 0.0,
+     "l1": 0.0,
+     "max": 0.0,
+     "decay_per_step": 0.975309912028,
+     "tau_e_ms": 20.0,
+     "prune_threshold": 0.0001,
+     "clock": 60,
+     "storage": "lazy edge-indexed float arrays",
+     "capacity_bytes": 5464800,
+     "digest": "84b4b8db87630d5fdc0e42852ccf3b358e015fd0fcc69cb8c25c7fa8a06d9631",
+     "increment_unit": "one per coincident pre/post spike pair in the declared convention"
+    },
+    "process_memory": {
+     "rss_mb": 280.6497,
+     "peak_wset_mb": 296.4972
+    }
+   }
+  },
+  "all_hashes_identical": true
+ },
+ "integrity": {
+  "checked": 37,
+  "failures": [],
+  "pass": true
+ },
+ "checks": {
+  "toy_rule_arithmetic": true,
+  "eta_zero_no_op": true,
+  "synthetic_eta_zero_hashes": true,
+  "plastic_invariants": true,
+  "checkpoint_round_trip": true,
+  "checkpoint_wrong_graph_rejected": true,
+  "checkpoint_tamper_rejected": true,
+  "banc_eta_zero_hashes": true,
+  "banc_conditions_produced_spikes": true,
+  "integrity": true
+ },
+ "failures": [],
+ "all_checks_passed": true,
+ "runtime_s": 6.9614,
+ "process_memory": {
+  "rss_mb": 127.5863,
+  "peak_wset_mb": 296.4972
+ },
+ "limitations": [
+  "The synthetic substrate is a validation fixture, not a brain circuit.",
+  "A nonzero weight delta is a model output of the declared rule and is not evidence of learning or of a biological synaptic change.",
+  "eta = 0 equality is verified only for the seeds, durations and inputs recorded here; it is not a proof for every possible configuration.",
+  "The BANC section uses a short simulation window and a small stimulated population; it validates the software contract, not connectome dynamics.",
+  "Rewards are external computational scalars; no dopamine, octopamine or serotonin quantity was measured."
+ ]
+}

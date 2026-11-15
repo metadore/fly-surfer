@@ -1,0 +1,81 @@
+# Phase 5E - controlled synthetic cued-response task.
+#
+# SCIENTIFIC STATUS
+#   This file configures a computational construct, not a biological experiment.
+#   A cue is a stimulated neuron population, the designated response is a
+#   declared arbitrary mapping, and a reward is an external task scalar. Success
+#   on this task is not evidence of learning in a fly and is not a measurement
+#   of any synaptic process.
+#
+# Every number here is fixed before the learning experiment is run. The
+# stimulus protocol was calibrated in a small smoke pilot so that the untrained
+# success rate is neither zero nor one; that calibration is recorded in the
+# Phase 5E report. It is not a tune of any connectome or biological parameter.
+
+version: 1
+phase: 5E
+
+task:
+  # 4 cue populations of 8 neurons and 4 single-neuron action populations.
+  # Complete connectivity gives 4 * 8 * 4 = 128 directed cue -> action edges.
+  n_cues: 4
+  cue_neurons: 8
+  action_neurons: 1
+  min_count: 1
+  max_count: 5
+  weight_scale_pa: 5.0
+  connectivity: complete
+  # Used only by the random-connectivity control condition E.
+  edge_probability: 0.5
+
+  # Stimulus protocol. Cue onsets are jittered per trial and per neuron so that
+  # different presynaptic spikes coincide with the response across trials.
+  cue_current_pa: 600.0
+  action_prime_current_pa: 600.0
+  action_prime_end_ms: 5.0
+  action_background_pa: 145.0
+  pulse_onset_min_ms: 1.0
+  pulse_onset_max_ms: 7.0
+  pulse_duration_ms: 6.0
+  response_deadline_ms: 13.5
+  duration_ms: 24.0
+  dt_ms: 0.5
+  noise_std_pa: 8.0
+
+  # Declared dimensionless task rewards. A miss returns the miss value, which is
+  # zero in the primary protocol; it is not a biological punishment.
+  reward_correct: 1.0
+  reward_incorrect: 0.0
+
+  # Task-coupled synaptic time constants and uniform delay. The excitatory decay
+  # is longer than a trial so that a cue packet remains visible to the action
+  # neurons; it is a declared task choice, not a fitted biological constant.
+  tau_exc_ms: 20.0
+  tau_inh_ms: 8.0
+  delay_ms: 1.0
+
+experiment:
+  # Budgets are identical for every condition. 160 = 4 blocks of 40 episodes,
+  # so every cue is presented the same number of times.
+  train_episodes: 160
+  eval_episodes: 40
+  replicates: 3
+  master_seed: 20261114
+  # eta used by the plastic conditions. eta = 0 is reserved for the fixed-weight
+  # control condition A and is never tuned.
+  eta: 1.0
+
+  # Episode-level criterion: a block of 20 consecutive episodes reaches 0.75
+  # success. Fixed before the experiment.
+  criterion_window: 20
+  criterion_success: 0.75
+
+  # Evaluation checkpoints are measured values of training progress, not
+  # post-hoc selections. They start at 0 and end at train_episodes.
+  eval_checkpoints: [0, 40, 80, 120, 160]
+  checkpoint_condition: B
+
+  # Conditions A-G are declared here and implemented by
+  # experiments/phase_5/controlled_task.py.
+  conditions: [A, B, C, D, E, F, G]
+  evaluation_uses_traces: false

@@ -1,0 +1,69 @@
+# Phase 3C temporal acceptance experiment matrix.
+#
+# This file is new. `docs/PHASE_3C_TEMPORAL_SENSORY_DESIGN.md` section 6 says the
+# 3C.1-3C.9 suite and this configuration were not delivered. The condition
+# descriptions in that document do not fix the exact stimuli, so the concrete
+# sequences below are pre-registered here before execution and must not be
+# changed after results are seen. They cover the milestone decision rule
+# (section 6.4) and the 3C acceptance sentence in `docs/PHASE_3_ROADMAP.md`.
+#
+# Units: distances are the dimensionless image-geometry proxies used by the
+# Phase 3A encoder, not metres. Times are milliseconds of simulated time.
+phase: P3-T7
+version: phase_3c_temporal_acceptance_v1
+preregistered_at_utc: "2026-11-14T00:00:00+00:00"
+
+protocol:
+  duration_ms: 600.5          # one extra timestep so the final frame applies
+  frame_interval_ms: 50.0
+  bin_ms: 50.0
+  obstacle_lane: center
+  obstacle_type: low
+  # Asserted equal to configs/sensory_config.yaml sensory.amplitude_pa.
+  current_pa: 200.0
+  max_recorded_spikes: 6000000
+  background_current_pa: 0.0
+  noise_std_pa: 0.0
+
+seeds:
+  # The Phase 3A.5 calibration seed plus two pre-registered draws. Only the
+  # mapping seed varies; the simulator is deterministic with zero noise.
+  mapping: [20261104, 20261105, 20261106]
+  base_mapping_seed: 20261104
+
+conditions:
+  "3C.1":
+    constant_distances: [0.15, 0.55, 0.90]
+  "3C.2":
+    approach: [0.90, 0.15]
+    retreat: [0.15, 0.90]
+  "3C.3":
+    entry_times_ms: [100, 200, 300]
+    distance: 0.55
+  "3C.4":
+    exit_times_ms: [200, 400]
+    distance: 0.55
+  "3C.7":
+    frame_rates_ms: [200, 100, 50]
+    approach: [0.90, 0.15]
+  "3C.9":
+    # Fixed permutation of the thirteen distance samples; timestamps are kept.
+    shuffle_permutation: [6, 2, 10, 0, 8, 4, 12, 1, 9, 3, 7, 5, 11]
+    dropped_frame_index: 6
+
+analysis:
+  equivalence_current_tolerance_pa: 1.0e-9
+  dprime_threshold: 1.0
+  separability_seeds_required: 2
+  # Cosine distance above which a control is called "measurably different".
+  cosine_distance_threshold: 0.01
+  baseline_window_ms: 100.0
+
+# Conditions in the design that this matrix does not execute.
+not_executed:
+  "3C.5": "lane ordering (left-center-right vs reversed)"
+  "3C.6": "jump and roll onset/offset intervals"
+  "3C.8": "T1 vs T2 vs T3 encoding ablation"
+  note: >-
+    These characterize the encoder rather than the milestone decision rule.
+    They remain unexecuted and must not be described as completed.

@@ -1,0 +1,485 @@
+{
+ "phase": "5B",
+ "title": "Reward Signal and Reward Prediction Error",
+ "status": "complete",
+ "successful": true,
+ "date": "2026-11-09",
+ "repository": "FLY-SURFER",
+ "preceding_phase": "5A (approved architecture audit, M01-M13)",
+ "scope": "reward representation, delayed delivery, reward prediction and temporal-difference prediction error; no synapse, trace, weight or simulator state is touched",
+ "classification": "computational task reward; not a biological dopamine, octopamine or serotonin measurement",
+ "non_claims": [
+  "Reward is a computational task scalar, not a dopamine, octopamine or serotonin measurement.",
+  "The predictor is one declared value model, not a recorded reward-prediction signal.",
+  "delta_t is the arithmetic error of that model, not a biological teaching signal.",
+  "Convergence of V is arithmetic consistency of the model, not learning in a brain.",
+  "The logger stores model variables, not a neural recording."
+ ],
+ "implemented_interfaces": {
+  "M01": {
+   "name": "reward signal representation",
+   "implementation": "plasticity/reward.py: RewardEvent, RewardSchedule, ScriptedRewardProvider",
+   "contract": "provider.step(step, time_ms, context) -> float; sums magnitudes whose delayed delivery falls in (previous_time, time_ms]; non-decreasing finite time; each event once; reset supported"
+  },
+  "M02": {
+   "name": "reward predictor and RPE",
+   "implementation": "TabularValuePredictor",
+   "formula": "delta_t = r_t + gamma * V(s_next) - V(s_t); V <- clip(V + learning_rate * delta_t, -bound, bound)",
+   "contract": "gamma and learning_rate in [0, 1]; None next state is terminal; non-finite rewards and updates rejected"
+  },
+  "M03": {
+   "name": "reward and learning log schema",
+   "implementation": "RewardPrediction, RewardLogger",
+   "fields": [
+    "step",
+    "time_ms",
+    "reward",
+    "value",
+    "next_value",
+    "prediction_error",
+    "state",
+    "next_state"
+   ]
+  }
+ },
+ "modules": {
+  "created": [
+   "plasticity/__init__.py",
+   "plasticity/reward.py",
+   "configs/plasticity.yaml",
+   "experiments/phase_5/run_reward.py",
+   "experiments/results/phase_5b/reward_system.json",
+   "tests/test_plasticity_reward.py",
+   "reports/PHASE_5B_REWARD_SYSTEM.md",
+   "reports/PHASE_5B_REWARD_SYSTEM.json"
+  ],
+  "modified": [],
+  "package_imports": [
+   "plasticity.reward"
+  ],
+  "forbidden_imports_verified": [
+   "brain",
+   "motor",
+   "banc",
+   "experiments"
+  ]
+ },
+ "configuration": {
+  "path": "configs\\plasticity.yaml",
+  "sha256": "1acaee386ba62653b6f604b63f2898b0a15a8c9c136958e3825925b5aae57fe5",
+  "reward": {
+   "delay_ms_default": 0.0,
+   "schedules": [
+    "delayed_mixed",
+    "mixed",
+    "negative_single",
+    "positive_single",
+    "zero_reward"
+   ],
+   "digests": {
+    "positive_single": "de2c075fbff7d9f73c83bdace6e1798438a37954ad0bb9253cc70ce5e6fa327e",
+    "negative_single": "6b18f473f2d1e5bd4c11387ededdb5de28f5acc4fc700a601deb81a91d867ecf",
+    "zero_reward": "d031b71588702bf8235769d3430905b048e7fe419168d12ed694f2c0d874c1c7",
+    "mixed": "ae694c8d72e9556a397731facb2458faf9cb21a94b7eab628dd4e18bd6b613e2",
+    "delayed_mixed": "7eea08d30ab6b5d472eaf6484cb1e3c563748402aa0561f7cd656b84afa33504"
+   },
+   "delayed_mixed_delay_ms": 50.0,
+   "mixed_total": 0.5
+  },
+  "predictor": {
+   "gamma": 0.9,
+   "learning_rate": 0.2,
+   "initial_value": 0.0,
+   "value_bound": 100.0
+  },
+  "gamma_grid": [
+   0.0,
+   0.5,
+   0.9,
+   0.99
+  ],
+  "convergence": {
+   "schedule": "mixed",
+   "n_episodes": 400,
+   "tolerance": 0.001
+  },
+  "demonstration": {
+   "dt_ms": 0.5,
+   "episode_duration_ms": 300.0,
+   "schedule": "mixed",
+   "delayed_schedule": "delayed_mixed",
+   "shuffle_seed": 20261111
+  },
+  "fixed_before_run": true
+ },
+ "validation": {
+  "runner": "python -m experiments.phase_5.run_reward",
+  "result_path": "experiments/results/phase_5b/reward_system.json",
+  "result_bytes": 20425,
+  "checks": {
+   "reward_signs": true,
+   "reward_timing": true,
+   "single_emission": true,
+   "delayed_reward": true,
+   "predictor_convergence": true,
+   "numerical_stability": true,
+   "determinism": true,
+   "logging": true,
+   "shuffled_control": true
+  },
+  "all_checks_passed": true,
+  "sign_checks": {
+   "positive_single": {
+    "total": 1.0,
+    "counts": {
+     "positive": 1,
+     "negative": 0,
+     "zero": 0
+    },
+    "sign_expected": "positive"
+   },
+   "negative_single": {
+    "total": -1.0,
+    "counts": {
+     "positive": 0,
+     "negative": 1,
+     "zero": 0
+    },
+    "sign_expected": "negative"
+   },
+   "zero_reward": {
+    "total": 0.0,
+    "counts": {
+     "positive": 0,
+     "negative": 0,
+     "zero": 1
+    },
+    "sign_expected": "zero"
+   }
+  },
+  "reward_timing": {
+   "schedule": "mixed",
+   "expected_ms": [
+    80.0,
+    160.0,
+    240.0
+   ],
+   "observed_ms": [
+    80.0,
+    160.0,
+    240.0
+   ],
+   "nonzero_steps": 3
+  },
+  "delay": {
+   "delay_ms": 50.0,
+   "expected_delivery_times_ms": [
+    130.0,
+    210.0,
+    290.0
+   ],
+   "observed_delivery_times_ms": [
+    130.0,
+    210.0,
+    290.0
+   ],
+   "times_match": true,
+   "first_delivery_ahead_by_steps": 100,
+   "expected_shift_steps": 100,
+   "shift_matches": true,
+   "total_preserved": true,
+   "terminal_values_equal": true
+  },
+  "convergence": [
+   {
+    "gamma": 0.0,
+    "n_episodes": 400,
+    "learning_rate": 0.2,
+    "analytic_values": {
+     "stage_2": 0.5,
+     "stage_1": -1.0,
+     "stage_0": 1.0
+    },
+    "learned_values": {
+     "stage_2": 0.5,
+     "stage_1": -1.0,
+     "stage_0": 1.0
+    },
+    "max_abs_error": 0.0,
+    "converged": true
+   },
+   {
+    "gamma": 0.5,
+    "n_episodes": 400,
+    "learning_rate": 0.2,
+    "analytic_values": {
+     "stage_2": 0.5,
+     "stage_1": -0.75,
+     "stage_0": 0.625
+    },
+    "learned_values": {
+     "stage_2": 0.5,
+     "stage_1": -0.75,
+     "stage_0": 0.625
+    },
+    "max_abs_error": 0.0,
+    "converged": true
+   },
+   {
+    "gamma": 0.9,
+    "n_episodes": 400,
+    "learning_rate": 0.2,
+    "analytic_values": {
+     "stage_2": 0.5,
+     "stage_1": -0.55,
+     "stage_0": 0.505
+    },
+    "learned_values": {
+     "stage_2": 0.5,
+     "stage_1": -0.55,
+     "stage_0": 0.505
+    },
+    "max_abs_error": 0.0,
+    "converged": true
+   },
+   {
+    "gamma": 0.99,
+    "n_episodes": 400,
+    "learning_rate": 0.2,
+    "analytic_values": {
+     "stage_2": 0.5,
+     "stage_1": -0.505,
+     "stage_0": 0.50005
+    },
+    "learned_values": {
+     "stage_2": 0.5,
+     "stage_1": -0.505,
+     "stage_0": 0.50005
+    },
+    "max_abs_error": 0.0,
+    "converged": true
+   }
+  ],
+  "first_episode": {
+   "deliveries": [
+    {
+     "step": 159,
+     "time_ms": 80.0,
+     "reward": 1.0
+    },
+    {
+     "step": 319,
+     "time_ms": 160.0,
+     "reward": -1.0
+    },
+    {
+     "step": 479,
+     "time_ms": 240.0,
+     "reward": 0.5
+    }
+   ],
+   "final_values": {
+    "stage_0": 0.2,
+    "stage_1": -0.2,
+    "stage_2": 0.1
+   }
+  },
+  "delayed_convergence": {
+   "gamma": 0.9,
+   "max_abs_error": 0.0,
+   "converged": true,
+   "learned_values": {
+    "stage_2": 0.5,
+    "stage_1": -0.55,
+    "stage_0": 0.505
+   },
+   "immediate_learned_values": {
+    "stage_2": 0.5,
+    "stage_1": -0.55,
+    "stage_0": 0.505
+   }
+  },
+  "stability_probes": {
+   "bounded_large_reward": {
+    "delta": 1000000.0,
+    "value": 10.0,
+    "finite": true,
+    "within_bound": true
+   },
+   "zero_reward": {
+    "value_x": 0.0,
+    "value_y": 0.0,
+    "all_zero": true
+   },
+   "negative_reward": {
+    "value": -2.0,
+    "sign_preserved": true
+   },
+   "non_finite_reward": {
+    "nan": "rejected",
+    "inf": "rejected"
+   },
+   "overflow_guard": {
+    "result": "rejected",
+    "value_finite": true,
+    "delta_finite": true
+   }
+  },
+  "determinism": {
+   "first_digest": "7a42e5642e10febae13738b5c7c1d2e8b170a23ce974fa19decaa72dee237402",
+   "repeat_digest": "7a42e5642e10febae13738b5c7c1d2e8b170a23ce974fa19decaa72dee237402",
+   "identical": true,
+   "episode_log_digest": "8bea469f4b79990eb12f519345536c4b53e34b259a96c529de68e5769e997862",
+   "episode_log_digest_repeat": "8bea469f4b79990eb12f519345536c4b53e34b259a96c529de68e5769e997862",
+   "episode_log_identical": true
+  },
+  "logging": {
+   "n_steps": 600,
+   "total_reward": 0.5,
+   "positive_steps": 2,
+   "negative_steps": 1,
+   "zero_steps": 597,
+   "mean_prediction_error": 0.000833333,
+   "max_abs_prediction_error": 1.0,
+   "n_records": 600,
+   "digest": "8bea469f4b79990eb12f519345536c4b53e34b259a96c529de68e5769e997862",
+   "first_record": {
+    "step": 0,
+    "time_ms": 0.5,
+    "reward": 0.0,
+    "value": 0.0,
+    "next_value": 0.0,
+    "prediction_error": 0.0,
+    "state": "stage_0",
+    "next_state": "stage_0"
+   },
+   "terminal_next_state_is_none": true
+  },
+  "shuffled_control": {
+   "seed": 20261111,
+   "original_digest": "ae694c8d72e9556a397731facb2458faf9cb21a94b7eab628dd4e18bd6b613e2",
+   "shuffled_digest": "378d86cca297e8b0c84a7674b02d10d1ffd2df07be01987e3fa14edeef38aa15",
+   "digest_changed": true,
+   "magnitudes_preserved": true,
+   "times_preserved": true,
+   "total_preserved": true,
+   "describe": {
+    "classification": "computational task reward; not a biological dopamine, octopamine or serotonin measurement",
+    "delay_ms": 0.0,
+    "n_events": 3,
+    "total_reward": 0.5,
+    "counts": {
+     "positive": 2,
+     "negative": 1,
+     "zero": 0
+    },
+    "events": [
+     {
+      "time_ms": 80.0,
+      "magnitude": 0.5,
+      "label": "shuffled:correct"
+     },
+     {
+      "time_ms": 160.0,
+      "magnitude": -1.0,
+      "label": "shuffled:collision"
+     },
+     {
+      "time_ms": 240.0,
+      "magnitude": 1.0,
+      "label": "shuffled:partial"
+     }
+    ]
+   }
+  }
+ },
+ "tests": {
+  "focused": {
+   "path": "tests/test_plasticity_reward.py",
+   "n_tests": 61,
+   "result": "61 passed in 1.14 s"
+  },
+  "regression_subset": {
+   "paths": [
+    "tests/test_plasticity_reward.py",
+    "tests/test_configs.py",
+    "tests/test_banc_simulator.py"
+   ],
+   "result": "85 passed in 2.62 s"
+  },
+  "full_suite": {
+   "result": "553 passed in 55.05 s"
+  },
+  "existing_tests_modified": false,
+  "coverage_summary": [
+   "field validation",
+   "sorting and sign counts",
+   "half-open delivery interval",
+   "delay application",
+   "event-at-zero delivery",
+   "single emission",
+   "reset",
+   "monotonic time",
+   "hand-computed delta_t",
+   "terminal value",
+   "learning-rate behaviour",
+   "sign preservation",
+   "clipping",
+   "parameter validation",
+   "non-finite rewards",
+   "state keys",
+   "state round trip and digests",
+   "analytic chain values",
+   "episode timing",
+   "convergence for gamma 0 and 0.9",
+   "delay-invariant convergence",
+   "episode determinism",
+   "logger completeness and order sensitivity",
+   "statistics",
+   "shuffle preservation",
+   "numerical probes",
+   "configuration loading and rejection paths",
+   "absence of brain/motor/banc/simulator imports"
+  ]
+ },
+ "resources": {
+  "runner_wall_time_s": 26.0367,
+  "peak_tracemalloc_bytes": 811962,
+  "peak_tracemalloc_mb": 0.774,
+  "python": "3.13.14",
+  "numpy": "2.3.4",
+  "data_touched": "none",
+  "simulated_episodes": 2800,
+  "steps_per_episode": 600
+ },
+ "integrity": {
+  "phase_4h_protected_files_checked": 37,
+  "phase_4h_protected_files_unchanged": 37,
+  "failures": [],
+  "pass": true,
+  "brain_modified": false,
+  "existing_tests_modified": false
+ },
+ "limitations": [
+  "Reward is a computational task scalar, not a measured neuromodulator.",
+  "The tabular predictor is one declared model of value, not a biological reward prediction signal.",
+  "A converged predictor demonstrates arithmetic and temporal credit assignment in this model only.",
+  "No synapse, weight, trace or simulator state is touched by this runner."
+ ],
+ "exit_criteria": {
+  "reward_signal_representation": "implemented",
+  "positive_negative_zero_reward": "implemented and tested",
+  "delayed_reward_configurable": "implemented and tested",
+  "configurable_magnitude": "implemented",
+  "reward_predictor": "implemented",
+  "temporal_difference_rpe": "implemented and hand-verified",
+  "configurable_discount": "verified for gamma 0.0, 0.5, 0.9, 0.99",
+  "reward_logging": "implemented with deterministic digest",
+  "deterministic_behaviour": "verified by repeated digests",
+  "predictor_separate_from_plasticity": "enforced by imports and tests",
+  "module_config_tests_runner_reports": "all delivered",
+  "status": "pass"
+ },
+ "next_phase": "5C - eligibility traces",
+ "derived_from": "experiments/results/phase_5b/reward_system.json"
+}

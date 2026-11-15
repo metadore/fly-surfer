@@ -1,0 +1,109 @@
+{
+  "phase": "4G-final",
+  "generated_at_utc": "2026-11-08T08:29:47+00:00",
+  "baseline": "experiments/phase_4g/baseline_integrity.json",
+  "protected_files_total": 26,
+  "protected_files_matching": 26,
+  "protected_files_failed": [],
+  "baseline_pass": true,
+  "banc_manifest": {
+    "path": "datasets/processed/banc_v888/banc_manifest.json",
+    "checks": [
+      {
+        "section": "inputs",
+        "name": "metadata",
+        "path": "datasets/external/banc_v88/raw/metadata/banc_888_meta.feather",
+        "expected_sha256": "86ccf5df0c67419f8c5f43e93a7ed38d23a080e9f7fde26737290252f3780098",
+        "actual_sha256": "86ccf5df0c67419f8c5f43e93a7ed38d23a080e9f7fde26737290252f3780098",
+        "exists": true,
+        "match": true
+      },
+      {
+        "section": "inputs",
+        "name": "edgelist_v2",
+        "path": "datasets/external/banc_v88/raw/connectivity/banc_888_edgelist_simple_v2.feather",
+        "expected_sha256": "363fdef3813b72a5e45a42f17034cd5a544b654c838929cecf6e1ce5f60625cb",
+        "actual_sha256": "363fdef3813b72a5e45a42f17034cd5a544b654c838929cecf6e1ce5f60625cb",
+        "exists": true,
+        "match": true
+      },
+      {
+        "section": "inputs",
+        "name": "backbone_proofread",
+        "path": "datasets/external/banc_v88/raw/annotations/backbone_proofread.parquet",
+        "expected_sha256": "9b553956c11558b9d5c7c9d3e66cea8af08f358ee897ab6e0e8ce91faa5c9a2d",
+        "actual_sha256": "9b553956c11558b9d5c7c9d3e66cea8af08f358ee897ab6e0e8ce91faa5c9a2d",
+        "exists": true,
+        "match": true
+      },
+      {
+        "section": "inputs",
+        "name": "neurotransmitter",
+        "path": "datasets/external/banc_v88/raw/annotations/banc_888_neurotransmitter_prediction_v2.csv",
+        "expected_sha256": "bb0f4afa48a05d90008c6d801e053ff2667fb1ba68e29501c92f49514540da1d",
+        "actual_sha256": "bb0f4afa48a05d90008c6d801e053ff2667fb1ba68e29501c92f49514540da1d",
+        "exists": true,
+        "match": true
+      },
+      {
+        "section": "inputs",
+        "name": "reviewed_matches",
+        "path": "datasets/external/banc_v88/raw/cross_dataset_matches/banc_fafb_reviewed_matches.csv.gz",
+        "expected_sha256": "ecdbb43cd5d4586e92f0d92a6f1d2beeecd2f429dd5b3e5309c0edc2daa515c4",
+        "actual_sha256": "ecdbb43cd5d4586e92f0d92a6f1d2beeecd2f429dd5b3e5309c0edc2daa515c4",
+        "exists": true,
+        "match": true
+      },
+      {
+        "section": "outputs",
+        "name": "graph_threshold_1",
+        "path": "datasets/processed/banc_v888/banc_graph_t1.npz",
+        "expected_sha256": "fee8e5e7f7dbd9b6d43ef125695b1b11f6c9613088c8c04dd0d883ff12ecc01e",
+        "actual_sha256": "fee8e5e7f7dbd9b6d43ef125695b1b11f6c9613088c8c04dd0d883ff12ecc01e",
+        "exists": true,
+        "match": true
+      },
+      {
+        "section": "outputs",
+        "name": "graph_threshold_5",
+        "path": "datasets/processed/banc_v888/banc_graph_t5.npz",
+        "expected_sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192",
+        "actual_sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192",
+        "exists": true,
+        "match": true
+      },
+      {
+        "section": "outputs",
+        "name": "graph_threshold_10",
+        "path": "datasets/processed/banc_v888/banc_graph_t10.npz",
+        "expected_sha256": "00b3f447e2755660c273a63e11bc60a8afd8247906bbe0576f3a27a6ee1dc7a0",
+        "actual_sha256": "00b3f447e2755660c273a63e11bc60a8afd8247906bbe0576f3a27a6ee1dc7a0",
+        "exists": true,
+        "match": true
+      },
+      {
+        "section": "outputs",
+        "name": "nodes",
+        "path": "datasets/processed/banc_v888/banc_nodes.csv.gz",
+        "expected_sha256": "144a2eb09aa1ed2be4f07eff589a6158e98cfe4f18b52db7feef4d2272953e5f",
+        "actual_sha256": "144a2eb09aa1ed2be4f07eff589a6158e98cfe4f18b52db7feef4d2272953e5f",
+        "exists": true,
+        "match": true
+      },
+      {
+        "section": "outputs",
+        "name": "id_map",
+        "path": "datasets/processed/banc_v888/banc_id_map.csv.gz",
+        "expected_sha256": "ede93fa7f33f34d0b77b800a8714b401e6f8ab7dbac44e4ce882518231dbbb16",
+        "actual_sha256": "ede93fa7f33f34d0b77b800a8714b401e6f8ab7dbac44e4ce882518231dbbb16",
+        "exists": true,
+        "match": true
+      }
+    ],
+    "failures": [],
+    "pass": true
+  },
+  "staged_files": [],
+  "nothing_staged": true,
+  "verdict": "PASS"
+}

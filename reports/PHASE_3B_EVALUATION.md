@@ -1,9 +1,21 @@
 # Phase 3B — Evaluation Harness and Result Status
 
-**Status:** evaluation harness **PASS** (implemented and tested); trained
-detector **BLOCKED** (no weights). No detection-accuracy number exists.
+**Status (2026-11-06):** evaluation harness **PASS** (implemented and tested);
+trained detector **BLOCKED at that date** (no weights). No independent
+detection-accuracy number exists.
 
 **Date:** 2026-11-06
+
+> **Later update (2026-11-07).** A trained YOLO11n ONNX detector was integrated
+> and smoke-evaluated; see `reports/PHASE_3B2B3_YOLO11N_ONNX_INTEGRATION.md`.
+> Its validation-split metrics (precision 0.937310, recall 0.810829, mAP@0.5
+> 0.897776, mAP@0.5:0.95 0.687726 on 1,128 fixed-split images) come from the
+> training run, not from this frozen harness on an independent test split.
+> This document's `blocked` status for independent detection accuracy is
+> unchanged: no independent test split exists, `boots-powerup` and
+> `jump-electric` remain unevaluable, and
+> `experiments/phase_3b/results/detector_evaluation.json` still records
+> `status: blocked`.
 
 ---
 
@@ -48,7 +60,7 @@ Frozen from `reports/PHASE_3B2B0_DETECTOR_FEASIBILITY.md` section 5:
   protocol plus class support with status `blocked`;
 - never substitutes synthetic predictions for a trained model.
 
-## 3. Recorded status
+## 3. Recorded status (2026-11-06)
 
 `experiments/phase_3b/results/detector_evaluation.json`:
 
@@ -69,11 +81,18 @@ scan. It is **not** detector memory and must not be cited as such.
 
 ## 4. What is deliberately absent
 
+**Status at 2026-11-06.**
+
 - No precision, recall, F1, mAP, confusion matrix, per-class AP, latency or
   model-size number for a trained detector.
 - No validation result presented as test performance.
 - No zero-filled metrics for unevaluable classes.
 - No `MockDetector` output promoted to an accuracy baseline.
+
+The 2026-11-07 five-image smoke evaluation does record per-class metric fields
+(`phase_3b2b3_smoke_eval_fold1.json`, `..._fold5.json`), but over three and two
+images respectively. Those fields are not split-level performance and are not
+reported here as a detection result; see Section 7.
 
 ## 5. Requirements before any metric may be reported
 
@@ -91,12 +110,29 @@ scan. It is **not** detector memory and must not be cited as such.
 
 `tests/test_evaluation.py` — 13 tests covering matching, AP, mAP over the IoU
 sweep, confusion, taxonomies, bootstrap, latency and memory helpers, and
-invalid-input rejection. The harness is exercised only with synthetic boxes;
-those tests verify the metric code, not a detector.
+invalid-input rejection. At 2026-11-06 the harness had been exercised only with
+synthetic boxes; those tests verify the metric code, not a detector.
 
 ## 7. Limitations
 
-- The harness has not processed a real model's predictions.
+**Status at 2026-11-06.** The harness had processed only synthetic boxes; no
+real model's predictions had entered it.
+
+**Later smoke evaluation (2026-11-07).**
+`experiments/phase_3b/evaluate_detector.py --model` ran the local YOLO11n ONNX
+detector over five held-out validation images in two folds
+(`experiments/phase_3b/results/phase_3b2b3_smoke_eval_fold1.json` and
+`..._fold5.json`, both `status: evaluated_local_onnx_model`, generated
+2026-11-07T04:22Z). Fold 1 evaluated 3 images with 9 raw detections, 7 accepted
+and 2 rejected as out of bounds; fold 5 evaluated 2 images with 4 raw and 4
+accepted. Across the five images that is 13 raw, 11 accepted and 2 rejected.
+Each payload's own `claim` states that only 3 and 2 images were evaluated and
+that the run is a smoke test, and its `limitations` list states that there is no
+independent test split and that no performance is claimed for zero-support
+classes. The five-image smoke run is therefore **not** split-level performance
+and **not** independent test accuracy; independent detection accuracy remains
+`blocked`.
+
 - The distance proxy and lane assignment are geometric conversions, not
   verified game quantities.
 - mAP does not measure lane behaviour, distance accuracy, temporal stability

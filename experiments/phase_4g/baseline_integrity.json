@@ -1,0 +1,106 @@
+{
+ "README.md": {
+  "bytes": 14921,
+  "sha256": "8ab6a8cc2d0316653e48c0fbb1c72b22b9d27b26799dde6bc71d38cd15590563"
+ },
+ "datasets/manifest.json": {
+  "bytes": 108575,
+  "sha256": "28b020f0d543ba34df0d6413bb52b85020261a3787d7c47d03a5b80869dbba90"
+ },
+ "datasets/processed/connectome.npz": {
+  "bytes": 28013212,
+  "sha256": "3f568f24e3d77134a8d2d38f82856b8d685c310a1b0cfe941a1c95eeab5f33d8"
+ },
+ "datasets/processed/nodes.csv.gz": {
+  "bytes": 9550849,
+  "sha256": "10dc839bb542197905c82ee22d66e48a6aee3f60adc9493033020669c9c5c949"
+ },
+ "datasets/processed/connectome_report.json": {
+  "bytes": 5176,
+  "sha256": "b9a78dd98fe35ccfa5487ef3360d5ce6979479dc420659edb31544289fc6f1da"
+ },
+ "datasets/processed/banc_v888/banc_graph_t1.npz": {
+  "bytes": 79829070,
+  "sha256": "fee8e5e7f7dbd9b6d43ef125695b1b11f6c9613088c8c04dd0d883ff12ecc01e"
+ },
+ "datasets/processed/banc_v888/banc_graph_t5.npz": {
+  "bytes": 13484120,
+  "sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192"
+ },
+ "datasets/processed/banc_v888/banc_graph_t10.npz": {
+  "bytes": 6699534,
+  "sha256": "00b3f447e2755660c273a63e11bc60a8afd8247906bbe0576f3a27a6ee1dc7a0"
+ },
+ "datasets/processed/banc_v888/banc_nodes.csv.gz": {
+  "bytes": 3800401,
+  "sha256": "144a2eb09aa1ed2be4f07eff589a6158e98cfe4f18b52db7feef4d2272953e5f"
+ },
+ "datasets/processed/banc_v888/banc_id_map.csv.gz": {
+  "bytes": 1098539,
+  "sha256": "ede93fa7f33f34d0b77b800a8714b401e6f8ab7dbac44e4ce882518231dbbb16"
+ },
+ "datasets/processed/banc_v888/banc_manifest.json": {
+  "bytes": 8052,
+  "sha256": "32d5afb4d24bbecee49d7e9eecde4fb8fd6688465565b98d77564e9230f9517d"
+ },
+ "reports/PHASE_4D_BANC_GRAPH_CONSTRUCTION.md": {
+  "bytes": 15351,
+  "sha256": "19ebe33172b9937cade0c1ba3f5f01e82de1956df8c3681fddcb9d99e9e88fa2"
+ },
+ "reports/PHASE_4E_MOTOR_POPULATION_AND_PATHWAY_ANALYSIS.md": {
+  "bytes": 32996,
+  "sha256": "71c7aa48bcd010653170e2321434a27470a62129de0c18e0d6419eb01a93beb0"
+ },
+ "reports/PHASE_4E_MOTOR_POPULATION_AND_PATHWAY_ANALYSIS.json": {
+  "bytes": 435842,
+  "sha256": "c593e221dd1300a4996847e7dc7fdada72fff5c2c5bd3324fd9f45371012ca15"
+ },
+ "reports/PHASE_4F_MOTOR_DECODER_DEVELOPMENT.md": {
+  "bytes": 28119,
+  "sha256": "f4561dc3271134fcda799d821194c1fbc75149f9563ffe755953b9b7304bc91b"
+ },
+ "motor/populations.py": {
+  "bytes": 11856,
+  "sha256": "6652d14cf51b3c4482cca963b7a6ef92e9270955a6f96310e039866d45cc9fdf"
+ },
+ "motor/motor_decoder.py": {
+  "bytes": 17852,
+  "sha256": "3b1c9ce0f62c1332782158254d7e745a05a27d657e360509318569f05612b017"
+ },
+ "motor/__init__.py": {
+  "bytes": 217,
+  "sha256": "17ac008ce39627b20188ea662fc3358b86e6f6b02145af7976ca234865a3c8de"
+ },
+ "configs/motor_decoder.yaml": {
+  "bytes": 3265,
+  "sha256": "525f25e9e0d334e58a38ce9d340fcd8fe3ebc148fe1bf9f08656eccc660d9fae"
+ },
+ "experiments/phase_4f/run_decoder_experiment.py": {
+  "bytes": 19828,
+  "sha256": "548f04305682e008be25ea19dfaed11a562b2288da4c7a8fe5b0bd815e14668c"
+ },
+ "experiments/results/phase_4f/motor_decoder_experiment.json": {
+  "bytes": 538744,
+  "sha256": "9fa64fe5fc65e6868c38b28b61fff54e6cbe7622ae8860cdc028e8e3745e56bc"
+ },
+ "brain/neuron_model.py": {
+  "bytes": 5961,
+  "sha256": "267b628837f64822651c4ba45b692a85581a2382bf83515bbd04e3c9fae98f2d"
+ },
+ "brain/synapse_model.py": {
+  "bytes": 8633,
+  "sha256": "1f068672a6560cd3d23ce18f3c8d25d95d91fc8ebddcc77edc479694922ca55c"
+ },
+ "brain/brain_simulator.py": {
+  "bytes": 16638,
+  "sha256": "810dc5c7d4c321acecb4bc99177fb1a97e97ecc0fb59ffef6046065600c6ca07"
+ },
+ "brain/neural_activity.py": {
+  "bytes": 9028,
+  "sha256": "e55f9d9181cec6418017095f8f8da300ef4af55a67568e993a083c0d695980fc"
+ },
+ "brain/banc_graph.py": {
+  "bytes": 48626,
+  "sha256": "89f6233b386214cc80d38412be409aa2534c29a30370665ee582944972692c24"
+ }
+}

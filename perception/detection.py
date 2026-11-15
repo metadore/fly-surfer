@@ -110,6 +110,11 @@ class Detection:
     the coordinate system used for lane assignment. ``clamped`` is True only
     when a coordinate lay outside the processed image by no more than the
     configured bounds tolerance and was explicitly clamped.
+
+    ``raw_box_pixels`` and ``clipped_box_pixels`` retain both sides of that
+    decision in processed-image pixels; ``clip_distance_pixels`` is the
+    largest overflow before clamping (0.0 when the box was inside). They make
+    a tolerance policy auditable instead of silently repairing geometry.
     """
 
     class_id: int
@@ -122,6 +127,9 @@ class Detection:
     clamped: bool = False
     raw_index: int | None = None
     source: str | None = None
+    raw_box_pixels: tuple[float, float, float, float] | None = None
+    clipped_box_pixels: tuple[float, float, float, float] | None = None
+    clip_distance_pixels: float = 0.0
 
     @property
     def center_screen(self) -> tuple[float, float]:
@@ -155,6 +163,17 @@ class Detection:
             ],
             "bottom_fraction": round(self.normalized_box.bottom, 6),
             "clamped": self.clamped,
+            "raw_box_pixels": (
+                list(self.raw_box_pixels)
+                if self.raw_box_pixels is not None
+                else None
+            ),
+            "clipped_box_pixels": (
+                list(self.clipped_box_pixels)
+                if self.clipped_box_pixels is not None
+                else None
+            ),
+            "clip_distance_pixels": self.clip_distance_pixels,
         }
 
     def as_dict(self) -> dict:
@@ -342,6 +361,7 @@ class DetectionValidator:
 
         processed_width, processed_height = self.frame.processed_size
         tolerance = self.config.bounds_tolerance_pixels
+        raw_box = (x1, y1, x2, y2)
         overflow = max(
             -x1,
             -y1,
@@ -370,6 +390,7 @@ class DetectionValidator:
                     raw,
                     index,
                 )
+        clipped_box = (x1, y1, x2, y2)
 
         area_fraction = (x2 - x1) * (y2 - y1) / (processed_width * processed_height)
         if area_fraction < self.config.min_area_fraction:
@@ -400,6 +421,9 @@ class DetectionValidator:
             clamped=clamped,
             raw_index=index,
             source=self.source,
+            raw_box_pixels=raw_box,
+            clipped_box_pixels=clipped_box,
+            clip_distance_pixels=max(0.0, float(overflow)),
         )
 
     def validate_many(self, raw_detections: Any) -> ValidationResult:

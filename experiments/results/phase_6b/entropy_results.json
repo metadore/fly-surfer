@@ -1,0 +1,916 @@
+{
+  "phase": "6B",
+  "title": "Shannon entropy of archived FLY-SURFER variables",
+  "generated_at_utc": "2026-11-10T08:16:01+00:00",
+  "log_base": 2,
+  "data_sources": "archived artifacts only; no new recording, no simulation",
+  "config_path": "configs\\information_theory.yaml",
+  "config_sha256": "6770f4274037f08b2a324ecbfbd1c419235b062d61536f97b7e7b26ef6d19726",
+  "seed": 20261110,
+  "permutation_note": "Entropy has no exchangeability null, so no permutation test is performed in 6B. Uncertainty is reported with a cluster bootstrap.",
+  "endpoints": {
+    "E01_event_class_marginal": {
+      "label": "event_class_marginal",
+      "variable": "event_class",
+      "provenance": "measured",
+      "discretization": {
+        "kind": "declared",
+        "labels": [
+          "appeared",
+          "occluded",
+          "disappeared",
+          "approaching",
+          "receding",
+          "uncertain"
+        ],
+        "counts": [
+          88,
+          122,
+          76,
+          90,
+          27,
+          112
+        ],
+        "empty_bins": []
+      },
+      "entropy": {
+        "n": 515,
+        "n_missing": 0,
+        "k_observed": 6,
+        "k_declared": 6,
+        "H_plugin": 2.47659382,
+        "H_miller_madow": 2.4835972,
+        "H_max_declared": 2.5849625,
+        "coverage": 1.0,
+        "estimator": "plug-in + Miller-Madow",
+        "log_base": 2
+      },
+      "bias": {
+        "plugin_bits": 2.47659382,
+        "miller_madow_bits": 2.4835972,
+        "delta_bits": 0.00700338,
+        "analytic_correction_bits": 0.00700337
+      },
+      "excess_over_max_bits": 0.10836868,
+      "bootstrap_ci": {
+        "low": 2.41460361,
+        "high": 2.50998287,
+        "n_resamples": 2000,
+        "n_clusters": 231,
+        "seed": 20261110
+      },
+      "effective_sample": {
+        "n": 515,
+        "n_clusters": 231,
+        "mean_cluster_size": 2.229437,
+        "min_cluster_size": 1,
+        "max_cluster_size": 9,
+        "clustered": true
+      },
+      "warnings": [],
+      "source_hashes": {
+        "replay_0101": "4a4d6ea656fe6f6af355b55e4a5a4104365681d11ef5e3d572f09cd511b43d0d",
+        "segment_0_99": "a0f7f4917b5588d6ffaeaa4b15a9768bd0677a2c287c237c74ca15504f22a8d3",
+        "segment_200_299": "c42b31464e655d5eab955404616966c9e41594f63c5751dd66b6400f37fd2fb7"
+      },
+      "per_segment": {
+        "replay_0101": {
+          "n": 215,
+          "class_counts": {
+            "appeared": 39,
+            "occluded": 50,
+            "disappeared": 35,
+            "approaching": 34,
+            "receding": 11,
+            "uncertain": 46
+          }
+        },
+        "segment_0_99": {
+          "n": 148,
+          "class_counts": {
+            "appeared": 24,
+            "occluded": 34,
+            "disappeared": 22,
+            "approaching": 26,
+            "receding": 7,
+            "uncertain": 35
+          }
+        },
+        "segment_200_299": {
+          "n": 152,
+          "class_counts": {
+            "appeared": 25,
+            "occluded": 38,
+            "disappeared": 19,
+            "approaching": 30,
+            "receding": 9,
+            "uncertain": 31
+          }
+        }
+      },
+      "per_segment_entropy": {
+        "replay_0101": {
+          "n": 215,
+          "k_observed": 6,
+          "H_plugin": 2.47861268,
+          "H_miller_madow": 2.49538821,
+          "n_frame_clusters": 83
+        },
+        "segment_0_99": {
+          "n": 148,
+          "k_observed": 6,
+          "H_plugin": 2.46277664,
+          "H_miller_madow": 2.48714649,
+          "n_frame_clusters": 71
+        },
+        "segment_200_299": {
+          "n": 152,
+          "k_observed": 6,
+          "H_plugin": 2.47460908,
+          "H_miller_madow": 2.49833762,
+          "n_frame_clusters": 77
+        }
+      }
+    },
+    "E02_frame_event_count": {
+      "label": "frame_event_count",
+      "variable": "frame_event_count",
+      "provenance": "derived",
+      "discretization": {
+        "kind": "declared",
+        "labels": [
+          "0",
+          "1",
+          "2",
+          "3+"
+        ],
+        "counts": [
+          69,
+          106,
+          91,
+          34
+        ],
+        "empty_bins": []
+      },
+      "entropy": {
+        "n": 300,
+        "n_missing": 0,
+        "k_observed": 4,
+        "k_declared": 4,
+        "H_plugin": 1.89604934,
+        "H_miller_madow": 1.90326282,
+        "H_max_declared": 2.0,
+        "coverage": 1.0,
+        "estimator": "plug-in + Miller-Madow",
+        "log_base": 2
+      },
+      "bias": {
+        "plugin_bits": 1.89604934,
+        "miller_madow_bits": 1.90326282,
+        "delta_bits": 0.00721348,
+        "analytic_correction_bits": 0.00721348
+      },
+      "excess_over_max_bits": 0.10395066,
+      "bootstrap_ci": {
+        "low": 1.80797807,
+        "high": 1.94825179,
+        "n_resamples": 2000,
+        "n_clusters": 30,
+        "seed": 20261110
+      },
+      "effective_sample": {
+        "n": 300,
+        "n_clusters": 30,
+        "mean_cluster_size": 10.0,
+        "min_cluster_size": 10,
+        "max_cluster_size": 10,
+        "clustered": true
+      },
+      "warnings": [],
+      "counts_histogram": [
+        69,
+        106,
+        91,
+        34
+      ],
+      "block_frames": 10,
+      "n_frames_per_segment": 100,
+      "cap_sensitivity": [
+        {
+          "cap": 1,
+          "k_declared": 2,
+          "H_plugin": 0.7780113
+        },
+        {
+          "cap": 2,
+          "k_declared": 3,
+          "H_plugin": 1.54424939
+        },
+        {
+          "cap": 3,
+          "k_declared": 4,
+          "H_plugin": 1.89604934
+        },
+        {
+          "cap": 5,
+          "k_declared": 6,
+          "H_plugin": 1.89604934
+        }
+      ]
+    },
+    "E03_decoder_state": {
+      "label": "decoder_state",
+      "variable": "decoded_state",
+      "provenance": "simulated",
+      "discretization": {
+        "kind": "declared",
+        "labels": [
+          "NEUTRAL",
+          "LEFT",
+          "RIGHT",
+          "JUMP"
+        ],
+        "counts": [
+          210,
+          60,
+          45,
+          15
+        ],
+        "empty_bins": []
+      },
+      "entropy": {
+        "n": 330,
+        "n_missing": 0,
+        "k_observed": 4,
+        "k_declared": 4,
+        "H_plugin": 1.45680178,
+        "H_miller_madow": 1.46335949,
+        "H_max_declared": 2.0,
+        "coverage": 1.0,
+        "estimator": "plug-in + Miller-Madow",
+        "log_base": 2
+      },
+      "bias": {
+        "plugin_bits": 1.45680178,
+        "miller_madow_bits": 1.46335949,
+        "delta_bits": 0.00655771,
+        "analytic_correction_bits": 0.0065577
+      },
+      "excess_over_max_bits": 0.54319822,
+      "bootstrap_ci": {
+        "low": 1.19982418,
+        "high": 1.63301739,
+        "n_resamples": 2000,
+        "n_clusters": 66,
+        "seed": 20261110
+      },
+      "effective_sample": {
+        "n": 330,
+        "n_clusters": 66,
+        "mean_cluster_size": 5.0,
+        "min_cluster_size": 5,
+        "max_cluster_size": 5,
+        "clustered": true
+      },
+      "warnings": [],
+      "source": "experiments/results/phase_4f/motor_decoder_experiment.json",
+      "source_sha256": "9fa64fe5fc65e6868c38b28b61fff54e6cbe7622ae8860cdc028e8e3745e56bc",
+      "n_runs": 66,
+      "window_note": "5 windows per run; runs are the independent unit"
+    },
+    "E04_decoder_score_bin": {
+      "label": "decoder_max_score_bin",
+      "variable": "decoder_max_score_bin",
+      "provenance": "simulated",
+      "discretization": {
+        "kind": "declared",
+        "labels": [
+          "[0, 0.333333)",
+          "[0.333333, 0.666667)",
+          "[0.666667, 1]"
+        ],
+        "counts": [
+          225,
+          15,
+          90
+        ],
+        "empty_bins": []
+      },
+      "entropy": {
+        "n": 330,
+        "n_missing": 0,
+        "k_observed": 3,
+        "k_declared": 3,
+        "H_plugin": 1.0906528,
+        "H_miller_madow": 1.09502461,
+        "H_max_declared": 1.5849625,
+        "coverage": 1.0,
+        "estimator": "plug-in + Miller-Madow",
+        "log_base": 2
+      },
+      "bias": {
+        "plugin_bits": 1.0906528,
+        "miller_madow_bits": 1.09502461,
+        "delta_bits": 0.00437181,
+        "analytic_correction_bits": 0.0043718
+      },
+      "excess_over_max_bits": 0.4943097,
+      "bootstrap_ci": {
+        "low": 0.86593199,
+        "high": 1.25154162,
+        "n_resamples": 2000,
+        "n_clusters": 66,
+        "seed": 20261110
+      },
+      "effective_sample": {
+        "n": 330,
+        "n_clusters": 66,
+        "mean_cluster_size": 5.0,
+        "min_cluster_size": 5,
+        "max_cluster_size": 5,
+        "clustered": true
+      },
+      "warnings": [],
+      "bin_edges": [
+        0.0,
+        0.3333333333333333,
+        0.6666666666666666,
+        1.0
+      ],
+      "source_discretization": {
+        "name": "decoder_max_score",
+        "kind": "equal_width",
+        "bins": 3,
+        "range": [
+          0.0,
+          1.0
+        ],
+        "edges": [
+          0.0,
+          0.3333333333333333,
+          0.6666666666666666,
+          1.0
+        ]
+      },
+      "bin_count_sensitivity": [
+        {
+          "bins": 2,
+          "H_plugin": 0.90239328,
+          "counts": [
+            225,
+            105
+          ]
+        },
+        {
+          "bins": 3,
+          "H_plugin": 1.0906528,
+          "counts": [
+            225,
+            15,
+            90
+          ]
+        },
+        {
+          "bins": 4,
+          "H_plugin": 1.33157962,
+          "counts": [
+            210,
+            15,
+            15,
+            90
+          ]
+        },
+        {
+          "bins": 5,
+          "H_plugin": 1.33157962,
+          "counts": [
+            210,
+            15,
+            15,
+            0,
+            90
+          ]
+        }
+      ]
+    },
+    "E06_event_class_by_segment": {
+      "label": "event_class_by_segment",
+      "provenance": "measured",
+      "joint": {
+        "n": 515,
+        "k_declared_product": 18,
+        "k_observed": 18,
+        "H_joint_plugin": 4.03558922,
+        "H_joint_miller_madow": 4.05940069,
+        "estimator": "plug-in + Miller-Madow"
+      },
+      "conditional_H_event_given_segment": 2.4728801,
+      "H_event": 2.47659382,
+      "mutual_information_bits": 0.00371373,
+      "interpretation": "H(event) - H(event|segment) is the information the segment label carries about the event class; it is reported here as a descriptive quantity, not a hypothesis test.",
+      "segment_entropy": 1.56270912
+    }
+  },
+  "E05_episode_reward": {
+    "label": "episode_reward",
+    "source_sha256": "375013676cdfd44a2efaec7c26129bf051c9a7a39fd32a3d73bfc09f38fc9cb0",
+    "n_replicates": 3,
+    "reward_levels": [
+      -1.0,
+      0.0,
+      1.0
+    ],
+    "per_condition": {
+      "A": {
+        "label": "fixed_weights_outcome_reward",
+        "variable": "reward_level",
+        "provenance": "simulated",
+        "discretization": {
+          "kind": "declared",
+          "labels": [
+            "-1",
+            "0",
+            "+1"
+          ],
+          "counts": [
+            0,
+            95,
+            385
+          ],
+          "empty_bins": [
+            "-1"
+          ]
+        },
+        "entropy": {
+          "n": 480,
+          "n_missing": 0,
+          "k_observed": 2,
+          "k_declared": 3,
+          "H_plugin": 0.71774181,
+          "H_miller_madow": 0.71924462,
+          "H_max_declared": 1.5849625,
+          "coverage": 0.666667,
+          "estimator": "plug-in + Miller-Madow",
+          "log_base": 2
+        },
+        "bias": {
+          "plugin_bits": 0.71774181,
+          "miller_madow_bits": 0.71924462,
+          "delta_bits": 0.00150281,
+          "analytic_correction_bits": 0.00150281
+        },
+        "excess_over_max_bits": 0.86722069,
+        "bootstrap_ci": {
+          "low": 0.6098403,
+          "high": 0.81127812,
+          "n_resamples": 2000,
+          "n_clusters": 3,
+          "seed": 20261110
+        },
+        "effective_sample": {
+          "n": 480,
+          "n_clusters": 3,
+          "mean_cluster_size": 160.0,
+          "min_cluster_size": 160,
+          "max_cluster_size": 160,
+          "clustered": true
+        },
+        "warnings": [
+          "1 declared level(s) never observed",
+          "only 3 clusters; cluster bootstrap is unstable"
+        ],
+        "condition": "A"
+      },
+      "B": {
+        "label": "plastic_outcome_reward",
+        "variable": "reward_level",
+        "provenance": "simulated",
+        "discretization": {
+          "kind": "declared",
+          "labels": [
+            "-1",
+            "0",
+            "+1"
+          ],
+          "counts": [
+            0,
+            50,
+            430
+          ],
+          "empty_bins": [
+            "-1"
+          ]
+        },
+        "entropy": {
+          "n": 480,
+          "n_missing": 0,
+          "k_observed": 2,
+          "k_declared": 3,
+          "H_plugin": 0.48206615,
+          "H_miller_madow": 0.48356896,
+          "H_max_declared": 1.5849625,
+          "coverage": 0.666667,
+          "estimator": "plug-in + Miller-Madow",
+          "log_base": 2
+        },
+        "bias": {
+          "plugin_bits": 0.48206615,
+          "miller_madow_bits": 0.48356896,
+          "delta_bits": 0.00150281,
+          "analytic_correction_bits": 0.00150281
+        },
+        "excess_over_max_bits": 1.10289635,
+        "bootstrap_ci": {
+          "low": 0.36124149,
+          "high": 0.66901584,
+          "n_resamples": 2000,
+          "n_clusters": 3,
+          "seed": 20261110
+        },
+        "effective_sample": {
+          "n": 480,
+          "n_clusters": 3,
+          "mean_cluster_size": 160.0,
+          "min_cluster_size": 160,
+          "max_cluster_size": 160,
+          "clustered": true
+        },
+        "warnings": [
+          "1 declared level(s) never observed",
+          "only 3 clusters; cluster bootstrap is unstable"
+        ],
+        "condition": "B"
+      },
+      "C": {
+        "label": "plastic_zero_reward",
+        "variable": "reward_level",
+        "provenance": "simulated",
+        "discretization": {
+          "kind": "declared",
+          "labels": [
+            "-1",
+            "0",
+            "+1"
+          ],
+          "counts": [
+            0,
+            480,
+            0
+          ],
+          "empty_bins": [
+            "-1",
+            "+1"
+          ]
+        },
+        "entropy": {
+          "n": 480,
+          "n_missing": 0,
+          "k_observed": 1,
+          "k_declared": 3,
+          "H_plugin": -0.0,
+          "H_miller_madow": 0.0,
+          "H_max_declared": 1.5849625,
+          "coverage": 0.333333,
+          "estimator": "plug-in + Miller-Madow",
+          "log_base": 2
+        },
+        "bias": {
+          "plugin_bits": -0.0,
+          "miller_madow_bits": 0.0,
+          "delta_bits": 0.0,
+          "analytic_correction_bits": 0.0
+        },
+        "excess_over_max_bits": 1.5849625,
+        "bootstrap_ci": {
+          "low": -0.0,
+          "high": 0.0,
+          "n_resamples": 2000,
+          "n_clusters": 3,
+          "seed": 20261110
+        },
+        "effective_sample": {
+          "n": 480,
+          "n_clusters": 3,
+          "mean_cluster_size": 160.0,
+          "min_cluster_size": 160,
+          "max_cluster_size": 160,
+          "clustered": true
+        },
+        "warnings": [
+          "2 declared level(s) never observed",
+          "only 3 clusters; cluster bootstrap is unstable"
+        ],
+        "condition": "C"
+      },
+      "D": {
+        "label": "plastic_shuffled_reward",
+        "variable": "reward_level",
+        "provenance": "simulated",
+        "discretization": {
+          "kind": "declared",
+          "labels": [
+            "-1",
+            "0",
+            "+1"
+          ],
+          "counts": [
+            199,
+            90,
+            191
+          ],
+          "empty_bins": []
+        },
+        "entropy": {
+          "n": 480,
+          "n_missing": 0,
+          "k_observed": 3,
+          "k_declared": 3,
+          "H_plugin": 1.50846563,
+          "H_miller_madow": 1.51147124,
+          "H_max_declared": 1.5849625,
+          "coverage": 1.0,
+          "estimator": "plug-in + Miller-Madow",
+          "log_base": 2
+        },
+        "bias": {
+          "plugin_bits": 1.50846563,
+          "miller_madow_bits": 1.51147124,
+          "delta_bits": 0.00300561,
+          "analytic_correction_bits": 0.00300561
+        },
+        "excess_over_max_bits": 0.07649687,
+        "bootstrap_ci": {
+          "low": 1.45019318,
+          "high": 1.55887185,
+          "n_resamples": 2000,
+          "n_clusters": 3,
+          "seed": 20261110
+        },
+        "effective_sample": {
+          "n": 480,
+          "n_clusters": 3,
+          "mean_cluster_size": 160.0,
+          "min_cluster_size": 160,
+          "max_cluster_size": 160,
+          "clustered": true
+        },
+        "warnings": [
+          "only 3 clusters; cluster bootstrap is unstable"
+        ],
+        "condition": "D"
+      },
+      "E": {
+        "label": "plastic_random_connectivity",
+        "variable": "reward_level",
+        "provenance": "simulated",
+        "discretization": {
+          "kind": "declared",
+          "labels": [
+            "-1",
+            "0",
+            "+1"
+          ],
+          "counts": [
+            0,
+            428,
+            52
+          ],
+          "empty_bins": [
+            "-1"
+          ]
+        },
+        "entropy": {
+          "n": 480,
+          "n_missing": 0,
+          "k_observed": 2,
+          "k_declared": 3,
+          "H_plugin": 0.49486823,
+          "H_miller_madow": 0.49637104,
+          "H_max_declared": 1.5849625,
+          "coverage": 0.666667,
+          "estimator": "plug-in + Miller-Madow",
+          "log_base": 2
+        },
+        "bias": {
+          "plugin_bits": 0.49486823,
+          "miller_madow_bits": 0.49637104,
+          "delta_bits": 0.00150281,
+          "analytic_correction_bits": 0.00150281
+        },
+        "excess_over_max_bits": 1.09009427,
+        "bootstrap_ci": {
+          "low": 0.44886449,
+          "high": 0.54356444,
+          "n_resamples": 2000,
+          "n_clusters": 3,
+          "seed": 20261110
+        },
+        "effective_sample": {
+          "n": 480,
+          "n_clusters": 3,
+          "mean_cluster_size": 160.0,
+          "min_cluster_size": 160,
+          "max_cluster_size": 160,
+          "clustered": true
+        },
+        "warnings": [
+          "1 declared level(s) never observed",
+          "only 3 clusters; cluster bootstrap is unstable"
+        ],
+        "condition": "E"
+      },
+      "F": {
+        "label": "plastic_traces_disabled",
+        "variable": "reward_level",
+        "provenance": "simulated",
+        "discretization": {
+          "kind": "declared",
+          "labels": [
+            "-1",
+            "0",
+            "+1"
+          ],
+          "counts": [
+            0,
+            95,
+            385
+          ],
+          "empty_bins": [
+            "-1"
+          ]
+        },
+        "entropy": {
+          "n": 480,
+          "n_missing": 0,
+          "k_observed": 2,
+          "k_declared": 3,
+          "H_plugin": 0.71774181,
+          "H_miller_madow": 0.71924462,
+          "H_max_declared": 1.5849625,
+          "coverage": 0.666667,
+          "estimator": "plug-in + Miller-Madow",
+          "log_base": 2
+        },
+        "bias": {
+          "plugin_bits": 0.71774181,
+          "miller_madow_bits": 0.71924462,
+          "delta_bits": 0.00150281,
+          "analytic_correction_bits": 0.00150281
+        },
+        "excess_over_max_bits": 0.86722069,
+        "bootstrap_ci": {
+          "low": 0.6098403,
+          "high": 0.81127812,
+          "n_resamples": 2000,
+          "n_clusters": 3,
+          "seed": 20261110
+        },
+        "effective_sample": {
+          "n": 480,
+          "n_clusters": 3,
+          "mean_cluster_size": 160.0,
+          "min_cluster_size": 160,
+          "max_cluster_size": 160,
+          "clustered": true
+        },
+        "warnings": [
+          "1 declared level(s) never observed",
+          "only 3 clusters; cluster bootstrap is unstable"
+        ],
+        "condition": "F"
+      },
+      "G": {
+        "label": "conventional_perceptron",
+        "variable": "reward_level",
+        "provenance": "simulated",
+        "discretization": {
+          "kind": "declared",
+          "labels": [
+            "-1",
+            "0",
+            "+1"
+          ],
+          "counts": [
+            0,
+            9,
+            471
+          ],
+          "empty_bins": [
+            "-1"
+          ]
+        },
+        "entropy": {
+          "n": 480,
+          "n_missing": 0,
+          "k_observed": 2,
+          "k_declared": 3,
+          "H_plugin": 0.13436344,
+          "H_miller_madow": 0.13586625,
+          "H_max_declared": 1.5849625,
+          "coverage": 0.666667,
+          "estimator": "plug-in + Miller-Madow",
+          "log_base": 2
+        },
+        "bias": {
+          "plugin_bits": 0.13436344,
+          "miller_madow_bits": 0.13586625,
+          "delta_bits": 0.00150281,
+          "analytic_correction_bits": 0.00150281
+        },
+        "excess_over_max_bits": 1.45059906,
+        "bootstrap_ci": {
+          "low": 0.13436344,
+          "high": 0.13436344,
+          "n_resamples": 2000,
+          "n_clusters": 3,
+          "seed": 20261110
+        },
+        "effective_sample": {
+          "n": 480,
+          "n_clusters": 3,
+          "mean_cluster_size": 160.0,
+          "min_cluster_size": 160,
+          "max_cluster_size": 160,
+          "clustered": true
+        },
+        "warnings": [
+          "1 declared level(s) never observed",
+          "only 3 clusters; cluster bootstrap is unstable"
+        ],
+        "condition": "G"
+      }
+    },
+    "note": "Each condition has only 3 replicate clusters, so the cluster bootstrap cannot separate replicate-level variation from episode-level noise."
+  },
+  "bias_comparison": [
+    {
+      "endpoint": "E01_event_class_marginal",
+      "label": "event_class_marginal",
+      "n": 515,
+      "k_observed": 6,
+      "H_plugin": 2.47659382,
+      "H_miller_madow": 2.4835972,
+      "delta_bits": 0.00700338,
+      "delta_fraction": 0.002828
+    },
+    {
+      "endpoint": "E02_frame_event_count",
+      "label": "frame_event_count",
+      "n": 300,
+      "k_observed": 4,
+      "H_plugin": 1.89604934,
+      "H_miller_madow": 1.90326282,
+      "delta_bits": 0.00721348,
+      "delta_fraction": 0.003804
+    },
+    {
+      "endpoint": "E03_decoder_state",
+      "label": "decoder_state",
+      "n": 330,
+      "k_observed": 4,
+      "H_plugin": 1.45680178,
+      "H_miller_madow": 1.46335949,
+      "delta_bits": 0.00655771,
+      "delta_fraction": 0.004501
+    },
+    {
+      "endpoint": "E04_decoder_score_bin",
+      "label": "decoder_max_score_bin",
+      "n": 330,
+      "k_observed": 3,
+      "H_plugin": 1.0906528,
+      "H_miller_madow": 1.09502461,
+      "delta_bits": 0.00437181,
+      "delta_fraction": 0.004008
+    }
+  ],
+  "unavailable": [
+    {
+      "id": "U01",
+      "label": "spike_train_entropy",
+      "reason": "The only archived recording with individual spike times is a single replay run (74 spikes). Entropy of a spike train needs repeated trials or a declared time-discretisation with enough samples per bin; neither exists here."
+    },
+    {
+      "id": "U02",
+      "label": "population_response_entropy",
+      "reason": "The 138-neuron sensory population has a nominal support of 2^138 and no archived repeat structure. Plug-in entropy over that support is not estimable at any available sample size."
+    },
+    {
+      "id": "U03",
+      "label": "membrane_potential_entropy",
+      "reason": "Membrane potentials were never recorded; only spike counts and times."
+    },
+    {
+      "id": "U04",
+      "label": "cue_to_population_code_mi",
+      "reason": "Aggregate spike counts per episode are constant within conditions A-F, so no neural response variable exists to relate to the cue."
+    }
+  ],
+  "software": {
+    "python": "3.13.14",
+    "numpy": "2.3.4",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64"
+  },
+  "runtime_seconds": 3.653
+}

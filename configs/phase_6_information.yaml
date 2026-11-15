@@ -1,0 +1,193 @@
+# FLY-SURFER Phase 6 information-theoretic analysis configuration.
+#
+# SCIENTIFIC STATUS
+#   data         archived Phase 3A.5, 3B2C, 4F, 5E and 5F artifacts only
+#   estimators   plug-in discrete entropy and mutual information, bits
+#   inference    cluster-preserving permutation, cluster bootstrap, Holm
+#
+# Every bin boundary, cap, threshold and comparison family below is declared
+# before the Phase 6 analysis is run. Changing a choice after inspecting a
+# result would invalidate the declared family. The runner records this file's
+# SHA-256 in the results.
+#
+# The only confirmatory family is the pair of paired plastic-versus-fixed
+# task-information contrasts from Phase 5F. Every other endpoint is
+# exploratory or descriptive and is labelled as such in the results.
+
+version: 1
+phase: 6
+title: Information-theoretic analysis of archived FLY-SURFER artifacts
+log_base: 2
+
+seed:
+  root: 20261110
+  permutations: 20261110
+  bootstrap: 20261110
+
+support:
+  # A confirmatory endpoint needs this many observations and clusters.
+  min_n_confirmatory: 100
+  min_clusters_confirmatory: 10
+  # Intervals are withheld below this many clusters.
+  min_clusters_interval: 3
+  # Expected observations per contingency-table cell.
+  min_per_cell: 5
+  # Marginal entropy floor below which normalised MI is withheld (bits).
+  min_entropy_bits: 0.05
+  # Minimum observations inside a conditional-MI stratum.
+  min_stratum_n: 50
+
+permutation:
+  n_permutations_confirmatory: 5000
+  n_permutations_exploratory: 2000
+  alpha: 0.05
+  # Cluster-preserving block permutation whenever repeated observations share
+  # a run, seed or replicate. Free permutation only when each cluster has one
+  # observation and the comparison is a fixed time window.
+  default_scheme: block
+
+bootstrap:
+  n_resamples: 2000
+  alpha: 0.05
+
+sensory_population:
+  # Phase 3A.5 seed stage: three independent mapping seeds x three distances.
+  source: experiments/phase_3_5/results/stage_seeds.json
+  distance_feature: obstacle_distance
+  distance_order: [0.15, 0.55, 0.90]
+  distance_labels: ["0.15", "0.55", "0.90"]
+  # Primary response code is the exact four-neuron population vector.
+  primary_code: exact_vector
+  # Sensitivity codes collapse counts to presence or cap them.
+  count_caps: [1, 2, 4, 8]
+  # Population-size sweep is a declared descriptive sensitivity, not an
+  # independent replication: all groups share one mapping seed.
+  population_sweep_source: experiments/phase_3_5/results/stage_population.json
+  population_sizes: [4, 8, 12, 16, 24]
+
+plasticity_task_information:
+  source: experiments/results/phase_5f/comparison_raw.json
+  checkpoints: ["0", "160"]
+  final_checkpoint: "160"
+  baseline_condition: fixed_complete
+  plastic_condition: plastic_complete
+  control_baseline: fixed_random
+  control_plastic: plastic_random
+  # Forty evaluation episodes per seed enter a 4x4 table; the analytic bias
+  # floor is declared in the result, not corrected away.
+  episodes_per_seed: 40
+  confirmatory_contrasts:
+    - name: plastic_minus_fixed_complete
+      plastic: plastic_complete
+      fixed: fixed_complete
+    - name: plastic_minus_fixed_random
+      plastic: plastic_random
+      fixed: fixed_random
+
+reward_ablation:
+  # Phase 5E shares substrate and cue streams across conditions, so the
+  # replicate index is a matched pairing. Only three replicates exist.
+  source: experiments/results/phase_5e/controlled_learning_raw.json
+  conditions: [A, B, C, D, F]
+  condition_labels:
+    A: fixed_weights_outcome_reward
+    B: plastic_outcome_reward
+    C: plastic_zero_reward
+    D: plastic_shuffled_reward
+    F: plastic_traces_disabled
+  paired_contrasts:
+    - name: outcome_minus_fixed
+      left: B
+      right: A
+    - name: outcome_minus_zero_reward
+      left: B
+      right: C
+    - name: outcome_minus_shuffled_reward
+      left: B
+      right: D
+    - name: outcome_minus_traces_disabled
+      left: B
+      right: F
+  episode_set: train
+
+neural_motor:
+  source: experiments/results/phase_4f/motor_decoder_experiment.json
+  decoder_config: configs/motor_decoder.yaml
+  pools: [LEFT, RIGHT, JUMP]
+  state_levels: [NEUTRAL, LEFT, RIGHT, JUMP]
+  # Primary population code: each pool is active (any active neuron) or not.
+  primary_code: any_active_pattern
+  # Sensitivity code: declared decoder gate levels.
+  gate_thresholds: [0.10, 0.20]
+  # Window-level stability: one fixed post-stimulus window across 66 runs.
+  window_indices: [0, 1, 2, 3, 4]
+  circularity_warning: >-
+    The Phase 4F decoder thresholds the same pool activity used as the
+    predictor. The estimate is an internal-consistency check of a
+    computational map, not evidence that the brain transmits motor commands.
+
+conditional_information:
+  source: experiments/results/phase_5e/controlled_learning_raw.json
+  conditions: [A, B, C, D, E, F]
+  excluded: [G]
+  min_stratum_n: 50
+
+figures:
+  directory: experiments/results/phase_6/figures
+  files:
+    - sensory_population_response.png
+    - sensory_mi_binning.png
+    - population_size_sensitivity.png
+    - plasticity_paired_mi.png
+    - plasticity_condition_mi.png
+    - neural_motor_mi.png
+    - neural_motor_by_window.png
+    - reward_ablation_mi.png
+
+unavailable:
+  - id: U01
+    label: real_replay_sensory_to_neural_mi
+    reason: >-
+      The Phase 3B2C replay persists aggregate spike counts only. No
+      per-neuron or per-frame spike arrays were written, so a sensory-event to
+      neural-response table cannot be formed without re-running the simulation.
+  - id: U02
+    label: spike_train_entropy
+    reason: >-
+      No archived research run persists raw spike times at a scale that
+      supports a per-neuron spike-train entropy estimate. The stored raw-spike
+      arrays are a 1,564-spike initial run over 800 neurons, a 74-spike
+      propagation smoke test and a Phase 3C.5 pilot with 64-72 spikes per
+      condition. These are single trials with at most a few spikes per neuron.
+  - id: U03
+    label: membrane_potential_entropy
+    reason: Membrane potentials were never persisted by any phase.
+  - id: U04
+    label: neural_level_plasticity_information
+    reason: >-
+      The Phase 5 real-BANC demonstration stores six named conditions but only
+      three distinct spike hashes, five sequential 50 ms decoder windows per
+      condition and the same decoded-state sequence in every condition. The
+      repeated run is deterministic, not an independent replicate, so a
+      neural-level baseline-versus-plastic information comparison cannot be
+      given uncertainty.
+  - id: U05
+    label: neural_level_reward_modulation
+    reason: >-
+      Reward providers are recorded for the Phase 5 real-BANC conditions, but
+      those conditions share one decoded-state sequence and differ only by a
+      deterministic repeat. No arm persists independent per-neuron activity,
+      so a neural-level reward-modulation effect on information transmission
+      is not estimable.
+  - id: U06
+    label: cue_to_neural_response
+    reason: >-
+      In every archived Phase 5E and Phase 5F episode the per-episode cue
+      spike count is the constant 8 and the total spike count is 12 (11 or 12
+      in condition E). A constant neural response cannot carry information
+      about the cue.
+  - id: U07
+    label: neural_to_reward
+    reason: >-
+      Per-episode spike counts are constant in Phase 5E conditions A-F, so no
+      neural predictor of reward exists without inventing an observation.

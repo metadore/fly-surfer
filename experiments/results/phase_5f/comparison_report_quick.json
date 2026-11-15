@@ -1,0 +1,2523 @@
+{
+ "phase": "5F",
+ "generated_at_utc": "2026-11-09T16:38:26+00:00",
+ "settings": {
+  "core": {
+   "conditions": [
+    "fixed_complete",
+    "plastic_complete",
+    "fixed_random",
+    "plastic_random"
+   ],
+   "contrasts": [
+    [
+     "plastic_complete",
+     "fixed_complete"
+    ],
+    [
+     "plastic_random",
+     "fixed_random"
+    ],
+    [
+     "plastic_complete",
+     "plastic_random"
+    ],
+    [
+     "fixed_complete",
+     "fixed_random"
+    ]
+   ],
+   "n_seeds": 3,
+   "train_episodes": 24,
+   "eval_episodes": 8,
+   "eta": 1.0,
+   "eval_checkpoints": [
+    0,
+    24
+   ]
+  },
+  "conventional": {
+   "n_seeds": 3,
+   "train_episodes": 24,
+   "eval_episodes": 8,
+   "eval_checkpoints": [
+    0,
+    24
+   ]
+  },
+  "robustness": {
+   "n_seeds": 2,
+   "train_episodes": 16,
+   "eval_episodes": 8,
+   "eval_checkpoints": [
+    0,
+    16
+   ]
+  },
+  "statistics": {
+   "alpha": 0.05,
+   "bootstrap_resamples": 10000,
+   "bootstrap_seed": 20261117,
+   "exact_permutation_max_n": 16,
+   "monte_carlo_draws": 100000
+  },
+  "seeds": {
+   "master_seed": 20261118,
+   "substrate_seed": 20261114
+  },
+  "axes": {
+   "eta": {
+    "reference": "1.0",
+    "runs_control": false,
+    "labels": [
+     "0.1",
+     "0.5",
+     "1.0",
+     "2.0"
+    ]
+   },
+   "tau_e_ms": {
+    "reference": "20.0",
+    "runs_control": false,
+    "labels": [
+     "10.0",
+     "20.0",
+     "40.0"
+    ]
+   },
+   "reward_magnitude": {
+    "reference": "1.0",
+    "runs_control": false,
+    "labels": [
+     "0.25",
+     "1.0",
+     "4.0"
+    ]
+   },
+   "weight_bounds": {
+    "reference": "declared_0.5_2.0_clip5",
+    "runs_control": false,
+    "labels": [
+     "tight_0.75_1.25_clip2",
+     "declared_0.5_2.0_clip5",
+     "loose_0.25_4.0_noclip"
+    ]
+   },
+   "initial_weights": {
+    "reference": "seed_20261114",
+    "runs_control": true,
+    "labels": [
+     "seed_20261114",
+     "seed_20261115",
+     "seed_20261116"
+    ]
+   },
+   "network_size": {
+    "reference": "n_cues_4",
+    "runs_control": true,
+    "labels": [
+     "n_cues_2",
+     "n_cues_4",
+     "n_cues_8"
+    ]
+   },
+   "structural_threshold": {
+    "reference": "t1",
+    "runs_control": true,
+    "labels": [
+     "t1",
+     "t2",
+     "t3"
+    ]
+   },
+   "reward_delay_ms": {
+    "reference": "0.0",
+    "runs_control": false,
+    "labels": [
+     "0.0",
+     "2.0",
+     "5.0",
+     "10.0"
+    ]
+   }
+  }
+ },
+ "core": {
+  "conditions": {
+   "fixed_complete": {
+    "label": "fixed weights, complete wiring",
+    "connectivity": "complete",
+    "eta": 0.0,
+    "n_seeds": 3,
+    "final_success": {
+     "n": 3,
+     "mean": 0.875,
+     "sd": 0.125,
+     "median": 0.875,
+     "q1": 0.8125,
+     "q3": 0.9375,
+     "min": 0.75,
+     "max": 1.0,
+     "bootstrap_ci_mean": {
+      "low": 0.75,
+      "high": 1.0
+     }
+    },
+    "start_success": {
+     "n": 3,
+     "mean": 0.875,
+     "sd": 0.125,
+     "median": 0.875,
+     "q1": 0.8125,
+     "q3": 0.9375,
+     "min": 0.75,
+     "max": 1.0,
+     "bootstrap_ci_mean": {
+      "low": 0.75,
+      "high": 1.0
+     }
+    },
+    "final_selective": {
+     "n": 3,
+     "mean": 0.041667,
+     "sd": 0.072169,
+     "median": 0.0,
+     "q1": 0.0,
+     "q3": 0.0625,
+     "min": 0.0,
+     "max": 0.125,
+     "bootstrap_ci_mean": {
+      "low": 0.0,
+      "high": 0.125
+     }
+    },
+    "train_last_window_success": {
+     "n": 3,
+     "mean": 0.883333,
+     "sd": 0.125831,
+     "median": 0.9,
+     "q1": 0.825,
+     "q3": 0.95,
+     "min": 0.75,
+     "max": 1.0,
+     "bootstrap_ci_mean": {
+      "low": 0.75,
+      "high": 1.0
+     }
+    },
+    "changed_edges": {
+     "n": 3,
+     "mean": 0.0,
+     "sd": 0.0,
+     "median": 0.0,
+     "q1": 0.0,
+     "q3": 0.0,
+     "min": 0.0,
+     "max": 0.0
+    },
+    "tags_total": {
+     "n": 3,
+     "mean": 55.666667,
+     "sd": 3.05505,
+     "median": 55.0,
+     "q1": 54.0,
+     "q3": 57.0,
+     "min": 53.0,
+     "max": 59.0
+    },
+    "n_spikes_total": {
+     "n": 3,
+     "mean": 288.0,
+     "sd": 0.0,
+     "median": 288.0,
+     "q1": 288.0,
+     "q3": 288.0,
+     "min": 288.0,
+     "max": 288.0
+    },
+    "runtime_s": {
+     "n": 3,
+     "mean": 0.169233,
+     "sd": 0.011184,
+     "median": 0.1744,
+     "q1": 0.1654,
+     "q3": 0.17565,
+     "min": 0.1564,
+     "max": 0.1769
+    },
+    "weights_unchanged_all": true,
+    "silent_seeds": 0,
+    "seeds_without_updates": 3
+   },
+   "plastic_complete": {
+    "label": "plastic weights, complete wiring",
+    "connectivity": "complete",
+    "eta": 1.0,
+    "n_seeds": 3,
+    "final_success": {
+     "n": 3,
+     "mean": 0.916667,
+     "sd": 0.144338,
+     "median": 1.0,
+     "q1": 0.875,
+     "q3": 1.0,
+     "min": 0.75,
+     "max": 1.0,
+     "bootstrap_ci_mean": {
+      "low": 0.75,
+      "high": 1.0
+     }
+    },
+    "start_success": {
+     "n": 3,
+     "mean": 0.875,
+     "sd": 0.125,
+     "median": 0.875,
+     "q1": 0.8125,
+     "q3": 0.9375,
+     "min": 0.75,
+     "max": 1.0,
+     "bootstrap_ci_mean": {
+      "low": 0.75,
+      "high": 1.0
+     }
+    },
+    "final_selective": {
+     "n": 3,
+     "mean": 0.083333,
+     "sd": 0.144338,
+     "median": 0.0,
+     "q1": 0.0,
+     "q3": 0.125,
+     "min": 0.0,
+     "max": 0.25,
+     "bootstrap_ci_mean": {
+      "low": 0.0,
+      "high": 0.25
+     }
+    },
+    "train_last_window_success": {
+     "n": 3,
+     "mean": 0.883333,
+     "sd": 0.125831,
+     "median": 0.9,
+     "q1": 0.825,
+     "q3": 0.95,
+     "min": 0.75,
+     "max": 1.0,
+     "bootstrap_ci_mean": {
+      "low": 0.75,
+      "high": 1.0
+     }
+    },
+    "changed_edges": {
+     "n": 3,
+     "mean": 33.0,
+     "sd": 6.0,
+     "median": 33.0,
+     "q1": 30.0,
+     "q3": 36.0,
+     "min": 27.0,
+     "max": 39.0
+    },
+    "tags_total": {
+     "n": 3,
+     "mean": 56.666667,
+     "sd": 2.516611,
+     "median": 57.0,
+     "q1": 55.5,
+     "q3": 58.0,
+     "min": 54.0,
+     "max": 59.0
+    },
+    "n_spikes_total": {
+     "n": 3,
+     "mean": 288.0,
+     "sd": 0.0,
+     "median": 288.0,
+     "q1": 288.0,
+     "q3": 288.0,
+     "min": 288.0,
+     "max": 288.0
+    },
+    "runtime_s": {
+     "n": 3,
+     "mean": 0.2112,
+     "sd": 0.047699,
+     "median": 0.1931,
+     "q1": 0.18415,
+     "q3": 0.2292,
+     "min": 0.1752,
+     "max": 0.2653
+    },
+    "weights_unchanged_all": false,
+    "silent_seeds": 0,
+    "seeds_without_updates": 0
+   },
+   "fixed_random": {
+    "label": "fixed weights, random wiring",
+    "connectivity": "random",
+    "eta": 0.0,
+    "n_seeds": 3,
+    "final_success": {
+     "n": 3,
+     "mean": 0.166667,
+     "sd": 0.190941,
+     "median": 0.125,
+     "q1": 0.0625,
+     "q3": 0.25,
+     "min": 0.0,
+     "max": 0.375,
+     "bootstrap_ci_mean": {
+      "low": 0.0,
+      "high": 0.375
+     }
+    },
+    "start_success": {
+     "n": 3,
+     "mean": 0.166667,
+     "sd": 0.190941,
+     "median": 0.125,
+     "q1": 0.0625,
+     "q3": 0.25,
+     "min": 0.0,
+     "max": 0.375,
+     "bootstrap_ci_mean": {
+      "low": 0.0,
+      "high": 0.375
+     }
+    },
+    "final_selective": {
+     "n": 3,
+     "mean": 0.208333,
+     "sd": 0.072169,
+     "median": 0.25,
+     "q1": 0.1875,
+     "q3": 0.25,
+     "min": 0.125,
+     "max": 0.25,
+     "bootstrap_ci_mean": {
+      "low": 0.125,
+      "high": 0.25
+     }
+    },
+    "train_last_window_success": {
+     "n": 3,
+     "mean": 0.133333,
+     "sd": 0.104083,
+     "median": 0.1,
+     "q1": 0.075,
+     "q3": 0.175,
+     "min": 0.05,
+     "max": 0.25,
+     "bootstrap_ci_mean": {
+      "low": 0.05,
+      "high": 0.25
+     }
+    },
+    "changed_edges": {
+     "n": 3,
+     "mean": 0.0,
+     "sd": 0.0,
+     "median": 0.0,
+     "q1": 0.0,
+     "q3": 0.0,
+     "min": 0.0,
+     "max": 0.0
+    },
+    "tags_total": {
+     "n": 3,
+     "mean": 1.666667,
+     "sd": 2.886751,
+     "median": 0.0,
+     "q1": 0.0,
+     "q3": 2.5,
+     "min": 0.0,
+     "max": 5.0
+    },
+    "n_spikes_total": {
+     "n": 3,
+     "mean": 282.0,
+     "sd": 0.0,
+     "median": 282.0,
+     "q1": 282.0,
+     "q3": 282.0,
+     "min": 282.0,
+     "max": 282.0
+    },
+    "runtime_s": {
+     "n": 3,
+     "mean": 0.228433,
+     "sd": 0.005499,
+     "median": 0.2312,
+     "q1": 0.22665,
+     "q3": 0.2316,
+     "min": 0.2221,
+     "max": 0.232
+    },
+    "weights_unchanged_all": true,
+    "silent_seeds": 0,
+    "seeds_without_updates": 3
+   },
+   "plastic_random": {
+    "label": "plastic weights, random wiring",
+    "connectivity": "random",
+    "eta": 1.0,
+    "n_seeds": 3,
+    "final_success": {
+     "n": 3,
+     "mean": 0.166667,
+     "sd": 0.190941,
+     "median": 0.125,
+     "q1": 0.0625,
+     "q3": 0.25,
+     "min": 0.0,
+     "max": 0.375,
+     "bootstrap_ci_mean": {
+      "low": 0.0,
+      "high": 0.375
+     }
+    },
+    "start_success": {
+     "n": 3,
+     "mean": 0.166667,
+     "sd": 0.190941,
+     "median": 0.125,
+     "q1": 0.0625,
+     "q3": 0.25,
+     "min": 0.0,
+     "max": 0.375,
+     "bootstrap_ci_mean": {
+      "low": 0.0,
+      "high": 0.375
+     }
+    },
+    "final_selective": {
+     "n": 3,
+     "mean": 0.208333,
+     "sd": 0.072169,
+     "median": 0.25,
+     "q1": 0.1875,
+     "q3": 0.25,
+     "min": 0.125,
+     "max": 0.25,
+     "bootstrap_ci_mean": {
+      "low": 0.125,
+      "high": 0.25
+     }
+    },
+    "train_last_window_success": {
+     "n": 3,
+     "mean": 0.133333,
+     "sd": 0.104083,
+     "median": 0.1,
+     "q1": 0.075,
+     "q3": 0.175,
+     "min": 0.05,
+     "max": 0.25,
+     "bootstrap_ci_mean": {
+      "low": 0.05,
+      "high": 0.25
+     }
+    },
+    "changed_edges": {
+     "n": 3,
+     "mean": 0.333333,
+     "sd": 0.57735,
+     "median": 0.0,
+     "q1": 0.0,
+     "q3": 0.5,
+     "min": 0.0,
+     "max": 1.0
+    },
+    "tags_total": {
+     "n": 3,
+     "mean": 1.666667,
+     "sd": 2.886751,
+     "median": 0.0,
+     "q1": 0.0,
+     "q3": 2.5,
+     "min": 0.0,
+     "max": 5.0
+    },
+    "n_spikes_total": {
+     "n": 3,
+     "mean": 282.0,
+     "sd": 0.0,
+     "median": 282.0,
+     "q1": 282.0,
+     "q3": 282.0,
+     "min": 282.0,
+     "max": 282.0
+    },
+    "runtime_s": {
+     "n": 3,
+     "mean": 0.234067,
+     "sd": 0.003062,
+     "median": 0.2352,
+     "q1": 0.2329,
+     "q3": 0.2358,
+     "min": 0.2306,
+     "max": 0.2364
+    },
+    "weights_unchanged_all": false,
+    "silent_seeds": 0,
+    "seeds_without_updates": 2
+   }
+  },
+  "contrasts": {
+   "plastic_complete_minus_fixed_complete": {
+    "n_pairs": 3,
+    "mean_difference": 0.041667,
+    "median_difference": 0.0,
+    "sd_difference": 0.072169,
+    "min_difference": 0.0,
+    "max_difference": 0.125,
+    "effect_size_dz": 0.57735,
+    "n_positive": 1,
+    "n_negative": 0,
+    "n_zero": 2,
+    "bootstrap_ci_mean_difference": {
+     "low": 0.0,
+     "high": 0.125
+    },
+    "p_value": 1.0,
+    "method": "exact two-sided sign flip (8 assignments)",
+    "holm_adjusted_p": 1.0,
+    "holm_rejected": false
+   },
+   "plastic_random_minus_fixed_random": {
+    "n_pairs": 3,
+    "mean_difference": 0.0,
+    "median_difference": 0.0,
+    "sd_difference": 0.0,
+    "min_difference": 0.0,
+    "max_difference": 0.0,
+    "effect_size_dz": null,
+    "n_positive": 0,
+    "n_negative": 0,
+    "n_zero": 3,
+    "bootstrap_ci_mean_difference": {
+     "low": 0.0,
+     "high": 0.0
+    },
+    "p_value": 1.0,
+    "method": "exact two-sided sign flip (8 assignments)",
+    "holm_adjusted_p": 1.0,
+    "holm_rejected": false
+   },
+   "plastic_complete_minus_plastic_random": {
+    "n_pairs": 3,
+    "mean_difference": 0.75,
+    "median_difference": 0.625,
+    "sd_difference": 0.216506,
+    "min_difference": 0.625,
+    "max_difference": 1.0,
+    "effect_size_dz": 3.464102,
+    "n_positive": 3,
+    "n_negative": 0,
+    "n_zero": 0,
+    "bootstrap_ci_mean_difference": {
+     "low": 0.625,
+     "high": 1.0
+    },
+    "p_value": 0.25,
+    "method": "exact two-sided sign flip (8 assignments)",
+    "holm_adjusted_p": 1.0,
+    "holm_rejected": false
+   },
+   "fixed_complete_minus_fixed_random": {
+    "n_pairs": 3,
+    "mean_difference": 0.708333,
+    "median_difference": 0.625,
+    "sd_difference": 0.144338,
+    "min_difference": 0.625,
+    "max_difference": 0.875,
+    "effect_size_dz": 4.907477,
+    "n_positive": 3,
+    "n_negative": 0,
+    "n_zero": 0,
+    "bootstrap_ci_mean_difference": {
+     "low": 0.625,
+     "high": 0.875
+    },
+    "p_value": 0.25,
+    "method": "exact two-sided sign flip (8 assignments)",
+    "holm_adjusted_p": 1.0,
+    "holm_rejected": false
+   }
+  },
+  "multiple_comparison": {
+   "method": "Holm-Bonferroni",
+   "alpha": 0.05,
+   "adjusted": {
+    "plastic_complete_minus_plastic_random": 1.0,
+    "fixed_complete_minus_fixed_random": 1.0,
+    "plastic_complete_minus_fixed_complete": 1.0,
+    "plastic_random_minus_fixed_random": 1.0
+   },
+   "rejected": {
+    "plastic_complete_minus_plastic_random": false,
+    "fixed_complete_minus_fixed_random": false,
+    "plastic_complete_minus_fixed_complete": false,
+    "plastic_random_minus_fixed_random": false
+   }
+  },
+  "family": [
+   "plastic_complete_minus_fixed_complete",
+   "plastic_random_minus_fixed_random",
+   "plastic_complete_minus_plastic_random",
+   "fixed_complete_minus_fixed_random"
+  ]
+ },
+ "conventional": {
+  "n_seeds": 3,
+  "note": "the perceptron is deterministic, so all seeds are identical; the per-seed dispersion is zero by construction",
+  "final_success": {
+   "n": 3,
+   "mean": 1.0,
+   "sd": 0.0,
+   "median": 1.0,
+   "q1": 1.0,
+   "q3": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "bootstrap_ci_mean": {
+    "low": 1.0,
+    "high": 1.0
+   }
+  },
+  "start_success": {
+   "n": 3,
+   "mean": 0.25,
+   "sd": 0.0,
+   "median": 0.25,
+   "q1": 0.25,
+   "q3": 0.25,
+   "min": 0.25,
+   "max": 0.25,
+   "bootstrap_ci_mean": {
+    "low": 0.25,
+    "high": 0.25
+   }
+  },
+  "final_selective": {
+   "n": 3,
+   "mean": 1.0,
+   "sd": 0.0,
+   "median": 1.0,
+   "q1": 1.0,
+   "q3": 1.0,
+   "min": 1.0,
+   "max": 1.0,
+   "bootstrap_ci_mean": {
+    "low": 1.0,
+    "high": 1.0
+   }
+  },
+  "train_last_window_success": {
+   "n": 3,
+   "mean": 0.875,
+   "sd": 0.0,
+   "median": 0.875,
+   "q1": 0.875,
+   "q3": 0.875,
+   "min": 0.875,
+   "max": 0.875,
+   "bootstrap_ci_mean": {
+    "low": 0.875,
+    "high": 0.875
+   }
+  },
+  "spec": {
+   "information": "supervised correct-action label (privileged)",
+   "matched_control": false
+  },
+  "privileged": true
+ },
+ "robustness": {
+  "eta": {
+   "reference": "1.0",
+   "runs_control": false,
+   "unit": "declared units",
+   "values": {
+    "0.1": {
+     "parameters": {
+      "label": "0.1",
+      "eta": 0.1
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    },
+    "0.5": {
+     "parameters": {
+      "label": "0.5",
+      "eta": 0.5
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    },
+    "1.0": {
+     "parameters": {
+      "label": "1.0",
+      "eta": 1.0
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    },
+    "2.0": {
+     "parameters": {
+      "label": "2.0",
+      "eta": 2.0
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    }
+   }
+  },
+  "tau_e_ms": {
+   "reference": "20.0",
+   "runs_control": false,
+   "unit": "ms",
+   "values": {
+    "10.0": {
+     "parameters": {
+      "label": "10.0",
+      "tau_e_ms": 10.0
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    },
+    "20.0": {
+     "parameters": {
+      "label": "20.0",
+      "tau_e_ms": 20.0
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    },
+    "40.0": {
+     "parameters": {
+      "label": "40.0",
+      "tau_e_ms": 40.0
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    }
+   }
+  },
+  "reward_magnitude": {
+   "reference": "1.0",
+   "runs_control": false,
+   "unit": "declared units",
+   "values": {
+    "0.25": {
+     "parameters": {
+      "label": "0.25",
+      "reward_magnitude": 0.25
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 0.9375,
+        "sd": 0.088388,
+        "median": 0.9375,
+        "q1": 0.90625,
+        "q3": 0.96875,
+        "min": 0.875,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 0.875,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": -0.0625,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 35.5,
+        "sd": 4.949747,
+        "median": 35.5,
+        "q1": 33.75,
+        "q3": 37.25,
+        "min": 32.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    },
+    "1.0": {
+     "parameters": {
+      "label": "1.0",
+      "reward_magnitude": 1.0
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    },
+    "4.0": {
+     "parameters": {
+      "label": "4.0",
+      "reward_magnitude": 4.0
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 18.5,
+        "sd": 3.535534,
+        "median": 18.5,
+        "q1": 17.25,
+        "q3": 19.75,
+        "min": 16.0,
+        "max": 21.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.5,
+        "sd": 6.363961,
+        "median": 36.5,
+        "q1": 34.25,
+        "q3": 38.75,
+        "min": 32.0,
+        "max": 41.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    }
+   }
+  },
+  "weight_bounds": {
+   "reference": "declared_0.5_2.0_clip5",
+   "runs_control": false,
+   "unit": "declared units",
+   "values": {
+    "tight_0.75_1.25_clip2": {
+     "parameters": {
+      "label": "tight_0.75_1.25_clip2",
+      "lower_factor": 0.75,
+      "upper_factor": 1.25,
+      "max_abs_update_pa": 2.0
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    },
+    "declared_0.5_2.0_clip5": {
+     "parameters": {
+      "label": "declared_0.5_2.0_clip5",
+      "lower_factor": 0.5,
+      "upper_factor": 2.0,
+      "max_abs_update_pa": 5.0
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    },
+    "loose_0.25_4.0_noclip": {
+     "parameters": {
+      "label": "loose_0.25_4.0_noclip",
+      "lower_factor": 0.25,
+      "upper_factor": 4.0,
+      "max_abs_update_pa": null
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    }
+   }
+  },
+  "initial_weights": {
+   "reference": "seed_20261114",
+   "runs_control": true,
+   "unit": "declared units",
+   "values": {
+    "seed_20261114": {
+     "parameters": {
+      "label": "seed_20261114",
+      "substrate_seed": 20261114
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      },
+      "fixed_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 0.9375,
+        "sd": 0.088388,
+        "median": 0.9375,
+        "q1": 0.90625,
+        "q3": 0.96875,
+        "min": 0.875,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 0.875,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 0.0,
+        "sd": 0.0,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0,
+        "min": 0.0,
+        "max": 0.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 35.5,
+        "sd": 4.949747,
+        "median": 35.5,
+        "q1": 33.75,
+        "q3": 37.25,
+        "min": 32.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 2,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": true
+      }
+     }
+    },
+    "seed_20261115": {
+     "parameters": {
+      "label": "seed_20261115",
+      "substrate_seed": 20261115
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 0.875,
+        "sd": 0.176777,
+        "median": 0.875,
+        "q1": 0.8125,
+        "q3": 0.9375,
+        "min": 0.75,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 0.75,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": -0.125,
+       "changed_edges": {
+        "n": 2,
+        "mean": 15.5,
+        "sd": 9.192388,
+        "median": 15.5,
+        "q1": 12.25,
+        "q3": 18.75,
+        "min": 9.0,
+        "max": 22.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 30.5,
+        "sd": 4.949747,
+        "median": 30.5,
+        "q1": 28.75,
+        "q3": 32.25,
+        "min": 27.0,
+        "max": 34.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      },
+      "fixed_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 0.8125,
+        "sd": 0.265165,
+        "median": 0.8125,
+        "q1": 0.71875,
+        "q3": 0.90625,
+        "min": 0.625,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 0.625,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": -0.125,
+       "changed_edges": {
+        "n": 2,
+        "mean": 0.0,
+        "sd": 0.0,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0,
+        "min": 0.0,
+        "max": 0.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 31.5,
+        "sd": 4.949747,
+        "median": 31.5,
+        "q1": 29.75,
+        "q3": 33.25,
+        "min": 28.0,
+        "max": 35.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 2,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": true
+      }
+     }
+    },
+    "seed_20261116": {
+     "parameters": {
+      "label": "seed_20261116",
+      "substrate_seed": 20261116
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 0.5625,
+        "sd": 0.088388,
+        "median": 0.5625,
+        "q1": 0.53125,
+        "q3": 0.59375,
+        "min": 0.5,
+        "max": 0.625,
+        "bootstrap_ci_mean": {
+         "low": 0.5,
+         "high": 0.625
+        }
+       },
+       "delta_vs_reference": -0.4375,
+       "changed_edges": {
+        "n": 2,
+        "mean": 19.5,
+        "sd": 2.12132,
+        "median": 19.5,
+        "q1": 18.75,
+        "q3": 20.25,
+        "min": 18.0,
+        "max": 21.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 33.0,
+        "sd": 4.242641,
+        "median": 33.0,
+        "q1": 31.5,
+        "q3": 34.5,
+        "min": 30.0,
+        "max": 36.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      },
+      "fixed_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 0.5625,
+        "sd": 0.088388,
+        "median": 0.5625,
+        "q1": 0.53125,
+        "q3": 0.59375,
+        "min": 0.5,
+        "max": 0.625,
+        "bootstrap_ci_mean": {
+         "low": 0.5,
+         "high": 0.625
+        }
+       },
+       "delta_vs_reference": -0.375,
+       "changed_edges": {
+        "n": 2,
+        "mean": 0.0,
+        "sd": 0.0,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0,
+        "min": 0.0,
+        "max": 0.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 33.0,
+        "sd": 2.828427,
+        "median": 33.0,
+        "q1": 32.0,
+        "q3": 34.0,
+        "min": 31.0,
+        "max": 35.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 2,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": true
+      }
+     }
+    }
+   }
+  },
+  "network_size": {
+   "reference": "n_cues_4",
+   "runs_control": true,
+   "unit": "declared units",
+   "values": {
+    "n_cues_2": {
+     "parameters": {
+      "label": "n_cues_2",
+      "n_cues": 2
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 0.9375,
+        "sd": 0.088388,
+        "median": 0.9375,
+        "q1": 0.90625,
+        "q3": 0.96875,
+        "min": 0.875,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 0.875,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": -0.0625,
+       "changed_edges": {
+        "n": 2,
+        "mean": 16.0,
+        "sd": 0.0,
+        "median": 16.0,
+        "q1": 16.0,
+        "q3": 16.0,
+        "min": 16.0,
+        "max": 16.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 21.5,
+        "sd": 2.12132,
+        "median": 21.5,
+        "q1": 20.75,
+        "q3": 22.25,
+        "min": 20.0,
+        "max": 23.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      },
+      "fixed_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 0.875,
+        "sd": 0.0,
+        "median": 0.875,
+        "q1": 0.875,
+        "q3": 0.875,
+        "min": 0.875,
+        "max": 0.875,
+        "bootstrap_ci_mean": {
+         "low": 0.875,
+         "high": 0.875
+        }
+       },
+       "delta_vs_reference": -0.0625,
+       "changed_edges": {
+        "n": 2,
+        "mean": 0.0,
+        "sd": 0.0,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0,
+        "min": 0.0,
+        "max": 0.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 20.5,
+        "sd": 0.707107,
+        "median": 20.5,
+        "q1": 20.25,
+        "q3": 20.75,
+        "min": 20.0,
+        "max": 21.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 2,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": true
+      }
+     }
+    },
+    "n_cues_4": {
+     "parameters": {
+      "label": "n_cues_4",
+      "n_cues": 4
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      },
+      "fixed_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 0.9375,
+        "sd": 0.088388,
+        "median": 0.9375,
+        "q1": 0.90625,
+        "q3": 0.96875,
+        "min": 0.875,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 0.875,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 0.0,
+        "sd": 0.0,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0,
+        "min": 0.0,
+        "max": 0.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 35.5,
+        "sd": 4.949747,
+        "median": 35.5,
+        "q1": 33.75,
+        "q3": 37.25,
+        "min": 32.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 2,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": true
+      }
+     }
+    },
+    "n_cues_8": {
+     "parameters": {
+      "label": "n_cues_8",
+      "n_cues": 8
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 36.5,
+        "sd": 17.67767,
+        "median": 36.5,
+        "q1": 30.25,
+        "q3": 42.75,
+        "min": 24.0,
+        "max": 49.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 65.5,
+        "sd": 12.020815,
+        "median": 65.5,
+        "q1": 61.25,
+        "q3": 69.75,
+        "min": 57.0,
+        "max": 74.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      },
+      "fixed_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 0.9375,
+        "sd": 0.088388,
+        "median": 0.9375,
+        "q1": 0.90625,
+        "q3": 0.96875,
+        "min": 0.875,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 0.875,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 0.0,
+        "sd": 0.0,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0,
+        "min": 0.0,
+        "max": 0.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 66.0,
+        "sd": 11.313708,
+        "median": 66.0,
+        "q1": 62.0,
+        "q3": 70.0,
+        "min": 58.0,
+        "max": 74.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 2,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": true
+      }
+     }
+    }
+   }
+  },
+  "structural_threshold": {
+   "reference": "t1",
+   "runs_control": true,
+   "unit": "declared units",
+   "values": {
+    "t1": {
+     "parameters": {
+      "label": "t1",
+      "threshold": 1
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      },
+      "fixed_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 0.9375,
+        "sd": 0.088388,
+        "median": 0.9375,
+        "q1": 0.90625,
+        "q3": 0.96875,
+        "min": 0.875,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 0.875,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 0.0,
+        "sd": 0.0,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0,
+        "min": 0.0,
+        "max": 0.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 35.5,
+        "sd": 4.949747,
+        "median": 35.5,
+        "q1": 33.75,
+        "q3": 37.25,
+        "min": 32.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 2,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": true
+      }
+     }
+    },
+    "t2": {
+     "parameters": {
+      "label": "t2",
+      "threshold": 2
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 33.0,
+        "sd": 4.242641,
+        "median": 33.0,
+        "q1": 31.5,
+        "q3": 34.5,
+        "min": 30.0,
+        "max": 36.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 49.0,
+        "sd": 1.414214,
+        "median": 49.0,
+        "q1": 48.5,
+        "q3": 49.5,
+        "min": 48.0,
+        "max": 50.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      },
+      "fixed_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0625,
+       "changed_edges": {
+        "n": 2,
+        "mean": 0.0,
+        "sd": 0.0,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0,
+        "min": 0.0,
+        "max": 0.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 49.0,
+        "sd": 1.414214,
+        "median": 49.0,
+        "q1": 48.5,
+        "q3": 49.5,
+        "min": 48.0,
+        "max": 50.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 2,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": true
+      }
+     }
+    },
+    "t3": {
+     "parameters": {
+      "label": "t3",
+      "threshold": 3
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 47.0,
+        "sd": 15.556349,
+        "median": 47.0,
+        "q1": 41.5,
+        "q3": 52.5,
+        "min": 36.0,
+        "max": 58.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 61.0,
+        "sd": 11.313708,
+        "median": 61.0,
+        "q1": 57.0,
+        "q3": 65.0,
+        "min": 53.0,
+        "max": 69.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      },
+      "fixed_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0625,
+       "changed_edges": {
+        "n": 2,
+        "mean": 0.0,
+        "sd": 0.0,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0,
+        "min": 0.0,
+        "max": 0.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 61.0,
+        "sd": 8.485281,
+        "median": 61.0,
+        "q1": 58.0,
+        "q3": 64.0,
+        "min": 55.0,
+        "max": 67.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 2,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": true
+      }
+     }
+    }
+   }
+  },
+  "reward_delay_ms": {
+   "reference": "0.0",
+   "runs_control": false,
+   "unit": "ms",
+   "values": {
+    "0.0": {
+     "parameters": {
+      "label": "0.0",
+      "reward_delay_ms": 0.0
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 17.5,
+        "sd": 2.12132,
+        "median": 17.5,
+        "q1": 16.75,
+        "q3": 18.25,
+        "min": 16.0,
+        "max": 19.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    },
+    "2.0": {
+     "parameters": {
+      "label": "2.0",
+      "reward_delay_ms": 2.0
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 21.5,
+        "sd": 0.707107,
+        "median": 21.5,
+        "q1": 21.25,
+        "q3": 21.75,
+        "min": 21.0,
+        "max": 22.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    },
+    "5.0": {
+     "parameters": {
+      "label": "5.0",
+      "reward_delay_ms": 5.0
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 21.5,
+        "sd": 0.707107,
+        "median": 21.5,
+        "q1": 21.25,
+        "q3": 21.75,
+        "min": 21.0,
+        "max": 22.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 36.0,
+        "sd": 4.242641,
+        "median": 36.0,
+        "q1": 34.5,
+        "q3": 37.5,
+        "min": 33.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    },
+    "10.0": {
+     "parameters": {
+      "label": "10.0",
+      "reward_delay_ms": 10.0
+     },
+     "conditions": {
+      "plastic_complete": {
+       "final_success": {
+        "n": 2,
+        "mean": 1.0,
+        "sd": 0.0,
+        "median": 1.0,
+        "q1": 1.0,
+        "q3": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "bootstrap_ci_mean": {
+         "low": 1.0,
+         "high": 1.0
+        }
+       },
+       "delta_vs_reference": 0.0,
+       "changed_edges": {
+        "n": 2,
+        "mean": 21.0,
+        "sd": 0.0,
+        "median": 21.0,
+        "q1": 21.0,
+        "q3": 21.0,
+        "min": 21.0,
+        "max": 21.0
+       },
+       "tags_total": {
+        "n": 2,
+        "mean": 35.5,
+        "sd": 4.949747,
+        "median": 35.5,
+        "q1": 33.75,
+        "q3": 37.25,
+        "min": 32.0,
+        "max": 39.0
+       },
+       "silent_seeds": 0,
+       "seeds_without_updates": 0,
+       "rewards_dropped": 0,
+       "weights_unchanged_all": false
+      }
+     }
+    }
+   }
+  }
+ },
+ "determinism": {
+  "identical": true,
+  "train_episodes": 4,
+  "eval_episodes": 4,
+  "delta_digest_1": "7bdebee21b7596715f0a8e8e886dce515b85bbe9e31e0670e8e59a4cd7b101fc",
+  "delta_digest_2": "7bdebee21b7596715f0a8e8e886dce515b85bbe9e31e0670e8e59a4cd7b101fc",
+  "final_success_1": 0.5,
+  "final_success_2": 0.5,
+  "tags_1": 8,
+  "tags_2": 8
+ },
+ "software_checks": {
+  "core_seed_pools_disjoint": true,
+  "core_seed_pools_unique": true,
+  "robustness_seed_pools_disjoint": true,
+  "fixed_conditions_weights_unchanged": true,
+  "all_invariants": true,
+  "structural_counts_immutable": true,
+  "all_values_finite": true,
+  "determinism_probe": true,
+  "repository_integrity": true
+ },
+ "negative_results": [
+  "Some plastic cells produced no weight change and are retained: [{\"axis\": \"core\", \"value\": \"plastic_random\", \"seeds\": 2}]"
+ ],
+ "facts": [
+  {
+   "statement": "The BANC t5 graph artifact contains 683,100 verified-sign edges out of 1,535,710 total (Phase 4D).",
+   "type": "data fact (repository artifact)"
+  },
+  {
+   "statement": "With eta = 0 the plastic pathway reproduces the fixed-weight simulator spike hashes exactly (Phase 5D).",
+   "type": "software fact (verified test)"
+  },
+  {
+   "statement": "The fixed-weight simulator is unchanged and remains the oracle for dynamics.",
+   "type": "software fact (architecture constraint)"
+  },
+  {
+   "statement": "This comparison runs on a synthetic 36-node task graph; it does not read, simulate or alter the BANC connectome.",
+   "type": "scope fact"
+  }
+ ],
+ "assumptions": [
+  "The cue -> action mapping is arbitrary and was declared before the run.",
+  "Reward is an external task scalar; its magnitude has no biological unit.",
+  "The eligibility trace is a model of short-term tagging with a declared time constant tau_e.",
+  "Weight bounds (relative factors and the update clip) are declared modelling choices, not fitted values.",
+  "Complete versus Bernoulli(0.5) wiring is a synthetic topology manipulation, not a connectome manipulation.",
+  "The structural threshold is the minimum synapse count for an edge to exist (as in the BANC t1/t5/t10 artifacts); it is not a neuronal firing threshold.",
+  "A conventional supervised perceptron is an information-privileged reference and is not a matched biological control."
+ ],
+ "limitations": [
+  "Success is a conditioned response of a designated action population, not competitive action selection; the selective rate stays near or below the n_cues chance level.",
+  "Random wiring has fewer edges and lower total cue input than complete wiring, so the wiring contrast confounds topology with input strength.",
+  "The network is small (tens of nodes); no result here tests the BANC connectome or a whole-brain simulation.",
+  "Robustness cells are descriptive. They were not corrected for multiple comparisons and are not significance claims.",
+  "The unit of replication is a seed; episodes within a seed share one weight trajectory and are not independent samples.",
+  "The perceptron sees the correct action label and only bounds what a supervised method can do on this task.",
+  "Evaluation uses the same held-out episodes at every checkpoint and does not test unseen cue mappings.",
+  "Reward is delivered after a declared delay; no biological dopamine, octopamine or serotonin dynamics were simulated."
+ ],
+ "independence_statement": "The unit of replication is a seed. No statistic pools timesteps or episodes across seeds.",
+ "files": [
+  "configs/plasticity_comparison.yaml",
+  "configs/plasticity_task.yaml",
+  "configs/plasticity.yaml",
+  "experiments/results/phase_5f/comparison_raw.json",
+  "experiments/results/phase_5f/comparison_analysis.json",
+  "experiments/results/phase_5f/comparison_report.json",
+  "reports/PHASE_5F_COMPARATIVE_EVALUATION.md",
+  "reports/PHASE_5F_COMPARATIVE_EVALUATION.json",
+  "experiments/results/phase_5f/figures/core_conditions.png",
+  "experiments/results/phase_5f/figures/paired_seeds.png",
+  "experiments/results/phase_5f/figures/robustness_rule_axes.png",
+  "experiments/results/phase_5f/figures/robustness_substrate_axes.png"
+ ],
+ "software_status": "PASS"
+}

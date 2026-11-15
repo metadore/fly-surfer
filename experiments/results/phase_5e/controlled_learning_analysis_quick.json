@@ -1,0 +1,1879 @@
+{
+ "phase": "5E",
+ "generated_at_utc": "2026-11-09T16:20:43+00:00",
+ "settings": {
+  "train_episodes": 8,
+  "eval_episodes": 4,
+  "replicates": 1,
+  "master_seed": 20261114,
+  "eta": 1.0,
+  "criterion_window": 4,
+  "criterion_success": 0.75,
+  "eval_checkpoints": [
+   0,
+   4,
+   8
+  ],
+  "checkpoint_condition": "B"
+ },
+ "seed_pools": {
+  "disjoint_train_eval": true,
+  "overlap_count": 0,
+  "unique_train": true,
+  "unique_eval": true
+ },
+ "conditions": {
+  "A": {
+   "label": "fixed_weights_outcome_reward",
+   "spec": {
+    "eta": 0.0,
+    "reward": "outcome",
+    "connectivity": "complete",
+    "traces": true,
+    "reward_correct": 1.0,
+    "reward_incorrect": 0.0
+   },
+   "aggregate": {
+    "n_replicates": 1,
+    "train_success": {
+     "n": 1,
+     "mean": 0.875,
+     "sd": 0.0,
+     "median": 0.875,
+     "min": 0.875,
+     "max": 0.875
+    },
+    "train_selective": {
+     "n": 1,
+     "mean": 0.25,
+     "sd": 0.0,
+     "median": 0.25,
+     "min": 0.25,
+     "max": 0.25
+    },
+    "first_window_success": {
+     "n": 1,
+     "mean": 1.0,
+     "sd": 0.0,
+     "median": 1.0,
+     "min": 1.0,
+     "max": 1.0
+    },
+    "last_window_success": {
+     "n": 1,
+     "mean": 0.75,
+     "sd": 0.0,
+     "median": 0.75,
+     "min": 0.75,
+     "max": 0.75
+    },
+    "eval_success": {
+     "0": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     },
+     "4": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     },
+     "8": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     }
+    },
+    "eval_selective": {
+     "0": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "4": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "8": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     }
+    },
+    "episodes_to_criterion": {
+     "values": [
+      4
+     ],
+     "n_reached": 1
+    },
+    "final_weight_l1_pa": {
+     "n": 1,
+     "mean": 0.0,
+     "sd": 0.0,
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0
+    },
+    "final_changed_edges": {
+     "n": 1,
+     "mean": 0.0,
+     "sd": 0.0,
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0
+    },
+    "tags_total": {
+     "n": 1,
+     "mean": 15.0,
+     "sd": 0.0,
+     "median": 15.0,
+     "min": 15.0,
+     "max": 15.0
+    },
+    "slots_total": {
+     "n": 1,
+     "mean": 14.0,
+     "sd": 0.0,
+     "median": 14.0,
+     "min": 14.0,
+     "max": 14.0
+    },
+    "runtime_s": {
+     "n": 1,
+     "mean": 0.0509,
+     "sd": 0.0,
+     "median": 0.0509,
+     "min": 0.0509,
+     "max": 0.0509
+    },
+    "weights_unchanged_all": true,
+    "all_finite": true,
+    "invariants_ok": true,
+    "structural_counts_immutable": true,
+    "block_curve": [
+     {
+      "start": 0,
+      "end": 4,
+      "success": {
+       "n": 1,
+       "mean": 1.0,
+       "sd": 0.0,
+       "median": 1.0,
+       "min": 1.0,
+       "max": 1.0
+      },
+      "selective": {
+       "n": 1,
+       "mean": 0.25,
+       "sd": 0.0,
+       "median": 0.25,
+       "min": 0.25,
+       "max": 0.25
+      }
+     },
+     {
+      "start": 4,
+      "end": 8,
+      "success": {
+       "n": 1,
+       "mean": 0.75,
+       "sd": 0.0,
+       "median": 0.75,
+       "min": 0.75,
+       "max": 0.75
+      },
+      "selective": {
+       "n": 1,
+       "mean": 0.25,
+       "sd": 0.0,
+       "median": 0.25,
+       "min": 0.25,
+       "max": 0.25
+      }
+     }
+    ],
+    "replicates": [
+     {
+      "replicate": 0,
+      "train_success": 0.875,
+      "train_selective": 0.25,
+      "first_window_success": 1.0,
+      "last_window_success": 0.75,
+      "blocks": [
+       {
+        "start": 0,
+        "end": 4,
+        "success": 1.0,
+        "selective": 0.25,
+        "mean_response_ms": 12.625
+       },
+       {
+        "start": 4,
+        "end": 8,
+        "success": 0.75,
+        "selective": 0.25,
+        "mean_response_ms": 12.666667
+       }
+      ],
+      "episodes_to_criterion": 4,
+      "eval_success": {
+       "0": 0.75,
+       "4": 0.75,
+       "8": 0.75
+      },
+      "eval_selective": {
+       "0": 0.25,
+       "4": 0.25,
+       "8": 0.25
+      },
+      "final_weight_l1_pa": 0.0,
+      "final_changed_edges": 0,
+      "tags_total": 15,
+      "slots_total": 14,
+      "runtime_s": 0.0509,
+      "weights_unchanged": true,
+      "all_finite": true,
+      "invariants_ok": true,
+      "structural_counts_immutable": true
+     }
+    ]
+   }
+  },
+  "B": {
+   "label": "plastic_outcome_reward",
+   "spec": {
+    "eta": 1.0,
+    "reward": "outcome",
+    "connectivity": "complete",
+    "traces": true,
+    "reward_correct": 1.0,
+    "reward_incorrect": 0.0
+   },
+   "aggregate": {
+    "n_replicates": 1,
+    "train_success": {
+     "n": 1,
+     "mean": 0.875,
+     "sd": 0.0,
+     "median": 0.875,
+     "min": 0.875,
+     "max": 0.875
+    },
+    "train_selective": {
+     "n": 1,
+     "mean": 0.25,
+     "sd": 0.0,
+     "median": 0.25,
+     "min": 0.25,
+     "max": 0.25
+    },
+    "first_window_success": {
+     "n": 1,
+     "mean": 1.0,
+     "sd": 0.0,
+     "median": 1.0,
+     "min": 1.0,
+     "max": 1.0
+    },
+    "last_window_success": {
+     "n": 1,
+     "mean": 0.75,
+     "sd": 0.0,
+     "median": 0.75,
+     "min": 0.75,
+     "max": 0.75
+    },
+    "eval_success": {
+     "0": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     },
+     "4": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     },
+     "8": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     }
+    },
+    "eval_selective": {
+     "0": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "4": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "8": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     }
+    },
+    "episodes_to_criterion": {
+     "values": [
+      4
+     ],
+     "n_reached": 1
+    },
+    "final_weight_l1_pa": {
+     "n": 1,
+     "mean": 10.902459,
+     "sd": 0.0,
+     "median": 10.902459,
+     "min": 10.902459,
+     "max": 10.902459
+    },
+    "final_changed_edges": {
+     "n": 1,
+     "mean": 11.0,
+     "sd": 0.0,
+     "median": 11.0,
+     "min": 11.0,
+     "max": 11.0
+    },
+    "tags_total": {
+     "n": 1,
+     "mean": 15.0,
+     "sd": 0.0,
+     "median": 15.0,
+     "min": 15.0,
+     "max": 15.0
+    },
+    "slots_total": {
+     "n": 1,
+     "mean": 14.0,
+     "sd": 0.0,
+     "median": 14.0,
+     "min": 14.0,
+     "max": 14.0
+    },
+    "runtime_s": {
+     "n": 1,
+     "mean": 0.0535,
+     "sd": 0.0,
+     "median": 0.0535,
+     "min": 0.0535,
+     "max": 0.0535
+    },
+    "weights_unchanged_all": false,
+    "all_finite": true,
+    "invariants_ok": true,
+    "structural_counts_immutable": true,
+    "block_curve": [
+     {
+      "start": 0,
+      "end": 4,
+      "success": {
+       "n": 1,
+       "mean": 1.0,
+       "sd": 0.0,
+       "median": 1.0,
+       "min": 1.0,
+       "max": 1.0
+      },
+      "selective": {
+       "n": 1,
+       "mean": 0.25,
+       "sd": 0.0,
+       "median": 0.25,
+       "min": 0.25,
+       "max": 0.25
+      }
+     },
+     {
+      "start": 4,
+      "end": 8,
+      "success": {
+       "n": 1,
+       "mean": 0.75,
+       "sd": 0.0,
+       "median": 0.75,
+       "min": 0.75,
+       "max": 0.75
+      },
+      "selective": {
+       "n": 1,
+       "mean": 0.25,
+       "sd": 0.0,
+       "median": 0.25,
+       "min": 0.25,
+       "max": 0.25
+      }
+     }
+    ],
+    "replicates": [
+     {
+      "replicate": 0,
+      "train_success": 0.875,
+      "train_selective": 0.25,
+      "first_window_success": 1.0,
+      "last_window_success": 0.75,
+      "blocks": [
+       {
+        "start": 0,
+        "end": 4,
+        "success": 1.0,
+        "selective": 0.25,
+        "mean_response_ms": 12.625
+       },
+       {
+        "start": 4,
+        "end": 8,
+        "success": 0.75,
+        "selective": 0.25,
+        "mean_response_ms": 12.666667
+       }
+      ],
+      "episodes_to_criterion": 4,
+      "eval_success": {
+       "0": 0.75,
+       "4": 0.75,
+       "8": 0.75
+      },
+      "eval_selective": {
+       "0": 0.25,
+       "4": 0.25,
+       "8": 0.25
+      },
+      "final_weight_l1_pa": 10.902458906,
+      "final_changed_edges": 11,
+      "tags_total": 15,
+      "slots_total": 14,
+      "runtime_s": 0.0535,
+      "weights_unchanged": false,
+      "all_finite": true,
+      "invariants_ok": true,
+      "structural_counts_immutable": true
+     }
+    ]
+   }
+  },
+  "C": {
+   "label": "plastic_zero_reward",
+   "spec": {
+    "eta": 1.0,
+    "reward": "zero",
+    "connectivity": "complete",
+    "traces": true,
+    "reward_correct": 0.0,
+    "reward_incorrect": 0.0
+   },
+   "aggregate": {
+    "n_replicates": 1,
+    "train_success": {
+     "n": 1,
+     "mean": 0.875,
+     "sd": 0.0,
+     "median": 0.875,
+     "min": 0.875,
+     "max": 0.875
+    },
+    "train_selective": {
+     "n": 1,
+     "mean": 0.25,
+     "sd": 0.0,
+     "median": 0.25,
+     "min": 0.25,
+     "max": 0.25
+    },
+    "first_window_success": {
+     "n": 1,
+     "mean": 1.0,
+     "sd": 0.0,
+     "median": 1.0,
+     "min": 1.0,
+     "max": 1.0
+    },
+    "last_window_success": {
+     "n": 1,
+     "mean": 0.75,
+     "sd": 0.0,
+     "median": 0.75,
+     "min": 0.75,
+     "max": 0.75
+    },
+    "eval_success": {
+     "0": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     },
+     "4": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     },
+     "8": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     }
+    },
+    "eval_selective": {
+     "0": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "4": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "8": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     }
+    },
+    "episodes_to_criterion": {
+     "values": [
+      4
+     ],
+     "n_reached": 1
+    },
+    "final_weight_l1_pa": {
+     "n": 1,
+     "mean": 0.0,
+     "sd": 0.0,
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0
+    },
+    "final_changed_edges": {
+     "n": 1,
+     "mean": 0.0,
+     "sd": 0.0,
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0
+    },
+    "tags_total": {
+     "n": 1,
+     "mean": 15.0,
+     "sd": 0.0,
+     "median": 15.0,
+     "min": 15.0,
+     "max": 15.0
+    },
+    "slots_total": {
+     "n": 1,
+     "mean": 14.0,
+     "sd": 0.0,
+     "median": 14.0,
+     "min": 14.0,
+     "max": 14.0
+    },
+    "runtime_s": {
+     "n": 1,
+     "mean": 0.0561,
+     "sd": 0.0,
+     "median": 0.0561,
+     "min": 0.0561,
+     "max": 0.0561
+    },
+    "weights_unchanged_all": true,
+    "all_finite": true,
+    "invariants_ok": true,
+    "structural_counts_immutable": true,
+    "block_curve": [
+     {
+      "start": 0,
+      "end": 4,
+      "success": {
+       "n": 1,
+       "mean": 1.0,
+       "sd": 0.0,
+       "median": 1.0,
+       "min": 1.0,
+       "max": 1.0
+      },
+      "selective": {
+       "n": 1,
+       "mean": 0.25,
+       "sd": 0.0,
+       "median": 0.25,
+       "min": 0.25,
+       "max": 0.25
+      }
+     },
+     {
+      "start": 4,
+      "end": 8,
+      "success": {
+       "n": 1,
+       "mean": 0.75,
+       "sd": 0.0,
+       "median": 0.75,
+       "min": 0.75,
+       "max": 0.75
+      },
+      "selective": {
+       "n": 1,
+       "mean": 0.25,
+       "sd": 0.0,
+       "median": 0.25,
+       "min": 0.25,
+       "max": 0.25
+      }
+     }
+    ],
+    "replicates": [
+     {
+      "replicate": 0,
+      "train_success": 0.875,
+      "train_selective": 0.25,
+      "first_window_success": 1.0,
+      "last_window_success": 0.75,
+      "blocks": [
+       {
+        "start": 0,
+        "end": 4,
+        "success": 1.0,
+        "selective": 0.25,
+        "mean_response_ms": 12.625
+       },
+       {
+        "start": 4,
+        "end": 8,
+        "success": 0.75,
+        "selective": 0.25,
+        "mean_response_ms": 12.666667
+       }
+      ],
+      "episodes_to_criterion": 4,
+      "eval_success": {
+       "0": 0.75,
+       "4": 0.75,
+       "8": 0.75
+      },
+      "eval_selective": {
+       "0": 0.25,
+       "4": 0.25,
+       "8": 0.25
+      },
+      "final_weight_l1_pa": 0.0,
+      "final_changed_edges": 0,
+      "tags_total": 15,
+      "slots_total": 14,
+      "runtime_s": 0.0561,
+      "weights_unchanged": true,
+      "all_finite": true,
+      "invariants_ok": true,
+      "structural_counts_immutable": true
+     }
+    ]
+   }
+  },
+  "D": {
+   "label": "plastic_shuffled_reward",
+   "spec": {
+    "eta": 1.0,
+    "reward": "shuffled",
+    "connectivity": "complete",
+    "traces": true,
+    "reward_correct": 1.0,
+    "reward_incorrect": 0.0
+   },
+   "aggregate": {
+    "n_replicates": 1,
+    "train_success": {
+     "n": 1,
+     "mean": 0.875,
+     "sd": 0.0,
+     "median": 0.875,
+     "min": 0.875,
+     "max": 0.875
+    },
+    "train_selective": {
+     "n": 1,
+     "mean": 0.25,
+     "sd": 0.0,
+     "median": 0.25,
+     "min": 0.25,
+     "max": 0.25
+    },
+    "first_window_success": {
+     "n": 1,
+     "mean": 1.0,
+     "sd": 0.0,
+     "median": 1.0,
+     "min": 1.0,
+     "max": 1.0
+    },
+    "last_window_success": {
+     "n": 1,
+     "mean": 0.75,
+     "sd": 0.0,
+     "median": 0.75,
+     "min": 0.75,
+     "max": 0.75
+    },
+    "eval_success": {
+     "0": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     },
+     "4": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     },
+     "8": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     }
+    },
+    "eval_selective": {
+     "0": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "4": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "8": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     }
+    },
+    "episodes_to_criterion": {
+     "values": [
+      4
+     ],
+     "n_reached": 1
+    },
+    "final_weight_l1_pa": {
+     "n": 1,
+     "mean": 10.902459,
+     "sd": 0.0,
+     "median": 10.902459,
+     "min": 10.902459,
+     "max": 10.902459
+    },
+    "final_changed_edges": {
+     "n": 1,
+     "mean": 11.0,
+     "sd": 0.0,
+     "median": 11.0,
+     "min": 11.0,
+     "max": 11.0
+    },
+    "tags_total": {
+     "n": 1,
+     "mean": 15.0,
+     "sd": 0.0,
+     "median": 15.0,
+     "min": 15.0,
+     "max": 15.0
+    },
+    "slots_total": {
+     "n": 1,
+     "mean": 14.0,
+     "sd": 0.0,
+     "median": 14.0,
+     "min": 14.0,
+     "max": 14.0
+    },
+    "runtime_s": {
+     "n": 1,
+     "mean": 0.052,
+     "sd": 0.0,
+     "median": 0.052,
+     "min": 0.052,
+     "max": 0.052
+    },
+    "weights_unchanged_all": false,
+    "all_finite": true,
+    "invariants_ok": true,
+    "structural_counts_immutable": true,
+    "block_curve": [
+     {
+      "start": 0,
+      "end": 4,
+      "success": {
+       "n": 1,
+       "mean": 1.0,
+       "sd": 0.0,
+       "median": 1.0,
+       "min": 1.0,
+       "max": 1.0
+      },
+      "selective": {
+       "n": 1,
+       "mean": 0.25,
+       "sd": 0.0,
+       "median": 0.25,
+       "min": 0.25,
+       "max": 0.25
+      }
+     },
+     {
+      "start": 4,
+      "end": 8,
+      "success": {
+       "n": 1,
+       "mean": 0.75,
+       "sd": 0.0,
+       "median": 0.75,
+       "min": 0.75,
+       "max": 0.75
+      },
+      "selective": {
+       "n": 1,
+       "mean": 0.25,
+       "sd": 0.0,
+       "median": 0.25,
+       "min": 0.25,
+       "max": 0.25
+      }
+     }
+    ],
+    "replicates": [
+     {
+      "replicate": 0,
+      "train_success": 0.875,
+      "train_selective": 0.25,
+      "first_window_success": 1.0,
+      "last_window_success": 0.75,
+      "blocks": [
+       {
+        "start": 0,
+        "end": 4,
+        "success": 1.0,
+        "selective": 0.25,
+        "mean_response_ms": 12.625
+       },
+       {
+        "start": 4,
+        "end": 8,
+        "success": 0.75,
+        "selective": 0.25,
+        "mean_response_ms": 12.666667
+       }
+      ],
+      "episodes_to_criterion": 4,
+      "eval_success": {
+       "0": 0.75,
+       "4": 0.75,
+       "8": 0.75
+      },
+      "eval_selective": {
+       "0": 0.25,
+       "4": 0.25,
+       "8": 0.25
+      },
+      "final_weight_l1_pa": 10.902458906,
+      "final_changed_edges": 11,
+      "tags_total": 15,
+      "slots_total": 14,
+      "runtime_s": 0.052,
+      "weights_unchanged": false,
+      "all_finite": true,
+      "invariants_ok": true,
+      "structural_counts_immutable": true
+     }
+    ]
+   }
+  },
+  "E": {
+   "label": "plastic_random_connectivity",
+   "spec": {
+    "eta": 1.0,
+    "reward": "outcome",
+    "connectivity": "random",
+    "traces": true,
+    "reward_correct": 1.0,
+    "reward_incorrect": 0.0
+   },
+   "aggregate": {
+    "n_replicates": 1,
+    "train_success": {
+     "n": 1,
+     "mean": 0.125,
+     "sd": 0.0,
+     "median": 0.125,
+     "min": 0.125,
+     "max": 0.125
+    },
+    "train_selective": {
+     "n": 1,
+     "mean": 0.125,
+     "sd": 0.0,
+     "median": 0.125,
+     "min": 0.125,
+     "max": 0.125
+    },
+    "first_window_success": {
+     "n": 1,
+     "mean": 0.0,
+     "sd": 0.0,
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0
+    },
+    "last_window_success": {
+     "n": 1,
+     "mean": 0.25,
+     "sd": 0.0,
+     "median": 0.25,
+     "min": 0.25,
+     "max": 0.25
+    },
+    "eval_success": {
+     "0": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "4": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "8": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     }
+    },
+    "eval_selective": {
+     "0": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "4": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "8": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     }
+    },
+    "episodes_to_criterion": {
+     "values": [
+      null
+     ],
+     "n_reached": 0
+    },
+    "final_weight_l1_pa": {
+     "n": 1,
+     "mean": 1.0,
+     "sd": 0.0,
+     "median": 1.0,
+     "min": 1.0,
+     "max": 1.0
+    },
+    "final_changed_edges": {
+     "n": 1,
+     "mean": 1.0,
+     "sd": 0.0,
+     "median": 1.0,
+     "min": 1.0,
+     "max": 1.0
+    },
+    "tags_total": {
+     "n": 1,
+     "mean": 4.0,
+     "sd": 0.0,
+     "median": 4.0,
+     "min": 4.0,
+     "max": 4.0
+    },
+    "slots_total": {
+     "n": 1,
+     "mean": 4.0,
+     "sd": 0.0,
+     "median": 4.0,
+     "min": 4.0,
+     "max": 4.0
+    },
+    "runtime_s": {
+     "n": 1,
+     "mean": 0.0477,
+     "sd": 0.0,
+     "median": 0.0477,
+     "min": 0.0477,
+     "max": 0.0477
+    },
+    "weights_unchanged_all": false,
+    "all_finite": true,
+    "invariants_ok": true,
+    "structural_counts_immutable": true,
+    "block_curve": [
+     {
+      "start": 0,
+      "end": 4,
+      "success": {
+       "n": 1,
+       "mean": 0.0,
+       "sd": 0.0,
+       "median": 0.0,
+       "min": 0.0,
+       "max": 0.0
+      },
+      "selective": {
+       "n": 1,
+       "mean": 0.0,
+       "sd": 0.0,
+       "median": 0.0,
+       "min": 0.0,
+       "max": 0.0
+      }
+     },
+     {
+      "start": 4,
+      "end": 8,
+      "success": {
+       "n": 1,
+       "mean": 0.25,
+       "sd": 0.0,
+       "median": 0.25,
+       "min": 0.25,
+       "max": 0.25
+      },
+      "selective": {
+       "n": 1,
+       "mean": 0.25,
+       "sd": 0.0,
+       "median": 0.25,
+       "min": 0.25,
+       "max": 0.25
+      }
+     }
+    ],
+    "replicates": [
+     {
+      "replicate": 0,
+      "train_success": 0.125,
+      "train_selective": 0.125,
+      "first_window_success": 0.0,
+      "last_window_success": 0.25,
+      "blocks": [
+       {
+        "start": 0,
+        "end": 4,
+        "success": 0.0,
+        "selective": 0.0,
+        "mean_response_ms": null
+       },
+       {
+        "start": 4,
+        "end": 8,
+        "success": 0.25,
+        "selective": 0.25,
+        "mean_response_ms": 13.5
+       }
+      ],
+      "episodes_to_criterion": null,
+      "eval_success": {
+       "0": 0.25,
+       "4": 0.25,
+       "8": 0.25
+      },
+      "eval_selective": {
+       "0": 0.25,
+       "4": 0.25,
+       "8": 0.25
+      },
+      "final_weight_l1_pa": 1.0,
+      "final_changed_edges": 1,
+      "tags_total": 4,
+      "slots_total": 4,
+      "runtime_s": 0.0477,
+      "weights_unchanged": false,
+      "all_finite": true,
+      "invariants_ok": true,
+      "structural_counts_immutable": true
+     }
+    ]
+   }
+  },
+  "F": {
+   "label": "plastic_traces_disabled",
+   "spec": {
+    "eta": 1.0,
+    "reward": "outcome",
+    "connectivity": "complete",
+    "traces": false,
+    "reward_correct": 1.0,
+    "reward_incorrect": 0.0
+   },
+   "aggregate": {
+    "n_replicates": 1,
+    "train_success": {
+     "n": 1,
+     "mean": 0.875,
+     "sd": 0.0,
+     "median": 0.875,
+     "min": 0.875,
+     "max": 0.875
+    },
+    "train_selective": {
+     "n": 1,
+     "mean": 0.25,
+     "sd": 0.0,
+     "median": 0.25,
+     "min": 0.25,
+     "max": 0.25
+    },
+    "first_window_success": {
+     "n": 1,
+     "mean": 1.0,
+     "sd": 0.0,
+     "median": 1.0,
+     "min": 1.0,
+     "max": 1.0
+    },
+    "last_window_success": {
+     "n": 1,
+     "mean": 0.75,
+     "sd": 0.0,
+     "median": 0.75,
+     "min": 0.75,
+     "max": 0.75
+    },
+    "eval_success": {
+     "0": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     },
+     "4": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     },
+     "8": {
+      "n": 1,
+      "mean": 0.75,
+      "sd": 0.0,
+      "median": 0.75,
+      "min": 0.75,
+      "max": 0.75
+     }
+    },
+    "eval_selective": {
+     "0": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "4": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "8": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     }
+    },
+    "episodes_to_criterion": {
+     "values": [
+      4
+     ],
+     "n_reached": 1
+    },
+    "final_weight_l1_pa": {
+     "n": 1,
+     "mean": 0.0,
+     "sd": 0.0,
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0
+    },
+    "final_changed_edges": {
+     "n": 1,
+     "mean": 0.0,
+     "sd": 0.0,
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0
+    },
+    "tags_total": {
+     "n": 1,
+     "mean": 0.0,
+     "sd": 0.0,
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0
+    },
+    "slots_total": {
+     "n": 1,
+     "mean": 0.0,
+     "sd": 0.0,
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0
+    },
+    "runtime_s": {
+     "n": 1,
+     "mean": 0.0414,
+     "sd": 0.0,
+     "median": 0.0414,
+     "min": 0.0414,
+     "max": 0.0414
+    },
+    "weights_unchanged_all": true,
+    "all_finite": true,
+    "invariants_ok": true,
+    "structural_counts_immutable": true,
+    "block_curve": [
+     {
+      "start": 0,
+      "end": 4,
+      "success": {
+       "n": 1,
+       "mean": 1.0,
+       "sd": 0.0,
+       "median": 1.0,
+       "min": 1.0,
+       "max": 1.0
+      },
+      "selective": {
+       "n": 1,
+       "mean": 0.25,
+       "sd": 0.0,
+       "median": 0.25,
+       "min": 0.25,
+       "max": 0.25
+      }
+     },
+     {
+      "start": 4,
+      "end": 8,
+      "success": {
+       "n": 1,
+       "mean": 0.75,
+       "sd": 0.0,
+       "median": 0.75,
+       "min": 0.75,
+       "max": 0.75
+      },
+      "selective": {
+       "n": 1,
+       "mean": 0.25,
+       "sd": 0.0,
+       "median": 0.25,
+       "min": 0.25,
+       "max": 0.25
+      }
+     }
+    ],
+    "replicates": [
+     {
+      "replicate": 0,
+      "train_success": 0.875,
+      "train_selective": 0.25,
+      "first_window_success": 1.0,
+      "last_window_success": 0.75,
+      "blocks": [
+       {
+        "start": 0,
+        "end": 4,
+        "success": 1.0,
+        "selective": 0.25,
+        "mean_response_ms": 12.625
+       },
+       {
+        "start": 4,
+        "end": 8,
+        "success": 0.75,
+        "selective": 0.25,
+        "mean_response_ms": 12.666667
+       }
+      ],
+      "episodes_to_criterion": 4,
+      "eval_success": {
+       "0": 0.75,
+       "4": 0.75,
+       "8": 0.75
+      },
+      "eval_selective": {
+       "0": 0.25,
+       "4": 0.25,
+       "8": 0.25
+      },
+      "final_weight_l1_pa": 0.0,
+      "final_changed_edges": 0,
+      "tags_total": 0,
+      "slots_total": 0,
+      "runtime_s": 0.0414,
+      "weights_unchanged": true,
+      "all_finite": true,
+      "invariants_ok": true,
+      "structural_counts_immutable": true
+     }
+    ]
+   }
+  },
+  "G": {
+   "label": "conventional_perceptron",
+   "spec": {
+    "algorithm": "online perceptron, one-hot cue -> action",
+    "information": "supervised correct-action label (privileged)",
+    "eta": null,
+    "reward": "not used",
+    "connectivity": "dense conventional weights",
+    "traces": false
+   },
+   "aggregate": {
+    "n_replicates": 1,
+    "train_success": {
+     "n": 1,
+     "mean": 0.625,
+     "sd": 0.0,
+     "median": 0.625,
+     "min": 0.625,
+     "max": 0.625
+    },
+    "train_selective": {
+     "n": 1,
+     "mean": 0.625,
+     "sd": 0.0,
+     "median": 0.625,
+     "min": 0.625,
+     "max": 0.625
+    },
+    "first_window_success": {
+     "n": 1,
+     "mean": 0.25,
+     "sd": 0.0,
+     "median": 0.25,
+     "min": 0.25,
+     "max": 0.25
+    },
+    "last_window_success": {
+     "n": 1,
+     "mean": 1.0,
+     "sd": 0.0,
+     "median": 1.0,
+     "min": 1.0,
+     "max": 1.0
+    },
+    "eval_success": {
+     "0": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "4": {
+      "n": 1,
+      "mean": 1.0,
+      "sd": 0.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0
+     },
+     "8": {
+      "n": 1,
+      "mean": 1.0,
+      "sd": 0.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0
+     }
+    },
+    "eval_selective": {
+     "0": {
+      "n": 1,
+      "mean": 0.25,
+      "sd": 0.0,
+      "median": 0.25,
+      "min": 0.25,
+      "max": 0.25
+     },
+     "4": {
+      "n": 1,
+      "mean": 1.0,
+      "sd": 0.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0
+     },
+     "8": {
+      "n": 1,
+      "mean": 1.0,
+      "sd": 0.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0
+     }
+    },
+    "episodes_to_criterion": {
+     "values": [
+      8
+     ],
+     "n_reached": 1
+    },
+    "final_weight_l1_pa": {
+     "n": 1,
+     "mean": 6.0,
+     "sd": 0.0,
+     "median": 6.0,
+     "min": 6.0,
+     "max": 6.0
+    },
+    "final_changed_edges": {
+     "n": 1,
+     "mean": 6.0,
+     "sd": 0.0,
+     "median": 6.0,
+     "min": 6.0,
+     "max": 6.0
+    },
+    "tags_total": {
+     "n": 1,
+     "mean": 0.0,
+     "sd": 0.0,
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0
+    },
+    "slots_total": {
+     "n": 1,
+     "mean": 0.0,
+     "sd": 0.0,
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0
+    },
+    "runtime_s": {
+     "n": 1,
+     "mean": 0.0,
+     "sd": 0.0,
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0
+    },
+    "weights_unchanged_all": false,
+    "all_finite": true,
+    "invariants_ok": true,
+    "structural_counts_immutable": true,
+    "block_curve": [
+     {
+      "start": 0,
+      "end": 4,
+      "success": {
+       "n": 1,
+       "mean": 0.25,
+       "sd": 0.0,
+       "median": 0.25,
+       "min": 0.25,
+       "max": 0.25
+      },
+      "selective": {
+       "n": 1,
+       "mean": 0.25,
+       "sd": 0.0,
+       "median": 0.25,
+       "min": 0.25,
+       "max": 0.25
+      }
+     },
+     {
+      "start": 4,
+      "end": 8,
+      "success": {
+       "n": 1,
+       "mean": 1.0,
+       "sd": 0.0,
+       "median": 1.0,
+       "min": 1.0,
+       "max": 1.0
+      },
+      "selective": {
+       "n": 1,
+       "mean": 1.0,
+       "sd": 0.0,
+       "median": 1.0,
+       "min": 1.0,
+       "max": 1.0
+      }
+     }
+    ],
+    "replicates": [
+     {
+      "replicate": 0,
+      "train_success": 0.625,
+      "train_selective": 0.625,
+      "first_window_success": 0.25,
+      "last_window_success": 1.0,
+      "blocks": [
+       {
+        "start": 0,
+        "end": 4,
+        "success": 0.25,
+        "selective": 0.25,
+        "mean_response_ms": null
+       },
+       {
+        "start": 4,
+        "end": 8,
+        "success": 1.0,
+        "selective": 1.0,
+        "mean_response_ms": null
+       }
+      ],
+      "episodes_to_criterion": 8,
+      "eval_success": {
+       "0": 0.25,
+       "4": 1.0,
+       "8": 1.0
+      },
+      "eval_selective": {
+       "0": 0.25,
+       "4": 1.0,
+       "8": 1.0
+      },
+      "final_weight_l1_pa": 6.0,
+      "final_changed_edges": 6,
+      "tags_total": 0,
+      "slots_total": 0,
+      "runtime_s": 0.0,
+      "weights_unchanged": false,
+      "all_finite": true,
+      "invariants_ok": true,
+      "structural_counts_immutable": true
+     }
+    ]
+   }
+  }
+ },
+ "paired": {
+  "B": {
+   "0": {
+    "n": 1,
+    "mean": 0.0,
+    "sd": 0.0,
+    "median": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   },
+   "4": {
+    "n": 1,
+    "mean": 0.0,
+    "sd": 0.0,
+    "median": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   },
+   "8": {
+    "n": 1,
+    "mean": 0.0,
+    "sd": 0.0,
+    "median": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   }
+  },
+  "C": {
+   "0": {
+    "n": 1,
+    "mean": 0.0,
+    "sd": 0.0,
+    "median": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   },
+   "4": {
+    "n": 1,
+    "mean": 0.0,
+    "sd": 0.0,
+    "median": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   },
+   "8": {
+    "n": 1,
+    "mean": 0.0,
+    "sd": 0.0,
+    "median": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   }
+  },
+  "D": {
+   "0": {
+    "n": 1,
+    "mean": 0.0,
+    "sd": 0.0,
+    "median": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   },
+   "4": {
+    "n": 1,
+    "mean": 0.0,
+    "sd": 0.0,
+    "median": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   },
+   "8": {
+    "n": 1,
+    "mean": 0.0,
+    "sd": 0.0,
+    "median": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   }
+  },
+  "E": {
+   "0": {
+    "n": 1,
+    "mean": -0.5,
+    "sd": 0.0,
+    "median": -0.5,
+    "min": -0.5,
+    "max": -0.5
+   },
+   "4": {
+    "n": 1,
+    "mean": -0.5,
+    "sd": 0.0,
+    "median": -0.5,
+    "min": -0.5,
+    "max": -0.5
+   },
+   "8": {
+    "n": 1,
+    "mean": -0.5,
+    "sd": 0.0,
+    "median": -0.5,
+    "min": -0.5,
+    "max": -0.5
+   }
+  },
+  "F": {
+   "0": {
+    "n": 1,
+    "mean": 0.0,
+    "sd": 0.0,
+    "median": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   },
+   "4": {
+    "n": 1,
+    "mean": 0.0,
+    "sd": 0.0,
+    "median": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   },
+   "8": {
+    "n": 1,
+    "mean": 0.0,
+    "sd": 0.0,
+    "median": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   }
+  },
+  "G": {
+   "0": {
+    "n": 1,
+    "mean": -0.5,
+    "sd": 0.0,
+    "median": -0.5,
+    "min": -0.5,
+    "max": -0.5
+   },
+   "4": {
+    "n": 1,
+    "mean": 0.25,
+    "sd": 0.0,
+    "median": 0.25,
+    "min": 0.25,
+    "max": 0.25
+   },
+   "8": {
+    "n": 1,
+    "mean": 0.25,
+    "sd": 0.0,
+    "median": 0.25,
+    "min": 0.25,
+    "max": 0.25
+   }
+  }
+ },
+ "software_checks": {
+  "seed_pools_disjoint": true,
+  "seed_pools_unique": true,
+  "eta_zero_matches_fixed_simulator": true,
+  "eta_zero_keeps_initial_weights": true,
+  "evaluation_deterministic": true,
+  "checkpoint_round_trip": true,
+  "all_invariants": true,
+  "structural_counts_immutable": true,
+  "all_values_finite": true,
+  "repository_integrity": true
+ },
+ "outcome_checks": {
+  "A_weights_unchanged": true,
+  "C_weights_unchanged": true,
+  "C_produced_no_weight_change": true,
+  "F_weights_unchanged": true,
+  "B_changed_weights": true,
+  "B_produced_eligibility_tags": true,
+  "B_final_eval_above_A_final_eval": false,
+  "D_changed_weights_under_shuffled_reward": true,
+  "E_changed_weights_under_random_connectivity": true
+ },
+ "negative_results": [
+  "Plastic condition B did not exceed the fixed-weight control A at the final held-out checkpoint. This is a negative result and is retained."
+ ],
+ "limitations": [
+  "The task is a synthetic construct with an arbitrary cue -> action mapping; it is not a fly behaviour and not the Phase 4H pathway.",
+  "Reward is an external scalar in task units; no dopamine, octopamine or serotonin quantity was measured.",
+  "A weight change is a model output of the declared three-factor rule; it is not evidence of biological synaptic plasticity.",
+  "The eligibility rule has no coincidence window: a tag exists only when a delayed presynaptic packet arrives in the same step as the postsynaptic spike. Learning therefore depends on precise spike timing.",
+  "Success is measured only for the designated response population; the selective (competition) metric is reported separately and is not the primary criterion.",
+  "Three replicates give a descriptive mean and standard deviation; no formal significance claim is made in Phase 5E.",
+  "The conventional baseline receives the correct action label and only bounds what a supervised method can do on this task.",
+  "Evaluation uses the same held-out episodes at each checkpoint; it does not test generalisation to unseen cue mappings.",
+  "The synthetic graph is small (tens of nodes); nothing here tests the BANC connectome."
+ ],
+ "files": [
+  "configs/plasticity_task.yaml",
+  "configs/plasticity.yaml",
+  "experiments/results/phase_5e/controlled_learning_raw.json",
+  "experiments/results/phase_5e/controlled_learning_analysis.json",
+  "experiments/results/phase_5e/controlled_learning_report.json",
+  "reports/PHASE_5E_CONTROLLED_LEARNING.md",
+  "reports/PHASE_5E_CONTROLLED_LEARNING.json",
+  "experiments/results/phase_5e/checkpoints/condition_B_replicate_0.npz"
+ ],
+ "software_status": "PASS",
+ "learning_status": "PASS WITH LIMITATIONS"
+}

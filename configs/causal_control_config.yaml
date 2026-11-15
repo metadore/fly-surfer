@@ -1,0 +1,187 @@
+# FLY-SURFER P3-T2 same-graph causal-control configuration.
+#
+# SCIENTIFIC STATUS OF EACH BLOCK
+#   reference       fixed inputs and constants, hashed and pinned
+#   reference_sets  the neuron partitions used for every reported count
+#   conditions      experimenter-defined current-injection conditions
+#   archived        Phase 3B.2C replay values used as the C3 reproduction gate
+#
+# This file defines a preregistered experiment. It does not contain results.
+# Every constant below is verified against source in
+# docs/PHASE_3C_CAUSAL_CONTROL_PROTOCOL.md, which records the file and line
+# of each value. Changing any value here changes the experiment.
+#
+# The question is causal, not descriptive: does external sensory current
+# produce neural activity outside the directly stimulated neurons, and is that
+# activity attributable to the visual schedule rather than to player defaults?
+# Nothing below selects an action, and none of it is a biological measurement.
+
+version: p3_t2_causal_control_v1
+
+reference:
+  # paths are relative to the repository root
+  connectome: datasets/processed/connectome.npz
+  connectome_sha256: 3f568f24e3d77134a8d2d38f82856b8d685c310a1b0cfe941a1c95eeab5f33d8
+  readme: README.md
+  readme_sha256: 8ab6a8cc2d0316653e48c0fbb1c72b22b9d27b26799dde6bc71d38cd15590563
+  sensory_config: configs/sensory_config.yaml
+  sensory_config_sha256: 26d782a3b5910c05d433fa6678557f7c806dc9947ee8ad279e246fa34f4e96db
+  simulation_config: configs/simulation_config.yaml
+  simulation_config_sha256: be0571b9d6ede75b752a79fce3d8136960034f78f2a961fa3c447e31b7d769e3
+  neuron_config: configs/neuron_config.yaml
+  neuron_config_sha256: 9b652bde00a795da205cf22affe8690871670264a3718948f58f3b30583d8b77
+  perception_config: configs/perception_config.yaml
+  perception_config_sha256: bb51060575b12c8bba93e84dd36a5e1af4eeb98cf38ebc7fbb3dc3b6c41ee01c
+  detector_config: configs/detector_config.yaml
+  detector_config_sha256: f31add2ad45f7a6a30e26cbbcf127063a29237063aed5d9269182967933c5aa0
+  split_manifest: reports/PHASE_3B1_SPLIT_MANIFEST.json
+  split_manifest_sha256: ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d
+  detector_model: models/YOLO11/deployment/yolo11n_v1_deployment/best.onnx
+  detector_model_sha256: e6ad18f90cd0be8c71237556f0922d83a6dca4ac54184ddde6536896b6b6aa77
+
+  # encoder/mapping seed (configs/sensory_config.yaml: mapping.seed)
+  mapping_seed: 20261104
+  # simulation seed (experiments/phase_3b/real_sequence_replay.py: SEED)
+  simulation_seed: 20261106
+  dt_ms: 0.5
+  duration_ms: 3300.5
+  n_steps: 6601
+  initial_potential_mv: -65.0
+  threshold_mv: -50.0
+  minimum_potential_mv: -90.0
+  reset_potential_mv: -68.0
+  background_current_pa: 0.0
+  noise_std_pa: 0.0
+  max_recorded_spikes: 30000000
+  bin_ms: 100.0
+  fps: 30.0
+  n_frames: 100
+
+  # 14 features, 138 mapped neurons, 36 player and 102 non-player neurons.
+  # Counts are derived from configs/sensory_config.yaml features + mapping;
+  # they are verified at run time against the loaded mapping.
+  n_features: 14
+  n_reference_neurons: 138
+  n_player_neurons: 36
+  n_non_player_neurons: 102
+  feature_neuron_counts:
+    player_lane: 12
+    player_speed: 12
+    jumping: 6
+    rolling: 6
+    obstacle_present: 6
+    obstacle_lane: 12
+    obstacle_distance: 12
+    obstacle_type: 12
+    train_present: 6
+    train_lane: 12
+    train_distance: 12
+    coin_present: 6
+    coin_lane: 12
+    coin_distance: 12
+
+  # A neutral TemporalFrame carries GameState.neutral(): player centre at half
+  # speed, no objects. The resulting current is constant and has these
+  # per-feature totals. They are the archived Phase 3B.2C player-default values
+  # (peak_frame_feature_current_pa for player_lane/player_speed), reproducible
+  # because that replay had no player detections and therefore used the same
+  # defaults.
+  expected_neutral_current_pa:
+    player_lane: 800.0
+    player_speed: 1096.360925
+
+reference_sets:
+  # The fixed reference set R is every mapped sensory neuron, independent of
+  # condition. The condition-local set A_c is the union of the active features.
+  player_features:
+    - player_lane
+    - player_speed
+    - jumping
+    - rolling
+  non_player_features:
+    - obstacle_present
+    - obstacle_lane
+    - obstacle_distance
+    - obstacle_type
+    - train_present
+    - train_lane
+    - train_distance
+    - coin_present
+    - coin_lane
+    - coin_distance
+
+conditions:
+  C0:
+    description: >-
+      no external current; same graph, duration, timestep, seed and initial
+      state. input_schedule is None.
+    frame_source: none
+    active_features: []
+  C1:
+    description: >-
+      100 neutral TemporalFrames at 30 fps with GameState.neutral(); only the
+      four player-default features are active. No object detections and no
+      object-derived features.
+    frame_source: neutral
+    active_features:
+      - player_lane
+      - player_speed
+      - jumping
+      - rolling
+  C2:
+    description: >-
+      the same cached visual frames as C3 with every player-default feature
+      disabled; hold and visual event pulses restricted to the ten non-player
+      features. Not pulses-only.
+    frame_source: cached
+    active_features:
+      - obstacle_present
+      - obstacle_lane
+      - obstacle_distance
+      - obstacle_type
+      - train_present
+      - train_lane
+      - train_distance
+      - coin_present
+      - coin_lane
+      - coin_distance
+  C3:
+    description: >-
+      full sensory replay of the cached visual frames with all fourteen
+      features active; must reproduce the archived Phase 3B.2C scheduler
+      signature and spike-count hash.
+    frame_source: cached
+    active_features: null
+
+cached_frames:
+  # built once from the existing Phase 3B.2C chain and then frozen
+  group: datasetfootage
+  frame_start: 100
+  frame_end: 199
+  bounds_tolerance_pixels: 1.0
+  path: experiments/phase_3c/cache/p3_t2_visual_frames.json
+  manifest: experiments/phase_3c/cache/p3_t2_visual_frames.manifest.json
+
+archived:
+  # source: experiments/phase_3b/results/phase_3b2c_real_sequence_replay.json
+  # digests.scheduler_sha256 / digests.spike_counts_sha256 are not stored at
+  # that path; both were read from the archived reproducibility block:
+  # reproducibility.scheduler_sha256[0] and
+  # reproducibility.spike_counts_sha256[0] (identical in both repeated runs).
+  temporal_sha256: 2a85747165f9833f73a0c5f85af5a7966b23ecc007f530a7dbc8ba8303229166
+  detections_sha256: 8719fb3f70cd0ea7274ebe0b2afd9f90251664d5f57336594bc4ffc580862e9b
+  scheduler_sha256: 1c3ab12d2afbc396da9d77215d75c4e397da3909d1767ecec5a9f24cfc608840
+  spike_counts_sha256: 09611c7dc5c37d435f7713f5b0ce42b9ab90bdf2b12efeb6c91125b0e0978305
+  spikes_total: 15654631
+  spikes_stimulated: 3710
+  spikes_unstimulated: 15650921
+  stimulated_neurons: 138
+  stimulated_active_neurons: 72
+
+reproducibility:
+  # every condition runs twice in the same process; C0 and C3 additionally run
+  # once in a fresh subprocess when --reproduce-subprocess is requested
+  in_process_repeats: 2
+  subprocess_conditions:
+    - C0
+    - C3

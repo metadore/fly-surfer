@@ -5,8 +5,9 @@ Outputs are untrusted ``RawDetection`` records in processed-image pixels; the
 existing validator, lane assigner and scene builder still apply. Nothing is
 clamped here, and a malformed model output raises instead of being repaired.
 
-No model artifact is bundled or downloaded. Without an approved local weight
-file, constructing the detector fails with an explicit error.
+No model artifact is bundled or downloaded. The configured artifact is a local,
+Git-ignored deployment file; constructing the detector fails explicitly when it
+is missing or its SHA-256 does not match the configuration.
 """
 
 from __future__ import annotations
@@ -518,7 +519,15 @@ class OnnxRuntimeDetector:
         self.model_sha256 = actual_digest
         self.session = session
         self._input_name = inputs[0].name
+        # ``last_inference_ms`` is kept as the total detector-call wall time.
+        # The stage fields separate preprocessing, the ONNX session call and
+        # decoding/NMS/coordinate inversion so a total is never reported as
+        # pure model inference time.
         self.last_inference_ms: float | None = None
+        self.last_preprocess_ms: float | None = None
+        self.last_session_run_ms: float | None = None
+        self.last_postprocess_ms: float | None = None
+        self.last_detector_call_ms: float | None = None
         self.last_decoded_count = 0
         self.model_classes = (
             len(config.class_id_map) if config.class_id_map else len(schema.classes)
@@ -552,7 +561,9 @@ class OnnxRuntimeDetector:
     def detect(self, frame: ImageFrame) -> list[RawDetection]:
         started = time.perf_counter()
         tensor, transform = prepare_input(frame, self.config)
+        preprocessed = time.perf_counter()
         outputs = self.session.run(None, {self._input_name: tensor})
+        inferred = time.perf_counter()
         if not isinstance(outputs, (list, tuple)):
             outputs = [outputs]
         decoded = self._decode(outputs)
@@ -584,7 +595,12 @@ class OnnxRuntimeDetector:
                     y2=float(y2),
                 )
             )
-        self.last_inference_ms = (time.perf_counter() - started) * 1000.0
+        finished = time.perf_counter()
+        self.last_preprocess_ms = (preprocessed - started) * 1000.0
+        self.last_session_run_ms = (inferred - preprocessed) * 1000.0
+        self.last_postprocess_ms = (finished - inferred) * 1000.0
+        self.last_detector_call_ms = (finished - started) * 1000.0
+        self.last_inference_ms = self.last_detector_call_ms
         self.last_decoded_count = int(boxes.shape[0])
         return detections
 
@@ -602,14 +618,28 @@ class OnnxRuntimeDetector:
             "input_size": list(self.config.input_size),
             "resize_mode": self.config.resize_mode,
             "output_layout": self.config.output_layout,
+            "has_objectness": self.config.has_objectness,
+            "class_activation": self.config.class_activation,
+            "num_model_classes": self.model_classes,
             "providers": list(self.config.providers),
             "class_names": [definition.name for definition in self.schema.classes],
             "class_id_map": list(self.config.class_id_map) or "identity",
             "confidence_threshold": self.config.confidence_threshold,
             "nms_iou_threshold": self.config.nms_iou_threshold,
+            "timing_scope": (
+                "detector call wall time: preprocessing + session.run + "
+                "decode/NMS/coordinate inversion; not pure ONNX inference time"
+            ),
             "last_inference_ms": self.last_inference_ms,
+            "last_detector_call_ms": self.last_detector_call_ms,
+            "last_preprocess_ms": self.last_preprocess_ms,
+            "last_session_run_ms": self.last_session_run_ms,
+            "last_postprocess_ms": self.last_postprocess_ms,
+            "last_decoded_count": self.last_decoded_count,
             "notes": [
-                "No model weights are part of this repository.",
+                "The model artifact is a local, Git-ignored deployment file.",
+                "trained_accuracy_reported is null: repository metrics are not "
+                "reproduced at load time.",
                 "Predictions are visual estimates and are validated downstream.",
                 "The detector is not connected to the connectome or plasticity.",
             ],

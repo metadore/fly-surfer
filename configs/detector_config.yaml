@@ -1,10 +1,15 @@
 # Phase 3B detector backend configuration.
 #
-# No weights are stored in this repository and nothing is downloaded
-# automatically. `model_path` is null until an approved, licence-verified
-# checkpoint is placed outside Git. Constructing the detector without it fails
-# with an explicit error; the rest of the perception layer still runs on
-# scripted detections.
+# The deployed artifact is a 14-class YOLO11n exported to ONNX:
+#   input  [1, 3, 640, 640] float32 RGB in [0, 1]
+#   output [1, 18, 8400]    = cx, cy, w, h + 14 class scores
+# There is no objectness channel and the exported graph already applies
+# sigmoid, so no class activation is applied here. Boxes are in input pixels
+# and require external NMS.
+#
+# A relative `model_path` is resolved against the repository root, never the
+# current working directory. The deployment directory is Git-ignored: no
+# weights are committed and nothing is downloaded automatically.
 #
 # The output layout is model-family specific. `yolo_raw` expects one tensor of
 # anchors as [cx, cy, w, h, objectness?, class scores...]. `boxes_scores`
@@ -14,20 +19,22 @@
 
 detector:
   backend: onnx
-  model_path: null
-  # SHA-256 of the local artifact, verified at load time when set.
-  model_sha256: null
-  input_size: [416, 416]
+  model_path: models/YOLO11/deployment/yolo11n_v1_deployment/best.onnx
+  # SHA-256 of the local artifact, verified at load time.
+  model_sha256: e6ad18f90cd0be8c71237556f0922d83a6dca4ac54184ddde6536896b6b6aa77
+  input_size: [640, 640]
   resize_mode: letterbox
   pad_value: 114
   color_order: rgb
 
   output:
     layout: yolo_raw
-    has_objectness: true
+    # YOLO11 export: four box values followed by class scores only.
+    has_objectness: false
     # Coordinates produced by the model: input pixels or fractions of input.
     box_format: pixels
-    class_activation: sigmoid
+    # The exported graph already contains the sigmoid.
+    class_activation: none
     nanodet:
       strides: [8, 16, 32]
       reg_max: 7
@@ -35,12 +42,17 @@ detector:
       output_order: cls_reg
 
   decoding:
-    confidence_threshold: 0.25
-    nms_iou_threshold: 0.45
+    # Initial candidates copied from the training run's model_config.json
+    # (confidence 0.426, IoU 0.7). They are starting points, not calibrated
+    # operating thresholds; recalibrate on validation data before claiming
+    # detection quality.
+    confidence_threshold: 0.426
+    nms_iou_threshold: 0.7
     max_detections: 300
     # Model class index -> v15 class id (see perception_config.yaml).
-    # Empty means identity. Use -1 to ignore an output class.
-    class_id_map: []
+    # The exported class order already matches the v15 schema, so this is the
+    # explicit identity map. Use -1 to ignore an output class.
+    class_id_map: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
   runtime:
     # CPU only in this environment; CUDA is not available to torch or ORT.

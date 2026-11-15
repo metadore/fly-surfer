@@ -1,0 +1,495 @@
+{
+  "phase": "P3-T4",
+  "version": "p3_t4_calibration_discrepancy_v1",
+  "generated_at_utc": "2026-11-13T18:56:18+00:00",
+  "environment": {
+    "python": "3.13.14",
+    "numpy": "2.3.4",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "git": {
+    "head": "62a64309cadc0db7353c856607cee5369993bd65",
+    "branch": "main",
+    "working_tree_dirty": true,
+    "n_status_entries": 193
+  },
+  "provenance": {
+    "files": {
+      "configs/sensory_config.yaml": {
+        "sha256": "26d782a3b5910c05d433fa6678557f7c806dc9947ee8ad279e246fa34f4e96db",
+        "mtime_utc": "2026-11-04T12:31:42+00:00"
+      },
+      "configs/sensory_calibration.yaml": {
+        "sha256": "e2f446a858e6a906e27d682a1958498c129c6367d5f42f6d103a7fd36a28e84d",
+        "mtime_utc": "2026-11-04T14:10:05+00:00"
+      },
+      "experiments/phase_3_5/results/selection.json": {
+        "sha256": "e30559a531e871b9fbfc5f93f8d5c09445ca4be02ec491a8988fb72d534c5eae"
+      },
+      "experiments/phase_3_5/results/stage_population.json": {
+        "sha256": "c9695814f287675a5cb707249e60295e8a5049fa14adc142c7858c6e4c81abd7"
+      },
+      "experiments/phase_3_5/results/stage_seeds.json": {
+        "sha256": "3459b0f5202b17bd397859e3e924bc7c638b9b811a5962ae2c68aa42c2542b2a"
+      },
+      "experiments/phase_3/PHASE_3_REPORT.md": {
+        "sha256": "48cf8d3116acf9cffdb715a78741738889d363922660a0ffe7b8814b6e82857e"
+      },
+      "experiments/phase_3_5/PHASE_3_5_REPORT.md": {
+        "sha256": "7472a4ab3aa2023cfca274ccfb77abab3ae154700f6b7c745fa9d7ca349c4e55"
+      }
+    },
+    "shipped_gaussian_counts": {
+      "player_lane": 12,
+      "player_speed": 12,
+      "jumping": 6,
+      "rolling": 6,
+      "obstacle_present": 6,
+      "obstacle_lane": 12,
+      "obstacle_distance": 12,
+      "obstacle_type": 12,
+      "train_present": 6,
+      "train_lane": 12,
+      "train_distance": 12,
+      "coin_present": 6,
+      "coin_lane": 12,
+      "coin_distance": 12
+    },
+    "selection": {
+      "amplitude_pa": 200.0,
+      "sigma_fraction": 0.2,
+      "population_size": 4,
+      "mapping_seed": 20261104,
+      "baseline": 0.0,
+      "amplitudes_considered": [
+        200.0
+      ],
+      "sources": {
+        "amplitude": "fallback_no_ordered_amplitude",
+        "tuning": "fallback_no_ordered_tuning",
+        "population": "ordered"
+      },
+      "fallbacks": [
+        "amplitude",
+        "tuning"
+      ]
+    },
+    "timeline": {
+      "phase_3a_config_mtime_utc": "2026-11-04T12:31:42+00:00",
+      "phase_3a_report_generated_utc": "2026-11-04T12:56:31+00:00",
+      "phase_3a5_calibration_config_mtime_utc": "2026-11-04T14:10:05+00:00",
+      "phase_3a5_report_generated_utc": "2026-11-04T14:27:29+00:00",
+      "note": "the twelve-neuron count is present in the Phase 3A config that the Phase 3A.5 calibration takes as its base; the four-neuron selection was produced afterwards and was never written back"
+    },
+    "documentation_of_mismatch": [
+      "docs/PHASE_3_SENSORY_ENCODING.md (\u00a7Operating-point mismatch)",
+      "docs/PHASE_3C_TEMPORAL_SENSORY_DESIGN.md (\u00a76)",
+      "docs/PHASE_3_ROADMAP.md (\u00a74.2 and \u00a73C protocol)"
+    ]
+  },
+  "mapping": {
+    "mapping_seed": 20261104,
+    "comparison": {
+      "feature": "obstacle_distance",
+      "indices_4": [
+        64890,
+        87389,
+        107895,
+        108078
+      ],
+      "indices_12": [
+        7411,
+        52604,
+        64890,
+        87389,
+        87805,
+        88721,
+        91895,
+        91920,
+        104235,
+        107895,
+        108078,
+        125025
+      ],
+      "size_4": 4,
+      "size_12": 12,
+      "four_is_subset_of_twelve": true,
+      "shared": 4,
+      "features_with_changed_indices": {
+        "obstacle_distance": {
+          "n_4": 4,
+          "n_12": 12,
+          "shared": 4,
+          "only_4": 0,
+          "only_12": 8
+        },
+        "train_present": {
+          "n_4": 6,
+          "n_12": 6,
+          "shared": 0,
+          "only_4": 6,
+          "only_12": 6
+        },
+        "train_distance": {
+          "n_4": 12,
+          "n_12": 12,
+          "shared": 4,
+          "only_4": 8,
+          "only_12": 8
+        },
+        "coin_present": {
+          "n_4": 6,
+          "n_12": 6,
+          "shared": 0,
+          "only_4": 6,
+          "only_12": 6
+        },
+        "coin_distance": {
+          "n_4": 12,
+          "n_12": 12,
+          "shared": 4,
+          "only_4": 8,
+          "only_12": 8
+        }
+      },
+      "n_features_with_changed_indices": 5
+    },
+    "obstacle_distance_evidence_4": {
+      "default": {
+        "super_class": {
+          "sensory": 4
+        },
+        "class": {
+          "visual": 4
+        },
+        "side": {
+          "left": 2,
+          "right": 2
+        },
+        "nt_type": {
+          "unlabeled": 3,
+          "GABA": 1
+        }
+      }
+    },
+    "obstacle_distance_evidence_12": {
+      "default": {
+        "super_class": {
+          "sensory": 12
+        },
+        "class": {
+          "visual": 12
+        },
+        "side": {
+          "left": 5,
+          "right": 7
+        },
+        "nt_type": {
+          "unlabeled": 7,
+          "ACH": 3,
+          "GABA": 1,
+          "SER": 1
+        }
+      }
+    }
+  },
+  "responses": {
+    "4": {
+      "analysis": {
+        "distances": [
+          0.15,
+          0.55,
+          0.9
+        ],
+        "spike_counts": [
+          2,
+          6,
+          7
+        ],
+        "spikes_per_neuron": [
+          0.5,
+          1.5,
+          1.75
+        ],
+        "recruitment_fractions": [
+          0.25,
+          0.25,
+          0.25
+        ],
+        "max_recruitment_fraction": 0.25,
+        "saturated": false,
+        "responsive": true,
+        "eligible": true,
+        "ordered": true,
+        "weakly_ordered": true,
+        "direction": "increasing_with_distance",
+        "spearman_rho": 1.0,
+        "d_prime_proxy": 2.357023,
+        "dynamic_range": 5,
+        "distinct_levels": 3,
+        "score_rank": [
+          1,
+          2.3570226039551585,
+          3,
+          5
+        ],
+        "one_spike_sensitivity": {
+          "n_single_changes": 6,
+          "admissible": 4,
+          "fraction": 0.6667
+        }
+      },
+      "per_level": [
+        {
+          "distance": 0.15,
+          "spikes": 2,
+          "active_neurons": 1,
+          "recruitment_fraction": 0.25,
+          "spikes_per_neuron": 0.5,
+          "first_spike_ms": 101.0,
+          "median_spike_ms": 154.25,
+          "peak_feature_current_pa": 289.493025,
+          "max_per_neuron_current_pa": 150.96792,
+          "network_spikes": 2,
+          "network_active_neurons": 1
+        },
+        {
+          "distance": 0.55,
+          "spikes": 6,
+          "active_neurons": 1,
+          "recruitment_fraction": 0.25,
+          "spikes_per_neuron": 1.5,
+          "first_spike_ms": 44.0,
+          "median_spike_ms": 166.5,
+          "peak_feature_current_pa": 300.400444,
+          "max_per_neuron_current_pa": 168.70953,
+          "network_spikes": 6,
+          "network_active_neurons": 1
+        },
+        {
+          "distance": 0.9,
+          "spikes": 7,
+          "active_neurons": 1,
+          "recruitment_fraction": 0.25,
+          "spikes_per_neuron": 1.75,
+          "first_spike_ms": 38.0,
+          "median_spike_ms": 167.0,
+          "peak_feature_current_pa": 281.38712,
+          "max_per_neuron_current_pa": 176.499381,
+          "network_spikes": 7,
+          "network_active_neurons": 1
+        }
+      ]
+    },
+    "12": {
+      "analysis": {
+        "distances": [
+          0.15,
+          0.55,
+          0.9
+        ],
+        "spike_counts": [
+          24,
+          23,
+          23
+        ],
+        "spikes_per_neuron": [
+          2.0,
+          1.916667,
+          1.916667
+        ],
+        "recruitment_fractions": [
+          0.333333,
+          0.25,
+          0.25
+        ],
+        "max_recruitment_fraction": 0.333333,
+        "saturated": false,
+        "responsive": true,
+        "eligible": true,
+        "ordered": false,
+        "weakly_ordered": true,
+        "direction": "decreasing_with_distance",
+        "spearman_rho": -0.866025,
+        "d_prime_proxy": 0.206284,
+        "dynamic_range": 1,
+        "distinct_levels": 2,
+        "score_rank": [
+          0,
+          0.20628424925175867,
+          2,
+          1
+        ],
+        "one_spike_sensitivity": {
+          "n_single_changes": 6,
+          "admissible": 1,
+          "fraction": 0.1667
+        }
+      },
+      "per_level": [
+        {
+          "distance": 0.15,
+          "spikes": 24,
+          "active_neurons": 4,
+          "recruitment_fraction": 0.333333,
+          "spikes_per_neuron": 2.0,
+          "first_spike_ms": 29.0,
+          "median_spike_ms": 156.25,
+          "peak_feature_current_pa": 924.120294,
+          "max_per_neuron_current_pa": 197.484956,
+          "network_spikes": 24,
+          "network_active_neurons": 4
+        },
+        {
+          "distance": 0.55,
+          "spikes": 23,
+          "active_neurons": 3,
+          "recruitment_fraction": 0.25,
+          "spikes_per_neuron": 1.916667,
+          "first_spike_ms": 28.0,
+          "median_spike_ms": 158.0,
+          "peak_feature_current_pa": 1094.56915,
+          "max_per_neuron_current_pa": 199.948354,
+          "network_spikes": 23,
+          "network_active_neurons": 3
+        },
+        {
+          "distance": 0.9,
+          "spikes": 23,
+          "active_neurons": 3,
+          "recruitment_fraction": 0.25,
+          "spikes_per_neuron": 1.916667,
+          "first_spike_ms": 28.0,
+          "median_spike_ms": 158.0,
+          "peak_feature_current_pa": 847.498794,
+          "max_per_neuron_current_pa": 199.793495,
+          "network_spikes": 23,
+          "network_active_neurons": 3
+        }
+      ]
+    }
+  },
+  "seeds": {
+    "4": {
+      "seeds": [
+        {
+          "mapping_seed": 20261104,
+          "spike_counts": [
+            2,
+            6,
+            7
+          ],
+          "ordered": true,
+          "d_prime_proxy": 2.357023,
+          "dynamic_range": 5
+        },
+        {
+          "mapping_seed": 20261105,
+          "spike_counts": [
+            2,
+            6,
+            7
+          ],
+          "ordered": true,
+          "d_prime_proxy": 2.357023,
+          "dynamic_range": 5
+        },
+        {
+          "mapping_seed": 20261106,
+          "spike_counts": [
+            2,
+            6,
+            7
+          ],
+          "ordered": true,
+          "d_prime_proxy": 2.357023,
+          "dynamic_range": 5
+        }
+      ],
+      "n_ordered": 3,
+      "n_seeds": 3,
+      "source": "seed_stage"
+    },
+    "12": {
+      "seeds": [
+        {
+          "mapping_seed": 20261104,
+          "spike_counts": [
+            24,
+            23,
+            23
+          ],
+          "ordered": false,
+          "d_prime_proxy": 0.206284,
+          "dynamic_range": 1
+        }
+      ],
+      "n_ordered": 0,
+      "n_seeds": 1,
+      "source": "population_stage_single_seed"
+    }
+  },
+  "outcome": {
+    "four_neurons": {
+      "eligible": true,
+      "ordered": true,
+      "ordered_seeds": 3,
+      "seed_gate_met": true,
+      "meets_original_rule": true
+    },
+    "twelve_neurons": {
+      "eligible": true,
+      "ordered": false,
+      "ordered_seeds": 0,
+      "seed_gate_met": false,
+      "meets_original_rule": false
+    },
+    "original_rule": {
+      "eligible": "at least one spike and not fully saturated at every level",
+      "ordered": "strictly monotone spike counts across 0.15/0.55/0.90",
+      "seed_gate": "ordered in at least two of three mapping seeds"
+    }
+  },
+  "consumers": [
+    {
+      "path": "experiments/phase_3/run_all.py",
+      "mechanism": "loads configs/sensory_config.yaml directly",
+      "sha256": "6caac9f5a2aee0ee0551375d32edbfaf269e90fe94b4187a1bc4d35d7f4db3fa",
+      "exists": true
+    },
+    {
+      "path": "experiments/phase_3b/real_sequence_replay.py",
+      "mechanism": "loads configs/sensory_config.yaml directly",
+      "sha256": "9780d888a2fb77d9594717a912a0cdfafd85a8c0679bf9b593332efb92824e8c",
+      "exists": true
+    },
+    {
+      "path": "experiments/phase_3c/causal_control.py",
+      "mechanism": "loads configs/sensory_config.yaml; counts pinned in configs/causal_control_config.yaml",
+      "sha256": "3cd7f144a1e1a8f2ddb8c26af6958bcb625dfdb8a7a691b999f16ba1510e813a",
+      "exists": true
+    },
+    {
+      "path": "experiments/phase_3c/feature_ablation.py",
+      "mechanism": "inherits causal_control conditions and the pinned counts",
+      "sha256": "628babb3e5c4b1175df6daa4b8e84b9bcb0fe7d76fb8a46db715bc4aea08b73e",
+      "exists": true
+    },
+    {
+      "path": "experiments/phase_3c/network_characterization.py",
+      "mechanism": "inherits causal_control conditions and the pinned counts",
+      "sha256": "5eee47fb268d7fbb46c00d5ac28c52c04f595e7302123970a36b2de5176a2498",
+      "exists": true
+    },
+    {
+      "path": "experiments/phase_3c/integration_check.py",
+      "mechanism": "loads configs/sensory_config.yaml directly",
+      "sha256": "680df3ddbae4df482d0a2e10f42483b0f69b960f0c1ff598d653a522fa68b87b",
+      "exists": true
+    }
+  ],
+  "notes": [
+    "Spike counts are simulated model output at 300 ms, zero background current and zero noise; they are not biological measurements.",
+    "The four-neuron mapping is a prefix of the twelve-neuron mapping, but shrinking the population releases eight visual_any neurons to the four features allocated after it, so a full-network 4-vs-12 comparison is not a single-factor change without a mapping override."
+  ]
+}

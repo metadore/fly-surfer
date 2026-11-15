@@ -1,0 +1,506 @@
+{
+ "phase": "5D",
+ "title": "Three-factor plasticity, weight state and persistence",
+ "status": "complete",
+ "successful": true,
+ "date": "2026-11-09",
+ "repository": "FLY-SURFER",
+ "preceding_phase": "5C",
+ "scope": "Separated weight layers, a bounded three-factor update rule, an independent plastic simulator that mirrors the fixed-weight loop, graph-bound checkpoints and the eta = 0 spike-hash equivalence contract. No biological measurement is made.",
+ "classification": "computational plasticity model; learned weights are model outputs, not biological measurements",
+ "non_claims": [
+  "A weight in pA is a transformed structural synapse count, not a conductance.",
+  "delta_w = eta * delta_t * e is a computational rule, not a biological learning law.",
+  "eta, the bounds and tau_e are declared model parameters, not fitted values.",
+  "A nonzero learned delta is not evidence of learning.",
+  "No dopamine, octopamine or serotonin quantity was measured or modelled.",
+  "The BANC eta = 0 check validates the software contract for a short window, not connectome dynamics."
+ ],
+ "implemented_interfaces": {
+  "M06_effective_weight_layer": "plasticity/weights.py: WeightBounds, WeightState, graph_signature",
+  "M07_update_rule_and_constraints": "plasticity/rules.py: RuleConfig, ThreeFactorRule, UpdateReport",
+  "M08_checkpoint_resume": "plasticity/checkpoint.py: save_checkpoint, load_checkpoint, graph_checksum, policy_digest",
+  "M09_plastic_simulator_step_hook": "plasticity/engine.py, plasticity/plastic_synapses.py, plasticity/plastic_simulator.py",
+  "M10_diagnostics": "plasticity/diagnostics.py: spike_hash, summarize_updates, weight_diagnostics, trace_diagnostics, memory_breakdown"
+ },
+ "modules": {
+  "plasticity/weights.py": "five separated weight layers, bounds, sign-channel updates, invariants, digests",
+  "plasticity/rules.py": "RuleConfig, ThreeFactorRule, UpdateReport",
+  "plasticity/engine.py": "trace clock, delay-matched coincidence, slot-to-CSR mapping, update cadence",
+  "plasticity/plastic_synapses.py": "PlasticSignedSynapses over owned effective arrays",
+  "plasticity/plastic_simulator.py": "PlasticSimulator, PlasticSimulationResult",
+  "plasticity/checkpoint.py": "graph-bound checkpoint save/load",
+  "plasticity/config.py": "configs/plasticity.yaml validation",
+  "plasticity/synthetic.py": "deterministic validation fixture",
+  "plasticity/diagnostics.py": "hashes, update summaries, memory accounting",
+  "experiments/phase_5/run_plasticity_unit_experiments.py": "unit experiments and JSON result",
+  "tests/test_plasticity_weights.py": "13 tests",
+  "tests/test_plasticity_rules.py": "9 tests",
+  "tests/test_plasticity_simulator.py": "16 tests",
+  "tests/test_plasticity_config.py": "6 tests"
+ },
+ "model": {
+  "weight_layers": {
+   "structural_count": "int32 read-only integer synapse count",
+   "initial_exc_inh": "float32 read-only copy of policy weights",
+   "delta_exc_inh": "float32 writable learned change",
+   "effective_exc_inh": "float32 writable bounded initial + learned",
+   "sign_class": "int8 read-only +1 excitatory, -1 inhibitory, 0 unknown"
+  },
+  "plastic_selection": "(initial_exc > 0) | (initial_inh > 0); unknown-sign edges never receive a delta",
+  "rule": "delta_w = eta * delta_t * e_ij",
+  "eta_zero_contract": "rule returns before decay and before any array write; PlasticSimulator spike hash must equal BancSimulator spike hash",
+  "bounds": "constrain the effective weight; shifted into delta space before clipping",
+  "update_clip": "max_abs_update_pa clips the raw increment before the bound clamp",
+  "cadences": [
+   "reward_event",
+   "every_step"
+  ],
+  "normalization": "none only; declared exclusion because normalization couples edges and would change the eta = 0 contract",
+  "simulator_loop": "mirrors BancSimulator.run: same RNG order, current assembly, LIF step, recording, propagation, plus trace observation and optional reward-event update",
+  "checkpoint": "stores metadata, learned deltas, optional traces and optional predictor state; verifies graph checksum, policy digest, structural/initial/delta digests before mutation"
+ },
+ "configuration": {
+  "path": "configs/plasticity.yaml",
+  "sha256": "f4674cee4656526511e9e14d92d626bdc81f3a70abacba96d7f393251bc1ba20",
+  "digest": "20326602b22b517ef2bed9dfc9e0e27c121ee419b22f303fc06ef0b8633791b1",
+  "weights": {
+   "lower_factor": 0.5,
+   "upper_factor": 2.0,
+   "absolute_min_pa": null,
+   "absolute_max_pa": null,
+   "max_abs_update_pa": 5.0,
+   "fixed_mode_eta": 0.0,
+   "primary_threshold": 5
+  },
+  "rule": {
+   "eta": 0.01,
+   "update_cadence": "reward_event",
+   "weight_decay_per_ms": 0.0,
+   "normalization": "none",
+   "abort_on_sign_flip": true
+  },
+  "simulation": {
+   "dt_ms": 0.5,
+   "duration_ms": 100.0,
+   "tau_exc_ms": 5.0,
+   "tau_inh_ms": 8.0,
+   "delay_ms": 1.0,
+   "background_current_pa": 0.0,
+   "noise_std_pa": 0.0,
+   "max_recorded_spikes": 200000
+  }
+ },
+ "validation": {
+  "command": "python -m experiments.phase_5.run_plasticity_unit_experiments",
+  "result_path": "experiments/results/phase_5d/plasticity_unit_experiments.json",
+  "generated_at_utc": "2026-11-09T16:31:03+00:00",
+  "runtime_s": 6.9614,
+  "software": {
+   "python": "3.13.14",
+   "numpy": "2.3.4",
+   "pandas": "2.3.3",
+   "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "checks": {
+   "toy_rule_arithmetic": true,
+   "eta_zero_no_op": true,
+   "synthetic_eta_zero_hashes": true,
+   "plastic_invariants": true,
+   "checkpoint_round_trip": true,
+   "checkpoint_wrong_graph_rejected": true,
+   "checkpoint_tamper_rejected": true,
+   "banc_eta_zero_hashes": true,
+   "banc_conditions_produced_spikes": true,
+   "integrity": true
+  },
+  "all_checks_passed": true,
+  "failures": [],
+  "toy_rule": {
+   "n_edges_updated": 5,
+   "expected_deltas_pa": [
+    -0.2,
+    -0.4,
+    -0.6,
+    -0.2,
+    -0.1
+   ],
+   "applied_deltas_pa": [
+    -0.20000000298023224,
+    -0.4000000059604645,
+    -0.6000000238418579,
+    -0.20000000298023224,
+    -0.10000000149011612
+   ],
+   "max_abs_error_pa": 2.3841857821338408e-08,
+   "arithmetic_matches_declared_rule": true,
+   "negative_rpe_reduced_weights": true,
+   "eta_zero_no_op": true
+  },
+  "synthetic_eta_zero_equivalence": {
+   "graph": {
+    "n_nodes": 64,
+    "n_edges": 800,
+    "n_plastic": 502,
+    "seed": 5
+   },
+   "simulation": {
+    "duration_ms": 50.0,
+    "n_steps": 100,
+    "dt_ms": 0.5,
+    "seed": 7,
+    "noise_std_pa": 25.0,
+    "stimulated_neurons": 16,
+    "stimulation_pa": 500.0,
+    "reward_steps": [
+     33,
+     99
+    ]
+   },
+   "fixed_runtime_s": 0.012,
+   "conditions": {
+    "traces_enabled": {
+     "n_spikes": 77,
+     "n_transmissions": 947,
+     "n_update_events": 2,
+     "n_updates": 0,
+     "spike_hash": "be6e3a7f12606f1362fe4f085cd3f297041e511b32307519fc9fed5373ca23e8",
+     "hashes_identical": true,
+     "effective_equals_initial": true,
+     "runtime_s": 0.0147,
+     "traces": {
+      "n_traces": 502,
+      "n_touched": 9,
+      "n_coincident_tags": 10,
+      "n_pushed_edges": 582,
+      "n_delivered_edges": 565,
+      "memory_bytes": 4052,
+      "l1": 3.296798268,
+      "max": 0.825793192
+     }
+    },
+    "traces_disabled": {
+     "n_spikes": 77,
+     "n_transmissions": 947,
+     "n_update_events": 0,
+     "n_updates": 0,
+     "spike_hash": "be6e3a7f12606f1362fe4f085cd3f297041e511b32307519fc9fed5373ca23e8",
+     "hashes_identical": true,
+     "effective_equals_initial": true,
+     "runtime_s": 0.0119
+    }
+   },
+   "all_hashes_identical": true
+  },
+  "synthetic_plastic_smoke": {
+   "configuration": {
+    "eta": 0.02,
+    "duration_ms": 80.0,
+    "n_steps": 160,
+    "reward_steps": [
+     53,
+     159
+    ],
+    "reward_magnitudes": [
+     1.0,
+     -1.0
+    ],
+    "stimulated_neurons": 16,
+    "noise_std_pa": 40.0
+   },
+   "n_spikes": 123,
+   "spike_hash": "152ba21fe2b90df3d55fc6538f57ba497a40d1782eeaa98c5d6a3293a162268f",
+   "runtime_s": 0.0232,
+   "steps_per_second": 6903.8,
+   "update_summary": {
+    "n_update_events": 2,
+    "n_changed_events": 2,
+    "sum_abs_applied_pa": 0.166756574064,
+    "max_abs_applied_pa": 0.034148123115,
+    "clamp_hits": 0,
+    "update_clip_hits": 0,
+    "sign_violations": 0,
+    "decayed_edges": 0,
+    "mean_abs_delta_t": 1.0,
+    "max_abs_delta_t": 1.0
+   },
+   "weights": {
+    "n_edges": 800,
+    "n_plastic": 502,
+    "n_excitatory": 299,
+    "n_inhibitory": 203,
+    "n_unknown": 298,
+    "structural_synapses": 8511,
+    "initial_sum_pa": 14148.737869,
+    "effective_sum_pa": 14148.738027,
+    "delta_sum_pa": 0.000155272,
+    "delta_abs_sum_pa": 0.150419725,
+    "delta_max_abs_pa": 0.034148123,
+    "n_changed_edges": 12,
+    "changed_edge_share": 0.023904382,
+    "saturated_edges": 0,
+    "relative_delta": {
+     "mean": -0.00020933,
+     "min": -0.004060919,
+     "max": 0.0013746
+    },
+    "cumulative_clamp_hits": 0,
+    "cumulative_update_clips": 0,
+    "n_update_calls": 2,
+    "digests": {
+     "structural": "2eaab704c810a011e79a0f06ae6f36bc5e89ecfc41f11d89cf90b0cd7651030f",
+     "initial": "ece2325aa28fb436cc20b0da694dad438a8c332423535891d9b5c1e7835dc27c",
+     "learned_delta": "a098d97d89c10368ecc09f7386eb6200f93a350c3af08111f9ebf7b825897feb",
+     "effective": "18c68378524131418c11669716003529006a7dca4c387e79ec03fe546232e767"
+    }
+   },
+   "invariants": {
+    "deltas_finite": true,
+    "effective_finite": true,
+    "deltas_zero_off_plastic": true,
+    "excitatory_channel_only": true,
+    "inhibitory_channel_only": true,
+    "effective_non_negative": true,
+    "effective_matches_layers": true,
+    "within_declared_bounds": true
+   },
+   "sign_preserved": true,
+   "structural_counts_immutable": true,
+   "traces": {
+    "n_traces": 502,
+    "n_touched": 12,
+    "n_coincident_tags": 15,
+    "n_pushed_edges": 928,
+    "n_delivered_edges": 928,
+    "memory_bytes": 4064,
+    "l1": 4.165032702,
+    "max": 1.707406247,
+    "clock": 160
+   }
+  },
+  "banc_eta_zero_equivalence": {
+   "graph": {
+    "path": "datasets/processed/banc_v888/banc_graph_t5.npz",
+    "sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192",
+    "threshold": 5,
+    "n_nodes": 172433,
+    "n_edges": 1535710,
+    "n_synapses": 18552546,
+    "n_plastic_edges": 683100
+   },
+   "simulation": {
+    "duration_ms": 30.0,
+    "n_steps": 60,
+    "seed": 20261114,
+    "stimulated_neurons": 64,
+    "stimulation_pa": 300.0,
+    "reward_steps": [
+     30,
+     59
+    ]
+   },
+   "load_s": 3.883,
+   "conditions": {
+    "no_noise": {
+     "noise_std_pa": 0.0,
+     "fixed_spikes": 64,
+     "plastic_spikes": 64,
+     "fixed_spike_hash": "4fc92a14bbf3fd8535717b447bac54c8d43fe8e41031aa1c3f060ea8625bc30c",
+     "plastic_spike_hash": "4fc92a14bbf3fd8535717b447bac54c8d43fe8e41031aa1c3f060ea8625bc30c",
+     "hashes_identical": true,
+     "n_transmissions": 3,
+     "n_update_events": 2,
+     "n_updates": 0,
+     "effective_equals_initial": true,
+     "structural_equals_graph": true,
+     "fixed_runtime_s": 0.2854,
+     "plastic_runtime_s": 0.466,
+     "plastic_steps_per_second": 128.8,
+     "initial_digest": "8d19c706f66cb933f3660b96eba922cfa2ecf9a4649676b748e1a677172c08bb",
+     "delta_digest": "b88628a13b6355a344f84fd87bef6e1b48859526215235ca22e29ae412863c63",
+     "effective_digest": "dc544f7aad1ca7182f827a6a93f756c3a77fa6f0968df358353cd173e4a8025e",
+     "traces": {
+      "n_traces": 683100,
+      "n_touched": 0,
+      "memory_bytes": 5464800,
+      "clock": 60
+     },
+     "retained_arrays_bytes": 78816128,
+     "peak_wset_mb": 286.3104
+    },
+    "background_noise_25pa": {
+     "noise_std_pa": 25.0,
+     "fixed_spikes": 64,
+     "plastic_spikes": 64,
+     "fixed_spike_hash": "b2e70eaf6d1bfb735e64962b5840bad70c54f35c639da260f4c0e441abcde38b",
+     "plastic_spike_hash": "b2e70eaf6d1bfb735e64962b5840bad70c54f35c639da260f4c0e441abcde38b",
+     "hashes_identical": true,
+     "n_transmissions": 3,
+     "n_update_events": 2,
+     "n_updates": 0,
+     "effective_equals_initial": true,
+     "structural_equals_graph": true,
+     "fixed_runtime_s": 0.764,
+     "plastic_runtime_s": 0.6418,
+     "plastic_steps_per_second": 93.5,
+     "initial_digest": "8d19c706f66cb933f3660b96eba922cfa2ecf9a4649676b748e1a677172c08bb",
+     "delta_digest": "b88628a13b6355a344f84fd87bef6e1b48859526215235ca22e29ae412863c63",
+     "effective_digest": "dc544f7aad1ca7182f827a6a93f756c3a77fa6f0968df358353cd173e4a8025e",
+     "retained_arrays_bytes": 78816128,
+     "peak_wset_mb": 286.3104
+    }
+   },
+   "all_hashes_identical": true,
+   "scope_note": "30 ms window, 64 stimulated neurons, one spike per stimulated neuron and 3 spike transmissions. Equality is verified for this configuration, not for all BANC dynamics."
+  },
+  "checkpoint": {
+   "n_update_events": 2,
+   "n_changed_edges_from_run": 0,
+   "fixture_update_applied": true,
+   "fixture_reason": "The small fixture produced no coincident tag at either reward step; a deterministic fixture update exercised the restore path. The test suite also covers a real learned-delta round-trip.",
+   "n_changed_edges_saved": 4,
+   "checkpoint_step": 50,
+   "checkpoint_graph_checksum": "10141f9fc478c14a98902c6257991c20c747f5d00be5e0d389ffaeee16ccf797",
+   "expected_graph_checksum": "10141f9fc478c14a98902c6257991c20c747f5d00be5e0d389ffaeee16ccf797",
+   "round_trip_ok": true,
+   "traces_restored": true,
+   "wrong_graph_rejected": true,
+   "wrong_graph_reason": "checkpoint belongs to a different structural graph",
+   "tamper_rejected": true,
+   "tamper_reason": "checkpoint learned deltas do not match their digest",
+   "tamper_left_state_untouched": true
+  },
+  "numerical_checks": {
+   "non_finite_delta_w_rejected": true,
+   "non_finite_restored_delta_rejected": true,
+   "duplicate_or_out_of_range_edges_rejected": true,
+   "unknown_sign_update_rejected": true,
+   "sign_violation_aborts_by_default": true,
+   "bounds_and_update_clip_counted_separately": true,
+   "effective_composition_checked_in_float32": true
+  },
+  "rerun_verification": "The runner was executed twice more after later edits to plasticity/weights.py and plasticity/plastic_simulator.py. Both runs reproduced every spike hash, every weight digest and all ten checks. Only the reported per-event applied sums changed, because they now derive from the stored float32 learned deltas rather than the unbounded float64 proposal; the difference is below 1e-8 relative and no stored weight changed."
+ },
+ "tests": {
+  "new_files": {
+   "tests/test_plasticity_weights.py": "13 passed",
+   "tests/test_plasticity_rules.py": "9 passed",
+   "tests/test_plasticity_simulator.py": "16 passed",
+   "tests/test_plasticity_config.py": "6 passed"
+  },
+  "focused": {
+   "paths": [
+    "tests/test_plasticity_config.py",
+    "tests/test_plasticity_weights.py",
+    "tests/test_plasticity_rules.py",
+    "tests/test_plasticity_simulator.py",
+    "tests/test_plasticity_traces.py",
+    "tests/test_plasticity_reward.py"
+   ],
+   "n_tests": 153,
+   "result": "153 passed in 3.30 s"
+  },
+  "full_suite": {
+   "n_tests": 645,
+   "result": "645 passed in 34.48 s"
+  },
+  "existing_tests_modified": false,
+  "coverage_summary": [
+   "owned copies and read-only structural/initial/sign layers",
+   "initial plus learned equals effective",
+   "plastic selection by verified sign",
+   "bounds validation and infeasible-bound rejection",
+   "mismatched policy rejection",
+   "per-channel updates, bound clamping and raw-increment clipping",
+   "slot and value validation",
+   "structural immutability",
+   "decay of the learned layer only",
+   "restore validation",
+   "digests and description",
+   "strict eta = 0 no-op including skipped decay",
+   "exact rule arithmetic",
+   "negative prediction error",
+   "zero eligibility and zero reward",
+   "decay before update",
+   "byte-for-byte eta = 0 equivalence with traces on and off",
+   "repeatability and fixed weights",
+   "positive and negative updates only on plastic edges with preserved signs",
+   "every-step cadence",
+   "delay-matched and delay-mismatched coincidence",
+   "predictor-driven prediction error",
+   "checkpoint round-trip with real learned deltas and traces",
+   "wrong-graph and tamper rejection",
+   "memory double-count guard",
+   "summary status and digests",
+   "configuration loading and rejection paths",
+   "plastic-synapse ownership and foreign-state rejection"
+  ]
+ },
+ "resources": {
+  "runner_runtime_s": 6.9614,
+  "banc_retained_arrays_bytes": 78816128,
+  "banc_weight_state_bytes": 51536100,
+  "banc_engine_bytes": 17072440,
+  "banc_synapse_arrays_bytes": 1379464,
+  "banc_shared_effective_bytes": 12285680,
+  "banc_delay_buffer_bytes": 2758928,
+  "banc_spike_recorder_bytes": 4000000,
+  "banc_trace_capacity_bytes": 5464800,
+  "peak_wset_mb": 286.3104,
+  "synthetic_smoke_retained_bytes": 841600,
+  "python": "3.13.14",
+  "numpy": "2.3.4",
+  "data_touched": "BANC t5 graph and policy read-only",
+  "single_run_timings": true
+ },
+ "integrity": {
+  "phase_4h_snapshot": "37/37 unchanged",
+  "readme_unchanged": true,
+  "phase_4h_outputs_unchanged": true,
+  "datasets_unchanged": true,
+  "brain_unchanged": true,
+  "existing_tests_modified": false,
+  "files_staged_or_committed": false
+ },
+ "limitations": [
+  "The synthetic substrate is a validation fixture, not a brain circuit.",
+  "A nonzero weight delta is a model output of the declared rule and is not evidence of learning or of a biological synaptic change.",
+  "eta = 0 equality is verified only for the seeds, durations, stimulation and noise settings recorded here; it is not a proof for every possible configuration.",
+  "The BANC section uses a 30 ms window and 64 stimulated neurons with only 3 spike transmissions; it validates the software contract, not connectome dynamics.",
+  "The runner's checkpoint run produced no changed edges from simulation, so a deterministic fixture update was applied; the test suite covers the real learned-delta path.",
+  "Plastic smoke deltas are small and far from the declared bounds; saturation and clamping are exercised synthetically, not at BANC scale.",
+  "Normalization is not implemented; it is a declared exclusion because it would couple edges and change the eta = 0 contract.",
+  "Rewards are external computational scalars; no dopamine, octopamine or serotonin quantity was measured.",
+  "Timings are single runs on one machine; no variance or confidence interval is claimed.",
+  "Fixed and plastic runs share the same LIF neuron and synapse implementation, so eta = 0 equality validates the plastic pathway and its indexing, not the neuron model itself.",
+  "The version-1 checkpoint does not store neuron membrane state, RNG state or a resumable simulator snapshot."
+ ],
+ "exit_criteria": {
+  "separated_weight_layers": "implemented and tested",
+  "owned_mutable_weight_arrays": "implemented; structural and initial layers read-only",
+  "only_verified_sign_edges_plastic": "enforced; unknown-sign updates raise",
+  "bounds": "relative, optional absolute and optional update clip implemented and tested",
+  "sign_preservation": "enforced per channel; violation aborts",
+  "structural_counts_immutable": "read-only array plus invariant",
+  "three_factor_rule": "implemented and hand-computed test",
+  "configurable_learning_rate": "RuleConfig.eta validated",
+  "optional_decay": "implemented, default 0",
+  "optional_normalization": "declared exclusion (none)",
+  "numerical_stability": "finite checks, float64 compute, float32 storage",
+  "checkpoint_round_trip": "implemented and tested",
+  "checkpoint_graph_identity": "implemented; wrong graph, policy and tampered deltas rejected",
+  "fixed_weight_mode_available": "default eta = 0; BancSimulator unchanged",
+  "eta_zero_exact_spike_hash": "verified synthetically (77 spikes) and on BANC t5 (64 spikes, two noise levels)",
+  "diagnostics": "weights, traces, updates, memory and spike hash implemented",
+  "focused_and_full_tests": "153 focused and 645 full passed",
+  "reports": "MD and JSON delivered",
+  "integrity": "37/37 unchanged",
+  "status": "pass"
+ },
+ "next_phase": "5E",
+ "derived_from": [
+  "reports/PHASE_5A_PLASTICITY_ARCHITECTURE_AUDIT.md (M06, M07, M08, M09, M10, T04, T05, T06, T10)",
+  "reports/PHASE_5B_REWARD_SYSTEM.md",
+  "reports/PHASE_5C_ELIGIBILITY_TRACES.md"
+ ]
+}

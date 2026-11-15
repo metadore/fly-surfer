@@ -1,0 +1,431 @@
+{
+  "phase": "4G",
+  "title": "BANC neural propagation: complete engineering, scientific validation and integration",
+  "generated_at_utc": "2026-11-08T08:35:49Z",
+  "overall_verdict": "PASS WITH LIMITATIONS",
+  "verdict_rationale": "All five subphases, all conditions and all sensitivity variants completed; tests and integrity checks pass. The verdict is not an unqualified PASS because the single positive decoded result is strongly dependent on the declared weight transform and transmitter-sign prior, is based on a minority of annotated edges, and is produced by an abstract decoder.",
+  "software": {
+    "python": "3.13.14",
+    "numpy": "2.3.4",
+    "pandas": "2.3.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "subphases": {
+    "4G.1": {
+      "name": "Interface and architecture audit",
+      "verdict": "READY WITH ADAPTERS",
+      "report": "reports/PHASE_4G1_INTERFACE_AUDIT.md",
+      "report_sha256": "103497b2232e6f1b9d54cd5b67686a03a93e447024149100c3d09a81f4245acf",
+      "key_finding": "BrainSimulator constructs SynapseModel, which requires graph.vocabulary and graph.nt_code; BancConnectome has neither, producing AttributeError: 'BancConnectome' object has no attribute 'vocabulary'."
+    },
+    "4G.2": {
+      "name": "Transmitter sign and edge-weight policy",
+      "verdict": "PASS",
+      "report": "reports/PHASE_4G2_TRANSMITTER_AND_WEIGHT_POLICY.md",
+      "report_sha256": "5d123518f6266e24f7d138337a20c57031f26f229f05252886820c31a51064b4",
+      "policy_config": "configs/banc_synapse_policy.yaml",
+      "policy_config_sha256": "88f6449289492e79a919fafa56af93c5ac5e916cb50cc1658d7e14eed2dc399e",
+      "sign_policy": {
+        "verified_excitatory": ["acetylcholine", "glutamate"],
+        "verified_inhibitory": ["gaba", "glycine"],
+        "modulators_unknown": ["dopamine", "serotonin", "octopamine", "tyramine", "histamine", "nitric_oxide"],
+        "predicted_fallback": false,
+        "unknown_edge_policy": "exclude"
+      },
+      "weight_policy": {
+        "transform": "power",
+        "exponent": 0.75,
+        "scale_pa": 5.0,
+        "cap_pa": 300.0,
+        "weight_source": "integer synapse count; norm is never used",
+        "cap_saturation_count": 234.89
+      }
+    },
+    "4G.3": {
+      "name": "BANC simulation adapter",
+      "verdict": "PASS",
+      "modules": [
+        "brain/banc_synapse_policy.py",
+        "brain/banc_simulator.py",
+        "brain/banc_simulation_adapter.py"
+      ],
+      "reused_unchanged": ["brain/neuron_model.py", "brain/synapse_model.py", "brain/neural_activity.py", "motor/populations.py", "motor/motor_decoder.py"],
+      "fafb_simulator_modified": false,
+      "sparse_only": true,
+      "focused_tests": {
+        "test_banc_synapse_policy.py": 14,
+        "test_banc_simulator.py": 21,
+        "test_banc_simulation_adapter.py": 8
+      }
+    },
+    "4G.4": {
+      "name": "Propagation validation",
+      "verdict": "PASS",
+      "report": "reports/PHASE_4G4_PROPAGATION_VALIDATION.md",
+      "report_sha256": "6657599f4fd9a644710ed1b626c2f801125fcad87636c913e2e8ba18dc3270e1",
+      "checks_total": 20,
+      "checks_passed": 20,
+      "checks_failed": 0,
+      "suite_runtime_s": 0.376,
+      "full_banc_smoke": {
+        "threshold": 5,
+        "stimulated_neurons": 64,
+        "selection": "highest_out_degree, chosen before inspecting simulation output",
+        "duration_ms": 100.0,
+        "seed": 20261108,
+        "spikes": 74,
+        "active_neurons": 64,
+        "runtime_s": 0.69,
+        "rss_mb": 197.25,
+        "peak_working_set_mb": 264.8,
+        "repeat_activity_sha256": "b660f712d9490a7ff29b6d4326fdb36344cc7db7a67925f5b9a9aa2ce167a1d5",
+        "deterministic": true
+      },
+      "key_physical_findings": {
+        "single_capped_edge_peak_mv": 4.7,
+        "coincident_edges_needed_to_fire": 4,
+        "effective_delay_ms": 1.0,
+        "delay_steps_at_dt_0_5_ms": 2
+      }
+    },
+    "4G.5": {
+      "name": "Motor decoder integration",
+      "verdict": "PASS (execution) with scientific limitations",
+      "report": "reports/PHASE_4G5_MOTOR_DECODER_INTEGRATION.md",
+      "report_sha256": "a4dd2fe64c633453348b2ca5fcbf9f0092b22e9b9e941ffe8d1a981c8dec7c57",
+      "decoder_unchanged": true,
+      "populations_unchanged": true,
+      "motor_neurons_stimulated": 0,
+      "conditions": ["A_no_stimulation", "B_descending_candidate", "C_vnc_intrinsic_candidate", "D_random_matched", "E_shuffled_assignment", "F_background_noise"],
+      "all_conditions_deterministic": true
+    }
+  },
+  "pipeline": {
+    "steps": [
+      "BANC v888 connectome (threshold 5)",
+      "verified-transmitter sign policy and structural weight transform",
+      "sparse LIF / exponential-synapse simulation",
+      "SpikeRecorder arrays",
+      "unchanged Phase 4F windows, populations and decoder",
+      "LEFT / RIGHT / JUMP / NEUTRAL"
+    ],
+    "fixed_parameters": {
+      "graph_threshold": 5,
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "seed": 20261108,
+      "stimulus_current_pa": 300.0,
+      "stimulus_start_ms": 50.0,
+      "stimulus_end_ms": 250.0,
+      "decode_start_ms": 50.0,
+      "decode_end_ms": 300.0,
+      "candidate_size": 64,
+      "decoder_window_ms": 50.0,
+      "decoder_step_ms": 50.0,
+      "activation_threshold": 0.2,
+      "release_threshold": 0.1,
+      "min_spikes": 5,
+      "min_active_neurons": 3,
+      "priority": ["LEFT", "RIGHT", "JUMP"]
+    }
+  },
+  "inputs": {
+    "graph_threshold_1_sha256": "fee8e5e7f7dbd9b6d43ef125695b1b11f6c9613088c8c04dd0d883ff12ecc01e",
+    "graph_threshold_5_sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192",
+    "graph_threshold_10_sha256": "00b3f447e2755660c273a63e11bc60a8afd8247906bbe0576f3a27a6ee1dc7a0",
+    "node_table_sha256": "144a2eb09aa1ed2be4f07eff589a6158e98cfe4f18b52db7feef4d2272953e5f",
+    "policy_config_sha256": "88f6449289492e79a919fafa56af93c5ac5e916cb50cc1658d7e14eed2dc399e",
+    "decoder_config_sha256": "525f25e9e0d334e58a38ce9d340fcd8fe3ebc148fe1bf9f08656eccc660d9fae",
+    "combined_configuration_sha256": "79004501019cf2fe6ed710310eb3acd19ce12e66b2ed7527b126a2d89632501d"
+  },
+  "key_metrics": {
+    "graph_t5": {
+      "nodes": 172433,
+      "edges": 1535710,
+      "synapses": 18552546,
+      "isolated_nodes": 24320,
+      "signed_edges": 683100,
+      "signed_synapses": 8426168,
+      "signed_edge_fraction": 0.4448,
+      "signed_synapse_fraction": 0.4542
+    },
+    "annotations": {
+      "verified_non_null": 65292,
+      "predicted_non_null": 153927,
+      "unannotated_neurons": 107141,
+      "unannotated_fraction": 0.6213,
+      "verified_excitatory": 53987,
+      "verified_inhibitory": 9733
+    },
+    "motor_populations": {
+      "motor_neurons": 805,
+      "LEFT": 185,
+      "RIGHT": 186,
+      "JUMP": 20,
+      "assigned": 391,
+      "unassigned": 414
+    },
+    "candidate_groups": {
+      "B_descending_candidate": {"eligible_pool": 141, "selected": 64, "edges_to_motor": 645, "synapses_to_motor": 9832},
+      "C_vnc_intrinsic_candidate": {"eligible_pool": 5622, "selected": 64, "edges_to_motor": 1767, "synapses_to_motor": 64986},
+      "D_random_matched": {"eligible_pool": 53829, "selected": 64, "edges_to_motor": 38, "synapses_to_motor": 1075},
+      "E_shuffled_assignment": {"eligible_pool": 77, "selected": 64, "edges_to_motor": 47, "synapses_to_motor": 393}
+    },
+    "runtime": {
+      "per_condition_simulation_s": [2.4119, 2.7616, 2.9746, 2.5709, 2.2763, 3.2986],
+      "retained_arrays_mb_per_run": 86.3,
+      "process_rss_mb": [197.25, 200.32],
+      "peak_working_set_mb": [264.8, 268.93],
+      "full_experiment_suite_wall_s": 5795.532
+    }
+  },
+  "conditions": {
+    "A_no_stimulation": {
+      "input": "none",
+      "background_pa": 0.0,
+      "noise_pa": 0.0,
+      "spikes": 0,
+      "active_neurons": 0,
+      "non_stimulated_spikes": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "decoded_states": {"NEUTRAL": 5},
+      "max_scores": {"LEFT": 0.0, "RIGHT": 0.0, "JUMP": 0.0}
+    },
+    "B_descending_candidate": {
+      "spikes": 781,
+      "active_neurons": 77,
+      "stimulated_spikes": 720,
+      "non_stimulated_spikes": 61,
+      "non_stimulated_active_neurons": 13,
+      "motor_spikes": 18,
+      "motor_active_neurons": 3,
+      "motor_active_populations": {"LEFT": 0, "RIGHT": 0, "JUMP": 0, "unassigned": 3},
+      "decoded_states": {"NEUTRAL": 5},
+      "max_scores": {"LEFT": 0.0, "RIGHT": 0.0, "JUMP": 0.0}
+    },
+    "C_vnc_intrinsic_candidate": {
+      "spikes": 1296,
+      "active_neurons": 164,
+      "stimulated_spikes": 740,
+      "non_stimulated_spikes": 556,
+      "non_stimulated_active_neurons": 100,
+      "motor_spikes": 492,
+      "motor_active_neurons": 82,
+      "motor_active_populations": {"LEFT": 27, "RIGHT": 32, "JUMP": 12, "unassigned": 11},
+      "decoded_states": {"JUMP": 4, "NEUTRAL": 1},
+      "max_scores": {"LEFT": 0.135135, "RIGHT": 0.150538, "JUMP": 0.6},
+      "whole_span_active_fractions": {"LEFT": 0.145946, "RIGHT": 0.172043, "JUMP": 0.6},
+      "windows": [
+        {"start_ms": 50.0, "end_ms": 100.0, "scores": {"LEFT": 0.12973, "RIGHT": 0.11828, "JUMP": 0.55}, "state": "JUMP"},
+        {"start_ms": 100.0, "end_ms": 150.0, "scores": {"LEFT": 0.135135, "RIGHT": 0.150538, "JUMP": 0.6}, "state": "JUMP"},
+        {"start_ms": 150.0, "end_ms": 200.0, "scores": {"LEFT": 0.135135, "RIGHT": 0.134409, "JUMP": 0.6}, "state": "JUMP"},
+        {"start_ms": 200.0, "end_ms": 250.0, "scores": {"LEFT": 0.12973, "RIGHT": 0.150538, "JUMP": 0.6}, "state": "JUMP"},
+        {"start_ms": 250.0, "end_ms": 300.0, "scores": {"LEFT": 0.0, "RIGHT": 0.0, "JUMP": 0.0}, "state": "NEUTRAL"}
+      ]
+    },
+    "D_random_matched": {
+      "spikes": 704,
+      "active_neurons": 64,
+      "non_stimulated_spikes": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "decoded_states": {"NEUTRAL": 5},
+      "max_scores": {"LEFT": 0.0, "RIGHT": 0.0, "JUMP": 0.0}
+    },
+    "E_shuffled_assignment": {
+      "spikes": 728,
+      "active_neurons": 69,
+      "stimulated_spikes": 712,
+      "non_stimulated_spikes": 16,
+      "non_stimulated_active_neurons": 5,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "decoded_states": {"NEUTRAL": 5},
+      "max_scores": {"LEFT": 0.0, "RIGHT": 0.0, "JUMP": 0.0}
+    },
+    "F_background_noise": {
+      "input": "none",
+      "background_pa": 50.0,
+      "noise_pa": 50.0,
+      "spikes": 0,
+      "active_neurons": 0,
+      "non_stimulated_spikes": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "decoded_states": {"NEUTRAL": 5},
+      "max_scores": {"LEFT": 0.0, "RIGHT": 0.0, "JUMP": 0.0}
+    }
+  },
+  "sensitivity": {
+    "graph_threshold": [
+      {"threshold": 1, "spikes": 1399, "motor_spikes": 564, "motor_active_neurons": 96, "decoded_states": {"JUMP": 4, "NEUTRAL": 1}, "max_scores": {"LEFT": 0.156757, "RIGHT": 0.182796, "JUMP": 0.65}},
+      {"threshold": 5, "spikes": 1296, "motor_spikes": 492, "motor_active_neurons": 82, "decoded_states": {"JUMP": 4, "NEUTRAL": 1}, "max_scores": {"LEFT": 0.135135, "RIGHT": 0.150538, "JUMP": 0.6}},
+      {"threshold": 10, "spikes": 1253, "motor_spikes": 456, "motor_active_neurons": 75, "decoded_states": {"JUMP": 4, "NEUTRAL": 1}, "max_scores": {"LEFT": 0.140541, "RIGHT": 0.129032, "JUMP": 0.6}}
+    ],
+    "intensity": [
+      {"current_pa": 100.0, "spikes": 0, "motor_spikes": 0, "decoded_states": {"NEUTRAL": 5}, "max_scores": {"LEFT": 0.0, "RIGHT": 0.0, "JUMP": 0.0}},
+      {"current_pa": 300.0, "spikes": 1296, "motor_spikes": 492, "decoded_states": {"JUMP": 4, "NEUTRAL": 1}, "max_scores": {"LEFT": 0.135135, "RIGHT": 0.150538, "JUMP": 0.6}},
+      {"current_pa": 600.0, "spikes": 3493, "motor_spikes": 1645, "motor_active_neurons": 169, "decoded_states": {"JUMP": 5}, "max_scores": {"LEFT": 0.291892, "RIGHT": 0.333333, "JUMP": 0.9}}
+    ],
+    "weight_transform": [
+      {"transform": "power", "exponent": 0.75, "scale_pa": 5.0, "cap_pa": 300.0, "spikes": 1296, "motor_spikes": 492, "decoded_states": {"JUMP": 4, "NEUTRAL": 1}, "primary": true},
+      {"transform": "power", "exponent": 0.75, "scale_pa": 5.0, "cap_pa": null, "spikes": 1281, "motor_spikes": 481, "decoded_states": {"JUMP": 4, "NEUTRAL": 1}},
+      {"transform": "linear", "scale_pa": 0.5, "cap_pa": 300.0, "spikes": 723, "motor_spikes": 5, "decoded_states": {"NEUTRAL": 5}},
+      {"transform": "power", "exponent": 1.0, "scale_pa": 0.5, "cap_pa": 300.0, "spikes": 723, "motor_spikes": 5, "decoded_states": {"NEUTRAL": 5}},
+      {"transform": "log1p", "scale_pa": 10.0, "cap_pa": null, "spikes": 755, "motor_spikes": 0, "decoded_states": {"NEUTRAL": 5}},
+      {"transform": "power", "exponent": 0.5, "scale_pa": 5.0, "cap_pa": 300.0, "spikes": 740, "motor_spikes": 0, "decoded_states": {"NEUTRAL": 5}}
+    ],
+    "unknown_edge_policy": {
+      "zero_weight_retention_equivalent_to_exclusion": true,
+      "zero_weight_spike_hash": "397e888ffb7f001e0509bdcfbc9121c09bafb1e2d355b555b298b5c2fed10a95",
+      "predicted_fallback_on": {"spikes": 1271, "motor_spikes": 471, "decoded_states": {"JUMP": 4, "NEUTRAL": 1}}
+    },
+    "seed": {
+      "seeds_tested": [20261108, 1, 2],
+      "condition": "F_background_noise",
+      "spikes": [0, 0, 0],
+      "active_neurons": [0, 0, 0],
+      "decoded_states": [{"NEUTRAL": 5}, {"NEUTRAL": 5}, {"NEUTRAL": 5}],
+      "variability": "zero because there was no spontaneous activity; conditions A-E contain no stochastic term"
+    },
+    "decoder_window": [
+      {"window_ms": 25.0, "step_ms": 25.0, "decoded_states": {"JUMP": 7, "NEUTRAL": 3}, "max_scores": {"LEFT": 0.12973, "RIGHT": 0.123656, "JUMP": 0.55}},
+      {"window_ms": 50.0, "step_ms": 50.0, "decoded_states": {"JUMP": 4, "NEUTRAL": 1}, "max_scores": {"LEFT": 0.135135, "RIGHT": 0.150538, "JUMP": 0.6}},
+      {"window_ms": 100.0, "step_ms": 100.0, "decoded_states": {"JUMP": 2, "NEUTRAL": 1}, "max_scores": {"LEFT": 0.145946, "RIGHT": 0.166667, "JUMP": 0.6}}
+    ],
+    "sign": {
+      "primary": {"spikes": 1296, "non_stimulated_spikes": 556, "motor_spikes": 492, "decoded_states": {"JUMP": 4, "NEUTRAL": 1}},
+      "sign_flipped": {"spikes": 605, "non_stimulated_spikes": 0, "motor_spikes": 0, "decoded_states": {"NEUTRAL": 5}},
+      "interpretation": "The result depends entirely on the excitatory sign prior applied to the stimulated neurons; sign is a modelling prior, not a measured postsynaptic effect."
+    }
+  },
+  "determinism": {
+    "all_conditions_deterministic": true,
+    "two_runs_per_condition": true,
+    "spike_hashes": {
+      "A_no_stimulation": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "B_descending_candidate": "408dcc5589ea0bb41c7acf026c155356025f7a17623ce58fee1544de13ec3693",
+      "C_vnc_intrinsic_candidate": "397e888ffb7f001e0509bdcfbc9121c09bafb1e2d355b555b298b5c2fed10a95",
+      "D_random_matched": "3cd7933901eada9b29253440df63e7df940c1aee251289027ee15fa6848851c6",
+      "E_shuffled_assignment": "8a9d6d08716739072efac5e093893058be068238c7f5ae226a9940e743edc8f9",
+      "F_background_noise": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "decision_hashes": {
+      "A_no_stimulation": "65cbcc1a884c2bc0831d30976f68ed8895db5f334fb78da3d8c2fe8795d09a22",
+      "B_descending_candidate": "6d22ef073eb2de892bbf50b70265001a1dbd1eb5f9533ff7f259a64c3d119cf3",
+      "C_vnc_intrinsic_candidate": "4380fc38bda54359effdd93f9f4f89aee91640857f459b711dcca9b35a865799",
+      "D_random_matched": "b82c0f338c3cf3524f6569d8ab92b03e78ffe2d0627652c3eb8fd29930301f0b",
+      "E_shuffled_assignment": "0a3503c70d6ec3ce3286eabda54695758eb2d7407049a018663f0cc660b5d061",
+      "F_background_noise": "9257c61cd7ac0ce8680bd48fbfc378fc489d0f74f0b61d7f0420b6a6f7c92b80"
+    },
+    "population_activity_equal": true,
+    "scores_equal": true,
+    "activity_counts_equal": true,
+    "decoded_states_equal": true,
+    "configuration_hashes_identical": true,
+    "nondeterminism_explanation": "No unseeded random draws exist. Conditions A-E have no stochastic term; F uses np.random.default_rng(seed) and reproduced exactly under three seeds."
+  },
+  "tests": {
+    "focused": {
+      "command": "python -m pytest tests/test_banc_graph_loader.py tests/test_banc_graph_audit.py tests/test_banc_synapse_policy.py tests/test_banc_simulator.py tests/test_banc_simulation_adapter.py tests/test_motor_populations.py tests/test_motor_decoder.py tests/test_motor_decoder_experiment.py tests/test_phase_4e_pathways.py -q -p no:anyio",
+      "passed": 140,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_s": 14.26,
+      "warnings": 0
+    },
+    "full_suite": {
+      "command": "python -m pytest tests -q -p no:anyio",
+      "passed": 440,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_s": 29.63,
+      "warnings": 0,
+      "exit_code": 0
+    },
+    "propagation_checks": {
+      "passed": 20,
+      "failed": 0,
+      "runtime_s": 0.376
+    }
+  },
+  "integrity": {
+    "baseline": "experiments/phase_4g/baseline_integrity.json",
+    "baseline_sha256": "c82d85fda4c652ae8c4a316f4d93248e7e15fffbc9695ee3fa90de3981c6a13c",
+    "recheck": "experiments/results/phase_4g/integrity_recheck.json",
+    "recheck_sha256": "79c2b26ddd27e1ccc530e1fc99ad9989a4e49eeb218cb48a3703ef287a7c0b59",
+    "protected_files_total": 26,
+    "protected_files_matching": 26,
+    "protected_files_failed": [],
+    "banc_manifest_pass": true,
+    "raw_banc_input_hashes_pass": true,
+    "graph_artifact_hashes_pass": true,
+    "staged_files": [],
+    "model_weights_staged": false,
+    "raw_data_staged": false,
+    "readme_unchanged": true,
+    "readme_sha256": "8ab6a8cc2d0316653e48c0fbb1c72b22b9d27b26799dde6bc71d38cd15590563",
+    "verdict": "PASS"
+  },
+  "scientific_answers": {
+    "q1_propagation_observed": "Yes in condition C: 556 of 1296 spikes were non-stimulated and 82 motor neurons fired. Not universal; B, D, E and baselines did not recruit the decoder pools.",
+    "q2_motor_populations_activated": "Yes in C: 71 LEFT/RIGHT/JUMP motor neurons (27/32/12) plus 11 unassigned motor neurons.",
+    "q3_left_right_jump_differ": "Yes: whole-span active fractions 14.6% / 17.2% / 60.0%; per-window LEFT and RIGHT stay below 0.20 while JUMP exceeds it.",
+    "q4_decoder_distinguishes": "Yes in this sample: JUMP in 4 of 5 windows, NEUTRAL after the stimulus; every matched control is NEUTRAL. Not universal.",
+    "q5_non_motor_activity": "Yes: 82 of 164 active neurons are non-motor (64 stimulated plus 18 other), with 64 non-stimulated non-motor spikes.",
+    "q6_baseline_motor_activity": "No: conditions A and F produced zero spikes with and without 50 pA background and noise.",
+    "q7_seed_stability": "Conditions A-E are deterministic; the noise-only control F was silent under three seeds, so variability is zero because no spontaneous activity exists.",
+    "q8_threshold_sensitivity": "Decoded action stable across thresholds 1, 5 and 10; spike and motor counts change by up to about 20%.",
+    "q9_sign_sensitivity": "Yes, completely: flipping the 64 stimulated neurons to inhibitory leaves 605 directly driven spikes and zero downstream or motor spikes; all NEUTRAL.",
+    "q10_weight_sensitivity": "Yes, strongly: action survives primary and uncapped power transforms but disappears under linear, log1p and power-0.5 transforms.",
+    "q11_matched_random": "Yes in this sample: C produces 492 motor spikes, D produces 0, E produces 0. Single seeded draws, not distributions.",
+    "q12_shuffled_controls": "Yes in this sample: E, the shuffled descending assignment, is NEUTRAL; the signal is tied to the connectivity-ranked VNC intrinsic candidate."
+  },
+  "limitations": [
+    "Verified-only coverage: 44.5% of threshold-5 edges and 45.4% of synapses are signed; 62.1% of neurons are unannotated. The result describes a signed subnetwork, not the whole connectome.",
+    "Sign dependence: the entire positive result disappears when the stimulated neurons are treated as inhibitory. Sign is a declared prior, not a measured postsynaptic effect.",
+    "Transform dependence: the decoded action disappears under several plausible monotone weight transforms. Weights are declared calibrations, not conductances.",
+    "Candidate selection: groups are 64 structurally ranked neurons, not identified command neurons; the descending top-64 is heavily unannotated.",
+    "One positive condition: only the VNC intrinsic group recruited the decoder pools; robustness to group size and selection rule is untested.",
+    "Single control draws: D and E are one seeded draw each, so zero motor spikes is a matched negative control, not a distribution.",
+    "Pool imbalance: JUMP has 20 neurons versus 185 and 186 for LEFT and RIGHT; active-fraction scoring favours small pools though thresholds were fixed in advance.",
+    "Abstract decoder: LEFT, RIGHT and JUMP are annotation-derived labels, not biological motor commands; a JUMP output is not a jump.",
+    "Model scope: phenomenological LIF and exponential synapses; no plasticity, neuromodulation, sensory feedback, body mechanics or behaviour.",
+    "Runtime: per-condition simulation is 2.28-3.30 s; the recorded 5795.5 s experiment-suite wall time includes all conditions, repeats and sensitivity variants under background execution and is not a benchmark."
+  ],
+  "next_milestone": {
+    "phase": "4H",
+    "recommendation": "Treat the JUMP result as a hypothesis and test robustness before gameplay integration.",
+    "required_checks": [
+      "Multiple random control draws rather than one per control.",
+      "Alternative candidate group sizes and selection rules declared in advance.",
+      "A pre-registered family of weight transforms and a selection rule.",
+      "Round-trip check that BANC activity can be driven from sensory input rather than artificial current injection."
+    ],
+    "status_until_then": "Model-conditional observation, not motor control."
+  },
+  "artifacts": [
+    {"path": "reports/PHASE_4G_BANC_NEURAL_PROPAGATION.md", "sha256": "0267d2ebacd862c40c881b6bb4058166be2f90affc03ac81896cc91928812424", "bytes": 28892},
+    {"path": "reports/PHASE_4G1_INTERFACE_AUDIT.md", "sha256": "103497b2232e6f1b9d54cd5b67686a03a93e447024149100c3d09a81f4245acf", "bytes": 9535},
+    {"path": "reports/PHASE_4G1_INTERFACE_AUDIT.json", "sha256": "65614c99876f8d58e68f531b4052c76f0bbc70f669edfc14f8dc564e47740b2c", "bytes": 7139},
+    {"path": "reports/PHASE_4G2_TRANSMITTER_AND_WEIGHT_POLICY.md", "sha256": "5d123518f6266e24f7d138337a20c57031f26f229f05252886820c31a51064b4", "bytes": 13638},
+    {"path": "reports/PHASE_4G2_TRANSMITTER_AND_WEIGHT_POLICY.json", "sha256": "3fd3a7fd0b429ee7b230a38beece84486812bbda9babb0e0c60213628d16f08e", "bytes": 33878},
+    {"path": "reports/PHASE_4G4_PROPAGATION_VALIDATION.md", "sha256": "6657599f4fd9a644710ed1b626c2f801125fcad87636c913e2e8ba18dc3270e1", "bytes": 9939},
+    {"path": "reports/PHASE_4G4_PROPAGATION_VALIDATION.json", "sha256": "f1e431fa93b6cf29607a7733554b9522270ca207004f6bfa730070bf162c3c38", "bytes": 17254},
+    {"path": "reports/PHASE_4G5_MOTOR_DECODER_INTEGRATION.md", "sha256": "a4dd2fe64c633453348b2ca5fcbf9f0092b22e9b9e941ffe8d1a981c8dec7c57", "bytes": 15601},
+    {"path": "experiments/results/phase_4g/phase_4g_experiment.json", "sha256": "ab04de266eb40c0f4abe6f27979797257448b35c546f8d1d2c699a7ba8aea717", "bytes": 193917},
+    {"path": "experiments/results/phase_4g/phase_4g_sign_sensitivity.json", "sha256": "0418d0c3423ded1ff62f61537e233b04c1d3bad917d06a760ca3812a70f9e482", "bytes": 10131},
+    {"path": "experiments/results/phase_4g/integrity_recheck.json", "sha256": "79c2b26ddd27e1ccc530e1fc99ad9989a4e49eeb218cb48a3703ef287a7c0b59", "bytes": 4537},
+    {"path": "experiments/phase_4g/baseline_integrity.json", "sha256": "c82d85fda4c652ae8c4a316f4d93248e7e15fffbc9695ee3fa90de3981c6a13c", "bytes": 3845},
+    {"path": "configs/banc_synapse_policy.yaml", "sha256": "88f6449289492e79a919fafa56af93c5ac5e916cb50cc1658d7e14eed2dc399e", "bytes": 5198},
+    {"path": "brain/banc_simulation_adapter.py", "sha256": "bc2336aa6c77a074500c98336c80ed0b35711a122fcfa27febed5a55b8442ca9", "bytes": 5743},
+    {"path": "brain/banc_simulator.py", "sha256": "6514f262189b495393dfb8ff337c356054fd249826d4b80a34cde65a33e25296", "bytes": 25373},
+    {"path": "brain/banc_synapse_policy.py", "sha256": "49bdabde5a6e109cdee103b661851747e03ccb574ad02c61c9d47e120e069803", "bytes": 17267},
+    {"path": "experiments/phase_4g/run_banc_simulation.py", "sha256": "98fd70989ace789ed991ad558b561ed9fe47f8db8356fec0906e2b2920db104b", "bytes": 8924},
+    {"path": "experiments/phase_4g/run_propagation_validation.py", "sha256": "1cd740a9c584d5a8a1b084bb40f5ea2323939ba703eced2f1ec90e3b04e5000f", "bytes": 28954},
+    {"path": "experiments/phase_4g/run_phase_4g_experiments.py", "sha256": "5cdd013a96bd38c3d61ce573ffc87cf848e0294428c9e75f5f723c9f5cd102e1", "bytes": 34613},
+    {"path": "experiments/phase_4g/run_sign_sensitivity.py", "sha256": "a918cf49104c80a8e97ede351cb6553116536244174810066d22c80acda19987", "bytes": 5695},
+    {"path": "experiments/phase_4g/verify_integrity.py", "sha256": "9d607f06326403f185c5e7a91949212152e2a3c7a9036b1ec916158f15738a1d", "bytes": 4188}
+  ]
+}

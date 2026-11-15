@@ -1,0 +1,533 @@
+# P3-3C.5 lane encoding — implementation configuration.
+#
+# STATUS
+#   Implementation configuration only. It does not authorise execution.
+#   Execution requires a separate authorisation and the runner's explicit
+#   execution guard (--execute --campaign ... --acknowledge-execution-authorised).
+#
+# AUTHORITY
+#   Operative protocol: docs/P3_3C5_LANE_ENCODING_PREREGISTRATION.md, amended
+#   2026-11-14, SHA-256 d6cdeea1...bc1f. The amendment record withdraws gate
+#   E11 and clarifies E2/E10 and the causal crossfade. Every value below is
+#   copied from the operative protocol; nothing is tuned or invented.
+#
+# Units: times in milliseconds of simulated time, currents in pA, rates in Hz.
+# Lane letters: L = LEFT (code 0), C = CENTER (code 1), R = RIGHT (code 2).
+
+phase: P3-3C.5
+version: p3_3c5_lane_encoding_v1
+status: IMPLEMENTATION_ONLY_EXECUTION_NOT_AUTHORISED
+
+preregistration:
+  path: docs/P3_3C5_LANE_ENCODING_PREREGISTRATION.md
+  operative_sha256: d6cdeea1424c11c008061da82a70d5fe2fac2f0cfcbd76dda4f2b3eaeebcbc1f
+  superseded_sha256: 1daa2439932c93538b22746bcc4c2443b8fe650266a9c347477ca3317ba08857
+amendment_record:
+  path: docs/P3_3C5_PROTOCOL_AMENDMENT_RECORD.md
+  sha256: 44096b3d16c31efa782396431aa5dba56ab9e642b38ff3f176c2e064af1b3cdd
+
+protocol:
+  duration_ms: 600.5
+  frame_interval_ms: 50.0
+  n_frames: 12
+  dt_ms: 0.5
+  n_steps: 1201
+  transition_ms:
+    step: 0.0
+    crossfade: 50.0
+  active_features: [player_lane]
+  current_pa:
+    player_lane: 200.0
+  total_sensory_current_pa: 800.0
+  stimulated_set_size: 12
+  neurons_per_lane: 4
+  background_current_pa: 0.0
+  noise_std_pa: 0.0
+  phase2_stimulus: null
+  max_recorded_spikes: 5000000
+  # Operational only: with zero noise the simulator seed does not affect the
+  # result. The delivered seed is recorded so that every run states its value.
+  simulator_seed: 20261104
+  lane_order: [left, center, right]
+  lane_codes:
+    left: 0
+    center: 1
+    right: 2
+
+scheduler:
+  backend: sensory.input_scheduler.SensoryInputScheduler
+  onset_ms: 0.0
+  offset_ms: 600.5
+  offset_rule: duration_ms
+  temporal_activation_scheduler: not_used
+
+seeds:
+  main: [20261104, 20261105, 20261106]
+  pilot: 20261107
+  pilot_excluded_from_main: true
+
+# The 42 distinct runs per seed required by §6.2. Sequences are explicit
+# 12-frame lane lists at 0, 50, ..., 550 ms; the 550 ms state holds to 600.5 ms.
+conditions:
+  # Core C1-C4 (step mode, primary and dwell-replication conditions).
+  - id: C1
+    group: core
+    mode: step
+    sequence: [L, L, L, L, C, C, C, C, R, R, R, R]
+  - id: C2
+    group: core
+    mode: step
+    sequence: [R, R, R, R, C, C, C, C, L, L, L, L]
+  - id: C3
+    group: core
+    mode: step
+    sequence: [L, L, L, C, C, C, R, R, R, L, L, L]
+  - id: C4
+    group: core
+    mode: step
+    sequence: [L, L, L, R, R, R, C, C, C, L, L, L]
+
+  # Additional linear 200 ms permutations (C1 = L C R and C2 = R C L are core).
+  - id: R200_CLR
+    group: linear_200
+    mode: step
+    sequence: [C, C, C, C, L, L, L, L, R, R, R, R]
+  - id: R200_CRL
+    group: linear_200
+    mode: step
+    sequence: [C, C, C, C, R, R, R, R, L, L, L, L]
+  - id: R200_LRC
+    group: linear_200
+    mode: step
+    sequence: [L, L, L, L, R, R, R, R, C, C, C, C]
+  - id: R200_RLC
+    group: linear_200
+    mode: step
+    sequence: [R, R, R, R, L, L, L, L, C, C, C, C]
+
+  # Additional closed 150 ms sequences (C3 and C4 are core). These are the ten
+  # non-focal entries of the twelve-sequence list in §3.3.
+  - id: R150_CLLR
+    group: closed_150
+    mode: step
+    sequence: [C, C, C, L, L, L, L, L, L, R, R, R]
+  - id: R150_CLRL
+    group: closed_150
+    mode: step
+    sequence: [C, C, C, L, L, L, R, R, R, L, L, L]
+  - id: R150_CRLL
+    group: closed_150
+    mode: step
+    sequence: [C, C, C, R, R, R, L, L, L, L, L, L]
+  - id: R150_LCLR
+    group: closed_150
+    mode: step
+    sequence: [L, L, L, C, C, C, L, L, L, R, R, R]
+  - id: R150_RCLL
+    group: closed_150
+    mode: step
+    sequence: [R, R, R, C, C, C, L, L, L, L, L, L]
+  - id: R150_LLCR
+    group: closed_150
+    mode: step
+    sequence: [L, L, L, L, L, L, C, C, C, R, R, R]
+  - id: R150_RLCL
+    group: closed_150
+    mode: step
+    sequence: [R, R, R, L, L, L, C, C, C, L, L, L]
+  - id: R150_LLRC
+    group: closed_150
+    mode: step
+    sequence: [L, L, L, L, L, L, R, R, R, C, C, C]
+  - id: R150_LRLC
+    group: closed_150
+    mode: step
+    sequence: [L, L, L, R, R, R, L, L, L, C, C, C]
+  - id: R150_RLLC
+    group: closed_150
+    mode: step
+    sequence: [R, R, R, L, L, L, L, L, L, C, C, C]
+
+  # Constant-lane references. K_C is the CENTER-from-rest onset reference.
+  - id: K_L
+    group: constant
+    mode: step
+    sequence: [L, L, L, L, L, L, L, L, L, L, L, L]
+  - id: K_C
+    group: constant
+    mode: step
+    sequence: [C, C, C, C, C, C, C, C, C, C, C, C]
+  - id: K_R
+    group: constant
+    mode: step
+    sequence: [R, R, R, R, R, R, R, R, R, R, R, R]
+
+  # No-input validity control: no schedule at all, not a zero-active scheduler.
+  - id: N0
+    group: no_input
+    mode: none
+    sequence: null
+
+  # Single-transition controls, 200 ms pre / 400 ms post.
+  - id: T200_LC
+    group: single_transition_200
+    mode: step
+    sequence: [L, L, L, L, C, C, C, C, C, C, C, C]
+    route: L->C
+    new_lane: center
+    pre_frames: 4
+    post_frames: 8
+    transition_ms_absolute: 200.0
+  - id: T200_RC
+    group: single_transition_200
+    mode: step
+    sequence: [R, R, R, R, C, C, C, C, C, C, C, C]
+    route: R->C
+    new_lane: center
+    pre_frames: 4
+    post_frames: 8
+    transition_ms_absolute: 200.0
+  - id: T200_LR
+    group: single_transition_200
+    mode: step
+    sequence: [L, L, L, L, R, R, R, R, R, R, R, R]
+    route: L->R
+    new_lane: right
+    pre_frames: 4
+    post_frames: 8
+    transition_ms_absolute: 200.0
+  - id: T200_CR
+    group: single_transition_200
+    mode: step
+    sequence: [C, C, C, C, R, R, R, R, R, R, R, R]
+    route: C->R
+    new_lane: right
+    pre_frames: 4
+    post_frames: 8
+    transition_ms_absolute: 200.0
+  - id: T200_RL
+    group: single_transition_200
+    mode: step
+    sequence: [R, R, R, R, L, L, L, L, L, L, L, L]
+    route: R->L
+    new_lane: left
+    pre_frames: 4
+    post_frames: 8
+    transition_ms_absolute: 200.0
+  - id: T200_CL
+    group: single_transition_200
+    mode: step
+    sequence: [C, C, C, C, L, L, L, L, L, L, L, L]
+    route: C->L
+    new_lane: left
+    pre_frames: 4
+    post_frames: 8
+    transition_ms_absolute: 200.0
+
+  # Single-transition controls, 150 ms pre / 450 ms post.
+  - id: T150_LC
+    group: single_transition_150
+    mode: step
+    sequence: [L, L, L, C, C, C, C, C, C, C, C, C]
+    route: L->C
+    new_lane: center
+    pre_frames: 3
+    post_frames: 9
+    transition_ms_absolute: 150.0
+  - id: T150_RC
+    group: single_transition_150
+    mode: step
+    sequence: [R, R, R, C, C, C, C, C, C, C, C, C]
+    route: R->C
+    new_lane: center
+    pre_frames: 3
+    post_frames: 9
+    transition_ms_absolute: 150.0
+  - id: T150_LR
+    group: single_transition_150
+    mode: step
+    sequence: [L, L, L, R, R, R, R, R, R, R, R, R]
+    route: L->R
+    new_lane: right
+    pre_frames: 3
+    post_frames: 9
+    transition_ms_absolute: 150.0
+  - id: T150_CR
+    group: single_transition_150
+    mode: step
+    sequence: [C, C, C, R, R, R, R, R, R, R, R, R]
+    route: C->R
+    new_lane: right
+    pre_frames: 3
+    post_frames: 9
+    transition_ms_absolute: 150.0
+  - id: T150_RL
+    group: single_transition_150
+    mode: step
+    sequence: [R, R, R, L, L, L, L, L, L, L, L, L]
+    route: R->L
+    new_lane: left
+    pre_frames: 3
+    post_frames: 9
+    transition_ms_absolute: 150.0
+  - id: T150_CL
+    group: single_transition_150
+    mode: step
+    sequence: [C, C, C, L, L, L, L, L, L, L, L, L]
+    route: C->L
+    new_lane: left
+    pre_frames: 3
+    post_frames: 9
+    transition_ms_absolute: 150.0
+
+  # Crossfade robustness replay of C1-C4 and the four additional 3-transition
+  # closed sequences. The replay sequences are exactly the step-mode sequences.
+  - id: XF_C1
+    group: crossfade
+    mode: crossfade
+    replay_of: C1
+    sequence: [L, L, L, L, C, C, C, C, R, R, R, R]
+  - id: XF_C2
+    group: crossfade
+    mode: crossfade
+    replay_of: C2
+    sequence: [R, R, R, R, C, C, C, C, L, L, L, L]
+  - id: XF_C3
+    group: crossfade
+    mode: crossfade
+    replay_of: C3
+    sequence: [L, L, L, C, C, C, R, R, R, L, L, L]
+  - id: XF_C4
+    group: crossfade
+    mode: crossfade
+    replay_of: C4
+    sequence: [L, L, L, R, R, R, C, C, C, L, L, L]
+  - id: XF_CLRL
+    group: crossfade
+    mode: crossfade
+    replay_of: R150_CLRL
+    sequence: [C, C, C, L, L, L, R, R, R, L, L, L]
+  - id: XF_LCLR
+    group: crossfade
+    mode: crossfade
+    replay_of: R150_LCLR
+    sequence: [L, L, L, C, C, C, L, L, L, R, R, R]
+  - id: XF_RLCL
+    group: crossfade
+    mode: crossfade
+    replay_of: R150_RLCL
+    sequence: [R, R, R, L, L, L, C, C, C, L, L, L]
+  - id: XF_LRLC
+    group: crossfade
+    mode: crossfade
+    replay_of: R150_LRLC
+    sequence: [L, L, L, R, R, R, L, L, L, C, C, C]
+
+analysis:
+  bin_ms: 50.0
+  absolute_bins: 12
+  absolute_bins_coverage_ms: [0.0, 600.0]
+  tail_ms: [600.0, 600.5]
+  state_relative_bins: [0, 1, 2]
+  state_relative_bin_ms: 50.0
+  group_size: 4
+  # Frozen CENTER onsets used by M6'. Other conditions derive the onset from
+  # the first CENTER frame; these are asserted against the sequence.
+  center_onsets_ms:
+    C1: 200.0
+    C2: 200.0
+    C3: 150.0
+    C4: 300.0
+    K_C: 0.0
+  # C1/C2 additionally report the state-relative bin after the measured window.
+  extra_state_relative_bins:
+    C1: [3]
+    C2: [3]
+  final_left:
+    condition_ids: [C3, C4]
+    onset_ms: 450.0
+    bins: [1, 2]
+    lane: left
+  right_block:
+    lane: right
+    lanes_by_condition:
+      C3:
+        onset_ms: 300.0
+        bins: [0, 1, 2]
+      C4:
+        onset_ms: 150.0
+        bins: [0, 1, 2]
+  primary:
+    condition_a: C1
+    condition_b: C2
+    population_lane: center
+    metric: M6_prime
+  dwell_replication:
+    condition_a: C3
+    condition_b: C4
+    population_lane: center
+    metric: M6_prime
+  auxiliary:
+    condition_reference: K_C
+    comparisons:
+      - [C1, K_C]
+      - [C2, K_C]
+  route_adjustment:
+    minuend: T150_RC
+    subtrahend: T150_LC
+    population_lane: center
+    bins: [0, 1, 2]
+  route_contrasts:
+    - id: direct_minus_adjacent_to_R_200
+      minuend: T200_CR
+      subtrahend: T200_LR
+      population_lane: right
+      bins: [0, 1, 2]
+    - id: direct_minus_adjacent_to_L_200
+      minuend: T200_CL
+      subtrahend: T200_RL
+      population_lane: left
+      bins: [0, 1, 2]
+    - id: direct_minus_adjacent_to_R_150
+      minuend: T150_CR
+      subtrahend: T150_LR
+      population_lane: right
+      bins: [0, 1, 2]
+    - id: direct_minus_adjacent_to_L_150
+      minuend: T150_CL
+      subtrahend: T150_RL
+      population_lane: left
+      bins: [0, 1, 2]
+  stationarity:
+    first_window_ms: [150.0, 150.0]
+    last_window_ms: [150.0, 150.0]
+    reference: post_transition_new_lane
+
+references:
+  r200:
+    all_condition_ids: [C1, C2, R200_CLR, R200_CRL, R200_LRC, R200_RLC]
+    pred_left: [R200_RLC]
+    pred_right: [R200_LRC]
+    no_predecessor: [R200_CLR, R200_CRL]
+  r150:
+    all_condition_ids:
+      - C3
+      - C4
+      - R150_CLLR
+      - R150_CLRL
+      - R150_CRLL
+      - R150_LCLR
+      - R150_RCLL
+      - R150_LLCR
+      - R150_RLCL
+      - R150_LLRC
+      - R150_LRLC
+      - R150_RLLC
+    pred_left: [R150_LCLR, R150_LLCR, R150_RLCL, R150_LRLC, R150_RLLC]
+    pred_right: [R150_RCLL, R150_LLRC]
+    no_predecessor: [R150_CLLR, R150_CLRL, R150_CRLL]
+  causal_decomposition:
+    C1: T200_LC
+    C2: T200_RC
+    window_end_ms: 400.0
+  constants:
+    K_L: left
+    K_C: center
+    K_R: right
+
+measurement:
+  primary_metric: M6_prime
+  per_neuron_rate_denominator_ms: 50.0
+  aggregation: mean_over_state_relative_bins_then_center_neurons
+  baseline_subtraction: false
+  normalization: none
+  cross_population_combination: false
+  cosine_on_signed_or_sparse_rate_vectors: false
+  per_neuron_values_required: true
+  per_bin_values_required: true
+  units: Hz
+
+decision:
+  inference: descriptive_only
+  p_values: false
+  confidence_intervals: false
+  standard_errors: false
+  significance_claims: false
+  dprime_used: false
+  threshold_invented: false
+  replication_required_seeds: 2
+  replication_total_seeds: 3
+  replication_wording: "2 of 3 mapping realisations"
+  negative_result_reframing: forbidden
+  outcome_order:
+    - INVALID_EXECUTION
+    - INCONCLUSIVE_SILENT_C
+    - INCONCLUSIVE_OUTSIDE
+    - INCONCLUSIVE_REFERENCE_DEGENERATE
+    - HISTORY_EFFECT_PRESENT
+    - HISTORY_EFFECT_DWELL_DEPENDENT
+    - NEGATIVE_PRIMARY_DWELL_DEPENDENT
+    - TRANSITION_ONSET_ONLY
+    - ROUTE_ONLY
+    - ENDPOINT_EXPLAINED
+    - NO_HISTORY_EFFECT
+
+determinism:
+  set: [C1, C2, C3, C4, N0, K_C]
+  mode: step
+  repeats_per_parent: 1
+  fresh_subprocess: true
+  seeds: main
+  compares:
+    - input_schedule_signature
+    - spike_hash
+  n0_signature: empty
+
+run_matrix:
+  core: 4
+  linear_200: 4
+  closed_150: 10
+  constant: 3
+  no_input: 1
+  single_transition_200: 6
+  single_transition_150: 6
+  crossfade: 8
+  distinct_runs_per_seed: 42
+  main_seeds: 3
+  main_instances: 126
+  determinism_repeat_conditions: 6
+  determinism_repeats: 1
+  determinism_instances: 18
+  pilot_seeds: 1
+  pilot_instances: 42
+  planned_instances: 186
+
+gates:
+  applicable: [E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E12, E13, E14, E15, E16]
+  withdrawn: [E11]
+  replacement_for_e11: none
+  e11_withdrawal_date: "2026-11-14"
+  e2_scope: [stimulated_set_size, per_step_nonzero_evaluation]
+  e2_per_step_nonzero:
+    step: 4
+    crossfade: [4, 8]
+    no_input: 0
+  e3_tolerance_pa: 1.0e-9
+  e5_requires_input_schedule_none: true
+  e8_grid_ms: 50.0
+  e9_window_ms: [0.0, 150.0]
+  e10_lists_conditions: true
+  e15_half_open: true
+
+pilot_checks:
+  checks: [runtime, capacity, reference_degeneracy, metric_computability]
+  pilot_enters_main_result: false
+  threshold_tuning: false
+
+outputs:
+  result_json: experiments/phase_3c/results/p3_3c5_lane_encoding.json
+  sidecar_json: experiments/phase_3c/results/p3_3c5_lane_encoding.sidecar.json
+  report_md: experiments/phase_3c/results/p3_3c5_lane_encoding_report.md
+  spike_times_npz: experiments/phase_3c/results/p3_3c5_lane_encoding_spikes.npz
+  no_overwrite_existing: true
+  supersession_note_required: true

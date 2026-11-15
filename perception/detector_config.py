@@ -3,6 +3,9 @@
 The model is never downloaded automatically. ``model_path`` may be null, in
 which case constructing the detector raises an explicit error; the rest of the
 perception layer remains usable with scripted detections.
+
+Relative ``model_path`` values are resolved against the repository root, so the
+configuration means the same thing regardless of the current working directory.
 """
 
 from __future__ import annotations
@@ -14,9 +17,19 @@ from typing import Any, Mapping
 
 import yaml
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
 
 class DetectorConfigError(ValueError):
     """Raised when detector configuration or a model artifact is unusable."""
+
+
+def resolve_model_path(value: str | Path) -> Path:
+    """Resolve a model path against the repository root, not the CWD."""
+    path = Path(value)
+    if path.is_absolute():
+        return path
+    return (PROJECT_ROOT / path).resolve()
 
 
 def _fraction(value: Any, name: str) -> float:
@@ -70,7 +83,9 @@ class DetectorConfig:
 
     def __post_init__(self) -> None:
         if self.model_path is not None:
-            object.__setattr__(self, "model_path", Path(self.model_path))
+            object.__setattr__(
+                self, "model_path", resolve_model_path(self.model_path)
+            )
         if self.model_sha256 is not None:
             digest = str(self.model_sha256).lower()
             if len(digest) != 64 or any(

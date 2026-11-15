@@ -1,0 +1,677 @@
+{
+  "audit": {
+    "phase": "4C.5",
+    "title": "BANC graph readiness audit",
+    "generated_utc": "2026-11-07T19:23:59.347890+00:00",
+    "duration_seconds": 50.709,
+    "read_only": true,
+    "inputs": {
+      "metadata": {
+        "path": "datasets\\external\\banc_v88\\raw\\metadata\\banc_888_meta.feather",
+        "bytes": 57503026,
+        "sha256": "86ccf5df0c67419f8c5f43e93a7ed38d23a080e9f7fde26737290252f3780098"
+      },
+      "edgelist_v2": {
+        "path": "datasets\\external\\banc_v88\\raw\\connectivity\\banc_888_edgelist_simple_v2.feather",
+        "bytes": 305250378,
+        "sha256": "363fdef3813b72a5e45a42f17034cd5a544b654c838929cecf6e1ce5f60625cb"
+      },
+      "backbone_proofread": {
+        "path": "datasets\\external\\banc_v88\\raw\\annotations\\backbone_proofread.parquet",
+        "bytes": 10316976,
+        "sha256": "9b553956c11558b9d5c7c9d3e66cea8af08f358ee897ab6e0e8ce91faa5c9a2d"
+      },
+      "neurotransmitter": {
+        "path": "datasets\\external\\banc_v88\\raw\\annotations\\banc_888_neurotransmitter_prediction_v2.csv",
+        "bytes": 21107592,
+        "sha256": "bb0f4afa48a05d90008c6d801e053ff2667fb1ba68e29501c92f49514540da1d"
+      },
+      "reviewed_matches": {
+        "path": "datasets\\external\\banc_v88\\raw\\cross_dataset_matches\\banc_fafb_reviewed_matches.csv.gz",
+        "bytes": 6581434,
+        "sha256": "ecdbb43cd5d4586e92f0d92a6f1d2beeecd2f429dd5b3e5309c0edc2daa515c4"
+      }
+    },
+    "edgelist_schema": [
+      "pre",
+      "post",
+      "count",
+      "norm",
+      "post_count",
+      "pre_count"
+    ],
+    "metadata_rows": 188508,
+    "metadata_columns_total": 81,
+    "metadata_columns_used": 24
+  },
+  "verdict": "READY WITH LIMITATIONS",
+  "A_canonical_id_integrity": {
+    "candidate_columns": [
+      "banc_888_id",
+      "root_id",
+      "root_626",
+      "root_850",
+      "root_888",
+      "root_890"
+    ],
+    "banc_888_id": {
+      "rows": 188508,
+      "nulls": 0,
+      "empty_strings": 0,
+      "duplicates": 0,
+      "unique": 188508,
+      "example": "720575941633499884",
+      "dtype": "object"
+    },
+    "columns": {
+      "root_id": {
+        "nulls": 0,
+        "unique_non_null": 188340,
+        "duplicate_rows": 168,
+        "equals_banc_888_id": 172189,
+        "equals_banc_888_id_share": 0.9134307297303033,
+        "mismatch_rows": 16319
+      },
+      "root_626": {
+        "nulls": 0,
+        "unique_non_null": 185165,
+        "duplicate_rows": 3343,
+        "equals_banc_888_id": 115735,
+        "equals_banc_888_id_share": 0.6139527234918412,
+        "mismatch_rows": 72773
+      },
+      "root_850": {
+        "nulls": 0,
+        "unique_non_null": 188196,
+        "duplicate_rows": 312,
+        "equals_banc_888_id": 175090,
+        "equals_banc_888_id_share": 0.9288199970293038,
+        "mismatch_rows": 13418
+      },
+      "root_888": {
+        "nulls": 0,
+        "unique_non_null": 188508,
+        "duplicate_rows": 0,
+        "equals_banc_888_id": 188506,
+        "equals_banc_888_id_share": 0.9999893903707004,
+        "mismatch_rows": 2
+      },
+      "root_890": {
+        "nulls": 274,
+        "unique_non_null": 188197,
+        "duplicate_rows": 310,
+        "equals_banc_888_id": 180390,
+        "equals_banc_888_id_share": 0.9583284635081866,
+        "mismatch_rows": 7844
+      }
+    },
+    "root_888_mismatch_rows": 2,
+    "banc_888_id_vs_root_888_mismatches": [
+      {
+        "banc_888_id": "720575941229247158",
+        "root_888": "147423687484661800",
+        "root_890": "0",
+        "super_class": null,
+        "proofread": "FALSE"
+      },
+      {
+        "banc_888_id": "720575940434812394",
+        "root_888": "150730400321262552",
+        "root_890": "0",
+        "super_class": null,
+        "proofread": "FALSE"
+      }
+    ],
+    "canonical": "banc_888_id",
+    "canonical_rationale": "Unique, non-null primary key; equals root_888 on all but the two rows shown, and the edge list joins to it exactly. root_id is a pre-split identifier.",
+    "verdict": "PASS"
+  },
+  "B_self_edges": {
+    "rows": 156311,
+    "rows_share_of_edgelist": 0.013299862807487696,
+    "unique_nodes": 156311,
+    "rows_per_node": 1.0,
+    "summed_count": 1422866,
+    "summed_count_share": 0.039819275665338376,
+    "count_quantiles": {
+      "p50": 5.0,
+      "p90": 19.0,
+      "p99": 77.0,
+      "p100": 1103.0
+    },
+    "min_count": 1,
+    "max_count": 1103,
+    "by_super_class": {
+      "optic_lobe_intrinsic": 67599,
+      "central_brain_intrinsic": 30170,
+      "null": 17725,
+      "ventral_nerve_cord_intrinsic": 12767,
+      "sensory": 12169,
+      "visual_projection": 7122,
+      "glia": 3587,
+      "ascending": 1846,
+      "descending": 1311,
+      "motor": 791,
+      "sensory_ascending": 496,
+      "visual_centrifugal": 455,
+      "visceral_circulatory": 206,
+      "not_a_neuron": 28,
+      "trachea": 21,
+      "sensory_descending": 13,
+      "ascending_visceral_circulatory": 5
+    },
+    "interpretation": "Exactly one self-loop per affected segment, present in 90.7% of graph nodes and including non-neuronal segments. The BANC paper reports a 2.1% autapse rate in reviewed cubes, expects most autapses to be presynaptic misassignments, and recommends filtering them. The published v2 edgelist dictionary says autapses are excluded at build time, which this local build contradicts. This audit does not delete them."
+  },
+  "C_edge_integrity": {
+    "source_rows": 11752828,
+    "parsed_rows": 11752828,
+    "column_nulls": {
+      "pre": 0,
+      "post": 0,
+      "count": 0,
+      "norm": 0,
+      "post_count": 0,
+      "pre_count": 0
+    },
+    "column_null_total": 0,
+    "unique_nodes": 172433,
+    "unique_directed_pairs": 11752828,
+    "duplicate_pair_rows": 0,
+    "aggregation_needed": false,
+    "count_le_zero": 0,
+    "count_min": 1,
+    "count_max": 1103,
+    "norm_non_finite": 0,
+    "norm_le_zero": 0,
+    "nodes_missing_from_metadata": 0,
+    "endpoint_coverage": 1.0,
+    "verdict": "PASS",
+    "metadata_rows_without_edges": 16075,
+    "isolated_proofread_true": 641,
+    "isolated_annotated_neurons": 1313,
+    "graph_nodes_missing_super_class": 20573
+  },
+  "D_annotation_quality": {
+    "meta_rows": 188508,
+    "annotated_neurons": 146769,
+    "proofread_true": 150952,
+    "roughly_proofread_true": 5060,
+    "proofread_or_rough_true": 156012,
+    "super_class_missing": 28632,
+    "super_class_missing_proofread_true": 11344,
+    "super_class_missing_proofread_false": 17288,
+    "cell_type_missing": 69760,
+    "side_missing": 14901,
+    "populations": {
+      "motor": {
+        "rows": 805,
+        "proofread_true": 805,
+        "roughly_true": 0,
+        "cell_type_missing": 0,
+        "side_missing": 0,
+        "verified_neurotransmitter": 30,
+        "predicted_neurotransmitter_missing": 59,
+        "predicted_neurotransmitter_top": {
+          "gaba": 444,
+          "acetylcholine": 179,
+          "octopamine": 71,
+          "glutamate": 35,
+          "serotonin": 11,
+          "dopamine": 3
+        },
+        "verified_neurotransmitter_top": {
+          "glutamate": 30
+        },
+        "fafb_match_present": 105,
+        "fafb_nblast_present": 101,
+        "status_missing": 0,
+        "flag_fafb_match_manually_checked": 7,
+        "flag_review_match_an_dn": 73,
+        "flag_manc_match_manually_checked": 10
+      },
+      "descending": {
+        "rows": 1316,
+        "proofread_true": 1312,
+        "roughly_true": 4,
+        "cell_type_missing": 0,
+        "side_missing": 6,
+        "verified_neurotransmitter": 155,
+        "predicted_neurotransmitter_missing": 20,
+        "predicted_neurotransmitter_top": {
+          "acetylcholine": 910,
+          "gaba": 241,
+          "glutamate": 102,
+          "serotonin": 19,
+          "octopamine": 13,
+          "dopamine": 11
+        },
+        "verified_neurotransmitter_top": {
+          "acetylcholine": 113,
+          "glutamate": 16,
+          "acetylcholine,glutamate": 8,
+          "serotonin": 6,
+          "gaba": 4,
+          "glutamate,tyramine": 2
+        },
+        "fafb_match_present": 1304,
+        "fafb_nblast_present": 1277,
+        "status_missing": 1,
+        "flag_fafb_match_manually_checked": 1142,
+        "flag_review_match_an_dn": 1310,
+        "flag_manc_match_manually_checked": 1097
+      },
+      "ascending": {
+        "rows": 1849,
+        "proofread_true": 1844,
+        "roughly_true": 5,
+        "cell_type_missing": 0,
+        "side_missing": 16,
+        "verified_neurotransmitter": 1306,
+        "predicted_neurotransmitter_missing": 10,
+        "predicted_neurotransmitter_top": {
+          "acetylcholine": 1228,
+          "gaba": 433,
+          "glutamate": 129,
+          "dopamine": 24,
+          "serotonin": 14,
+          "octopamine": 7
+        },
+        "verified_neurotransmitter_top": {
+          "acetylcholine": 889,
+          "gaba": 345,
+          "glutamate": 68,
+          "histamine": 4
+        },
+        "fafb_match_present": 1713,
+        "fafb_nblast_present": 1796,
+        "status_missing": 1,
+        "flag_fafb_match_manually_checked": 1344,
+        "flag_review_match_an_dn": 1832,
+        "flag_manc_match_manually_checked": 1469
+      },
+      "ventral_nerve_cord_intrinsic": {
+        "rows": 12866,
+        "proofread_true": 12821,
+        "roughly_true": 14,
+        "cell_type_missing": 27,
+        "side_missing": 82,
+        "verified_neurotransmitter": 9974,
+        "predicted_neurotransmitter_missing": 42,
+        "predicted_neurotransmitter_top": {
+          "gaba": 5368,
+          "acetylcholine": 5261,
+          "glutamate": 2120,
+          "octopamine": 30,
+          "dopamine": 24,
+          "histamine": 11
+        },
+        "verified_neurotransmitter_top": {
+          "acetylcholine": 4534,
+          "gaba": 4344,
+          "glutamate": 1096
+        },
+        "fafb_match_present": 4,
+        "fafb_nblast_present": 8,
+        "status_missing": 9553,
+        "flag_fafb_match_manually_checked": 1,
+        "flag_review_match_an_dn": 132,
+        "flag_manc_match_manually_checked": 42
+      }
+    },
+    "motor_fafb_matches_by_body_part": {
+      "abdomen": 0,
+      "antenna": 2,
+      "antenna, scape": 8,
+      "crop": 7,
+      "eye": 4,
+      "front_leg": 0,
+      "haltere": 0,
+      "hind_leg": 0,
+      "middle_leg": 0,
+      "neck": 26,
+      "pharynx": 21,
+      "proboscis": 35,
+      "salivary_gland": 2,
+      "spiracle": 0,
+      "unknown": 0,
+      "uterus": 0,
+      "wing": 0
+    },
+    "backbone_proofread": {
+      "rows": 211947,
+      "unique_pt_root_id": 150507,
+      "unique_ids_present_in_meta": 150506,
+      "valid_true_rows": 211947,
+      "note": "Append-only CAVE history; pt_root_id is the join key. valid_id is not the neuron root and only 79,080 of its values are metadata keys."
+    },
+    "reviewed_matches": {
+      "rows": 64372,
+      "unique_pt_root_id": 64372,
+      "unique_match_id": 33147,
+      "valid_t": 62088,
+      "valid_f": 2284,
+      "note": "Covers 64,372 BANC neurons, not the full metadata table."
+    },
+    "interpretation": "Motor and descending annotations are complete and almost entirely proofread. Missing super_class is common (28,632 rows) and includes 11,344 fully proofread segments, so missing annotation must be treated as unknown, not as absence.",
+    "verdict": "PASS"
+  },
+  "E_weight_semantics": {
+    "summed_count": 35733096,
+    "sum_of_pre_count": 35733096,
+    "sum_of_post_count": 35733096,
+    "pre_count_equals_outgoing_sum_share": 1.0,
+    "post_count_equals_incoming_sum_share": 1.0,
+    "pre_count_constant_per_source": true,
+    "post_count_constant_per_target": true,
+    "norm_vs_count_over_post_count": {
+      "max_relative_error": 0.010615999999999973,
+      "share_within_0_1_percent": 0.9796134172983728,
+      "note": "Documented as count/post_count rounded to 4 significant figures."
+    },
+    "count_quantiles": {
+      "p50": 1.0,
+      "p90": 6.0,
+      "p99": 27.0,
+      "p100": 1103.0
+    },
+    "weight_one_share": 0.5493615664246937,
+    "weight_ge_5_share_of_pairs": 0.13736940589958435,
+    "weight_ge_5_share_of_synapses": 0.5539646214814412,
+    "norm_quantiles": {
+      "p50": 0.005548,
+      "p90": 0.030303,
+      "p99": 0.142857,
+      "p100": 1.0
+    },
+    "meaning": {
+      "count": "Synapses from pre to post after the v2 postsynapse size >= 5 filter.",
+      "norm": "count / post_count; a target-normalized fraction, not a physiological weight.",
+      "pre_count": "Total outgoing synapses of pre across all identified targets in this table.",
+      "post_count": "Total incoming synapses of post across all identified sources in this table."
+    },
+    "caveat": "The v2 edgelist contains only links whose two partners were identified (about 18% of all BANC synaptic links). pre_count/post_count and norm are therefore totals over identified partners, not over the whole connectome, and they include self-loops.",
+    "verdict": "PASS"
+  },
+  "F_locomotor_readiness": {
+    "motor_neurons": 805,
+    "descending_neurons": 1316,
+    "direct_dn_to_mn": {
+      "edges": 17745,
+      "synapses": 154914,
+      "descending_neurons": 1095,
+      "motor_neurons": 772,
+      "motor_coverage": 0.9590062111801242,
+      "sides": {
+        "left_to_left": 3830,
+        "left_to_right": 4826,
+        "right_to_left": 4785,
+        "right_to_right": 4275,
+        "same_side": 8105,
+        "cross_side": 9611
+      }
+    },
+    "dn_to_vnc_intrinsic_edges": 162871,
+    "vnc_intrinsic_to_mn_edges": 132085,
+    "two_hop_dn_vnc_mn": {
+      "paths": 2370840,
+      "unique_dn_mn_pairs": 384677,
+      "descending_neurons": 1298,
+      "motor_neurons": 699
+    },
+    "motor_neurons_by_body_part": {
+      "abdomen": {
+        "motor_neurons": 168,
+        "with_direct_dn_input": 160,
+        "left": 73,
+        "right": 95,
+        "dn_edges": 1250,
+        "dn_synapses": 5314
+      },
+      "antenna": {
+        "motor_neurons": 2,
+        "with_direct_dn_input": 2,
+        "left": 1,
+        "right": 1,
+        "dn_edges": 116,
+        "dn_synapses": 398
+      },
+      "antenna, scape": {
+        "motor_neurons": 8,
+        "with_direct_dn_input": 8,
+        "left": 4,
+        "right": 4,
+        "dn_edges": 445,
+        "dn_synapses": 2025
+      },
+      "crop": {
+        "motor_neurons": 7,
+        "with_direct_dn_input": 0,
+        "left": 4,
+        "right": 3,
+        "dn_edges": 0,
+        "dn_synapses": 0
+      },
+      "eye": {
+        "motor_neurons": 4,
+        "with_direct_dn_input": 4,
+        "left": 2,
+        "right": 2,
+        "dn_edges": 93,
+        "dn_synapses": 506
+      },
+      "front_leg": {
+        "motor_neurons": 139,
+        "with_direct_dn_input": 139,
+        "left": 69,
+        "right": 70,
+        "dn_edges": 3615,
+        "dn_synapses": 30988
+      },
+      "haltere": {
+        "motor_neurons": 27,
+        "with_direct_dn_input": 25,
+        "left": 14,
+        "right": 13,
+        "dn_edges": 507,
+        "dn_synapses": 3198
+      },
+      "hind_leg": {
+        "motor_neurons": 126,
+        "with_direct_dn_input": 124,
+        "left": 63,
+        "right": 63,
+        "dn_edges": 2046,
+        "dn_synapses": 23445
+      },
+      "middle_leg": {
+        "motor_neurons": 126,
+        "with_direct_dn_input": 124,
+        "left": 63,
+        "right": 63,
+        "dn_edges": 2204,
+        "dn_synapses": 21930
+      },
+      "neck": {
+        "motor_neurons": 49,
+        "with_direct_dn_input": 49,
+        "left": 27,
+        "right": 22,
+        "dn_edges": 3457,
+        "dn_synapses": 42579
+      },
+      "pharynx": {
+        "motor_neurons": 22,
+        "with_direct_dn_input": 10,
+        "left": 9,
+        "right": 13,
+        "dn_edges": 24,
+        "dn_synapses": 49
+      },
+      "proboscis": {
+        "motor_neurons": 35,
+        "with_direct_dn_input": 35,
+        "left": 17,
+        "right": 18,
+        "dn_edges": 902,
+        "dn_synapses": 5131
+      },
+      "salivary_gland": {
+        "motor_neurons": 2,
+        "with_direct_dn_input": 2,
+        "left": 1,
+        "right": 1,
+        "dn_edges": 35,
+        "dn_synapses": 94
+      },
+      "spiracle": {
+        "motor_neurons": 18,
+        "with_direct_dn_input": 18,
+        "left": 9,
+        "right": 9,
+        "dn_edges": 278,
+        "dn_synapses": 1954
+      },
+      "unknown": {
+        "motor_neurons": 2,
+        "with_direct_dn_input": 2,
+        "left": 1,
+        "right": 1,
+        "dn_edges": 41,
+        "dn_synapses": 117
+      },
+      "uterus": {
+        "motor_neurons": 6,
+        "with_direct_dn_input": 6,
+        "left": 3,
+        "right": 3,
+        "dn_edges": 28,
+        "dn_synapses": 60
+      },
+      "wing": {
+        "motor_neurons": 64,
+        "with_direct_dn_input": 64,
+        "left": 32,
+        "right": 32,
+        "dn_edges": 2704,
+        "dn_synapses": 17126
+      }
+    },
+    "dn_super_cluster_to_leg_mn_edges": {
+      "postural control": 3649,
+      "walking": 1161,
+      "probing": 1018,
+      "grooming": 538,
+      "walking steering": 473,
+      "head orienting": 329,
+      "flight steering 1": 261,
+      "reproduction": 159,
+      "tactile": 83,
+      "threat response": 68,
+      "taste-touch": 53,
+      "feeding": 27,
+      "flight steering 2": 25,
+      "flight power": 19,
+      "visceral control": 2
+    },
+    "jump_tergotrochanter": {
+      "motor_neurons": 20,
+      "motor_neurons_by_side": {
+        "right": 10,
+        "left": 10
+      },
+      "dn_edges": 350,
+      "descending_neurons": 113,
+      "synapses": 3043
+    },
+    "interpretation": "The graph supports separate motor-pool experiments because left and right pools are both present and balanced. It does not support assigning a command to a descending neuron: cross-side DN-to-MN edges outnumber same-side edges, and no pathway is physiologically validated.",
+    "verdict": "PASS"
+  },
+  "limitations": [
+    "The local metadata object is the current bucket build (188,508 rows, 81 columns), not the documented 188,162-row, 79-column v888 object; the data dictionary is stale.",
+    "The metadata dictionary states root_id = banc_888_id, but root_id differs on 8.7% of rows; banc_888_id is the only safe join key.",
+    "The v2 edgelist dictionary says autapses are excluded and lists 11,510,975 rows, but the local/current bucket object has 11,752,828 rows and 156,311 self-loops.",
+    "The edgelist contains only links with both partners identified (about 18% of BANC synaptic links), so degree and weight totals are not whole-connectome totals.",
+    "Neurotransmitter predictions are unreliable for effector neurons because their output synapses lie mostly outside the imaged volume.",
+    "Self-loops are widespread and are expected to be mostly presynaptic misassignments; the paper recommends filtering them.",
+    "Structural connectivity does not establish a physiological motor command.",
+    "No left/right or jump pathway was functionally validated in this audit."
+  ],
+  "G_graph_construction_policy": {
+    "canonical_node_id": {
+      "field": "banc_888_id",
+      "type": "int64 in memory (18-digit decimal string on disk)",
+      "joins": "edgelist pre/post -> metadata banc_888_id",
+      "do_not_join_on": [
+        "root_id",
+        "root_626",
+        "root_850",
+        "root_890"
+      ],
+      "reason": "banc_888_id is unique and non-null and covers every edge endpoint. root_id is a pre-split identifier (168 duplicate rows, 8.7% mismatch), and root_890 has 274 nulls and 310 duplicates."
+    },
+    "edge_aggregation": {
+      "policy": "none",
+      "reason": "The v2 edgelist already holds one row per directed pair (11752828 unique pairs, 0 duplicates).",
+      "if_source_changes": "group by (pre, post) and sum count; never sum norm"
+    },
+    "self_edge_policy": {
+      "policy": "exclude_from_simulation_graph_keep_in_raw_file",
+      "rows": 156311,
+      "synapse_share": 0.039819275665338376,
+      "reason": "One self-loop per affected node, widespread across non-neuronal segments, and the BANC paper recommends filtering autapses because most are expected presynaptic misassignments.",
+      "denominator_effect": "pre_count/post_count include the self-loop; after exclusion, downstream totals must be recomputed if absolute fractions are required."
+    },
+    "node_inclusion": {
+      "policy": "all edge endpoints, annotated or not",
+      "nodes": 172433,
+      "unannotated_nodes": 20573,
+      "isolated_metadata_rows": 16075,
+      "reason": "Dropping unannotated nodes would silently bias degree and pathway counts. Isolated metadata rows are retained in a separate annotation table, not in the graph."
+    },
+    "edge_weight": {
+      "policy": "integer count, threshold count >= 5 for the FAFB-comparable graph",
+      "initial_threshold": 5,
+      "sensitivity_thresholds": [
+        1,
+        5,
+        10
+      ],
+      "retained_pair_share_at_5": 0.13736940589958435,
+      "retained_synapse_share_at_5": 0.5539646214814412,
+      "do_not_use": "norm as a physiological weight",
+      "reason": "count is the measured synapse number. norm is a target-normalized fraction whose denominator depends on identified partners and includes self-loops. A count >= 5 threshold matches the inclusion logic of the FAFB artifact."
+    },
+    "annotation_handling": {
+      "policy": "left join, missing stays unknown",
+      "quality_fields": [
+        "proofread",
+        "roughly_proofread",
+        "status"
+      ],
+      "sign_prior": "verified neurotransmitter only",
+      "sign_prior_counts": {
+        "motor": 30,
+        "descending": 155
+      },
+      "do_not_use": "neurotransmitter_predicted for effector sign",
+      "reason": "BANC evaluates transmitter prediction on non-effector neurons because effector output synapses lie mostly outside the volume; the prediction is therefore dominated by input-site chemistry (55% GABA in motor neurons)."
+    },
+    "isolated_nodes": {
+      "policy": "exclude from graph, retain annotations separately",
+      "rows": 16075,
+      "proofread_rows": 641
+    },
+    "reproducibility": {
+      "required": [
+        "record SHA-256 of every input file",
+        "record row and column counts and schema",
+        "sort edges by (pre, post) before CSR construction",
+        "record threshold and self-edge policy in the output metadata",
+        "run the audit twice and require identical JSON payloads",
+        "never write to datasets/external"
+      ],
+      "dataset_version": "BANC materialization v888 (edgelist v2, postsynapse size >= 5)"
+    }
+  },
+  "failed_blocks": []
+}

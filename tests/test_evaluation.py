@@ -259,3 +259,21 @@ def test_latency_summary_and_memory() -> None:
     assert memory["platform_note"]
     if memory["rss_mb"] is not None:
         assert memory["rss_mb"] > 0
+
+
+def test_support_block_reports_zero_support_classes() -> None:
+    from experiments.phase_3b.evaluate_detector import _support_block
+
+    block = _support_block(
+        {
+            "images": 2,
+            "boxes": 25,
+            "images_without_boxes": 1,
+            "per_class_boxes": {"train": 25, "boots-powerup": 0},
+            "per_class_images": {"train": 25, "boots-powerup": 0},
+            "missing_classes": ["boots-powerup"],
+        }
+    )
+    assert block["unevaluable_classes"] == ["boots-powerup"]
+    assert block["low_support_classes"] == []
+    assert block["missing_classes"] == ["boots-powerup"]

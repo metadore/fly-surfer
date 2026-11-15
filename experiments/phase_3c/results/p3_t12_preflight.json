@@ -1,0 +1,275 @@
+{
+  "phase": "P3-T12-preflight",
+  "version": "p3-t12-preflight-v1",
+  "mode": "preflight",
+  "verdict": "READY",
+  "generated_at_utc": "2026-11-13T18:12:03+00:00",
+  "smoke_artifact": {
+    "path": "experiments\\phase_3c\\results\\p3_t12_smoke.json",
+    "sha256": "ce0dd7c5187dcdcb6b557082868219859a7d2e9e94f09adf7c01515b4857f92e",
+    "size_bytes": 521254,
+    "runtime_s": 120.346,
+    "verdict": "SMOKE ONLY (infrastructure validation)"
+  },
+  "protocol": {
+    "path": "docs\\P3_T12_NETWORK_CHARACTERIZATION_PROTOCOL.md",
+    "sha256": "49c09424b15db3b09cfdef5b28afcf0cbcaa6dbc72a9f657de6b31a82201b173"
+  },
+  "config": {
+    "path": "configs\\p3_t12_characterization.yaml",
+    "sha256": "18018b686e38226b5f2bb126868e7ed67f66ad1d9be7bfa95a6f5ac91b52ea03",
+    "conditions": [
+      "C0",
+      "C1",
+      "C2",
+      "C3",
+      "no-player_lane",
+      "no-train_lane",
+      "C3-washout"
+    ],
+    "repeats": 2
+  },
+  "smoke_ms": 600.0,
+  "instrumentation_overhead": {
+    "definition": "instrumented step loop divided by unmodified run_once step loop, same 600 ms C3 schedule",
+    "uninstrumented": {
+      "condition": "C3",
+      "duration_ms": 600.0,
+      "step_loop_s": 8.1543,
+      "spikes_total": 1791252,
+      "spike_counts_sha256": "d47633f843f0d049c6ec3e6c7d2da37c1399c38138a9a2db9810be95b7b19421",
+      "scheduler_signature_sha256": "6265c03f1141afa30456d2c6b6af78a2db33491e1e375810e2d5dde0d8e4cbac"
+    },
+    "instrumented_step_loop_s": 9.3513,
+    "overhead_fraction": 0.1468,
+    "spike_counts_identical": true
+  },
+  "capacity": {
+    "recorder_capacity": 30000000,
+    "capacity_bytes": 240000000,
+    "archived_full_c3": {
+      "duration_ms": 3300.5000000000005,
+      "spikes_total": 15654631,
+      "spike_counts_sha256": "09611c7dc5c37d435f7713f5b0ce42b9ab90bdf2b12efeb6c91125b0e0978305",
+      "fraction_of_capacity": 0.521821
+    },
+    "note": "Smoke counts are not extrapolated. The archived full-duration C3 count is the only measured full-window value; overflow in the washout is an INVALID result, not a reason to raise the recorded-spike budget."
+  },
+  "conditions": {
+    "C0": {
+      "duration_ms": 600.0,
+      "spikes_total": 0,
+      "fraction_of_capacity": 0.0,
+      "wall_runtime_s": 3.2039,
+      "steps_per_second_wall": 374.54,
+      "rss_after_mb": 198.191,
+      "repeats_identical": true,
+      "spike_capacity_exceeded": false
+    },
+    "C1": {
+      "duration_ms": 600.0,
+      "spikes_total": 124,
+      "fraction_of_capacity": 4e-06,
+      "wall_runtime_s": 3.4289,
+      "steps_per_second_wall": 349.96,
+      "rss_after_mb": 199.906,
+      "repeats_identical": true,
+      "spike_capacity_exceeded": false
+    },
+    "C2": {
+      "duration_ms": 600.0,
+      "spikes_total": 445,
+      "fraction_of_capacity": 1.5e-05,
+      "wall_runtime_s": 3.4653,
+      "steps_per_second_wall": 346.29,
+      "rss_after_mb": 218.227,
+      "repeats_identical": true,
+      "spike_capacity_exceeded": false
+    },
+    "C3": {
+      "duration_ms": 600.0,
+      "spikes_total": 1791252,
+      "fraction_of_capacity": 0.059708,
+      "wall_runtime_s": 9.3513,
+      "steps_per_second_wall": 128.32,
+      "rss_after_mb": 238.973,
+      "repeats_identical": true,
+      "spike_capacity_exceeded": false
+    },
+    "no-player_lane": {
+      "duration_ms": 600.0,
+      "spikes_total": 497,
+      "fraction_of_capacity": 1.7e-05,
+      "wall_runtime_s": 3.6358,
+      "steps_per_second_wall": 330.05,
+      "rss_after_mb": 221.566,
+      "repeats_identical": true,
+      "spike_capacity_exceeded": false
+    },
+    "no-train_lane": {
+      "duration_ms": 600.0,
+      "spikes_total": 481,
+      "fraction_of_capacity": 1.6e-05,
+      "wall_runtime_s": 3.5037,
+      "steps_per_second_wall": 342.49,
+      "rss_after_mb": 222.727,
+      "repeats_identical": true,
+      "spike_capacity_exceeded": false
+    },
+    "C3-washout": {
+      "duration_ms": 1350.0,
+      "spikes_total": 5642635,
+      "fraction_of_capacity": 0.188088,
+      "wall_runtime_s": 25.68,
+      "steps_per_second_wall": 105.14,
+      "rss_after_mb": 272.785,
+      "repeats_identical": true,
+      "spike_capacity_exceeded": false
+    }
+  },
+  "gates": {
+    "smoke_invalidations": {
+      "valid": true,
+      "triggered": [],
+      "rules_evaluated": [
+        "loop_equivalence_failed",
+        "spike_capacity_exceeded",
+        "non_finite_state",
+        "membrane_bounds",
+        "repeated_runs_differ",
+        "current_outside_active_set",
+        "condition_definition_violation",
+        "protected_hash_changed",
+        "initial_conditions_differ",
+        "prefix_mismatch",
+        "scheduler_signature_mismatch"
+      ],
+      "equivalence_enforced": false,
+      "prefix_enforced": true
+    },
+    "prefix_gate": {
+      "passed": true,
+      "cutoff_ms": 600.0,
+      "n_neurons": 139255,
+      "prefix_spikes": 1791252,
+      "c3_spikes": 1791252,
+      "prefix_counts_sha256": "d47633f843f0d049c6ec3e6c7d2da37c1399c38138a9a2db9810be95b7b19421",
+      "c3_counts_sha256": "d47633f843f0d049c6ec3e6c7d2da37c1399c38138a9a2db9810be95b7b19421",
+      "identical": true
+    },
+    "equivalence": {
+      "full_duration_c3": null,
+      "smoke": {
+        "evaluated": false,
+        "note": "not applicable in smoke mode; the archived C3 comparison is only valid at the full 3,300.5 ms duration"
+      }
+    },
+    "subprocess_reproducibility": {
+      "conditions": {
+        "C3": {
+          "ran": true,
+          "identical": true,
+          "differences": [],
+          "hashes": {
+            "spike_counts_sha256": "d47633f843f0d049c6ec3e6c7d2da37c1399c38138a9a2db9810be95b7b19421",
+            "activity_summary_sha256": "47d88b11095fa79c18a8f429cf5a9c240535770ee458e56da2f84ce563f1a8dd",
+            "current_trace_sha256": "e9d7012390fd1d924ce86a9485a4b734b7d2da9806a0566086c6ff062350785d",
+            "scheduler_signature_sha256": "6265c03f1141afa30456d2c6b6af78a2db33491e1e375810e2d5dde0d8e4cbac",
+            "cache_frames_digest": "2a85747165f9833f73a0c5f85af5a7966b23ecc007f530a7dbc8ba8303229166",
+            "spikes_total": 1791252,
+            "first_spike_ms": 28.0,
+            "last_spike_ms": 600.0
+          }
+        },
+        "C3-washout": {
+          "ran": true,
+          "identical": true,
+          "differences": [],
+          "hashes": {
+            "spike_counts_sha256": "b9df1c8cea8319adfe8fdd11cd62df1f71d5389e94af1ad41a4a00c62a0701e7",
+            "activity_summary_sha256": "abb26fe7ee4ca2e9672aae1c1ba8448214cf2825fdafffd3e01f5798eefd1904",
+            "current_trace_sha256": "cfbb5d0539711c46908b9e122908b0aadb276e4551abb3f041e6cc474bed4fdc",
+            "scheduler_signature_sha256": "6265c03f1141afa30456d2c6b6af78a2db33491e1e375810e2d5dde0d8e4cbac",
+            "cache_frames_digest": "2a85747165f9833f73a0c5f85af5a7966b23ecc007f530a7dbc8ba8303229166",
+            "spikes_total": 5642635,
+            "first_spike_ms": 28.0,
+            "last_spike_ms": 1350.0
+          }
+        }
+      },
+      "identical": true
+    },
+    "condition_checks": {
+      "C0": {
+        "passed": {
+          "no_scheduler": true,
+          "no_current_injected": true,
+          "repeats_identical": true
+        },
+        "not_evaluated": []
+      },
+      "C1": {
+        "passed": {
+          "scheduler_present": true,
+          "no_current_outside_active": true,
+          "current_injected": true,
+          "repeats_identical": true
+        },
+        "not_evaluated": []
+      },
+      "C2": {
+        "passed": {
+          "scheduler_present": true,
+          "no_current_outside_active": true,
+          "current_injected": true,
+          "repeats_identical": true
+        },
+        "not_evaluated": []
+      },
+      "C3": {
+        "passed": {
+          "scheduler_present": true,
+          "no_current_outside_active": true,
+          "current_injected": true,
+          "reference_equals_active": true,
+          "repeats_identical": true
+        },
+        "not_evaluated": []
+      },
+      "no-player_lane": {
+        "passed": {
+          "scheduler_present": true,
+          "no_current_outside_active": true,
+          "current_injected": true,
+          "thirteen_features_active": true,
+          "removed_feature_zero_current": true,
+          "repeats_identical": true
+        },
+        "not_evaluated": []
+      },
+      "no-train_lane": {
+        "passed": {
+          "scheduler_present": true,
+          "no_current_outside_active": true,
+          "current_injected": true,
+          "thirteen_features_active": true,
+          "removed_feature_zero_current": true,
+          "repeats_identical": true
+        },
+        "not_evaluated": []
+      },
+      "C3-washout": {
+        "passed": {
+          "scheduler_present": true,
+          "no_current_outside_active": true,
+          "current_injected": true,
+          "reference_equals_active": true,
+          "repeats_identical": true
+        },
+        "not_evaluated": []
+      }
+    }
+  },
+  "failures": [],
+  "ready_for_full_run": true
+}

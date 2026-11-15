@@ -1,0 +1,155 @@
+# FLY-SURFER Phase 6B / 6C information-theory analysis configuration.
+#
+# SCIENTIFIC STATUS
+#   data         archived Phase 3B/4F/4H/5E/5F artifacts only
+#   estimators   plug-in discrete entropy and mutual information, bits
+#   discretisation  declared here BEFORE any endpoint was computed
+#
+# Every bin boundary, cap and threshold in this file is fixed in advance.
+# Changing one after inspecting a mutual-information result would invalidate
+# the analysis, so the config hash is recorded in both phase reports.
+
+log_base: 2
+
+seed:
+  root: 20261110
+  permutations: 20261110
+  bootstrap: 20261110
+
+# Guard rails applied to every endpoint.
+support:
+  # Minimum observations for a reported MI estimate.
+  min_n: 100
+  # A table with fewer than this many observations per cell is exploratory.
+  min_per_cell: 5
+  # Marginal entropy floor below which normalised MI is withheld (bits).
+  min_entropy_bits: 0.05
+  # Minimum observations inside a conditioning stratum.
+  min_stratum_n: 50
+
+permutation:
+  n_permutations: 5000
+  # Cluster-preserving null by default; "free" only when no cluster exists.
+  default_scheme: block
+  alpha: 0.05
+
+bootstrap:
+  n_resamples: 2000
+  alpha: 0.05
+
+discretization:
+  # E-02: distinct event classes observed in one frame, capped at 3.
+  frame_event_count_cap: 3
+  # Temporal block length used as the permutation cluster for frame-level codes.
+  frame_block_frames: 10
+  # E-04: equal-width bins over the closed unit interval of decoder scores.
+  decoder_score_bins: 3
+  decoder_score_range: [0.0, 1.0]
+  # C-01: pool activity is binarised as "any active neuron" versus none.
+  pool_activity_rule: any_active
+
+endpoints_6b:
+  E01:
+    label: event_class_marginal
+    variable: event_class
+    levels: 6
+    provenance: measured
+  E02:
+    label: frame_event_count
+    variable: frame_event_count_capped_3
+    levels: 4
+    provenance: derived
+  E03:
+    label: decoder_state
+    variable: decoded_state
+    levels: 4
+    provenance: simulated
+  E04:
+    label: decoder_max_score_bin
+    variable: max_raw_score_binned_3
+    levels: 3
+    provenance: simulated
+  E05:
+    label: episode_reward
+    variable: reward_level
+    levels: 3
+    provenance: simulated
+  E06:
+    label: event_class_by_segment
+    variable: event_class_given_segment
+    levels: 6
+    strata: 3
+    provenance: measured
+
+endpoints_6c:
+  C01:
+    label: decoder_mediated_neural_to_motor
+    x: left_pool_any_active
+    y: decoded_left
+    levels: [2, 2]
+    provenance: simulated
+    circularity: decoder maps pool activity to state by construction
+  C02:
+    label: disjoint_pool_control
+    x: leg_pool_any_active
+    y: decoded_jump
+    levels: [2, 2]
+    provenance: simulated
+  C03:
+    label: cue_to_action
+    x: cue
+    y: chosen_action
+    levels: [4, 4]
+    provenance: simulated
+    source: phase_5f_eval
+  C04:
+    label: cue_to_neural_spike_count
+    provenance: simulated
+    status: unavailable
+    reason: n_cue_spikes is constant 8 in every archived 5E and 5F episode
+  C05:
+    label: neural_to_reward
+    provenance: simulated
+    status: unavailable
+    reason: per-episode spike counts carry no variation in conditions A-F
+  C06:
+    label: fixed_vs_plastic_task_information
+    x: cue
+    y: chosen_action
+    levels: [4, 4]
+    provenance: simulated
+    contrast: [plastic_complete, fixed_complete]
+    secondary: [plastic_random, fixed_random]
+  C07:
+    label: cue_to_action_within_condition
+    x: cue
+    y: chosen_action
+    levels: [4, 4]
+    strata: 6
+    provenance: simulated
+    source: phase_5e_train
+
+# Endpoints the archived data cannot support, with the recorded reason.
+unavailable:
+  - id: U01
+    label: spike_train_entropy
+    reason: >-
+      The only archived recording with individual spike times is a single
+      replay run (74 spikes). Entropy of a spike train needs repeated trials
+      or a declared time-discretisation with enough samples per bin; neither
+      exists here.
+  - id: U02
+    label: population_response_entropy
+    reason: >-
+      The 138-neuron sensory population has a nominal support of 2^138 and no
+      archived repeat structure. Plug-in entropy over that support is not
+      estimable at any available sample size.
+  - id: U03
+    label: membrane_potential_entropy
+    reason: >-
+      Membrane potentials were never recorded; only spike counts and times.
+  - id: U04
+    label: cue_to_population_code_mi
+    reason: >-
+      Aggregate spike counts per episode are constant within conditions A-F,
+      so no neural response variable exists to relate to the cue.

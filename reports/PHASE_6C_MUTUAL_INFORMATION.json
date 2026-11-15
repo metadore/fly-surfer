@@ -1,0 +1,1055 @@
+{
+  "phase": "6C",
+  "title": "Mutual information between archived FLY-SURFER variables",
+  "status": "COMPLETE - ARCHIVED-DATA MI ONLY, NO NEW RECORDING",
+  "generated_at_utc": "2026-11-10T08:57:51+00:00",
+  "project_root": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER",
+  "log_base": 2,
+  "seed": 20261110,
+  "config": {
+    "path": "configs\\information_theory.yaml",
+    "sha256": "6770f4274037f08b2a324ecbfbd1c419235b062d61536f97b7e7b26ef6d19726"
+  },
+  "endpoint_rows": [
+    {
+      "endpoint": "C01_decoder_mediated",
+      "label": "decoder_mediated_neural_to_motor",
+      "provenance": "simulated",
+      "levels": [
+        2,
+        2
+      ],
+      "contingency": [
+        [
+          240,
+          0
+        ],
+        [
+          30,
+          60
+        ]
+      ],
+      "n": 330,
+      "n_missing": 0,
+      "effective_sample": {
+        "n": 330,
+        "n_clusters": 66,
+        "mean_cluster_size": 5.0,
+        "min_cluster_size": 5,
+        "max_cluster_size": 5,
+        "clustered": true
+      },
+      "support": {
+        "k_declared_x": 2,
+        "k_declared_y": 2,
+        "cells": 4,
+        "n": 330,
+        "expected_per_cell": 82.5,
+        "sparse": false
+      },
+      "raw_mi_bits": 0.43359412,
+      "bias_floor_bits": 0.0021859,
+      "corrected_mi_bits": 0.43140822,
+      "normalised_mi": 0.63387391,
+      "uncertainty_coefficient": 0.63387391,
+      "marginal_entropy_bits": {
+        "x": 0.84535094,
+        "y": 0.68403844
+      },
+      "null": {
+        "scheme": "block",
+        "n_permutations": 5000,
+        "n_clusters": 66,
+        "null_mean": 0.17429075,
+        "null_sd": 0.02258206,
+        "null_q95": 0.21764846,
+        "null_max": 0.2627511,
+        "p_value": 0.00019996,
+        "seed": 20261110,
+        "log_base": 2
+      },
+      "bootstrap_ci": {
+        "low": 0.26597364,
+        "high": 0.61332348,
+        "n_resamples": 2000,
+        "n_clusters": 66,
+        "seed": 20261110
+      },
+      "estimator": "plug-in + analytic bias floor",
+      "log_base": 2,
+      "seed": 20261110,
+      "warnings": [],
+      "circularity": "The Phase 4F decoder declares LEFT when LEFT-pool activity clears its gates, so this MI is induced by the decoder definition. It measures internal consistency of a computational map, not biological motor information.",
+      "source": "experiments/results/phase_4f/motor_decoder_experiment.json",
+      "source_sha256": "9fa64fe5fc65e6868c38b28b61fff54e6cbe7622ae8860cdc028e8e3745e56bc",
+      "decoded_left_count": 60,
+      "left_pool_active_count": 90
+    },
+    {
+      "endpoint": "C02_disjoint_control",
+      "label": "disjoint_pool_control",
+      "provenance": "simulated",
+      "levels": [
+        2,
+        2
+      ],
+      "contingency": [
+        [
+          195,
+          15
+        ],
+        [
+          120,
+          0
+        ]
+      ],
+      "n": 330,
+      "n_missing": 0,
+      "effective_sample": {
+        "n": 330,
+        "n_clusters": 66,
+        "mean_cluster_size": 5.0,
+        "min_cluster_size": 5,
+        "max_cluster_size": 5,
+        "clustered": true
+      },
+      "support": {
+        "k_declared_x": 2,
+        "k_declared_y": 2,
+        "cells": 4,
+        "n": 330,
+        "expected_per_cell": 82.5,
+        "sparse": false
+      },
+      "raw_mi_bits": 0.03052623,
+      "bias_floor_bits": 0.0021859,
+      "corrected_mi_bits": 0.02834033,
+      "normalised_mi": 0.11443119,
+      "uncertainty_coefficient": 0.11443119,
+      "marginal_entropy_bits": {
+        "x": 0.9456603,
+        "y": 0.26676499
+      },
+      "null": {
+        "scheme": "block",
+        "n_permutations": 5000,
+        "n_clusters": 66,
+        "null_mean": 0.03052623,
+        "null_sd": 0.0,
+        "null_q95": 0.03052623,
+        "null_max": 0.03052623,
+        "p_value": 1.0,
+        "seed": 20261110,
+        "log_base": 2
+      },
+      "bootstrap_ci": {
+        "low": 0.00673799,
+        "high": 0.06521845,
+        "n_resamples": 2000,
+        "n_clusters": 66,
+        "seed": 20261110
+      },
+      "estimator": "plug-in + analytic bias floor",
+      "log_base": 2,
+      "seed": 20261110,
+      "warnings": [
+        "permutation null is degenerate under the block scheme: the permuted variable is constant within every cluster, so p carries no information"
+      ],
+      "circularity": "JUMP membership is disjoint from LEFT and RIGHT, so any association here comes from shared drive and arbitration rather than from the decoder's own membership rule.",
+      "decoded_jump_count": 15,
+      "jump_pool_active_count": 75
+    },
+    {
+      "endpoint": "C-03 fixed_complete",
+      "label": "cue_to_action_fixed_complete",
+      "provenance": "simulated",
+      "levels": [
+        4,
+        4
+      ],
+      "contingency": [
+        [
+          34,
+          42,
+          22,
+          2
+        ],
+        [
+          26,
+          0,
+          38,
+          36
+        ],
+        [
+          99,
+          0,
+          1,
+          0
+        ],
+        [
+          75,
+          7,
+          5,
+          13
+        ]
+      ],
+      "n": 400,
+      "n_missing": 0,
+      "effective_sample": {
+        "n": 400,
+        "n_clusters": 10,
+        "mean_cluster_size": 40.0,
+        "min_cluster_size": 40,
+        "max_cluster_size": 40,
+        "clustered": true
+      },
+      "support": {
+        "k_declared_x": 4,
+        "k_declared_y": 4,
+        "cells": 16,
+        "n": 400,
+        "expected_per_cell": 25.0,
+        "sparse": false
+      },
+      "raw_mi_bits": 0.51283315,
+      "bias_floor_bits": 0.01623032,
+      "corrected_mi_bits": 0.49660283,
+      "normalised_mi": 0.31436475,
+      "uncertainty_coefficient": 0.31436475,
+      "marginal_entropy_bits": {
+        "x": 2.0,
+        "y": 1.63133161
+      },
+      "null": {
+        "scheme": "block",
+        "n_permutations": 5000,
+        "n_clusters": 10,
+        "null_mean": 0.01665309,
+        "null_sd": 0.00761841,
+        "null_q95": 0.03085921,
+        "null_max": 0.05340009,
+        "p_value": 0.00019996,
+        "seed": 20261110,
+        "log_base": 2
+      },
+      "bootstrap_ci": {
+        "low": 0.43585188,
+        "high": 0.62703004,
+        "n_resamples": 2000,
+        "n_clusters": 10,
+        "seed": 20261110
+      },
+      "estimator": "plug-in + analytic bias floor",
+      "log_base": 2,
+      "seed": 20261110,
+      "warnings": [],
+      "condition": "fixed_complete",
+      "checkpoint": "160"
+    },
+    {
+      "endpoint": "C-03 plastic_complete",
+      "label": "cue_to_action_plastic_complete",
+      "provenance": "simulated",
+      "levels": [
+        4,
+        4
+      ],
+      "contingency": [
+        [
+          56,
+          23,
+          21,
+          0
+        ],
+        [
+          29,
+          0,
+          36,
+          35
+        ],
+        [
+          98,
+          0,
+          2,
+          0
+        ],
+        [
+          74,
+          4,
+          0,
+          22
+        ]
+      ],
+      "n": 400,
+      "n_missing": 0,
+      "effective_sample": {
+        "n": 400,
+        "n_clusters": 10,
+        "mean_cluster_size": 40.0,
+        "min_cluster_size": 40,
+        "max_cluster_size": 40,
+        "clustered": true
+      },
+      "support": {
+        "k_declared_x": 4,
+        "k_declared_y": 4,
+        "cells": 16,
+        "n": 400,
+        "expected_per_cell": 25.0,
+        "sparse": false
+      },
+      "raw_mi_bits": 0.44621647,
+      "bias_floor_bits": 0.01623032,
+      "corrected_mi_bits": 0.42998615,
+      "normalised_mi": 0.30141395,
+      "uncertainty_coefficient": 0.30141395,
+      "marginal_entropy_bits": {
+        "x": 2.0,
+        "y": 1.48041083
+      },
+      "null": {
+        "scheme": "block",
+        "n_permutations": 5000,
+        "n_clusters": 10,
+        "null_mean": 0.01657175,
+        "null_sd": 0.00784373,
+        "null_q95": 0.03128215,
+        "null_max": 0.06236533,
+        "p_value": 0.00019996,
+        "seed": 20261110,
+        "log_base": 2
+      },
+      "bootstrap_ci": {
+        "low": 0.38528162,
+        "high": 0.52598546,
+        "n_resamples": 2000,
+        "n_clusters": 10,
+        "seed": 20261110
+      },
+      "estimator": "plug-in + analytic bias floor",
+      "log_base": 2,
+      "seed": 20261110,
+      "warnings": [],
+      "condition": "plastic_complete",
+      "checkpoint": "160"
+    },
+    {
+      "endpoint": "C-03 fixed_random",
+      "label": "cue_to_action_fixed_random",
+      "provenance": "simulated",
+      "levels": [
+        4,
+        4
+      ],
+      "contingency": [
+        [
+          11,
+          0,
+          82,
+          7
+        ],
+        [
+          1,
+          4,
+          0,
+          95
+        ],
+        [
+          0,
+          28,
+          72,
+          0
+        ],
+        [
+          98,
+          0,
+          2,
+          0
+        ]
+      ],
+      "n": 400,
+      "n_missing": 0,
+      "effective_sample": {
+        "n": 400,
+        "n_clusters": 10,
+        "mean_cluster_size": 40.0,
+        "min_cluster_size": 40,
+        "max_cluster_size": 40,
+        "clustered": true
+      },
+      "support": {
+        "k_declared_x": 4,
+        "k_declared_y": 4,
+        "cells": 16,
+        "n": 400,
+        "expected_per_cell": 25.0,
+        "sparse": false
+      },
+      "raw_mi_bits": 1.29295796,
+      "bias_floor_bits": 0.01623032,
+      "corrected_mi_bits": 1.27672764,
+      "normalised_mi": 0.7041461,
+      "uncertainty_coefficient": 0.7041461,
+      "marginal_entropy_bits": {
+        "x": 2.0,
+        "y": 1.83620694
+      },
+      "null": {
+        "scheme": "block",
+        "n_permutations": 5000,
+        "n_clusters": 10,
+        "null_mean": 0.0165232,
+        "null_sd": 0.00792325,
+        "null_q95": 0.03085681,
+        "null_max": 0.06019884,
+        "p_value": 0.00019996,
+        "seed": 20261110,
+        "log_base": 2
+      },
+      "bootstrap_ci": {
+        "low": 1.2519422,
+        "high": 1.35025356,
+        "n_resamples": 2000,
+        "n_clusters": 10,
+        "seed": 20261110
+      },
+      "estimator": "plug-in + analytic bias floor",
+      "log_base": 2,
+      "seed": 20261110,
+      "warnings": [],
+      "condition": "fixed_random",
+      "checkpoint": "160"
+    },
+    {
+      "endpoint": "C-03 plastic_random",
+      "label": "cue_to_action_plastic_random",
+      "provenance": "simulated",
+      "levels": [
+        4,
+        4
+      ],
+      "contingency": [
+        [
+          11,
+          0,
+          82,
+          7
+        ],
+        [
+          1,
+          4,
+          0,
+          95
+        ],
+        [
+          0,
+          27,
+          73,
+          0
+        ],
+        [
+          98,
+          0,
+          2,
+          0
+        ]
+      ],
+      "n": 400,
+      "n_missing": 0,
+      "effective_sample": {
+        "n": 400,
+        "n_clusters": 10,
+        "mean_cluster_size": 40.0,
+        "min_cluster_size": 40,
+        "max_cluster_size": 40,
+        "clustered": true
+      },
+      "support": {
+        "k_declared_x": 4,
+        "k_declared_y": 4,
+        "cells": 16,
+        "n": 400,
+        "expected_per_cell": 25.0,
+        "sparse": false
+      },
+      "raw_mi_bits": 1.29067251,
+      "bias_floor_bits": 0.01623032,
+      "corrected_mi_bits": 1.27444219,
+      "normalised_mi": 0.70512179,
+      "uncertainty_coefficient": 0.70512179,
+      "marginal_entropy_bits": {
+        "x": 2.0,
+        "y": 1.83042495
+      },
+      "null": {
+        "scheme": "block",
+        "n_permutations": 5000,
+        "n_clusters": 10,
+        "null_mean": 0.01655956,
+        "null_sd": 0.00793226,
+        "null_q95": 0.03106239,
+        "null_max": 0.06074125,
+        "p_value": 0.00019996,
+        "seed": 20261110,
+        "log_base": 2
+      },
+      "bootstrap_ci": {
+        "low": 1.25041709,
+        "high": 1.34710392,
+        "n_resamples": 2000,
+        "n_clusters": 10,
+        "seed": 20261110
+      },
+      "estimator": "plug-in + analytic bias floor",
+      "log_base": 2,
+      "seed": 20261110,
+      "warnings": [],
+      "condition": "plastic_random",
+      "checkpoint": "160"
+    },
+    {
+      "endpoint": "C-07",
+      "label": "cue_to_action_within_condition",
+      "provenance": "simulated",
+      "levels": [
+        4,
+        4
+      ],
+      "n": 2880,
+      "effective_sample": {
+        "n": 2880,
+        "n_clusters": 18,
+        "mean_cluster_size": 160.0,
+        "min_cluster_size": 160,
+        "max_cluster_size": 160,
+        "clustered": true
+      },
+      "raw_mi_bits": 0.60402226,
+      "marginal_mi_bits": 0.38411935,
+      "bias_floor_bits": 0.01352527,
+      "corrected_mi_bits": 0.59049699,
+      "marginal_entropy_bits": {
+        "x": 2.0,
+        "y": 1.6766184
+      },
+      "normalised_mi": 0.36026222,
+      "null": {
+        "scheme": "stratified free permutation of action within condition",
+        "n_permutations": 5000,
+        "null_mean": 0.01372683,
+        "null_sd": 0.00263299,
+        "null_q95": 0.01839872,
+        "null_max": 0.02539153,
+        "p_value": 0.00019996,
+        "seed": 20261110
+      },
+      "bootstrap_ci": {
+        "low": 0.47632769,
+        "high": 0.76246867,
+        "n_resamples": 2000,
+        "n_clusters": 18,
+        "seed": 20261110
+      },
+      "strata": [
+        {
+          "stratum": 0,
+          "n": 480,
+          "weight": 0.166667,
+          "I_plugin": 0.48213998,
+          "bias_floor": 0.01352527,
+          "support_ok": true
+        },
+        {
+          "stratum": 1,
+          "n": 480,
+          "weight": 0.166667,
+          "I_plugin": 0.42146082,
+          "bias_floor": 0.01352527,
+          "support_ok": true
+        },
+        {
+          "stratum": 2,
+          "n": 480,
+          "weight": 0.166667,
+          "I_plugin": 0.48213998,
+          "bias_floor": 0.01352527,
+          "support_ok": true
+        },
+        {
+          "stratum": 3,
+          "n": 480,
+          "weight": 0.166667,
+          "I_plugin": 0.46677074,
+          "bias_floor": 0.01352527,
+          "support_ok": true
+        },
+        {
+          "stratum": 4,
+          "n": 480,
+          "weight": 0.166667,
+          "I_plugin": 1.28948207,
+          "bias_floor": 0.01352527,
+          "support_ok": true
+        },
+        {
+          "stratum": 5,
+          "n": 480,
+          "weight": 0.166667,
+          "I_plugin": 0.48213998,
+          "bias_floor": 0.01352527,
+          "support_ok": true
+        }
+      ],
+      "stratified_support_fraction": 1.0,
+      "stratum_names": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "warnings": [],
+      "estimator": "sample-weighted mean of plug-in stratum MI",
+      "log_base": 2,
+      "seed": 20261110,
+      "source": "experiments/results/phase_5e/controlled_learning_raw.json",
+      "source_sha256": "375013676cdfd44a2efaec7c26129bf051c9a7a39fd32a3d73bfc09f38fc9cb0",
+      "note": "Phase 5E condition G is excluded because it records no chosen action. Strata are the six neural-substrate conditions A-F and the resampling unit is the replicate, so only 18 clusters exist."
+    }
+  ],
+  "fixed_vs_plastic": {
+    "label": "fixed_vs_plastic_task_information",
+    "source": "experiments/results/phase_5f/comparison_raw.json",
+    "source_sha256": "b861f098e01cf9035341941cbc603e15147494b23057fa3239cae9a1c16cf603",
+    "per_condition": {
+      "fixed_complete": {
+        "0": {
+          "per_seed": {
+            "0": 0.78697643,
+            "1": 0.51935902,
+            "2": 0.7344978,
+            "3": 0.36323725,
+            "4": 0.736771,
+            "5": 0.60991592,
+            "6": 0.48200116,
+            "7": 0.43944039,
+            "8": 0.80354686,
+            "9": 0.65001792
+          },
+          "summary": {
+            "n": 10,
+            "mean": 0.61257637,
+            "sd": 0.1550873,
+            "se": 0.04904291
+          },
+          "bias_floor_bits": 0.16230319,
+          "observations_per_seed": 40
+        },
+        "160": {
+          "per_seed": {
+            "0": 0.78697643,
+            "1": 0.51935902,
+            "2": 0.7344978,
+            "3": 0.36323725,
+            "4": 0.736771,
+            "5": 0.60991592,
+            "6": 0.48200116,
+            "7": 0.43944039,
+            "8": 0.80354686,
+            "9": 0.65001792
+          },
+          "summary": {
+            "n": 10,
+            "mean": 0.61257637,
+            "sd": 0.1550873,
+            "se": 0.04904291
+          },
+          "bias_floor_bits": 0.16230319,
+          "observations_per_seed": 40
+        }
+      },
+      "plastic_complete": {
+        "0": {
+          "per_seed": {
+            "0": 0.78697643,
+            "1": 0.51935902,
+            "2": 0.7344978,
+            "3": 0.36323725,
+            "4": 0.736771,
+            "5": 0.60991592,
+            "6": 0.48200116,
+            "7": 0.43944039,
+            "8": 0.80354686,
+            "9": 0.65001792
+          },
+          "summary": {
+            "n": 10,
+            "mean": 0.61257637,
+            "sd": 0.1550873,
+            "se": 0.04904291
+          },
+          "bias_floor_bits": 0.16230319,
+          "observations_per_seed": 40
+        },
+        "160": {
+          "per_seed": {
+            "0": 0.66370616,
+            "1": 0.65303827,
+            "2": 0.6570896,
+            "3": 0.41401627,
+            "4": 0.46229479,
+            "5": 0.33393455,
+            "6": 0.57990483,
+            "7": 0.47197906,
+            "8": 0.54210978,
+            "9": 0.4842688
+          },
+          "summary": {
+            "n": 10,
+            "mean": 0.52623421,
+            "sd": 0.11234792,
+            "se": 0.03552753
+          },
+          "bias_floor_bits": 0.16230319,
+          "observations_per_seed": 40
+        }
+      },
+      "fixed_random": {
+        "0": {
+          "per_seed": {
+            "0": 1.42913833,
+            "1": 1.30696476,
+            "2": 1.43119641,
+            "3": 1.35198417,
+            "4": 1.24407603,
+            "5": 1.37913833,
+            "6": 1.29145178,
+            "7": 1.45253488,
+            "8": 1.36052018,
+            "9": 1.30027959
+          },
+          "summary": {
+            "n": 10,
+            "mean": 1.35472845,
+            "sd": 0.06918665,
+            "se": 0.02187874
+          },
+          "bias_floor_bits": 0.16230319,
+          "observations_per_seed": 40
+        },
+        "160": {
+          "per_seed": {
+            "0": 1.42913833,
+            "1": 1.30696476,
+            "2": 1.43119641,
+            "3": 1.35198417,
+            "4": 1.24407603,
+            "5": 1.37913833,
+            "6": 1.29145178,
+            "7": 1.45253488,
+            "8": 1.36052018,
+            "9": 1.30027959
+          },
+          "summary": {
+            "n": 10,
+            "mean": 1.35472845,
+            "sd": 0.06918665,
+            "se": 0.02187874
+          },
+          "bias_floor_bits": 0.16230319,
+          "observations_per_seed": 40
+        }
+      },
+      "plastic_random": {
+        "0": {
+          "per_seed": {
+            "0": 1.42913833,
+            "1": 1.30696476,
+            "2": 1.43119641,
+            "3": 1.35198417,
+            "4": 1.24407603,
+            "5": 1.37913833,
+            "6": 1.29145178,
+            "7": 1.45253488,
+            "8": 1.36052018,
+            "9": 1.30027959
+          },
+          "summary": {
+            "n": 10,
+            "mean": 1.35472845,
+            "sd": 0.06918665,
+            "se": 0.02187874
+          },
+          "bias_floor_bits": 0.16230319,
+          "observations_per_seed": 40
+        },
+        "160": {
+          "per_seed": {
+            "0": 1.42913833,
+            "1": 1.30696476,
+            "2": 1.43119641,
+            "3": 1.32681857,
+            "4": 1.24407603,
+            "5": 1.37913833,
+            "6": 1.29145178,
+            "7": 1.45253488,
+            "8": 1.36052018,
+            "9": 1.30027959
+          },
+          "summary": {
+            "n": 10,
+            "mean": 1.35221189,
+            "sd": 0.06975293,
+            "se": 0.02205781
+          },
+          "bias_floor_bits": 0.16230319,
+          "observations_per_seed": 40
+        }
+      }
+    },
+    "contrasts": {
+      "complete": {
+        "plastic_condition": "plastic_complete",
+        "fixed_condition": "fixed_complete",
+        "checkpoint": "160",
+        "paired_differences": [
+          -0.12327027,
+          0.13367925,
+          -0.0774082,
+          0.05077902,
+          -0.27447621,
+          -0.27598137,
+          0.09790367,
+          0.03253867,
+          -0.26143708,
+          -0.16574912
+        ],
+        "n_pairs": 10,
+        "mean_difference": -0.08634216,
+        "summary": {
+          "n": 10,
+          "mean": -0.08634216,
+          "sd": 0.15813337,
+          "se": 0.05000616
+        },
+        "sign_flip": {
+          "p_value": 0.125,
+          "method": "exact two-sided sign flip (1024 assignments)"
+        },
+        "positive_pairs": 4,
+        "bias_floor_bits_per_seed": 0.16230319
+      },
+      "random": {
+        "plastic_condition": "plastic_random",
+        "fixed_condition": "fixed_random",
+        "checkpoint": "160",
+        "paired_differences": [
+          0.0,
+          0.0,
+          0.0,
+          -0.0251656,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "n_pairs": 10,
+        "mean_difference": -0.00251656,
+        "summary": {
+          "n": 10,
+          "mean": -0.00251656,
+          "sd": 0.00795806,
+          "se": 0.00251656
+        },
+        "sign_flip": {
+          "p_value": 1.0,
+          "method": "exact two-sided sign flip (1024 assignments)"
+        },
+        "positive_pairs": 0,
+        "bias_floor_bits_per_seed": 0.16230319
+      }
+    },
+    "holm": {
+      "method": "Holm-Bonferroni",
+      "alpha": 0.05,
+      "adjusted": {
+        "complete": 0.25,
+        "random": 1.0
+      },
+      "rejected": {
+        "complete": false,
+        "random": false
+      }
+    },
+    "caveat": "Each seed contributes 40 evaluation episodes to a 4x4 table, whose analytic MI bias floor is 0.1623 bits. The per-seed contrast is therefore exploratory: the correction is first-order and does not repair the sample size."
+  },
+  "unavailable": {
+    "C04": {
+      "label": "cue_to_neural_spike_count",
+      "status": "unavailable",
+      "reason": "n_cue_spikes is the constant 8 in every archived 5E and 5F episode",
+      "evidence": {
+        "A": {
+          "state": "constant",
+          "levels": [
+            8
+          ]
+        },
+        "B": {
+          "state": "constant",
+          "levels": [
+            8
+          ]
+        },
+        "C": {
+          "state": "constant",
+          "levels": [
+            8
+          ]
+        },
+        "D": {
+          "state": "constant",
+          "levels": [
+            8
+          ]
+        },
+        "E": {
+          "state": "constant",
+          "levels": [
+            8
+          ]
+        },
+        "F": {
+          "state": "constant",
+          "levels": [
+            8
+          ]
+        },
+        "G": {
+          "state": "empty",
+          "levels": []
+        }
+      }
+    },
+    "C05": {
+      "label": "neural_to_reward",
+      "status": "unavailable",
+      "reason": "Per-episode spike counts carry no variation in conditions A-F (constant 12, or 11/12 in E), so a neural predictor of reward cannot be formed without inventing an observation.",
+      "evidence": {
+        "A": {
+          "state": "constant",
+          "levels": [
+            12
+          ]
+        },
+        "B": {
+          "state": "constant",
+          "levels": [
+            12
+          ]
+        },
+        "C": {
+          "state": "constant",
+          "levels": [
+            12
+          ]
+        },
+        "D": {
+          "state": "constant",
+          "levels": [
+            12
+          ]
+        },
+        "E": {
+          "state": "variable",
+          "levels": [
+            11,
+            12
+          ]
+        },
+        "F": {
+          "state": "constant",
+          "levels": [
+            12
+          ]
+        },
+        "G": {
+          "state": "constant",
+          "levels": [
+            0
+          ]
+        }
+      }
+    },
+    "recorded_reasons": {
+      "U03": {
+        "id": "U03",
+        "label": "membrane_potential_entropy",
+        "reason": "Membrane potentials were never recorded; only spike counts and times."
+      },
+      "U04": {
+        "id": "U04",
+        "label": "cue_to_population_code_mi",
+        "reason": "Aggregate spike counts per episode are constant within conditions A-F, so no neural response variable exists to relate to the cue."
+      }
+    }
+  },
+  "statistics": {
+    "permutation_scheme": "cluster block permutation of the second variable",
+    "n_permutations": 5000,
+    "bootstrap_resamples": 2000,
+    "multiple_comparison": "Holm-Bonferroni over the two C-06 contrasts",
+    "p_value_floor": 0.0001999600079984003
+  },
+  "software": {
+    "python": "3.13.14",
+    "numpy": "2.3.4",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64"
+  },
+  "runtime_seconds": 31.487,
+  "files": {
+    "results": "experiments/results/phase_6c/mutual_information_results.json",
+    "figure": "experiments/results/phase_6c/figures/mutual_information.png",
+    "config": "configs/information_theory.yaml",
+    "runner": "experiments/phase_6c/run_mutual_information.py",
+    "report_builder": "experiments/phase_6c/build_report.py",
+    "estimators": [
+      "information/mutual_information.py",
+      "information/entropy.py",
+      "information/bias_correction.py",
+      "information/permutation.py",
+      "information/statistics.py",
+      "information/diagnostics.py",
+      "information/artifact_readers.py"
+    ],
+    "tests": "tests/test_information.py"
+  },
+  "integrity": {
+    "baseline": {
+      "checked": 37,
+      "failures": [],
+      "pass": true
+    },
+    "protected_paths_dirty": [],
+    "staged_files": [],
+    "modified_tracked_files": [
+      "configs/detector_config.yaml",
+      "experiments/phase_3b/evaluate_detector.py",
+      "experiments/phase_3b/run_inference.py",
+      "experiments/phase_3c/integration_check.py",
+      "perception/detection.py",
+      "perception/detector_config.py",
+      "perception/inference.py",
+      "perception/pipeline.py",
+      "perception/temporal.py",
+      "requirements.txt",
+      "tests/test_detector_backend.py",
+      "tests/test_evaluation.py",
+      "tests/test_perception.py"
+    ]
+  }
+}

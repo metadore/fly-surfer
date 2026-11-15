@@ -1,0 +1,495 @@
+{
+  "phase": "4G.4",
+  "generated_at_utc": "2026-11-08T06:43:54+00:00",
+  "software": {
+    "python": "3.13.14",
+    "numpy": "2.3.4",
+    "pandas": "2.3.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "policy_config_sha256": "88f6449289492e79a919fafa56af93c5ac5e916cb50cc1658d7e14eed2dc399e",
+  "toy_graph_suite": {
+    "checks_total": 20,
+    "checks_passed": 20,
+    "checks_failed": 0,
+    "checks": [
+      {
+        "name": "convergent_chain_ordering",
+        "description": "Four stimulated sources drive four intermediates, which converge on one target.",
+        "expectation": "Every layer spikes and each layer is at least one delay later than the previous.",
+        "observed": {
+          "source_first_spikes_ms": [
+            3.0,
+            3.0,
+            3.0,
+            3.0
+          ],
+          "intermediate_first_spikes_ms": [
+            7.5,
+            7.5,
+            7.5,
+            7.5
+          ],
+          "target_first_spike_ms": 12.0,
+          "target_spike_count": 1,
+          "spike_transmissions": 20
+        },
+        "passed": true
+      },
+      {
+        "name": "single_edge_attenuation",
+        "description": "One 300 pA capped edge from a driven source to a resting target.",
+        "expectation": "The source spikes; the single structural edge alone is below firing threshold.",
+        "observed": {
+          "source_spikes": 1,
+          "target_spikes": 0,
+          "max_excitatory_synaptic_current_pa": 300.0,
+          "note": "300 pA through g=10 nS is 30 mV of steady drive but the exponential EPSP peaks well below it; a resting neuron needs temporal summation."
+        },
+        "passed": true
+      },
+      {
+        "name": "convergence_required",
+        "description": "Four sources each deliver the same 300 pA capped edge to one target.",
+        "expectation": "Convergent input fires the target while a single edge does not.",
+        "observed": {
+          "target_spikes": 1,
+          "target_first_spike_ms": 7.5,
+          "max_excitatory_synaptic_current_pa": 1200.0
+        },
+        "passed": true
+      },
+      {
+        "name": "edge_removal_downstream",
+        "description": "Delete every intermediate -> target edge, keep everything else.",
+        "expectation": "Intermediates spike exactly as in the baseline; the target is silent.",
+        "observed": {
+          "intermediate_trains_identical": true,
+          "target_spikes": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "edge_removal_upstream",
+        "description": "Delete every source -> intermediate edge.",
+        "expectation": "Stimulated sources still spike; intermediates and target are silent.",
+        "observed": {
+          "source_spikes": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "intermediate_spikes": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "target_spikes": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "weight_reduction_below_recruitment",
+        "description": "Reduce intermediate -> target counts from 500 to 10 (28 pA per edge).",
+        "expectation": "Intermediates still fire; the target no longer reaches threshold.",
+        "observed": {
+          "intermediate_spikes": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "target_spikes": 0,
+          "max_excitatory_synaptic_current_pa": 1200.0
+        },
+        "passed": true
+      },
+      {
+        "name": "weight_monotonicity",
+        "description": "Intermediate -> target counts 200 (266 pA, uncapped) versus 500 (capped at 300 pA).",
+        "expectation": "The stronger capped baseline does not fire the target later than the weaker uncapped input.",
+        "observed": {
+          "baseline_target_first_spike_ms": 12.0,
+          "moderate_target_first_spike_ms": 13.0,
+          "baseline_target_spikes": 1,
+          "moderate_target_spikes": 1
+        },
+        "passed": true
+      },
+      {
+        "name": "cap_saturation_equivalence",
+        "description": "Counts 240 and 5000 both exceed the 300 pA cap.",
+        "expectation": "Spike trains are bit-identical because both weights saturate at the cap.",
+        "observed": {
+          "count_at_cap": 234.89,
+          "hash_240": "bb97cb7d7d365413ee109f4b8ea7607db5cdbf61e5238ce5ab86878c154cf4c0",
+          "hash_5000": "bb97cb7d7d365413ee109f4b8ea7607db5cdbf61e5238ce5ab86878c154cf4c0"
+        },
+        "passed": true
+      },
+      {
+        "name": "direction_reversal",
+        "description": "Reverse every intermediate -> target edge to target -> intermediate.",
+        "expectation": "Intermediates still fire from the sources; the unstimulated target is silent.",
+        "observed": {
+          "intermediate_spikes": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "target_spikes": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "inhibitory_only_target_silent",
+        "description": "Label all four intermediates inhibitory; keep identical structure and drive.",
+        "expectation": "Intermediates spike but deliver inhibition; the target does not fire.",
+        "observed": {
+          "intermediate_spikes": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "target_spikes": 0,
+          "max_inhibitory_synaptic_current_pa": 1200.0,
+          "min_membrane_mv": -79.4423
+        },
+        "passed": true
+      },
+      {
+        "name": "inhibitory_mixed_reduces_target",
+        "description": "Make one of the four converging intermediates inhibitory.",
+        "expectation": "The target fires no earlier and no more often than the all-excitatory baseline; inhibitory current is present.",
+        "observed": {
+          "baseline_target_spikes": 1,
+          "mixed_target_spikes": 0,
+          "baseline_target_first_spike_ms": 12.0,
+          "mixed_target_first_spike_ms": null,
+          "max_inhibitory_synaptic_current_pa": 300.0
+        },
+        "passed": true
+      },
+      {
+        "name": "unknown_sign_excluded",
+        "description": "Leave the intermediates unannotated so their edges have unknown sign.",
+        "expectation": "Intermediates spike; every edge into the target carries zero weight; target silent.",
+        "observed": {
+          "intermediate_spikes": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "target_edge_weights_pa": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "target_spikes": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "predicted_only_excluded",
+        "description": "Intermediates have predicted but no verified transmitter, under the primary policy.",
+        "expectation": "Predicted labels are not part of the primary policy; the target is silent.",
+        "observed": {
+          "target_spikes": 0,
+          "declared_policy": "verified-only"
+        },
+        "passed": true
+      },
+      {
+        "name": "predicted_fallback_enables_propagation",
+        "description": "Same labels, predicted fallback enabled as a declared sensitivity condition.",
+        "expectation": "The target now fires, which shows the fallback changes results and must be reported as a sensitivity.",
+        "observed": {
+          "target_spikes": 1,
+          "declared_policy": "verified-then-predicted"
+        },
+        "passed": true
+      },
+      {
+        "name": "no_stimulation_silence",
+        "description": "Identical network with no stimulation and no noise.",
+        "expectation": "No neuron spikes.",
+        "observed": {
+          "total_spikes": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "current_injection_threshold",
+        "description": "Inject 100 pA and 300 pA into a single isolated neuron.",
+        "expectation": "100 pA is below the 150 pA rheobase and does not fire; 300 pA does.",
+        "observed": {
+          "spikes_at_100_pa": 0,
+          "spikes_at_300_pa": 1
+        },
+        "passed": true
+      },
+      {
+        "name": "delay_quantisation",
+        "description": "Measure the shortest source -> intermediate latency on the chain.",
+        "expectation": "Latency is at least the 1.0 ms configured axonal delay.",
+        "observed": {
+          "measured_min_latency_ms": 4.5,
+          "configured_delay_ms": 1.0,
+          "dt_ms": 0.5
+        },
+        "passed": true
+      },
+      {
+        "name": "refractory_interval",
+        "description": "Drive one neuron at 5000 pA for 30 ms.",
+        "expectation": "Every inter-spike interval is at least the 2 ms refractory period.",
+        "observed": {
+          "spike_count": 12,
+          "min_isi_ms": 2.5,
+          "max_isi_ms": 2.5
+        },
+        "passed": true
+      },
+      {
+        "name": "isolated_nodes_silent",
+        "description": "Add three isolated nodes to a small driven chain.",
+        "expectation": "Only the connected neurons spike; isolated nodes stay silent.",
+        "observed": {
+          "connected_spikes": [
+            3,
+            0,
+            0
+          ],
+          "isolated_spikes": [
+            0,
+            0,
+            0
+          ]
+        },
+        "passed": true
+      },
+      {
+        "name": "deterministic_repeat",
+        "description": "Run the same noisy chain twice with seed 7 and once with seed 8.",
+        "expectation": "The two seed-7 runs are bit-identical; the seed-8 run differs.",
+        "observed": {
+          "hash_seed7_run1": "7d48479a7b106f1a57807cae442f5019c5a765b8c4a3e62396d917f227332ac0",
+          "hash_seed7_run2": "7d48479a7b106f1a57807cae442f5019c5a765b8c4a3e62396d917f227332ac0",
+          "hash_seed8": "b2e3e378fb8c9201dcea3825e44d9b7704303b518cbd82b6516a294387935d63",
+          "seed7_spikes": 9,
+          "seed8_spikes": 9
+        },
+        "passed": true
+      }
+    ]
+  },
+  "full_banc_smoke": {
+    "selection": "highest_out_degree: 64 nodes with the largest structural out-degree at threshold 5, ties broken by ascending node index; chosen before any simulation output was inspected",
+    "runs": [
+      {
+        "directory": "experiments/results/phase_4g/phase_4g4_smoke_t5_seed20261108",
+        "threshold": 5,
+        "nodes": 172433,
+        "edges": 1535710,
+        "synapses": 18552546,
+        "stimulated_neurons": 64,
+        "stimulation": {
+          "label": "highest_out_degree:64@300pA",
+          "n_neurons": 64,
+          "root_ids": [
+            720575941405860208,
+            720575941412601967,
+            720575941416653084,
+            720575941418305052,
+            720575941418390300,
+            720575941440904255,
+            720575941446780842,
+            720575941453611898,
+            720575941464182672,
+            720575941472988279,
+            720575941473029495,
+            720575941474101344,
+            720575941478599454,
+            720575941481834208,
+            720575941482622627,
+            720575941483106243,
+            720575941492471502,
+            720575941492973287,
+            720575941496349310,
+            720575941497888384,
+            720575941500851362,
+            720575941500851785,
+            720575941503947403,
+            720575941506055874,
+            720575941508609665,
+            720575941508987717,
+            720575941509979998,
+            720575941518549395,
+            720575941520657880,
+            720575941528443417,
+            720575941535164291,
+            720575941537352970,
+            720575941537710824,
+            720575941537795521,
+            720575941537896474,
+            720575941540370069,
+            720575941546261253,
+            720575941554922119,
+            720575941557552356,
+            720575941557939428,
+            720575941561376750,
+            720575941566084871,
+            720575941567736423,
+            720575941585819999,
+            720575941596694823,
+            720575941598148229,
+            720575941612504297,
+            720575941613506989,
+            720575941613660390,
+            720575941614407900,
+            720575941618690517,
+            720575941625363452,
+            720575941626500746,
+            720575941631721954,
+            720575941644360018,
+            720575941646264993,
+            720575941652728049,
+            720575941653756145,
+            720575941654217457,
+            720575941664692860,
+            720575941689586671,
+            720575941689628143,
+            720575941692811928,
+            720575941734526507
+          ],
+          "current_pa": 300.0,
+          "start_ms": 10.0,
+          "end_ms": 40.0
+        },
+        "duration_ms": 100.0,
+        "dt_ms": 0.5,
+        "seed": 20261108,
+        "spikes": 74,
+        "active_neurons": 64,
+        "active_fraction": 0.000371,
+        "mean_rate_hz": 0.0043,
+        "runtime_s": 0.7345,
+        "steps_per_second": 272.3,
+        "memory_after": {
+          "rss_mb": 197.25,
+          "peak_working_set_mb": 264.8
+        },
+        "activity_sha256": "b660f712d9490a7ff29b6d4326fdb36344cc7db7a67925f5b9a9aa2ce167a1d5"
+      },
+      {
+        "directory": "experiments/results/phase_4g/phase_4g4_smoke_t5_seed20261108_repeat",
+        "threshold": 5,
+        "nodes": 172433,
+        "edges": 1535710,
+        "synapses": 18552546,
+        "stimulated_neurons": 64,
+        "stimulation": {
+          "label": "highest_out_degree:64@300pA",
+          "n_neurons": 64,
+          "root_ids": [
+            720575941405860208,
+            720575941412601967,
+            720575941416653084,
+            720575941418305052,
+            720575941418390300,
+            720575941440904255,
+            720575941446780842,
+            720575941453611898,
+            720575941464182672,
+            720575941472988279,
+            720575941473029495,
+            720575941474101344,
+            720575941478599454,
+            720575941481834208,
+            720575941482622627,
+            720575941483106243,
+            720575941492471502,
+            720575941492973287,
+            720575941496349310,
+            720575941497888384,
+            720575941500851362,
+            720575941500851785,
+            720575941503947403,
+            720575941506055874,
+            720575941508609665,
+            720575941508987717,
+            720575941509979998,
+            720575941518549395,
+            720575941520657880,
+            720575941528443417,
+            720575941535164291,
+            720575941537352970,
+            720575941537710824,
+            720575941537795521,
+            720575941537896474,
+            720575941540370069,
+            720575941546261253,
+            720575941554922119,
+            720575941557552356,
+            720575941557939428,
+            720575941561376750,
+            720575941566084871,
+            720575941567736423,
+            720575941585819999,
+            720575941596694823,
+            720575941598148229,
+            720575941612504297,
+            720575941613506989,
+            720575941613660390,
+            720575941614407900,
+            720575941618690517,
+            720575941625363452,
+            720575941626500746,
+            720575941631721954,
+            720575941644360018,
+            720575941646264993,
+            720575941652728049,
+            720575941653756145,
+            720575941654217457,
+            720575941664692860,
+            720575941689586671,
+            720575941689628143,
+            720575941692811928,
+            720575941734526507
+          ],
+          "current_pa": 300.0,
+          "start_ms": 10.0,
+          "end_ms": 40.0
+        },
+        "duration_ms": 100.0,
+        "dt_ms": 0.5,
+        "seed": 20261108,
+        "spikes": 74,
+        "active_neurons": 64,
+        "active_fraction": 0.000371,
+        "mean_rate_hz": 0.0043,
+        "runtime_s": 0.6934,
+        "steps_per_second": 288.4,
+        "memory_after": {
+          "rss_mb": 200.32,
+          "peak_working_set_mb": 268.93
+        },
+        "activity_sha256": "b660f712d9490a7ff29b6d4326fdb36344cc7db7a67925f5b9a9aa2ce167a1d5"
+      }
+    ],
+    "deterministic_across_repeats": true
+  },
+  "verdict": "PASS",
+  "limitations": [
+    "Toy graphs are synthetic and use the same neuron and synapse models as the full graph; they test implementation, not biology.",
+    "A structural edge under the primary weight policy is insufficient to fire a resting neuron; propagation in the full graph depends on convergence.",
+    "The single smoke test demonstrates that a seeded, sparse full-graph simulation runs and is reproducible; it is not evidence of physiological propagation."
+  ],
+  "runtime_s": 0.376
+}

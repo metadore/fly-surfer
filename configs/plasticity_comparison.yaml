@@ -1,0 +1,141 @@
+# Phase 5F - declared comparative evaluation and robustness design.
+#
+# SCIENTIFIC STATUS
+#   Every quantity in the outputs of this configuration is a model output of a
+#   synthetic conditioned-response task. The "wiring" factor is complete versus
+#   Bernoulli(0.5) cue -> action wiring inside that synthetic graph. It is not
+#   the BANC connectome and no connectome edge is read, modified or simulated.
+#   Reward magnitudes are dimensionless task units. The declared values below
+#   are fixed before the experiment and may only be changed with a recorded
+#   reason. Statistical tests are declared here before any result is seen.
+#
+# Design
+#   Core comparison: four spiking conditions x independent seeds, each with the
+#   same episode budget, training pool and held-out evaluation pool. A
+#   conventional supervised perceptron is reported separately as an
+#   information-privileged reference and is never pooled with the spiking
+#   conditions.
+#
+#   Robustness: one parameter is varied at a time around the declared baseline
+#   (complete wiring, plastic weights, eta = 1.0, tau_e = 20 ms, reward +1,
+#   bounds 0.5x/2.0x with a 5 pA update clip, 4 cues, threshold 1, no reward
+#   delay). Fixed-weight controls are repeated only for axes that change the
+#   substrate; for rule-only axes the eta = 0 result is invariant by
+#   construction and the core fixed result is reused. Every cell is retained,
+#   including cells with no spikes or no weight change.
+
+version: 1
+phase: 5F
+
+core:
+  # Condition IDs are declared here so that the family of paired contrasts is
+  # fixed before the results are known.
+  conditions:
+    - fixed_complete
+    - plastic_complete
+    - fixed_random
+    - plastic_random
+  contrasts:
+    - [plastic_complete, fixed_complete]
+    - [plastic_random, fixed_random]
+    - [plastic_complete, plastic_random]
+    - [fixed_complete, fixed_random]
+  n_seeds: 10
+  train_episodes: 160
+  eval_episodes: 40
+  # Only the start and the end of training are evaluated in Phase 5F; Phase 5E
+  # already reports the full learning curve.
+  eval_checkpoints: [0, 160]
+  eta: 1.0
+
+conventional:
+  n_seeds: 10
+  train_episodes: 160
+  eval_episodes: 40
+  eval_checkpoints: [0, 160]
+
+robustness:
+  n_seeds: 4
+  train_episodes: 120
+  eval_episodes: 24
+  eval_checkpoints: [0, 120]
+  # Each axis is a list of labelled values. `runs_control` repeats the fixed
+  # control because the axis changes the substrate; otherwise the eta = 0
+  # outcome is invariant and is reported as such.
+  axes:
+    eta:
+      runs_control: false
+      reference: "1.0"
+      values:
+        - {label: "0.1", eta: 0.1}
+        - {label: "0.5", eta: 0.5}
+        - {label: "1.0", eta: 1.0}
+        - {label: "2.0", eta: 2.0}
+    tau_e_ms:
+      runs_control: false
+      reference: "20.0"
+      values:
+        - {label: "10.0", tau_e_ms: 10.0}
+        - {label: "20.0", tau_e_ms: 20.0}
+        - {label: "40.0", tau_e_ms: 40.0}
+    reward_magnitude:
+      runs_control: false
+      reference: "1.0"
+      values:
+        - {label: "0.25", reward_magnitude: 0.25}
+        - {label: "1.0", reward_magnitude: 1.0}
+        - {label: "4.0", reward_magnitude: 4.0}
+    weight_bounds:
+      runs_control: false
+      reference: "declared_0.5_2.0_clip5"
+      values:
+        - {label: "tight_0.75_1.25_clip2", lower_factor: 0.75, upper_factor: 1.25, max_abs_update_pa: 2.0}
+        - {label: "declared_0.5_2.0_clip5", lower_factor: 0.5, upper_factor: 2.0, max_abs_update_pa: 5.0}
+        - {label: "loose_0.25_4.0_noclip", lower_factor: 0.25, upper_factor: 4.0, max_abs_update_pa: null}
+    initial_weights:
+      runs_control: true
+      reference: "seed_20261114"
+      values:
+        - {label: "seed_20261114", substrate_seed: 20261114}
+        - {label: "seed_20261115", substrate_seed: 20261115}
+        - {label: "seed_20261116", substrate_seed: 20261116}
+    network_size:
+      runs_control: true
+      reference: "n_cues_4"
+      values:
+        - {label: "n_cues_2", n_cues: 2}
+        - {label: "n_cues_4", n_cues: 4}
+        - {label: "n_cues_8", n_cues: 8}
+    structural_threshold:
+      runs_control: true
+      reference: "t1"
+      values:
+        - {label: "t1", threshold: 1}
+        - {label: "t2", threshold: 2}
+        - {label: "t3", threshold: 3}
+    reward_delay_ms:
+      runs_control: false
+      reference: "0.0"
+      values:
+        - {label: "0.0", reward_delay_ms: 0.0}
+        - {label: "2.0", reward_delay_ms: 2.0}
+        - {label: "5.0", reward_delay_ms: 5.0}
+        - {label: "10.0", reward_delay_ms: 10.0}
+
+statistics:
+  alpha: 0.05
+  bootstrap_resamples: 10000
+  bootstrap_seed: 20261117
+  # Two-sided exact sign-flip permutation test on paired seed-level differences.
+  # For n <= 16 every sign assignment is enumerated; above that a Monte Carlo
+  # sample of 100000 sign vectors is used with the observed value included.
+  exact_permutation_max_n: 16
+  monte_carlo_draws: 100000
+
+seeds:
+  master_seed: 20261118
+  # Same independent SeedSequence stream codes as Phase 5E.
+  train_sim: 1001
+  eval_sim: 2001
+  train_jitter: 3001
+  eval_jitter: 4001

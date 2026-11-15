@@ -1,0 +1,667 @@
+{
+  "phase": "3B.6",
+  "generated_at_utc": "2026-11-07T04:22:23.114320+00:00",
+  "status": "evaluated_local_onnx_model",
+  "claim": "Metrics describe a locally executed ONNX model on held-out validation groups; they are not independent test results and the weights were not trained in this repository. Detections rejected by the production validator are excluded. Only 3 images were evaluated (smoke run).",
+  "selection": {
+    "split": "valid",
+    "fold": 1,
+    "valid_group": "datasetfootage",
+    "limit": 3,
+    "n_images": 3
+  },
+  "dataset": {
+    "dataset_root": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8",
+    "manifest": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\reports\\PHASE_3B1_SPLIT_MANIFEST.json",
+    "manifest_sha256": "ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d",
+    "class_names": [
+      "boots-powerup",
+      "boxtrain",
+      "jump-barrier",
+      "jump-electric",
+      "jump-hedge",
+      "jump-roll-barrier",
+      "jump-trash",
+      "ledge",
+      "pogstick-powerup",
+      "ramp",
+      "roll-barrier",
+      "train",
+      "undercover-barrier",
+      "wall"
+    ]
+  },
+  "support": {
+    "images": 3,
+    "boxes": 8,
+    "images_without_boxes": 0,
+    "per_class_boxes": {
+      "boots-powerup": 0,
+      "boxtrain": 2,
+      "jump-barrier": 0,
+      "jump-electric": 0,
+      "jump-hedge": 0,
+      "jump-roll-barrier": 0,
+      "jump-trash": 0,
+      "ledge": 0,
+      "pogstick-powerup": 0,
+      "ramp": 2,
+      "roll-barrier": 0,
+      "train": 4,
+      "undercover-barrier": 0,
+      "wall": 0
+    },
+    "per_class_images": {
+      "boots-powerup": 0,
+      "boxtrain": 2,
+      "jump-barrier": 0,
+      "jump-electric": 0,
+      "jump-hedge": 0,
+      "jump-roll-barrier": 0,
+      "jump-trash": 0,
+      "ledge": 0,
+      "pogstick-powerup": 0,
+      "ramp": 2,
+      "roll-barrier": 0,
+      "train": 2,
+      "undercover-barrier": 0,
+      "wall": 0
+    },
+    "missing_classes": [
+      "boots-powerup",
+      "jump-barrier",
+      "jump-electric",
+      "jump-hedge",
+      "jump-roll-barrier",
+      "jump-trash",
+      "ledge",
+      "pogstick-powerup",
+      "roll-barrier",
+      "undercover-barrier",
+      "wall"
+    ],
+    "low_support_classes": [
+      "boxtrain",
+      "ramp",
+      "train"
+    ],
+    "unevaluable_classes": [
+      "boots-powerup",
+      "jump-barrier",
+      "jump-electric",
+      "jump-hedge",
+      "jump-roll-barrier",
+      "jump-trash",
+      "ledge",
+      "pogstick-powerup",
+      "roll-barrier",
+      "undercover-barrier",
+      "wall"
+    ]
+  },
+  "zero_support_classes": [
+    "boots-powerup",
+    "jump-barrier",
+    "jump-electric",
+    "jump-hedge",
+    "jump-roll-barrier",
+    "jump-trash",
+    "ledge",
+    "pogstick-powerup",
+    "roll-barrier",
+    "undercover-barrier",
+    "wall"
+  ],
+  "protocol": {
+    "source": "reports/PHASE_3B2B0_DETECTOR_FEASIBILITY.md section 5",
+    "split_source": "reports/PHASE_3B1_SPLIT_MANIFEST.json",
+    "test_split": false,
+    "fixed_split_role": "model selection",
+    "logo_role": "variance and group sensitivity",
+    "iou_threshold": 0.5,
+    "iou_sweep": [
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.9,
+      0.95
+    ],
+    "operating_confidence": 0.25,
+    "evaluation_confidence_floor": 0.05,
+    "confusion_matrix": "class-agnostic IoU 0.5 with background",
+    "bootstrap": {
+      "resamples": 1000,
+      "seed": 20261105
+    },
+    "low_support_boxes": 20,
+    "excluded_images": 12,
+    "rules": [
+      "Never use Roboflow train/valid folder names as the split.",
+      "Never train or evaluate on quarantined images.",
+      "Do not tune on LOGO validation.",
+      "Do not describe validation results as independent test performance.",
+      "Report per-fold results, not only a pooled mean."
+    ]
+  },
+  "predictions_source": {
+    "kind": "local_onnx_model",
+    "detector": {
+      "name": "onnx-runtime-detector",
+      "kind": "local_onnx_detector",
+      "test_only": false,
+      "produces": "untrusted RawDetection records in processed-image pixels",
+      "model_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\models\\YOLO11\\deployment\\yolo11n_v1_deployment\\best.onnx",
+      "model_sha256": "e6ad18f90cd0be8c71237556f0922d83a6dca4ac54184ddde6536896b6b6aa77",
+      "weights_loaded": true,
+      "weights_trained_in_repository": false,
+      "trained_accuracy_reported": null,
+      "input_size": [
+        640,
+        640
+      ],
+      "resize_mode": "letterbox",
+      "output_layout": "yolo_raw",
+      "has_objectness": false,
+      "class_activation": "none",
+      "num_model_classes": 14,
+      "providers": [
+        "CPUExecutionProvider"
+      ],
+      "class_names": [
+        "boots-powerup",
+        "boxtrain",
+        "jump-barrier",
+        "jump-electric",
+        "jump-hedge",
+        "jump-roll-barrier",
+        "jump-trash",
+        "ledge",
+        "pogstick-powerup",
+        "ramp",
+        "roll-barrier",
+        "train",
+        "undercover-barrier",
+        "wall"
+      ],
+      "class_id_map": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "confidence_threshold": 0.05,
+      "nms_iou_threshold": 0.7,
+      "timing_scope": "detector call wall time: preprocessing + session.run + decode/NMS/coordinate inversion; not pure ONNX inference time",
+      "last_inference_ms": 105.17979999985982,
+      "last_detector_call_ms": 105.17979999985982,
+      "last_preprocess_ms": 9.060299999873678,
+      "last_session_run_ms": 94.60000000035507,
+      "last_postprocess_ms": 1.5194999996310798,
+      "last_decoded_count": 45,
+      "notes": [
+        "The model artifact is a local, Git-ignored deployment file.",
+        "trained_accuracy_reported is null: repository metrics are not reproduced at load time.",
+        "Predictions are visual estimates and are validated downstream.",
+        "The detector is not connected to the connectome or plasticity."
+      ]
+    },
+    "confidence_floor": 0.05
+  },
+  "metrics": {
+    "n_images": 3,
+    "n_ground_truth": 8,
+    "n_predictions": 7,
+    "operating_confidence": 0.25,
+    "iou_threshold": 0.5,
+    "classes": [
+      {
+        "class_id": 0,
+        "class_name": "boots-powerup",
+        "support": 0,
+        "n_predictions": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "ap50": null,
+        "ap50_95": null,
+        "low_support": true,
+        "evaluated": false
+      },
+      {
+        "class_id": 1,
+        "class_name": "boxtrain",
+        "support": 2,
+        "n_predictions": 2,
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "ap50": 1.0,
+        "ap50_95": 0.95,
+        "low_support": true,
+        "evaluated": true
+      },
+      {
+        "class_id": 2,
+        "class_name": "jump-barrier",
+        "support": 0,
+        "n_predictions": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "ap50": null,
+        "ap50_95": null,
+        "low_support": true,
+        "evaluated": false
+      },
+      {
+        "class_id": 3,
+        "class_name": "jump-electric",
+        "support": 0,
+        "n_predictions": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "ap50": null,
+        "ap50_95": null,
+        "low_support": true,
+        "evaluated": false
+      },
+      {
+        "class_id": 4,
+        "class_name": "jump-hedge",
+        "support": 0,
+        "n_predictions": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "ap50": null,
+        "ap50_95": null,
+        "low_support": true,
+        "evaluated": false
+      },
+      {
+        "class_id": 5,
+        "class_name": "jump-roll-barrier",
+        "support": 0,
+        "n_predictions": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "ap50": null,
+        "ap50_95": null,
+        "low_support": true,
+        "evaluated": false
+      },
+      {
+        "class_id": 6,
+        "class_name": "jump-trash",
+        "support": 0,
+        "n_predictions": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "ap50": null,
+        "ap50_95": null,
+        "low_support": true,
+        "evaluated": false
+      },
+      {
+        "class_id": 7,
+        "class_name": "ledge",
+        "support": 0,
+        "n_predictions": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "ap50": null,
+        "ap50_95": null,
+        "low_support": true,
+        "evaluated": false
+      },
+      {
+        "class_id": 8,
+        "class_name": "pogstick-powerup",
+        "support": 0,
+        "n_predictions": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "ap50": null,
+        "ap50_95": null,
+        "low_support": true,
+        "evaluated": false
+      },
+      {
+        "class_id": 9,
+        "class_name": "ramp",
+        "support": 2,
+        "n_predictions": 1,
+        "tp": 1,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6666666666666666,
+        "ap50": 0.5,
+        "ap50_95": 0.5,
+        "low_support": true,
+        "evaluated": true
+      },
+      {
+        "class_id": 10,
+        "class_name": "roll-barrier",
+        "support": 0,
+        "n_predictions": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "ap50": null,
+        "ap50_95": null,
+        "low_support": true,
+        "evaluated": false
+      },
+      {
+        "class_id": 11,
+        "class_name": "train",
+        "support": 4,
+        "n_predictions": 4,
+        "tp": 3,
+        "fp": 1,
+        "fn": 1,
+        "precision": 0.75,
+        "recall": 0.75,
+        "f1": 0.75,
+        "ap50": 0.75,
+        "ap50_95": 0.5666666666666667,
+        "low_support": true,
+        "evaluated": true
+      },
+      {
+        "class_id": 12,
+        "class_name": "undercover-barrier",
+        "support": 0,
+        "n_predictions": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "ap50": null,
+        "ap50_95": null,
+        "low_support": true,
+        "evaluated": false
+      },
+      {
+        "class_id": 13,
+        "class_name": "wall",
+        "support": 0,
+        "n_predictions": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "ap50": null,
+        "ap50_95": null,
+        "low_support": true,
+        "evaluated": false
+      }
+    ],
+    "micro": {
+      "precision": 0.8571428571428571,
+      "recall": 0.75,
+      "f1": 0.7999999999999999,
+      "tp": 6,
+      "fp": 1,
+      "fn": 2,
+      "support": 8
+    },
+    "macro": {
+      "precision": 0.9166666666666666,
+      "recall": 0.75,
+      "f1": 0.8055555555555555,
+      "tp": 6,
+      "fp": 1,
+      "fn": 2,
+      "support": 8
+    },
+    "map50": 0.75,
+    "map50_95": 0.6722222222222222,
+    "confusion": {
+      "labels": [
+        "boxtrain",
+        "ramp",
+        "train",
+        "background"
+      ],
+      "matrix": {
+        "boxtrain": {
+          "boxtrain": 2,
+          "ramp": 0,
+          "train": 0,
+          "background": 0
+        },
+        "ramp": {
+          "boxtrain": 0,
+          "ramp": 1,
+          "train": 0,
+          "background": 1
+        },
+        "train": {
+          "boxtrain": 0,
+          "ramp": 0,
+          "train": 3,
+          "background": 1
+        },
+        "background": {
+          "boxtrain": 0,
+          "ramp": 0,
+          "train": 1,
+          "background": 0
+        }
+      }
+    },
+    "false_positives": {
+      "counts": {
+        "duplicate": 0,
+        "localization_error": 0,
+        "class_confusion": 0,
+        "background": 1
+      },
+      "total": 1
+    },
+    "false_negatives": {
+      "counts": {
+        "no_prediction": 2,
+        "below_threshold_prediction": 0,
+        "localization_below_iou": 0,
+        "class_mismatch": 0
+      },
+      "total": 2
+    },
+    "confidence_intervals": {
+      "precision": {
+        "low": 0.0,
+        "high": 1.0
+      },
+      "recall": {
+        "low": 0.0,
+        "high": 1.0
+      },
+      "resamples": 100,
+      "seed": 20261105
+    },
+    "unevaluated_classes": [
+      "boots-powerup",
+      "jump-barrier",
+      "jump-electric",
+      "jump-hedge",
+      "jump-roll-barrier",
+      "jump-trash",
+      "ledge",
+      "pogstick-powerup",
+      "roll-barrier",
+      "undercover-barrier",
+      "wall"
+    ],
+    "notes": [
+      "Validation-group results are not independent test performance.",
+      "Classes with zero support are reported but their AP is undefined.",
+      "False-positive and false-negative taxonomies are automatic geometric assignments, not manual inspection.",
+      "Predictions must be converted to normalized viewport coordinates with the same crop/resize transform used for ground truth."
+    ]
+  },
+  "latency": {
+    "count": 3,
+    "mean_ms": 121.34843333327201,
+    "p50_ms": 125.76979999994364,
+    "p95_ms": 132.3631100000057,
+    "p99_ms": 132.9491820000112,
+    "min_ms": 105.17979999985982,
+    "max_ms": 133.09570000001258
+  },
+  "timing": {
+    "scope": "detector call wall time = preprocessing + session.run + decode/NMS/coordinate inversion; session_run is the ONNX Runtime call only",
+    "detector_call": {
+      "count": 3,
+      "mean_ms": 121.34843333327201,
+      "p50_ms": 125.76979999994364,
+      "p95_ms": 132.3631100000057,
+      "p99_ms": 132.9491820000112,
+      "min_ms": 105.17979999985982,
+      "max_ms": 133.09570000001258
+    },
+    "session_run": {
+      "count": 3,
+      "mean_ms": 108.46346666691413,
+      "p50_ms": 113.56000000023414,
+      "p95_ms": 116.86336000016126,
+      "p99_ms": 117.15699200015479,
+      "min_ms": 94.60000000035507,
+      "max_ms": 117.23040000015317
+    },
+    "preprocess": {
+      "count": 3,
+      "mean_ms": 10.91486666655328,
+      "p50_ms": 10.852599999907397,
+      "p95_ms": 12.633789999881628,
+      "p99_ms": 12.792117999879338,
+      "min_ms": 9.060299999873678,
+      "max_ms": 12.831699999878765
+    },
+    "postprocess": {
+      "count": 3,
+      "mean_ms": 1.9700999998046125,
+      "p50_ms": 1.5194999996310798,
+      "p95_ms": 2.882189999945694,
+      "p99_ms": 3.0033179999736603,
+      "min_ms": 1.3571999998021056,
+      "max_ms": 3.0335999999806518
+    }
+  },
+  "timing_scope": "detector call wall time = preprocessing + session.run + decode/NMS/coordinate inversion; session_run is the ONNX Runtime call only",
+  "validation": {
+    "confidence_threshold": 0.05,
+    "rules": "same DetectionValidator rules as the production pipeline; only the confidence threshold is the evaluation floor",
+    "n_raw_detections": 9,
+    "n_accepted": 7,
+    "n_rejected": 2,
+    "rejection_counts": {
+      "out_of_bounds": 2
+    },
+    "rejection_examples": [
+      {
+        "image": "train/images/datasetfootage_mp4-0_jpg.rf.0097bea70e5bd8e7224782e5df9ff31e.jpg",
+        "reason": "out_of_bounds",
+        "detail": "box lies 0.215 px outside the 606x1050 processed image; tolerance is 0.000 px",
+        "raw_index": 0,
+        "raw": {
+          "class_id": 11,
+          "class_name": null,
+          "confidence": 0.9487295150756836,
+          "bbox": [
+            -0.2149072662601626,
+            303.3954870700836,
+            172.45967312944614,
+            989.4336354732512
+          ]
+        }
+      },
+      {
+        "image": "train/images/datasetfootage_mp4-103_jpg.rf.49eb7c77bd38e88df21df1f1b22e9bd1.jpg",
+        "reason": "out_of_bounds",
+        "detail": "box lies 2.808 px outside the 606x1050 processed image; tolerance is 0.000 px",
+        "raw_index": 0,
+        "raw": {
+          "class_id": 9,
+          "class_name": null,
+          "confidence": 0.9050266146659851,
+          "bbox": [
+            -2.8080280583079267,
+            318.0192947387695,
+            357.11989438436865,
+            890.2699756622313
+          ]
+        }
+      }
+    ]
+  },
+  "memory": {
+    "peak_wset_mb": 57.57,
+    "rss_mb": 57.57,
+    "platform_note": "peak_wset is available on Windows; on other platforms only RSS is reported."
+  },
+  "limitations": [
+    "There is no independent test split; these are held-out recordings, not an independent test set.",
+    "Player and coin classes are absent from the dataset.",
+    "Zero-support classes in this selection: boots-powerup, jump-barrier, jump-electric, jump-hedge, jump-roll-barrier, jump-trash, ledge, pogstick-powerup, roll-barrier, undercover-barrier, wall. Their AP is undefined; no performance is claimed for them.",
+    "Only the first 3 selected images were evaluated; this is a smoke run, not split-level performance."
+  ]
+}

@@ -1,0 +1,1795 @@
+{
+  "document": "PHASE_6A_INFORMATION_THEORY_AUDIT",
+  "phase": "6A",
+  "title": "Phase 6A - Information-Theoretic Analysis: Architecture, Data and Feasibility Audit",
+  "generated_at_utc": "2026-11-10T00:00:00+00:00",
+  "project_root": "C:/Users/Hp/fruitfly/FLY-SURFER",
+  "status": "AUDIT COMPLETE - NO ENTROPY OR MUTUAL-INFORMATION COMPUTATION PERFORMED",
+  "scope": {
+    "objective": "Audit existing architecture, experiment outputs, available variables and statistical requirements so Phases 6B-6G can be specified without inventing capability that does not exist.",
+    "research_question": "What task-relevant information is present in neural activity, and how does it relate to sensory inputs, motor outputs and reward?",
+    "framework": "Shannon information theory: H(X), H(X,Y), I(X;Y), I(X;Y|Z).",
+    "not_performed": [
+      "no entropy computed on any dataset",
+      "no mutual information computed on any dataset",
+      "no new simulation run",
+      "no new recording campaign",
+      "no modification of Phase 3, Phase 4 or Phase 5 source files",
+      "no modification of completed experiment outputs",
+      "no modification of datasets or connectomes",
+      "no staging, commit or push"
+    ],
+    "definitions_declared_for_later_phases": {
+      "H(X)": "Shannon entropy of a discrete variable X in bits, base-2 logarithm.",
+      "H(X,Y)": "Joint Shannon entropy using the same marginal discretisation each variable uses individually.",
+      "I(X;Y)": "H(X) + H(Y) - H(X,Y); non-negative in expectation, upward-biased under plug-in estimation.",
+      "I(X;Y|Z)": "Conditional MI, evaluated as a weighted average of within-stratum I(X;Y) over discrete strata of Z.",
+      "normalised_mi": "I(X;Y) / min(H(X), H(Y)); reported only when min entropy exceeds a declared floor.",
+      "uncertainty_coefficient": "I(X;Y) / H(Y); asymmetric, direction explicit."
+    }
+  },
+  "preserved_findings": [
+    {
+      "id": "PF-01",
+      "phase": "4H",
+      "statement": "Sensory neurons were stimulated, but effective downstream propagation to motor populations was not established. Actual sensory events did not produce a distinguishable propagated response against the tested controls. Highest evidence grade E2.",
+      "reused_as": "Constrains 6D and 6E: no established sensory-to-motor channel exists to measure information over.",
+      "reinterpreted": false
+    },
+    {
+      "id": "PF-02",
+      "phase": "4H",
+      "statement": "Round-trip condition totals: B (stimulated) 3562, C (shuffled timing) 3760, D (random placement) 3648, E (intact control) 3561, F 0, G 0.",
+      "reused_as": "Quantifies null-like spacing between stimulated and control conditions; a claimed information gain must exceed this spacing.",
+      "reinterpreted": false
+    },
+    {
+      "id": "PF-03",
+      "phase": "5F",
+      "statement": "Fixed complete 0.795 +/- 0.084; plastic complete 0.945 +/- 0.023; paired difference +0.150; Holm-adjusted p = 0.00781; Cohen dz = 2.012.",
+      "reused_as": "The only established behavioural effect in the project; 6F must explain it in information terms without altering it.",
+      "reinterpreted": false
+    },
+    {
+      "id": "PF-04",
+      "phase": "5E",
+      "statement": "Action selectivity 0.192, below the 0.25 chance level.",
+      "reused_as": "Warns that action selection is not demonstrably selective; neural-to-action information endpoints may be uninformative by construction.",
+      "reinterpreted": false
+    },
+    {
+      "id": "PF-05",
+      "phase": "5G",
+      "statement": "Biological interpretation of the plasticity result is INCONCLUSIVE.",
+      "reused_as": "Phase 6 language about biological plausibility must remain inconclusive absent new evidence.",
+      "reinterpreted": false
+    }
+  ],
+  "architecture": {
+    "packages": [
+      {
+        "name": "brain",
+        "status": "implemented",
+        "key_types": [
+          "LIFPopulation",
+          "Synapse",
+          "BrainSimulator",
+          "SpikeRecorder"
+        ],
+        "role": "LIF dynamics, connectivity, spike recording, generic simulation loop."
+      },
+      {
+        "name": "sensory",
+        "status": "implemented",
+        "key_types": [
+          "game state encoders",
+          "population mapping",
+          "activation scheduler"
+        ],
+        "role": "Game-state observation to sensory population activation; 138 mapped neurons (12x8 + 6x6)."
+      },
+      {
+        "name": "perception",
+        "status": "implemented",
+        "key_types": [
+          "detector backend",
+          "tracker",
+          "temporal feature encoder",
+          "event encoder"
+        ],
+        "role": "Detection and tracking to discrete temporal events (appeared, approaching, receding, occluded, disappeared)."
+      },
+      {
+        "name": "motor",
+        "status": "implemented",
+        "key_types": [
+          "MotorDecoder",
+          "decode_series",
+          "decode_recorder"
+        ],
+        "role": "Reads BANC population activity windows and produces per-action decision scores."
+      },
+      {
+        "name": "plasticity",
+        "status": "implemented",
+        "key_types": [
+          "PlasticSimulator",
+          "reward system",
+          "eligibility traces",
+          "statistics"
+        ],
+        "role": "RPE, three-factor rule, per-step callback, paired statistics utilities."
+      },
+      {
+        "name": "learning",
+        "status": "placeholders",
+        "key_types": [
+          "mutual_information.py",
+          "dopamine.py",
+          "synaptic_plasticity.py"
+        ],
+        "role": "Docstring-only stubs. Unimported by any runner. Must be reported as placeholders, not capability."
+      },
+      {
+        "name": "experiments",
+        "status": "implemented",
+        "key_types": [
+          "phase_3",
+          "phase_3_5",
+          "phase_3b",
+          "phase_3c",
+          "phase_4f",
+          "phase_4g",
+          "phase_4h",
+          "phase_5"
+        ],
+        "role": "Runners, configs, results and reports for completed phases."
+      }
+    ],
+    "data_flow": "game/sequence -> sensory encoders -> activation scheduler -> BrainSimulator (LIF) -> optional BANC adapter -> MotorDecoder -> action scores; phase 5 adds reward -> RPE -> eligibility trace -> weight delta.",
+    "recording_interfaces": [
+      {
+        "interface": "SpikeRecorder",
+        "file": "brain/neural_activity.py",
+        "capability": "records (time_ms, neuron_index) pairs during a run",
+        "persistence": "save() writes npz keys spike_times_ms, spike_neuron_indices, n_neurons, duration_ms, capacity",
+        "scope": "spikes only; no membrane potentials; bounded capacity buffer"
+      },
+      {
+        "interface": "BancActivityAdapter",
+        "file": "motor / experiments",
+        "capability": "windowed readout of BANC population activity",
+        "persistence": "window summaries consumed by MotorDecoder; windows are not persisted as raw traces"
+      },
+      {
+        "interface": "MotorDecoder",
+        "file": "motor/decoder.py",
+        "capability": "decode_series / decode_recorder produce per-window raw and smoothed action scores",
+        "persistence": "written inside experiment JSON records"
+      },
+      {
+        "interface": "PlasticSimulator.step_callback",
+        "file": "plasticity/plastic_simulator.py",
+        "capability": "called every step as step_callback(step, step*dt_ms, spikes, simulator)",
+        "persistence": "whatever the callback chooses; existing runners store reduced metrics",
+        "note": "the only per-step instrumentation hook in the codebase"
+      },
+      {
+        "interface": "LIFPopulation.membrane_potential",
+        "file": "brain/neuron_model.py",
+        "capability": "property exposing the voltage vector",
+        "persistence": "in-memory only; never serialised by any runner"
+      },
+      {
+        "interface": "BrainSimulator / BancSimulator",
+        "file": "brain/simulator.py",
+        "capability": "run loop with spike recording",
+        "persistence": "no per-step callback hook; adding one would modify Phase 4 source"
+      }
+    ],
+    "statistics_utilities": [
+      {
+        "file": "experiments/phase_4h/common.py",
+        "role": "integrity_snapshot() over experiments/phase_4h/baseline_integrity.json (37 entries)"
+      },
+      {
+        "file": "experiments/phase_4h/control_draws.py",
+        "role": "seeded random control draw construction"
+      },
+      {
+        "file": "experiments/phase_5/comparative.py",
+        "role": "paired contrast, bootstrap CI of means, sign-flip test"
+      },
+      {
+        "file": "plasticity/statistics.py",
+        "role": "Holm-Bonferroni, effect sizes, descriptive summaries"
+      },
+      {
+        "file": "experiments/phase_5/final_assessment.py",
+        "role": "integrity validation and git cleanliness checks"
+      }
+    ],
+    "gaps": [
+      "No persisted membrane potentials anywhere in the repository.",
+      "No persisted eligibility traces; only per-condition summaries.",
+      "No per-step hook outside PlasticSimulator, so BrainSimulator/BancSimulator runs cannot emit step-level traces without source changes.",
+      "learning/mutual_information.py is a stub and provides no estimator.",
+      "No experiment stores per-neuron spike trains except the Phase 4G smoke NPZ.",
+      "Phase 4H recorded zero non-stimulated downstream spikes, so downstream variability needed for MI is absent in stored data.",
+      "No trial-level repetition of identical stimuli with independent noise in the stored data."
+    ]
+  },
+  "data_inventory": [
+    {
+      "id": "DI-01",
+      "path": "experiments/phase_3/results/summary.json",
+      "bytes": 120493,
+      "content": "23 conditions x 14 features; mapping sizes 12x8=96 and 6x6=36 (138 mapped neurons); aggregate activity only",
+      "temporal_resolution": "per-condition aggregate (no per-step array)",
+      "records": "23 condition records",
+      "contains_time_series": false,
+      "class": "aggregate_summary"
+    },
+    {
+      "id": "DI-02",
+      "path": "experiments/phase_3/results/conditions/*.json",
+      "bytes": null,
+      "content": "Per-condition timeline, activation schedule, metrics, digest",
+      "temporal_resolution": "per-step schedule indices; metrics aggregated",
+      "records": "23 files",
+      "contains_time_series": true,
+      "class": "per_condition_summary"
+    },
+    {
+      "id": "DI-03",
+      "path": "experiments/phase_3_5/results/calibration_summary.json",
+      "bytes": 4919,
+      "content": "Calibration outcome: 200 pA, sigma 0.2, population 4, seed counts 2/6/7 by distance, additivity 0.0",
+      "temporal_resolution": "not applicable",
+      "records": "1 summary",
+      "contains_time_series": false,
+      "class": "aggregate_summary"
+    },
+    {
+      "id": "DI-04",
+      "path": "experiments/phase_3b/results/phase_3b2c_real_sequence_replay.json",
+      "bytes": 607622,
+      "content": "100 frames of detections and tracking, 215 events, scheduler statistics, aggregate simulation, reproducibility block",
+      "temporal_resolution": "per-frame (10 fps sequence) plus event timestamps",
+      "records": "100 frames / 215 events",
+      "contains_time_series": true,
+      "class": "event_stream"
+    },
+    {
+      "id": "DI-05",
+      "path": "experiments/phase_3c/results/temporal_calibration.json",
+      "bytes": 33766,
+      "content": "10 scenario families; event counts, event metrics, latencies, direction accuracy, tracking, scheduler cost",
+      "temporal_resolution": "per-family aggregate",
+      "records": "10 families",
+      "contains_time_series": false,
+      "class": "aggregate_summary"
+    },
+    {
+      "id": "DI-06",
+      "path": "experiments/phase_3c/results/integration.json",
+      "bytes": 19659,
+      "content": "10-frame feature audit and integration checks",
+      "temporal_resolution": "per-frame feature table (10 rows)",
+      "records": "10 frames",
+      "contains_time_series": true,
+      "class": "per_condition_summary"
+    },
+    {
+      "id": "DI-07",
+      "path": "experiments/results/phase_4f/motor_decoder_experiment.json",
+      "bytes": 538744,
+      "content": "66 + 66 runs x 5 windows; per-window raw and smoothed decoder scores",
+      "temporal_resolution": "5 windows per run (fixed analysis windows)",
+      "records": "132 runs, 660 window rows",
+      "contains_time_series": true,
+      "class": "per_condition_summary"
+    },
+    {
+      "id": "DI-08",
+      "path": "experiments/results/phase_4g/phase_4g_experiment.json",
+      "bytes": 193917,
+      "content": "Propagation experiment records: per-run summaries and comparisons",
+      "temporal_resolution": "per-run aggregate",
+      "records": "experiment-defined run list",
+      "contains_time_series": false,
+      "class": "aggregate_summary"
+    },
+    {
+      "id": "DI-09",
+      "path": "experiments/results/phase_4g/phase_4g_summary.json",
+      "bytes": 25124,
+      "content": "Cross-run summary of the propagation experiment",
+      "temporal_resolution": "not applicable",
+      "records": "1 summary",
+      "contains_time_series": false,
+      "class": "aggregate_summary"
+    },
+    {
+      "id": "DI-10",
+      "path": "experiments/results/phase_4g/phase_4g4_smoke_t5_seed20261108/activity.npz",
+      "bytes": 1290,
+      "content": "Raw spike times and neuron indices: 74 spikes, n_neurons 172433, duration 100 ms",
+      "temporal_resolution": "spike times in ms",
+      "records": "74 spikes",
+      "contains_time_series": true,
+      "class": "spike_times"
+    },
+    {
+      "id": "DI-11",
+      "path": "experiments/results/phase_4g/phase_4g4_smoke_t5_seed20261108/run_metadata.json",
+      "bytes": null,
+      "content": "Seed, duration, parameter and provenance metadata for the smoke run",
+      "temporal_resolution": "not applicable",
+      "records": "1 record",
+      "contains_time_series": false,
+      "class": "aggregate_summary"
+    },
+    {
+      "id": "DI-12",
+      "path": "experiments/results/phase_4h/sensory_roundtrip.json",
+      "bytes": 2908139,
+      "content": "Round-trip experiment: decisions and decoder scores across conditions; 27 runs",
+      "temporal_resolution": "per-run aggregate",
+      "records": "27 runs",
+      "contains_time_series": false,
+      "class": "aggregate_summary"
+    },
+    {
+      "id": "DI-13",
+      "path": "experiments/results/phase_4h/control_draws.json",
+      "bytes": 4752502,
+      "content": "Random control draws: 500 runs of sampled control configuration and outcomes",
+      "temporal_resolution": "per-run aggregate",
+      "records": "500 runs",
+      "contains_time_series": false,
+      "class": "aggregate_summary"
+    },
+    {
+      "id": "DI-14",
+      "path": "experiments/results/phase_4h/population_sensitivity.json",
+      "bytes": 3043241,
+      "content": "Population and selection sensitivity: 175 runs",
+      "temporal_resolution": "per-run aggregate",
+      "records": "175 runs",
+      "contains_time_series": false,
+      "class": "aggregate_summary"
+    },
+    {
+      "id": "DI-15",
+      "path": "experiments/results/phase_4h/weight_sensitivity.json",
+      "bytes": 1624140,
+      "content": "Pre-registered weight sensitivity study: 220 runs",
+      "temporal_resolution": "per-run aggregate",
+      "records": "220 runs",
+      "contains_time_series": false,
+      "class": "aggregate_summary"
+    },
+    {
+      "id": "DI-16",
+      "path": "experiments/phase_4h/sequences/events_0_99.json",
+      "bytes": 60984,
+      "content": "Prepared stimulus sequence: 148 events, 27 pulses, frames 0-99",
+      "temporal_resolution": "event timestamps at sequence frame rate",
+      "records": "148 events",
+      "contains_time_series": true,
+      "class": "event_stream"
+    },
+    {
+      "id": "DI-17",
+      "path": "experiments/phase_4h/sequences/events_200_299.json",
+      "bytes": 63790,
+      "content": "Prepared stimulus sequence: 152 events, 37 pulses, frames 200-299",
+      "temporal_resolution": "event timestamps at sequence frame rate",
+      "records": "152 events",
+      "contains_time_series": true,
+      "class": "event_stream"
+    },
+    {
+      "id": "DI-18",
+      "path": "experiments/results/phase_5b/reward_system.json",
+      "bytes": null,
+      "content": "Reward and RPE system validation outputs",
+      "temporal_resolution": "per-episode aggregate",
+      "records": "validation record set",
+      "contains_time_series": false,
+      "class": "aggregate_summary"
+    },
+    {
+      "id": "DI-19",
+      "path": "experiments/results/phase_5c/trace_benchmark.json",
+      "bytes": null,
+      "content": "Eligibility-trace benchmark: decay accuracy and computation cost",
+      "temporal_resolution": "per-benchmark-case aggregate",
+      "records": "benchmark cases",
+      "contains_time_series": false,
+      "class": "aggregate_summary"
+    },
+    {
+      "id": "DI-20",
+      "path": "experiments/results/phase_5d/plasticity_unit_experiments.json",
+      "bytes": null,
+      "content": "Unit tests of the three-factor rule and fixed-weight equivalence (eta=0 reproduces fixed spike hashes)",
+      "temporal_resolution": "per-unit-case aggregate",
+      "records": "unit cases",
+      "contains_time_series": false,
+      "class": "aggregate_summary"
+    },
+    {
+      "id": "DI-21",
+      "path": "experiments/results/phase_5e/controlled_learning_raw.json",
+      "bytes": 5853538,
+      "content": "Controlled task raw records: 3360 train + 4200 eval records",
+      "temporal_resolution": "per-episode records (24 ms episodes, 48 steps)",
+      "records": "7560 records",
+      "contains_time_series": true,
+      "class": "per_condition_summary"
+    },
+    {
+      "id": "DI-22",
+      "path": "experiments/results/phase_5e/checkpoints/condition_B_replicate_0.npz",
+      "bytes": 2181,
+      "content": "Weight checkpoint: delta_exc and delta_inh arrays of length 128",
+      "temporal_resolution": "snapshot at checkpoint, not a trace",
+      "records": "1 checkpoint",
+      "contains_time_series": false,
+      "class": "weight_state"
+    },
+    {
+      "id": "DI-23",
+      "path": "experiments/results/phase_5f/comparison_raw.json",
+      "bytes": 29625280,
+      "content": "Comparative evaluation raw data: 9600 core and 23520 robustness records (33120 total)",
+      "temporal_resolution": "per-episode records",
+      "records": "33120 records",
+      "contains_time_series": true,
+      "class": "per_condition_summary"
+    },
+    {
+      "id": "DI-24",
+      "path": "experiments/results/phase_5g/final_assessment.json",
+      "bytes": 19519,
+      "content": "Final Phase 5 assessment: per-question verdicts, integrity results, test counts",
+      "temporal_resolution": "not applicable",
+      "records": "1 assessment",
+      "contains_time_series": false,
+      "class": "statistical_summary"
+    }
+  ],
+  "variables": {
+    "inputs": [
+      {
+        "id": "IN-01",
+        "name": "raw sensory observation (game state / detector boxes)",
+        "source": "generated at run time by sensory encoders and perception pipeline",
+        "temporal_resolution": "per frame",
+        "sample_count": "not stored",
+        "missingness": "absent from all persisted artifacts",
+        "provenance": "derived",
+        "mi_feasibility": "low - must be regenerated or re-derived"
+      },
+      {
+        "id": "IN-02",
+        "name": "sensory population activation (138 mapped neurons)",
+        "source": "scheduler output feeding BrainSimulator",
+        "temporal_resolution": "per step (0.5 ms) within episode",
+        "sample_count": "aggregated only",
+        "missingness": "per-step vector never serialised",
+        "provenance": "simulated",
+        "mi_feasibility": "low without a new recording campaign"
+      },
+      {
+        "id": "IN-03",
+        "name": "stimulus identity / event class",
+        "source": "5-class event encoder (appeared, approaching, receding, occluded, disappeared)",
+        "temporal_resolution": "per event",
+        "sample_count": "215 events in replay, 300 events in 4H sequences",
+        "missingness": "none in event files",
+        "provenance": "measured (detector-derived)",
+        "mi_feasibility": "high at event level"
+      },
+      {
+        "id": "IN-04",
+        "name": "stimulus timing",
+        "source": "events_0_99.json, events_200_299.json, 3B.2C replay",
+        "temporal_resolution": "frame index and ms",
+        "sample_count": "300 events",
+        "missingness": "none",
+        "provenance": "measured",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "IN-05",
+        "name": "task state / episode phase",
+        "source": "Phase 5E and 5F episode records",
+        "temporal_resolution": "per episode (24 ms, 48 steps)",
+        "sample_count": "7560 and 33120 records",
+        "missingness": "none within stored records",
+        "provenance": "simulated",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "IN-06",
+        "name": "reward event",
+        "source": "Phase 5B reward system, 5E and 5F records",
+        "temporal_resolution": "per episode",
+        "sample_count": "7560 and 33120 records",
+        "missingness": "none",
+        "provenance": "simulated",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "IN-07",
+        "name": "cue population identity (4 cue populations x 8 neurons)",
+        "source": "Phase 5 task substrate, 128 cue-to-action edges",
+        "temporal_resolution": "per episode",
+        "sample_count": "7560 and 33120 records",
+        "missingness": "none",
+        "provenance": "simulated",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "IN-08",
+        "name": "action set (4 actions)",
+        "source": "Phase 5 task substrate",
+        "temporal_resolution": "per episode",
+        "sample_count": "7560 and 33120 records",
+        "missingness": "none",
+        "provenance": "simulated",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "IN-09",
+        "name": "sequence frame index and timestamps",
+        "source": "3B.2C replay and 3C integration",
+        "temporal_resolution": "per frame (10 fps)",
+        "sample_count": "100 frames, 10 feature rows",
+        "missingness": "none",
+        "provenance": "measured",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "IN-10",
+        "name": "reward prediction error",
+        "source": "Phase 5B and 5E derived quantities",
+        "temporal_resolution": "per episode",
+        "sample_count": "stored per record where computed",
+        "missingness": "only in phases that computed it",
+        "provenance": "derived",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "IN-11",
+        "name": "sensory condition label (B, C, D, E, F, G)",
+        "source": "Phase 4H experiment records",
+        "temporal_resolution": "per run",
+        "sample_count": "27 + 500 + 175 + 220 runs",
+        "missingness": "none",
+        "provenance": "simulated",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "IN-12",
+        "name": "seed / replicate identifier",
+        "source": "all experiment metadata",
+        "temporal_resolution": "per run",
+        "sample_count": "all runs",
+        "missingness": "none",
+        "provenance": "recorded",
+        "mi_feasibility": "high (defines replication unit)"
+      }
+    ],
+    "neural": [
+      {
+        "id": "NE-01",
+        "name": "neuron identity within population",
+        "source": "activity.npz spike_neuron_indices (n_neurons 172433); mapping tables in phase_3 config",
+        "temporal_resolution": "per spike",
+        "sample_count": "74 spikes in smoke run",
+        "missingness": "absent for every other run",
+        "provenance": "simulated",
+        "mi_feasibility": "high only for the smoke run"
+      },
+      {
+        "id": "NE-02",
+        "name": "population identity (mapping table)",
+        "source": "Phase 3 sensory mapping (96 + 36 neurons); 4H neuron class lists",
+        "temporal_resolution": "static per run",
+        "sample_count": "138 mapped neurons; 4H class lists",
+        "missingness": "none",
+        "provenance": "derived from connectome",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "NE-03",
+        "name": "spike times",
+        "source": "activity.npz spike_times_ms",
+        "temporal_resolution": "0.5 ms step resolution",
+        "sample_count": "74 spikes over 100 ms",
+        "missingness": "single smoke run only; no phase 4H or 5 spike trains",
+        "provenance": "simulated",
+        "mi_feasibility": "high for smoke run, absent elsewhere"
+      },
+      {
+        "id": "NE-04",
+        "name": "spike counts per window",
+        "source": "derivable from activity.npz; decoder windows otherwise consume activity not counts",
+        "temporal_resolution": "per decoder window (5 per run)",
+        "sample_count": "660 window rows in 4F",
+        "missingness": "counts not stored",
+        "provenance": "derived",
+        "mi_feasibility": "high where spikes exist"
+      },
+      {
+        "id": "NE-05",
+        "name": "firing rates",
+        "source": "not persisted",
+        "temporal_resolution": "would be per window or per step",
+        "sample_count": "none",
+        "missingness": "absent",
+        "provenance": "derived",
+        "mi_feasibility": "low without new campaign"
+      },
+      {
+        "id": "NE-06",
+        "name": "membrane potentials",
+        "source": "LIFPopulation.membrane_potential (in-memory property)",
+        "temporal_resolution": "per step (0.5 ms)",
+        "sample_count": "none",
+        "missingness": "never serialised by any runner",
+        "provenance": "simulated",
+        "mi_feasibility": "not feasible without new recording code"
+      },
+      {
+        "id": "NE-07",
+        "name": "eligibility traces",
+        "source": "plasticity trace implementation",
+        "temporal_resolution": "per step",
+        "sample_count": "none",
+        "missingness": "only per-condition summaries stored",
+        "provenance": "simulated",
+        "mi_feasibility": "not feasible from stored data"
+      },
+      {
+        "id": "NE-08",
+        "name": "structural and initial synaptic weights",
+        "source": "connectome graph loader; structural_count layer",
+        "temporal_resolution": "static per run",
+        "sample_count": "128 cue-to-action edges in the Phase 5 task substrate",
+        "missingness": "none",
+        "provenance": "derived from connectome",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "NE-09",
+        "name": "effective weights",
+        "source": "checkpoint npz (delta_exc/delta_inh length 128); weight layer summaries",
+        "temporal_resolution": "snapshot per checkpoint",
+        "sample_count": "1 checkpoint in 5E",
+        "missingness": "only checkpoint snapshots, not trajectories",
+        "provenance": "simulated",
+        "mi_feasibility": "medium - snapshots only"
+      },
+      {
+        "id": "NE-10",
+        "name": "weight deltas",
+        "source": "checkpoint npz",
+        "temporal_resolution": "snapshot per checkpoint",
+        "sample_count": "128 + 128 values",
+        "missingness": "sparse coverage",
+        "provenance": "simulated",
+        "mi_feasibility": "medium"
+      },
+      {
+        "id": "NE-11",
+        "name": "downstream BANC population activity",
+        "source": "4H round-trip records; 4G adapter windows",
+        "temporal_resolution": "per run aggregate and per window",
+        "sample_count": "27 + 500 + 175 + 220 runs",
+        "missingness": "raw activity not stored; zero non-stimulated spikes reported",
+        "provenance": "simulated",
+        "mi_feasibility": "low - no variability to measure"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "OUT-01",
+        "name": "motor population activity",
+        "source": "BANC adapter windows consumed by MotorDecoder",
+        "temporal_resolution": "per decoder window",
+        "sample_count": "660 rows in 4F",
+        "missingness": "raw window vectors not stored",
+        "provenance": "simulated",
+        "mi_feasibility": "low without new campaign"
+      },
+      {
+        "id": "OUT-02",
+        "name": "decoder output (raw and smoothed scores)",
+        "source": "4F, 4G, 4H records",
+        "temporal_resolution": "5 windows per run",
+        "sample_count": "660 rows in 4F; per-run scores in 4H",
+        "missingness": "none",
+        "provenance": "simulated",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "OUT-03",
+        "name": "selected action",
+        "source": "5E and 5F episode records",
+        "temporal_resolution": "per episode",
+        "sample_count": "7560 and 33120 records",
+        "missingness": "none",
+        "provenance": "simulated",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "OUT-04",
+        "name": "task outcome (correct / incorrect)",
+        "source": "5E and 5F episode records",
+        "temporal_resolution": "per episode",
+        "sample_count": "7560 and 33120 records",
+        "missingness": "none",
+        "provenance": "simulated",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "OUT-05",
+        "name": "reward received",
+        "source": "5E and 5F episode records",
+        "temporal_resolution": "per episode",
+        "sample_count": "7560 and 33120 records",
+        "missingness": "none",
+        "provenance": "simulated",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "OUT-06",
+        "name": "completion performance",
+        "source": "5F comparison records (complete-condition performance)",
+        "temporal_resolution": "per run aggregate",
+        "sample_count": "core and robustness run sets",
+        "missingness": "none",
+        "provenance": "simulated",
+        "mi_feasibility": "high"
+      },
+      {
+        "id": "OUT-07",
+        "name": "propagation evidence decision",
+        "source": "4H round-trip and 4H5 grading",
+        "temporal_resolution": "per run",
+        "sample_count": "27 + 500 + 175 + 220 runs",
+        "missingness": "none",
+        "provenance": "derived",
+        "mi_feasibility": "medium"
+      }
+    ]
+  },
+  "missing_data": [
+    {
+      "id": "MD-01",
+      "gap": "Raw spike trains for every completed experiment except the Phase 4G smoke run",
+      "consequence": "Entropy of neural spike trains and MI from spikes cannot be estimated from stored data.",
+      "remedy": "Recording campaign in 6B using existing SpikeRecorder.save(); no source modification required."
+    },
+    {
+      "id": "MD-02",
+      "gap": "Per-step membrane potentials",
+      "consequence": "No continuous-valued neural variable; any neural entropy must use discrete spike counts.",
+      "remedy": "Requires new instrumentation via PlasticSimulator.step_callback; BrainSimulator has no hook."
+    },
+    {
+      "id": "MD-03",
+      "gap": "Per-step eligibility traces",
+      "consequence": "6F cannot relate information content to trace magnitude at step level.",
+      "remedy": "Only obtainable by extending PlasticSimulator callback payload, which is already available."
+    },
+    {
+      "id": "MD-04",
+      "gap": "Trial-level repeated identical stimuli with independent noise",
+      "consequence": "Trial-independence assumption cannot be satisfied by resampling correlated timesteps.",
+      "remedy": "Design repeated-stimulus trials in 6B; seed defines the replication unit."
+    },
+    {
+      "id": "MD-05",
+      "gap": "Non-zero downstream (BANC) spike variability in the 4H stimulated configuration",
+      "consequence": "6D condition contrast is degenerate: control and stimulated conditions both lack downstream events.",
+      "remedy": "Report 6D as infeasible until a propagation-positive configuration exists."
+    },
+    {
+      "id": "MD-06",
+      "gap": "Stored sensory population activation vectors",
+      "consequence": "Sensory-to-neural MI (6C-1) has no neural-side partner variable in storage.",
+      "remedy": "Regenerate activations and spikes together in a single instrumented run."
+    },
+    {
+      "id": "MD-07",
+      "gap": "Per-run spike data for Phase 5 fixed vs plastic comparison",
+      "consequence": "6F can only be run at task-outcome level, not at spike-train level.",
+      "remedy": "Re-run 5E/5F configurations with recording enabled; eta=0 reproduces fixed hashes so provenance is preserved."
+    },
+    {
+      "id": "MD-08",
+      "gap": "Action-selective neural readout",
+      "consequence": "With selectivity 0.192 below 0.25 chance, neural-to-action information may be uninformative by construction.",
+      "remedy": "Pre-declare a null-information outcome as an acceptable, reportable result."
+    }
+  ],
+  "feasibility": [
+    {
+      "id": "6B-1",
+      "phase": "6B",
+      "question": "Entropy of the sensory state",
+      "verdict": "FEASIBLE WITH LIMITATIONS",
+      "data": "DI-04, DI-06, DI-16, DI-17 (event classes, frames)",
+      "support": "5-class event identity and frame timing are discrete and stored.",
+      "limitation": "Raw observation vectors are not stored; only the coarse event code is available.",
+      "blocking_dependency": "None for the coarse code; full-state entropy needs regeneration."
+    },
+    {
+      "id": "6B-2",
+      "phase": "6B",
+      "question": "Entropy of the sensory population",
+      "verdict": "FEASIBLE ONLY AS A DECLARED COARSE CODE",
+      "data": "DI-01, DI-02 (aggregates); requires regeneration for per-neuron data",
+      "support": "138 mapped neurons are defined and reproducible.",
+      "limitation": "A 138-neuron binary state has 2^138 states; only a declared low-dimensional summary (e.g. population count in 2-4 bins) is estimable.",
+      "blocking_dependency": "Regeneration of per-step activation vectors."
+    },
+    {
+      "id": "6B-3",
+      "phase": "6B",
+      "question": "Entropy of a neural spike train",
+      "verdict": "NOT FEASIBLE FROM STORED DATA; FEASIBLE AFTER 6B RECORDING",
+      "data": "DI-10 (74 spikes only)",
+      "support": "SpikeRecorder.save() already produces the needed npz layout.",
+      "limitation": "One 100 ms smoke run with 74 spikes cannot support entropy estimation beyond a few bins.",
+      "blocking_dependency": "A recording campaign using existing APIs."
+    },
+    {
+      "id": "6B-4",
+      "phase": "6B",
+      "question": "Entropy of the motor output",
+      "verdict": "FEASIBLE NOW",
+      "data": "DI-07 (660 window rows), DI-12",
+      "support": "Per-window raw and smoothed scores exist for 132 runs.",
+      "limitation": "Scores are decoder outputs, not ground-truth motor command; must be labelled as decoder-derived.",
+      "blocking_dependency": "None."
+    },
+    {
+      "id": "6B-5",
+      "phase": "6B",
+      "question": "Entropy of the reward signal",
+      "verdict": "FEASIBLE NOW",
+      "data": "DI-21, DI-23",
+      "support": "Per-episode reward is recorded for 7560 and 33120 records.",
+      "limitation": "Small alphabet; near-deterministic in complete conditions, so entropy may be near zero.",
+      "blocking_dependency": "None."
+    },
+    {
+      "id": "6C-1",
+      "phase": "6C",
+      "question": "Mutual information sensory -> neural",
+      "verdict": "NOT FEASIBLE FROM STORED DATA",
+      "data": "None",
+      "support": "Both sides exist in principle.",
+      "limitation": "No stored run contains sensory inputs and neural spikes jointly.",
+      "blocking_dependency": "A single instrumented run recording inputs and spikes together."
+    },
+    {
+      "id": "6C-2",
+      "phase": "6C",
+      "question": "Mutual information neural -> motor",
+      "verdict": "FEASIBLE WITH LIMITATIONS",
+      "data": "DI-07, DI-12",
+      "support": "Decoder window rows pair a population readout with an action score.",
+      "limitation": "The decoder defines the mapping, so MI partly reflects decoder construction; circularity must be declared.",
+      "blocking_dependency": "None, but interpretation is constrained."
+    },
+    {
+      "id": "6C-3",
+      "phase": "6C",
+      "question": "Mutual information neural -> reward",
+      "verdict": "FEASIBLE WITH LIMITATIONS",
+      "data": "DI-21, DI-23",
+      "support": "Episode-level reward and outcome are recorded alongside condition and replicate.",
+      "limitation": "No neural variable is stored at episode level; only condition-level identifiers.",
+      "blocking_dependency": "Recording neural summaries per episode."
+    },
+    {
+      "id": "6C-4",
+      "phase": "6C",
+      "question": "Mutual information sensory -> motor",
+      "verdict": "FEASIBLE WITH LIMITATIONS",
+      "data": "DI-12, DI-16, DI-17",
+      "support": "Stimulus sequences and per-run outcomes are both stored.",
+      "limitation": "Phase 4H found no distinguishable propagated response, so any estimate is expected near the null.",
+      "blocking_dependency": "None, but a near-zero result is the pre-declared expectation."
+    },
+    {
+      "id": "6D-1",
+      "phase": "6D",
+      "question": "Actual sensory conditions versus shuffled and matched controls",
+      "verdict": "NOT FEASIBLE NOW - DEGENERATE",
+      "data": "DI-12, DI-13, DI-14, DI-15",
+      "support": "Condition B/C/D/E and 500 control draws exist with labels.",
+      "limitation": "4H recorded zero downstream spikes outside stimulated neurons, so both arms carry no downstream information to compare; MI would be 0 by construction.",
+      "blocking_dependency": "A propagation-positive configuration must exist first."
+    },
+    {
+      "id": "6E-1",
+      "phase": "6E",
+      "question": "Neural-to-motor information using decoder output",
+      "verdict": "FEASIBLE WITH LIMITATIONS",
+      "data": "DI-07, DI-12",
+      "support": "Window-level scores and run-level comparisons are stored.",
+      "limitation": "Decoder output is not ground truth: MI measures consistency with the decoder, not with the true motor command.",
+      "blocking_dependency": "None, but the report must state this explicitly."
+    },
+    {
+      "id": "6F-1",
+      "phase": "6F",
+      "question": "Fixed versus plastic information at task level",
+      "verdict": "FEASIBLE",
+      "data": "DI-21, DI-23",
+      "support": "Paired fixed/plastic records exist across seeds for the complete condition.",
+      "limitation": "Task-level only; no neural-level counterpart is stored.",
+      "blocking_dependency": "None."
+    },
+    {
+      "id": "6F-2",
+      "phase": "6F",
+      "question": "Fixed versus plastic information at neural level",
+      "verdict": "NOT FEASIBLE FROM STORED DATA",
+      "data": "DI-21, DI-22",
+      "support": "Weight checkpoints and task records exist.",
+      "limitation": "No spike trains were saved for either condition; checkpoint npz holds weights only.",
+      "blocking_dependency": "Recording campaign; eta=0 reproduces fixed hashes so comparability is preserved."
+    },
+    {
+      "id": "6G-1",
+      "phase": "6G",
+      "question": "Statistical validation of information estimates",
+      "verdict": "REQUIRED IN EVERY PHASE",
+      "data": "all of the above",
+      "support": "Permutation, shuffle, bootstrap and multiplicity tooling patterns already exist in phase 4H and phase 5.",
+      "limitation": "No existing module implements plug-in entropy or MI; new code is required.",
+      "blocking_dependency": "None."
+    }
+  ],
+  "infeasible": [
+    {
+      "id": "IF-01",
+      "analysis": "Spike-train entropy from completed experiment outputs",
+      "reason": "Only 74 spikes in one 100 ms smoke run were persisted; capacity-limited recorder and no per-run spike dumps elsewhere.",
+      "would_require": "A recording campaign invoking SpikeRecorder.save() per run."
+    },
+    {
+      "id": "IF-02",
+      "analysis": "Sensory-to-neural MI from completed experiment outputs",
+      "reason": "No stored artifact contains stimulus identity and neural spikes jointly.",
+      "would_require": "Joint instrumentation of the activation scheduler and the spike recorder in the same run."
+    },
+    {
+      "id": "IF-03",
+      "analysis": "Membrane-potential entropy or potential-based MI",
+      "reason": "Potentials exist only in memory via LIFPopulation.membrane_potential and are never serialised.",
+      "would_require": "New recording callback; BrainSimulator has no per-step hook."
+    },
+    {
+      "id": "IF-04",
+      "analysis": "Information carried by eligibility traces",
+      "reason": "Traces are computed but only per-condition summaries were saved.",
+      "would_require": "PlasticSimulator.step_callback writing trace vectors, which is supported without source changes."
+    },
+    {
+      "id": "IF-05",
+      "analysis": "Phase 4H condition-contrast MI (stimulated vs shuffled vs random)",
+      "reason": "Zero non-stimulated downstream spikes means both arms have degenerate distributions; MI is 0 by construction.",
+      "would_require": "A configuration where sensory stimulation produces distinguishable downstream activity."
+    },
+    {
+      "id": "IF-06",
+      "analysis": "Joint entropy of the full 138-neuron sensory population",
+      "reason": "State space is 2^138; no sample size can populate it.",
+      "would_require": "A pre-declared coarse code (population count in 2-4 bins, or a small cluster label)."
+    },
+    {
+      "id": "IF-07",
+      "analysis": "MI computed by pooling every timestep as an independent sample",
+      "reason": "Timesteps are autocorrelated within an episode; treating them as independent inflates effective N and understates bias.",
+      "would_require": "Block bootstrap or episode-level aggregation before inference."
+    },
+    {
+      "id": "IF-08",
+      "analysis": "Causal interpretation of any MI estimate",
+      "reason": "MI is symmetric and observational; it does not identify direction or mechanism.",
+      "would_require": "Perturbation or intervention design; MI may only be described as information shared."
+    },
+    {
+      "id": "IF-09",
+      "analysis": "Fixed versus plastic neural-level MI from stored data",
+      "reason": "Neither condition saved spike trains; only task records and one weight checkpoint exist.",
+      "would_require": "Re-running both conditions with recording enabled."
+    }
+  ],
+  "estimators": {
+    "primary": {
+      "name": "plug-in (maximum likelihood) discrete entropy and mutual information",
+      "formula_H": "H(X) = -sum_x p(x) log2 p(x)",
+      "formula_MI": "I(X;Y) = sum_x sum_y p(x,y) log2 [ p(x,y) / (p(x) p(y)) ]",
+      "rationale": "Transparent, deterministic and auditable; all later corrections are reported relative to it.",
+      "known_defect": "Upward bias of order (|X|-1)(|Y|-1)/(2 N ln 2) bits for MI."
+    },
+    "corrections": [
+      {
+        "name": "Miller-Madow",
+        "use": "first-order entropy correction, (K-1)/(2 N ln 2) with K observed non-empty bins"
+      },
+      {
+        "name": "analytic bias subtraction",
+        "use": "subtract the (|X|-1)(|Y|-1)/(2 N ln 2) MI floor and report the raw value alongside"
+      },
+      {
+        "name": "Chao-Shen coverage-adjusted",
+        "use": "optional check on undersampled discrete entropy; reported only as sensitivity"
+      },
+      {
+        "name": "NSB",
+        "use": "listed as future option only; not implemented and not required for 6B-6G"
+      }
+    ],
+    "discretisation": {
+      "rule": "Every continuous quantity is converted to a declared discrete code before estimation; the code is part of the pre-registration, never chosen after seeing results.",
+      "schemes": [
+        "equal-width after rank transform",
+        "quantile bins",
+        "fixed physiological thresholds where they exist"
+      ],
+      "bin_counts_reported": [
+        2,
+        3,
+        4
+      ],
+      "sensitivity": "All three bin counts are reported for every endpoint; no single binning is presented as the result.",
+      "prohibition": "Bins chosen to maximise MI are not permitted."
+    },
+    "normalisation": {
+      "normalised_mi": "I(X;Y) / min(H(X), H(Y))",
+      "uncertainty_coefficient": "I(X;Y) / H(Y), reported with explicit direction",
+      "floor_rule": "If min(H(X), H(Y)) is below 0.1 bits, report normalised values as undefined rather than inflated."
+    },
+    "conditional": {
+      "method": "weighted average of within-stratum I(X;Y) over discrete strata of Z",
+      "guard": "Strata with fewer than the declared minimum samples are pooled or dropped, and the decision is reported."
+    },
+    "exclusions": [
+      "No continuous-density estimators (KSG and similar) in 6B-6G; all variables are discretised first.",
+      "No scipy dependency added for the estimator core.",
+      "Negative corrected estimates are clipped to zero and flagged, never reported as negative information."
+    ]
+  },
+  "statistics": {
+    "replication_unit": "The seed, not the timestep and not the window. Every inferential statement is computed over independent seeds; all timesteps and windows within a seed are treated as clustered observations.",
+    "independence_rules": [
+      "Timesteps inside an episode are autocorrelated and are never counted as independent samples.",
+      "Decoder windows overlap in origin and are clustered by run.",
+      "Condition contrast uses paired seeds where the design is paired.",
+      "Any analysis that cannot respect clustering is reported as descriptive only."
+    ],
+    "bias": {
+      "formula": "E[I_hat] - I >= (|X|-1)(|Y|-1) / (2 N ln 2) bits",
+      "table_4x4": [
+        {
+          "N": 5,
+          "bias_bits": 1.298,
+          "reliable": false
+        },
+        {
+          "N": 10,
+          "bias_bits": 0.649,
+          "reliable": false
+        },
+        {
+          "N": 40,
+          "bias_bits": 0.162,
+          "reliable": false
+        },
+        {
+          "N": 100,
+          "bias_bits": 0.065,
+          "reliable": true
+        },
+        {
+          "N": 400,
+          "bias_bits": 0.016,
+          "reliable": true
+        },
+        {
+          "N": 1000,
+          "bias_bits": 0.006,
+          "reliable": true
+        }
+      ],
+      "thresholds": {
+        "bias_le_0.10_bits": "N >= 65",
+        "bias_le_0.01_bits": "N >= 649"
+      },
+      "small_sample_warning": "Below roughly N=50 the asymptotic expression understates the real bias; a per-run 5-window cell cannot support a 4x4 table.",
+      "mitigation": "Pool within seed to a 2x2 endpoint or aggregate across seeds before estimation; report the raw and corrected values together."
+    },
+    "autocorrelation": {
+      "handling": "Block bootstrap over contiguous episode blocks, block length declared before analysis; no i.i.d. resampling of timesteps.",
+      "diagnostic": "Lag-1 autocorrelation reported for every continuous variable used."
+    },
+    "null_models": [
+      {
+        "name": "time shuffle",
+        "description": "permute the time axis of one variable, destroying temporal pairing and preserving marginals"
+      },
+      {
+        "name": "trial shuffle",
+        "description": "permute labels across independent trials or seeds"
+      },
+      {
+        "name": "matched control draws",
+        "description": "reuse the Phase 4H control-draw construction so null and real share the same wiring statistics"
+      },
+      {
+        "name": "surrogate spike trains",
+        "description": "rate-matched Poisson surrogates preserving per-neuron mean rate"
+      }
+    ],
+    "confidence_intervals": "Percentile bootstrap over seeds with a declared resample count; report 2.5 and 97.5 percentiles and the number of seeds.",
+    "multiple_comparison": "Holm-Bonferroni over the pre-declared core endpoint family per phase, exactly as Phase 5F; exploratory endpoints are descriptive only.",
+    "effect_sizes": [
+      "I in bits",
+      "normalised MI",
+      "uncertainty coefficient",
+      "paired difference in bits with CI"
+    ],
+    "negative_results": "A near-zero MI is a reportable result when the null distribution is documented. No endpoint may be dropped for being null.",
+    "pre_registration": "Every 6B-6G phase declares endpoints, bin counts, N thresholds, null models and the Holm family before any estimate is computed.",
+    "interpretation_rules": [
+      "Information shared is not causal influence.",
+      "Decoder-derived MI measures consistency with the decoder, not with the true motor command.",
+      "Correlated timesteps are never counted as independent samples.",
+      "A bias-corrected negative estimate is clipped to zero and flagged."
+    ]
+  },
+  "proposed_phases": [
+    {
+      "phase": "6B",
+      "title": "Entropy of sensory state, neural population, spike trains, motor output and reward",
+      "objective": "Establish estimable entropy endpoints with declared discretisations and sample-size gates.",
+      "endpoints": [
+        "H(sensory event class)",
+        "H(coarse sensory population code)",
+        "H(spike count per declared window)",
+        "H(motor score bin)",
+        "H(reward)"
+      ],
+      "controls": [
+        "shuffle null",
+        "rate-matched surrogate"
+      ],
+      "gate": "Each endpoint must reach its declared N threshold (>=65 for a 4x4 table) before any corrected value is reported."
+    },
+    {
+      "phase": "6C",
+      "title": "Mutual information between the four declared variable pairs",
+      "objective": "Estimate I(sensory;neural), I(neural;motor), I(neural;reward), I(sensory;motor).",
+      "endpoints": [
+        "I(sensory;neural)",
+        "I(neural;motor)",
+        "I(neural;reward)",
+        "I(sensory;motor)"
+      ],
+      "controls": [
+        "time shuffle",
+        "trial shuffle",
+        "matched control draws"
+      ],
+      "gate": "Bias-corrected estimate must exceed the 95th percentile of its null distribution to be called present."
+    },
+    {
+      "phase": "6D",
+      "title": "Actual sensory conditions versus shuffled and matched controls",
+      "objective": "Test whether real sensory conditions carry more downstream information than shuffled or matched controls.",
+      "endpoints": [
+        "I(condition;downstream) difference, actual minus shuffled",
+        "same versus matched draws"
+      ],
+      "controls": [
+        "Phase 4H shuffled-time condition C",
+        "random-placement condition D",
+        "500 control draws"
+      ],
+      "gate": "BLOCKED until a propagation-positive configuration exists; the stored 4H data have zero downstream events in the control arms."
+    },
+    {
+      "phase": "6E",
+      "title": "Neural-to-motor information using decoder output",
+      "objective": "Quantify how much action-score information is present in population activity.",
+      "endpoints": [
+        "I(neural;decoder score)",
+        "uncertainty coefficient of score given neural state"
+      ],
+      "controls": [
+        "shuffle null",
+        "decoder ablation baseline"
+      ],
+      "gate": "Every result must carry the label decoder-derived; no claim about the true motor command is permitted."
+    },
+    {
+      "phase": "6F",
+      "title": "Fixed versus plastic information",
+      "objective": "Compare information in fixed and plastic conditions at task level, and at neural level once recording exists.",
+      "endpoints": [
+        "task-level H(outcome) and I(cue;action) fixed vs plastic",
+        "neural-level I(cue;spikes) fixed vs plastic (requires recording)"
+      ],
+      "controls": [
+        "paired seeds",
+        "eta=0 fixed reproduction"
+      ],
+      "gate": "Task-level is feasible now; neural-level is gated on the 6B recording campaign. The preserved +0.150 difference must be explained, not re-derived."
+    },
+    {
+      "phase": "6G",
+      "title": "Statistical validation and reporting",
+      "objective": "Apply bias correction, permutation nulls, block bootstrap, Holm correction and effect sizes uniformly, and publish negative results.",
+      "endpoints": [
+        "corrected estimate table",
+        "null comparison table",
+        "Holm-adjusted p per core endpoint",
+        "CI table"
+      ],
+      "controls": [
+        "all null models from every phase"
+      ],
+      "gate": "No phase is considered complete until its 6G block exists."
+    }
+  ],
+  "modules": {
+    "new_package": "information/",
+    "design_constraint": "Additive only. No edit to brain/, sensory/, perception/, motor/, plasticity/, learning/ or experiments/phase_3*, phase_4*, phase_5*.",
+    "files": [
+      {
+        "path": "information/discretization.py",
+        "responsibility": "rank transform, equal-width and quantile binning, declared bin-count contract, bin audit output"
+      },
+      {
+        "path": "information/entropy.py",
+        "responsibility": "plug-in H(X) and H(X,Y), Miller-Madow correction, coverage reporting"
+      },
+      {
+        "path": "information/mutual_information.py",
+        "responsibility": "plug-in I(X;Y) and I(X;Y|Z), normalised MI and uncertainty coefficient"
+      },
+      {
+        "path": "information/bias.py",
+        "responsibility": "analytic bias floor, threshold checks, N planning helper"
+      },
+      {
+        "path": "information/nulls.py",
+        "responsibility": "time shuffle, trial shuffle, Poisson rate-matched surrogates, matched draws"
+      },
+      {
+        "path": "information/stats.py",
+        "responsibility": "block bootstrap, Holm-Bonferroni, effect sizes, CI assembly"
+      },
+      {
+        "path": "information/recording.py",
+        "responsibility": "recording bundles built on SpikeRecorder and PlasticSimulator.step_callback; no source edits"
+      },
+      {
+        "path": "information/sources.py",
+        "responsibility": "readers for the 24 inventoried artifacts with explicit provenance tags"
+      },
+      {
+        "path": "information/reporting.py",
+        "responsibility": "deterministic JSON and Markdown emission with identifier cross-check"
+      }
+    ],
+    "config": {
+      "path": "configs/information_theory.yaml",
+      "contents": [
+        "bin counts per endpoint",
+        "minimum N per endpoint",
+        "null model choices",
+        "Holm family definition",
+        "seed list",
+        "provenance labels"
+      ]
+    },
+    "runners": [
+      "experiments/phase_6b/run_entropy.py",
+      "experiments/phase_6c/run_mutual_information.py",
+      "experiments/phase_6d/run_condition_contrast.py",
+      "experiments/phase_6e/run_neural_motor.py",
+      "experiments/phase_6f/run_fixed_vs_plastic.py",
+      "experiments/phase_6g/run_validation.py"
+    ],
+    "tests": [
+      "tests/test_phase_6a_information_audit.py",
+      "tests/test_phase_6b_entropy.py",
+      "tests/test_phase_6c_mutual_information.py"
+    ],
+    "interfaces": [
+      {
+        "name": "RecordingBundle",
+        "fields": [
+          "source_id",
+          "variable_ids",
+          "provenance",
+          "temporal_resolution",
+          "arrays",
+          "seed",
+          "missingness"
+        ]
+      },
+      {
+        "name": "EntropyResult",
+        "fields": [
+          "variable_id",
+          "bins",
+          "N",
+          "H_plugin",
+          "H_corrected",
+          "H_max",
+          "coverage"
+        ]
+      },
+      {
+        "name": "MutualInformationResult",
+        "fields": [
+          "x_id",
+          "y_id",
+          "z_id",
+          "bins",
+          "N",
+          "I_plugin",
+          "I_corrected",
+          "null_quantiles",
+          "p_value",
+          "nmi",
+          "uncertainty_coefficient"
+        ]
+      }
+    ]
+  },
+  "risks": [
+    {
+      "id": "RK-01",
+      "risk": "Finite-sample MI bias is reported as information",
+      "impact": "A 4x4 table at N=40 carries 0.162 bits of pure bias, comparable to many real effects.",
+      "mitigation": "Report raw and corrected values together; enforce the N>=65 gate."
+    },
+    {
+      "id": "RK-02",
+      "risk": "Autocorrelated timesteps inflate effective sample size",
+      "impact": "Confidence intervals become too narrow and nulls are rejected spuriously.",
+      "mitigation": "Block bootstrap and seed-level clustering; lag-1 autocorrelation reported."
+    },
+    {
+      "id": "RK-03",
+      "risk": "Binning sensitivity dictates the conclusion",
+      "impact": "The same data can appear informative or uninformative depending on bins.",
+      "mitigation": "Pre-register bins, report 2/3/4 bins for every endpoint, forbid post-hoc bin search."
+    },
+    {
+      "id": "RK-04",
+      "risk": "Decoder circularity in neural-to-motor MI",
+      "impact": "MI reflects the linear decoder rather than the population's motor content.",
+      "mitigation": "Label all such endpoints decoder-derived; add a shuffled-decoder baseline."
+    },
+    {
+      "id": "RK-05",
+      "risk": "Phase 4H control arms have zero downstream events",
+      "impact": "6D contrasts are degenerate and any MI is zero by construction.",
+      "mitigation": "Mark 6D blocked; do not report a null as evidence of absence of propagation beyond the existing E2 grade."
+    },
+    {
+      "id": "RK-06",
+      "risk": "Per-step instrumentation would require editing Phase 4 source",
+      "impact": "Would violate the protection constraint on brain/ and phase 4 files.",
+      "mitigation": "Use only PlasticSimulator.step_callback, which already exists, or record outside the simulator."
+    },
+    {
+      "id": "RK-07",
+      "risk": "Memory exhaustion during recording",
+      "impact": "Full-population potentials at 0.5 ms over 3.3 s need about 4.55 GB per run; only 0.97 GiB was available at audit.",
+      "mitigation": "Record pools only (about 27.4 MB per run for 1037 neurons) and stream to disk."
+    },
+    {
+      "id": "RK-08",
+      "risk": "SpikeRecorder capacity limits truncate long runs",
+      "impact": "Silent loss of spikes would corrupt entropy estimates.",
+      "mitigation": "Check recorded count against capacity on every save; fail loudly on overflow."
+    },
+    {
+      "id": "RK-09",
+      "risk": "MI is read as causal influence",
+      "impact": "Scientific overclaim and contradiction of Phase 4H evidence grading.",
+      "mitigation": "Standing interpretation rule; every report repeats the non-causal caveat."
+    },
+    {
+      "id": "RK-10",
+      "risk": "Near-deterministic reward gives near-zero entropy",
+      "impact": "6B-5 may return ~0 bits and look like a failure.",
+      "mitigation": "Pre-declare zero as an acceptable result and report the full distribution."
+    },
+    {
+      "id": "RK-11",
+      "risk": "Action selectivity below chance (0.192)",
+      "impact": "Neural-to-action endpoints may be structurally uninformative.",
+      "mitigation": "Pre-declare a null outcome as publishable."
+    },
+    {
+      "id": "RK-12",
+      "risk": "Mixing aggregate and simulated provenance in one table",
+      "impact": "False comparisons between quantities measured under different conditions.",
+      "mitigation": "Every row carries source_id and provenance from the inventory; sources.py enforces the tag."
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "AS-01",
+      "assumption": "Discrete alphabets of 2-4 bins are an adequate summary of each continuous variable.",
+      "if_violated": "Estimates understate true information; binning sensitivity tables reveal it."
+    },
+    {
+      "id": "AS-02",
+      "assumption": "Each episode is approximately stationary.",
+      "if_violated": "Entropy varies within episode; report per-segment estimates."
+    },
+    {
+      "id": "AS-03",
+      "assumption": "Runs with different seeds are independent replicates.",
+      "if_violated": "Permutation and bootstrap invalid; must fall back to descriptive reporting."
+    },
+    {
+      "id": "AS-04",
+      "assumption": "The connectome and mapping are fixed across the analysis.",
+      "if_violated": "MI would mix structural with activity variability."
+    },
+    {
+      "id": "AS-05",
+      "assumption": "Decoder scores are an acceptable proxy for motor output only when labelled decoder-derived.",
+      "if_violated": "Neural-to-motor conclusions would be circular."
+    },
+    {
+      "id": "AS-06",
+      "assumption": "Event labels from the perception pipeline are the sensory identity ground truth.",
+      "if_violated": "Sensory entropy measures detector error, not stimulus entropy."
+    },
+    {
+      "id": "AS-07",
+      "assumption": "No task-relevant latent variable is omitted.",
+      "if_violated": "Conditional MI is reported as a lower bound only."
+    },
+    {
+      "id": "AS-08",
+      "assumption": "The analytic 4x4 bias expression is applicable at the declared N.",
+      "if_violated": "Report uncorrected values with the small-sample warning attached."
+    }
+  ],
+  "resources": {
+    "measured_at_audit": {
+      "python": "3.13.14",
+      "numpy": "2.3.4",
+      "pandas": "2.3.3",
+      "pytest": "7.4.3",
+      "os": "Windows 11 (10.0.26200)",
+      "cpus": 12,
+      "ram_total_gib": 15.34,
+      "ram_available_gib": 0.97,
+      "disk_free_gib": 31.68,
+      "pytest_suite": "683 passed in 61.15 s",
+      "note": "scipy is installed but deliberately not used by the planned estimators."
+    },
+    "measured_recording_cost": {
+      "full_potentials_3p3s_run_gb": 4.55,
+      "pool_only_1037_neurons_mb_per_run": 27.4,
+      "banc_3p3s_wall_s": 18.9,
+      "banc_retained_mb": 109,
+      "banc_peak_mb": 264
+    },
+    "estimates_for_6b_6g": [
+      {
+        "item": "recording campaign, 200 instrumented runs, pool-only",
+        "estimate": "about 5.5 GB and 25-40 min wall time",
+        "basis": "27.4 MB/run and 200 runs plus BANC overhead"
+      },
+      {
+        "item": "entropy and MI estimation over stored records",
+        "estimate": "under 5 min total",
+        "basis": "all alphabets <= 4 and N <= 33120"
+      },
+      {
+        "item": "implementation of information/ package",
+        "estimate": "9 modules, 3 test files, about 1200-1600 lines",
+        "basis": "comparable to the phase 5 statistics surface"
+      },
+      {
+        "item": "peak memory during estimation",
+        "estimate": "under 0.5 GiB",
+        "basis": "tables of at most 16 cells over at most 33120 rows"
+      }
+    ],
+    "constraints": [
+      "No new heavy dependency; NumPy and the standard library only.",
+      "Estimated disk use must stay below the 31.68 GiB free measured at audit.",
+      "Recording must stream to disk rather than hold full-population arrays in memory."
+    ]
+  },
+  "implementation_sequence": [
+    {
+      "step": 1,
+      "action": "Freeze the 6A audit and record the integrity snapshot (37 baseline entries, 17 Phase 5 files, 4 Phase 4H JSONs).",
+      "gated": false
+    },
+    {
+      "step": 2,
+      "action": "Implement information/discretization.py with the declared bin contract and bin audit output; add tests.",
+      "gated": false
+    },
+    {
+      "step": 3,
+      "action": "Implement information/entropy.py and information/bias.py (plug-in H, Miller-Madow, thresholds); add tests including the 4x4 analytic bias table.",
+      "gated": false
+    },
+    {
+      "step": 4,
+      "action": "Implement information/mutual_information.py with I(X;Y), I(X;Y|Z), NMI and uncertainty coefficient; add tests on synthetic known-answer tables.",
+      "gated": false
+    },
+    {
+      "step": 5,
+      "action": "Implement information/nulls.py and information/stats.py (time shuffle, trial shuffle, surrogates, block bootstrap, Holm); add tests.",
+      "gated": false
+    },
+    {
+      "step": 6,
+      "action": "Implement information/sources.py readers for the 24 inventoried artifacts with mandatory provenance tags; verify each reader against the recorded byte sizes.",
+      "gated": false
+    },
+    {
+      "step": 7,
+      "action": "Implement information/recording.py on SpikeRecorder and PlasticSimulator.step_callback only; no edits to protected source.",
+      "gated": false
+    },
+    {
+      "step": 8,
+      "action": "Run 6B on stored variables only: H(motor score bin), H(reward), H(event class), H(coarse sensory code).",
+      "gated": false
+    },
+    {
+      "step": 9,
+      "action": "Run 6C on stored pairs that actually exist: event class to decoder score, decoder score to outcome, condition to outcome.",
+      "gated": false
+    },
+    {
+      "step": 10,
+      "action": "Recording campaign unlocking 6B-3 (spike-train entropy), 6C-1 (sensory to neural) and 6F-2 (neural-level fixed vs plastic).",
+      "gated": true,
+      "gate_reason": "Generates new artifacts and requires disk and runtime beyond the audit; needs explicit approval."
+    },
+    {
+      "step": 11,
+      "action": "Run 6D once a propagation-positive configuration exists.",
+      "gated": true,
+      "gate_reason": "Blocked by zero downstream events in the stored 4H control arms."
+    },
+    {
+      "step": 12,
+      "action": "Run 6G validation and emit the final 6B-6G report with bias-corrected tables, null comparisons, Holm-adjusted p values and CIs.",
+      "gated": false
+    }
+  ],
+  "validation": {
+    "test_suite": {
+      "command": "python -m pytest -q",
+      "result": "683 passed",
+      "wall_s": 61.15,
+      "exit_code": 0
+    },
+    "integrity": {
+      "baseline_entries_checked": 37,
+      "baseline_pass": true,
+      "baseline_failures": 0,
+      "phase5_files_hashed": 17,
+      "phase5_bytes": 39276746,
+      "phase4h_json_hashed": 4,
+      "protected_set_dirty": 0,
+      "staged_paths": 0,
+      "protected_set_definition": [
+        "README.md",
+        "datasets",
+        "brain",
+        "reports/PHASE_4H1_RANDOM_CONTROL_VALIDATION.md",
+        "reports/PHASE_4H2_POPULATION_SENSITIVITY.md",
+        "reports/PHASE_4H3_WEIGHT_EXPERIMENT_PREREGISTRATION.md",
+        "reports/PHASE_4H3_WEIGHT_SENSITIVITY.md",
+        "experiments/results/phase_4h"
+      ],
+      "repo_wide_modified_tracked_files": 13,
+      "repo_wide_modifications_created_by_this_phase": 0,
+      "repo_wide_latest_modification_utc": "2026-11-07T10:11:02",
+      "repo_wide_note": "Thirteen tracked files carry pre-existing edits dated 2026-11-07, three days before this audit: configs/detector_config.yaml, requirements.txt, perception/{detection,detector_config,inference,pipeline,temporal}.py, experiments/phase_3b/{evaluate_detector,run_inference}.py, experiments/phase_3c/integration_check.py and three tests. They belong to the earlier Phase 3B/3C detector work. Phase 6A did not touch them; the only files Phase 6A created are the two reports."
+    },
+    "protected_untouched": [
+      "README.md",
+      "datasets/",
+      "connectomes/",
+      "brain/",
+      "sensory/",
+      "perception/",
+      "motor/",
+      "plasticity/",
+      "experiments/phase_3*",
+      "experiments/phase_4*",
+      "experiments/phase_5*",
+      "experiments/results/"
+    ],
+    "report_validation": {
+      "json_parse": "json.load succeeds",
+      "identifier_cross_check": "every DI, IN, NE, OUT, MD, IF, RK, PF, AS id in this JSON also appears in the Markdown report",
+      "no_computation": "no entropy or mutual information value appears in either deliverable"
+    },
+    "vcs": {
+      "staged": false,
+      "committed": false,
+      "pushed": false
+    }
+  },
+  "files": [
+    {
+      "path": "reports/PHASE_6A_INFORMATION_THEORY_AUDIT.md",
+      "class": "new_report",
+      "created_this_phase": true
+    },
+    {
+      "path": "reports/PHASE_6A_INFORMATION_THEORY_AUDIT.json",
+      "class": "new_report",
+      "created_this_phase": true
+    }
+  ],
+  "identifier_counts": {
+    "preserved_findings": [
+      "PF-01",
+      "PF-02",
+      "PF-03",
+      "PF-04",
+      "PF-05"
+    ],
+    "data_inventory": [
+      "DI-01",
+      "DI-02",
+      "DI-03",
+      "DI-04",
+      "DI-05",
+      "DI-06",
+      "DI-07",
+      "DI-08",
+      "DI-09",
+      "DI-10",
+      "DI-11",
+      "DI-12",
+      "DI-13",
+      "DI-14",
+      "DI-15",
+      "DI-16",
+      "DI-17",
+      "DI-18",
+      "DI-19",
+      "DI-20",
+      "DI-21",
+      "DI-22",
+      "DI-23",
+      "DI-24"
+    ],
+    "inputs": [
+      "IN-01",
+      "IN-02",
+      "IN-03",
+      "IN-04",
+      "IN-05",
+      "IN-06",
+      "IN-07",
+      "IN-08",
+      "IN-09",
+      "IN-10",
+      "IN-11",
+      "IN-12"
+    ],
+    "neural": [
+      "NE-01",
+      "NE-02",
+      "NE-03",
+      "NE-04",
+      "NE-05",
+      "NE-06",
+      "NE-07",
+      "NE-08",
+      "NE-09",
+      "NE-10",
+      "NE-11"
+    ],
+    "outputs": [
+      "OUT-01",
+      "OUT-02",
+      "OUT-03",
+      "OUT-04",
+      "OUT-05",
+      "OUT-06",
+      "OUT-07"
+    ],
+    "missing_data": [
+      "MD-01",
+      "MD-02",
+      "MD-03",
+      "MD-04",
+      "MD-05",
+      "MD-06",
+      "MD-07",
+      "MD-08"
+    ],
+    "infeasible": [
+      "IF-01",
+      "IF-02",
+      "IF-03",
+      "IF-04",
+      "IF-05",
+      "IF-06",
+      "IF-07",
+      "IF-08",
+      "IF-09"
+    ],
+    "risks": [
+      "RK-01",
+      "RK-02",
+      "RK-03",
+      "RK-04",
+      "RK-05",
+      "RK-06",
+      "RK-07",
+      "RK-08",
+      "RK-09",
+      "RK-10",
+      "RK-11",
+      "RK-12"
+    ],
+    "assumptions": [
+      "AS-01",
+      "AS-02",
+      "AS-03",
+      "AS-04",
+      "AS-05",
+      "AS-06",
+      "AS-07",
+      "AS-08"
+    ],
+    "feasibility": [
+      "6B-1",
+      "6B-2",
+      "6B-3",
+      "6B-4",
+      "6B-5",
+      "6C-1",
+      "6C-2",
+      "6C-3",
+      "6C-4",
+      "6D-1",
+      "6E-1",
+      "6F-1",
+      "6F-2",
+      "6G-1"
+    ]
+  }
+}

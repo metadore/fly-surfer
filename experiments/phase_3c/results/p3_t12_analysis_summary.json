@@ -1,0 +1,1749 @@
+{
+ "phase": "P3-T12-analysis",
+ "version": "p3-t12-analysis-v1",
+ "source": {
+  "path": "experiments/phase_3c/results/p3_t12_network_characterization.json",
+  "verdict": "VALID",
+  "mode": "full",
+  "generated_at_utc": "2026-11-13T18:00:18+00:00",
+  "runtime_s": 497.111
+ },
+ "gates": {
+  "equivalence": {
+   "full_duration_c3": {
+    "passed": true,
+    "checks": {
+     "spike_counts_sha256": true,
+     "scheduler_signature_sha256": true,
+     "spikes_total": true,
+     "spikes_stimulated": true,
+     "spikes_unstimulated": true,
+     "first_spike_ms": true,
+     "last_spike_ms": true,
+     "min_membrane_mv": true,
+     "max_membrane_mv": true
+    },
+    "archived": {
+     "spike_counts_sha256": "09611c7dc5c37d435f7713f5b0ce42b9ab90bdf2b12efeb6c91125b0e0978305",
+     "scheduler_sha256": "1c3ab12d2afbc396da9d77215d75c4e397da3909d1767ecec5a9f24cfc608840",
+     "spikes_total": 15654631,
+     "spikes_stimulated": 3710,
+     "spikes_unstimulated": 15650921
+    },
+    "measured": {
+     "spikes_total": 15654631,
+     "spikes_stimulated": 3710,
+     "spikes_unstimulated": 15650921,
+     "first_spike_ms": 28.0,
+     "last_spike_ms": 3300.5,
+     "min_membrane_mv": -90.0,
+     "max_membrane_mv": -50.000000069
+    },
+    "archive_payload": "experiments\\phase_3c\\results\\p3_t2_full.json",
+    "reference": {
+     "spikes_total": 15654631,
+     "spikes_stimulated": 3710,
+     "spikes_unstimulated": 15650921,
+     "first_spike_ms": 28.0,
+     "last_spike_ms": 3300.5,
+     "min_membrane_mv": -90.0,
+     "max_membrane_mv": -50.0
+    }
+   },
+   "smoke": {
+    "evaluated": true,
+    "note": "C3 compared against the archived P3-T2 reference"
+   }
+  },
+  "prefix_gate": {
+   "passed": true,
+   "cutoff_ms": 3300.5,
+   "n_neurons": 139255,
+   "prefix_spikes": 15654631,
+   "c3_spikes": 15654631,
+   "prefix_counts_sha256": "09611c7dc5c37d435f7713f5b0ce42b9ab90bdf2b12efeb6c91125b0e0978305",
+   "c3_counts_sha256": "09611c7dc5c37d435f7713f5b0ce42b9ab90bdf2b12efeb6c91125b0e0978305",
+   "identical": true
+  },
+  "invalidations": {
+   "valid": true,
+   "triggered": [],
+   "rules_evaluated": [
+    "loop_equivalence_failed",
+    "spike_capacity_exceeded",
+    "non_finite_state",
+    "membrane_bounds",
+    "repeated_runs_differ",
+    "current_outside_active_set",
+    "condition_definition_violation",
+    "protected_hash_changed",
+    "initial_conditions_differ",
+    "prefix_mismatch",
+    "scheduler_signature_mismatch"
+   ],
+   "equivalence_enforced": true,
+   "prefix_enforced": true
+  },
+  "subprocess_reproducibility": {
+   "identical": true,
+   "conditions": {
+    "C3": {
+     "ran": true,
+     "identical": true,
+     "differences": []
+    },
+    "C3-washout": {
+     "ran": true,
+     "identical": true,
+     "differences": []
+    }
+   }
+  }
+ },
+ "classification": {
+  "version": "p3-t3.1-ignition-reporting-v1",
+  "criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+  "counts": {
+   "none": 4,
+   "population_scale": 2,
+   "sparse": 1
+  },
+  "status": "provisional"
+ },
+ "conditions": {
+  "C0": {
+   "duration_ms": 3300.5,
+   "n_steps": 6601,
+   "frame_source": "none",
+   "n_active_features": 0,
+   "removed_feature": null,
+   "ignition": {
+    "regime": "none",
+    "status": "definitional",
+    "legacy_ignited": false,
+    "first_spike_ms": null,
+    "first_outside_reference_ms": null,
+    "first_outside_active_ms": null,
+    "delay_active_to_outside_active_ms": null
+   },
+   "spikes_total": 0,
+   "partitions": {
+    "total": {
+     "n_neurons": 139255,
+     "spikes": 0,
+     "active_neurons": 0,
+     "firing_rate_hz": 0.0,
+     "first_spike_ms": null,
+     "last_spike_ms": null
+    },
+    "reference": {
+     "n_neurons": 138,
+     "spikes": 0,
+     "active_neurons": 0,
+     "firing_rate_hz": 0.0,
+     "first_spike_ms": null,
+     "last_spike_ms": null
+    },
+    "outside_reference": {
+     "n_neurons": 139117,
+     "spikes": 0,
+     "active_neurons": 0,
+     "firing_rate_hz": 0.0,
+     "first_spike_ms": null,
+     "last_spike_ms": null
+    },
+    "active": {
+     "n_neurons": 0,
+     "spikes": 0,
+     "active_neurons": 0,
+     "firing_rate_hz": 0.0,
+     "first_spike_ms": null,
+     "last_spike_ms": null
+    },
+    "outside_active": {
+     "n_neurons": 139255,
+     "spikes": 0,
+     "active_neurons": 0,
+     "firing_rate_hz": 0.0,
+     "first_spike_ms": null,
+     "last_spike_ms": null
+    }
+   },
+   "active_fraction_of_graph": 0.0,
+   "rates_hz": {
+    "population_mean": 0.0,
+    "population_peak": 0.0,
+    "active_mean": 0.0,
+    "active_percentiles": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "25": 0.0,
+     "50": 0.0,
+     "75": 0.0,
+     "90": 0.0,
+     "95": 0.0,
+     "99": 0.0,
+     "100": 0.0
+    },
+    "all_percentiles": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "25": 0.0,
+     "50": 0.0,
+     "75": 0.0,
+     "90": 0.0,
+     "95": 0.0,
+     "99": 0.0,
+     "100": 0.0
+    },
+    "top_one_percent_spike_share": 0.0
+   },
+   "rails": {
+    "min_membrane_mv": -65.0,
+    "max_membrane_mv": -65.0,
+    "at_floor_fraction": 0.0,
+    "near_threshold_fraction": 0.0,
+    "refractory_fraction": 0.0,
+    "finite_state": true
+   },
+   "recruitment": {
+    "checkpoints_ms": {
+     "0.01": null,
+     "0.05": null,
+     "0.1": null,
+     "0.25": null
+    },
+    "time_to_25_percent_of_final_ms": 10.0,
+    "time_to_50_percent_of_final_ms": 10.0,
+    "time_to_90_percent_of_final_ms": 10.0,
+    "peak_new_active_per_bin": 0
+   },
+   "persistence": {
+    "bins": 331,
+    "fraction_bins_outside_active": 0.0,
+    "longest_outside_active_run_ms": 0.0,
+    "longest_gap_ms_outside_active": 0.0,
+    "tail_window_ms": 500.0,
+    "tail_mean_rate_hz": 0.0,
+    "tail_active_neurons": 0,
+    "final_second": {
+     "window_ms": 1000,
+     "spikes_per_100ms": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   },
+   "propagation": {
+    "transmissions_per_spike": null,
+    "first_bin_ratio": 0.0,
+    "peak_ratio": 0.0,
+    "plateau_median_ratio_last_20_percent": null
+   },
+   "topology": null,
+   "post_drive_window": null,
+   "checks": {
+    "no_scheduler": true,
+    "no_current_injected": true,
+    "repeats_identical": true
+   },
+   "checks_not_evaluated": [],
+   "repeats_identical": true,
+   "spike_capacity_exceeded": false
+  },
+  "C1": {
+   "duration_ms": 3300.5,
+   "n_steps": 6601,
+   "frame_source": "neutral",
+   "n_active_features": 4,
+   "removed_feature": null,
+   "ignition": {
+    "regime": "none",
+    "status": "definitional",
+    "legacy_ignited": false,
+    "first_spike_ms": 28.0,
+    "first_outside_reference_ms": null,
+    "first_outside_active_ms": null,
+    "delay_active_to_outside_active_ms": null
+   },
+   "spikes_total": 702,
+   "partitions": {
+    "total": {
+     "n_neurons": 139255,
+     "spikes": 702,
+     "active_neurons": 8,
+     "firing_rate_hz": 0.001527,
+     "first_spike_ms": 28.0,
+     "last_spike_ms": 3297.0
+    },
+    "reference": {
+     "n_neurons": 138,
+     "spikes": 702,
+     "active_neurons": 8,
+     "firing_rate_hz": 1.541268,
+     "first_spike_ms": 28.0,
+     "last_spike_ms": 3297.0
+    },
+    "outside_reference": {
+     "n_neurons": 139117,
+     "spikes": 0,
+     "active_neurons": 0,
+     "firing_rate_hz": 0.0,
+     "first_spike_ms": null,
+     "last_spike_ms": null
+    },
+    "active": {
+     "n_neurons": 36,
+     "spikes": 702,
+     "active_neurons": 8,
+     "firing_rate_hz": 5.908196,
+     "first_spike_ms": 28.0,
+     "last_spike_ms": 3297.0
+    },
+    "outside_active": {
+     "n_neurons": 139219,
+     "spikes": 0,
+     "active_neurons": 0,
+     "firing_rate_hz": 0.0,
+     "first_spike_ms": null,
+     "last_spike_ms": null
+    }
+   },
+   "active_fraction_of_graph": 5.745e-05,
+   "rates_hz": {
+    "population_mean": 0.0015,
+    "population_peak": 0.0057,
+    "active_mean": 26.586881,
+    "active_percentiles": {
+     "1": 15.755189,
+     "5": 15.755189,
+     "10": 15.755189,
+     "25": 25.980912,
+     "50": 29.995455,
+     "75": 30.601424,
+     "90": 30.601424,
+     "95": 30.601424,
+     "99": 30.601424,
+     "100": 30.601424
+    },
+    "all_percentiles": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "25": 0.0,
+     "50": 0.0,
+     "75": 0.0,
+     "90": 0.0,
+     "95": 0.0,
+     "99": 0.0,
+     "100": 30.601424
+    },
+    "top_one_percent_spike_share": 1.0
+   },
+   "rails": {
+    "min_membrane_mv": -68.0,
+    "max_membrane_mv": -50.005284308,
+    "at_floor_fraction": 0.0,
+    "near_threshold_fraction": 6.61e-07,
+    "refractory_fraction": 2.291e-06,
+    "finite_state": true
+   },
+   "recruitment": {
+    "checkpoints_ms": {
+     "0.01": null,
+     "0.05": null,
+     "0.1": null,
+     "0.25": null
+    },
+    "time_to_25_percent_of_final_ms": 30.0,
+    "time_to_50_percent_of_final_ms": 30.0,
+    "time_to_90_percent_of_final_ms": 60.0,
+    "peak_new_active_per_bin": 6
+   },
+   "persistence": {
+    "bins": 331,
+    "fraction_bins_outside_active": 0.0,
+    "longest_outside_active_run_ms": 0.0,
+    "longest_gap_ms_outside_active": 0.0,
+    "tail_window_ms": 500.0,
+    "tail_mean_rate_hz": 0.001522,
+    "tail_active_neurons": 8,
+    "final_second": {
+     "window_ms": 1000,
+     "spikes_per_100ms": [
+      22,
+      18,
+      22,
+      20,
+      22,
+      20,
+      22,
+      22,
+      20,
+      22
+     ]
+    }
+   },
+   "propagation": {
+    "transmissions_per_spike": 5.95584,
+    "first_bin_ratio": 0.0,
+    "peak_ratio": 0.0,
+    "plateau_median_ratio_last_20_percent": null
+   },
+   "topology": {
+    "definition": "directed unweighted hop distance from the injected set",
+    "source_partition": "A_c",
+    "buckets": {
+     "0": {
+      "n_neurons": 36,
+      "active_neurons": 8,
+      "spikes": 702,
+      "firing_rate_hz": 5.908196,
+      "first_active_ms": 28.0,
+      "median_first_spike_ms": 28.75,
+      "last_spike_ms": 3297.0
+     },
+     "1": {
+      "n_neurons": 290,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "2": {
+      "n_neurons": 6394,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "3": {
+      "n_neurons": 75957,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "4": {
+      "n_neurons": 42706,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "5": {
+      "n_neurons": 2904,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "6-10": {
+      "n_neurons": 242,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "11-20": {
+      "n_neurons": 0,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null
+     },
+     "unreachable_or_far": {
+      "n_neurons": 10726,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     }
+    }
+   },
+   "post_drive_window": null,
+   "checks": {
+    "scheduler_present": true,
+    "no_current_outside_active": true,
+    "current_injected": true,
+    "repeats_identical": true
+   },
+   "checks_not_evaluated": [],
+   "repeats_identical": true,
+   "spike_capacity_exceeded": false
+  },
+  "C2": {
+   "duration_ms": 3300.5,
+   "n_steps": 6601,
+   "frame_source": "cached",
+   "n_active_features": 10,
+   "removed_feature": null,
+   "ignition": {
+    "regime": "none",
+    "status": "definitional",
+    "legacy_ignited": false,
+    "first_spike_ms": 81.5,
+    "first_outside_reference_ms": null,
+    "first_outside_active_ms": null,
+    "delay_active_to_outside_active_ms": null
+   },
+   "spikes_total": 2560,
+   "partitions": {
+    "total": {
+     "n_neurons": 139255,
+     "spikes": 2560,
+     "active_neurons": 61,
+     "firing_rate_hz": 0.00557,
+     "first_spike_ms": 81.5,
+     "last_spike_ms": 3298.5
+    },
+    "reference": {
+     "n_neurons": 138,
+     "spikes": 2560,
+     "active_neurons": 61,
+     "firing_rate_hz": 5.62058,
+     "first_spike_ms": 81.5,
+     "last_spike_ms": 3298.5
+    },
+    "outside_reference": {
+     "n_neurons": 139117,
+     "spikes": 0,
+     "active_neurons": 0,
+     "firing_rate_hz": 0.0,
+     "first_spike_ms": null,
+     "last_spike_ms": null
+    },
+    "active": {
+     "n_neurons": 102,
+     "spikes": 2560,
+     "active_neurons": 61,
+     "firing_rate_hz": 7.604314,
+     "first_spike_ms": 81.5,
+     "last_spike_ms": 3298.5
+    },
+    "outside_active": {
+     "n_neurons": 139153,
+     "spikes": 0,
+     "active_neurons": 0,
+     "firing_rate_hz": 0.0,
+     "first_spike_ms": null,
+     "last_spike_ms": null
+    }
+   },
+   "active_fraction_of_graph": 0.00043805,
+   "rates_hz": {
+    "population_mean": 0.0056,
+    "population_peak": 0.0223,
+    "active_mean": 12.715411,
+    "active_percentiles": {
+     "1": 0.666566,
+     "5": 0.908953,
+     "10": 3.332828,
+     "25": 5.756704,
+     "50": 9.089532,
+     "75": 13.634298,
+     "90": 20.299955,
+     "95": 43.023784,
+     "99": 43.023784,
+     "100": 43.023784
+    },
+    "all_percentiles": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "25": 0.0,
+     "50": 0.0,
+     "75": 0.0,
+     "90": 0.0,
+     "95": 0.0,
+     "99": 0.0,
+     "100": 43.023784
+    },
+    "top_one_percent_spike_share": 1.0
+   },
+   "rails": {
+    "min_membrane_mv": -72.531520743,
+    "max_membrane_mv": -50.000265632,
+    "at_floor_fraction": 0.0,
+    "near_threshold_fraction": 6.04e-07,
+    "refractory_fraction": 8.355e-06,
+    "finite_state": true
+   },
+   "recruitment": {
+    "checkpoints_ms": {
+     "0.01": null,
+     "0.05": null,
+     "0.1": null,
+     "0.25": null
+    },
+    "time_to_25_percent_of_final_ms": 150.0,
+    "time_to_50_percent_of_final_ms": 420.0,
+    "time_to_90_percent_of_final_ms": 1350.0,
+    "peak_new_active_per_bin": 19
+   },
+   "persistence": {
+    "bins": 331,
+    "fraction_bins_outside_active": 0.0,
+    "longest_outside_active_run_ms": 0.0,
+    "longest_gap_ms_outside_active": 0.0,
+    "tail_window_ms": 500.0,
+    "tail_mean_rate_hz": 0.004208,
+    "tail_active_neurons": 29,
+    "final_second": {
+     "window_ms": 1000,
+     "spikes_per_100ms": [
+      179,
+      40,
+      0,
+      0,
+      80,
+      66,
+      47,
+      66,
+      54,
+      53
+     ]
+    }
+   },
+   "propagation": {
+    "transmissions_per_spike": 5.392969,
+    "first_bin_ratio": 0.0,
+    "peak_ratio": 0.0,
+    "plateau_median_ratio_last_20_percent": null
+   },
+   "topology": {
+    "definition": "directed unweighted hop distance from the injected set",
+    "source_partition": "A_c",
+    "buckets": {
+     "0": {
+      "n_neurons": 102,
+      "active_neurons": 61,
+      "spikes": 2560,
+      "firing_rate_hz": 7.604314,
+      "first_active_ms": 81.5,
+      "median_first_spike_ms": 414.5,
+      "last_spike_ms": 3298.5
+     },
+     "1": {
+      "n_neurons": 465,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "2": {
+      "n_neurons": 5998,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "3": {
+      "n_neurons": 69298,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "4": {
+      "n_neurons": 47340,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "5": {
+      "n_neurons": 4955,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "6-10": {
+      "n_neurons": 430,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "11-20": {
+      "n_neurons": 0,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null
+     },
+     "unreachable_or_far": {
+      "n_neurons": 10667,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     }
+    }
+   },
+   "post_drive_window": null,
+   "checks": {
+    "scheduler_present": true,
+    "no_current_outside_active": true,
+    "current_injected": true,
+    "repeats_identical": true
+   },
+   "checks_not_evaluated": [],
+   "repeats_identical": true,
+   "spike_capacity_exceeded": false
+  },
+  "C3": {
+   "duration_ms": 3300.5,
+   "n_steps": 6601,
+   "frame_source": "cached",
+   "n_active_features": 14,
+   "removed_feature": null,
+   "ignition": {
+    "regime": "population_scale",
+    "status": "provisional",
+    "legacy_ignited": true,
+    "first_spike_ms": 28.0,
+    "first_outside_reference_ms": 101.5,
+    "first_outside_active_ms": 101.5,
+    "delay_active_to_outside_active_ms": 73.5
+   },
+   "spikes_total": 15654631,
+   "partitions": {
+    "total": {
+     "n_neurons": 139255,
+     "spikes": 15654631,
+     "active_neurons": 35979,
+     "firing_rate_hz": 34.060601,
+     "first_spike_ms": 28.0,
+     "last_spike_ms": 3300.5
+    },
+    "reference": {
+     "n_neurons": 138,
+     "spikes": 3710,
+     "active_neurons": 72,
+     "firing_rate_hz": 8.14545,
+     "first_spike_ms": 28.0,
+     "last_spike_ms": 3300.0
+    },
+    "outside_reference": {
+     "n_neurons": 139117,
+     "spikes": 15650921,
+     "active_neurons": 35907,
+     "firing_rate_hz": 34.086308,
+     "first_spike_ms": 101.5,
+     "last_spike_ms": 3300.5
+    },
+    "active": {
+     "n_neurons": 138,
+     "spikes": 3710,
+     "active_neurons": 72,
+     "firing_rate_hz": 8.14545,
+     "first_spike_ms": 28.0,
+     "last_spike_ms": 3300.0
+    },
+    "outside_active": {
+     "n_neurons": 139117,
+     "spikes": 15650921,
+     "active_neurons": 35907,
+     "firing_rate_hz": 34.086308,
+     "first_spike_ms": 101.5,
+     "last_spike_ms": 3300.5
+    }
+   },
+   "active_fraction_of_graph": 0.25836774,
+   "rates_hz": {
+    "population_mean": 34.0606,
+    "population_peak": 37.0184,
+    "active_mean": 131.829926,
+    "active_percentiles": {
+     "1": 0.302984,
+     "5": 0.908953,
+     "10": 12.725345,
+     "25": 37.570065,
+     "50": 89.077413,
+     "75": 191.789123,
+     "90": 316.982275,
+     "95": 377.579155,
+     "99": 464.172095,
+     "100": 469.625814
+    },
+    "all_percentiles": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "25": 0.0,
+     "50": 0.0,
+     "75": 0.302984,
+     "90": 123.314649,
+     "95": 231.177094,
+     "99": 461.142251,
+     "100": 469.625814
+    },
+    "top_one_percent_spike_share": 0.1361339
+   },
+   "rails": {
+    "min_membrane_mv": -90.0,
+    "max_membrane_mv": -50.000000069,
+    "at_floor_fraction": 0.202564254,
+    "near_threshold_fraction": 0.000653693,
+    "refractory_fraction": 0.051082382,
+    "finite_state": true
+   },
+   "recruitment": {
+    "checkpoints_ms": {
+     "0.01": 240.0,
+     "0.05": 250.0,
+     "0.1": 260.0,
+     "0.25": 350.0
+    },
+    "time_to_25_percent_of_final_ms": 250.0,
+    "time_to_50_percent_of_final_ms": 270.0,
+    "time_to_90_percent_of_final_ms": 300.0,
+    "peak_new_active_per_bin": 7168
+   },
+   "persistence": {
+    "bins": 331,
+    "fraction_bins_outside_active": 0.963746,
+    "longest_outside_active_run_ms": 3150.0,
+    "longest_gap_ms_outside_active": 18.0,
+    "tail_window_ms": 500.0,
+    "tail_mean_rate_hz": 36.889577,
+    "tail_active_neurons": 33708,
+    "final_second": {
+     "window_ms": 1000,
+     "spikes_per_100ms": [
+      513541,
+      513342,
+      512708,
+      512952,
+      513329,
+      512994,
+      513447,
+      513299,
+      513144,
+      466826
+     ]
+    }
+   },
+   "propagation": {
+    "transmissions_per_spike": 63.656871,
+    "first_bin_ratio": 0.0,
+    "peak_ratio": 9.307692,
+    "plateau_median_ratio_last_20_percent": 1.000166
+   },
+   "topology": {
+    "definition": "directed unweighted hop distance from the injected set",
+    "source_partition": "A_c",
+    "buckets": {
+     "0": {
+      "n_neurons": 138,
+      "active_neurons": 72,
+      "spikes": 3710,
+      "firing_rate_hz": 8.14545,
+      "first_active_ms": 28.0,
+      "median_first_spike_ms": 411.75,
+      "last_spike_ms": 3300.0
+     },
+     "1": {
+      "n_neurons": 745,
+      "active_neurons": 296,
+      "spikes": 97563,
+      "firing_rate_hz": 39.677942,
+      "first_active_ms": 101.5,
+      "median_first_spike_ms": 261.75,
+      "last_spike_ms": 3300.5
+     },
+     "2": {
+      "n_neurons": 11712,
+      "active_neurons": 4281,
+      "spikes": 2131878,
+      "firing_rate_hz": 55.150766,
+      "first_active_ms": 105.0,
+      "median_first_spike_ms": 251.5,
+      "last_spike_ms": 3300.5
+     },
+     "3": {
+      "n_neurons": 87304,
+      "active_neurons": 24124,
+      "spikes": 9928798,
+      "firing_rate_hz": 34.457423,
+      "first_active_ms": 193.0,
+      "median_first_spike_ms": 262.0,
+      "last_spike_ms": 3300.5
+     },
+     "4": {
+      "n_neurons": 26960,
+      "active_neurons": 6952,
+      "spikes": 3425187,
+      "firing_rate_hz": 38.493257,
+      "first_active_ms": 233.5,
+      "median_first_spike_ms": 269.0,
+      "last_spike_ms": 3300.5
+     },
+     "5": {
+      "n_neurons": 1621,
+      "active_neurons": 254,
+      "spikes": 67495,
+      "firing_rate_hz": 12.615627,
+      "first_active_ms": 244.5,
+      "median_first_spike_ms": 281.25,
+      "last_spike_ms": 3300.5
+     },
+     "6-10": {
+      "n_neurons": 138,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "11-20": {
+      "n_neurons": 0,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null
+     },
+     "unreachable_or_far": {
+      "n_neurons": 10637,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     }
+    }
+   },
+   "post_drive_window": null,
+   "checks": {
+    "scheduler_present": true,
+    "no_current_outside_active": true,
+    "current_injected": true,
+    "reference_equals_active": true,
+    "repeats_identical": true
+   },
+   "checks_not_evaluated": [],
+   "repeats_identical": true,
+   "spike_capacity_exceeded": false
+  },
+  "no-player_lane": {
+   "duration_ms": 3300.5,
+   "n_steps": 6601,
+   "frame_source": "cached",
+   "n_active_features": 13,
+   "removed_feature": "player_lane",
+   "ignition": {
+    "regime": "none",
+    "status": "definitional",
+    "legacy_ignited": false,
+    "first_spike_ms": 29.5,
+    "first_outside_reference_ms": null,
+    "first_outside_active_ms": null,
+    "delay_active_to_outside_active_ms": null
+   },
+   "spikes_total": 2858,
+   "partitions": {
+    "total": {
+     "n_neurons": 139255,
+     "spikes": 2858,
+     "active_neurons": 65,
+     "firing_rate_hz": 0.006218,
+     "first_spike_ms": 29.5,
+     "last_spike_ms": 3298.5
+    },
+    "reference": {
+     "n_neurons": 138,
+     "spikes": 2858,
+     "active_neurons": 65,
+     "firing_rate_hz": 6.274851,
+     "first_spike_ms": 29.5,
+     "last_spike_ms": 3298.5
+    },
+    "outside_reference": {
+     "n_neurons": 139117,
+     "spikes": 0,
+     "active_neurons": 0,
+     "firing_rate_hz": 0.0,
+     "first_spike_ms": null,
+     "last_spike_ms": null
+    },
+    "active": {
+     "n_neurons": 126,
+     "spikes": 2858,
+     "active_neurons": 65,
+     "firing_rate_hz": 6.872456,
+     "first_spike_ms": 29.5,
+     "last_spike_ms": 3298.5
+    },
+    "outside_active": {
+     "n_neurons": 139129,
+     "spikes": 0,
+     "active_neurons": 0,
+     "firing_rate_hz": 0.0,
+     "first_spike_ms": null,
+     "last_spike_ms": null
+    }
+   },
+   "active_fraction_of_graph": 0.00046677,
+   "rates_hz": {
+    "population_mean": 0.0062,
+    "population_peak": 0.0251,
+    "active_mean": 13.321991,
+    "active_percentiles": {
+     "1": 0.690804,
+     "5": 0.908953,
+     "10": 3.332828,
+     "25": 5.756704,
+     "50": 10.907438,
+     "75": 14.846235,
+     "90": 29.389486,
+     "95": 43.023784,
+     "99": 43.023784,
+     "100": 43.023784
+    },
+    "all_percentiles": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "25": 0.0,
+     "50": 0.0,
+     "75": 0.0,
+     "90": 0.0,
+     "95": 0.0,
+     "99": 0.0,
+     "100": 43.023784
+    },
+    "top_one_percent_spike_share": 1.0
+   },
+   "rails": {
+    "min_membrane_mv": -72.531520743,
+    "max_membrane_mv": -50.000265632,
+    "at_floor_fraction": 0.0,
+    "near_threshold_fraction": 8.3e-07,
+    "refractory_fraction": 9.327e-06,
+    "finite_state": true
+   },
+   "recruitment": {
+    "checkpoints_ms": {
+     "0.01": null,
+     "0.05": null,
+     "0.1": null,
+     "0.25": null
+    },
+    "time_to_25_percent_of_final_ms": 90.0,
+    "time_to_50_percent_of_final_ms": 420.0,
+    "time_to_90_percent_of_final_ms": 1350.0,
+    "peak_new_active_per_bin": 19
+   },
+   "persistence": {
+    "bins": 331,
+    "fraction_bins_outside_active": 0.0,
+    "longest_outside_active_run_ms": 0.0,
+    "longest_gap_ms_outside_active": 0.0,
+    "tail_window_ms": 500.0,
+    "tail_mean_rate_hz": 0.004869,
+    "tail_active_neurons": 33,
+    "final_second": {
+     "window_ms": 1000,
+     "spikes_per_100ms": [
+      189,
+      46,
+      10,
+      8,
+      90,
+      74,
+      57,
+      76,
+      62,
+      63
+     ]
+    }
+   },
+   "propagation": {
+    "transmissions_per_spike": 5.445416,
+    "first_bin_ratio": 0.0,
+    "peak_ratio": 0.0,
+    "plateau_median_ratio_last_20_percent": null
+   },
+   "topology": {
+    "definition": "directed unweighted hop distance from the injected set",
+    "source_partition": "A_c",
+    "buckets": {
+     "0": {
+      "n_neurons": 126,
+      "active_neurons": 65,
+      "spikes": 2858,
+      "firing_rate_hz": 6.872456,
+      "first_active_ms": 29.5,
+      "median_first_spike_ms": 414.5,
+      "last_spike_ms": 3298.5
+     },
+     "1": {
+      "n_neurons": 688,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "2": {
+      "n_neurons": 11161,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "3": {
+      "n_neurons": 87135,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "4": {
+      "n_neurons": 27690,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "5": {
+      "n_neurons": 1665,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "6-10": {
+      "n_neurons": 145,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "11-20": {
+      "n_neurons": 0,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null
+     },
+     "unreachable_or_far": {
+      "n_neurons": 10645,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     }
+    }
+   },
+   "post_drive_window": null,
+   "checks": {
+    "scheduler_present": true,
+    "no_current_outside_active": true,
+    "current_injected": true,
+    "thirteen_features_active": true,
+    "removed_feature_zero_current": true,
+    "repeats_identical": true
+   },
+   "checks_not_evaluated": [],
+   "repeats_identical": true,
+   "spike_capacity_exceeded": false
+  },
+  "no-train_lane": {
+   "duration_ms": 3300.5,
+   "n_steps": 6601,
+   "frame_source": "cached",
+   "n_active_features": 13,
+   "removed_feature": "train_lane",
+   "ignition": {
+    "regime": "sparse",
+    "status": "provisional",
+    "legacy_ignited": true,
+    "first_spike_ms": 28.0,
+    "first_outside_reference_ms": 1467.0,
+    "first_outside_active_ms": 1467.0,
+    "delay_active_to_outside_active_ms": 1439.0
+   },
+   "spikes_total": 2802,
+   "partitions": {
+    "total": {
+     "n_neurons": 139255,
+     "spikes": 2802,
+     "active_neurons": 59,
+     "firing_rate_hz": 0.006096,
+     "first_spike_ms": 28.0,
+     "last_spike_ms": 3297.0
+    },
+    "reference": {
+     "n_neurons": 138,
+     "spikes": 2798,
+     "active_neurons": 57,
+     "firing_rate_hz": 6.143118,
+     "first_spike_ms": 28.0,
+     "last_spike_ms": 3297.0
+    },
+    "outside_reference": {
+     "n_neurons": 139117,
+     "spikes": 4,
+     "active_neurons": 2,
+     "firing_rate_hz": 9e-06,
+     "first_spike_ms": 1467.0,
+     "last_spike_ms": 1605.0
+    },
+    "active": {
+     "n_neurons": 126,
+     "spikes": 2798,
+     "active_neurons": 57,
+     "firing_rate_hz": 6.728177,
+     "first_spike_ms": 28.0,
+     "last_spike_ms": 3297.0
+    },
+    "outside_active": {
+     "n_neurons": 139129,
+     "spikes": 4,
+     "active_neurons": 2,
+     "firing_rate_hz": 9e-06,
+     "first_spike_ms": 1467.0,
+     "last_spike_ms": 1605.0
+    }
+   },
+   "active_fraction_of_graph": 0.00042368,
+   "rates_hz": {
+    "population_mean": 0.0061,
+    "population_peak": 0.0251,
+    "active_mean": 14.389191,
+    "active_percentiles": {
+     "1": 0.478715,
+     "5": 0.878655,
+     "10": 0.908953,
+     "25": 4.999243,
+     "50": 13.028329,
+     "75": 15.300712,
+     "90": 33.085896,
+     "95": 43.023784,
+     "99": 43.023784,
+     "100": 43.023784
+    },
+    "all_percentiles": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "25": 0.0,
+     "50": 0.0,
+     "75": 0.0,
+     "90": 0.0,
+     "95": 0.0,
+     "99": 0.0,
+     "100": 43.023784
+    },
+    "top_one_percent_spike_share": 1.0
+   },
+   "rails": {
+    "min_membrane_mv": -68.0,
+    "max_membrane_mv": -50.000265632,
+    "at_floor_fraction": 0.0,
+    "near_threshold_fraction": 1.094e-06,
+    "refractory_fraction": 9.145e-06,
+    "finite_state": true
+   },
+   "recruitment": {
+    "checkpoints_ms": {
+     "0.01": null,
+     "0.05": null,
+     "0.1": null,
+     "0.25": null
+    },
+    "time_to_25_percent_of_final_ms": 90.0,
+    "time_to_50_percent_of_final_ms": 420.0,
+    "time_to_90_percent_of_final_ms": 1470.0,
+    "peak_new_active_per_bin": 19
+   },
+   "persistence": {
+    "bins": 331,
+    "fraction_bins_outside_active": 0.012085,
+    "longest_outside_active_run_ms": 20.0,
+    "longest_gap_ms_outside_active": 124.0,
+    "tail_window_ms": 500.0,
+    "tail_mean_rate_hz": 0.004639,
+    "tail_active_neurons": 25,
+    "final_second": {
+     "window_ms": 1000,
+     "spikes_per_100ms": [
+      173,
+      54,
+      22,
+      20,
+      82,
+      70,
+      57,
+      72,
+      58,
+      59
+     ]
+    }
+   },
+   "propagation": {
+    "transmissions_per_spike": 5.684154,
+    "first_bin_ratio": 0.0,
+    "peak_ratio": 1.0,
+    "plateau_median_ratio_last_20_percent": 1.0
+   },
+   "topology": {
+    "definition": "directed unweighted hop distance from the injected set",
+    "source_partition": "A_c",
+    "buckets": {
+     "0": {
+      "n_neurons": 126,
+      "active_neurons": 57,
+      "spikes": 2798,
+      "firing_rate_hz": 6.728177,
+      "first_active_ms": 28.0,
+      "median_first_spike_ms": 414.5,
+      "last_spike_ms": 3297.0
+     },
+     "1": {
+      "n_neurons": 698,
+      "active_neurons": 1,
+      "spikes": 2,
+      "firing_rate_hz": 0.000868,
+      "first_active_ms": 1467.0,
+      "median_first_spike_ms": 1467.0,
+      "last_spike_ms": 1598.0
+     },
+     "2": {
+      "n_neurons": 11090,
+      "active_neurons": 1,
+      "spikes": 2,
+      "firing_rate_hz": 5.5e-05,
+      "first_active_ms": 1474.0,
+      "median_first_spike_ms": 1474.0,
+      "last_spike_ms": 1605.0
+     },
+     "3": {
+      "n_neurons": 86815,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "4": {
+      "n_neurons": 28053,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "5": {
+      "n_neurons": 1684,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "6-10": {
+      "n_neurons": 146,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "11-20": {
+      "n_neurons": 0,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null
+     },
+     "unreachable_or_far": {
+      "n_neurons": 10643,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     }
+    }
+   },
+   "post_drive_window": null,
+   "checks": {
+    "scheduler_present": true,
+    "no_current_outside_active": true,
+    "current_injected": true,
+    "thirteen_features_active": true,
+    "removed_feature_zero_current": true,
+    "repeats_identical": true
+   },
+   "checks_not_evaluated": [],
+   "repeats_identical": true,
+   "spike_capacity_exceeded": false
+  },
+  "C3-washout": {
+   "duration_ms": 4050.5,
+   "n_steps": 8101,
+   "frame_source": "cached",
+   "n_active_features": 14,
+   "removed_feature": null,
+   "ignition": {
+    "regime": "population_scale",
+    "status": "provisional",
+    "legacy_ignited": true,
+    "first_spike_ms": 28.0,
+    "first_outside_reference_ms": 101.5,
+    "first_outside_active_ms": 101.5,
+    "delay_active_to_outside_active_ms": 73.5
+   },
+   "spikes_total": 19503284,
+   "partitions": {
+    "total": {
+     "n_neurons": 139255,
+     "spikes": 19503284,
+     "active_neurons": 36009,
+     "firing_rate_hz": 34.57708,
+     "first_spike_ms": 28.0,
+     "last_spike_ms": 4050.5
+    },
+    "reference": {
+     "n_neurons": 138,
+     "spikes": 3957,
+     "active_neurons": 72,
+     "firing_rate_hz": 7.079105,
+     "first_spike_ms": 28.0,
+     "last_spike_ms": 4044.0
+    },
+    "outside_reference": {
+     "n_neurons": 139117,
+     "spikes": 19499327,
+     "active_neurons": 35937,
+     "firing_rate_hz": 34.604357,
+     "first_spike_ms": 101.5,
+     "last_spike_ms": 4050.5
+    },
+    "active": {
+     "n_neurons": 138,
+     "spikes": 3957,
+     "active_neurons": 72,
+     "firing_rate_hz": 7.079105,
+     "first_spike_ms": 28.0,
+     "last_spike_ms": 4044.0
+    },
+    "outside_active": {
+     "n_neurons": 139117,
+     "spikes": 19499327,
+     "active_neurons": 35937,
+     "firing_rate_hz": 34.604357,
+     "first_spike_ms": 101.5,
+     "last_spike_ms": 4050.5
+    }
+   },
+   "active_fraction_of_graph": 0.25858317,
+   "rates_hz": {
+    "population_mean": 34.5771,
+    "population_peak": 37.0184,
+    "active_mean": 133.717438,
+    "active_percentiles": {
+     "1": 0.246883,
+     "5": 0.740649,
+     "10": 12.591038,
+     "25": 38.266881,
+     "50": 90.359215,
+     "75": 194.543883,
+     "90": 321.491174,
+     "95": 382.668806,
+     "99": 470.806073,
+     "100": 475.249969
+    },
+    "all_percentiles": {
+     "1": 0.0,
+     "5": 0.0,
+     "10": 0.0,
+     "25": 0.0,
+     "50": 0.0,
+     "75": 0.246883,
+     "90": 125.169732,
+     "95": 234.785829,
+     "99": 468.337242,
+     "100": 475.249969
+    },
+    "top_one_percent_spike_share": 0.13605273
+   },
+   "rails": {
+    "min_membrane_mv": -90.0,
+    "max_membrane_mv": -50.000000034,
+    "at_floor_fraction": 0.205784408,
+    "near_threshold_fraction": 0.000663697,
+    "refractory_fraction": 0.051858799,
+    "finite_state": true
+   },
+   "recruitment": {
+    "checkpoints_ms": {
+     "0.01": 240.0,
+     "0.05": 250.0,
+     "0.1": 260.0,
+     "0.25": 350.0
+    },
+    "time_to_25_percent_of_final_ms": 250.0,
+    "time_to_50_percent_of_final_ms": 270.0,
+    "time_to_90_percent_of_final_ms": 300.0,
+    "peak_new_active_per_bin": 7168
+   },
+   "persistence": {
+    "bins": 406,
+    "fraction_bins_outside_active": 0.970443,
+    "longest_outside_active_run_ms": 3900.0,
+    "longest_gap_ms_outside_active": 18.0,
+    "tail_window_ms": 500.0,
+    "tail_mean_rate_hz": 36.882195,
+    "tail_active_neurons": 33694,
+    "final_second": {
+     "window_ms": 1000,
+     "spikes_per_100ms": [
+      513185,
+      512830,
+      513479,
+      513271,
+      513144,
+      513112,
+      513547,
+      512739,
+      512862,
+      467018
+     ]
+    }
+   },
+   "propagation": {
+    "transmissions_per_spike": 63.63992,
+    "first_bin_ratio": 0.0,
+    "peak_ratio": 9.307692,
+    "plateau_median_ratio_last_20_percent": 1.000078
+   },
+   "topology": {
+    "definition": "directed unweighted hop distance from the injected set",
+    "source_partition": "A_c",
+    "buckets": {
+     "0": {
+      "n_neurons": 138,
+      "active_neurons": 72,
+      "spikes": 3957,
+      "firing_rate_hz": 7.079105,
+      "first_active_ms": 28.0,
+      "median_first_spike_ms": 411.75,
+      "last_spike_ms": 4044.0
+     },
+     "1": {
+      "n_neurons": 745,
+      "active_neurons": 296,
+      "spikes": 121355,
+      "firing_rate_hz": 40.215435,
+      "first_active_ms": 101.5,
+      "median_first_spike_ms": 261.75,
+      "last_spike_ms": 4050.5
+     },
+     "2": {
+      "n_neurons": 11712,
+      "active_neurons": 4281,
+      "spikes": 2654093,
+      "firing_rate_hz": 55.946953,
+      "first_active_ms": 105.0,
+      "median_first_spike_ms": 251.5,
+      "last_spike_ms": 4050.5
+     },
+     "3": {
+      "n_neurons": 87304,
+      "active_neurons": 24148,
+      "spikes": 12370527,
+      "firing_rate_hz": 34.982063,
+      "first_active_ms": 193.0,
+      "median_first_spike_ms": 262.0,
+      "last_spike_ms": 4050.5
+     },
+     "4": {
+      "n_neurons": 26960,
+      "active_neurons": 6958,
+      "spikes": 4269130,
+      "firing_rate_hz": 39.094067,
+      "first_active_ms": 233.5,
+      "median_first_spike_ms": 269.0,
+      "last_spike_ms": 4050.5
+     },
+     "5": {
+      "n_neurons": 1621,
+      "active_neurons": 254,
+      "spikes": 84222,
+      "firing_rate_hz": 12.82726,
+      "first_active_ms": 244.5,
+      "median_first_spike_ms": 281.25,
+      "last_spike_ms": 4050.5
+     },
+     "6-10": {
+      "n_neurons": 138,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     },
+     "11-20": {
+      "n_neurons": 0,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null
+     },
+     "unreachable_or_far": {
+      "n_neurons": 10637,
+      "active_neurons": 0,
+      "spikes": 0,
+      "firing_rate_hz": 0.0,
+      "first_active_ms": null,
+      "median_first_spike_ms": null,
+      "last_spike_ms": null
+     }
+    }
+   },
+   "post_drive_window": {
+    "start_ms": 3550.5,
+    "duration_ms": 500.0,
+    "start_rule": "first step after the last step on which the schedule adds any current",
+    "bin_ms": 50.0,
+    "bin_edges_ms": [
+     3550.5,
+     3600.5,
+     3650.5,
+     3700.5,
+     3750.5,
+     3800.5,
+     3850.5,
+     3900.5,
+     3950.5,
+     4000.5,
+     4050.5
+    ],
+    "spikes_per_bin": [
+     256557,
+     256681,
+     256593,
+     256815,
+     256395,
+     256425,
+     256525,
+     256341,
+     256397,
+     259286
+    ],
+    "outside_active_per_bin": [
+     256550,
+     256677,
+     256588,
+     256811,
+     256391,
+     256421,
+     256520,
+     256336,
+     256393,
+     259282
+    ],
+    "reference_per_bin": [
+     7,
+     4,
+     5,
+     4,
+     4,
+     4,
+     5,
+     5,
+     4,
+     4
+    ],
+    "spikes": 2568015,
+    "outside_active_spikes": 2567969,
+    "active_neurons": 33694,
+    "first_spike_ms": 3550.5,
+    "last_spike_ms": 4050.5,
+    "window_rate_hz": 36.882195,
+    "pre_window_rate_hz": 36.853212,
+    "rate_ratio_vs_pre_window": 1.000786
+   },
+   "checks": {
+    "scheduler_present": true,
+    "no_current_outside_active": true,
+    "current_injected": true,
+    "reference_equals_active": true,
+    "repeats_identical": true
+   },
+   "checks_not_evaluated": [],
+   "repeats_identical": true,
+   "spike_capacity_exceeded": false
+  }
+ }
+}

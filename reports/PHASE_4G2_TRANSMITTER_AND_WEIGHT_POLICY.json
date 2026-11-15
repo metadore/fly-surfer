@@ -1,0 +1,1139 @@
+{
+ "phase": "4G.2",
+ "title": "BANC transmitter-sign and edge-weight policy audit",
+ "generated_at_utc": "2026-11-08T06:29:17+00:00",
+ "software": {
+  "python": "3.13.14",
+  "numpy": "2.3.4",
+  "pandas": "2.3.3",
+  "platform": "Windows-11-10.0.26200-SP0"
+ },
+ "inputs": {
+  "node_table": "datasets/processed/banc_v888/banc_nodes.csv.gz",
+  "node_table_sha256": "144a2eb09aa1ed2be4f07eff589a6158e98cfe4f18b52db7feef4d2272953e5f",
+  "config": "configs/banc_synapse_policy.yaml",
+  "config_sha256": "88f6449289492e79a919fafa56af93c5ac5e916cb50cc1658d7e14eed2dc399e",
+  "annotation_columns": [
+   "neurotransmitter_verified",
+   "neurotransmitter_predicted",
+   "neurotransmitter_score"
+  ]
+ },
+ "sign_policy": {
+  "verified_excitatory": [
+   "acetylcholine",
+   "glutamate"
+  ],
+  "verified_inhibitory": [
+   "gaba",
+   "glycine"
+  ],
+  "modulators_without_fixed_sign": [
+   "dopamine",
+   "serotonin",
+   "octopamine",
+   "tyramine",
+   "histamine",
+   "nitric_oxide"
+  ],
+  "conflict_policy": "unknown",
+  "modulator_only_policy": "unknown",
+  "predicted_fallback": false,
+  "unknown_edge_policy": "exclude",
+  "interpretation": "excitatory and inhibitory are modelling priors applied to the presynaptic neuron; they are not established postsynaptic effects at every target"
+ },
+ "weight_policy": {
+  "transform": "power",
+  "exponent": 0.75,
+  "scale_pa": 5.0,
+  "cap_pa": 300.0,
+  "weight_source": "integer synapse count (`count`); `norm` is never used",
+  "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+ },
+ "weight_sensitivity_policies": {
+  "linear_capped": {
+   "transform": "linear",
+   "exponent": 1.0,
+   "scale_pa": 0.5,
+   "cap_pa": 300.0,
+   "weight_source": "integer synapse count (`count`); `norm` is never used",
+   "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+  },
+  "log1p": {
+   "transform": "log1p",
+   "exponent": 1.0,
+   "scale_pa": 10.0,
+   "cap_pa": null,
+   "weight_source": "integer synapse count (`count`); `norm` is never used",
+   "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+  },
+  "power_half": {
+   "transform": "power",
+   "exponent": 0.5,
+   "scale_pa": 5.0,
+   "cap_pa": 300.0,
+   "weight_source": "integer synapse count (`count`); `norm` is never used",
+   "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+  },
+  "power_1": {
+   "transform": "power",
+   "exponent": 1.0,
+   "scale_pa": 0.5,
+   "cap_pa": 300.0,
+   "weight_source": "integer synapse count (`count`); `norm` is never used",
+   "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+  },
+  "uncapped_power": {
+   "transform": "power",
+   "exponent": 0.75,
+   "scale_pa": 5.0,
+   "cap_pa": null,
+   "weight_source": "integer synapse count (`count`); `norm` is never used",
+   "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+  }
+ },
+ "unknown_edge_strategies": {
+  "primary_exclusion": {
+   "strategy": "A",
+   "description": "Edges whose presynaptic neuron has no verified sign are omitted from the primary propagation experiment and reported as excluded.",
+   "consequence": "The primary result is conditional on the verified-sign subgraph; it does not describe the whole connectome."
+  },
+  "predicted_sensitivity": {
+   "strategy": "B",
+   "description": "A sensitivity condition repeats the primary experiment with predicted transmitter labels allowed to supply a sign for neurons without verified labels.",
+   "consequence": "Any difference between the two conditions measures dependence on unverified annotation, not a biological effect."
+  },
+  "neutral_zero": {
+   "strategy": "C",
+   "description": "Retaining unknown-sign edges with zero current weight. This is numerically identical to exclusion and is documented only to make the equivalence explicit; it is not run as a separate condition.",
+   "consequence": "Same spikes and currents as strategy A."
+  }
+ },
+ "thresholds": {
+  "t1": {
+   "artifact": "datasets/processed/banc_v888/banc_graph_t1.npz",
+   "artifact_sha256": "fee8e5e7f7dbd9b6d43ef125695b1b11f6c9613088c8c04dd0d883ff12ecc01e",
+   "threshold": 1,
+   "nodes": 172433,
+   "edges": 11596517,
+   "synapses": 34310230,
+   "isolated_nodes": 6232,
+   "load_seconds": 0.863,
+   "policy_build_seconds": 3.437,
+   "memory_bytes": {
+    "policy_arrays": 93117002,
+    "graph_edge_arrays": 185544272
+   },
+   "primary_policy": {
+    "graph_threshold": 1,
+    "sign_policy": {
+     "verified_excitatory": [
+      "acetylcholine",
+      "glutamate"
+     ],
+     "verified_inhibitory": [
+      "gaba",
+      "glycine"
+     ],
+     "modulators_without_fixed_sign": [
+      "dopamine",
+      "serotonin",
+      "octopamine",
+      "tyramine",
+      "histamine",
+      "nitric_oxide"
+     ],
+     "conflict_policy": "unknown",
+     "modulator_only_policy": "unknown",
+     "predicted_fallback": false,
+     "unknown_edge_policy": "exclude",
+     "interpretation": "excitatory and inhibitory are modelling priors applied to the presynaptic neuron; they are not established postsynaptic effects at every target"
+    },
+    "weight_policy": {
+     "transform": "power",
+     "exponent": 0.75,
+     "scale_pa": 5.0,
+     "cap_pa": 300.0,
+     "weight_source": "integer synapse count (`count`); `norm` is never used",
+     "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+    },
+    "coverage": {
+     "declared_policy": "verified-only",
+     "total_neurons": 172433,
+     "total_edges": 11596517,
+     "total_synapses": 34310230,
+     "signed_edges": 4369958,
+     "signed_synapses": 14302117,
+     "excluded_edges": 7226559,
+     "excluded_synapses": 20008113,
+     "signed_edge_share": 0.376834,
+     "signed_synapse_share": 0.416847,
+     "by_class": {
+      "unannotated": {
+       "neurons": 107141,
+       "edges": 7122636,
+       "synapses": 19785882,
+       "edge_share": 0.614205,
+       "synapse_share": 0.576676
+      },
+      "verified_excitatory": {
+       "neurons": 53987,
+       "edges": 3240601,
+       "synapses": 10370075,
+       "edge_share": 0.279446,
+       "synapse_share": 0.302244
+      },
+      "verified_inhibitory": {
+       "neurons": 9733,
+       "edges": 1129357,
+       "synapses": 3932042,
+       "edge_share": 0.097388,
+       "synapse_share": 0.114603
+      },
+      "verified_conflict": {
+       "neurons": 5,
+       "edges": 829,
+       "synapses": 2498,
+       "edge_share": 7.1e-05,
+       "synapse_share": 7.3e-05
+      },
+      "verified_modulator_only": {
+       "neurons": 1567,
+       "edges": 103094,
+       "synapses": 219733,
+       "edge_share": 0.00889,
+       "synapse_share": 0.006404
+      },
+      "predicted_excitatory": {
+       "neurons": 0,
+       "edges": 0,
+       "synapses": 0,
+       "edge_share": 0.0,
+       "synapse_share": 0.0
+      },
+      "predicted_inhibitory": {
+       "neurons": 0,
+       "edges": 0,
+       "synapses": 0,
+       "edge_share": 0.0,
+       "synapse_share": 0.0
+      },
+      "predicted_conflict": {
+       "neurons": 0,
+       "edges": 0,
+       "synapses": 0,
+       "edge_share": 0.0,
+       "synapse_share": 0.0
+      },
+      "predicted_modulator_only": {
+       "neurons": 0,
+       "edges": 0,
+       "synapses": 0,
+       "edge_share": 0.0,
+       "synapse_share": 0.0
+      }
+     }
+    },
+    "edge_arrays": {
+     "excitatory_edges": 3240601,
+     "inhibitory_edges": 1129357,
+     "signed_edges": 4369958,
+     "excluded_edges": 7226559,
+     "excitatory_weight_sum_pa": 34180457.5094,
+     "inhibitory_weight_sum_pa": 12418778.704,
+     "max_edge_weight_pa": 300.0,
+     "memory_bytes": 93117002
+    },
+    "provenance": {
+     "graph_threshold": 1,
+     "node_table": "datasets/processed/banc_v888/banc_nodes.csv.gz",
+     "node_order": "ascending banc_888_id, identical to graph root_ids",
+     "edges_modified": false,
+     "unknown_edges": "excluded from propagation; they contribute zero current"
+    }
+   },
+   "class_partition_check": {
+    "edges": 11596517,
+    "synapses": 34310230,
+    "matches_graph": true
+   },
+   "signed_weight_summary": {
+    "excitatory": {
+     "edges": 3240601,
+     "sum_pa": 34180457.5094,
+     "min_pa": 5.0,
+     "median_pa": 5.0,
+     "p99_pa": 60.8609,
+     "max_pa": 300.0,
+     "median_count": 1.0,
+     "p99_count": 26.0,
+     "max_count": 913
+    },
+    "inhibitory": {
+     "edges": 1129357,
+     "sum_pa": 12418778.704,
+     "min_pa": 5.0,
+     "median_pa": 5.0,
+     "p99_pa": 67.2717,
+     "max_pa": 300.0,
+     "median_count": 1.0,
+     "p99_count": 26.0,
+     "max_count": 913
+    }
+   },
+   "cap_saturation": {
+    "edges_at_cap": 260,
+    "uncapped_policy_max_pa": 755.6434
+   },
+   "transform_comparison_unit_scale": {
+    "linear": {
+     "median": 1.0,
+     "p99": 26.0,
+     "max": 913.0,
+     "mean": 2.9587
+    },
+    "log1p": {
+     "median": 0.6931,
+     "p99": 3.2958,
+     "max": 6.8178,
+     "mean": 1.0859
+    },
+    "power": {
+     "median": 1.0,
+     "p99": 11.5141,
+     "max": 166.0937,
+     "mean": 1.9903
+    }
+   },
+   "weight_sensitivity": {
+    "linear_capped": {
+     "parameters": {
+      "transform": "linear",
+      "exponent": 1.0,
+      "scale_pa": 0.5,
+      "cap_pa": 300.0,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 3240601,
+     "excitatory_sum_pa": 5184820.0,
+     "uncapped_max_pa": 300.0
+    },
+    "log1p": {
+     "parameters": {
+      "transform": "log1p",
+      "exponent": 1.0,
+      "scale_pa": 10.0,
+      "cap_pa": null,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 3240601,
+     "excitatory_sum_pa": 36517263.483,
+     "uncapped_max_pa": 66.8835
+    },
+    "power_half": {
+     "parameters": {
+      "transform": "power",
+      "exponent": 0.5,
+      "scale_pa": 5.0,
+      "cap_pa": 300.0,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 3240601,
+     "excitatory_sum_pa": 24804649.3173,
+     "uncapped_max_pa": 141.598
+    },
+    "power_1": {
+     "parameters": {
+      "transform": "power",
+      "exponent": 1.0,
+      "scale_pa": 0.5,
+      "cap_pa": 300.0,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 3240601,
+     "excitatory_sum_pa": 5184820.0,
+     "uncapped_max_pa": 300.0
+    },
+    "uncapped_power": {
+     "parameters": {
+      "transform": "power",
+      "exponent": 0.75,
+      "scale_pa": 5.0,
+      "cap_pa": null,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 3240601,
+     "excitatory_sum_pa": 34185974.5335,
+     "uncapped_max_pa": 753.5304
+    }
+   },
+   "predicted_fallback_sensitivity": {
+    "signed_edges": 10275154,
+    "signed_synapses": 30945843,
+    "excluded_edges": 1321363,
+    "excluded_synapses": 3364387,
+    "signed_edge_share": 0.886055,
+    "signed_synapse_share": 0.901942,
+    "by_class": {
+     "unannotated": {
+      "neurons": 17673,
+      "edges": 163946,
+      "synapses": 464827
+     },
+     "verified_excitatory": {
+      "neurons": 53987,
+      "edges": 3240601,
+      "synapses": 10370075
+     },
+     "verified_inhibitory": {
+      "neurons": 9733,
+      "edges": 1129357,
+      "synapses": 3932042
+     },
+     "verified_conflict": {
+      "neurons": 5,
+      "edges": 829,
+      "synapses": 2498
+     },
+     "verified_modulator_only": {
+      "neurons": 1567,
+      "edges": 103094,
+      "synapses": 219733
+     },
+     "predicted_excitatory": {
+      "neurons": 62096,
+      "edges": 4408583,
+      "synapses": 12089926
+     },
+     "predicted_inhibitory": {
+      "neurons": 12410,
+      "edges": 1496613,
+      "synapses": 4553800
+     },
+     "predicted_conflict": {
+      "neurons": 0,
+      "edges": 0,
+      "synapses": 0
+     },
+     "predicted_modulator_only": {
+      "neurons": 14962,
+      "edges": 1053494,
+      "synapses": 2677329
+     }
+    },
+    "policy": {
+     "verified_excitatory": [
+      "acetylcholine",
+      "glutamate"
+     ],
+     "verified_inhibitory": [
+      "gaba",
+      "glycine"
+     ],
+     "modulators_without_fixed_sign": [
+      "dopamine",
+      "serotonin",
+      "octopamine",
+      "tyramine",
+      "histamine",
+      "nitric_oxide"
+     ],
+     "conflict_policy": "unknown",
+     "modulator_only_policy": "unknown",
+     "predicted_fallback": true,
+     "unknown_edge_policy": "exclude",
+     "interpretation": "excitatory and inhibitory are modelling priors applied to the presynaptic neuron; they are not established postsynaptic effects at every target"
+    }
+   }
+  },
+  "t5": {
+   "artifact": "datasets/processed/banc_v888/banc_graph_t5.npz",
+   "artifact_sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192",
+   "threshold": 5,
+   "nodes": 172433,
+   "edges": 1535710,
+   "synapses": 18552546,
+   "isolated_nodes": 24320,
+   "load_seconds": 0.18,
+   "policy_build_seconds": 2.011,
+   "memory_bytes": {
+    "policy_arrays": 12630546,
+    "graph_edge_arrays": 24571360
+   },
+   "primary_policy": {
+    "graph_threshold": 5,
+    "sign_policy": {
+     "verified_excitatory": [
+      "acetylcholine",
+      "glutamate"
+     ],
+     "verified_inhibitory": [
+      "gaba",
+      "glycine"
+     ],
+     "modulators_without_fixed_sign": [
+      "dopamine",
+      "serotonin",
+      "octopamine",
+      "tyramine",
+      "histamine",
+      "nitric_oxide"
+     ],
+     "conflict_policy": "unknown",
+     "modulator_only_policy": "unknown",
+     "predicted_fallback": false,
+     "unknown_edge_policy": "exclude",
+     "interpretation": "excitatory and inhibitory are modelling priors applied to the presynaptic neuron; they are not established postsynaptic effects at every target"
+    },
+    "weight_policy": {
+     "transform": "power",
+     "exponent": 0.75,
+     "scale_pa": 5.0,
+     "cap_pa": 300.0,
+     "weight_source": "integer synapse count (`count`); `norm` is never used",
+     "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+    },
+    "coverage": {
+     "declared_policy": "verified-only",
+     "total_neurons": 172433,
+     "total_edges": 1535710,
+     "total_synapses": 18552546,
+     "signed_edges": 683100,
+     "signed_synapses": 8426168,
+     "excluded_edges": 852610,
+     "excluded_synapses": 10126378,
+     "signed_edge_share": 0.444811,
+     "signed_synapse_share": 0.454179,
+     "by_class": {
+      "unannotated": {
+       "neurons": 107141,
+       "edges": 843989,
+       "synapses": 10041838,
+       "edge_share": 0.549576,
+       "synapse_share": 0.541265
+      },
+      "verified_excitatory": {
+       "neurons": 53987,
+       "edges": 502727,
+       "synapses": 6015264,
+       "edge_share": 0.327358,
+       "synapse_share": 0.324228
+      },
+      "verified_inhibitory": {
+       "neurons": 9733,
+       "edges": 180373,
+       "synapses": 2410904,
+       "edge_share": 0.117453,
+       "synapse_share": 0.12995
+      },
+      "verified_conflict": {
+       "neurons": 5,
+       "edges": 96,
+       "synapses": 1385,
+       "edge_share": 6.3e-05,
+       "synapse_share": 7.5e-05
+      },
+      "verified_modulator_only": {
+       "neurons": 1567,
+       "edges": 8525,
+       "synapses": 83155,
+       "edge_share": 0.005551,
+       "synapse_share": 0.004482
+      },
+      "predicted_excitatory": {
+       "neurons": 0,
+       "edges": 0,
+       "synapses": 0,
+       "edge_share": 0.0,
+       "synapse_share": 0.0
+      },
+      "predicted_inhibitory": {
+       "neurons": 0,
+       "edges": 0,
+       "synapses": 0,
+       "edge_share": 0.0,
+       "synapse_share": 0.0
+      },
+      "predicted_conflict": {
+       "neurons": 0,
+       "edges": 0,
+       "synapses": 0,
+       "edge_share": 0.0,
+       "synapse_share": 0.0
+      },
+      "predicted_modulator_only": {
+       "neurons": 0,
+       "edges": 0,
+       "synapses": 0,
+       "edge_share": 0.0,
+       "synapse_share": 0.0
+      }
+     }
+    },
+    "edge_arrays": {
+     "excitatory_edges": 502727,
+     "inhibitory_edges": 180373,
+     "signed_edges": 683100,
+     "excluded_edges": 852610,
+     "excitatory_weight_sum_pa": 15272468.8146,
+     "inhibitory_weight_sum_pa": 5826871.9197,
+     "max_edge_weight_pa": 300.0,
+     "memory_bytes": 12630546
+    },
+    "provenance": {
+     "graph_threshold": 5,
+     "node_table": "datasets/processed/banc_v888/banc_nodes.csv.gz",
+     "node_order": "ascending banc_888_id, identical to graph root_ids",
+     "edges_modified": false,
+     "unknown_edges": "excluded from propagation; they contribute zero current"
+    }
+   },
+   "class_partition_check": {
+    "edges": 1535710,
+    "synapses": 18552546,
+    "matches_graph": true
+   },
+   "signed_weight_summary": {
+    "excitatory": {
+     "edges": 502727,
+     "sum_pa": 15272468.8146,
+     "min_pa": 16.7185,
+     "median_pa": 23.7841,
+     "p99_pa": 117.0917,
+     "max_pa": 300.0,
+     "median_count": 8.0,
+     "p99_count": 73.0,
+     "max_count": 913
+    },
+    "inhibitory": {
+     "edges": 180373,
+     "sum_pa": 5826871.9197,
+     "min_pa": 16.7185,
+     "median_pa": 23.7841,
+     "p99_pa": 147.3164,
+     "max_pa": 300.0,
+     "median_count": 8.0,
+     "p99_count": 73.0,
+     "max_count": 913
+    }
+   },
+   "cap_saturation": {
+    "edges_at_cap": 260,
+    "uncapped_policy_max_pa": 755.6434
+   },
+   "transform_comparison_unit_scale": {
+    "linear": {
+     "median": 8.0,
+     "p99": 73.0,
+     "max": 913.0,
+     "mean": 12.0808
+    },
+    "log1p": {
+     "median": 2.1972,
+     "p99": 4.3041,
+     "max": 6.8178,
+     "mean": 2.3364
+    },
+    "power": {
+     "median": 4.7568,
+     "p99": 24.9742,
+     "max": 166.0937,
+     "mean": 6.0794
+    }
+   },
+   "weight_sensitivity": {
+    "linear_capped": {
+     "parameters": {
+      "transform": "linear",
+      "exponent": 1.0,
+      "scale_pa": 0.5,
+      "cap_pa": 300.0,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 502727,
+     "excitatory_sum_pa": 3007414.5,
+     "uncapped_max_pa": 300.0
+    },
+    "log1p": {
+     "parameters": {
+      "transform": "log1p",
+      "exponent": 1.0,
+      "scale_pa": 10.0,
+      "cap_pa": null,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 502727,
+     "excitatory_sum_pa": 11799642.9649,
+     "uncapped_max_pa": 66.8835
+    },
+    "power_half": {
+     "parameters": {
+      "transform": "power",
+      "exponent": 0.5,
+      "scale_pa": 5.0,
+      "cap_pa": 300.0,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 502727,
+     "excitatory_sum_pa": 8097960.0306,
+     "uncapped_max_pa": 141.598
+    },
+    "power_1": {
+     "parameters": {
+      "transform": "power",
+      "exponent": 1.0,
+      "scale_pa": 0.5,
+      "cap_pa": 300.0,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 502727,
+     "excitatory_sum_pa": 3007414.5,
+     "uncapped_max_pa": 300.0
+    },
+    "uncapped_power": {
+     "parameters": {
+      "transform": "power",
+      "exponent": 0.75,
+      "scale_pa": 5.0,
+      "cap_pa": null,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 502727,
+     "excitatory_sum_pa": 15277985.8387,
+     "uncapped_max_pa": 753.5304
+    }
+   },
+   "predicted_fallback_sensitivity": {
+    "signed_edges": 1391473,
+    "signed_synapses": 16986382,
+    "excluded_edges": 144237,
+    "excluded_synapses": 1566164,
+    "signed_edge_share": 0.906078,
+    "signed_synapse_share": 0.915582,
+    "by_class": {
+     "unannotated": {
+      "neurons": 17673,
+      "edges": 21525,
+      "synapses": 244486
+     },
+     "verified_excitatory": {
+      "neurons": 53987,
+      "edges": 502727,
+      "synapses": 6015264
+     },
+     "verified_inhibitory": {
+      "neurons": 9733,
+      "edges": 180373,
+      "synapses": 2410904
+     },
+     "verified_conflict": {
+      "neurons": 5,
+      "edges": 96,
+      "synapses": 1385
+     },
+     "verified_modulator_only": {
+      "neurons": 1567,
+      "edges": 8525,
+      "synapses": 83155
+     },
+     "predicted_excitatory": {
+      "neurons": 62096,
+      "edges": 515599,
+      "synapses": 6052733
+     },
+     "predicted_inhibitory": {
+      "neurons": 12410,
+      "edges": 192774,
+      "synapses": 2507481
+     },
+     "predicted_conflict": {
+      "neurons": 0,
+      "edges": 0,
+      "synapses": 0
+     },
+     "predicted_modulator_only": {
+      "neurons": 14962,
+      "edges": 114091,
+      "synapses": 1237138
+     }
+    },
+    "policy": {
+     "verified_excitatory": [
+      "acetylcholine",
+      "glutamate"
+     ],
+     "verified_inhibitory": [
+      "gaba",
+      "glycine"
+     ],
+     "modulators_without_fixed_sign": [
+      "dopamine",
+      "serotonin",
+      "octopamine",
+      "tyramine",
+      "histamine",
+      "nitric_oxide"
+     ],
+     "conflict_policy": "unknown",
+     "modulator_only_policy": "unknown",
+     "predicted_fallback": true,
+     "unknown_edge_policy": "exclude",
+     "interpretation": "excitatory and inhibitory are modelling priors applied to the presynaptic neuron; they are not established postsynaptic effects at every target"
+    }
+   }
+  },
+  "t10": {
+   "artifact": "datasets/processed/banc_v888/banc_graph_t10.npz",
+   "artifact_sha256": "00b3f447e2755660c273a63e11bc60a8afd8247906bbe0576f3a27a6ee1dc7a0",
+   "threshold": 10,
+   "nodes": 172433,
+   "edges": 570721,
+   "synapses": 12397230,
+   "isolated_nodes": 62551,
+   "load_seconds": 0.092,
+   "policy_build_seconds": 1.823,
+   "memory_bytes": {
+    "policy_arrays": 4910634,
+    "graph_edge_arrays": 9131536
+   },
+   "primary_policy": {
+    "graph_threshold": 10,
+    "sign_policy": {
+     "verified_excitatory": [
+      "acetylcholine",
+      "glutamate"
+     ],
+     "verified_inhibitory": [
+      "gaba",
+      "glycine"
+     ],
+     "modulators_without_fixed_sign": [
+      "dopamine",
+      "serotonin",
+      "octopamine",
+      "tyramine",
+      "histamine",
+      "nitric_oxide"
+     ],
+     "conflict_policy": "unknown",
+     "modulator_only_policy": "unknown",
+     "predicted_fallback": false,
+     "unknown_edge_policy": "exclude",
+     "interpretation": "excitatory and inhibitory are modelling priors applied to the presynaptic neuron; they are not established postsynaptic effects at every target"
+    },
+    "weight_policy": {
+     "transform": "power",
+     "exponent": 0.75,
+     "scale_pa": 5.0,
+     "cap_pa": 300.0,
+     "weight_source": "integer synapse count (`count`); `norm` is never used",
+     "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+    },
+    "coverage": {
+     "declared_policy": "verified-only",
+     "total_neurons": 172433,
+     "total_edges": 570721,
+     "total_synapses": 12397230,
+     "signed_edges": 266974,
+     "signed_synapses": 5756325,
+     "excluded_edges": 303747,
+     "excluded_synapses": 6640905,
+     "signed_edge_share": 0.467784,
+     "signed_synapse_share": 0.464323,
+     "by_class": {
+      "unannotated": {
+       "neurons": 107141,
+       "edges": 301263,
+       "synapses": 6594947,
+       "edge_share": 0.527864,
+       "synapse_share": 0.531969
+      },
+      "verified_excitatory": {
+       "neurons": 53987,
+       "edges": 194398,
+       "synapses": 4036319,
+       "edge_share": 0.340618,
+       "synapse_share": 0.325582
+      },
+      "verified_inhibitory": {
+       "neurons": 9733,
+       "edges": 72576,
+       "synapses": 1720006,
+       "edge_share": 0.127165,
+       "synapse_share": 0.138741
+      },
+      "verified_conflict": {
+       "neurons": 5,
+       "edges": 42,
+       "synapses": 1044,
+       "edge_share": 7.4e-05,
+       "synapse_share": 8.4e-05
+      },
+      "verified_modulator_only": {
+       "neurons": 1567,
+       "edges": 2442,
+       "synapses": 44914,
+       "edge_share": 0.004279,
+       "synapse_share": 0.003623
+      },
+      "predicted_excitatory": {
+       "neurons": 0,
+       "edges": 0,
+       "synapses": 0,
+       "edge_share": 0.0,
+       "synapse_share": 0.0
+      },
+      "predicted_inhibitory": {
+       "neurons": 0,
+       "edges": 0,
+       "synapses": 0,
+       "edge_share": 0.0,
+       "synapse_share": 0.0
+      },
+      "predicted_conflict": {
+       "neurons": 0,
+       "edges": 0,
+       "synapses": 0,
+       "edge_share": 0.0,
+       "synapse_share": 0.0
+      },
+      "predicted_modulator_only": {
+       "neurons": 0,
+       "edges": 0,
+       "synapses": 0,
+       "edge_share": 0.0,
+       "synapse_share": 0.0
+      }
+     }
+    },
+    "edge_arrays": {
+     "excitatory_edges": 194398,
+     "inhibitory_edges": 72576,
+     "signed_edges": 266974,
+     "excluded_edges": 303747,
+     "excitatory_weight_sum_pa": 9081079.8535,
+     "inhibitory_weight_sum_pa": 3664601.0502,
+     "max_edge_weight_pa": 300.0,
+     "memory_bytes": 4910634
+    },
+    "provenance": {
+     "graph_threshold": 10,
+     "node_table": "datasets/processed/banc_v888/banc_nodes.csv.gz",
+     "node_order": "ascending banc_888_id, identical to graph root_ids",
+     "edges_modified": false,
+     "unknown_edges": "excluded from propagation; they contribute zero current"
+    }
+   },
+   "class_partition_check": {
+    "edges": 570721,
+    "synapses": 12397230,
+    "matches_graph": true
+   },
+   "signed_weight_summary": {
+    "excitatory": {
+     "edges": 194398,
+     "sum_pa": 9081079.8535,
+     "min_pa": 28.1171,
+     "median_pa": 38.11,
+     "p99_pa": 149.7381,
+     "max_pa": 300.0,
+     "median_count": 15.0,
+     "p99_count": 109.0,
+     "max_count": 913
+    },
+    "inhibitory": {
+     "edges": 72576,
+     "sum_pa": 3664601.0502,
+     "min_pa": 28.1171,
+     "median_pa": 40.0,
+     "p99_pa": 204.59,
+     "max_pa": 300.0,
+     "median_count": 15.0,
+     "p99_count": 109.0,
+     "max_count": 913
+    }
+   },
+   "cap_saturation": {
+    "edges_at_cap": 260,
+    "uncapped_policy_max_pa": 755.6434
+   },
+   "transform_comparison_unit_scale": {
+    "linear": {
+     "median": 15.0,
+     "p99": 109.0,
+     "max": 913.0,
+     "mean": 21.722
+    },
+    "log1p": {
+     "median": 2.7726,
+     "p99": 4.7005,
+     "max": 6.8178,
+     "mean": 2.9344
+    },
+    "power": {
+     "median": 7.622,
+     "p99": 33.7342,
+     "max": 166.0937,
+     "mean": 9.5996
+    }
+   },
+   "weight_sensitivity": {
+    "linear_capped": {
+     "parameters": {
+      "transform": "linear",
+      "exponent": 1.0,
+      "scale_pa": 0.5,
+      "cap_pa": 300.0,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 194398,
+     "excitatory_sum_pa": 2017942.0,
+     "uncapped_max_pa": 300.0
+    },
+    "log1p": {
+     "parameters": {
+      "transform": "log1p",
+      "exponent": 1.0,
+      "scale_pa": 10.0,
+      "cap_pa": null,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 194398,
+     "excitatory_sum_pa": 5670294.856,
+     "uncapped_max_pa": 66.8835
+    },
+    "power_half": {
+     "parameters": {
+      "transform": "power",
+      "exponent": 0.5,
+      "scale_pa": 5.0,
+      "cap_pa": 300.0,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 194398,
+     "excitatory_sum_pa": 4213293.7739,
+     "uncapped_max_pa": 141.598
+    },
+    "power_1": {
+     "parameters": {
+      "transform": "power",
+      "exponent": 1.0,
+      "scale_pa": 0.5,
+      "cap_pa": 300.0,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 194398,
+     "excitatory_sum_pa": 2017942.0,
+     "uncapped_max_pa": 300.0
+    },
+    "uncapped_power": {
+     "parameters": {
+      "transform": "power",
+      "exponent": 0.75,
+      "scale_pa": 5.0,
+      "cap_pa": null,
+      "weight_source": "integer synapse count (`count`); `norm` is never used",
+      "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+     },
+     "excitatory_edges": 194398,
+     "excitatory_sum_pa": 9086596.8776,
+     "uncapped_max_pa": 753.5304
+    }
+   },
+   "predicted_fallback_sensitivity": {
+    "signed_edges": 522129,
+    "signed_synapses": 11438091,
+    "excluded_edges": 48592,
+    "excluded_synapses": 959139,
+    "signed_edge_share": 0.914859,
+    "signed_synapse_share": 0.922633,
+    "by_class": {
+     "unannotated": {
+      "neurons": 17673,
+      "edges": 7450,
+      "synapses": 154550
+     },
+     "verified_excitatory": {
+      "neurons": 53987,
+      "edges": 194398,
+      "synapses": 4036319
+     },
+     "verified_inhibitory": {
+      "neurons": 9733,
+      "edges": 72576,
+      "synapses": 1720006
+     },
+     "verified_conflict": {
+      "neurons": 5,
+      "edges": 42,
+      "synapses": 1044
+     },
+     "verified_modulator_only": {
+      "neurons": 1567,
+      "edges": 2442,
+      "synapses": 44914
+     },
+     "predicted_excitatory": {
+      "neurons": 62096,
+      "edges": 181091,
+      "synapses": 3928798
+     },
+     "predicted_inhibitory": {
+      "neurons": 12410,
+      "edges": 74064,
+      "synapses": 1752968
+     },
+     "predicted_conflict": {
+      "neurons": 0,
+      "edges": 0,
+      "synapses": 0
+     },
+     "predicted_modulator_only": {
+      "neurons": 14962,
+      "edges": 38658,
+      "synapses": 758631
+     }
+    },
+    "policy": {
+     "verified_excitatory": [
+      "acetylcholine",
+      "glutamate"
+     ],
+     "verified_inhibitory": [
+      "gaba",
+      "glycine"
+     ],
+     "modulators_without_fixed_sign": [
+      "dopamine",
+      "serotonin",
+      "octopamine",
+      "tyramine",
+      "histamine",
+      "nitric_oxide"
+     ],
+     "conflict_policy": "unknown",
+     "modulator_only_policy": "unknown",
+     "predicted_fallback": true,
+     "unknown_edge_policy": "exclude",
+     "interpretation": "excitatory and inhibitory are modelling priors applied to the presynaptic neuron; they are not established postsynaptic effects at every target"
+    }
+   }
+  }
+ },
+ "total_audit_seconds": 18.754,
+ "interpretation": "Signed edges are modelling priors derived from verified presynaptic transmitter labels. Synapse counts are structural measurements, not conductances, and excluded edges are structural connections the declared policy cannot sign."
+}

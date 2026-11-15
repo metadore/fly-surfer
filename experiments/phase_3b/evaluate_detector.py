@@ -13,6 +13,16 @@ lists of normalized boxes::
 
 Metrics from externally supplied predictions describe those predictions, not
 a trained detector unless the file was produced by one.
+
+The ``--model`` path runs the configured local ONNX detector. Its output is
+passed through the same ``DetectionValidator`` rules as the production
+pipeline; only the confidence threshold is lowered to the evaluation floor so
+low-confidence boxes are still available for AP. Rejected detections are
+counted and never enter the metrics. Zero-support classes are reported with
+undefined AP rather than invented scores.
+
+``--limit`` evaluates only the first N selected images. It exists for smoke
+runs; results from a limited slice are not split-level performance.
 """
 
 from __future__ import annotations
@@ -30,7 +40,14 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from perception.config import load_perception_config  # noqa: E402
 from perception.dataset import CuratedDataset  # noqa: E402
-from perception.detector_config import load_detector_config  # noqa: E402
+from perception.detection import (  # noqa: E402
+    DetectionValidator,
+    RejectedDetection,
+)
+from perception.detector_config import (  # noqa: E402
+    DetectorConfigError,
+    load_detector_config,
+)
 from perception.evaluation import (  # noqa: E402
     EvaluationBox,
     evaluate_detections,
@@ -68,6 +85,11 @@ PROTOCOL = {
         "Report per-fold results, not only a pooled mean.",
     ],
 }
+
+TIMING_SCOPE = (
+    "detector call wall time = preprocessing + session.run + "
+    "decode/NMS/coordinate inversion; session_run is the ONNX Runtime call only"
+)
 
 
 def _load_predictions(path: Path, expected: set[str], class_names: dict) -> dict:
@@ -140,44 +162,123 @@ def _support_block(statistics: dict, threshold: int = 20) -> dict:
     }
 
 
+def _validate_detections(frame, raws, validation_config, schema, source):
+    """Apply the production validation rules to raw detector output."""
+    validator = DetectionValidator(
+        validation_config, schema, frame, source=source
+    )
+    accepted = []
+    rejected = []
+    for index, raw in enumerate(raws):
+        outcome = validator.validate_one(raw, index)
+        if isinstance(outcome, RejectedDetection):
+            rejected.append(outcome)
+        else:
+            accepted.append(outcome)
+    return accepted, rejected
+
+
 def _run_model(args, images, perception_config):
     config = load_detector_config(args.detector_config)
+    overrides = {}
+    if args.model_path is not None:
+        overrides["model_path"] = args.model_path
+    if args.model_sha256 is not None:
+        overrides["model_sha256"] = args.model_sha256
+    if overrides:
+        config = replace(config, **overrides)
     if config.model_path is None:
         raise SystemExit(
             "detector weights are not configured; model evaluation is blocked "
             "(no weights are downloaded automatically)"
         )
+    # Lower only the confidence threshold: every other validation rule is the
+    # production rule, so rejected detections are the same ones the pipeline
+    # would reject.
     eval_config = replace(
-        config,
-        confidence_threshold=args.confidence_floor,
-        model_path=str(Path(config.model_path).resolve()),
+        config, confidence_threshold=args.confidence_floor
     )
-    detector = OnnxRuntimeDetector(eval_config, perception_config.schema)
+    try:
+        detector = OnnxRuntimeDetector(eval_config, perception_config.schema)
+    except DetectorConfigError as exc:
+        raise SystemExit(f"ONNX detector unavailable: {exc}")
+
+    validation_config = replace(
+        perception_config.validation,
+        confidence_threshold=args.confidence_floor,
+    )
     preprocessor = ImagePreprocessor(perception_config.preprocess)
+    detector_name = str(detector.describe().get("name", "onnx-runtime-detector"))
     predictions = {}
-    latencies = []
+    detector_call_ms = []
+    session_run_ms = []
+    preprocess_ms = []
+    postprocess_ms = []
+    rejection_counts: dict[str, int] = {}
+    rejection_examples: list[dict] = []
+    n_raw = n_accepted = n_rejected = 0
+
     for image in images:
-        frame = preprocessor.load(image.path, frame_id=Path(image.relative_path).stem)
+        frame = preprocessor.load(
+            image.path, frame_id=Path(image.relative_path).stem
+        )
         raws = detector.detect(frame)
-        latencies.append(float(detector.last_inference_ms or 0.0))
+        detector_call_ms.append(float(detector.last_detector_call_ms or 0.0))
+        session_run_ms.append(float(detector.last_session_run_ms or 0.0))
+        preprocess_ms.append(float(detector.last_preprocess_ms or 0.0))
+        postprocess_ms.append(float(detector.last_postprocess_ms or 0.0))
+        accepted, rejected = _validate_detections(
+            frame,
+            raws,
+            validation_config,
+            perception_config.schema,
+            detector_name,
+        )
         boxes = []
-        for raw in raws:
-            screen = frame.processed_box_to_screen(
-                float(raw.x1), float(raw.y1), float(raw.x2), float(raw.y2)
-            )
-            normalized = frame.screen_box_to_normalized(screen)
+        for outcome in accepted:
+            normalized = outcome.normalized_box
             boxes.append(
                 EvaluationBox(
-                    raw.class_id,
-                    float(raw.confidence),
+                    outcome.class_id,
+                    outcome.confidence,
                     normalized.x1,
                     normalized.y1,
                     normalized.x2,
                     normalized.y2,
                 )
             )
+        n_accepted += len(accepted)
+        n_rejected += len(rejected)
+        for outcome in rejected:
+            reason = outcome.reason.value
+            rejection_counts[reason] = rejection_counts.get(reason, 0) + 1
+            if len(rejection_examples) < 20:
+                rejection_examples.append(
+                    {"image": image.relative_path, **outcome.as_dict()}
+                )
+        n_raw += len(raws)
         predictions[image.relative_path] = tuple(boxes)
-    return predictions, latencies, detector.describe()
+
+    timing = {
+        "scope": TIMING_SCOPE,
+        "detector_call": summarize_latency(detector_call_ms),
+        "session_run": summarize_latency(session_run_ms),
+        "preprocess": summarize_latency(preprocess_ms),
+        "postprocess": summarize_latency(postprocess_ms),
+    }
+    validation = {
+        "confidence_threshold": args.confidence_floor,
+        "rules": (
+            "same DetectionValidator rules as the production pipeline; only "
+            "the confidence threshold is the evaluation floor"
+        ),
+        "n_raw_detections": n_raw,
+        "n_accepted": n_accepted,
+        "n_rejected": n_rejected,
+        "rejection_counts": dict(sorted(rejection_counts.items())),
+        "rejection_examples": rejection_examples,
+    }
+    return predictions, timing, validation, detector.describe()
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -185,17 +286,32 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--predictions", type=Path, default=None)
     parser.add_argument("--model", action="store_true", help="run a local ONNX model")
     parser.add_argument("--detector-config", type=Path, default=DEFAULT_DETECTOR_CONFIG)
+    parser.add_argument(
+        "--model-path",
+        type=Path,
+        default=None,
+        help="override detector.model_path (relative paths use the repo root)",
+    )
+    parser.add_argument("--model-sha256", default=None)
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     parser.add_argument("--split", choices=("train", "valid"), default="valid")
-    parser.add_argument("--fold", type=int, default=None, choices=range(5))
+    parser.add_argument("--fold", type=int, default=None, choices=range(1, 6))
     parser.add_argument("--operating-confidence", type=float, default=0.25)
     parser.add_argument("--confidence-floor", type=float, default=0.05)
     parser.add_argument("--bootstrap", type=int, default=1000)
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="evaluate only the first N selected images (smoke runs)",
+    )
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args(argv)
 
     if args.predictions is not None and args.model:
         raise SystemExit("choose either --predictions or --model, not both")
+    if args.limit is not None and args.limit < 1:
+        raise SystemExit("--limit must be a positive integer")
 
     dataset = CuratedDataset.load(repo_root=PROJECT_ROOT)
     perception_config = load_perception_config(args.config)
@@ -205,18 +321,43 @@ def main(argv: list[str] | None = None) -> int:
     }
 
     if args.fold is None:
-        images = dataset.for_split(args.split)
-        statistics = dataset.split_statistics(args.split)
+        source_images = dataset.for_split(args.split)
+        statistics_name = args.split
         selection = {"split": args.split, "fold": None}
     else:
         view = dataset.for_fold(args.fold)
-        images = view.valid_images
-        statistics = dataset.statistics(images, f"fold_{args.fold}_valid")
+        source_images = view.valid_images
+        statistics_name = f"fold_{args.fold}_valid"
         selection = {
             "split": "valid",
             "fold": args.fold,
             "valid_group": view.valid_group,
         }
+    if args.limit is not None:
+        source_images = tuple(source_images[: args.limit])
+        statistics_name = f"{statistics_name}_first{args.limit}"
+        selection["limit"] = args.limit
+    images = tuple(source_images)
+    selection["n_images"] = len(images)
+    statistics = dataset.statistics(images, statistics_name)
+    support = _support_block(statistics.as_dict())
+
+    limitations = [
+        "There is no independent test split; these are held-out "
+        "recordings, not an independent test set.",
+        "Player and coin classes are absent from the dataset.",
+    ]
+    if support["unevaluable_classes"]:
+        limitations.append(
+            "Zero-support classes in this selection: "
+            + ", ".join(support["unevaluable_classes"])
+            + ". Their AP is undefined; no performance is claimed for them."
+        )
+    if args.limit is not None:
+        limitations.append(
+            f"Only the first {args.limit} selected images were evaluated; this "
+            "is a smoke run, not split-level performance."
+        )
 
     payload = {
         "phase": "3B.6",
@@ -233,24 +374,22 @@ def main(argv: list[str] | None = None) -> int:
             "manifest_sha256": dataset.manifest_sha256,
             "class_names": list(class_names.values()),
         },
-        "support": _support_block(statistics.as_dict()),
+        "support": support,
+        "zero_support_classes": support["unevaluable_classes"],
         "protocol": PROTOCOL,
         "predictions_source": None,
         "metrics": None,
         "latency": None,
+        "timing": None,
+        "timing_scope": TIMING_SCOPE,
+        "validation": None,
         "memory": peak_memory_mb(),
-        "limitations": [
-            "There is no independent test split; these are held-out "
-            "recordings, not an independent test set.",
-            "Player and coin classes are absent from the dataset.",
-            "boots-powerup and jump-electric have no validation images in the "
-            "fixed split, so their validation AP is undefined.",
-        ],
+        "limitations": limitations,
     }
 
     if args.predictions is not None or args.model:
         if args.model:
-            predictions, latencies, detector_description = _run_model(
+            predictions, timing, validation, detector_description = _run_model(
                 args, images, perception_config
             )
             source = "local_onnx_model"
@@ -259,19 +398,26 @@ def main(argv: list[str] | None = None) -> int:
                 "detector": detector_description,
                 "confidence_floor": args.confidence_floor,
             }
+            payload["validation"] = validation
+            payload["timing"] = timing
             payload["status"] = "evaluated_local_onnx_model"
             payload["claim"] = (
                 "Metrics describe a locally executed ONNX model on held-out "
                 "validation groups; they are not independent test results and "
-                "the weights were not trained in this repository."
+                "the weights were not trained in this repository. Detections "
+                "rejected by the production validator are excluded."
             )
+            if args.limit is not None:
+                payload["claim"] += (
+                    f" Only {args.limit} images were evaluated (smoke run)."
+                )
         else:
             predictions = _load_predictions(
                 args.predictions,
                 {image.relative_path for image in images},
                 class_names,
             )
-            latencies = []
+            timing = None
             source = "external_predictions"
             payload["predictions_source"] = {
                 "kind": source,
@@ -291,8 +437,8 @@ def main(argv: list[str] | None = None) -> int:
             bootstrap_resamples=args.bootstrap,
         )
         payload["metrics"] = evaluation.as_dict()
-        if latencies:
-            payload["latency"] = summarize_latency(latencies)
+        if timing is not None:
+            payload["latency"] = timing["detector_call"]
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")

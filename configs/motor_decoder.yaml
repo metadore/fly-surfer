@@ -1,0 +1,79 @@
+# FLY-SURFER Phase 4F motor decoder configuration.
+#
+# SCIENTIFIC STATUS
+#   populations  published BANC annotations only (no connectivity, no signs)
+#   decoder      computational construct with a priori thresholds
+#   experiment   controlled motor-pool drive through the unmodified LIF model
+#
+# LEFT, RIGHT and JUMP are decoder labels, not identified biological motor
+# commands. ROLL and DUCK are not implemented because no published annotation
+# in this export defines them.
+
+populations:
+  # Motor neurons with side == left/right and one of these effectors.
+  leg_effectors:
+    - front_leg
+    - middle_leg
+    - hind_leg
+  # Annotation-defined jump-associated candidate pool, not a jump command.
+  jump_target: tergotrochanter_extensor_muscle
+  # The 20 tergotrochanter candidates are also leg motor neurons. Removing
+  # them from LEFT/RIGHT keeps the three action populations disjoint so JUMP
+  # activity is not double-counted. Set true to score them in both.
+  jump_membership_in_leg_pools: false
+
+decoder:
+  # Half-open analysis window [start_ms, end_ms).
+  window_ms: 50.0
+  step_ms: 50.0
+  # Decision score is the active neuron fraction of a population in [0, 1].
+  # These thresholds were declared before any experiment was run and are not
+  # fitted to a successful example.
+  activation_threshold: 0.20
+  release_threshold: 0.10
+  # Minimum evidence: a population must clear both gates to be scored.
+  min_active_neurons: 3
+  min_spikes: 5
+  tie_tolerance: 1.0e-9
+  # Deterministic tie-break order; must be a permutation of LEFT/RIGHT/JUMP.
+  priority: [LEFT, RIGHT, JUMP]
+  # all_above_threshold reports simultaneous actions; single reports only the
+  # primary action. NEUTRAL is returned when nothing passes the threshold.
+  arbitration: all_above_threshold
+  # Optional temporal features, disabled by default.
+  smoothing: none          # none | moving_average
+  smoothing_windows: 3
+  hysteresis: false
+
+experiment:
+  seed: 20261108
+  dt_ms: 0.5
+  duration_ms: 300.0
+  drive_start_ms: 50.0
+  drive_end_ms: 250.0
+  # Primary controlled condition: identical initial conditions and current, so
+  # every driven neuron fires in lockstep and the active fraction equals the
+  # driven fraction. The seed is still recorded for the sensitivity condition.
+  drive_jitter_pa: 0.0
+  # Secondary condition: seeded per-neuron current noise. It decorrelates the
+  # pools and shows how the decoder behaves when recruitment is graded, not
+  # exact. Both conditions are reported; neither is used to tune a threshold.
+  jitter_sensitivity_pa: 25.0
+  decode_start_ms: 50.0
+  decode_end_ms: 300.0
+  # Pre-declared sweep; the whole grid is reported, no amplitude is selected.
+  current_amplitudes_pa: [120.0, 140.0, 160.0, 180.0, 200.0, 220.0]
+  # Scenario value = fraction of the population receiving the drive current.
+  # Neurons are chosen by ascending graph node index (deterministic).
+  scenarios:
+    baseline: {}
+    left: {LEFT: 1.0}
+    right: {RIGHT: 1.0}
+    jump: {JUMP: 1.0}
+    left_jump: {LEFT: 1.0, JUMP: 1.0}
+    right_jump: {RIGHT: 1.0, JUMP: 1.0}
+    bilateral: {LEFT: 1.0, RIGHT: 1.0}
+    ambiguous_competition: {LEFT: 0.5, RIGHT: 0.5}
+    uniform: {LEFT: 0.3, RIGHT: 0.3, JUMP: 0.3}
+    weak_left: {LEFT: 0.02}
+    weak_jump: {JUMP: 0.05}

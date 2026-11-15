@@ -1,0 +1,593 @@
+{
+ "phase": "P3-T3.1",
+ "version": "p3-t3.1-ignition-reporting-v1",
+ "description": "Additive provisional ignition classification for the archived P3-T3 leave-one-feature-out ablation. The source payload is read only and its bytes are hashed here.",
+ "source": {
+  "path": "experiments\\phase_3c\\results\\p3_t3_ablation.json",
+  "sha256": "6fbe3263de49d5a2db830f4118814a5e45889dd0698f05e070f46fe6566b8956",
+  "bytes": 259091,
+  "phase": "P3-T3",
+  "version": "p3-t3-feature-ablation-v1",
+  "verdict": "VALID",
+  "generated_at_utc": "2026-11-13T13:14:51+00:00",
+  "unmodified": true
+ },
+ "classification": {
+  "tiers": [
+   "none",
+   "sparse",
+   "population_scale"
+  ],
+  "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+  "status": "provisional: no preregistered absolute ignition threshold exists in the Phase 3 protocol"
+ },
+ "legacy_field_note": "The historical field ignition.ignited is preserved unchanged in the source payload. It means 'at least one outside-R spike' (activity detection) and must not be read as population-scale ignition.",
+ "counts": {
+  "none": 1,
+  "sparse": 1,
+  "population_scale": 13
+ },
+ "conditions": {
+  "full-input": {
+   "condition": "full-input",
+   "removed_feature": null,
+   "activity_detected_outside_reference": true,
+   "activity_regime": "population_scale",
+   "activity_regime_status": "provisional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": true,
+    "outside_rate_at_least_reference_rate": true
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": true,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 15650921,
+    "outside_reference_active_neurons": 35907,
+    "outside_reference_rate_hz": 34.086308,
+    "outside_reference_spike_fraction_of_total": 0.9997630094251343,
+    "outside_reference_active_fraction_of_graph": 0.25785070554019607,
+    "outside_reference_spikes_per_active_neuron": 435.8738129055616,
+    "outside_reference_first_spike_ms": 101.5,
+    "outside_reference_last_spike_ms": 3300.5,
+    "outside_reference_span_ms": 3199.0,
+    "outside_reference_bins_occupied": 33,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 72,
+    "reference_rate_hz": 8.14545,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 37.0184,
+    "total_spikes": 15654631
+   }
+  },
+  "no-player_lane": {
+   "condition": "no-player_lane",
+   "removed_feature": "player_lane",
+   "activity_detected_outside_reference": false,
+   "activity_regime": "none",
+   "activity_regime_status": "definitional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": false,
+    "outside_rate_at_least_reference_rate": false
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": false,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 0,
+    "outside_reference_active_neurons": 0,
+    "outside_reference_rate_hz": 0.0,
+    "outside_reference_spike_fraction_of_total": 0.0,
+    "outside_reference_active_fraction_of_graph": 0.0,
+    "outside_reference_spikes_per_active_neuron": 0.0,
+    "outside_reference_first_spike_ms": null,
+    "outside_reference_last_spike_ms": null,
+    "outside_reference_span_ms": 0.0,
+    "outside_reference_bins_occupied": 0,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 65,
+    "reference_rate_hz": 6.274851,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 0.0251,
+    "total_spikes": 2858
+   }
+  },
+  "no-player_speed": {
+   "condition": "no-player_speed",
+   "removed_feature": "player_speed",
+   "activity_detected_outside_reference": true,
+   "activity_regime": "population_scale",
+   "activity_regime_status": "provisional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": true,
+    "outside_rate_at_least_reference_rate": true
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": true,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 15650909,
+    "outside_reference_active_neurons": 35916,
+    "outside_reference_rate_hz": 34.086281,
+    "outside_reference_spike_fraction_of_total": 0.9997870225982821,
+    "outside_reference_active_fraction_of_graph": 0.2579153351764748,
+    "outside_reference_spikes_per_active_neuron": 435.7642554850206,
+    "outside_reference_first_spike_ms": 101.5,
+    "outside_reference_last_spike_ms": 3300.5,
+    "outside_reference_span_ms": 3199.0,
+    "outside_reference_bins_occupied": 33,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 67,
+    "reference_rate_hz": 7.319927,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 37.0292,
+    "total_spikes": 15654243
+   }
+  },
+  "no-jumping": {
+   "condition": "no-jumping",
+   "removed_feature": "jumping",
+   "activity_detected_outside_reference": true,
+   "activity_regime": "population_scale",
+   "activity_regime_status": "provisional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": true,
+    "outside_rate_at_least_reference_rate": true
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": true,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 15650921,
+    "outside_reference_active_neurons": 35907,
+    "outside_reference_rate_hz": 34.086308,
+    "outside_reference_spike_fraction_of_total": 0.9997630094251343,
+    "outside_reference_active_fraction_of_graph": 0.25785070554019607,
+    "outside_reference_spikes_per_active_neuron": 435.8738129055616,
+    "outside_reference_first_spike_ms": 101.5,
+    "outside_reference_last_spike_ms": 3300.5,
+    "outside_reference_span_ms": 3199.0,
+    "outside_reference_bins_occupied": 33,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 72,
+    "reference_rate_hz": 8.14545,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 37.0184,
+    "total_spikes": 15654631
+   }
+  },
+  "no-rolling": {
+   "condition": "no-rolling",
+   "removed_feature": "rolling",
+   "activity_detected_outside_reference": true,
+   "activity_regime": "population_scale",
+   "activity_regime_status": "provisional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": true,
+    "outside_rate_at_least_reference_rate": true
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": true,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 15650921,
+    "outside_reference_active_neurons": 35907,
+    "outside_reference_rate_hz": 34.086308,
+    "outside_reference_spike_fraction_of_total": 0.9997630094251343,
+    "outside_reference_active_fraction_of_graph": 0.25785070554019607,
+    "outside_reference_spikes_per_active_neuron": 435.8738129055616,
+    "outside_reference_first_spike_ms": 101.5,
+    "outside_reference_last_spike_ms": 3300.5,
+    "outside_reference_span_ms": 3199.0,
+    "outside_reference_bins_occupied": 33,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 72,
+    "reference_rate_hz": 8.14545,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 37.0184,
+    "total_spikes": 15654631
+   }
+  },
+  "no-obstacle_present": {
+   "condition": "no-obstacle_present",
+   "removed_feature": "obstacle_present",
+   "activity_detected_outside_reference": true,
+   "activity_regime": "population_scale",
+   "activity_regime_status": "provisional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": true,
+    "outside_rate_at_least_reference_rate": true
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": true,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 15655978,
+    "outside_reference_active_neurons": 35906,
+    "outside_reference_rate_hz": 34.097321,
+    "outside_reference_spike_fraction_of_total": 0.999782430791503,
+    "outside_reference_active_fraction_of_graph": 0.2578435244694984,
+    "outside_reference_spikes_per_active_neuron": 436.02679217958,
+    "outside_reference_first_spike_ms": 101.5,
+    "outside_reference_last_spike_ms": 3300.5,
+    "outside_reference_span_ms": 3199.0,
+    "outside_reference_bins_occupied": 33,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 66,
+    "reference_rate_hz": 7.480202,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 37.0436,
+    "total_spikes": 15659385
+   }
+  },
+  "no-obstacle_lane": {
+   "condition": "no-obstacle_lane",
+   "removed_feature": "obstacle_lane",
+   "activity_detected_outside_reference": true,
+   "activity_regime": "population_scale",
+   "activity_regime_status": "provisional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": true,
+    "outside_rate_at_least_reference_rate": true
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": true,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 15652500,
+    "outside_reference_active_neurons": 35882,
+    "outside_reference_rate_hz": 34.089746,
+    "outside_reference_spike_fraction_of_total": 0.9997754856520003,
+    "outside_reference_active_fraction_of_graph": 0.257671178772755,
+    "outside_reference_spikes_per_active_neuron": 436.22150381807035,
+    "outside_reference_first_spike_ms": 101.5,
+    "outside_reference_last_spike_ms": 3300.5,
+    "outside_reference_span_ms": 3199.0,
+    "outside_reference_bins_occupied": 33,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 61,
+    "reference_rate_hz": 7.71732,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 37.0579,
+    "total_spikes": 15656015
+   }
+  },
+  "no-obstacle_distance": {
+   "condition": "no-obstacle_distance",
+   "removed_feature": "obstacle_distance",
+   "activity_detected_outside_reference": true,
+   "activity_regime": "population_scale",
+   "activity_regime_status": "provisional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": true,
+    "outside_rate_at_least_reference_rate": true
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": true,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 15656848,
+    "outside_reference_active_neurons": 35912,
+    "outside_reference_rate_hz": 34.099216,
+    "outside_reference_spike_fraction_of_total": 0.9997728666659642,
+    "outside_reference_active_fraction_of_graph": 0.25788661089368425,
+    "outside_reference_spikes_per_active_neuron": 435.9781688572065,
+    "outside_reference_first_spike_ms": 101.5,
+    "outside_reference_last_spike_ms": 3300.5,
+    "outside_reference_span_ms": 3199.0,
+    "outside_reference_bins_occupied": 33,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 64,
+    "reference_rate_hz": 7.809533,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 37.0773,
+    "total_spikes": 15660405
+   }
+  },
+  "no-obstacle_type": {
+   "condition": "no-obstacle_type",
+   "removed_feature": "obstacle_type",
+   "activity_detected_outside_reference": true,
+   "activity_regime": "population_scale",
+   "activity_regime_status": "provisional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": true,
+    "outside_rate_at_least_reference_rate": true
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": true,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 15655728,
+    "outside_reference_active_neurons": 35937,
+    "outside_reference_rate_hz": 34.096777,
+    "outside_reference_spike_fraction_of_total": 0.9997795542295318,
+    "outside_reference_active_fraction_of_graph": 0.2580661376611253,
+    "outside_reference_spikes_per_active_neuron": 435.643709825528,
+    "outside_reference_first_spike_ms": 101.5,
+    "outside_reference_last_spike_ms": 3300.5,
+    "outside_reference_span_ms": 3199.0,
+    "outside_reference_bins_occupied": 33,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 66,
+    "reference_rate_hz": 7.579001,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 37.0866,
+    "total_spikes": 15659180
+   }
+  },
+  "no-train_present": {
+   "condition": "no-train_present",
+   "removed_feature": "train_present",
+   "activity_detected_outside_reference": true,
+   "activity_regime": "population_scale",
+   "activity_regime_status": "provisional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": true,
+    "outside_rate_at_least_reference_rate": true
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": true,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 15653271,
+    "outside_reference_active_neurons": 35918,
+    "outside_reference_rate_hz": 34.091426,
+    "outside_reference_spike_fraction_of_total": 0.9998178987108046,
+    "outside_reference_active_fraction_of_graph": 0.2579296973178701,
+    "outside_reference_spikes_per_active_neuron": 435.8057519906454,
+    "outside_reference_first_spike_ms": 101.5,
+    "outside_reference_last_spike_ms": 3300.5,
+    "outside_reference_span_ms": 3199.0,
+    "outside_reference_bins_occupied": 33,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 66,
+    "reference_rate_hz": 6.259482,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 37.0859,
+    "total_spikes": 15656122
+   }
+  },
+  "no-train_lane": {
+   "condition": "no-train_lane",
+   "removed_feature": "train_lane",
+   "activity_detected_outside_reference": true,
+   "activity_regime": "sparse",
+   "activity_regime_status": "provisional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": false,
+    "outside_rate_at_least_reference_rate": false
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": true,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 4,
+    "outside_reference_active_neurons": 2,
+    "outside_reference_rate_hz": 9e-06,
+    "outside_reference_spike_fraction_of_total": 0.0014275517487508922,
+    "outside_reference_active_fraction_of_graph": 1.4362141395282036e-05,
+    "outside_reference_spikes_per_active_neuron": 2.0,
+    "outside_reference_first_spike_ms": 1467.0,
+    "outside_reference_last_spike_ms": 1605.0,
+    "outside_reference_span_ms": 138.0,
+    "outside_reference_bins_occupied": 3,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 57,
+    "reference_rate_hz": 6.143118,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 0.0251,
+    "total_spikes": 2802
+   }
+  },
+  "no-train_distance": {
+   "condition": "no-train_distance",
+   "removed_feature": "train_distance",
+   "activity_detected_outside_reference": true,
+   "activity_regime": "population_scale",
+   "activity_regime_status": "provisional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": true,
+    "outside_rate_at_least_reference_rate": true
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": true,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 15657365,
+    "outside_reference_active_neurons": 35922,
+    "outside_reference_rate_hz": 34.100342,
+    "outside_reference_spike_fraction_of_total": 0.9997887064119974,
+    "outside_reference_active_fraction_of_graph": 0.2579584216006607,
+    "outside_reference_spikes_per_active_neuron": 435.8711931406937,
+    "outside_reference_first_spike_ms": 101.5,
+    "outside_reference_last_spike_ms": 3300.5,
+    "outside_reference_span_ms": 3199.0,
+    "outside_reference_bins_occupied": 33,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 60,
+    "reference_rate_hz": 7.265039,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 37.0608,
+    "total_spikes": 15660674
+   }
+  },
+  "no-coin_present": {
+   "condition": "no-coin_present",
+   "removed_feature": "coin_present",
+   "activity_detected_outside_reference": true,
+   "activity_regime": "population_scale",
+   "activity_regime_status": "provisional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": true,
+    "outside_rate_at_least_reference_rate": true
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": true,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 15650921,
+    "outside_reference_active_neurons": 35907,
+    "outside_reference_rate_hz": 34.086308,
+    "outside_reference_spike_fraction_of_total": 0.9997630094251343,
+    "outside_reference_active_fraction_of_graph": 0.25785070554019607,
+    "outside_reference_spikes_per_active_neuron": 435.8738129055616,
+    "outside_reference_first_spike_ms": 101.5,
+    "outside_reference_last_spike_ms": 3300.5,
+    "outside_reference_span_ms": 3199.0,
+    "outside_reference_bins_occupied": 33,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 72,
+    "reference_rate_hz": 8.14545,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 37.0184,
+    "total_spikes": 15654631
+   }
+  },
+  "no-coin_lane": {
+   "condition": "no-coin_lane",
+   "removed_feature": "coin_lane",
+   "activity_detected_outside_reference": true,
+   "activity_regime": "population_scale",
+   "activity_regime_status": "provisional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": true,
+    "outside_rate_at_least_reference_rate": true
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": true,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 15650921,
+    "outside_reference_active_neurons": 35907,
+    "outside_reference_rate_hz": 34.086308,
+    "outside_reference_spike_fraction_of_total": 0.9997630094251343,
+    "outside_reference_active_fraction_of_graph": 0.25785070554019607,
+    "outside_reference_spikes_per_active_neuron": 435.8738129055616,
+    "outside_reference_first_spike_ms": 101.5,
+    "outside_reference_last_spike_ms": 3300.5,
+    "outside_reference_span_ms": 3199.0,
+    "outside_reference_bins_occupied": 33,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 72,
+    "reference_rate_hz": 8.14545,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 37.0184,
+    "total_spikes": 15654631
+   }
+  },
+  "no-coin_distance": {
+   "condition": "no-coin_distance",
+   "removed_feature": "coin_distance",
+   "activity_detected_outside_reference": true,
+   "activity_regime": "population_scale",
+   "activity_regime_status": "provisional",
+   "population_scale_basis": {
+    "outside_active_exceeds_reference_population": true,
+    "outside_rate_at_least_reference_rate": true
+   },
+   "population_scale_criterion": "provisional relational criterion: outside-R active neurons exceed the size of the entire fixed reference set R AND the outside-R firing rate is at least the reference-partition firing rate. No preregistered absolute threshold exists, so this label is provisional, not a preregistered definition.",
+   "legacy_activity_detection": {
+    "field": "ignition.ignited",
+    "value": true,
+    "meaning": "legacy activity detection: true if at least one spike occurred outside the fixed reference set R; not a population-scale ignition criterion",
+    "consistent_with_measurement": true
+   },
+   "measurements": {
+    "outside_reference_spikes": 15650921,
+    "outside_reference_active_neurons": 35907,
+    "outside_reference_rate_hz": 34.086308,
+    "outside_reference_spike_fraction_of_total": 0.9997630094251343,
+    "outside_reference_active_fraction_of_graph": 0.25785070554019607,
+    "outside_reference_spikes_per_active_neuron": 435.8738129055616,
+    "outside_reference_first_spike_ms": 101.5,
+    "outside_reference_last_spike_ms": 3300.5,
+    "outside_reference_span_ms": 3199.0,
+    "outside_reference_bins_occupied": 33,
+    "outside_reference_n_bins": 34,
+    "reference_active_neurons": 72,
+    "reference_rate_hz": 8.14545,
+    "n_reference_neurons": 138,
+    "n_graph_neurons": 139255,
+    "population_rate_peak_hz": 37.0184,
+    "total_spikes": 15654631
+   }
+  }
+ },
+ "limitations": [
+  "The population-scale tier is a provisional post-hoc criterion, not a preregistered definition.",
+  "The criterion uses only measured quantities and the fixed size of R; no absolute spike-count or rate threshold is asserted.",
+  "A 'sparse' label covers all outside-R activity below the population-scale criterion and does not imply the activity is biologically negligible or uninfluential.",
+  "The classification does not identify a mechanism, does not establish sensory routing and does not make any behavioural or perception claim."
+ ]
+}

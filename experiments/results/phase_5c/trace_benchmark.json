@@ -1,0 +1,473 @@
+{
+ "phase": "5C",
+ "title": "Sparse edge-indexed eligibility traces",
+ "generated_at": "2026-11-09T15:24:54.889090+00:00",
+ "repository": "FLY-SURFER",
+ "config": {
+  "path": "configs\\plasticity.yaml",
+  "sha256": "1c732d81b4f5a3a668555696ad9953c1dacae2a4a99a1a74181d9905067d40ab",
+  "traces": {
+   "tau_e_ms": 20.0,
+   "dt_ms": 0.5,
+   "decay_per_step": 0.975309912028,
+   "prune_threshold": 0.0001,
+   "prune_interval_steps": 50,
+   "coincidence": "delay_matched",
+   "dtype": "float32"
+  },
+  "benchmark": {
+   "sizes": [
+    1000,
+    10000,
+    100000,
+    683100,
+    1535710
+   ],
+   "n_steps": 600,
+   "active_fraction_per_step": 0.01,
+   "prune_interval_steps": 50,
+   "reward_read_steps": [
+    150,
+    300,
+    450
+   ],
+   "seed": 20261112,
+   "quick": false
+  }
+ },
+ "strategies": {
+  "lazy": "value and timestamp arrays per edge; clock advance is O(1); reads and updates materialise lambda**age",
+  "dense_reference": "float32 value per edge multiplied by lambda every step",
+  "selection": "lazy by default; the dense strategy exists only for this benchmark"
+ },
+ "synthetic": [
+  {
+   "n_edges": 1000,
+   "n_steps": 600,
+   "sparse": {
+    "strategy": "lazy_edge_indexed",
+    "n_edges": 1000,
+    "n_steps": 600,
+    "edges_per_step": 10,
+    "total_edge_updates": 5970,
+    "runtime_s": 0.058453,
+    "per_step_ms": 0.097422,
+    "per_update_us": 9.791206,
+    "pruned_total": 38,
+    "reward_read_means": [
+     1.648534632,
+     1.357887888,
+     1.29356786
+    ],
+    "n_touched": 975,
+    "capacity_bytes": 8000,
+    "touched_list_bytes": 3900,
+    "store_memory_bytes": 11900,
+    "dense_value_only_bytes": 4000,
+    "trace_l1": 392.660708411,
+    "final_nonzero": 975,
+    "arrays_are_one_dimensional": true
+   },
+   "dense": {
+    "strategy": "dense_full_decay",
+    "n_edges": 1000,
+    "n_steps": 600,
+    "edges_per_step": 10,
+    "runtime_s": 0.012593,
+    "per_step_ms": 0.020988,
+    "full_array_updates": 600000,
+    "reward_read_means": [
+     1.648534536,
+     1.357887983,
+     1.293574095
+    ],
+    "memory_bytes": 4000,
+    "final_nonzero": 975
+   },
+   "speedup": 0.2154,
+   "memory_ratio": 2.975
+  },
+  {
+   "n_edges": 10000,
+   "n_steps": 600,
+   "sparse": {
+    "strategy": "lazy_edge_indexed",
+    "n_edges": 10000,
+    "n_steps": 600,
+    "edges_per_step": 100,
+    "total_edge_updates": 59710,
+    "runtime_s": 0.076027,
+    "per_step_ms": 0.126712,
+    "per_update_us": 1.273274,
+    "pruned_total": 421,
+    "reward_read_means": [
+     1.419443533,
+     1.349500186,
+     1.52338179
+    ],
+    "n_touched": 9752,
+    "capacity_bytes": 80000,
+    "touched_list_bytes": 39008,
+    "store_memory_bytes": 119008,
+    "dense_value_only_bytes": 40000,
+    "trace_l1": 3934.168214953,
+    "final_nonzero": 9752,
+    "arrays_are_one_dimensional": true
+   },
+   "dense": {
+    "strategy": "dense_full_decay",
+    "n_edges": 10000,
+    "n_steps": 600,
+    "edges_per_step": 100,
+    "runtime_s": 0.018226,
+    "per_step_ms": 0.030376,
+    "full_array_updates": 6000000,
+    "reward_read_means": [
+     1.419443488,
+     1.349500179,
+     1.523382783
+    ],
+    "memory_bytes": 40000,
+    "final_nonzero": 9753
+   },
+   "speedup": 0.2397,
+   "memory_ratio": 2.9752
+  },
+  {
+   "n_edges": 100000,
+   "n_steps": 600,
+   "sparse": {
+    "strategy": "lazy_edge_indexed",
+    "n_edges": 100000,
+    "n_steps": 600,
+    "edges_per_step": 1000,
+    "total_edge_updates": 597032,
+    "runtime_s": 0.262139,
+    "per_step_ms": 0.436898,
+    "per_update_us": 0.43907,
+    "pruned_total": 4084,
+    "reward_read_means": [
+     1.381874157,
+     1.391275324,
+     1.387152973
+    ],
+    "n_touched": 97742,
+    "capacity_bytes": 800000,
+    "touched_list_bytes": 390968,
+    "store_memory_bytes": 1190968,
+    "dense_value_only_bytes": 400000,
+    "trace_l1": 39319.010176149,
+    "final_nonzero": 97742,
+    "arrays_are_one_dimensional": true
+   },
+   "dense": {
+    "strategy": "dense_full_decay",
+    "n_edges": 100000,
+    "n_steps": 600,
+    "edges_per_step": 1000,
+    "runtime_s": 0.079861,
+    "per_step_ms": 0.133102,
+    "full_array_updates": 60000000,
+    "reward_read_means": [
+     1.381874084,
+     1.391275287,
+     1.387153268
+    ],
+    "memory_bytes": 400000,
+    "final_nonzero": 97756
+   },
+   "speedup": 0.3047,
+   "memory_ratio": 2.9774
+  },
+  {
+   "n_edges": 683100,
+   "n_steps": 600,
+   "sparse": {
+    "strategy": "lazy_edge_indexed",
+    "n_edges": 683100,
+    "n_steps": 600,
+    "edges_per_step": 6831,
+    "total_edge_updates": 4078190,
+    "runtime_s": 1.626697,
+    "per_step_ms": 2.711161,
+    "per_update_us": 0.398877,
+    "pruned_total": 27675,
+    "reward_read_means": [
+     1.37826569,
+     1.389281898,
+     1.392132191
+    ],
+    "n_touched": 667619,
+    "capacity_bytes": 5464800,
+    "touched_list_bytes": 2670476,
+    "store_memory_bytes": 8135276,
+    "dense_value_only_bytes": 2732400,
+    "trace_l1": 268529.567345256,
+    "final_nonzero": 667619,
+    "arrays_are_one_dimensional": true
+   },
+   "dense": {
+    "strategy": "dense_full_decay",
+    "n_edges": 683100,
+    "n_steps": 600,
+    "edges_per_step": 6831,
+    "runtime_s": 0.677078,
+    "per_step_ms": 1.128463,
+    "full_array_updates": 409860000,
+    "reward_read_means": [
+     1.378265619,
+     1.389281869,
+     1.39213264
+    ],
+    "memory_bytes": 2732400,
+    "final_nonzero": 667768
+   },
+   "speedup": 0.4162,
+   "memory_ratio": 2.9773
+  },
+  {
+   "n_edges": 1535710,
+   "n_steps": 600,
+   "sparse": {
+    "strategy": "lazy_edge_indexed",
+    "n_edges": 1535710,
+    "n_steps": 600,
+    "edges_per_step": 15357,
+    "total_edge_updates": 9168195,
+    "runtime_s": 4.355772,
+    "per_step_ms": 7.259621,
+    "per_update_us": 0.475096,
+    "pruned_total": 62502,
+    "reward_read_means": [
+     1.377598357,
+     1.389457676,
+     1.394194375
+    ],
+    "n_touched": 1501054,
+    "capacity_bytes": 12285680,
+    "touched_list_bytes": 6004216,
+    "store_memory_bytes": 18289896,
+    "dense_value_only_bytes": 6142840,
+    "trace_l1": 603567.147751621,
+    "final_nonzero": 1501054,
+    "arrays_are_one_dimensional": true
+   },
+   "dense": {
+    "strategy": "dense_full_decay",
+    "n_edges": 1535710,
+    "n_steps": 600,
+    "edges_per_step": 15357,
+    "runtime_s": 1.962848,
+    "per_step_ms": 3.271413,
+    "full_array_updates": 921426000,
+    "reward_read_means": [
+     1.377598286,
+     1.389457583,
+     1.394194961
+    ],
+    "memory_bytes": 6142840,
+    "final_nonzero": 1501409
+   },
+   "speedup": 0.4506,
+   "memory_ratio": 2.9774
+  }
+ ],
+ "activity_regime": [
+  {
+   "n_edges": 1535710,
+   "n_steps": 100,
+   "active_fraction": 0.01,
+   "sparse": {
+    "strategy": "lazy_edge_indexed",
+    "n_edges": 1535710,
+    "n_steps": 100,
+    "edges_per_step": 15357,
+    "total_edge_updates": 1528091,
+    "runtime_s": 0.529197,
+    "per_step_ms": 5.291972,
+    "per_update_us": 0.346313,
+    "pruned_total": 0,
+    "reward_read_means": [
+     1.281819538
+    ],
+    "n_touched": 970683,
+    "capacity_bytes": 12285680,
+    "touched_list_bytes": 3882732,
+    "store_memory_bytes": 16168412,
+    "dense_value_only_bytes": 6142840,
+    "trace_l1": 554103.601420132,
+    "final_nonzero": 970683,
+    "arrays_are_one_dimensional": true
+   },
+   "dense": {
+    "strategy": "dense_full_decay",
+    "n_edges": 1535710,
+    "n_steps": 100,
+    "edges_per_step": 15357,
+    "runtime_s": 0.333317,
+    "per_step_ms": 3.333166,
+    "full_array_updates": 153571000,
+    "reward_read_means": [
+     1.281819344
+    ],
+    "memory_bytes": 6142840,
+    "final_nonzero": 970683
+   },
+   "speedup": 0.6299,
+   "decay_work_ratio": 100.4986
+  },
+  {
+   "n_edges": 1535710,
+   "n_steps": 100,
+   "active_fraction": 0.001,
+   "sparse": {
+    "strategy": "lazy_edge_indexed",
+    "n_edges": 1535710,
+    "n_steps": 100,
+    "edges_per_step": 1536,
+    "total_edge_updates": 153526,
+    "runtime_s": 0.073172,
+    "per_step_ms": 0.731724,
+    "per_update_us": 0.476612,
+    "pruned_total": 0,
+    "reward_read_means": [
+     1.031819268
+    ],
+    "n_touched": 146170,
+    "capacity_bytes": 12285680,
+    "touched_list_bytes": 584680,
+    "store_memory_bytes": 12870360,
+    "dense_value_only_bytes": 6142840,
+    "trace_l1": 55664.50261214,
+    "final_nonzero": 146170,
+    "arrays_are_one_dimensional": true
+   },
+   "dense": {
+    "strategy": "dense_full_decay",
+    "n_edges": 1535710,
+    "n_steps": 100,
+    "edges_per_step": 1536,
+    "runtime_s": 0.061604,
+    "per_step_ms": 0.616039,
+    "full_array_updates": 153571000,
+    "reward_read_means": [
+     1.031819224
+    ],
+    "memory_bytes": 6142840,
+    "final_nonzero": 146170
+   },
+   "speedup": 0.8419,
+   "decay_work_ratio": 1000.2931
+  }
+ ],
+ "banc": {
+  "available": true,
+  "graph": {
+   "path": "datasets\\processed\\banc_v888\\banc_graph_t5.npz",
+   "sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192",
+   "n_nodes": 172433,
+   "n_edges": 1535710,
+   "n_synapses": 18552546,
+   "threshold": 5
+  },
+  "policy": {
+   "path": "configs\\banc_synapse_policy.yaml",
+   "sha256": "88f6449289492e79a919fafa56af93c5ac5e916cb50cc1658d7e14eed2dc399e",
+   "n_plastic_edges": 683100,
+   "signed_edges_reported": 683100,
+   "plastic_edge_share": 0.444810544,
+   "counts_match": true
+  },
+  "mapping": {
+   "sample_size": 2000,
+   "positions_are_sorted_and_plastic": true,
+   "destinations_in_range": true,
+   "first_edge": 4,
+   "last_edge": 1535611
+  },
+  "storage": {
+   "compact_capacity_bytes": 5464800,
+   "all_edge_capacity_bytes": 12285680,
+   "dense_plastic_value_bytes": 2732400,
+   "compact_under_20mb": true
+  },
+  "sparse": {
+   "strategy": "lazy_edge_indexed",
+   "n_edges": 683100,
+   "n_steps": 200,
+   "edges_per_step": 683,
+   "total_edge_updates": 136533,
+   "runtime_s": 0.073761,
+   "per_step_ms": 0.368803,
+   "per_update_us": 0.540239,
+   "pruned_total": 0,
+   "reward_read_means": [
+    1.040679991,
+    1.041351257
+   ],
+   "n_touched": 123620,
+   "capacity_bytes": 5464800,
+   "touched_list_bytes": 494480,
+   "store_memory_bytes": 5959280,
+   "dense_value_only_bytes": 2732400,
+   "trace_l1": 26786.651952468,
+   "final_nonzero": 123620,
+   "arrays_are_one_dimensional": true
+  },
+  "dense": {
+   "strategy": "dense_full_decay",
+   "n_edges": 683100,
+   "n_steps": 200,
+   "edges_per_step": 683,
+   "runtime_s": 0.030784,
+   "per_step_ms": 0.153922,
+   "full_array_updates": 136620000,
+   "reward_read_means": [
+    1.040679932,
+    1.041351318
+   ],
+   "memory_bytes": 2732400,
+   "final_nonzero": 123620
+  },
+  "speedup": 0.4173,
+  "delay_line": {
+   "delay_steps": 2,
+   "edges_pushed": 136523,
+   "edges_delivered": 136523,
+   "pending_at_end": 0,
+   "runtime_s": 0.021996,
+   "all_packets_delivered": true
+  },
+  "load_and_policy_s": 3.3605,
+  "simulated_neurons": false,
+  "weights_modified": false
+ },
+ "checks": {
+  "lazy_matches_dense_reads": true,
+  "no_pair_matrix": true,
+  "sparse_work_scales_with_active_edges": true,
+  "touched_list_bounded": true,
+  "banc_mapping": true,
+  "banc_count_matches_policy": true,
+  "banc_storage_bounded": true,
+  "banc_delay_line_complete": true,
+  "no_simulation": true
+ },
+ "all_checks_passed": true,
+ "resources": {
+  "runtime_s": 14.358,
+  "python": "3.13.14",
+  "numpy": "2.3.4",
+  "data_touched": "BANC t5 graph and policy read-only",
+  "weights_modified": false,
+  "neurons_simulated": false
+ },
+ "limitations": [
+  "Active edges are drawn uniformly at random, not from a simulated spike pattern.",
+  "The dense baseline is a reference implementation, not part of the plasticity stack.",
+  "The BANC section measures trace storage and updates at the real edge count; it does not simulate the network.",
+  "Timings are a single machine run on a shared desktop CPU and are indicative, not a benchmark suite.",
+  "The lazy store does O(active) trace work per step but pays per-element Python/NumPy validation overhead; at 1% activity it was slower in wall-clock time than the dense float32 multiply in this run.",
+  "The lazy store trades about 3x the value-array memory of a float32-only dense trace (value plus int32 timestamp plus touched list) for bounded per-step work."
+ ]
+}

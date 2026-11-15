@@ -2,6 +2,18 @@
 
 **Date:** 2026-11-06
 
+> **Reconciliation note (2026-11-07).** This verification records the
+> 2026-11-06 state and is preserved as history. After it was written, a trained
+> YOLO11n ONNX detector was integrated and a 100-frame real-frame replay was
+> run (`reports/PHASE_3B2B3_YOLO11N_ONNX_INTEGRATION.md`,
+> `reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md`). The independent-accuracy
+> blocker is unchanged: no independent test split exists and
+> `detector_evaluation.json` remains `blocked`. The test count (265) and the
+> README hash in Section 6 are also historical; the current README hash is
+> `8ab6a8cc2d0316653e48c0fbb1c72b22b9d27b26799dde6bc71d38cd15590563`, and the
+> suite has since grown. Section 5 describes the 2026-11-06 gates, not the
+> later ONNX integration route.
+
 **Result:** Phase 3B is implemented through a scripted perception chain and
 Phase 3C is implemented and calibrated on synthetic/scripted sequences. The
 trained-detector acceptance is **BLOCKED**, not passed. No action selection,
@@ -26,8 +38,10 @@ motor decoding, learning or game automation was added.
 | 3C tracking and temporal features | PASS | `perception/tracking.py`, `perception/temporal.py`, 32 tests |
 | 3C activation scheduler | PASS | `sensory/temporal_scheduler.py`, 13 tests |
 | 3C synthetic calibration | PASS | 50 sequences, 6/6 adversarial checks, deterministic |
-| 3C real-sequence evaluation | **BLOCKED** | no trained detector to produce sequences |
+| 3C real-sequence evaluation | **BLOCKED (2026-11-06)** | no trained detector to produce sequences at that time |
 | 3B + 3C end-to-end integration | PASS (scripted) | 16/16 checks, `integration.json` |
+| 3B.2B.3 ONNX integration | PASS (engineering, added 2026-11-07) | `reports/PHASE_3B2B3_YOLO11N_ONNX_INTEGRATION.md` |
+| 3B.2C real-frame replay | PASS (engineering, added 2026-11-07) | 100 frames, `reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md` |
 | Trained-detector acceptance | **BLOCKED** | see Section 5 |
 
 ## 2. Tests
@@ -102,7 +116,7 @@ and does not interpret the probe as a perception result.
 
 ## 4. Files
 
-### 4.1 Pre-existing tracked modifications (preserved, not staged)
+### 4.1 Pre-existing tracked modifications, 2026-11-06 (preserved, not staged)
 
 ```
 M .gitignore
@@ -180,26 +194,33 @@ not modified except where listed in Section 4.1.
 The correct status for trained-detector acceptance is therefore **BLOCKED**.
 No metric was fabricated to fill the gap.
 
-## 6. Protected artifacts
+## 6. Protected artifacts (2026-11-06)
 
 | Artifact | SHA-256 | Match |
 | --- | --- | --- |
-| `README.md` | `6277ffbb3db8e0b1be9bb320d44ff0f894a07ff04d6ea698efd03fe5a9ef9b10` | yes |
+| `README.md` | `6277ffbb3db8e0b1be9bb320d44ff0f894a07ff04d6ea698efd03fe5a9ef9b10` | yes at 2026-11-06; current hash differs (see reconciliation note) |
 | `reports/PHASE_3B1_SPLIT_MANIFEST.json` | `ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d` | yes |
 | `datasets/processed/connectome.npz` | `3f568f24e3d77134a8d2d38f82856b8d685c310a1b0cfe941a1c95eeab5f33d8` | yes |
 | v15 `data.yaml` | `f6e51bf674b4dfbbb51866a0d56ad85c7cb55b51032cf0ec95a8d9aa2b7be423` | yes |
 
 Raw dataset, manifests, README and connectome artifact were not modified.
 
-## 7. Git state
+## 7. Git state (2026-11-06)
 
-- No staging: `git diff --cached` is empty.
+- No staging: `git diff --cached` was empty.
 - No commit and no push were performed.
-- No file deletion: `git status --short` reports zero `D` entries.
-- Tracked modifications remain exactly the three pre-existing ones listed in
-  Section 4.1.
-- New Phase 3B/3C work and the 3A/3A.5 work that preceded it remain
+- No file deletion: `git status --short` reported zero `D` entries.
+- At that date the tracked modifications were exactly the three pre-existing
+  ones listed in Section 4.1.
+- New Phase 3B/3C work and the 3A/3A.5 work that preceded it remained
   uncommitted, as required.
+
+**Current state (2026-11-13 reconciliation).** The working tree is no longer
+that snapshot: `git status --short` reports 21 tracked modifications and
+extensive untracked Phase 3B/4/5/6 work, and still nothing is staged, committed
+or pushed. Section 4.1 is therefore a 2026-11-06 record, not the current file
+list. This section preserves the historical verification rather than replacing
+it with the current state.
 
 ## 8. Recommendation
 
@@ -207,9 +228,13 @@ Raw dataset, manifests, README and connectome artifact were not modified.
    resource gates in Section 5 are resolved.
 2. When approved, run the one-epoch/one-batch smoke test before any full
    training, then follow the frozen fixed-split and LOGO protocol.
-3. Only after a detector exists should real sequences be replayed through
-   Phase 3C; report detector error propagation and keep the synthetic
-   calibration labelled as rule consistency.
+3. (Historical recommendation, later carried out.) Only after a detector
+   exists should real sequences be replayed through Phase 3C; report detector
+   error propagation and keep the synthetic calibration labelled as rule
+   consistency. A detector was integrated and 100 real frames were replayed on
+   2026-11-07 (`reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md`); detector-error
+   propagation remains unevaluated because that sequence has no annotated
+   identities and no independent test split exists.
 4. Do not describe any current result as perception accuracy, complete game
    perception, biological coding or evidence about the fly's visual system.
 5. A duration-sensitivity study of the recurrent high-activity regime is a

@@ -1,0 +1,392 @@
+{
+ "phase": "5G",
+ "title": "Final validation and research assessment",
+ "generated_at_utc": "2026-11-09T16:51:33+00:00",
+ "command": {
+  "module": "experiments.phase_5.final_assessment",
+  "skip_tests": false,
+  "skip_full_suite": false
+ },
+ "software": {
+  "tests": {
+   "focused": {
+    "label": "focused Phase 5",
+    "command": "C:\\Users\\Hp\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe -m pytest C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\tests\\test_plasticity_comparison.py C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\tests\\test_plasticity_config.py C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\tests\\test_plasticity_reward.py C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\tests\\test_plasticity_rules.py C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\tests\\test_plasticity_simulator.py C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\tests\\test_plasticity_task.py C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\tests\\test_plasticity_traces.py C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\tests\\test_plasticity_weights.py -q",
+    "exit_code": 0,
+    "timed_out": false,
+    "duration_s": 5.27,
+    "counts": {
+     "passed": 186,
+     "failed": 0,
+     "skipped": 0,
+     "errors": 0
+    },
+    "passed": true,
+    "output_tail": [
+     "........................................................................ [ 38%]",
+     "........................................................................ [ 77%]",
+     "..........................................                               [100%]",
+     "186 passed in 4.24s"
+    ]
+   },
+   "phase_4h": {
+    "label": "Phase 4H regression",
+    "command": "C:\\Users\\Hp\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe -m pytest C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\tests\\test_phase_4h4_analysis.py C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\tests\\test_phase_4h5_assessment.py C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\tests\\test_phase_4h_runners.py C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\tests\\test_phase_4e_pathways.py -q",
+    "exit_code": 0,
+    "timed_out": false,
+    "duration_s": 3.75,
+    "counts": {
+     "passed": 47,
+     "failed": 0,
+     "skipped": 0,
+     "errors": 0
+    },
+    "passed": true,
+    "output_tail": [
+     "...............................................                          [100%]",
+     "47 passed in 2.74s"
+    ]
+   },
+   "full": {
+    "label": "full suite",
+    "command": "C:\\Users\\Hp\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe -m pytest C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\tests -q",
+    "exit_code": 0,
+    "timed_out": false,
+    "duration_s": 33.67,
+    "counts": {
+     "passed": 683,
+     "failed": 0,
+     "skipped": 0,
+     "errors": 0
+    },
+    "passed": true,
+    "output_tail": [
+     "........................................................................ [ 63%]",
+     "........................................................................ [ 73%]",
+     "........................................................................ [ 84%]",
+     "........................................................................ [ 94%]",
+     "...................................                                      [100%]",
+     "683 passed in 31.92s"
+    ]
+   },
+   "passed": true,
+   "skipped": false,
+   "detail": "all declared test blocks completed"
+  },
+  "configuration": {
+   "checks": {
+    "plasticity_config_loads": true,
+    "task_config_loads": true,
+    "comparison_config_loads": true,
+    "task_budget_divisible_by_n_cues": true,
+    "core_contrast_family_declared": true,
+    "statistics_declared": true,
+    "rejects_single_cue": true,
+    "rejects_deadline_outside_episode": true,
+    "rejects_min_above_max": true
+   },
+   "comparison": {
+    "path": "configs/plasticity_comparison.yaml",
+    "sha256": "946e7b233ec3db69ec35476e62fb14add5bb1cac37f340c7eb85d57b9413a934",
+    "core_conditions": [
+     "fixed_complete",
+     "plastic_complete",
+     "fixed_random",
+     "plastic_random"
+    ],
+    "core_contrasts": [
+     [
+      "plastic_complete",
+      "fixed_complete"
+     ],
+     [
+      "plastic_random",
+      "fixed_random"
+     ],
+     [
+      "plastic_complete",
+      "plastic_random"
+     ],
+     [
+      "fixed_complete",
+      "fixed_random"
+     ]
+    ],
+    "n_seeds": 10,
+    "robustness_axes": [
+     "eta",
+     "tau_e_ms",
+     "reward_magnitude",
+     "weight_bounds",
+     "initial_weights",
+     "network_size",
+     "structural_threshold",
+     "reward_delay_ms"
+    ]
+   },
+   "passed": true
+  },
+  "checkpoint": {
+   "path": "experiments/results/phase_5g/checkpoint_round_trip.npz",
+   "size_bytes": 1456,
+   "checks": {
+    "delta_digest_identical": true,
+    "effective_digest_identical": true,
+    "structural_digest_identical": true,
+    "learned_deltas_nonzero": true,
+    "restored_deltas_match": true,
+    "invariants_hold": true
+   },
+   "passed": true
+  },
+  "determinism": {
+   "protocol": "two identical 6-episode training cells with the same seeds",
+   "first": {
+    "final_success": 1.0,
+    "changed_edges": 4,
+    "delta_digest": "1e8e7dfd03884768b1c401825e91418fd72878f067a56fbb90dd93198656631e"
+   },
+   "checks": {
+    "delta_digest_identical": true,
+    "final_success_identical": true,
+    "training_tags_identical": true,
+    "eval_spike_hashes_identical": true,
+    "changed_edges_identical": true
+   },
+   "passed": true
+  },
+  "stability": {
+   "five_e_non_finite": [],
+   "five_f_cells_scanned": 180,
+   "checks": {
+    "five_e_numbers_finite": true,
+    "five_f_numbers_finite": true,
+    "no_invariant_errors": true,
+    "fixed_conditions_never_change_weights": true,
+    "structural_counts_never_change": true,
+    "five_f_cells_scanned": true
+   },
+   "passed": true
+  },
+  "integrity": {
+   "baseline_checked": 37,
+   "baseline_failures": [],
+   "protected_dirty": [],
+   "staged_sensitive": [],
+   "checks": {
+    "baseline_37_of_37": true,
+    "protected_paths_clean": true,
+    "no_sensitive_file_staged": true
+   },
+   "passed": true
+  }
+ },
+ "questions": [
+  {
+   "question": "Q1. Does the implemented reward system deliver reward at the declared time, with the declared sign, exactly once per outcome, and support a declared delay?",
+   "status": "PASS",
+   "answer": "The reward module passes its declared checks: signs are correct, delivery occurs at the scheduled steps, one reward is emitted per outcome, and a delayed reward is delivered after the declared delay. This is a software property of the synthetic task, not a biological reward measurement.",
+   "evidence": [
+    "reports/PHASE_5B_REWARD_SYSTEM.json",
+    "experiments/results/phase_5b/reward_system.json"
+   ]
+  },
+  {
+   "question": "Q2. Is the prediction error a declared model variable rather than a measured neural signal?",
+   "status": "PASS",
+   "answer": "The prediction error is computed from the delivered reward and the predictor state and is documented as a model variable. The predictor convergence and numerical-stability checks pass. No dopamine, octopamine or serotonin signal was recorded or claimed.",
+   "evidence": [
+    "reports/PHASE_5B_REWARD_SYSTEM.json"
+   ]
+  },
+  {
+   "question": "Q3. Are eligibility traces sparse, delay-matched and bounded, without changing fixed-weight dynamics?",
+   "status": "PASS",
+   "answer": "The trace implementation passes its checks: no dense pair matrix is allocated, work scales with active edges, the touched list is bounded, the BANC mapping and delay line are complete, and traces are not used when disabled. This is a software and storage claim.",
+   "evidence": [
+    "reports/PHASE_5C_ELIGIBILITY_TRACES.json",
+    "experiments/results/phase_5c/trace_benchmark.json"
+   ]
+  },
+  {
+   "question": "Q4. Does the three-factor rule update only verified-sign edges, preserve signs, structural counts and declared bounds, and change nothing when eta = 0 or reward is zero?",
+   "status": "PASS",
+   "answer": "Phase 5D reports all declared checks passing, and the 5E/5F fixed conditions never change weights. Weight bounds and sign classes are enforced by the weight state and verified by invariants. Only verified-sign edges are plastic; unknown-sign edges are excluded from the update.",
+   "evidence": [
+    "reports/PHASE_5D_THREE_FACTOR_PLASTICITY.json",
+    "reports/PHASE_5E_CONTROLLED_LEARNING.json"
+   ]
+  },
+  {
+   "question": "Q5. Does eta = 0 reproduce the fixed-weight simulator spike hashes exactly?",
+   "status": "PASS",
+   "answer": "Yes. The eta = 0 plastic pathway reproduces the fixed-weight spike hashes exactly in Phase 5D and in the Phase 5E software checks. The expected hash was not changed or relaxed.",
+   "evidence": [
+    "reports/PHASE_5D_THREE_FACTOR_PLASTICITY.json",
+    "reports/PHASE_5E_CONTROLLED_LEARNING.json"
+   ]
+  },
+  {
+   "question": "Q6. Does the plastic network improve held-out success on the controlled task relative to an otherwise identical fixed network?",
+   "status": "PASS WITH LIMITATIONS",
+   "answer": "The paired plastic-minus-fixed difference on complete wiring is 0.150 (plastic mean 0.945, fixed mean 0.795; 10/10 seeds above zero). The effect is real within this synthetic task, but the task is a conditioned response of a designated action population, not competitive action selection.",
+   "evidence": [
+    "reports/PHASE_5F_COMPARATIVE_EVALUATION.json"
+   ]
+  },
+  {
+   "question": "Q7. Is any improvement attributable to the reward signal rather than generic activity?",
+   "status": "PASS",
+   "answer": "The zero-reward and shuffled-reward conditions do not improve over the fixed control, and the zero-reward condition changes no weight. The shuffled-reward control is reported as PASS, so the improvement tracks the reward signal in this task.",
+   "evidence": [
+    "reports/PHASE_5E_CONTROLLED_LEARNING.json"
+   ]
+  },
+  {
+   "question": "Q8. Does the success criterion measure discriminative action selection rather than a generic increase in excitability?",
+   "status": "FAIL",
+   "answer": "No. The selective rate is 0.192, at or below the four-action chance rate of 0.250. The designated action spikes faster after training, but the network does not show competitive selection among actions. The predeclared success criterion is therefore not discriminative.",
+   "evidence": [
+    "reports/PHASE_5E_CONTROLLED_LEARNING.json"
+   ]
+  },
+  {
+   "question": "Q9. Are the core contrasts statistically supported across independent seeds with multiple-comparison correction, and robust to declared hyperparameters?",
+   "status": "PASS WITH LIMITATIONS",
+   "answer": "The primary contrast plastic_complete_minus_fixed_complete has sign-flip p = 0.00195, Holm-adjusted p = 0.00781 and Cohen's dz = 2.012. The contrast is declared significant at alpha = 0.05. Robustness cells are descriptive and were not corrected for multiple comparisons; they show whether the direction is stable, not whether every cell is significant. The eta (0.1-2.0) and tau_e (10-40 ms) axes produced identical final success across their declared values, consistent with saturation at the declared weight bounds; those axes therefore do not discriminate the parameters.",
+   "evidence": [
+    "reports/PHASE_5F_COMPARATIVE_EVALUATION.json"
+   ]
+  },
+  {
+   "question": "Q10. Do any of these results license a biological interpretation about the fly connectome?",
+   "status": "INCONCLUSIVE",
+   "answer": "No. Every experiment runs on a synthetic 36-node task graph, not on the BANC connectome, and reward is an external scalar. The results are evidence about the implemented rule and the synthetic task only. They do not show biological synaptic plasticity, dopamine function, learning in a fly or behaviour.",
+   "evidence": [
+    "reports/PHASE_5F_COMPARATIVE_EVALUATION.json"
+   ]
+  }
+ ],
+ "verdicts": {
+  "A_software": {
+   "verdict": "PASS",
+   "rationale": "Focused Phase 5 tests, the Phase 4H regression subset, the full suite, configuration validation, checkpoint round-trip, determinism, numerical stability and repository integrity all pass."
+  },
+  "B_controlled_learning": {
+   "verdict": "PASS WITH LIMITATIONS",
+   "rationale": "Learning is demonstrated on the controlled task: the plastic network improves over the fixed network, the zero- and shuffled-reward controls do not, and the improvement replicates. The limitation is the task: success is a conditioned response of a designated action population, and action selection remains at or below chance."
+  },
+  "C_statistical_evidence": {
+   "verdict": "PASS WITH LIMITATIONS",
+   "rationale": "The primary paired contrast is significant after Holm correction with a mean difference of 0.150. The seed is the unit of replication, the contrast family is corrected, and robustness cells remain descriptive. Statistical support is bounded by the small number of seeds and the task limitation."
+  },
+  "D_biological_interpretation": {
+   "verdict": "INCONCLUSIVE",
+   "rationale": "No experiment here tests a biological hypothesis. The substrate is a synthetic task graph, not the BANC connectome; reward is an external scalar; and a weight change is a model output. The correct status for a biological reading is INCONCLUSIVE, not PASS, and the Phase 4H.4 negative result remains unchanged."
+  }
+ },
+ "five_f_summary": {
+  "mean_difference": 0.15,
+  "p_value": 0.00195312,
+  "holm_adjusted_p": 0.00781248,
+  "holm_rejected": true,
+  "effect_size_dz": 2.012461,
+  "n_positive": 10,
+  "n_pairs": 10,
+  "condition_means": {
+   "fixed_complete": 0.795,
+   "plastic_complete": 0.945,
+   "fixed_random": 0.1025,
+   "plastic_random": 0.1125
+  },
+  "conventional": 1.0
+ },
+ "missing_artifacts": [],
+ "negative_results": [
+  "Action selection failed: the first action population to spike matched the designated action on 0.192 of held-out episodes, below the four-action chance rate of 0.25. The success metric measures a conditioned response, not competitive action selection.",
+  "The predeclared success criterion is not discriminative: the fixed-weight control A reached it in 3/3 replicates without any weight change.",
+  "Some plastic cells produced no weight change and are retained: [{\"axis\": \"core\", \"value\": \"plastic_random\", \"seeds\": 1}]"
+ ],
+ "limitations": [
+  "Success is a conditioned response of a designated action population, not competitive action selection; the selective rate stays near or below the n_cues chance level.",
+  "Random wiring has fewer edges and lower total cue input than complete wiring, so the wiring contrast confounds topology with input strength.",
+  "The network is small (tens of nodes); no result here tests the BANC connectome or a whole-brain simulation.",
+  "Robustness cells are descriptive. They were not corrected for multiple comparisons and are not significance claims.",
+  "The unit of replication is a seed; episodes within a seed share one weight trajectory and are not independent samples.",
+  "The perceptron sees the correct action label and only bounds what a supervised method can do on this task.",
+  "Evaluation uses the same held-out episodes at every checkpoint and does not test unseen cue mappings.",
+  "Reward is delivered after a declared delay; no biological dopamine, octopamine or serotonin dynamics were simulated.",
+  "The controlled task is synthetic and small; it is not Subway Surfers, not the BANC connectome and not an animal behaviour.",
+  "A biological interpretation is not available from these experiments.",
+  "The eta robustness axis produced identical final success across 0.1-2.0, consistent with saturation at the declared weight bounds; the task does not discriminate the learning rate."
+ ],
+ "facts": [
+  {
+   "statement": "The BANC t5 graph artifact contains 683,100 verified-sign edges out of 1,535,710 total (Phase 4D).",
+   "type": "data fact (repository artifact)"
+  },
+  {
+   "statement": "With eta = 0 the plastic pathway reproduces the fixed-weight simulator spike hashes exactly (Phase 5D).",
+   "type": "software fact (verified test)"
+  },
+  {
+   "statement": "The fixed-weight simulator is unchanged and remains the oracle for dynamics.",
+   "type": "software fact (architecture constraint)"
+  },
+  {
+   "statement": "This comparison runs on a synthetic 36-node task graph; it does not read, simulate or alter the BANC connectome.",
+   "type": "scope fact"
+  }
+ ],
+ "assumptions": [
+  "The cue -> action mapping is arbitrary and was declared before the run.",
+  "Reward is an external task scalar; its magnitude has no biological unit.",
+  "The eligibility trace is a model of short-term tagging with a declared time constant tau_e.",
+  "Weight bounds (relative factors and the update clip) are declared modelling choices, not fitted values.",
+  "Complete versus Bernoulli(0.5) wiring is a synthetic topology manipulation, not a connectome manipulation.",
+  "The structural threshold is the minimum synapse count for an edge to exist (as in the BANC t1/t5/t10 artifacts); it is not a neuronal firing threshold.",
+  "A conventional supervised perceptron is an information-privileged reference and is not a matched biological control."
+ ],
+ "independence_statement": "The unit of replication is a seed. No statistic in Phase 5 pools timesteps or episodes across seeds.",
+ "completion_summary": [
+  "Phase 5A architecture audit and design report: complete and approved.",
+  "Phase 5B reward system: implemented and validated; reports and JSON present.",
+  "Phase 5C eligibility traces: implemented and validated; sparse storage checked.",
+  "Phase 5D three-factor plasticity: implemented; eta = 0 reproduces fixed-weight hashes exactly.",
+  "Phase 5E controlled task: seven conditions run; learning, controls and honest negatives recorded.",
+  "Phase 5F comparative evaluation: core contrasts, conventional reference and robustness axes run.",
+  "Phase 5G software validation: focused tests, Phase 4H regression, full suite, config, checkpoint, determinism, stability and integrity recorded.",
+  "Software verdict: PASS.",
+  "Controlled-learning verdict: PASS WITH LIMITATIONS.",
+  "Statistical-evidence verdict: PASS WITH LIMITATIONS.",
+  "Biological-interpretation verdict: INCONCLUSIVE.",
+  "Negative results and limitations are retained; no failed result was replaced or hidden.",
+  "No commit or push was made; no protected file, dataset or structural connectome was changed."
+ ],
+ "files": [
+  "reports/PHASE_5B_REWARD_SYSTEM.json",
+  "reports/PHASE_5C_ELIGIBILITY_TRACES.json",
+  "reports/PHASE_5D_THREE_FACTOR_PLASTICITY.json",
+  "reports/PHASE_5E_CONTROLLED_LEARNING.json",
+  "reports/PHASE_5F_COMPARATIVE_EVALUATION.json",
+  "experiments/results/phase_5f/comparison_raw.json",
+  "experiments/results/phase_5f/comparison_analysis.json",
+  "experiments/results/phase_5g/checkpoint_round_trip.npz",
+  "reports/PHASE_5_FINAL_ASSESSMENT.md",
+  "reports/PHASE_5_FINAL_ASSESSMENT.json"
+ ],
+ "software_versions": {
+  "python": "3.13.14",
+  "numpy": "2.3.4",
+  "pandas": "2.3.3",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "pytest": "7.4.3"
+ },
+ "process_memory": {
+  "rss_mb": 141.185,
+  "peak_wset_mb": 187.4657
+ },
+ "runtime_s": 43.68,
+ "software_status": "PASS",
+ "status": "complete"
+}

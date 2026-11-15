@@ -1,0 +1,1056 @@
+{
+  "phase": "5A",
+  "title": "Plasticity architecture audit and design",
+  "status": "DESIGN ONLY - no reward signal, eligibility trace or plasticity is implemented in this phase",
+  "date": "2026-11-09",
+  "repository": {
+    "root": "C:/Users/Hp/fruitfly/FLY-SURFER",
+    "python": "3.13.14",
+    "platform": "Windows 11 10.0.26200 x64",
+    "runtime_dependencies": [
+      "numpy==2.3.4",
+      "pandas==2.3.3",
+      "matplotlib==3.10.7",
+      "PyYAML==6.0.3",
+      "psutil==7.1.2",
+      "Pillow==12.0.0",
+      "onnxruntime==1.29.0",
+      "pytest==7.4.3"
+    ],
+    "test_invocation": "python -m pytest -q",
+    "pytest_note": "pytest.ini sets addopts = -p no:anyio because the installed anyio/trio pair fails to import under Python 3.13",
+    "working_tree_note": "git status reports modified Phase 3B/3C files and many untracked Phase 4 artifacts. These pre-date Phase 5A and are not touched by this audit."
+  },
+  "scope": {
+    "in_scope": [
+      "read-only inspection of the existing simulator, configuration, tests, adapters and Phase 4H documentation",
+      "identification of integration points, reusable components and missing interfaces",
+      "a proposed architecture for reward-modulated synaptic plasticity",
+      "scientific assumptions, integration risks, test strategy and implementation sequence"
+    ],
+    "out_of_scope": [
+      "implementing a reward signal",
+      "implementing eligibility traces",
+      "implementing any weight update",
+      "modifying brain/, motor/, sensory/ or experiments/ code",
+      "modifying completed Phase 4 reports or results",
+      "modifying the root README.md",
+      "running new simulations",
+      "committing or pushing"
+    ],
+    "phase_5_gate_order": ["5A", "5B", "5C", "5D", "5E", "5F", "5G"],
+    "gate_1": "STOP after 5A and wait for approval before 5B"
+  },
+  "existing_architecture": {
+    "summary": "Two independent simulation stacks share the same LIF neuron, spike recorder, statistics helpers and observation layer. The FAFB stack (BrainSimulator + SynapseModel) derives signs from a graph vocabulary. The BANC stack (BancSimulator + BancSignedSynapses) uses an explicit BancSynapsePolicy built from published annotations and a declared weight transform. Neither stack has a reward input, a mutable effective-weight layer, a checkpoint of learned state, or any train/evaluation split. FAFB and BANC identities are never merged and Phase 4H.4 established that the tested BANC sensory-to-motor pathway produced no motor spikes.",
+    "stacks": [
+      {
+        "name": "FAFB simulation",
+        "entry": "brain/brain_simulator.py",
+        "graph": "brain/subgraph.py::GraphView",
+        "synapses": "brain/synapse_model.py::SynapseModel",
+        "neuron": "brain/neuron_model.py::LIFPopulation",
+        "recorder": "brain/neural_activity.py::SpikeRecorder",
+        "weights": "derived at construction from integer edge weights and the configured power or linear transform",
+        "plasticity": false,
+        "role_in_phase_5": "must remain unchanged and behaviourally frozen; not the target of Phase 5 learning"
+      },
+      {
+        "name": "BANC simulation",
+        "entry": "brain/banc_simulator.py",
+        "graph": "brain/banc_graph.py::BancConnectome",
+        "synapses": "brain/banc_simulator.py::BancSignedSynapses",
+        "neuron": "brain/neuron_model.py::LIFPopulation",
+        "recorder": "brain/neural_activity.py::SpikeRecorder",
+        "weights": "brain/banc_synapse_policy.py::BancSynapsePolicy (exc/inh float32 arrays, one per edge)",
+        "plasticity": false,
+        "role_in_phase_5": "the structural substrate and the default fixed-weight reference condition"
+      }
+    ],
+    "step_loop": {
+      "source": "brain/banc_simulator.py:440-483",
+      "order": [
+        "synapses.advance(): decay existing currents and deliver the delayed spike packet",
+        "current = noise + background + synaptic current + stimulation current",
+        "input_schedule.apply(step, step * dt_ms, current) adds scheduled current in place",
+        "spikes = neurons.step(current): returns the indices of neurons that fired at this step",
+        "recorder.record(step, spikes, dt_ms)",
+        "synapses.propagate(spikes): routes spikes through outgoing edges into the delay buffer"
+      ],
+      "consequence_for_plasticity": "At each loop boundary both the presynaptic spikes (argument to propagate) and the postsynaptic spikes (returned by neurons.step) are available, but propagate currently returns only a transmission count, not the edge indices. Per-edge credit assignment requires the edge index vector that propagate already computes internally at brain/banc_simulator.py:199-205."
+    },
+    "interfaces": [
+      {
+        "name": "input schedule",
+        "contract": "apply(step: int, time_ms: float, current_pa: np.ndarray) -> None, mutating current in place; exposed stimulated_indices",
+        "implementations": [
+          "sensory/temporal_scheduler.py::TemporalActivationScheduler",
+          "brain/banc_sensory_adapter.py::BancEventDrive",
+          "brain/banc_sensory_adapter.py::ConstantChargeDrive"
+        ],
+        "plasticity_relevance": "reusable as an input driver, but not as a reward source and not as evidence of a biological pathway"
+      },
+      {
+        "name": "neuron step",
+        "contract": "LIFPopulation.step(current_pa) -> np.ndarray[int] of spiking neuron indices",
+        "source": "brain/neuron_model.py:122",
+        "plasticity_relevance": "supplies both pre- and post-synaptic spike sets at zero API change"
+      },
+      {
+        "name": "synaptic propagation",
+        "contract": "propagate(spike_indices) -> int (transmission count)",
+        "sources": [
+          "brain/synapse_model.py:192",
+          "brain/banc_simulator.py:184"
+        ],
+        "plasticity_relevance": "insufficient as-is for per-edge eligibility; needs edge-index attribution"
+      },
+      {
+        "name": "activity observation",
+        "contract": "BancActivityAdapter(recorder, populations, ...).decode(decoder, start_ms, end_ms)",
+        "source": "brain/banc_simulation_adapter.py:46-102",
+        "plasticity_relevance": "read-only outcome measurement; must not be the reward source in the primary task"
+      },
+      {
+        "name": "decoder",
+        "contract": "MotorDecoder.decode_window / decode_series / decode_recorder",
+        "source": "motor/motor_decoder.py:241-341",
+        "plasticity_relevance": "left/right/jump are decoder labels, not identified biological commands; useful as a diagnostic only"
+      }
+    ],
+    "weight_lifecycle": [
+      "BancConnectome stores integer edge synapse counts (edge_weight, int32) plus CSR indices; it is built once and loaded read-only.",
+      "build_synapse_policy(graph, node_table, sign_policy, weight_policy) at brain/banc_synapse_policy.py:354 produces float32 edge_exc_weight and edge_inh_weight. Sign is chosen from verified annotations only in the primary policy; unknown-sign edges carry zero.",
+      "BancSignedSynapses.__init__ assigns self.edge_exc_weight = policy.edge_exc_weight (brain/banc_simulator.py:107-108). The docstring at lines 77-78 states the arrays are shared with the policy, not copied.",
+      "propagate reads those arrays but never writes them. The arrays are immutable by convention only; there is no write protection and no API boundary.",
+      "No layer exists for learned weights. Any in-place update of the current arrays would silently corrupt the policy object and every later run that reuses it."
+    ],
+    "determinism": [
+      "Each run constructs a fresh np.random.default_rng(seed) at brain/banc_simulator.py:404. There is no global RNG use in the simulator loop.",
+      "Spike times are recorded as float32 at (step + 1) * dt_ms by SpikeRecorder.record (brain/neural_activity.py:59).",
+      "Phase 4H records spike_hash and decision_hash for every condition. A plasticity implementation that changes RNG draw order or float accumulation order will change these hashes even with no learning.",
+      "Weight order is fixed by the CSR edge ordering; any update vector must follow the same ordering to remain reproducible."
+    ],
+    "observation_layer": {
+      "populations": "motor/populations.py::MotorPopulations gives LEFT (185), RIGHT (186), JUMP (20), motor (805) and unassigned (414) masks",
+      "decoder": "50 ms half-open windows, step 50 ms, activation 0.20, release 0.10, minimum 3 active neurons and 5 spikes, deterministic LEFT/RIGHT/JUMP priority",
+      "phase_4h_result": "Phase 4H.4 produced 0 non-stimulated spikes, 0 second-hop spikes, 0 descending and 0 motor spikes, and 67/67 NEUTRAL decoder windows. This negative result is preserved and is not reinterpreted by Phase 5A."
+    }
+  },
+  "reusable_components": [
+    {
+      "component": "brain/neuron_model.py::LIFParameters and LIFPopulation",
+      "reuse": "unchanged",
+      "reason": "membrane dynamics are orthogonal to plasticity; spikes are already exposed",
+      "constraint": "no new state may be added to the neuron to carry traces or rewards"
+    },
+    {
+      "component": "brain/neural_activity.py::SpikeRecorder",
+      "reuse": "unchanged",
+      "reason": "preallocated float32 times and int32 indices, deterministic ordering, spike_counts and save()",
+      "constraint": "the recorder is an observation log, not a training buffer; eligibility must not depend on post-hoc replay of recorded spikes unless a delayed-update design is explicitly chosen"
+    },
+    {
+      "component": "brain/banc_graph.py::BancConnectome",
+      "reuse": "read-only",
+      "reason": "CSR out_indptr, edge_src, edge_dst, edge_weight and root_ids provide everything needed to map active edges to endpoints",
+      "constraint": "edge_weight (structural counts) must never be modified or reinterpreted as a learned weight"
+    },
+    {
+      "component": "brain/banc_synapse_policy.py::BancSynapsePolicy and build_synapse_policy",
+      "reuse": "read-only initial-weight source",
+      "reason": "defines the primary sign policy, weight transform, cap and provenance that Phase 5 must keep as the reference condition",
+      "constraint": "plasticity must copy edge_exc_weight and edge_inh_weight into an owned effective-weight layer; the policy object must remain byte-identical"
+    },
+    {
+      "component": "brain/banc_simulator.py::BancSignedSynapses",
+      "reuse": "subclass or reference implementation",
+      "reason": "advance/propagate implement the existing exponential current and delay semantics that the plastic pathway must reproduce exactly when the learning rate is zero",
+      "constraint": "the existing class aliases policy arrays; a plastic subclass must re-bind to copies after super().__init__ and must not mutate the parent arrays"
+    },
+    {
+      "component": "brain/banc_simulator.py::BancSimulator",
+      "reuse": "reference condition and golden-output oracle",
+      "reason": "the fixed-weight loop is the behavioural contract for zero-plasticity equivalence",
+      "constraint": "no default behaviour change is permitted; Phase 5A does not modify this file"
+    },
+    {
+      "component": "brain/banc_simulation_adapter.py::BancActivityAdapter",
+      "reuse": "unchanged",
+      "reason": "read-only windowed population activity and decoder integration",
+      "constraint": "diagnostic only; not a reward source"
+    },
+    {
+      "component": "motor/populations.py::MotorPopulations",
+      "reuse": "unchanged",
+      "reason": "stable population masks and sizes for reporting",
+      "constraint": "decoder labels are not verified motor commands and must not be presented as such"
+    },
+    {
+      "component": "experiments/phase_4h/common.py",
+      "reuse": "selective",
+      "reason": "execute(), World, draw_seed, condition_metrics and the statistics helpers (bootstrap_ci, permutation_test, holm, wilson_interval, cliffs_delta, hedges_g, summary_stats) are directly reusable for Phase 5 evaluation",
+      "constraint": "execute() constructs BancSimulator directly and has no plasticity hook; Phase 5 must add its own runner rather than modifying Phase 4H code"
+    },
+    {
+      "component": "experiments/phase_4h/baseline_integrity.json and common.integrity_snapshot",
+      "reuse": "pattern only",
+      "reason": "37 protected entries including README.md are verified by size and SHA-256",
+      "constraint": "Phase 5 must add its own baseline file; the Phase 4H baseline must not be edited"
+    }
+  ],
+  "missing_interfaces": [
+    {
+      "id": "M01",
+      "name": "reward signal representation",
+      "why": "the simulator has no reward input, no reward event contract and no logging of reward quantities",
+      "proposed_interface": "RewardProvider.step(step, time_ms, context) -> float supporting positive, negative, zero and delayed reward, configurable magnitude and configurable timing; finite, bounded and unit-documented; a per-run reward digest is recorded",
+      "owner_phase": "5B"
+    },
+    {
+      "id": "M02",
+      "name": "reward predictor and prediction error",
+      "why": "no value estimate, no next-state prediction and no RPE exist",
+      "proposed_interface": "RewardPredictor.value(step, state, context) -> float; delta_t = r_t + gamma * V(s_next) - V(s_t); configurable gamma, state representation and update rule for V; kept separate from synaptic plasticity",
+      "owner_phase": "5B"
+    },
+    {
+      "id": "M03",
+      "name": "reward and learning log schema",
+      "why": "Phase 4H logging has no reward, prediction or learning fields",
+      "proposed_interface": "per-step record with timestep, reward, predicted reward, prediction error, configuration digest and seed, plus the experiment metadata required by the Phase 5 master prompt",
+      "owner_phase": "5B"
+    },
+    {
+      "id": "M04",
+      "name": "eligibility trace store",
+      "why": "no per-edge or per-neuron transient state exists",
+      "proposed_interface": "EligibilityStore.decay(dt_ms); accumulate(pre_spikes, post_spikes, edge_index); value(edge_index); reset(); memory_bytes; sparsity_report(); edge-indexed, never an N x N matrix",
+      "owner_phase": "5C"
+    },
+    {
+      "id": "M05",
+      "name": "trace benchmark and sparse-index contract",
+      "why": "the cost of dense versus sparse trace maintenance at 1,535,710 edges is unknown",
+      "proposed_interface": "benchmark runner reporting memory, runtime, update complexity, storage and reset behaviour for the selected sparse representation, with the edge-index mapping asserted against the CSR layout",
+      "owner_phase": "5C"
+    },
+    {
+      "id": "M06",
+      "name": "effective weight state",
+      "why": "no layer separates structural counts, initial transformed weights, learned change and effective weights",
+      "proposed_interface": "WeightSet(structural_pa, initial_pa, learned_delta_pa, effective_pa, sign_class, minimum_pa, maximum_pa, lower_factor, upper_factor) with immutable structural and initial arrays, a writable effective array, and a digest() method",
+      "owner_phase": "5D"
+    },
+    {
+      "id": "M07",
+      "name": "three-factor update rule and weight constraints",
+      "why": "no update rule, learning rate, weight decay, normalization, clipping or sign-preservation policy exists",
+      "proposed_interface": "ThreeFactorRule.update(weight_set, eligibility, reward_prediction_error, active_edge_index) -> UpdateReport; configurable eta, minimum and maximum weight, optional weight decay, optional normalization, update clipping, numerical safety checks and sign preservation",
+      "owner_phase": "5D"
+    },
+    {
+      "id": "M08",
+      "name": "learning-state checkpoint and resume",
+      "why": "no persistence of learned weights, traces, predictor state or graph binding",
+      "proposed_interface": "save_checkpoint(path, weight_set, traces, predictor_state, config, rng_state, metadata) and load_checkpoint(path, expected_graph_checksum) verifying that the saved state belongs to the correct graph",
+      "owner_phase": "5D"
+    },
+    {
+      "id": "M09",
+      "name": "plastic simulator and step hook",
+      "why": "BancSimulator has no extension point and propagate discards edge indices",
+      "proposed_interface": "PlasticSimulator.run() with the identical loop order plus on_step(step, time_ms, pre_spikes, post_spikes, edge_index, reward); PlasticSynapses.propagate returns transmissions and stores last_edge_index without changing arithmetic",
+      "owner_phase": "5D"
+    },
+    {
+      "id": "M10",
+      "name": "plasticity diagnostics",
+      "why": "no measurement of weight drift, saturation, sign flips or trace cost",
+      "proposed_interface": "PlasticityDiagnostics with per-step and end-of-run fields: trace_l1, trace_nnz, update_l1, weight_drift_relative, saturation_fraction, sign_flip_count (must be 0), clamp_hits, timing and memory",
+      "owner_phase": "5D"
+    },
+    {
+      "id": "M11",
+      "name": "controlled task harness and split",
+      "why": "no synthetic task, no train/evaluation separation and no held-out seeds",
+      "proposed_interface": "ControlledTask with explicit states, actions, reward function and success condition; disjoint train_seeds and eval_seeds; an outcome function independent of MotorDecoder; control modes for zero reward, shuffled reward, randomized connectivity, disabled eligibility and a conventional learning baseline where feasible",
+      "owner_phase": "5E"
+    },
+    {
+      "id": "M12",
+      "name": "comparison and robustness statistics",
+      "why": "Phase 4H statistics cover condition comparisons but there is no learning-curve or control-contrast schema",
+      "proposed_interface": "pre-registered report schema: episode reward, success rate, action accuracy, learning curve, episodes to criterion, weight and trace statistics, RPE, held-out score, effect size, confidence interval and Holm-adjusted p-value; no timestep is treated as an independent sample",
+      "owner_phase": "5F"
+    },
+    {
+      "id": "M13",
+      "name": "provenance and integrity for learned artifacts",
+      "why": "learned weights could be mistaken for measured connectivity",
+      "proposed_interface": "every learned artifact embeds dataset digests, graph checksum, policy digest, config digest, code phase, seed and an explicit label that learned weights are a model output, not anatomy",
+      "owner_phase": "5D-5G"
+    }
+  ],
+  "proposed_design": {
+    "design_principles": [
+      "The fixed-weight simulator remains the default and the reference; plasticity is opt-in and lives outside brain/ wherever possible.",
+      "Structural synapse counts and initial transformed weights are immutable read-only artifacts. Learned weight is a separate additive or multiplicative layer.",
+      "No default simulation behaviour changes. With learning rate zero, the plastic pathway must reproduce the fixed-weight pathway bit-for-bit.",
+      "Reward is a computational scalar from an external task. It is not dopamine, not a neuromodulator measurement and not a biological reinforcement signal.",
+      "Eligibility traces are a model of short-lived synaptic tagging. They are not measured synaptic states.",
+      "Sign is preserved by construction. A structural excitatory edge never becomes inhibitory and vice versa. This avoids inventing biological sign changes from a computational rule.",
+      "Only edges with a verified sign in the primary policy are plastic. Unknown-sign edges carry zero and stay zero.",
+      "Training and evaluation are separated by seed and, where possible, by task instance. No evaluation seed is used for any update.",
+      "Every run records enough state to reproduce it: config digest, dataset digest, policy digest, initial weight digest, RNG streams and final weight digest."
+    ],
+    "package_layout": [
+      {
+        "path": "plasticity/__init__.py",
+        "phase": "5B",
+        "purpose": "public exports only; no side effects"
+      },
+      {
+        "path": "plasticity/reward.py",
+        "phase": "5B",
+        "purpose": "reward representation (positive, negative, zero, delayed, magnitude, timing), RewardProvider protocol, separate reward predictor V(s) and RPE delta_t = r_t + gamma * V(s_next) - V(s_t), validation and logging fields"
+      },
+      {
+        "path": "plasticity/traces.py",
+        "phase": "5C",
+        "purpose": "EligibilityStore: edge-indexed sparse trace, decay, accumulation, reset, memory and sparsity reporting"
+      },
+      {
+        "path": "plasticity/weights.py",
+        "phase": "5D",
+        "purpose": "WeightSet: structural, initial, learned and effective arrays; min/max and relative bounds; sign masks; digests; no simulation imports"
+      },
+      {
+        "path": "plasticity/rules.py",
+        "phase": "5D",
+        "purpose": "ThreeFactorRule, configurable learning rate, weight decay, normalization, update clipping, numerical safety and sign preservation"
+      },
+      {
+        "path": "plasticity/checkpoint.py",
+        "phase": "5D",
+        "purpose": "deterministic save/load of learned weights, optional traces, reward predictor state, configuration and graph checksum; refuses mismatched digests"
+      },
+      {
+        "path": "plasticity/engine.py",
+        "phase": "5D",
+        "purpose": "PlasticityEngine: owns WeightSet, trace store, reward predictor and rule; exposes on_step and on_reward"
+      },
+      {
+        "path": "plasticity/plastic_synapses.py",
+        "phase": "5D",
+        "purpose": "PlasticSignedSynapses subclass that owns copied effective weights and exposes per-edge attribution"
+      },
+      {
+        "path": "plasticity/plastic_simulator.py",
+        "phase": "5D",
+        "purpose": "PlasticSimulator loop mirroring BancSimulator exactly, with an optional engine hook"
+      },
+      {
+        "path": "plasticity/diagnostics.py",
+        "phase": "5D",
+        "purpose": "weight, trace, saturation and timing diagnostics; JSON-serialisable"
+      },
+      {
+        "path": "plasticity/tasks.py",
+        "phase": "5E",
+        "purpose": "controlled synthetic task definitions, train/eval seed splits and control modes"
+      },
+      {
+        "path": "configs/plasticity.yaml",
+        "phase": "5B-5D",
+        "purpose": "declared a priori parameters by section; no value may be tuned on evaluation results"
+      },
+      {
+        "path": "experiments/phase_5/",
+        "phase": "5B-5G",
+        "purpose": "per-step runners, logging, pre-registration, stored results, analysis and plots"
+      },
+      {
+        "path": "tests/test_plasticity_reward.py",
+        "phase": "5B",
+        "purpose": "reward representation, predictor, RPE and logging tests"
+      },
+      {
+        "path": "tests/test_plasticity_traces.py",
+        "phase": "5C",
+        "purpose": "trace accumulation, decay, reset, sparse consistency and benchmark tests"
+      },
+      {
+        "path": "tests/test_plasticity_weights.py",
+        "phase": "5D",
+        "purpose": "weight state, bounds, sign preservation and checkpoint tests"
+      },
+      {
+        "path": "tests/test_plasticity_simulator.py",
+        "phase": "5D",
+        "purpose": "three-factor update, zero-learning equivalence, hand-computed integration and determinism tests"
+      },
+      {
+        "path": "tests/test_plasticity_task.py",
+        "phase": "5E",
+        "purpose": "task, split, control and leakage tests"
+      }
+    ],
+    "weight_state": {
+      "layers": {
+        "structural_count": "int32 edge-level synapse count from BancConnectome.edge_weight; read-only",
+        "structural_pa": "float32 transformed weight from BancSynapsePolicy.edge_exc_weight / edge_inh_weight; read-only",
+        "initial_pa": "float32 copy of structural_pa at the start of a run, used for bounds and for reporting drift; read-only",
+        "learned_delta_pa": "float32 signed additive change owned by the plasticity layer",
+        "effective_pa": "float32 structural_pa + learned_delta_pa, clipped to declared bounds and to the sign class"
+      },
+      "invariants": [
+        "structural_count, structural_pa and initial_pa are never written after construction",
+        "learned_delta_pa is zero for every edge excluded by the sign policy",
+        "effective_pa is never negative for an excitatory edge and never positive for an inhibitory edge",
+        "effective_pa stays within [lower_factor * initial_pa, upper_factor * initial_pa] for each edge with a nonzero initial weight",
+        "structural_pa + learned_delta_pa equals effective_pa before clipping; clipping is reported, not hidden",
+        "the sum and maximum absolute update are recorded every step"
+      ],
+      "bounds": {
+        "default_lower_factor": 0.5,
+        "default_upper_factor": 2.0,
+        "status": "declared a priori; not fitted to any outcome",
+        "rationale": "a bounded multiplicative range keeps the assumed current regime and prevents runaway excitation, while allowing measurable change. It is a modelling choice, not a physiological boundary."
+      },
+      "sign_preservation": {
+        "mechanism": "store a per-edge sign class (+1 exc, -1 inh, 0 excluded); after every update, clamp delta so that sign * effective_pa >= 0 and, for nonzero initial weights, stays within the relative bounds",
+        "sign_flip_count": "must be reported and must be exactly zero"
+      }
+    },
+    "eligibility_traces": {
+      "state": "one float32 value per plastic edge, held in a contiguous array indexed by the same CSR edge index used by propagate",
+      "decay": "e_ij(t) = lambda * e_ij(t-1), lambda = exp(-dt_ms / tau_e_ms), with a default tau_e_ms declared in configs/plasticity.yaml",
+      "accumulation": "e_ij(t) += f(pre_i(t), post_j(t)) on edges whose presynaptic neuron fired at step t and whose postsynaptic neuron fired at the same step or within the declared coincidence window",
+      "coincidence_convention": "the simulator delivers a presynaptic spike to the postsynaptic neuron after the configured delay. The trace pairing convention must be declared explicitly (same-step coincidence versus delay-matched coincidence) and tested on a two-neuron hand-computed case. The default recommendation is delay-matched: a presynaptic spike at step t is paired with postsynaptic spikes observed at the step at which the packet is delivered.",
+      "fallbacks": [
+        "pre-only trace: per-neuron trace, cheaper, but does not encode coincidence",
+        "pre-post with a post baseline: subtract a running post rate to avoid saturation"
+      ],
+      "storage": "dense per-edge float32 is 1,535,710 * 4 = 6,142,840 bytes (about 5.86 MiB) for the threshold-5 graph; per-neuron traces are negligible",
+      "cost_control": [
+        "lazy decay: store a last-update step per active edge or use a global decay reference plus per-edge timestamps, so a step with no spikes touches only active edges",
+        "apply reward-driven updates only at reward events, not every simulation step",
+        "measure both dense and sparse strategies in 5C before choosing the default"
+      ]
+    },
+    "reward": {
+      "type": "computational scalar supplied by an external task or script; never a biological neuromodulator measurement",
+      "representation": {
+        "signs": ["positive", "negative", "zero"],
+        "timing": "immediate or delayed; the delay is declared and logged",
+        "magnitude": "configurable and recorded",
+        "validation": "finite, bounded, unit-documented; a per-run reward stream digest is recorded"
+      },
+      "primary_signal": "task outcome independent of MotorDecoder labels; for example a synthetic target reached or not reached in a controlled task",
+      "predictor": {
+        "role": "separate module that estimates V(s); it is not part of the synaptic rule",
+        "delta": "delta_t = r_t + gamma * V(s_{t+1}) - V(s_t)",
+        "configuration": "gamma, state representation and value-update rule are declared a priori",
+        "warning": "the temporal-difference formulation is one model of reward prediction, not the only biologically plausible one"
+      },
+      "logging_fields": ["simulation timestep", "reward", "predicted reward", "reward prediction error", "reward configuration", "random seed"],
+      "prohibited_sources": [
+        "MotorDecoder LEFT/RIGHT/JUMP output as the primary reward, because that is circular",
+        "any biological dopamine, octopamine or serotonin measurement, which is not available",
+        "Phase 4H sensory event labels presented as verified reward predictors"
+      ]
+    },
+    "update_rule": {
+      "form": "Delta_w_ij = eta * delta_t * e_ij(t), applied to learned_delta_pa and then bounded and sign-clipped",
+      "modularity": "the rule consumes an eligibility value and a prediction error; it does not hardcode reward polarity or synaptic sign, and it does not import the motor decoder",
+      "cadence": "configurable; the recommended default applies reward-driven updates at reward events using the accumulated prediction error, which keeps the per-step cost off the full edge set",
+      "parameters": [
+        "eta: configurable learning rate, declared a priori",
+        "tau_e_ms: eligibility decay time constant",
+        "gamma: prediction-error discount",
+        "minimum_pa and maximum_pa: absolute weight bounds",
+        "lower_factor and upper_factor: relative bounds around the initial weight",
+        "weight_decay: optional, default disabled",
+        "normalization: optional, default none",
+        "delta_clip: absolute bound on one reward-driven update",
+        "post_baseline_tau_ms: optional post-rate baseline for the coincidence term"
+      ],
+      "numerical_safety": "reject non-finite reward, prediction, trace or weight; clip every update; record clamp hits; abort on non-finite state",
+      "sign_preservation": "baseline magnitude plasticity retains the configured excitatory or inhibitory sign; sign plasticity is excluded unless a separately justified experiment investigates it",
+      "zero_reward_behaviour": "zero reward must produce zero update when the prediction error is zero; this is tested explicitly",
+      "zero_learning_contract": "eta = 0 must produce effective weights identical to structural weights and a spike hash identical to the fixed-weight reference for the same seed and inputs",
+      "not_claimed": "a nonzero update is not evidence of learning; only held-out task improvement over matched controls can support that claim"
+    },
+    "integration_mode": {
+      "recommended": "separate PlasticSimulator loop in plasticity/plastic_simulator.py that mirrors brain/banc_simulator.py:440-483 and composes LIFPopulation, SpikeRecorder, PlasticSignedSynapses and PlasticityEngine",
+      "why_not_patch_core_first": "the fixed-weight loop is a validated artifact with golden spike hashes; duplicating the loop in a new package keeps brain/ untouched and makes equivalence testable",
+      "future_option": "if duplication becomes a maintenance risk, add a keyword-only optional hook to BancSimulator with None default and a bit-identical regression test. This is not part of 5A and must be approved separately.",
+      "no_change_guarantee": "Phase 5A modifies no source file; Phases 5B-5D must not modify brain/, motor/ or sensory/ without explicit approval"
+    },
+    "checkpointing": {
+      "contents": [
+        "learned_delta_pa or effective_pa",
+        "eligibility traces when the checkpoint requires them",
+        "reward predictor state",
+        "learning configuration",
+        "random seed and RNG stream states",
+        "experiment metadata",
+        "initial weight digest, structural graph checksum and policy digest",
+        "phase identifier and code version",
+        "explicit statement that learned weights are model outputs"
+      ],
+      "refusal_policy": "load fails if any digest or checksum differs; saved learning state must be verified to belong to the correct graph; no silent partial load"
+    },
+    "diagnostics": {
+      "per_step": ["trace_l1", "trace_nnz", "mean_absolute_update", "max_absolute_update", "clamp_hits", "sign_flips"],
+      "end_of_run": ["relative weight drift distribution", "saturation fraction", "effective weight range", "spike hash", "weight digest", "timing and memory"],
+      "abort_criteria": "declared before running: non-finite weight or trace, any sign flip, membrane or current non-finite, or firing rate above a declared ceiling"
+    },
+    "determinism": {
+      "rng": "plasticity uses its own np.random.Generator constructed from a SeedSequence child derived from the run seed; it never draws from the simulator RNG",
+      "streams": ["simulation noise", "task instance sampling", "reward sampling", "shuffled-reward control"],
+      "order": "edge updates follow CSR edge order; reductions are single-threaded and stable",
+      "tests": "same seed twice must give identical weight digest and spike hash; changing an unrelated stream must not change the others"
+    },
+    "memory_and_cost_estimates": {
+      "graph": "172,433 nodes, 1,535,710 edges, 18,552,546 synapses at threshold 5",
+      "signed_edges": 683100,
+      "dense_trace": "about 5.86 MiB per per-edge float32 array",
+      "weight_layers": "four float32 arrays over all edges are about 23.4 MiB; over signed edges only about 10.4 MiB",
+      "dense_decay_per_run": "a 300 ms run at dt 0.5 ms has 600 steps; decaying 1,535,710 edges every step is about 921 million element updates per run, so lazy or sparse decay is the recommended default",
+      "status": "estimates only; 5C must benchmark trace storage and decay, and 5D must measure wall time and peak memory of a full plastic run before the design is frozen"
+    },
+    "experimental_strategy": {
+      "substrate": "controlled synthetic inputs and outputs; the unproven Phase 4H sensory-to-motor pathway is not used as evidence and is not required",
+      "dataset_separation": "FAFB and BANC remain separate; no BANC data is forced into the FAFB simulator without a validated adapter",
+      "primary_task": "one task chosen from input-to-action association, delayed-reward association, a two-choice task or a simple sequential decision task, with a written justification before any run",
+      "task_requirements": ["explicit input states", "defined possible actions", "known reward function", "measurable success condition", "repeatable episodes"],
+      "conditions_5e": [
+        "A fixed-weight network",
+        "B plastic network with reward modulation",
+        "C plastic network with zero reward",
+        "D plastic network with shuffled rewards",
+        "E plastic network with randomized connectivity",
+        "F plastic network with disabled eligibility traces",
+        "G an appropriate non-biological learning baseline if feasible; otherwise document the exclusion"
+      ],
+      "metrics": [
+        "episode reward",
+        "task success rate",
+        "action accuracy",
+        "learning curve",
+        "episodes to criterion",
+        "synaptic weight changes and distribution",
+        "eligibility trace statistics",
+        "reward prediction error",
+        "simulation runtime",
+        "memory usage"
+      ],
+      "design": [
+        "multiple independent seeds",
+        "separate training and evaluation",
+        "no training performance reported as generalisation",
+        "identical task conditions across comparable groups",
+        "preserved fixed-weight baseline"
+      ],
+      "learning_verification": [
+        "repeatable",
+        "greater than matched controls",
+        "dependent on reward",
+        "dependent on eligibility traces",
+        "stable across seeds",
+        "retained during evaluation"
+      ],
+      "failure_policy": "if learning does not occur, report the negative result; success criteria are not changed after seeing results",
+      "comparison_5f": [
+        "biological-connectome-derived fixed network",
+        "biological-connectome-derived plastic network",
+        "random-connectivity fixed control",
+        "random-connectivity plastic control",
+        "a conventional learning baseline where it can be implemented fairly"
+      ],
+      "robustness_5f": ["learning rate", "eligibility time constant", "reward magnitude", "weight limits", "initial weights", "network size", "connectivity threshold", "reward delay"],
+      "statistics_5f": ["mean", "standard deviation", "median", "confidence intervals", "effect size", "appropriate tests", "number of independent runs", "multiple-comparison correction"],
+      "interpretation": "separate structural facts, annotation-derived assumptions, computational approximations, measured outcomes and hypotheses; computational weight updates are not biological synaptic plasticity"
+    }
+  },
+  "scientific_assumptions": [
+    {
+      "id": "A01",
+      "assumption": "The existing LIF neuron parameters and exponential synapse dynamics remain valid for a plastic network.",
+      "status": "assumption",
+      "note": "the neuron is unchanged; plasticity acts on currents, not on membrane parameters"
+    },
+    {
+      "id": "A02",
+      "assumption": "A scalar computational reward can stand in for a reinforcement signal.",
+      "status": "computational convention",
+      "note": "no dopamine, octopamine or serotonin physiology is modelled or measured"
+    },
+    {
+      "id": "A03",
+      "assumption": "A short-lived eligibility trace is a useful model of synaptic tagging.",
+      "status": "model assumption",
+      "note": "no biological time constant is claimed; tau_e is declared, not measured"
+    },
+    {
+      "id": "A04",
+      "assumption": "A three-factor product of eligibility and prediction error is an adequate update rule for this experiment.",
+      "status": "model assumption",
+      "note": "the rule is a construct; a successful synthetic task does not validate it biologically"
+    },
+    {
+      "id": "A05",
+      "assumption": "Sign preservation is the correct constraint for this model.",
+      "status": "design decision",
+      "note": "predicted transmitters are not verified physiology; allowing sign flips would invent biological claims from an annotation prior"
+    },
+    {
+      "id": "A06",
+      "assumption": "The 0.5x to 2x relative weight bounds are a reasonable declared range.",
+      "status": "modelling choice",
+      "note": "bounds prevent runaway excitation; they are not measured synaptic bounds"
+    },
+    {
+      "id": "A07",
+      "assumption": "Only verified-sign edges are plastic in the primary condition.",
+      "status": "consequence of the Phase 4G.2 policy",
+      "note": "unknown-sign edges carry zero current and remain zero; results are conditional on the verified-sign subgraph"
+    },
+    {
+      "id": "A08",
+      "assumption": "Synapse counts transformed by the declared weight policy are an acceptable initial weight scale.",
+      "status": "modelling choice",
+      "note": "synapse count is not conductance; the learned layer is reported separately"
+    },
+    {
+      "id": "A09",
+      "assumption": "A synthetic task with explicit train and evaluation seeds is an appropriate first learning test.",
+      "status": "experimental design",
+      "note": "it tests the implementation, not Subway Surfers performance and not a biological pathway"
+    },
+    {
+      "id": "A10",
+      "assumption": "Uniform propagation delay is adequate for delay-matched eligibility pairing in the primary design.",
+      "status": "model limitation",
+      "note": "per-edge delay is not available; the uniform 1 ms delay is declared and tested explicitly"
+    },
+    {
+      "id": "A11",
+      "assumption": "The candidate subgraph used by the Phase 4H harness is an acceptable substrate for Phase 5 learning experiments.",
+      "status": "inherited limitation",
+      "note": "incoming edges at the subgraph boundary are cut; plasticity applies only to internal edges and this must be reported"
+    },
+    {
+      "id": "A12",
+      "assumption": "Deterministic replay is sufficient for reproducibility.",
+      "status": "engineering assumption",
+      "note": "determinism is not robustness; multiple seeds and held-out evaluation are still required"
+    }
+  ],
+  "non_claims": [
+    "No reward signal, eligibility trace or weight update is implemented in Phase 5A.",
+    "No biological dopamine, neuromodulator, receptor or plasticity mechanism is modelled.",
+    "A computational reward is not a biological reward.",
+    "A prediction error is a model variable, not a measured neural signal.",
+    "A weight change is not evidence of learning.",
+    "Synthetic-task improvement would not demonstrate Subway Surfers performance.",
+    "LEFT, RIGHT and JUMP are decoder labels, not identified biological motor commands.",
+    "ROLE and DUCK remain unimplemented.",
+    "Phase 4H.4 did not demonstrate a functional sensory-to-motor pathway, and Phase 5A does not reinterpret it.",
+    "FAFB and BANC are separate datasets with separate graphs; identities are never merged.",
+    "Predicted BANC neurotransmitters are not verified physiological facts.",
+    "Structural synapse counts are not conductances.",
+    "Learned weights must never be written into, or presented as, the structural connectome.",
+    "Determinism is not robustness, and a single seed is not evidence.",
+    "No claim of biological realism, biological learning or behavioural competence is made by this architecture."
+  ],
+  "integration_risks": [
+    {
+      "id": "R01",
+      "risk": "In-place learning corrupts the shared BancSynapsePolicy arrays.",
+      "evidence": "brain/banc_simulator.py:107-108 assigns the policy arrays directly and the docstring at lines 77-78 says they are shared, not copied.",
+      "severity": "high",
+      "mitigation": "copy weights into an owned effective array; mark structural, initial and policy arrays read-only with ndarray.setflags(write=False); assert SHA-256 equality before and after every run",
+      "test": "policy digest and structural digest unchanged after training; attempting to write raises"
+    },
+    {
+      "id": "R02",
+      "risk": "The fixed-weight reference behaviour changes.",
+      "evidence": "Phase 4H spike hashes are the published contract for the fixed-weight condition.",
+      "severity": "high",
+      "mitigation": "keep PlasticSimulator separate; eta = 0 equivalence test against BancSimulator with the same seed and inputs; no edits to brain/ in 5B-5D without approval",
+      "test": "bit-identical spike hash, decision hash and summary counters at eta = 0"
+    },
+    {
+      "id": "R03",
+      "risk": "RNG draw order changes and breaks reproducibility.",
+      "evidence": "BancSimulator constructs a fresh default_rng(seed) at line 404 and consumes it only for noise; plasticity would add new draws if implemented carelessly.",
+      "severity": "high",
+      "mitigation": "separate SeedSequence child streams for simulation, task, reward and shuffled reward; never draw from the simulator RNG; record stream states",
+      "test": "same seed twice gives identical digests; toggling an unrelated stream leaves the simulation stream unchanged"
+    },
+    {
+      "id": "R04",
+      "risk": "Dense per-step trace decay is too expensive at 1,535,710 edges.",
+      "evidence": "600 steps at dt 0.5 ms times 1.5 million edges is about 921 million updates per 300 ms run.",
+      "severity": "medium",
+      "mitigation": "lazy decay with per-edge timestamps or sparse active-edge updates; reward-driven updates only at reward events; benchmark in 5D",
+      "test": "measured wall time and memory on the full threshold-5 graph with a declared budget"
+    },
+    {
+      "id": "R05",
+      "risk": "Delay misattribution produces the wrong pre/post pairing.",
+      "evidence": "propagate runs after neurons.step and delivery is delayed by one millisecond (two steps at dt 0.5 ms).",
+      "severity": "high",
+      "mitigation": "declare the pairing convention; implement delay-matched pairing; validate on a two-neuron hand-computed case",
+      "test": "hand-computed eligibility and weight change for a known spike pair"
+    },
+    {
+      "id": "R06",
+      "risk": "Reward derived from the MotorDecoder makes the experiment circular.",
+      "evidence": "the decoder is deterministic and its thresholds were fixed in Phase 4F; rewarding its output would optimize the measurement.",
+      "severity": "high",
+      "mitigation": "primary reward comes from an external synthetic task outcome; decoder metrics are reported as diagnostics only",
+      "test": "reward stream does not import or call MotorDecoder; code review and an import-guard test"
+    },
+    {
+      "id": "R07",
+      "risk": "Credit assignment crosses the cut boundary of the candidate subgraph.",
+      "evidence": "Phase 4H selects a 64-neuron candidate subgraph; incoming edges at the boundary are absent.",
+      "severity": "medium",
+      "mitigation": "plasticity applies only to internal edges; report the number of plastic edges and the fraction of the full graph; do not extrapolate to the whole connectome",
+      "test": "edge count and endpoint bounds asserted against the candidate graph"
+    },
+    {
+      "id": "R08",
+      "risk": "Reward magnitude and learning rate interact with pA-scale weights and cause runaway or negligible change.",
+      "evidence": "weights are pA currents; the rheobase is 150 pA and the cap is 300 pA.",
+      "severity": "medium",
+      "mitigation": "declare eta, delta clip and relative bounds a priori; report drift and saturation; abort on a declared firing-rate ceiling",
+      "test": "bounds and clip tests; saturation diagnostic on the full graph"
+    },
+    {
+      "id": "R09",
+      "risk": "Training and evaluation leakage.",
+      "evidence": "no train/eval split exists anywhere in the repository.",
+      "severity": "high",
+      "mitigation": "disjoint seed pools fixed before running; evaluation uses only frozen weights; no parameter selection on evaluation results",
+      "test": "seed-set intersection is empty; evaluation runs cannot write checkpoints"
+    },
+    {
+      "id": "R10",
+      "risk": "Learned weights are mistaken for measured connectivity.",
+      "evidence": "structural counts and transformed weights already coexist in one policy object.",
+      "severity": "high",
+      "mitigation": "separate files and fields; every artifact embeds a model-output label and provenance digests; never modify the connectome artifacts",
+      "test": "artifact schema requires the label; graph SHA-256 unchanged"
+    },
+    {
+      "id": "R11",
+      "risk": "Phase 4H artifacts or the root README.md are modified.",
+      "evidence": "the 4H baseline protects 37 files including README.md.",
+      "severity": "high",
+      "mitigation": "new output directories and a new Phase 5 baseline; no edits to reports/PHASE_4H* or README.md",
+      "test": "Phase 4H integrity_snapshot reports 37/37 and git diff shows no change to those paths"
+    },
+    {
+      "id": "R12",
+      "risk": "Float reproducibility differs across machines or BLAS builds.",
+      "evidence": "weights and currents are float32; reductions such as bincount accumulate in a fixed order but BLAS-backed operations may not.",
+      "severity": "low",
+      "mitigation": "avoid BLAS for per-edge updates; use the same NumPy version; record digests rather than claiming cross-platform identity",
+      "test": "repeat-run digests on the same machine; documented platform caveat"
+    }
+  ],
+  "test_strategy": {
+    "principles": [
+      "test the contract before the dynamics",
+      "every numerical claim gets a hand-computed case",
+      "every new pathway gets a zero-learning equivalence test against the fixed-weight reference",
+      "every learning claim is tested against zero-reward, shuffled-reward, frozen-weight, randomized-connectivity and disabled-eligibility controls where feasible",
+      "no test may depend on a completed Phase 4 artifact being regenerated"
+    ],
+    "tiers": [
+      {
+        "tier": "T01 reward signal and prediction error",
+        "phase": "5B",
+        "cases": [
+          "positive, negative, zero, delayed and repeated reward",
+          "configurable magnitude and timing are applied as declared",
+          "prediction error matches a hand-computed delta_t",
+          "prediction converges on a repeated schedule",
+          "numerical stability and boundary inputs",
+          "deterministic output for fixed inputs",
+          "reward, predicted reward, prediction error, configuration and seed are logged",
+          "the predictor is separate from the plasticity rule",
+          "no structural connectome change"
+        ]
+      },
+      {
+        "tier": "T02 eligibility trace unit tests",
+        "phase": "5C",
+        "cases": [
+          "trace creation and edge-index mapping",
+          "accumulation on active edges",
+          "exponential decay matches exp(-dt/tau) over n steps",
+          "reset clears all state",
+          "no activity, pre-only, post-only and coincident activity",
+          "delayed-reward compatibility",
+          "sparse index consistency with the CSR layout",
+          "fixed seed reproduces identical traces",
+          "numerical stability"
+        ]
+      },
+      {
+        "tier": "T03 trace benchmark",
+        "phase": "5C",
+        "cases": [
+          "memory usage measured",
+          "runtime and update complexity measured",
+          "trace storage and reset behaviour measured",
+          "no dense N x N matrix is allocated"
+        ]
+      },
+      {
+        "tier": "T04 weight state and persistence",
+        "phase": "5D",
+        "cases": [
+          "structural, initial, learned and effective layers are separate",
+          "structural and initial arrays are read-only",
+          "effective equals structural plus learned before clipping",
+          "absolute and relative bounds clamp correctly",
+          "excitatory edges never become negative and inhibitory edges never become positive",
+          "excluded edges keep zero learned delta",
+          "checkpoint round-trip includes weights, traces and predictor state",
+          "a checkpoint from the wrong graph is refused",
+          "float32 dtype and CSR length invariants"
+        ]
+      },
+      {
+        "tier": "T05 three-factor rule and constraints",
+        "phase": "5D",
+        "cases": [
+          "hand-computed Delta_w = eta * delta * e",
+          "positive, negative and zero reward",
+          "no eligibility means no update",
+          "eligibility with delayed reward",
+          "learning-rate sensitivity",
+          "minimum and maximum weight respected",
+          "optional weight decay and normalization",
+          "update clipping and numerical safety",
+          "sign preservation",
+          "checkpoint reproducibility"
+        ]
+      },
+      {
+        "tier": "T06 simulator equivalence",
+        "phase": "5D",
+        "cases": [
+          "PlasticSignedSynapses with eta = 0 matches BancSignedSynapses currents at every step",
+          "PlasticSimulator with eta = 0 matches BancSimulator spike hash, decision hash and summary counters",
+          "propagate returns the same transmission count and exposes the same edge indices",
+          "the fixed-weight BancSimulator remains available and unchanged"
+        ]
+      },
+      {
+        "tier": "T07 controlled task, split and controls",
+        "phase": "5E",
+        "cases": [
+          "explicit states, actions, reward function and success condition",
+          "train and evaluation seed sets are disjoint",
+          "evaluation cannot write learned weights",
+          "fixed-weight, plastic, zero-reward and shuffled-reward conditions",
+          "randomized-connectivity and disabled-eligibility conditions where feasible",
+          "a conventional non-biological baseline where feasible; exclusions documented",
+          "reward computation does not import MotorDecoder",
+          "all required metrics are recorded"
+        ]
+      },
+      {
+        "tier": "T08 comparative statistics and robustness",
+        "phase": "5F",
+        "cases": [
+          "multiple independent seeds, with no timestep treated as an independent sample",
+          "mean, standard deviation, median, confidence interval and effect size",
+          "multiple-comparison correction where required",
+          "sensitivity to learning rate, tau_e, reward magnitude, weight limits, initial weights, network size, threshold and reward delay",
+          "silent, unstable or ineffective configurations are reported, not discarded"
+        ]
+      },
+      {
+        "tier": "T09 final validation",
+        "phase": "5G",
+        "cases": [
+          "the ten Phase 5 scientific questions are answered separately from software status",
+          "focused Phase 5 tests, full suite, configuration validation and checkpoint round-trip",
+          "determinism and numerical stability",
+          "report and JSON agree",
+          "reproducibility metadata present"
+        ]
+      },
+      {
+        "tier": "T10 regression and integrity",
+        "phase": "5B-5G",
+        "cases": [
+          "the full existing test suite passes",
+          "the focused Phase 4H subset passes (68 passed in Phase 5A)",
+          "Phase 4H integrity snapshot reports 37/37 including README.md",
+          "structural connectomes, datasets and Phase 4 reports are byte-identical",
+          "no tracked file outside the intended Phase 5 set is modified",
+          "model artifacts are not staged for Git"
+        ]
+      }
+    ],
+    "baseline_results": {
+      "existing_focused_tests": "68 passed in 6.32 s (Phase 4H and BANC simulator subset)",
+      "existing_full_suite": "492 passed in 56.94 s",
+      "protected_files": "37/37 unchanged",
+      "status": "re-verified after writing the Phase 5A reports; see the Markdown report for the run output"
+    }
+  },
+  "implementation_sequence": [
+    {
+      "phase": "5A",
+      "title": "architecture audit and design",
+      "deliverables": [
+        "reports/PHASE_5A_PLASTICITY_ARCHITECTURE_AUDIT.md",
+        "reports/PHASE_5A_PLASTICITY_ARCHITECTURE_AUDIT.json"
+      ],
+      "code_changes": "none",
+      "gate": "STOP and wait for approval"
+    },
+    {
+      "phase": "5B",
+      "title": "reward signal and reward prediction error",
+      "deliverables": [
+        "plasticity/__init__.py",
+        "plasticity/reward.py",
+        "configs/plasticity.yaml (reward and predictor sections)",
+        "experiments/phase_5/run_reward.py",
+        "tests/test_plasticity_reward.py",
+        "reports/PHASE_5B_REWARD_AND_PREDICTION_ERROR.md",
+        "reports/PHASE_5B_REWARD_AND_PREDICTION_ERROR.json"
+      ],
+      "code_changes": "new package and runner only; no simulation changes; no structural connectome changes",
+      "exit_criteria": "T01 and T10 pass; reward and RPE deterministic for fixed inputs"
+    },
+    {
+      "phase": "5C",
+      "title": "eligibility traces",
+      "deliverables": [
+        "plasticity/traces.py",
+        "configs/plasticity.yaml (trace section)",
+        "experiments/phase_5/benchmark_traces.py",
+        "tests/test_plasticity_traces.py",
+        "reports/PHASE_5C_ELIGIBILITY_TRACES.md",
+        "reports/PHASE_5C_ELIGIBILITY_TRACES.json"
+      ],
+      "code_changes": "new module and benchmark only; no simulation coupling; no structural graph changes",
+      "exit_criteria": "T02, T03 and T10 pass; edges-indexed sparse storage benchmarked with measured memory and runtime"
+    },
+    {
+      "phase": "5D",
+      "title": "three-factor synaptic plasticity, weight state and persistence",
+      "deliverables": [
+        "plasticity/weights.py",
+        "plasticity/rules.py",
+        "plasticity/checkpoint.py",
+        "plasticity/engine.py",
+        "plasticity/plastic_synapses.py",
+        "plasticity/plastic_simulator.py",
+        "plasticity/diagnostics.py",
+        "configs/plasticity.yaml (weight and rule sections)",
+        "experiments/phase_5/run_plasticity_unit_experiments.py",
+        "tests/test_plasticity_weights.py",
+        "tests/test_plasticity_simulator.py",
+        "reports/PHASE_5D_THREE_FACTOR_PLASTICITY.md",
+        "reports/PHASE_5D_THREE_FACTOR_PLASTICITY.json"
+      ],
+      "code_changes": "new modules and runner only; brain/ unchanged; fixed-weight simulator remains available",
+      "exit_criteria": "T04, T05, T06 and T10 pass; required 5D experiments (positive, negative, zero reward, no eligibility, delayed reward, bounds, sign preservation, weight decay, learning-rate sensitivity, checkpoint reproducibility) are reported"
+    },
+    {
+      "phase": "5E",
+      "title": "controlled learning experiments",
+      "deliverables": [
+        "plasticity/tasks.py",
+        "experiments/phase_5/controlled_task.py",
+        "configs/plasticity_task.yaml",
+        "experiments/phase_5/run_controlled_learning.py",
+        "experiments/phase_5/analyse_controlled_learning.py",
+        "experiments/results/phase_5/ raw results",
+        "plots",
+        "tests/test_plasticity_task.py",
+        "reports/PHASE_5E_CONTROLLED_LEARNING_EXPERIMENTS.md",
+        "reports/PHASE_5E_CONTROLLED_LEARNING_EXPERIMENTS.json"
+      ],
+      "code_changes": "task environment, configurations, runner and analysis; no changes to existing phases",
+      "exit_criteria": "T07 and T10 pass; training and evaluation separated; conditions A-G implemented or exclusions justified; negative results preserved"
+    },
+    {
+      "phase": "5F",
+      "title": "fixed-weight versus plastic network comparison",
+      "deliverables": [
+        "experiments/phase_5/compare_fixed_plastic.py",
+        "experiments/phase_5/run_robustness_sweep.py",
+        "statistical analysis and figures",
+        "reproducibility metadata",
+        "reports/PHASE_5F_FIXED_VS_PLASTIC.md",
+        "reports/PHASE_5F_FIXED_VS_PLASTIC.json"
+      ],
+      "code_changes": "comparison runners and analysis only",
+      "exit_criteria": "T08 and T10 pass; fair comparisons, independent seeds, effect sizes, confidence intervals and multiple-comparison correction; unsuccessful configurations reported"
+    },
+    {
+      "phase": "5G",
+      "title": "final software and scientific validation",
+      "deliverables": [
+        "reports/PHASE_5_FINAL_ASSESSMENT.md",
+        "reports/PHASE_5_FINAL_ASSESSMENT.json",
+        "complete Phase 5 test results",
+        "experiment and reproducibility summary",
+        "remaining limitations"
+      ],
+      "code_changes": "reports only",
+      "exit_criteria": "T09 and T10 pass; software status and scientific status reported separately; verdict is PASS, PASS WITH LIMITATIONS, FAIL or INCONCLUSIVE"
+    }
+  ],
+  "acceptance_criteria": {
+    "phase_5a": [
+      "both Phase 5A reports exist and are internally consistent",
+      "the existing test suite passes",
+      "no existing behaviour is modified",
+      "no protected file changes",
+      "all proposed interfaces are documented",
+      "no unsupported biological claim is made",
+      "no reward signal, eligibility trace or plasticity is implemented",
+      "no commit or push is performed"
+    ]
+  },
+  "artifacts": [
+    "reports/PHASE_5A_PLASTICITY_ARCHITECTURE_AUDIT.md",
+    "reports/PHASE_5A_PLASTICITY_ARCHITECTURE_AUDIT.json"
+  ],
+  "files_created": [
+    "reports/PHASE_5A_PLASTICITY_ARCHITECTURE_AUDIT.md",
+    "reports/PHASE_5A_PLASTICITY_ARCHITECTURE_AUDIT.json"
+  ],
+  "files_modified": [],
+  "protected_files": {
+    "rule": "the root README.md, datasets and processed connectomes, completed Phase 4 reports and results, the Phase 4H experiments, the Phase 4H baseline and every existing source file remain unchanged",
+    "verification": "Phase 4H integrity_snapshot plus git status/diff scoped to the Phase 5 report paths",
+    "expected": "37/37 baseline entries pass"
+  },
+  "open_questions": [
+    "What state representation and value-update rule should the 5B reward predictor use? It must be configurable, documented and separate from plasticity.",
+    "What reward delay, magnitude and schedule should the 5B runner exercise? They must be declared before the run.",
+    "Which eligibility pairing convention should be primary: same-step or delay-matched? This audit recommends delay-matched and requires a hand-computed test in 5C.",
+    "Should traces be stored densely with lazy decay or as a sparse active-edge structure? Decide by measurement in 5C, not by assumption.",
+    "Should the plastic simulator in 5D duplicate the loop (recommended here) or add an optional hook to BancSimulator? Duplication is chosen to avoid touching a validated core.",
+    "What controlled task and held-out metric will 5E use? It must be independent of the MotorDecoder and specified before any run.",
+    "What are the declared values of eta, tau_e, gamma, weight bounds, decay, normalization and delta clip? They must be fixed in configs/plasticity.yaml before 5E-5F and must not be tuned on evaluation results.",
+    "Which of the 5E conditions A-G can be implemented fairly, and which must be documented as excluded?"
+  ]
+}

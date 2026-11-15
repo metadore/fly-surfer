@@ -1,0 +1,542 @@
+{
+  "schema_version": "1.0",
+  "document": {
+    "id": "phase_6d_recording_preregistration",
+    "phase": "6D",
+    "status": "DESIGN_ONLY_NOT_EXECUTED",
+    "date": "2026-11-11",
+    "project_root": "C:/Users/Hp/fruitfly/FLY-SURFER",
+    "markdown_companion": "reports/PHASE_6D_RECORDING_PREREGISTRATION.md",
+    "scope": "Pre-registration of the smallest defensible recording experiment able to collect the neural-level data missing from the Phase 6B and 6C analyses. No simulation, recording, training or instrumentation was performed.",
+    "non_claims": [
+      "Mutual information does not establish causation.",
+      "A decoder label does not establish a motor command.",
+      "A simulated spike is not a biological spike.",
+      "A positive propagation pilot does not establish that the fly behaves the same way.",
+      "A structural edge does not establish functional transmission."
+    ]
+  },
+  "protocol": {
+    "strategy": "A_instrumented_simulation",
+    "strategy_justification": "The missing data are simulated neural-level data, not biological data. Option B (biological recording) would require a preparation, region and stimulus protocol that no prior phase has established.",
+    "substrate": {
+      "stage_p_r": "BANC v888 threshold-5 signed graph",
+      "stage_s": "Phase 5 synthetic 36-node task graph"
+    },
+    "connectome_identity": {
+      "name": "banc_v888",
+      "n_nodes": 172433,
+      "n_edges": 1535710,
+      "n_synapses": 18552546,
+      "signed_edges": 683100,
+      "signed_fraction": 0.4448,
+      "threshold": 5,
+      "graph_sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192",
+      "node_sha256": "144a2eb09aa1ed2be4f07eff589a6158e98cfe4f18b52db7feef4d2272953e5f"
+    },
+    "trial": {
+      "stage_p_r": {
+        "duration_ms": 300.0,
+        "dt_ms": 0.5,
+        "onset_ms": 50.0,
+        "offset_ms": 150.0,
+        "readout_ms": [50.0, 300.0],
+        "noise_std_pa": 50.0,
+        "background_current_pa": 0.0,
+        "delay_ms": 1.0,
+        "decoder_window_ms": 50.0,
+        "decoder_step_ms": 50.0
+      },
+      "stage_s": {
+        "train_episodes_per_run": 160,
+        "eval_episodes_per_run": 80,
+        "checkpoint_episode": 160,
+        "eta_train": 1.0,
+        "eta_eval": 0.0
+      }
+    },
+    "design_constants": {
+      "mde_bits": 0.05,
+      "max_bias_floor_bits": 0.0167,
+      "alpha": 0.05,
+      "permutations": 5000,
+      "bootstrap_resamples": 2000,
+      "bootstrap_seed": 20261110,
+      "p_floor": 0.0002,
+      "min_support_per_level": 20,
+      "min_entropy_for_nmi_bits": 0.05
+    },
+    "stages": [
+      {"id": "P", "purpose": "propagation-positive pilot and gate", "runs": 324, "wall_time_hours": 0.23, "storage_mb": 44, "gate_to_next": "P0, P1, P2"},
+      {"id": "R", "purpose": "BANC recording campaign at the pilot-selected drive", "runs": 2688, "repeat_runs": 134, "wall_time_hours": 1.98, "storage_mb": 363, "gate_to_next": "recording integrity and Stage S check"},
+      {"id": "S", "purpose": "fixed-versus-plastic neural recording on the Phase 5 substrate", "episodes": 19200, "rows": 6400, "wall_time_hours": 0.5, "storage_mb": 120, "gate_to_next": "Phase 5F contrast reproduced"},
+      {"id": "A", "purpose": "pre-registered information analysis and report", "new_simulations": 0, "wall_time_hours": 0.5, "storage_mb": 10, "gate_to_next": "none"}
+    ],
+    "pilot": {
+      "conditions": ["REAL", "NO_STIM", "MATCHED_CHARGE"],
+      "drive_series_pa": [200, 400, 800, 1200],
+      "trials_per_cell": 20,
+      "design_runs": 240,
+      "positive_control_condition": "DIRECT_INJECTION",
+      "positive_control_runs": 80,
+      "single_spike_control_condition": "SINGLE_H1_SPIKE",
+      "single_spike_control_runs": 4,
+      "total_runs": 324,
+      "d_star_rule": "lowest drive meeting P1, fixed before any H2, DESC or decoder outcome is examined",
+      "gates": [
+        {
+          "id": "P0",
+          "name": "integrity",
+          "pass": "all 324 records complete every mandatory field; 5% re-run reproduces spike_hash; no SpikeCapacityExceeded; all membrane arrays finite",
+          "fail": "stop; instrumentation not trustworthy"
+        },
+        {
+          "id": "P1",
+          "name": "first-hop spiking",
+          "pass": "at some drive d, at least 10 of 20 REAL trials have >=1 H1 spike, NO_STIM and MATCHED_CHARGE each have <=1 of 20, one-sided Fisher p < 0.01; d* = lowest such drive",
+          "fail": "if no drive up to 1200 pA passes and DIRECT_INJECTION also fails, stop; if DIRECT_INJECTION at >=400 pA spikes H1 while REAL does not, report drive/encoder failure and stop",
+          "power_at_declared_n": 0.803,
+          "power_at_n10_rejected": 0.281
+        },
+        {
+          "id": "P2",
+          "name": "propagation-positive",
+          "mandatory": true,
+          "pass": "at d*, at least 3 of 20 REAL trials have >=1 spike in H2 union DESC, and 0 of 40 control trials has any downstream spike",
+          "fail": "stop; Stage R and all Phase 6D MI analyses are cancelled, not postponed",
+          "screen_not_test": true,
+          "sensitivity": {"q20": 0.794, "q30": 0.965, "q05": 0.075}
+        },
+        {
+          "id": "P3",
+          "name": "decoder reachability",
+          "pass": "at d*, at least one post-stimulus REAL decoder window is non-NEUTRAL and no control window is non-NEUTRAL",
+          "fail": "not fatal; H5 declared untestable and removed from the confirmatory family"
+        }
+      ]
+    },
+    "populations": {
+      "STIM": 232,
+      "H1": 607,
+      "H2": 3576,
+      "DESC": 1316,
+      "MOT": 805,
+      "ACT": 391,
+      "ACT_detail": {"LEFT": 185, "RIGHT": 186, "JUMP": 20},
+      "CUE": 32,
+      "ACTN": 4
+    },
+    "recruitment_code": {
+      "levels": 4,
+      "rules": {
+        "0": "zero active neurons",
+        "1": "1 to ceil(n/100) active",
+        "2": "ceil(n/100)+1 to ceil(n/10) active",
+        "3": "above ceil(n/10) active"
+      },
+      "note": "edges depend on population size alone, so the code cannot be selected after seeing results"
+    },
+    "stimulus_code": {
+      "primary_levels": ["TRAIN_NEAR", "TRAIN_FAR", "OBST_NEAR", "OBST_FAR"],
+      "split_rule": "entity x distance half at the pooled archived median 0.653686",
+      "distinct_events_per_level": {"TRAIN_NEAR": 20, "TRAIN_FAR": 15, "OBST_NEAR": 2, "OBST_FAR": 6},
+      "total_feature_carrying_events": 43,
+      "total_archived_events": 215,
+      "sensitivity_levels": 6,
+      "event_assignment": "declared round-robin from the sorted event list"
+    }
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "level": "sensory input to stimulated sensory neurons",
+      "claim": "the declared stimulus code is reflected in the activity of the stimulated sensory population",
+      "predictor": {"name": "S", "values": 4, "definition": "entity x distance half"},
+      "response": {"name": "R_STIM", "values": 4, "definition": "recruitment code of STIM in [50,300) ms"},
+      "table": [4, 4],
+      "n": 672,
+      "bias_floor_bits": 0.009661,
+      "stage": "R",
+      "null": "I(S; R_STIM) = 0",
+      "alternative": "I(S; R_STIM) > 0",
+      "controls": ["NO_STIM", "MATCHED_CHARGE", "SHUFFLED_MASK", "trial_permutation"],
+      "support_criterion": "corrected I > 0.05 bits above permutation q95, trial-resampled bootstrap CI excluding zero, at least two observed levels in both variables",
+      "inconclusive_if": ["R_STIM constant across all trials", "a stimulus level has fewer than 20 trials", "fewer than 20 usable trials", "the two sparsest stimulus levels contribute more than half of the estimate"],
+      "endpoints": ["E1", "E2", "E4"]
+    },
+    {
+      "id": "H2",
+      "level": "sensory neurons to downstream first-hop populations",
+      "claim": "first-hop activity depends on the pattern of stimulated sensory activity, not merely on the presence of stimulation",
+      "predictor": {"name": "R_STIM", "values": 4},
+      "response": {"name": "R_H1", "values": 4, "population_size": 607},
+      "table": [4, 4],
+      "n": 672,
+      "bias_floor_bits": 0.009661,
+      "stage": "P_presence_and_R_information",
+      "null": "I(R_STIM; R_H1) = 0 and REAL H1 rate equals NO_STIM and MATCHED_CHARGE",
+      "alternative": "I(R_STIM; R_H1) > 0 and REAL H1 rate exceeds both controls",
+      "controls": ["NO_STIM", "MATCHED_CHARGE", "SHUFFLED_MASK", "signed_edge_only_first_hop"],
+      "support_criterion": "H1 information criterion plus propagation criterion P2",
+      "inconclusive_if": ["H1 silent in every REAL trial", "H1 active in NO_STIM at a rate not separable from REAL at N=672", "fewer than two observed recruitment levels"],
+      "endpoints": ["E1", "E2", "E3", "E4"]
+    },
+    {
+      "id": "H3",
+      "level": "downstream activity to descending neurons",
+      "claim": "descending-neuron activity depends on first-hop activity",
+      "predictor": {"name": "R_H1", "values": 4},
+      "response": {"name": "R_DESC", "values": 4, "population_size": 1316},
+      "table": [4, 4],
+      "n": 672,
+      "bias_floor_bits": 0.009661,
+      "stage": "P_gate_and_R_information",
+      "null": "I(R_H1; R_DESC) = 0 and REAL DESC rate equals NO_STIM",
+      "alternative": "I(R_H1; R_DESC) > 0 and REAL DESC rate exceeds NO_STIM",
+      "controls": ["NO_STIM", "MATCHED_CHARGE", "report only 9 of 1316 descending neurons are first-hop targets"],
+      "support_criterion": "corrected MI > 0.05 bits above permutation q95 with CI excluding zero, and >=1 descending spike in at least 15% of REAL trials (3 of 20 pilot, 100 of 672)",
+      "inconclusive_if": ["P2 fails in which case H3 is NOT TESTABLE", "fewer than 20 trials contain a descending spike"],
+      "endpoints": ["E5", "E6"]
+    },
+    {
+      "id": "H4",
+      "level": "descending activity to motor-neuron populations",
+      "claim": "motor-population activity depends on descending activity",
+      "predictor": {"name": "R_DESC", "values": 4},
+      "response": {"name": "R_MOT", "values": 4, "population_size": 805},
+      "table": [4, 4],
+      "n": 672,
+      "bias_floor_bits": 0.009661,
+      "stage": "P_gate_and_R_information",
+      "null": "I(R_DESC; R_MOT) = 0 and REAL MOT rate equals NO_STIM",
+      "alternative": "I(R_DESC; R_MOT) > 0 and REAL MOT rate exceeds NO_STIM",
+      "controls": ["NO_STIM", "MATCHED_CHARGE", "annotation mapping has zero first-hop motor targets and only 4 motor neurons at two signed hops"],
+      "support_criterion": "corrected MI > 0.05 bits above permutation q95 with CI excluding zero, and >=1 motor spike in at least 15% of REAL trials (3 of 20 pilot, 100 of 672)",
+      "inconclusive_if": ["P2 fails in which case H4 is NOT TESTABLE", "no motor neuron spikes in any REAL trial, reported as a bounded null rather than an information test"],
+      "endpoints": ["E7"]
+    },
+    {
+      "id": "H5",
+      "level": "neural population activity to decoder-mediated action",
+      "claim": "the decoder per-window decision is a deterministic function of declared pool activity; a consistency claim about a rule, not about motor control",
+      "predictor": {"name": "R_MOT", "values": 4},
+      "response": {"name": "A", "values": 4, "definition": "last non-NEUTRAL decoder state in [50,300) ms, else NEUTRAL"},
+      "table": [4, 4],
+      "n": 672,
+      "bias_floor_bits": 0.009661,
+      "stage": "R",
+      "null": "I(R_MOT; A) = 0",
+      "alternative": "I(R_MOT; A) > 0; a positive result is expected whenever the decoder fires at all because it reads the same spikes",
+      "controls": ["decoder_ablation_with_shuffled_pool_assignment", "NEUTRAL required in all control conditions"],
+      "support_criterion": "correctly labelled estimate only; can never support a motor-control or biological claim",
+      "inconclusive_if": ["every window NEUTRAL in every condition, which makes the endpoint degenerate"],
+      "endpoints": ["E8", "E9"]
+    },
+    {
+      "id": "H6",
+      "level": "neural activity and task outcome under fixed versus plastic weights",
+      "substrate": "Phase 5 synthetic 36-node task graph, not BANC",
+      "claim": "plastic training changes the neural code that carries cue identity relative to fixed weights",
+      "predictor": {"name": "CUE", "values": 4},
+      "response": {"name": "A_neural", "values": 5, "definition": "action neuron with the highest evaluation spike count, fifth level for none, ties resolved to the lowest index"},
+      "table": [4, 5],
+      "n": 6400,
+      "clusters": 40,
+      "bias_floor_bits": 0.001353,
+      "stage": "S",
+      "null": "I(CUE; A_neural) is equal in fixed_complete and plastic_complete",
+      "alternative": "pooled I(CUE; A_neural) is greater after plasticity",
+      "controls": ["paired_seeds", "eta_zero_reproduction", "Phase_5F_contrast_reproduction"],
+      "support_criterion": "paired cluster-level difference has bootstrap CI excluding zero and exceeds 0.05 bits in the predicted direction",
+      "inconclusive_if": ["Phase 5F +0.150 success difference not reproduced", "per-seed action code degenerate for more than 20% of seeds", "row-level and cluster-level analyses disagree in sign"],
+      "endpoints": ["E10"]
+    }
+  ],
+  "conditions": [
+    {"id": "P_REAL", "stage": "P", "drive_pa": [200, 400, 800, 1200], "trials_per_drive": 20, "runs": 80},
+    {"id": "P_NO_STIM", "stage": "P", "drive_pa": [200, 400, 800, 1200], "trials_per_drive": 20, "runs": 80},
+    {"id": "P_MATCHED_CHARGE", "stage": "P", "drive_pa": [200, 400, 800, 1200], "trials_per_drive": 20, "runs": 80},
+    {"id": "DIRECT_INJECTION", "stage": "P", "drive_pa": [200, 400, 800, 1200], "trials_per_drive": 20, "runs": 80, "role": "positive control into H1"},
+    {"id": "SINGLE_H1_SPIKE", "stage": "P", "runs": 4, "role": "per-spike transmission positive control"},
+    {"id": "REAL", "stage": "R", "drive": "d_star", "trials": 672, "role": "measurement of interest"},
+    {"id": "SHUFFLED_MASK", "stage": "R", "drive": "d_star", "trials": 672, "role": "feature-to-population identity permuted"},
+    {"id": "MATCHED_CHARGE", "stage": "R", "drive": "d_star", "trials": 672, "role": "uniform total charge equal to mean REAL charge"},
+    {"id": "NO_STIM", "stage": "R", "drive": "none", "trials": 672, "role": "spontaneous baseline"},
+    {"id": "fixed_complete", "stage": "S", "seeds": 40, "episodes_per_run": 240},
+    {"id": "plastic_complete", "stage": "S", "seeds": 40, "episodes_per_run": 240}
+  ],
+  "controls": [
+    {"id": "C1", "name": "spontaneous baseline", "condition": "NO_STIM", "rules_out": "downstream spikes are spontaneous rather than stimulus-locked"},
+    {"id": "C2", "name": "matched charge", "condition": "MATCHED_CHARGE", "rules_out": "response is driven by total current rather than its pattern", "known_weakness": "uniform spread is roughly 46.7 pA per neuron at Phase 4H scale and may be subthreshold"},
+    {"id": "C3", "name": "shuffled feature identity", "condition": "SHUFFLED_MASK", "rules_out": "downstream activity is generic arousal to any sensory input"},
+    {"id": "C4", "name": "direct first-hop injection", "condition": "DIRECT_INJECTION", "rules_out": "null propagation is caused by the sensory drive rather than the H1 to H2 synapse"},
+    {"id": "C5", "name": "single first-hop spike", "condition": "SINGLE_H1_SPIKE", "rules_out": "propagation requires many simultaneous H1 spikes by model construction"},
+    {"id": "C6", "name": "fixed-weight paired condition", "condition": "fixed_complete", "rules_out": "Stage S difference is caused by seed or protocol rather than plasticity"},
+    {"id": "C7", "name": "eta-zero reproduction", "rules_out": "stored evaluation traces were altered by the evaluation itself"},
+    {"id": "C8", "name": "archive replay", "rules_out": "the instrumentation changed simulator behaviour", "asserts": "archived 4H condition B spike_sha256"},
+    {"id": "C9", "name": "decoder neutrality in controls", "rules_out": "the decoder fires on noise or uniform charge"},
+    {"id": "C10", "name": "label permutation null", "rules_out": "observed MI is expected from marginal distributions alone", "draws": 5000},
+    {"id": "C11", "name": "seed-pair reproducibility", "rules_out": "an effect is carried by a small number of seeds", "split": [20, 20]},
+    {"id": "C12", "name": "blinded analysis", "rules_out": "analyst degrees of freedom in choosing the reported comparison"},
+    {"id": "C13", "name": "decoder ablation", "rules_out": "the H5 estimate reflects something other than the decoder wiring", "method": "seeded permutation of neuron-to-pool assignment on stored spikes"}
+  ],
+  "variables": {
+    "mandatory_fields": [
+      {"name": "trial_id", "type": "string"},
+      {"name": "stage", "type": "enum:P,R,S"},
+      {"name": "random_seed", "type": "int"},
+      {"name": "condition", "type": "enum"},
+      {"name": "connectome_identity", "type": "object"},
+      {"name": "threshold", "type": "int"},
+      {"name": "root_ids", "type": "int32_array"},
+      {"name": "population_labels", "type": "uint8_array"},
+      {"name": "stimulus_identity", "type": "object"},
+      {"name": "stimulus_onset_ms", "type": "float"},
+      {"name": "stimulus_offset_ms", "type": "float"},
+      {"name": "spike_times_ms", "type": "float32_array"},
+      {"name": "spike_neuron_indices", "type": "int32_array"},
+      {"name": "n_neurons", "type": "int"},
+      {"name": "spike_counts", "type": "int32_array_sparse"},
+      {"name": "population_counts", "type": "int32_array"},
+      {"name": "binned_activity", "type": "float32_7x30"},
+      {"name": "decoder_windows", "type": "json_array"},
+      {"name": "task_outcome", "type": "object_or_null", "status": "stage_s_mandatory"},
+      {"name": "reward", "type": "float_or_null", "status": "stage_s_mandatory"},
+      {"name": "prediction_error", "type": "float_or_null", "status": "stage_s_mandatory"},
+      {"name": "plasticity_traces", "type": "sparse_object_or_null", "status": "stage_s_mandatory"},
+      {"name": "effective_weights", "type": "sparse_object", "status": "stage_s_mandatory"},
+      {"name": "config_hash", "type": "string"},
+      {"name": "software_version", "type": "object"},
+      {"name": "provenance", "type": "object"}
+    ],
+    "optional_fields": [
+      {"name": "membrane_potential_mv_panel", "availability": "in_memory_property", "panel_max_nodes": 458, "sampling_ms": 2.0, "storage_mb_stage_r": 740},
+      {"name": "synaptic_current_pa_panel", "availability": "in_memory_properties", "panel_max_nodes": 458, "sampling_ms": 2.0, "storage_mb_stage_r": 740},
+      {"name": "spike_hash", "availability": "phase_4h_common", "status": "required_in_practice"}
+    ],
+    "dense_formats": "excluded by design; the largest mandatory array is 7 populations x 30 bins"
+  },
+  "sample_size": {
+    "independence_units": {
+      "seed": {"stage_r": 2688, "stage_s": 40, "valid_for": ["reproducibility", "stage_s_cluster_inference"]},
+      "trial": {"stage_r": 2688, "stage_s": 19200, "valid_for": ["stimulus_locked_comparisons", "trial_permutation"]},
+      "stimulus_event": {"count": 43, "per_level": {"TRAIN_NEAR": 20, "TRAIN_FAR": 15, "OBST_NEAR": 2, "OBST_FAR": 6}, "valid_for": ["stimulus_generalisation"]},
+      "neuron": {"valid_for": ["descriptive_only"], "never": true},
+      "time_bin": {"valid_for": ["descriptive_only"], "never": true},
+      "spike": {"valid_for": ["descriptive_only"], "never": true}
+    },
+    "bias_floor_formula": "(kx-1)*(ky-1)/(2*N*ln2)",
+    "tables": [
+      {"name": "4x4 primary", "df": 9, "n_for_floor_0p017": 382, "floor_at_672": 0.009661, "floor_at_6400": 0.001014},
+      {"name": "4x3", "df": 6, "n_for_floor_0p017": 255, "floor_at_672": 0.006441, "floor_at_6400": 0.000676},
+      {"name": "4x5 stage_s", "df": 12, "n_for_floor_0p017": 510, "floor_at_672": 0.012881, "floor_at_6400": 0.001353},
+      {"name": "6x4 sensitivity binding", "df": 15, "n_for_floor_0p017": 637, "floor_at_672": 0.016102, "floor_at_6400": 0.001691}
+    ],
+    "n_stage_r": 672,
+    "trials_per_primary_level": 168,
+    "trials_per_sensitivity_level": 112,
+    "n_derivation": "N >= 648 from the 6x4 floor <= 0.0167; the smallest multiple of 4 and 6 above 648 is 672",
+    "n_stage_s": 6400,
+    "mde_bits": 0.05,
+    "plug_in_sd_bits": {"4x4_at_672": 0.004554, "6x4_at_672": 0.005880},
+    "mde_in_sd": {"4x4": 10.98, "6x4": 8.5},
+    "min_effect_80pct_power_bits": {"4x4": 0.013, "6x4": 0.016},
+    "rejected_sample": {"episodes_per_condition": 40, "table": [4, 4], "floor_bits": 0.162, "reason": "floor is more than three times the MDE; not reused as evidence of power"},
+    "event_cluster_bound": "generalisation is limited to the 43 archived feature-carrying events; OBST_NEAR has 2"
+  },
+  "analysis": {
+    "estimators": {
+      "entropy": "plugin H = -sum p log2 p with Miller-Madow (K_obs-1)/(2N ln2) reported alongside",
+      "mutual_information": "plugin I with bias floor (kx-1)(ky-1)/(2N ln2), I_corrected = max(0, I - floor)",
+      "conditional_mi": "sample-weighted mean of within-stratum MI with per-stratum bias floor",
+      "nmi": "reported only when both entropies exceed 0.05 bits",
+      "library": "information/ imported read-only"
+    },
+    "discretisation": {
+      "response_stim_h1_h2_desc": {"levels": 3, "bins": ["0", "1-2", ">=3"], "rule": "absolute spike count, fixed in advance"},
+      "population_code": {"levels": 4, "note": "median fixed from Stage P"},
+      "time_bin_ms": 10,
+      "time_bins": 30,
+      "spike_train_metric": null
+    },
+    "inference": {
+      "permutation": {"draws": 5000, "level": "trial", "strata": "stage and condition"},
+      "bootstrap": {"resamples": 2000, "seed": 20261110, "unit": {"H1_E2": "trial", "H2_H3": "event_cluster", "stage_s": "seed_cluster"}},
+      "multiple_comparisons": "Holm-Bonferroni over the gate-unlocked family, alpha 0.05",
+      "max_family": 10,
+      "smallest_holm_threshold": 0.005,
+      "p_floor": 0.0002
+    },
+    "data_handling": {
+      "missing_data": "no imputation; exclusion counted; more than 5% exclusion in any condition is an integrity failure",
+      "min_support_per_level": 20,
+      "degenerate_variable": "single observed level is reported as degenerate or inconclusive, never as a negative",
+      "locked_endpoints": "endpoints not unlocked by a gate are reported as not evaluated, never as non-significant"
+    },
+    "execution_order": [
+      "validate records and determinism sample",
+      "reproduce archived 4H condition-B spike hash",
+      "evaluate P1 then P2 then P3 and freeze d_star",
+      "run Stage R analysis on unlocked conditions",
+      "check Phase 5F contrast at 40 seeds",
+      "compute E1-E10 with fixed constants",
+      "apply corrections",
+      "write and hash the results file before prose"
+    ],
+    "guardrails": [
+      "significant MI does not establish a biological mechanism",
+      "a decoder output does not establish motor control",
+      "zero downstream spikes is degenerate, not negative",
+      "Stage S is never pooled with Stage R",
+      "a reversed Stage S direction is reported as found"
+    ]
+  },
+  "endpoints": [
+    {"id": "E1", "hypothesis": "H1", "estimand": "proportion of trials with >=1 H1 spike", "unit": "trial", "test": "one-sided Fisher exact", "direction": "REAL > control", "unlocked_by": "P1"},
+    {"id": "E2", "hypothesis": "H1", "estimand": "median H1 spike count per trial", "unit": "trial", "test": "Mann-Whitney U with trial bootstrap CI", "direction": "REAL > control", "unlocked_by": "P1"},
+    {"id": "E3", "hypothesis": "H2", "estimand": "proportion of trials with >=1 H2 or DESC spike", "unit": "trial", "test": "Fisher exact, degenerate-aware", "direction": "REAL > control", "unlocked_by": "P2"},
+    {"id": "E4", "hypothesis": "H2", "estimand": "I(stimulus level; H1 recruitment)", "unit": "trial", "test": "corrected MI with 5000 permutations", "direction": "REAL > SHUFFLED_MASK", "unlocked_by": "P2"},
+    {"id": "E5", "hypothesis": "H3", "estimand": "I(stimulus level; H2/DESC recruitment)", "unit": "trial", "test": "corrected MI with permutation and event-cluster bootstrap", "direction": "REAL > SHUFFLED_MASK and > 0", "unlocked_by": "P2"},
+    {"id": "E6", "hypothesis": "H3", "estimand": "I(stimulus level; H2 response | H1 recruited)", "unit": "trials with >=1 H1 spike", "test": "conditional MI with permutation null", "direction": "> 0", "unlocked_by": "P2"},
+    {"id": "E7", "hypothesis": "H4", "estimand": "proportion of DESC spikes followed by a MOT spike within 5 ms", "unit": "DESC spike clustered by trial", "test": "trial-clustered proportion with MOT timing permutation", "direction": "REAL > control", "unlocked_by": "P3"},
+    {"id": "E8", "hypothesis": "H5", "estimand": "I(stimulus level; decoded state)", "unit": "trial x window", "test": "corrected MI with degenerate guard", "direction": "REAL > 0", "unlocked_by": "P3"},
+    {"id": "E9", "hypothesis": "H5", "estimand": "I(pool activity code; decoded state)", "unit": "decoder window", "test": "corrected MI, only admissible as a decoder-consistency statement", "direction": "> 0", "unlocked_by": "P3"},
+    {"id": "E10", "hypothesis": "H6", "estimand": "paired difference in I(cue; A_neural) plastic minus fixed", "unit": "seed cluster", "test": "cluster bootstrap CI on the paired difference", "direction": "plastic > fixed", "unlocked_by": "Phase 5F contrast reproduced"}
+  ],
+  "success_criteria": {
+    "recording_integrity": {
+      "pass": ">=99.5% of trials complete every mandatory field, 5% re-run reproduces spike_hash, archived 4H hash reproduced, no capacity exceeded, all membrane arrays finite",
+      "fail": "unexplained determinism mismatch, silent truncation, or >5% missing mandatory fields in any condition",
+      "inconclusive": "not applicable; integrity is binary"
+    },
+    "reproducibility": {
+      "pass": "analysis reproduces every number within 1e-9 and 20/20 seed halves agree in sign",
+      "fail": "a number changes after freezing, or halves disagree in sign on a confirmatory endpoint",
+      "inconclusive": "sign disagreement is reported for that endpoint only"
+    },
+    "stimulus_encoding": {
+      "pass": "E1 passes and E2 shows a higher median H1 count in REAL",
+      "fail": "REAL and controls at the same floor while DIRECT_INJECTION shows H1 can spike",
+      "inconclusive": "effect requires DIRECT_INJECTION success to interpret, or is carried by one seed half"
+    },
+    "downstream_propagation": {
+      "pass": "P2 passes and E3 exceeds both SHUFFLED_MASK and MATCHED_CHARGE",
+      "fail": "P2 fails at every drive up to 1200 pA, or E3 equals controls",
+      "inconclusive": "REAL exceeds NO_STIM but not MATCHED_CHARGE, or SHUFFLED_MASK equals REAL, or all channels degenerate"
+    },
+    "population_information": {
+      "pass": "E5 survives Holm with event-cluster CI excluding zero and support met",
+      "fail": "E5 estimable and indistinguishable from the permutation null",
+      "inconclusive": "not estimable, or significant at trial level only"
+    },
+    "neural_to_motor_information": {
+      "pass": "E7 or E8 survives Holm and P3 passed; still labelled decoder-mediated",
+      "fail": "P3 passed but E7 and E8 at the null",
+      "inconclusive": "P3 failed, making the endpoint untestable"
+    },
+    "plasticity_neural_change": {
+      "pass": "Phase 5F contrast reproduced at 40 seeds and E10 difference exceeds 0.05 bits with CI excluding zero",
+      "fail": "contrast reproduced but E10 difference below 0.05 bits or CI contains zero",
+      "inconclusive": "contrast not reproduced, >20% of seeds degenerate, or row and cluster signs disagree"
+    },
+    "task_performance": {
+      "pass": "plastic_complete exceeds fixed_complete by a paired difference with CI excluding zero in the Phase 5F direction",
+      "fail": "no difference or a reversed difference, reported as found",
+      "inconclusive": "not applicable; this is a reproduction check"
+    },
+    "phase_verdict_rules": [
+      {"condition": "integrity fails", "verdict": "invalid"},
+      {"condition": "integrity passes and P2 fails", "verdict": "negative on propagation, consistent with Phase 4H.4"},
+      {"condition": "P2 passes but E4 and E5 null", "verdict": "propagation without detectable stimulus-specific information"},
+      {"condition": "P2 and E5 pass but P3 fails", "verdict": "information reaches downstream populations; decoder does not"},
+      {"condition": "P2, E5 and P3 pass but E7 and E8 null", "verdict": "population information without decoder-mediated consequence"},
+      {"condition": "all gates and endpoints pass", "verdict": "computational information flow established in the model at evidence grade at most E2"},
+      {"condition": "Stage S integrity fails", "verdict": "E10 skipped; Stage R verdict stands independently"}
+    ]
+  },
+  "resources": {
+    "runtime_hours": {"stage_p": 0.23, "stage_r": 1.98, "stage_s": 0.5, "analysis": 0.5, "total": 2.8},
+    "storage_mb": {"stage_p": 44, "stage_r_mandatory": 363, "stage_s": 120, "analysis": 10, "total_mandatory": 537, "total_with_optional_diagnostics": 1900},
+    "per_trial_record_bytes_planned": 135000,
+    "spikes_per_trial_planning_value": 15000,
+    "peak_memory_gib": [0.3, 0.5],
+    "free_memory_at_phase_6a_audit_gib": 0.97,
+    "concurrency": "single process by default; concurrency only if free memory exceeds 1.5 GiB",
+    "max_recorded_spikes_per_trial": 500000,
+    "measured_median_run_seconds": 2.54,
+    "new_code": [
+      {"path": "experiments/phase_6d/recording.py", "lines": [350, 450]},
+      {"path": "experiments/phase_6d/trial_schedule.py", "lines": [200, 300]},
+      {"path": "experiments/phase_6d/run_propagation_pilot.py", "lines": [250, 350]},
+      {"path": "experiments/phase_6d/run_recording_campaign.py", "lines": [300, 400]},
+      {"path": "experiments/phase_6d/run_plasticity_recording.py", "lines": [250, 350]},
+      {"path": "experiments/phase_6d/analyse_phase_6d.py", "lines": [500, 700]},
+      {"path": "experiments/phase_6d/build_report.py", "lines": [200, 300]},
+      {"path": "configs/phase_6d_recording.yaml", "lines": [100, 100]},
+      {"path": "tests/test_phase_6d_recording.py", "lines": [400, 600]}
+    ],
+    "new_code_total_lines": [2550, 3650],
+    "reusable_modules": [
+      "brain/banc_simulator.py", "brain/neuron_model.py", "brain/neural_activity.py",
+      "brain/banc_sensory_adapter.py", "brain/banc_simulation_adapter.py",
+      "motor/motor_decoder.py", "motor/populations.py", "sensory/population_encoder.py",
+      "plasticity/plastic_simulator.py", "plasticity/engine.py", "plasticity/weights.py",
+      "plasticity/traces.py", "plasticity/tasks.py", "information/", "experiments/phase_4h/common.py"
+    ],
+    "implementation_status": "not implemented; design only"
+  },
+  "risks": [
+    {"id": "R1", "risk": "propagation never appears at any drive up to 1200 pA", "likelihood": "high", "impact": "programme stops at Stage P", "mitigation": "P0-P2 gate before the campaign", "residual": "a true rate near 20% can still be missed; P2 sensitivity 0.79"},
+    {"id": "R2", "risk": "descending and motor populations structurally unreachable", "likelihood": "high", "impact": "H4 and H5 untestable", "mitigation": "P3 and E7/E8 report untestable", "residual": "property of graph and mapping"},
+    {"id": "R3", "risk": "only 43 of 215 events carry feature values; OBST_NEAR has 2", "likelihood": "certain", "impact": "limited stimulus generalisation", "mitigation": "event-cluster bootstrap and explicit wording", "residual": "not repairable within corpus"},
+    {"id": "R4", "risk": "the step wrapper changes simulator behaviour", "likelihood": "low", "impact": "invalidates all data", "mitigation": "C8 archive replay and 5% determinism re-runs", "residual": "deterministic change would pass the hash test"},
+    {"id": "R5", "risk": "memory pressure at 0.97 GiB free", "likelihood": "medium", "impact": "run failures or swapping", "mitigation": "sequential execution and 500k spike cap", "residual": "busier machine could still fail"},
+    {"id": "R6", "risk": "float32 recorder summation order varies", "likelihood": "low", "impact": "determinism mismatch", "mitigation": "separate-process re-run hash comparison", "residual": "platform differences"},
+    {"id": "R7", "risk": "bias floor approximation for sparse tables", "likelihood": "medium", "impact": "over- or under-correction", "mitigation": "report raw, floor, corrected and CI", "residual": "estimate near the MDE could be materially wrong"},
+    {"id": "R8", "risk": "effective stimulus n is 43 not 672", "likelihood": "certain", "impact": "wider CIs", "mitigation": "both inference levels reported", "residual": "cannot be fixed"},
+    {"id": "R9", "risk": "d_star selected from pilot data", "likelihood": "certain", "impact": "data-dependent parameter", "mitigation": "rule fixed before downstream outcomes", "residual": "reader may view selection as partially adaptive"},
+    {"id": "R10", "risk": "MATCHED_CHARGE spread uniformly may be subthreshold", "likelihood": "high", "impact": "weak control", "mitigation": "report per-neuron amplitude and treat a null as uninformative if below rheobase", "residual": "no concentrated-charge control"},
+    {"id": "R11", "risk": "NO_STIM with 50 pA noise produced zero spikes in 4H", "likelihood": "certain", "impact": "degenerate spontaneous baseline", "mitigation": "P2 uses 0 of 40 as a screen", "residual": "discrimination comes from REAL alone"},
+    {"id": "R12", "risk": "Stage S uses a different substrate", "likelihood": "certain", "impact": "no pooled inference", "mitigation": "explicit separation and restricted wording", "residual": "wording is the only control"},
+    {"id": "R13", "risk": "single implementation, no independent re-implementation", "likelihood": "certain", "impact": "shared conceptual errors undetected", "mitigation": "archive replay, determinism and estimator tests", "residual": "cannot be eliminated"},
+    {"id": "R14", "risk": "a pathological run stalls the campaign", "likelihood": "low", "impact": "schedule slip", "mitigation": "per-run timeout with recorded failure", "residual": "lost trial reported as missing data"},
+    {"id": "R15", "risk": "decoder endpoints are circular", "likelihood": "certain", "impact": "E8/E9 cannot support a motor claim", "mitigation": "labelled decoder-mediated and excluded from the verdict above E2", "residual": "none"},
+    {"id": "R16", "risk": "stimulus onset re-anchored to 50 ms", "likelihood": "certain", "impact": "latency not comparable to archive", "mitigation": "latency reported descriptively", "residual": "none"},
+    {"id": "R17", "risk": "no neuromodulation, adaptation or cell-type conductances", "likelihood": "certain", "impact": "model cannot represent biological learning", "mitigation": "stated in every result section", "residual": "requires a different model"}
+  ],
+  "approval_gates": [
+    {"id": "G0", "name": "protocol", "requires": "this document and JSON reviewed and accepted, including the three scope decisions", "approver": "human reviewer", "artifact": "signed note and frozen protocol sha256"},
+    {"id": "G1", "name": "instrumentation", "requires": "G0 passed; approval to write code and tests only, no simulations", "approver": "human reviewer", "artifact": "code diff restricted to phase_6d paths and config"},
+    {"id": "G2", "name": "instrumentation validated", "requires": "G1 passed; full test suite passes; archived 4H condition-B spike hash reproduced; no production module changed", "approver": "automated checks and human sign-off", "artifact": "test log, hash equality, clean git status"},
+    {"id": "G3", "name": "pilot", "requires": "G2 passed; approval to run Stage P", "approver": "human reviewer", "artifact": "Stage P manifest"},
+    {"id": "G4", "name": "gate decision", "requires": "Stage P complete; P0-P3 evaluated in order; d_star fixed", "approver": "human reviewer", "artifact": "frozen gate-decision JSON"},
+    {"id": "G5", "name": "campaign", "requires": "G4 passed with P2 positive", "approver": "human reviewer", "artifact": "Stage R manifest or a recorded not-reached decision"},
+    {"id": "G6", "name": "plasticity stage", "requires": "G5 passed or explicitly waived", "approver": "human reviewer", "artifact": "Stage S manifest"},
+    {"id": "G7", "name": "analysis and report", "requires": "all runs complete and frozen; analysis run once; results frozen before prose", "approver": "human reviewer", "artifact": "results JSON sha256 and discrepancy log"}
+  ],
+  "next_actions": [
+    "review this protocol and resolve the three scope decisions",
+    "G0: freeze the protocol sha256",
+    "G1: write the instrumentation and tests listed in the resource section",
+    "G2: validate against the archived 4H spike hash and run the full test suite",
+    "G3-G4: run Stage P, evaluate P0-P3, freeze d_star",
+    "stop and report if P2 is not positive, preserving Phase 4H and 4H.5 conclusions",
+    "G5: run Stage R if P2 passed",
+    "G6: run Stage S if in scope and the Phase 5F contrast reproduces",
+    "G7: run the analysis once, freeze results, write the report"
+  ],
+  "scope_decisions_open": [
+    "enable optional panel diagnostics (about 1.4 GB extra storage, no confirmatory endpoint) or keep the sparse record",
+    "accept the four-point drive series or run a finer threshold calibration as a separate prerequisite",
+    "keep Stage S in Phase 6D or defer it to its own phase"
+  ],
+  "limitations": [
+    "the propagation-positive gate may fail at every tested drive",
+    "the motor pools are structurally unreachable from the annotation mapping, so H4 and H5 will probably be untestable",
+    "membrane and synaptic-current recording is possible only through an instance-level wrapper on a declared panel",
+    "the archived stimulus corpus has few distinct obstacle events",
+    "H6 runs on a different substrate from H1-H5"
+  ],
+  "out_of_scope": "No simulation, recording, training, architecture change or instrumentation was performed. Only this JSON and its Markdown companion were created.",
+  "final_status": "READY_WITH_LIMITATIONS"
+}

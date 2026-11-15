@@ -63,9 +63,17 @@ scheduled input remain additive; the scheduler does not replace the old
 
 `Lane` is a three-value enum (`left`, `center`, `right`); `ObstacleType` is
 `low` or `high`. `parse_lane` and `parse_obstacle_type` accept enum members or
-strings and reject anything else. `GameState.from_dict` requires an explicit
-`player` block and rejects unknown keys; absent obstacle/train/coin blocks
-become `present=False`.
+strings and reject anything else. `GameState.from_dict` does **not** require a
+`player` block and does **not** reject unknown keys: a missing player block,
+or missing player fields, is filled with the schema defaults `Lane.CENTER`,
+speed `0.5`, `jumping=False` and `rolling=False`; unknown keys are ignored;
+absent obstacle/train/coin blocks become `present=False`.
+
+`GameState.neutral()` is the defined zero state: an empty track with the player
+centred at speed `0.5`. These defaults are schema values, not observations.
+Callers that need to know which values were observed must read the
+`estimated_fields` provenance from `perception/game_state_adapter.py`, not
+infer it from the state itself.
 
 `GameState.features()` returns 14 keys:
 
@@ -78,10 +86,55 @@ become `present=False`.
 
 `None` marks a feature whose object is absent. The encoder then emits its
 baseline response; the scheduler also masks features outside a condition's
-active set. No lane or distance is fabricated for a missing object.
+active set. Within `GameState` and the encoders, no lane or distance is
+fabricated for an absent object. That guarantee is narrower than "no feature
+is ever invented": the perception adapter fills fields it cannot observe with
+schema defaults (for example player lane `CENTER`, speed `0.5`, and
+`jumping`/`rolling` false) and lists them in `estimated_fields`. Those
+defaulted values are then encoded like observations. The
+`SpatialFeatureBridge` docstring's statement that "feature values are never
+repaired or invented" therefore holds only for absent objects, not for player
+fields the dataset cannot label.
 
 A lane feature and a numeric distance are not interchangeable quantities. Lane
 and obstacle type use categorical populations, not Gaussian tuning.
+
+### Feature provenance
+
+Not every `GameState` feature has the same evidential status in the perception
+path. The categories are:
+
+- **measured** — supplied directly by the experimenter in synthetic or scripted
+  scenes, with no perception stage involved;
+- **detector-derived** — a presence flag or class/type read from a detector box
+  and its class label; the observation's confidence is carried alongside. The
+  class role (for example `jump-barrier` → low obstacle) is a name-derived
+  hypothesis, not a verified game quantity;
+- **geometry-derived** — computed from box geometry: lane from the box centre
+  column, distance from the box's vertical position as a normalised proxy;
+- **defaulted** — no observation exists, so a schema default is substituted;
+- **unsupported** — the dataset or scene carries no source for the feature at
+  all.
+
+| Feature(s) | Source in the perception path | Class |
+|---|---|---|
+| `obstacle_present`, `train_present` | a detector box whose class maps to that family exists in the frame | detector-derived |
+| `obstacle_type` | detector class name mapped to `low`/`high` (name-derived hypothesis) | detector-derived |
+| `obstacle_lane`, `train_lane` | box centre → image column thirds | geometry-derived |
+| `obstacle_distance`, `train_distance` | box vertical position → normalised proxy | geometry-derived |
+| `player_lane` | no player label; adapter defaults to `CENTER` unless exactly one player object is detected, in which case its box-derived lane is used | defaulted (geometry-derived if a player object is detected) |
+| `player_speed` | schema default `0.5`; the adapter records it as estimated | defaulted |
+| `jumping`, `rolling` | schema default `False` | defaulted |
+| `coin_present`, `coin_lane`, `coin_distance` | replay scenes contain no coin detections and the dataset has no coin labels | unsupported (defaults to absent) |
+
+Confidence and visibility are not among the 14 features. They are carried per
+observation (`VisualObservation.confidence`) and linked to feature groups by
+`SpatialFeatureBridge`; presence and class are detector-derived while lane and
+distance are geometry-derived.
+
+Terrain classes (`ledge`, `ramp`) are tracked by the observation layer but are
+not representable in `GameState`. The adapter selects the nearest eligible
+object of each kind and records the rest as `UnrepresentedObject`.
 
 ## Population coding
 
@@ -156,6 +209,16 @@ draws from all visual neurons. Body-state booleans (`jumping`, `rolling`) draw
 from the predicted mechanosensory pool as an experimental choice; the other
 features draw from the visual pool. With this configuration and seed, the
 pools are large enough for the allocation to remain disjoint.
+
+**Operating-point mismatch (4 versus 12 neurons).** The Phase 3A.5 calibration
+(`configs/sensory_calibration.yaml`) selected **four** `obstacle_distance`
+neurons at 200 pA, `sigma_fraction` 0.20 and seed 20261104. The delivered
+`sensory_config.yaml` — and therefore the Phase 3B/3C replays — uses **12**
+`obstacle_distance` neurons. Only the 200 pA amplitude is shared. The
+recruitment, discrimination and ordering results measured at four neurons are
+not a validation of the 12-neuron configuration; the population size, mapping
+indices and threshold geometry all differ. This is an open operating-point
+discrepancy, not a calibrated equivalence.
 
 ## Input scheduler
 
@@ -271,6 +334,26 @@ Phase 3A adds tests for:
 The validated Phase 2 and Phase 2.5 commands continue to run unchanged. No
 previous test was modified, weakened or deleted.
 
+## Later replay observations (Phase 3B.2C / 3C)
+
+These are recorded observations from later phases, not Phase 3A results, and
+they do not upgrade the sensory claims above.
+
+- **Real-sequence replay (2026-11-07,
+  `reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md`).** 100 detector frames over
+  3,300.5 simulated ms produced 15,654,631 spikes, of which 15,650,921
+  (99.976%) arose on non-stimulated neurons. This describes recurrent network
+  activity under sustained drive. It is not evidence that the sensory code is
+  carried by the stimulated population, not a signal-to-noise measurement for
+  the connectome, and not a perception result.
+- **Duration sensitivity (Phase 3C scripted integration,
+  `reports/PHASE_3C_EVALUATION.md`).** Holding the same scripted drive to
+  400 ms raised total spikes from 560 to 233,203 and non-stimulated spikes from
+  116 to 232,639, while stimulated spikes moved only 444 → 564. The network
+  enters a high-activity regime between 300.5 ms and 400 ms. The reported
+  protocol stops at 300.5 ms; the 400 ms probe is an observation and must not
+  be read as a perception or coding result.
+
 ## Scientific limitations
 
 - **Threshold-dominated readout.** The 200 pA peak drive sits above the 150 pA
@@ -291,9 +374,16 @@ previous test was modified, weakened or deleted.
 - **No motor or behavioural claim.** The connectome is an adult female FAFB
   brain without a complete ventral nerve cord. Phase 3A does not decode motor
   commands, select actions, assign reward or learn.
-- **Single operating point.** One seed and one amplitude set are reported.
-  Sensitivity to `sigma_fraction`, population size, allocation seed and current
-  amplitude is not yet characterised.
+- **One selected operating point, with measured sensitivity limits.** Phase
+  3A.5 swept amplitude, tuning width, population size, baseline, transition
+  and seed (84 conditions) and selected 200 pA, `sigma_fraction` 0.20, four
+  obstacle-distance neurons, seed 20261104 and zero baseline. Amplitude and
+  tuning width produced no strictly monotone response and were retained as
+  explicit fallbacks; population ordering appeared only at four neurons, so
+  the selection is a small, threshold-sensitive point rather than a graded
+  distance code. The delivered `sensory_config.yaml` uses 12 obstacle-distance
+  neurons, so the calibrated point and the shipped population size differ (see
+  "Operating-point mismatch" above).
 - **External work is not reproduced.** Findings from Fly Hero, Eon fly-brain,
   Drosophila Brain Model and FlyVis are reviewed as external observations in
   `docs/RESEARCH_REFERENCE_REVIEW.md`. No external code, data or result is

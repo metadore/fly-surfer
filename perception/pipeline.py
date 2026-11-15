@@ -1,8 +1,9 @@
 """End-to-end perception pipeline: image -> detections -> scene -> GameState.
 
-The pipeline never imports the neural simulator. It can be run on synthetic
-frames and scripted detections, which is what Phase 3B.2A tests do. Until a
-trained detector is integrated, no output of this module is visual recognition.
+The pipeline never imports the neural simulator. It can be driven by a local
+ONNX detector or by scripted detections; scripted detections are test-only and
+are never visual recognition. Detector output is always treated as untrusted
+and passed through ``DetectionValidator`` before it reaches the scene.
 """
 
 from __future__ import annotations
@@ -103,10 +104,11 @@ class PerceptionPipeline:
         """
         if not isinstance(frame, ImageFrame):
             raise ValueError("frame must be an ImageFrame")
-        description = self.detector_info
-        detector_name = str(description.get("name", type(self.detector).__name__))
         if detections is None:
             detections = self.detector.detect(frame)
+        # Describe after detection so timing fields reflect this call.
+        description = self.detector_info
+        detector_name = str(description.get("name", type(self.detector).__name__))
         raws, rejected = coerce_raw_detections(detections)
         validator = DetectionValidator(
             self.config.validation,
@@ -156,15 +158,30 @@ class PerceptionPipeline:
         return self.run(frame, detections=detections)
 
     def describe(self) -> dict:
+        detector = self.detector_info
+        test_only = bool(detector.get("test_only", False))
+        available = bool(detector.get("weights_loaded", False)) and not test_only
+        limitations = [
+            "Distance is an uncalibrated bottom-edge proxy.",
+            "Lane assignment is geometric and does not model perspective.",
+            "Detector output is a visual estimate, not gameplay accuracy or "
+            "biological perception.",
+            "The detector is not connected to the simulator or connectome.",
+        ]
+        if not available:
+            limitations.insert(
+                0,
+                "No trained detector is active; detections are scripted or "
+                "empty and are not visual recognition.",
+            )
         return {
             "pipeline": "phase_3b2a_visual_perception",
-            "detector": self.detector_info,
+            "detector": detector,
+            "detector_name": detector.get("name"),
+            "detector_kind": detector.get("kind"),
+            "detector_test_only": test_only,
             "config": self.config.as_dict(),
             "integrated_with_simulator": False,
-            "visual_recognition_available": False,
-            "limitations": [
-                "No trained detector is part of this package.",
-                "Distance is an uncalibrated bottom-edge proxy.",
-                "Lane assignment is geometric and does not model perspective.",
-            ],
+            "visual_recognition_available": available,
+            "limitations": limitations,
         }

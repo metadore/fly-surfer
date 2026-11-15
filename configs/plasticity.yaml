@@ -1,0 +1,143 @@
+# Phase 5 - declared plasticity parameters.
+#
+# SCIENTIFIC STATUS
+#   reward       an external computational scalar defined by a task
+#   predictor    a value model; delta_t is that model's prediction error
+#   traces       a model of short-term synaptic tagging (Phase 5C)
+#   rule         a declared three-factor update (Phase 5D)
+#
+# None of these blocks is a measurement of dopamine, octopamine, serotonin, a
+# biological eligibility trace or biological learning. Reward magnitudes are
+# dimensionless task units. Every number here is fixed before any learning
+# experiment is run and may only be changed with an explicit record of why.
+
+version: 1
+phase: 5B
+
+reward:
+  classification: >-
+    computational task reward; not a biological dopamine, octopamine or
+    serotonin measurement
+  unit: dimensionless task reward (positive = better outcome)
+  # Delivery delay applied to every schedule that does not override it.
+  delay_ms_default: 0.0
+  schedules:
+    positive_single:
+      events:
+        - [100.0, 1.0, correct]
+    negative_single:
+      events:
+        - [100.0, -1.0, collision]
+    zero_reward:
+      events:
+        - [100.0, 0.0, neutral]
+    mixed:
+      events:
+        - [80.0, 1.0, correct]
+        - [160.0, -1.0, collision]
+        - [240.0, 0.5, partial]
+    delayed_mixed:
+      # The same magnitudes as `mixed` delivered 50 ms later.
+      delay_ms: 50.0
+      events:
+        - [80.0, 1.0, correct]
+        - [160.0, -1.0, collision]
+        - [240.0, 0.5, partial]
+
+predictor:
+  # delta_t = r_t + gamma * V(s_next) - V(s_t)
+  defaults:
+    gamma: 0.9
+    learning_rate: 0.2
+    initial_value: 0.0
+    value_bound: 100.0
+  # Discount values probed by the 5B runner. gamma = 0 is the myopic case.
+  gamma_grid: [0.0, 0.5, 0.9, 0.99]
+
+convergence:
+  # Repeated deterministic episodes over a reward chain. The learned stage
+  # values are compared with the analytic discounted sum.
+  schedule: mixed
+  n_episodes: 400
+  tolerance: 0.001
+
+demonstration:
+  dt_ms: 0.5
+  episode_duration_ms: 300.0
+  schedule: mixed
+  delayed_schedule: delayed_mixed
+  shuffle_seed: 20261111
+
+traces:
+  # e_ij(t) = lambda * e_ij(t-1) + f(pre_i, post_j), lambda = exp(-dt/tau_e).
+  # tau_e = 20 ms is a declared modelling prior, not a fitted biological time
+  # constant. At dt = 0.5 ms the per-step decay is exp(-0.025) = 0.97531.
+  tau_e_ms: 20.0
+  dt_ms: 0.5
+  dtype: float32
+  # Absolute trace magnitude below which a touched edge is dropped.
+  prune_threshold: 1.0e-4
+  prune_interval_steps: 50
+  # A presynaptic spike at step t is paired with postsynaptic spikes at the
+  # step where the uniformly delayed packet is delivered, not at step t.
+  coincidence: delay_matched
+  benchmark:
+    # 683,100 is the verified-sign edge count of the BANC t5 graph;
+    # 1,535,710 is its total edge count.
+    sizes: [1000, 10000, 100000, 683100, 1535710]
+    n_steps: 600
+    active_fraction_per_step: 0.01
+    reward_read_steps: [150, 300, 450]
+    prune_interval_steps: 50
+    seed: 20261112
+  banc:
+    # Trace-only microbenchmark on the real t5 edge table. No neurons are
+    # simulated and no weight is changed.
+    enabled: true
+    threshold: 5
+    n_steps: 200
+    active_fraction_per_step: 0.001
+    prune_interval_steps: 50
+    seed: 20261113
+
+weights:
+  # Five separated layers: structural count, initial weight, learned delta,
+  # effective weight and sign class. Only verified-sign edges are plastic.
+  # Bounds are declared modelling choices fixed before any experiment.
+  bounds:
+    lower_factor: 0.5
+    upper_factor: 2.0
+    absolute_min_pa: null
+    absolute_max_pa: null
+    max_abs_update_pa: 5.0
+  # eta = 0.0 is the fixed-weight control. It must reproduce the fixed-weight
+  # spike hashes exactly; it is not a tuned value.
+  fixed_mode_eta: 0.0
+  primary_threshold: 5
+
+rule:
+  rule: delta_w = eta * delta_t * e_ij
+  eta: 0.01
+  # reward_event applies the rule only when a reward event is delivered;
+  # every_step applies it every timestep (a zero prediction error changes
+  # nothing unless weight decay is enabled).
+  update_cadence: reward_event
+  weight_decay_per_ms: 0.0
+  # Normalization would couple edges and is a declared exclusion in Phase 5D.
+  normalization: none
+  abort_on_sign_flip: true
+
+simulation:
+  # Shared by the plastic pathway and the 5D unit experiments. The fixed-weight
+  # oracle keeps its own Phase 4G settings.
+  dt_ms: 0.5
+  duration_ms: 100.0
+  tau_exc_ms: 5.0
+  tau_inh_ms: 8.0
+  delay_ms: 1.0
+  background_current_pa: 0.0
+  noise_std_pa: 0.0
+  max_recorded_spikes: 200000
+
+# Sections below are declared in later Phase 5 work packages.
+# 5E adds the controlled task; 5F adds comparative/robustness evaluation.

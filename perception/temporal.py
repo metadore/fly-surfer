@@ -28,6 +28,7 @@ from enum import Enum
 from perception.config import ClassRole, GameStateRole
 from perception.observations import VisualObservation
 from perception.tracking import (
+    DuplicateRecord,
     FrameTracks,
     MultiObjectTracker,
     TrackMatch,
@@ -262,6 +263,10 @@ class TemporalFrame:
     unrepresented_tracks: int
     notes: tuple[str, ...] = ()
     matches: tuple[TrackMatch, ...] = ()
+    created: tuple[TrackRecord, ...] = ()
+    occluded: tuple[TrackRecord, ...] = ()
+    lost: tuple[TrackRecord, ...] = ()
+    duplicates: tuple[DuplicateRecord, ...] = ()
 
     def as_dict(self) -> dict:
         return {
@@ -274,6 +279,10 @@ class TemporalFrame:
             "tracks": [item.as_dict() for item in self.tracks],
             "events": [item.as_dict() for item in self.events],
             "matches": [item.as_dict() for item in self.matches],
+            "created": [item.as_dict() for item in self.created],
+            "occluded": [item.as_dict() for item in self.occluded],
+            "lost": [item.as_dict() for item in self.lost],
+            "duplicates": [item.as_dict() for item in self.duplicates],
             "features": dict(self.features),
             "game_state": {
                 "time_ms": self.state.time_ms,
@@ -991,6 +1000,10 @@ class TemporalSequenceProcessor:
             unrepresented_tracks=unrepresented,
             notes=notes,
             matches=tracks.matches,
+            created=tracks.created,
+            occluded=tracks.occluded,
+            lost=tracks.lost,
+            duplicates=tracks.duplicates,
         )
 
     def describe(self) -> dict:

@@ -1,0 +1,20 @@
+{
+ "output": "p3_t4_1_four_neuron_validation.json",
+ "output_sha256": "6b88c734bbb5538deb0bc02db9af47bc412440727d2bce89f430c2fc85b579f8",
+ "phase": "P3-T4.1",
+ "version": "p3_t4_1_four_neuron_validation_v1",
+ "verdict": "PASS",
+ "generated_at_utc": "2026-11-14T03:03:34.360978+00:00",
+ "config_sha256": "59f92c89813a11ac1e8812fdb5a23da789fc1cb124b210eadbfa7aba8bc4fd25",
+ "preregistration_sha256": "ec5820327c00c5cda2fc1ce0fde814a73ee70abe9854ff0573f2cd5b25f2c421",
+ "runner_sha256": "0afd7d6f3624d344bf0a635fca4ee0ffb5ad5c87c690a1a1cc694de4dd51a11b",
+ "preflight_sha256": "d116d383016a103b2a5bbdeee211fdcce381ff58199f42a1b1ff1c669b7da3e8",
+ "report_sha256": "365d57f07368440e5f627d33c98fb196f02843cf285727567c67d06bee970b3f",
+ "git": {
+  "head": "62a64309cadc0db7353c856607cee5369993bd65",
+  "branch": "main",
+  "working_tree_dirty": true,
+  "n_status_entries": 209,
+  "staged_changes": false
+ }
+}

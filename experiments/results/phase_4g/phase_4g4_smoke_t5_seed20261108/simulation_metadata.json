@@ -1,0 +1,210 @@
+{
+ "generated_at_utc": "2026-11-08T06:39:36+00:00",
+ "simulation": {
+  "duration_ms": 100.0,
+  "dt_ms": 0.5,
+  "n_steps": 200,
+  "seed": 20261108,
+  "runtime_s": 0.7345,
+  "steps_per_second": 272.3
+ },
+ "graph": {
+  "source": "BANC v888",
+  "graph_threshold": 5,
+  "n_nodes": 172433,
+  "n_edges": 1535710,
+  "n_synapses": 18552546,
+  "n_isolated": 24320
+ },
+ "model": {
+  "neuron": {
+   "capacitance_pf": 200.0,
+   "leak_conductance_ns": 10.0,
+   "resting_potential_mv": -65.0,
+   "threshold_mv": -50.0,
+   "reset_potential_mv": -68.0,
+   "refractory_ms": 2.0,
+   "initial_potential_mv": -65.0,
+   "minimum_potential_mv": -90.0
+  },
+  "synapse": {
+   "tau_exc_ms": 5.0,
+   "tau_inh_ms": 8.0,
+   "effective_delay_ms": 1.0,
+   "delay_steps": 2,
+   "weight_source": "structural synapse count (count), not norm"
+  }
+ },
+ "synaptic_policy": {
+  "sign_policy": {
+   "verified_excitatory": [
+    "acetylcholine",
+    "glutamate"
+   ],
+   "verified_inhibitory": [
+    "gaba",
+    "glycine"
+   ],
+   "modulators_without_fixed_sign": [
+    "dopamine",
+    "serotonin",
+    "octopamine",
+    "tyramine",
+    "histamine",
+    "nitric_oxide"
+   ],
+   "conflict_policy": "unknown",
+   "modulator_only_policy": "unknown",
+   "predicted_fallback": false,
+   "unknown_edge_policy": "exclude",
+   "interpretation": "excitatory and inhibitory are modelling priors applied to the presynaptic neuron; they are not established postsynaptic effects at every target"
+  },
+  "weight_policy": {
+   "transform": "power",
+   "exponent": 0.75,
+   "scale_pa": 5.0,
+   "cap_pa": 300.0,
+   "weight_source": "integer synapse count (`count`); `norm` is never used",
+   "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+  },
+  "signed_edges": 683100,
+  "excluded_edges": 852610,
+  "excitatory_edges": 502727,
+  "inhibitory_edges": 180373
+ },
+ "stimulation": {
+  "label": "highest_out_degree:64@300pA",
+  "n_neurons": 64,
+  "root_ids": [
+   720575941405860208,
+   720575941412601967,
+   720575941416653084,
+   720575941418305052,
+   720575941418390300,
+   720575941440904255,
+   720575941446780842,
+   720575941453611898,
+   720575941464182672,
+   720575941472988279,
+   720575941473029495,
+   720575941474101344,
+   720575941478599454,
+   720575941481834208,
+   720575941482622627,
+   720575941483106243,
+   720575941492471502,
+   720575941492973287,
+   720575941496349310,
+   720575941497888384,
+   720575941500851362,
+   720575941500851785,
+   720575941503947403,
+   720575941506055874,
+   720575941508609665,
+   720575941508987717,
+   720575941509979998,
+   720575941518549395,
+   720575941520657880,
+   720575941528443417,
+   720575941535164291,
+   720575941537352970,
+   720575941537710824,
+   720575941537795521,
+   720575941537896474,
+   720575941540370069,
+   720575941546261253,
+   720575941554922119,
+   720575941557552356,
+   720575941557939428,
+   720575941561376750,
+   720575941566084871,
+   720575941567736423,
+   720575941585819999,
+   720575941596694823,
+   720575941598148229,
+   720575941612504297,
+   720575941613506989,
+   720575941613660390,
+   720575941614407900,
+   720575941618690517,
+   720575941625363452,
+   720575941626500746,
+   720575941631721954,
+   720575941644360018,
+   720575941646264993,
+   720575941652728049,
+   720575941653756145,
+   720575941654217457,
+   720575941664692860,
+   720575941689586671,
+   720575941689628143,
+   720575941692811928,
+   720575941734526507
+  ],
+  "current_pa": 300.0,
+  "start_ms": 10.0,
+  "end_ms": 40.0
+ },
+ "input_schedule": null,
+ "activity": {
+  "duration_ms": 100.0,
+  "n_neurons": 172433,
+  "n_spikes": 74,
+  "active_neurons": 64,
+  "silent_neurons": 172369,
+  "active_fraction": 0.000371,
+  "mean_rate_hz": 0.0043,
+  "rate_percentiles_hz": {
+   "50": 0.0,
+   "90": 0.0,
+   "95": 0.0,
+   "99": 0.0,
+   "100": 20.0
+  },
+  "population_rate_hz": 0.0043,
+  "population_rate_peak_hz": 0.0371,
+  "spike_capacity": 2000000
+ },
+ "activity_by_stimulation": {
+  "stimulated_neurons": 64,
+  "stimulated_active_neurons": 64,
+  "stimulated_spikes": 74,
+  "non_stimulated_active_neurons": 0,
+  "non_stimulated_spikes": 0,
+  "non_stimulated_spike_fraction": 0.0
+ },
+ "synaptic_transmission": {
+  "spike_transmissions": 44225,
+  "transmissions_per_spike": 597.635
+ },
+ "diagnostics": {
+  "finite_state": true,
+  "min_membrane_mv": -65.4282,
+  "max_membrane_mv": -64.0173,
+  "max_abs_membrane_mv": 65.4282,
+  "max_abs_total_current_pa": 785.2506,
+  "max_excitatory_synaptic_current_pa": 844.4739,
+  "max_inhibitory_synaptic_current_pa": 300.0
+ },
+ "memory": {
+  "graph_arrays_bytes": 43366573,
+  "policy_arrays_bytes": 12630546,
+  "neuron_state_bytes": 2069196,
+  "synapse_state_bytes": 16424072,
+  "synapse_arrays_bytes": 13665144,
+  "delay_buffer_bytes": 2758928,
+  "spike_recorder_bytes": 16000000,
+  "retained_arrays_bytes": 90490387,
+  "recorder_capacity": 2000000,
+  "recorder_capacity_bytes": 16000000,
+  "components_mb": {
+   "graph_arrays": 41.3576,
+   "policy_arrays": 12.0454,
+   "neuron_state": 1.9733,
+   "synapse_state": 15.6632,
+   "delay_buffers": 2.6311,
+   "spike_recorder": 15.2588
+  },
+  "retained_arrays_mb": 86.2984
+ }
+}

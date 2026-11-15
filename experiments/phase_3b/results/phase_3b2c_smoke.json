@@ -1,0 +1,431 @@
+{
+ "phase": "3B.2C",
+ "generated_at_utc": "2026-11-07T04:55:05.599309+00:00",
+ "verdict": "SMOKE ONLY",
+ "runtime_s": 3.309,
+ "sequence": {
+  "group": "datasetfootage",
+  "frame_start": 100,
+  "frame_end": 199,
+  "n_frames": 100,
+  "image_size": [
+   606,
+   1050
+  ],
+  "split_folder_counts": {
+   "valid": 23,
+   "train": 77
+  },
+  "split_assignment": "valid (fixed grouped split)",
+  "logo_fold": {
+   "fold": 1,
+   "valid_group": "datasetfootage",
+   "valid_images": 504,
+   "valid_boxes": 1681
+  },
+  "sequence_sha256": "e2ade409bd69396e94ebc826bcd8130f02634c6077e2ea391a2862f8929b69d5"
+ },
+ "model": {
+  "name": "onnx-runtime-detector",
+  "kind": "local_onnx_detector",
+  "test_only": false,
+  "produces": "untrusted RawDetection records in processed-image pixels",
+  "model_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\models\\YOLO11\\deployment\\yolo11n_v1_deployment\\best.onnx",
+  "model_sha256": "e6ad18f90cd0be8c71237556f0922d83a6dca4ac54184ddde6536896b6b6aa77",
+  "weights_loaded": true,
+  "weights_trained_in_repository": false,
+  "trained_accuracy_reported": null,
+  "input_size": [
+   640,
+   640
+  ],
+  "resize_mode": "letterbox",
+  "output_layout": "yolo_raw",
+  "has_objectness": false,
+  "class_activation": "none",
+  "num_model_classes": 14,
+  "providers": [
+   "CPUExecutionProvider"
+  ],
+  "class_names": [
+   "boots-powerup",
+   "boxtrain",
+   "jump-barrier",
+   "jump-electric",
+   "jump-hedge",
+   "jump-roll-barrier",
+   "jump-trash",
+   "ledge",
+   "pogstick-powerup",
+   "ramp",
+   "roll-barrier",
+   "train",
+   "undercover-barrier",
+   "wall"
+  ],
+  "class_id_map": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13
+  ],
+  "confidence_threshold": 0.426,
+  "nms_iou_threshold": 0.7,
+  "timing_scope": "detector call wall time: preprocessing + session.run + decode/NMS/coordinate inversion; not pure ONNX inference time",
+  "last_inference_ms": null,
+  "last_detector_call_ms": null,
+  "last_preprocess_ms": null,
+  "last_session_run_ms": null,
+  "last_postprocess_ms": null,
+  "last_decoded_count": 0,
+  "notes": [
+   "The model artifact is a local, Git-ignored deployment file.",
+   "trained_accuracy_reported is null: repository metrics are not reproduced at load time.",
+   "Predictions are visual estimates and are validated downstream.",
+   "The detector is not connected to the connectome or plasticity."
+  ],
+  "config": {
+   "model_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\models\\YOLO11\\deployment\\yolo11n_v1_deployment\\best.onnx",
+   "model_sha256": "e6ad18f90cd0be8c71237556f0922d83a6dca4ac54184ddde6536896b6b6aa77",
+   "input_size": [
+    640,
+    640
+   ],
+   "confidence_threshold": 0.426,
+   "nms_iou_threshold": 0.7
+  }
+ },
+ "smoke": {
+  "tolerance_0.0": {
+   "bounds_tolerance_pixels": 0.0,
+   "frames": [
+    "datasetfootage-0100",
+    "datasetfootage-0101",
+    "datasetfootage-0102",
+    "datasetfootage-0103",
+    "datasetfootage-0104",
+    "datasetfootage-0105",
+    "datasetfootage-0106",
+    "datasetfootage-0107",
+    "datasetfootage-0108",
+    "datasetfootage-0109"
+   ],
+   "aggregate": {
+    "n_frames": 10,
+    "n_candidates": 27,
+    "n_decoded_above_threshold": 236,
+    "n_accepted": 25,
+    "n_rejected": 2,
+    "n_clipped": 0,
+    "rejection_reasons": {
+     "out_of_bounds": 2
+    },
+    "accepted_by_class": {
+     "boxtrain": 8,
+     "ramp": 3,
+     "train": 14
+    },
+    "clip_distances_pixels": [],
+    "max_clip_distance_pixels": 0.0,
+    "detector_call_ms": {
+     "n": 10,
+     "mean": 130.6778,
+     "median": 130.946,
+     "p95": 133.199,
+     "min": 124.966,
+     "max": 133.199
+    },
+    "preprocess_ms": {
+     "n": 10,
+     "mean": 10.3958,
+     "median": 10.337,
+     "p95": 12.273,
+     "min": 9.393,
+     "max": 12.273
+    },
+    "session_run_ms": {
+     "n": 10,
+     "mean": 118.7079,
+     "median": 118.7125,
+     "p95": 121.318,
+     "min": 114.12,
+     "max": 121.318
+    },
+    "postprocess_ms": {
+     "n": 10,
+     "mean": 1.5741,
+     "median": 1.4835,
+     "p95": 2.242,
+     "min": 0.962,
+     "max": 2.242
+    },
+    "frames_with_no_accepted": [
+     "datasetfootage-0100"
+    ]
+   },
+   "per_frame": [
+    {
+     "frame_id": "datasetfootage-0100",
+     "n_candidates": 0,
+     "n_accepted": 0,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0101",
+     "n_candidates": 2,
+     "n_accepted": 2,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0102",
+     "n_candidates": 4,
+     "n_accepted": 3,
+     "n_rejected": 1,
+     "n_clipped": 0,
+     "rejection_reasons": [
+      "out_of_bounds"
+     ]
+    },
+    {
+     "frame_id": "datasetfootage-0103",
+     "n_candidates": 2,
+     "n_accepted": 1,
+     "n_rejected": 1,
+     "n_clipped": 0,
+     "rejection_reasons": [
+      "out_of_bounds"
+     ]
+    },
+    {
+     "frame_id": "datasetfootage-0104",
+     "n_candidates": 3,
+     "n_accepted": 3,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0105",
+     "n_candidates": 4,
+     "n_accepted": 4,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0106",
+     "n_candidates": 3,
+     "n_accepted": 3,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0107",
+     "n_candidates": 3,
+     "n_accepted": 3,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0108",
+     "n_candidates": 3,
+     "n_accepted": 3,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0109",
+     "n_candidates": 3,
+     "n_accepted": 3,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    }
+   ]
+  },
+  "tolerance_1.0": {
+   "bounds_tolerance_pixels": 1.0,
+   "frames": [
+    "datasetfootage-0100",
+    "datasetfootage-0101",
+    "datasetfootage-0102",
+    "datasetfootage-0103",
+    "datasetfootage-0104",
+    "datasetfootage-0105",
+    "datasetfootage-0106",
+    "datasetfootage-0107",
+    "datasetfootage-0108",
+    "datasetfootage-0109"
+   ],
+   "aggregate": {
+    "n_frames": 10,
+    "n_candidates": 27,
+    "n_decoded_above_threshold": 236,
+    "n_accepted": 26,
+    "n_rejected": 1,
+    "n_clipped": 1,
+    "rejection_reasons": {
+     "out_of_bounds": 1
+    },
+    "accepted_by_class": {
+     "boxtrain": 8,
+     "ramp": 4,
+     "train": 14
+    },
+    "clip_distances_pixels": [
+     0.829859
+    ],
+    "max_clip_distance_pixels": 0.829858795414126,
+    "detector_call_ms": {
+     "n": 10,
+     "mean": 129.8519,
+     "median": 129.2255,
+     "p95": 136.368,
+     "min": 123.774,
+     "max": 136.368
+    },
+    "preprocess_ms": {
+     "n": 10,
+     "mean": 10.4393,
+     "median": 10.3075,
+     "p95": 11.723,
+     "min": 9.232,
+     "max": 11.723
+    },
+    "session_run_ms": {
+     "n": 10,
+     "mean": 117.7351,
+     "median": 116.9095,
+     "p95": 123.576,
+     "min": 112.625,
+     "max": 123.576
+    },
+    "postprocess_ms": {
+     "n": 10,
+     "mean": 1.6774,
+     "median": 1.5935,
+     "p95": 2.195,
+     "min": 1.243,
+     "max": 2.195
+    },
+    "frames_with_no_accepted": [
+     "datasetfootage-0100"
+    ]
+   },
+   "per_frame": [
+    {
+     "frame_id": "datasetfootage-0100",
+     "n_candidates": 0,
+     "n_accepted": 0,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0101",
+     "n_candidates": 2,
+     "n_accepted": 2,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0102",
+     "n_candidates": 4,
+     "n_accepted": 4,
+     "n_rejected": 0,
+     "n_clipped": 1,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0103",
+     "n_candidates": 2,
+     "n_accepted": 1,
+     "n_rejected": 1,
+     "n_clipped": 0,
+     "rejection_reasons": [
+      "out_of_bounds"
+     ]
+    },
+    {
+     "frame_id": "datasetfootage-0104",
+     "n_candidates": 3,
+     "n_accepted": 3,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0105",
+     "n_candidates": 4,
+     "n_accepted": 4,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0106",
+     "n_candidates": 3,
+     "n_accepted": 3,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0107",
+     "n_candidates": 3,
+     "n_accepted": 3,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0108",
+     "n_candidates": 3,
+     "n_accepted": 3,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    },
+    {
+     "frame_id": "datasetfootage-0109",
+     "n_candidates": 3,
+     "n_accepted": 3,
+     "n_rejected": 0,
+     "n_clipped": 0,
+     "rejection_reasons": []
+    }
+   ]
+  },
+  "production_tolerance": 0.0,
+  "experiment_tolerance": 1.0
+ },
+ "limitations": [
+  "This is an engineering integration experiment, not evidence of gameplay success or biological perception.",
+  "Frames carry no source timestamps; 30 fps is assumed and timestamps are synthesized as (local_index) * 1000/30 ms.",
+  "The detector was trained on the same recording groups; the sequence is held out by recording in the fixed split and LOGO fold 1, but there is no independent test set.",
+  "No annotated object identities exist, so tracker-ID switches cannot be distinguished from real object changes. Reported track ids are tracker ids, not object identities.",
+  "The v15 schema has no player and no coin class. Player movement, jumping, rolling and coin observations are therefore unavailable, not inferred.",
+  "Lane, distance and velocity are image geometry. Distance is an uncalibrated bottom-edge proxy, not metres.",
+  "Occlusion is inferred from missed associations, not observed directly.",
+  "Spikes are model output under configured assumptions, not measured biological activity. The connectome is fixed and no plasticity is used.",
+  "No action is selected anywhere in this chain."
+ ]
+}

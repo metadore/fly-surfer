@@ -1,0 +1,14 @@
+{
+  "output": "p3_t4_calibration_discrepancy.json",
+  "phase": "P3-T4",
+  "version": "p3_t4_calibration_discrepancy_v1",
+  "generated_at_utc": "2026-11-13T18:56:18+00:00",
+  "config_sha256": "26d782a3b5910c05d433fa6678557f7c806dc9947ee8ad279e246fa34f4e96db",
+  "calibration_config_sha256": "e2f446a858e6a906e27d682a1958498c129c6367d5f42f6d103a7fd36a28e84d",
+  "git": {
+    "head": "62a64309cadc0db7353c856607cee5369993bd65",
+    "branch": "main",
+    "working_tree_dirty": true,
+    "n_status_entries": 193
+  }
+}

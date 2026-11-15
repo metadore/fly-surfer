@@ -1,0 +1,4506 @@
+{
+ "pipeline": "phase_3b_end_to_end_sensory_to_neural",
+ "generated_at_utc": "2026-11-15T10:44:11+00:00",
+ "input": {
+  "kind": "recording",
+  "group": "datasetfootage",
+  "start": 100,
+  "end": 109,
+  "n_frames": 10,
+  "frame_interval_ms": 33.333333333333336,
+  "paths": [
+   "datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\valid\\images\\datasetfootage_mp4-100_jpg.rf.6fdcbaf6491ec78d26db6ffd49b1539b.jpg",
+   "datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\valid\\images\\datasetfootage_mp4-101_jpg.rf.34618ad21c571b4f5e89d5e5022a5a49.jpg",
+   "datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\valid\\images\\datasetfootage_mp4-102_jpg.rf.61810f41db15979a5a0c0e3c570b199c.jpg",
+   "datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\train\\images\\datasetfootage_mp4-103_jpg.rf.49eb7c77bd38e88df21df1f1b22e9bd1.jpg",
+   "datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\valid\\images\\datasetfootage_mp4-104_jpg.rf.fc19d3ac291b99bece1ed2091d09ec04.jpg",
+   "datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\train\\images\\datasetfootage_mp4-105_jpg.rf.7b76cb1bdbfd0fd21f14bac8031c9787.jpg",
+   "datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\train\\images\\datasetfootage_mp4-106_jpg.rf.76e8a270fcdcba1b59b2714ba0817c2f.jpg",
+   "datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\valid\\images\\datasetfootage_mp4-107_jpg.rf.a2fc1c887bfa88299007c6d8162a57c7.jpg",
+   "datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\train\\images\\datasetfootage_mp4-108_jpg.rf.f85765b2d2abcb5a48d30bfe5c46ab21.jpg",
+   "datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\train\\images\\datasetfootage_mp4-109_jpg.rf.62e5f1cc4172919a8e78ed9d5bc53009.jpg"
+  ],
+  "sha256": [
+   "163d1e45cf4a1817549260e6559dc52f06b1c7ff0bab85c3dc6d664b74d68057",
+   "73fa951cfad13d1445b6b5eb8d246d36798e4bc70b022838bd70f377860c1cc5",
+   "a83f2c7a4ec99d8c47973e951e8a5c7126a5db3ab5fd226853c183c0af2575ca",
+   "0b444e5382231eed444d39123e2b325101855bbe32fac3119322decfcd9fd16c",
+   "a3e6e3ac2834ac508079fbe2d69c4e027978d22cfa7480f9d52997d329965830",
+   "73a88be6463af8e8d484a31095b7c05b1fc9a3af19675306ff7d58bc61ac9083",
+   "b9d2c257b68b071db5d6d8d3ef7c1bf8a0ef414891971079046579b5c31b99b2",
+   "7d85e8b9bd21243e89efa648437476226e3571ae9a3bf1a3b8d750c34baae4e3",
+   "a2b18975d93e1e63fc28f63a0a99b55f3c4ec9c976e9c3b73996682107dbf8ce",
+   "035a59e66bd68a66e8efa6f53dd589bdb65ba5cdc3d3acc54c5d9c45aa346166"
+  ],
+  "frame_ids": [
+   "datasetfootage-0100",
+   "datasetfootage-0101",
+   "datasetfootage-0102",
+   "datasetfootage-0103",
+   "datasetfootage-0104",
+   "datasetfootage-0105",
+   "datasetfootage-0106",
+   "datasetfootage-0107",
+   "datasetfootage-0108",
+   "datasetfootage-0109"
+  ],
+  "timestamps_ms": [
+   0.0,
+   33.333,
+   66.667,
+   100.0,
+   133.333,
+   166.667,
+   200.0,
+   233.333,
+   266.667,
+   300.0
+  ]
+ },
+ "detector": {
+  "description": {
+   "name": "onnx-runtime-detector",
+   "kind": "local_onnx_detector",
+   "test_only": false,
+   "produces": "untrusted RawDetection records in processed-image pixels",
+   "model_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\models\\YOLO11\\deployment\\yolo11n_v1_deployment\\best.onnx",
+   "model_sha256": "e6ad18f90cd0be8c71237556f0922d83a6dca4ac54184ddde6536896b6b6aa77",
+   "weights_loaded": true,
+   "weights_trained_in_repository": false,
+   "trained_accuracy_reported": null,
+   "input_size": [
+    640,
+    640
+   ],
+   "resize_mode": "letterbox",
+   "output_layout": "yolo_raw",
+   "has_objectness": false,
+   "class_activation": "none",
+   "num_model_classes": 14,
+   "providers": [
+    "CPUExecutionProvider"
+   ],
+   "class_names": [
+    "boots-powerup",
+    "boxtrain",
+    "jump-barrier",
+    "jump-electric",
+    "jump-hedge",
+    "jump-roll-barrier",
+    "jump-trash",
+    "ledge",
+    "pogstick-powerup",
+    "ramp",
+    "roll-barrier",
+    "train",
+    "undercover-barrier",
+    "wall"
+   ],
+   "class_id_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+   ],
+   "confidence_threshold": 0.426,
+   "nms_iou_threshold": 0.7,
+   "timing_scope": "detector call wall time: preprocessing + session.run + decode/NMS/coordinate inversion; not pure ONNX inference time",
+   "last_inference_ms": 144.56190000055358,
+   "last_detector_call_ms": 144.56190000055358,
+   "last_preprocess_ms": 10.113099997397512,
+   "last_session_run_ms": 130.93560002744198,
+   "last_postprocess_ms": 3.5131999757140875,
+   "last_decoded_count": 28,
+   "notes": [
+    "The model artifact is a local, Git-ignored deployment file.",
+    "trained_accuracy_reported is null: repository metrics are not reproduced at load time.",
+    "Predictions are visual estimates and are validated downstream.",
+    "The detector is not connected to the connectome or plasticity."
+   ]
+  },
+  "config": {
+   "model_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\models\\YOLO11\\deployment\\yolo11n_v1_deployment\\best.onnx",
+   "model_sha256": "e6ad18f90cd0be8c71237556f0922d83a6dca4ac54184ddde6536896b6b6aa77",
+   "input_size": [
+    640,
+    640
+   ],
+   "confidence_threshold": 0.426,
+   "nms_iou_threshold": 0.7,
+   "providers": [
+    "CPUExecutionProvider"
+   ]
+  },
+  "bounds_tolerance_pixels": 1.0
+ },
+ "frames": [
+  {
+   "frame_id": "datasetfootage-0100",
+   "timestamp_ms": 0.0,
+   "image_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\valid\\images\\datasetfootage_mp4-100_jpg.rf.6fdcbaf6491ec78d26db6ffd49b1539b.jpg",
+   "n_decoded_above_threshold": 28,
+   "detections": [],
+   "rejected": [],
+   "observations": [],
+   "game_state": {
+    "state": {
+     "time_ms": 0.0,
+     "player": {
+      "lane": {
+       "value": 1,
+       "name": "center"
+      },
+      "speed": 0.5,
+      "jumping": false,
+      "rolling": false
+     },
+     "obstacle": null,
+     "train": null,
+     "coin": null
+    },
+    "player_known": false,
+    "player_lane_known": false,
+    "coins_available": false,
+    "estimated_fields": [
+     "player.lane",
+     "player.speed",
+     "player.jumping",
+     "player.rolling"
+    ],
+    "unrepresented": [],
+    "warnings": [
+     "No player detection is available; the schema defaults (centre lane, speed 0.5, not jumping, not rolling) were used.",
+     "Object distances use an uncalibrated bottom-edge image proxy with horizon fraction 0.1500; they are not metric or game distances.",
+     "The configured detector schema declares no player class; player state is not observed.",
+     "The configured detector schema declares no coin class; coin presence is not observed."
+    ]
+   },
+   "features": {
+    "player_lane": 1.0,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 0.0,
+    "obstacle_lane": null,
+    "obstacle_distance": null,
+    "obstacle_type": null,
+    "train_present": 0.0,
+    "train_lane": null,
+    "train_distance": null,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   },
+   "feature_groups": [
+    {
+     "group": "player",
+     "feature_names": [
+      "player_lane",
+      "player_speed",
+      "jumping",
+      "rolling"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "the configured detector schema declares no player class"
+    },
+    {
+     "group": "obstacle",
+     "feature_names": [
+      "obstacle_present",
+      "obstacle_lane",
+      "obstacle_distance",
+      "obstacle_type"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "no obstacle detection in this frame"
+    },
+    {
+     "group": "train",
+     "feature_names": [
+      "train_present",
+      "train_lane",
+      "train_distance"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "no train detection in this frame"
+    },
+    {
+     "group": "coin",
+     "feature_names": [
+      "coin_present",
+      "coin_lane",
+      "coin_distance"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "coins are unavailable in the configured detector schema"
+    }
+   ]
+  },
+  {
+   "frame_id": "datasetfootage-0101",
+   "timestamp_ms": 33.333,
+   "image_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\valid\\images\\datasetfootage_mp4-101_jpg.rf.34618ad21c571b4f5e89d5e5022a5a49.jpg",
+   "n_decoded_above_threshold": 28,
+   "detections": [
+    {
+     "class_id": 9,
+     "class_name": "ramp",
+     "role": "terrain",
+     "confidence": 0.933206,
+     "screen_box": [
+      53.1468,
+      291.3831,
+      214.644,
+      506.1727
+     ],
+     "normalized_box": [
+      0.087701,
+      0.277508,
+      0.354198,
+      0.482069
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "confidence": 0.82642,
+     "screen_box": [
+      220.0259,
+      330.0916,
+      257.2984,
+      373.0734
+     ],
+     "normalized_box": [
+      0.363079,
+      0.314373,
+      0.424585,
+      0.355308
+     ],
+     "clamped": false
+    }
+   ],
+   "rejected": [],
+   "observations": [
+    {
+     "object_index": 0,
+     "class_id": 9,
+     "class_name": "ramp",
+     "role": "terrain",
+     "game_state_role": "unsupported",
+     "lane": 0,
+     "bbox_screen": {
+      "x1": 53.14684760861281,
+      "y1": 291.38312101364136,
+      "x2": 214.6439948353341,
+      "y2": 506.17266654968256
+     },
+     "bbox_normalized": [
+      0.08770106866107724,
+      0.27750773429870607,
+      0.3541980112794292,
+      0.4820692062377929
+     ],
+     "center": {
+      "x": 0.2209495399702532,
+      "y": 0.37978847026824947
+     },
+     "relative_horizontal_position": -0.5581009200594935,
+     "relative_vertical_position": -0.24042305946350107,
+     "distance_proxy": 0.60933,
+     "normalized_proximity": 0.39066999999999996,
+     "box_area_fraction": 0.05451500684927644,
+     "confidence": 0.9332059621810913,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0101",
+     "timestamp_ms": 33.333333333333336,
+     "raw_index": 0,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 1,
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 1,
+     "bbox_screen": {
+      "x1": 220.02587319971101,
+      "y1": 330.0915670394897,
+      "x2": 257.29840112701663,
+      "y2": 373.07340860366816
+     },
+     "bbox_normalized": [
+      0.36307899867939114,
+      0.3143729209899902,
+      0.4245848203416116,
+      0.3553080081939697
+     ],
+     "center": {
+      "x": 0.3938319095105014,
+      "y": 0.3348404645919799
+     },
+     "relative_horizontal_position": -0.2123361809789972,
+     "relative_vertical_position": -0.3303190708160402,
+     "distance_proxy": 0.758461,
+     "normalized_proximity": 0.24153899999999995,
+     "box_area_fraction": 0.002517746173295405,
+     "confidence": 0.8264201879501343,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0101",
+     "timestamp_ms": 33.333333333333336,
+     "raw_index": 1,
+     "source": "onnx-runtime-detector"
+    }
+   ],
+   "game_state": {
+    "state": {
+     "time_ms": 33.333333333333336,
+     "player": {
+      "lane": {
+       "value": 1,
+       "name": "center"
+      },
+      "speed": 0.5,
+      "jumping": false,
+      "rolling": false
+     },
+     "obstacle": null,
+     "train": {
+      "present": true,
+      "lane": {
+       "value": 1,
+       "name": "center"
+      },
+      "distance": 0.758461
+     },
+     "coin": null
+    },
+    "player_known": false,
+    "player_lane_known": false,
+    "coins_available": false,
+    "estimated_fields": [
+     "player.lane",
+     "player.speed",
+     "player.jumping",
+     "player.rolling",
+     "train.distance"
+    ],
+    "unrepresented": [
+     {
+      "class_name": "ramp",
+      "role": "terrain",
+      "lane": 0,
+      "reason": "class role 'terrain' has no GameState representation"
+     }
+    ],
+    "warnings": [
+     "No player detection is available; the schema defaults (centre lane, speed 0.5, not jumping, not rolling) were used.",
+     "Object distances use an uncalibrated bottom-edge image proxy with horizon fraction 0.1500; they are not metric or game distances.",
+     "1 scene object(s) are not represented by the GameState schema; see 'unrepresented'.",
+     "The configured detector schema declares no player class; player state is not observed.",
+     "The configured detector schema declares no coin class; coin presence is not observed."
+    ]
+   },
+   "features": {
+    "player_lane": 1.0,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 0.0,
+    "obstacle_lane": null,
+    "obstacle_distance": null,
+    "obstacle_type": null,
+    "train_present": 1.0,
+    "train_lane": 1.0,
+    "train_distance": 0.758461,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   },
+   "feature_groups": [
+    {
+     "group": "player",
+     "feature_names": [
+      "player_lane",
+      "player_speed",
+      "jumping",
+      "rolling"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "the configured detector schema declares no player class"
+    },
+    {
+     "group": "obstacle",
+     "feature_names": [
+      "obstacle_present",
+      "obstacle_lane",
+      "obstacle_distance",
+      "obstacle_type"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "no obstacle detection in this frame"
+    },
+    {
+     "group": "train",
+     "feature_names": [
+      "train_present",
+      "train_lane",
+      "train_distance"
+     ],
+     "present": true,
+     "object_index": 1,
+     "class_name": "boxtrain",
+     "confidence": 0.8264201879501343,
+     "valid": true,
+     "visibility": "in_frame",
+     "lane": 1,
+     "distance_proxy": 0.758461,
+     "n_candidates": 1,
+     "reason": null
+    },
+    {
+     "group": "coin",
+     "feature_names": [
+      "coin_present",
+      "coin_lane",
+      "coin_distance"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "coins are unavailable in the configured detector schema"
+    }
+   ]
+  },
+  {
+   "frame_id": "datasetfootage-0102",
+   "timestamp_ms": 66.667,
+   "image_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\valid\\images\\datasetfootage_mp4-102_jpg.rf.61810f41db15979a5a0c0e3c570b199c.jpg",
+   "n_decoded_above_threshold": 28,
+   "detections": [
+    {
+     "class_id": 9,
+     "class_name": "ramp",
+     "role": "terrain",
+     "confidence": 0.951141,
+     "screen_box": [
+      0.0,
+      292.131,
+      207.0238,
+      603.6411
+     ],
+     "normalized_box": [
+      0.0,
+      0.27822,
+      0.341623,
+      0.574896
+     ],
+     "clamped": true
+    },
+    {
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "confidence": 0.796794,
+     "screen_box": [
+      224.6035,
+      324.4017,
+      263.3006,
+      371.0111
+     ],
+     "normalized_box": [
+      0.370633,
+      0.308954,
+      0.434489,
+      0.353344
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "confidence": 0.564165,
+     "screen_box": [
+      114.0205,
+      291.6923,
+      221.1591,
+      411.5828
+     ],
+     "normalized_box": [
+      0.188153,
+      0.277802,
+      0.364949,
+      0.391984
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "confidence": 0.433426,
+     "screen_box": [
+      152.3239,
+      295.3199,
+      220.846,
+      408.7936
+     ],
+     "normalized_box": [
+      0.25136,
+      0.281257,
+      0.364432,
+      0.389327
+     ],
+     "clamped": false
+    }
+   ],
+   "rejected": [],
+   "observations": [
+    {
+     "object_index": 0,
+     "class_id": 9,
+     "class_name": "ramp",
+     "role": "terrain",
+     "game_state_role": "unsupported",
+     "lane": 0,
+     "bbox_screen": {
+      "x1": 0.0,
+      "y1": 292.13096022605896,
+      "x2": 207.0237580586255,
+      "y2": 603.6410772800446
+     },
+     "bbox_normalized": [
+      0.0,
+      0.2782199621200562,
+      0.34162336313304537,
+      0.574896264076233
+     ],
+     "center": {
+      "x": 0.17081168156652268,
+      "y": 0.42655811309814456
+     },
+     "relative_horizontal_position": -0.6583766368669546,
+     "relative_vertical_position": -0.14688377380371087,
+     "distance_proxy": 0.500122,
+     "normalized_proximity": 0.49987800000000004,
+     "box_area_fraction": 0.101351556036144,
+     "confidence": 0.9511409997940063,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "touches_edge",
+     "clamped": true,
+     "frame_id": "datasetfootage-0102",
+     "timestamp_ms": 66.66666666666667,
+     "raw_index": 0,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 1,
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 1,
+     "bbox_screen": {
+      "x1": 224.60347816033092,
+      "y1": 324.40172553062433,
+      "x2": 263.3005686193947,
+      "y2": 371.01113677024836
+     },
+     "bbox_normalized": [
+      0.3706328022447705,
+      0.30895402431488034,
+      0.43448938716071733,
+      0.3533439397811889
+     ],
+     "center": {
+      "x": 0.4025610947027439,
+      "y": 0.3311489820480346
+     },
+     "relative_horizontal_position": -0.19487781059451215,
+     "relative_vertical_position": -0.3377020359039308,
+     "distance_proxy": 0.760772,
+     "normalized_proximity": 0.239228,
+     "box_area_fraction": 0.0028345884063860328,
+     "confidence": 0.7967939972877502,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0102",
+     "timestamp_ms": 66.66666666666667,
+     "raw_index": 1,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 2,
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 0,
+     "bbox_screen": {
+      "x1": 114.0205336159807,
+      "y1": 291.6922652721405,
+      "x2": 221.1591231183308,
+      "y2": 411.5827596187591
+     },
+     "bbox_normalized": [
+      0.18815269573594173,
+      0.27780215740203856,
+      0.3649490480500508,
+      0.3919835805892944
+     ],
+     "center": {
+      "x": 0.27655087189299626,
+      "y": 0.3348928689956665
+     },
+     "relative_horizontal_position": -0.44689825621400747,
+     "relative_vertical_position": -0.330214262008667,
+     "distance_proxy": 0.715313,
+     "normalized_proximity": 0.284687,
+     "box_area_fraction": 0.020186859121540463,
+     "confidence": 0.5641650557518005,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0102",
+     "timestamp_ms": 66.66666666666667,
+     "raw_index": 2,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 3,
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": null,
+     "bbox_screen": {
+      "x1": 152.32394483612805,
+      "y1": 295.31985998153687,
+      "x2": 220.84603410426195,
+      "y2": 408.79360198974604
+     },
+     "bbox_normalized": [
+      0.2513596449441057,
+      0.28125700950622556,
+      0.3644323995119834,
+      0.38932723999023433
+     ],
+     "center": {
+      "x": 0.3078960222280446,
+      "y": 0.33529212474822995
+     },
+     "relative_horizontal_position": -0.38420795554391085,
+     "relative_vertical_position": -0.3294157505035401,
+     "distance_proxy": 0.718439,
+     "normalized_proximity": 0.28156099999999995,
+     "box_area_fraction": 0.012219798647612303,
+     "confidence": 0.4334258735179901,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0102",
+     "timestamp_ms": 66.66666666666667,
+     "raw_index": 3,
+     "source": "onnx-runtime-detector"
+    }
+   ],
+   "game_state": {
+    "state": {
+     "time_ms": 66.66666666666667,
+     "player": {
+      "lane": {
+       "value": 1,
+       "name": "center"
+      },
+      "speed": 0.5,
+      "jumping": false,
+      "rolling": false
+     },
+     "obstacle": null,
+     "train": {
+      "present": true,
+      "lane": {
+       "value": 0,
+       "name": "left"
+      },
+      "distance": 0.715313
+     },
+     "coin": null
+    },
+    "player_known": false,
+    "player_lane_known": false,
+    "coins_available": false,
+    "estimated_fields": [
+     "player.lane",
+     "player.speed",
+     "player.jumping",
+     "player.rolling",
+     "train.distance"
+    ],
+    "unrepresented": [
+     {
+      "class_name": "train",
+      "role": "train",
+      "lane": null,
+      "reason": "lane assignment is missing or uncertain"
+     },
+     {
+      "class_name": "boxtrain",
+      "role": "train",
+      "lane": 1,
+      "reason": "only the nearest train is representable by the single-object GameState"
+     },
+     {
+      "class_name": "ramp",
+      "role": "terrain",
+      "lane": 0,
+      "reason": "class role 'terrain' has no GameState representation"
+     }
+    ],
+    "warnings": [
+     "No player detection is available; the schema defaults (centre lane, speed 0.5, not jumping, not rolling) were used.",
+     "Object distances use an uncalibrated bottom-edge image proxy with horizon fraction 0.1500; they are not metric or game distances.",
+     "3 scene object(s) are not represented by the GameState schema; see 'unrepresented'.",
+     "1 object(s) touched more than one lane and were assigned by the configured majority rule.",
+     "The configured detector schema declares no player class; player state is not observed.",
+     "The configured detector schema declares no coin class; coin presence is not observed."
+    ]
+   },
+   "features": {
+    "player_lane": 1.0,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 0.0,
+    "obstacle_lane": null,
+    "obstacle_distance": null,
+    "obstacle_type": null,
+    "train_present": 1.0,
+    "train_lane": 0.0,
+    "train_distance": 0.715313,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   },
+   "feature_groups": [
+    {
+     "group": "player",
+     "feature_names": [
+      "player_lane",
+      "player_speed",
+      "jumping",
+      "rolling"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "the configured detector schema declares no player class"
+    },
+    {
+     "group": "obstacle",
+     "feature_names": [
+      "obstacle_present",
+      "obstacle_lane",
+      "obstacle_distance",
+      "obstacle_type"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "no obstacle detection in this frame"
+    },
+    {
+     "group": "train",
+     "feature_names": [
+      "train_present",
+      "train_lane",
+      "train_distance"
+     ],
+     "present": true,
+     "object_index": 2,
+     "class_name": "train",
+     "confidence": 0.5641650557518005,
+     "valid": true,
+     "visibility": "in_frame",
+     "lane": 0,
+     "distance_proxy": 0.715313,
+     "n_candidates": 3,
+     "reason": null
+    },
+    {
+     "group": "coin",
+     "feature_names": [
+      "coin_present",
+      "coin_lane",
+      "coin_distance"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "coins are unavailable in the configured detector schema"
+    }
+   ]
+  },
+  {
+   "frame_id": "datasetfootage-0103",
+   "timestamp_ms": 100.0,
+   "image_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\train\\images\\datasetfootage_mp4-103_jpg.rf.49eb7c77bd38e88df21df1f1b22e9bd1.jpg",
+   "n_decoded_above_threshold": 28,
+   "detections": [
+    {
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "confidence": 0.673889,
+     "screen_box": [
+      164.688,
+      304.9437,
+      290.8374,
+      463.696
+     ],
+     "normalized_box": [
+      0.271762,
+      0.290423,
+      0.47993,
+      0.441615
+     ],
+     "clamped": false
+    }
+   ],
+   "rejected": [
+    {
+     "reason": "out_of_bounds",
+     "detail": "box lies 2.808 px outside the 606x1050 processed image; tolerance is 1.000 px"
+    }
+   ],
+   "observations": [
+    {
+     "object_index": 0,
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": null,
+     "bbox_screen": {
+      "x1": 164.68800391220466,
+      "y1": 304.9437242746353,
+      "x2": 290.8374164860423,
+      "y2": 463.695997595787
+     },
+     "bbox_normalized": [
+      0.271762382693407,
+      0.2904225945472717,
+      0.47992973017498725,
+      0.44161523580551143
+     ],
+     "center": {
+      "x": 0.3758460564341971,
+      "y": 0.36601891517639157
+     },
+     "relative_horizontal_position": -0.2483078871316058,
+     "relative_vertical_position": -0.26796216964721686,
+     "distance_proxy": 0.656923,
+     "normalized_proximity": 0.34307699999999997,
+     "box_area_fraction": 0.03147337108946189,
+     "confidence": 0.6738891005516052,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0103",
+     "timestamp_ms": 100.0,
+     "raw_index": 1,
+     "source": "onnx-runtime-detector"
+    }
+   ],
+   "game_state": {
+    "state": {
+     "time_ms": 100.0,
+     "player": {
+      "lane": {
+       "value": 1,
+       "name": "center"
+      },
+      "speed": 0.5,
+      "jumping": false,
+      "rolling": false
+     },
+     "obstacle": null,
+     "train": null,
+     "coin": null
+    },
+    "player_known": false,
+    "player_lane_known": false,
+    "coins_available": false,
+    "estimated_fields": [
+     "player.lane",
+     "player.speed",
+     "player.jumping",
+     "player.rolling"
+    ],
+    "unrepresented": [
+     {
+      "class_name": "train",
+      "role": "train",
+      "lane": null,
+      "reason": "lane assignment is missing or uncertain"
+     }
+    ],
+    "warnings": [
+     "No player detection is available; the schema defaults (centre lane, speed 0.5, not jumping, not rolling) were used.",
+     "Object distances use an uncalibrated bottom-edge image proxy with horizon fraction 0.1500; they are not metric or game distances.",
+     "1 scene object(s) are not represented by the GameState schema; see 'unrepresented'.",
+     "The configured detector schema declares no player class; player state is not observed.",
+     "The configured detector schema declares no coin class; coin presence is not observed."
+    ]
+   },
+   "features": {
+    "player_lane": 1.0,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 0.0,
+    "obstacle_lane": null,
+    "obstacle_distance": null,
+    "obstacle_type": null,
+    "train_present": 0.0,
+    "train_lane": null,
+    "train_distance": null,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   },
+   "feature_groups": [
+    {
+     "group": "player",
+     "feature_names": [
+      "player_lane",
+      "player_speed",
+      "jumping",
+      "rolling"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "the configured detector schema declares no player class"
+    },
+    {
+     "group": "obstacle",
+     "feature_names": [
+      "obstacle_present",
+      "obstacle_lane",
+      "obstacle_distance",
+      "obstacle_type"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "no obstacle detection in this frame"
+    },
+    {
+     "group": "train",
+     "feature_names": [
+      "train_present",
+      "train_lane",
+      "train_distance"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 1,
+     "reason": "candidate train observations exist but none could be represented by the GameState"
+    },
+    {
+     "group": "coin",
+     "feature_names": [
+      "coin_present",
+      "coin_lane",
+      "coin_distance"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "coins are unavailable in the configured detector schema"
+    }
+   ]
+  },
+  {
+   "frame_id": "datasetfootage-0104",
+   "timestamp_ms": 133.333,
+   "image_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\valid\\images\\datasetfootage_mp4-104_jpg.rf.fc19d3ac291b99bece1ed2091d09ec04.jpg",
+   "n_decoded_above_threshold": 28,
+   "detections": [
+    {
+     "class_id": 9,
+     "class_name": "ramp",
+     "role": "terrain",
+     "confidence": 0.8528,
+     "screen_box": [
+      6.9207,
+      472.5192,
+      469.334,
+      1048.3017
+     ],
+     "normalized_box": [
+      0.01142,
+      0.450018,
+      0.774479,
+      0.998383
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "confidence": 0.839195,
+     "screen_box": [
+      170.1515,
+      352.6613,
+      304.5264,
+      614.0648
+     ],
+     "normalized_box": [
+      0.280778,
+      0.335868,
+      0.502519,
+      0.584824
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "confidence": 0.771276,
+     "screen_box": [
+      256.6065,
+      346.6354,
+      303.9655,
+      400.0782
+     ],
+     "normalized_box": [
+      0.423443,
+      0.330129,
+      0.501593,
+      0.381027
+     ],
+     "clamped": false
+    }
+   ],
+   "rejected": [],
+   "observations": [
+    {
+     "object_index": 0,
+     "class_id": 9,
+     "class_name": "ramp",
+     "role": "terrain",
+     "game_state_role": "unsupported",
+     "lane": null,
+     "bbox_screen": {
+      "x1": 6.920735677083334,
+      "y1": 472.5192260742187,
+      "x2": 469.334014148247,
+      "y2": 1048.3016967773438
+     },
+     "bbox_normalized": [
+      0.011420355902777778,
+      0.45001831054687497,
+      0.7744785712017277,
+      0.998382568359375
+     ],
+     "center": {
+      "x": 0.39294946355225274,
+      "y": 0.724200439453125
+     },
+     "relative_horizontal_position": -0.21410107289549452,
+     "relative_vertical_position": 0.4484008789062499,
+     "distance_proxy": 0.001903,
+     "normalized_proximity": 0.998097,
+     "box_area_fraction": 0.41843385190013954,
+     "confidence": 0.852799654006958,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0104",
+     "timestamp_ms": 133.33333333333334,
+     "raw_index": 0,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 1,
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 1,
+     "bbox_screen": {
+      "x1": 170.1515124561341,
+      "y1": 352.6612508296966,
+      "x2": 304.5264154449711,
+      "y2": 614.0648138523102
+     },
+     "bbox_normalized": [
+      0.28077807335995725,
+      0.33586785793304436,
+      0.5025188373679391,
+      0.5848236322402954
+     ],
+     "center": {
+      "x": 0.3916484553639482,
+      "y": 0.4603457450866699
+     },
+     "relative_horizontal_position": -0.21670308927210358,
+     "relative_vertical_position": -0.07930850982666016,
+     "distance_proxy": 0.488443,
+     "normalized_proximity": 0.511557,
+     "box_area_fraction": 0.05520364359908856,
+     "confidence": 0.8391954898834229,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0104",
+     "timestamp_ms": 133.33333333333334,
+     "raw_index": 1,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 2,
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 1,
+     "bbox_screen": {
+      "x1": 256.60654306799415,
+      "y1": 346.6354411840438,
+      "x2": 303.96552903090065,
+      "y2": 400.07824480533594
+     },
+     "bbox_normalized": [
+      0.423443140376228,
+      0.3301289916038513,
+      0.501593282229209,
+      0.38102689981460564
+     ],
+     "center": {
+      "x": 0.4625182113027185,
+      "y": 0.35557794570922846
+     },
+     "relative_horizontal_position": -0.07496357739456305,
+     "relative_vertical_position": -0.2888441085815431,
+     "distance_proxy": 0.728204,
+     "normalized_proximity": 0.27179600000000004,
+     "box_area_fraction": 0.003977678746690457,
+     "confidence": 0.7712763547897339,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0104",
+     "timestamp_ms": 133.33333333333334,
+     "raw_index": 2,
+     "source": "onnx-runtime-detector"
+    }
+   ],
+   "game_state": {
+    "state": {
+     "time_ms": 133.33333333333334,
+     "player": {
+      "lane": {
+       "value": 1,
+       "name": "center"
+      },
+      "speed": 0.5,
+      "jumping": false,
+      "rolling": false
+     },
+     "obstacle": null,
+     "train": {
+      "present": true,
+      "lane": {
+       "value": 1,
+       "name": "center"
+      },
+      "distance": 0.488443
+     },
+     "coin": null
+    },
+    "player_known": false,
+    "player_lane_known": false,
+    "coins_available": false,
+    "estimated_fields": [
+     "player.lane",
+     "player.speed",
+     "player.jumping",
+     "player.rolling",
+     "train.distance"
+    ],
+    "unrepresented": [
+     {
+      "class_name": "boxtrain",
+      "role": "train",
+      "lane": 1,
+      "reason": "only the nearest train is representable by the single-object GameState"
+     },
+     {
+      "class_name": "ramp",
+      "role": "terrain",
+      "lane": null,
+      "reason": "class role 'terrain' has no GameState representation"
+     }
+    ],
+    "warnings": [
+     "No player detection is available; the schema defaults (centre lane, speed 0.5, not jumping, not rolling) were used.",
+     "Object distances use an uncalibrated bottom-edge image proxy with horizon fraction 0.1500; they are not metric or game distances.",
+     "2 scene object(s) are not represented by the GameState schema; see 'unrepresented'.",
+     "1 object(s) touched more than one lane and were assigned by the configured majority rule.",
+     "The configured detector schema declares no player class; player state is not observed.",
+     "The configured detector schema declares no coin class; coin presence is not observed."
+    ]
+   },
+   "features": {
+    "player_lane": 1.0,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 0.0,
+    "obstacle_lane": null,
+    "obstacle_distance": null,
+    "obstacle_type": null,
+    "train_present": 1.0,
+    "train_lane": 1.0,
+    "train_distance": 0.488443,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   },
+   "feature_groups": [
+    {
+     "group": "player",
+     "feature_names": [
+      "player_lane",
+      "player_speed",
+      "jumping",
+      "rolling"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "the configured detector schema declares no player class"
+    },
+    {
+     "group": "obstacle",
+     "feature_names": [
+      "obstacle_present",
+      "obstacle_lane",
+      "obstacle_distance",
+      "obstacle_type"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "no obstacle detection in this frame"
+    },
+    {
+     "group": "train",
+     "feature_names": [
+      "train_present",
+      "train_lane",
+      "train_distance"
+     ],
+     "present": true,
+     "object_index": 1,
+     "class_name": "train",
+     "confidence": 0.8391954898834229,
+     "valid": true,
+     "visibility": "in_frame",
+     "lane": 1,
+     "distance_proxy": 0.488443,
+     "n_candidates": 2,
+     "reason": null
+    },
+    {
+     "group": "coin",
+     "feature_names": [
+      "coin_present",
+      "coin_lane",
+      "coin_distance"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "coins are unavailable in the configured detector schema"
+    }
+   ]
+  },
+  {
+   "frame_id": "datasetfootage-0105",
+   "timestamp_ms": 166.667,
+   "image_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\train\\images\\datasetfootage_mp4-105_jpg.rf.7b76cb1bdbfd0fd21f14bac8031c9787.jpg",
+   "n_decoded_above_threshold": 28,
+   "detections": [
+    {
+     "class_id": 9,
+     "class_name": "ramp",
+     "role": "terrain",
+     "confidence": 0.947549,
+     "screen_box": [
+      3.5827,
+      777.0941,
+      392.8107,
+      1049.7046
+     ],
+     "normalized_box": [
+      0.005912,
+      0.74009,
+      0.648203,
+      0.999719
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "confidence": 0.878629,
+     "screen_box": [
+      260.9247,
+      367.1459,
+      311.3479,
+      421.3508
+     ],
+     "normalized_box": [
+      0.430569,
+      0.349663,
+      0.513775,
+      0.401286
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "confidence": 0.873269,
+     "screen_box": [
+      199.1896,
+      373.661,
+      244.2992,
+      419.3769
+     ],
+     "normalized_box": [
+      0.328696,
+      0.355868,
+      0.403134,
+      0.399407
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "confidence": 0.872923,
+     "screen_box": [
+      157.9373,
+      402.8592,
+      316.0723,
+      740.7576
+     ],
+     "normalized_box": [
+      0.260623,
+      0.383675,
+      0.521572,
+      0.705483
+     ],
+     "clamped": false
+    }
+   ],
+   "rejected": [],
+   "observations": [
+    {
+     "object_index": 0,
+     "class_id": 9,
+     "class_name": "ramp",
+     "role": "terrain",
+     "game_state_role": "unsupported",
+     "lane": null,
+     "bbox_screen": {
+      "x1": 3.5827191360597688,
+      "y1": 777.0940876007079,
+      "x2": 392.8107263828681,
+      "y2": 1049.7045993804932
+     },
+     "bbox_normalized": [
+      0.0059120777822768466,
+      0.7400896072387694,
+      0.6482025187836107,
+      0.9997186660766602
+     ],
+     "center": {
+      "x": 0.3270572982829438,
+      "y": 0.8699041366577147
+     },
+     "relative_horizontal_position": -0.34588540343411245,
+     "relative_vertical_position": 0.7398082733154294,
+     "distance_proxy": 0.000331,
+     "normalized_proximity": 0.999669,
+     "box_area_fraction": 0.16675726269775012,
+     "confidence": 0.9475492835044861,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0105",
+     "timestamp_ms": 166.66666666666669,
+     "raw_index": 0,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 1,
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 1,
+     "bbox_screen": {
+      "x1": 260.9246605353627,
+      "y1": 367.145869731903,
+      "x2": 311.3479294195408,
+      "y2": 421.35078191757196
+     },
+     "bbox_normalized": [
+      0.43056874675802426,
+      0.3496627330780029,
+      0.5137754610883511,
+      0.40128645896911613
+     ],
+     "center": {
+      "x": 0.4721721039231877,
+      "y": 0.3754745960235595
+     },
+     "relative_horizontal_position": -0.055655792153624595,
+     "relative_vertical_position": -0.24905080795288104,
+     "distance_proxy": 0.704369,
+     "normalized_proximity": 0.295631,
+     "box_area_fraction": 0.00429544061288896,
+     "confidence": 0.8786289691925049,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0105",
+     "timestamp_ms": 166.66666666666669,
+     "raw_index": 1,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 2,
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 1,
+     "bbox_screen": {
+      "x1": 199.18959132248793,
+      "y1": 373.6610054969787,
+      "x2": 244.29921790642467,
+      "y2": 419.37685489654535
+     },
+     "bbox_normalized": [
+      0.3286956952516302,
+      0.35586762428283686,
+      0.4031340229478955,
+      0.3994065284729003
+     ],
+     "center": {
+      "x": 0.36591485909976285,
+      "y": 0.3776370763778686
+     },
+     "relative_horizontal_position": -0.2681702818004743,
+     "relative_vertical_position": -0.24472584724426283,
+     "distance_proxy": 0.706581,
+     "normalized_proximity": 0.293419,
+     "box_area_fraction": 0.0032409632176362414,
+     "confidence": 0.8732686042785645,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0105",
+     "timestamp_ms": 166.66666666666669,
+     "raw_index": 2,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 3,
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": null,
+     "bbox_screen": {
+      "x1": 157.93731962374557,
+      "y1": 402.85917878150934,
+      "x2": 316.0723308780329,
+      "y2": 740.7575833797454
+     },
+     "bbox_normalized": [
+      0.26062263964314447,
+      0.38367540836334224,
+      0.5215715030990642,
+      0.7054834127426146
+     ],
+     "center": {
+      "x": 0.39109707137110433,
+      "y": 0.5445794105529784
+     },
+     "relative_horizontal_position": -0.21780585725779134,
+     "relative_vertical_position": 0.08915882110595685,
+     "distance_proxy": 0.34649,
+     "normalized_proximity": 0.65351,
+     "box_area_fraction": 0.08397543299378876,
+     "confidence": 0.8729225397109985,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0105",
+     "timestamp_ms": 166.66666666666669,
+     "raw_index": 3,
+     "source": "onnx-runtime-detector"
+    }
+   ],
+   "game_state": {
+    "state": {
+     "time_ms": 166.66666666666669,
+     "player": {
+      "lane": {
+       "value": 1,
+       "name": "center"
+      },
+      "speed": 0.5,
+      "jumping": false,
+      "rolling": false
+     },
+     "obstacle": null,
+     "train": {
+      "present": true,
+      "lane": {
+       "value": 1,
+       "name": "center"
+      },
+      "distance": 0.704369
+     },
+     "coin": null
+    },
+    "player_known": false,
+    "player_lane_known": false,
+    "coins_available": false,
+    "estimated_fields": [
+     "player.lane",
+     "player.speed",
+     "player.jumping",
+     "player.rolling",
+     "train.distance"
+    ],
+    "unrepresented": [
+     {
+      "class_name": "train",
+      "role": "train",
+      "lane": null,
+      "reason": "lane assignment is missing or uncertain"
+     },
+     {
+      "class_name": "train",
+      "role": "train",
+      "lane": 1,
+      "reason": "only the nearest train is representable by the single-object GameState"
+     },
+     {
+      "class_name": "ramp",
+      "role": "terrain",
+      "lane": null,
+      "reason": "class role 'terrain' has no GameState representation"
+     }
+    ],
+    "warnings": [
+     "No player detection is available; the schema defaults (centre lane, speed 0.5, not jumping, not rolling) were used.",
+     "Object distances use an uncalibrated bottom-edge image proxy with horizon fraction 0.1500; they are not metric or game distances.",
+     "3 scene object(s) are not represented by the GameState schema; see 'unrepresented'.",
+     "The configured detector schema declares no player class; player state is not observed.",
+     "The configured detector schema declares no coin class; coin presence is not observed."
+    ]
+   },
+   "features": {
+    "player_lane": 1.0,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 0.0,
+    "obstacle_lane": null,
+    "obstacle_distance": null,
+    "obstacle_type": null,
+    "train_present": 1.0,
+    "train_lane": 1.0,
+    "train_distance": 0.704369,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   },
+   "feature_groups": [
+    {
+     "group": "player",
+     "feature_names": [
+      "player_lane",
+      "player_speed",
+      "jumping",
+      "rolling"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "the configured detector schema declares no player class"
+    },
+    {
+     "group": "obstacle",
+     "feature_names": [
+      "obstacle_present",
+      "obstacle_lane",
+      "obstacle_distance",
+      "obstacle_type"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "no obstacle detection in this frame"
+    },
+    {
+     "group": "train",
+     "feature_names": [
+      "train_present",
+      "train_lane",
+      "train_distance"
+     ],
+     "present": true,
+     "object_index": 1,
+     "class_name": "boxtrain",
+     "confidence": 0.8786289691925049,
+     "valid": true,
+     "visibility": "in_frame",
+     "lane": 1,
+     "distance_proxy": 0.704369,
+     "n_candidates": 3,
+     "reason": null
+    },
+    {
+     "group": "coin",
+     "feature_names": [
+      "coin_present",
+      "coin_lane",
+      "coin_distance"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "coins are unavailable in the configured detector schema"
+    }
+   ]
+  },
+  {
+   "frame_id": "datasetfootage-0106",
+   "timestamp_ms": 200.0,
+   "image_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\train\\images\\datasetfootage_mp4-106_jpg.rf.76e8a270fcdcba1b59b2714ba0817c2f.jpg",
+   "n_decoded_above_threshold": 28,
+   "detections": [
+    {
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "confidence": 0.890143,
+     "screen_box": [
+      267.855,
+      372.6786,
+      322.9395,
+      432.0751
+     ],
+     "normalized_box": [
+      0.442005,
+      0.354932,
+      0.532903,
+      0.4115
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "confidence": 0.885303,
+     "screen_box": [
+      202.0789,
+      374.2729,
+      249.476,
+      421.6536
+     ],
+     "normalized_box": [
+      0.333463,
+      0.35645,
+      0.411677,
+      0.401575
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "confidence": 0.884846,
+     "screen_box": [
+      72.6398,
+      439.6581,
+      345.1181,
+      994.1423
+     ],
+     "normalized_box": [
+      0.119868,
+      0.418722,
+      0.569502,
+      0.946802
+     ],
+     "clamped": false
+    }
+   ],
+   "rejected": [],
+   "observations": [
+    {
+     "object_index": 0,
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 1,
+     "bbox_screen": {
+      "x1": 267.8550439850102,
+      "y1": 372.67863571643824,
+      "x2": 322.9394650342988,
+      "y2": 432.075063586235
+     },
+     "bbox_normalized": [
+      0.44200502307757455,
+      0.3549320340156555,
+      0.5329034076473578,
+      0.41150006055831906
+     ],
+     "center": {
+      "x": 0.48745421536246614,
+      "y": 0.38321604728698727
+     },
+     "relative_horizontal_position": -0.025091569275067727,
+     "relative_vertical_position": -0.23356790542602546,
+     "distance_proxy": 0.692353,
+     "normalized_proximity": 0.307647,
+     "box_area_fraction": 0.005141942231028738,
+     "confidence": 0.8901426792144775,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0106",
+     "timestamp_ms": 200.0,
+     "raw_index": 0,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 1,
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 1,
+     "bbox_screen": {
+      "x1": 202.07886114353087,
+      "y1": 374.27292287349695,
+      "x2": 249.47598713200267,
+      "y2": 421.6536051034927
+     },
+     "bbox_normalized": [
+      0.3334634672335493,
+      0.3564504027366638,
+      0.41167654642244667,
+      0.40157486200332637
+     ],
+     "center": {
+      "x": 0.372570006827998,
+      "y": 0.37901263236999505
+     },
+     "relative_horizontal_position": -0.254859986344004,
+     "relative_vertical_position": -0.2419747352600099,
+     "distance_proxy": 0.70403,
+     "normalized_proximity": 0.29596999999999996,
+     "box_area_fraction": 0.0035293229059796542,
+     "confidence": 0.8853033781051636,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0106",
+     "timestamp_ms": 200.0,
+     "raw_index": 1,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 2,
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": null,
+     "bbox_screen": {
+      "x1": 72.63977112808848,
+      "y1": 439.6580600738525,
+      "x2": 345.11810290328856,
+      "y2": 994.142346382141
+     },
+     "bbox_normalized": [
+      0.11986760912225822,
+      0.4187219619750976,
+      0.5695018199724233,
+      0.9468022346496581
+     ],
+     "center": {
+      "x": 0.3446847145473408,
+      "y": 0.6827620983123779
+     },
+     "relative_horizontal_position": -0.3106305709053184,
+     "relative_vertical_position": 0.36552419662475577,
+     "distance_proxy": 0.062586,
+     "normalized_proximity": 0.937414,
+     "box_area_fraction": 0.237442956669566,
+     "confidence": 0.8848464488983154,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0106",
+     "timestamp_ms": 200.0,
+     "raw_index": 2,
+     "source": "onnx-runtime-detector"
+    }
+   ],
+   "game_state": {
+    "state": {
+     "time_ms": 200.0,
+     "player": {
+      "lane": {
+       "value": 1,
+       "name": "center"
+      },
+      "speed": 0.5,
+      "jumping": false,
+      "rolling": false
+     },
+     "obstacle": null,
+     "train": {
+      "present": true,
+      "lane": {
+       "value": 1,
+       "name": "center"
+      },
+      "distance": 0.692353
+     },
+     "coin": null
+    },
+    "player_known": false,
+    "player_lane_known": false,
+    "coins_available": false,
+    "estimated_fields": [
+     "player.lane",
+     "player.speed",
+     "player.jumping",
+     "player.rolling",
+     "train.distance"
+    ],
+    "unrepresented": [
+     {
+      "class_name": "train",
+      "role": "train",
+      "lane": null,
+      "reason": "lane assignment is missing or uncertain"
+     },
+     {
+      "class_name": "train",
+      "role": "train",
+      "lane": 1,
+      "reason": "only the nearest train is representable by the single-object GameState"
+     }
+    ],
+    "warnings": [
+     "No player detection is available; the schema defaults (centre lane, speed 0.5, not jumping, not rolling) were used.",
+     "Object distances use an uncalibrated bottom-edge image proxy with horizon fraction 0.1500; they are not metric or game distances.",
+     "2 scene object(s) are not represented by the GameState schema; see 'unrepresented'.",
+     "The configured detector schema declares no player class; player state is not observed.",
+     "The configured detector schema declares no coin class; coin presence is not observed."
+    ]
+   },
+   "features": {
+    "player_lane": 1.0,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 0.0,
+    "obstacle_lane": null,
+    "obstacle_distance": null,
+    "obstacle_type": null,
+    "train_present": 1.0,
+    "train_lane": 1.0,
+    "train_distance": 0.692353,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   },
+   "feature_groups": [
+    {
+     "group": "player",
+     "feature_names": [
+      "player_lane",
+      "player_speed",
+      "jumping",
+      "rolling"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "the configured detector schema declares no player class"
+    },
+    {
+     "group": "obstacle",
+     "feature_names": [
+      "obstacle_present",
+      "obstacle_lane",
+      "obstacle_distance",
+      "obstacle_type"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "no obstacle detection in this frame"
+    },
+    {
+     "group": "train",
+     "feature_names": [
+      "train_present",
+      "train_lane",
+      "train_distance"
+     ],
+     "present": true,
+     "object_index": 0,
+     "class_name": "boxtrain",
+     "confidence": 0.8901426792144775,
+     "valid": true,
+     "visibility": "in_frame",
+     "lane": 1,
+     "distance_proxy": 0.692353,
+     "n_candidates": 3,
+     "reason": null
+    },
+    {
+     "group": "coin",
+     "feature_names": [
+      "coin_present",
+      "coin_lane",
+      "coin_distance"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "coins are unavailable in the configured detector schema"
+    }
+   ]
+  },
+  {
+   "frame_id": "datasetfootage-0107",
+   "timestamp_ms": 233.333,
+   "image_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\valid\\images\\datasetfootage_mp4-107_jpg.rf.a2fc1c887bfa88299007c6d8162a57c7.jpg",
+   "n_decoded_above_threshold": 28,
+   "detections": [
+    {
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "confidence": 0.935164,
+     "screen_box": [
+      2.2987,
+      470.8599,
+      256.4549,
+      1048.8524
+     ],
+     "normalized_box": [
+      0.003793,
+      0.448438,
+      0.423193,
+      0.998907
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "confidence": 0.901302,
+     "screen_box": [
+      262.39,
+      372.7808,
+      316.5634,
+      436.2037
+     ],
+     "normalized_box": [
+      0.432987,
+      0.355029,
+      0.522382,
+      0.415432
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "confidence": 0.870611,
+     "screen_box": [
+      187.5253,
+      374.8102,
+      244.8575,
+      420.4815
+     ],
+     "normalized_box": [
+      0.309448,
+      0.356962,
+      0.404055,
+      0.400459
+     ],
+     "clamped": false
+    }
+   ],
+   "rejected": [],
+   "observations": [
+    {
+     "object_index": 0,
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 0,
+     "bbox_screen": {
+      "x1": 2.2986757852197663,
+      "y1": 470.85987567901606,
+      "x2": 256.4548850951156,
+      "y2": 1048.8524436950684
+     },
+     "bbox_normalized": [
+      0.0037931943650491196,
+      0.44843797683715814,
+      0.42319287969491026,
+      0.9989070892333984
+     ],
+     "center": {
+      "x": 0.21349303702997968,
+      "y": 0.7236725330352782
+     },
+     "relative_horizontal_position": -0.5730139259400406,
+     "relative_vertical_position": 0.44734506607055646,
+     "distance_proxy": 0.001286,
+     "normalized_proximity": 0.998714,
+     "box_area_fraction": 0.23086657252279116,
+     "confidence": 0.9351644515991211,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0107",
+     "timestamp_ms": 233.33333333333334,
+     "raw_index": 0,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 1,
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 1,
+     "bbox_screen": {
+      "x1": 262.3899692442359,
+      "y1": 372.78081178665155,
+      "x2": 316.56338997197344,
+      "y2": 436.2036752700805
+     },
+     "bbox_normalized": [
+      0.43298674792778197,
+      0.35502934455871576,
+      0.5223818316369199,
+      0.41543207168579094
+     ],
+     "center": {
+      "x": 0.4776842897823509,
+      "y": 0.38523070812225335
+     },
+     "relative_horizontal_position": -0.04463142043529822,
+     "relative_vertical_position": -0.2295385837554933,
+     "distance_proxy": 0.687727,
+     "normalized_proximity": 0.312273,
+     "box_area_fraction": 0.0053997068477851,
+     "confidence": 0.9013024568557739,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0107",
+     "timestamp_ms": 233.33333333333334,
+     "raw_index": 1,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 2,
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": null,
+     "bbox_screen": {
+      "x1": 187.52525887838223,
+      "y1": 374.8102015256881,
+      "x2": 244.85753575766958,
+      "y2": 420.4814654588699
+     },
+     "bbox_normalized": [
+      0.3094476219115218,
+      0.35696209669113155,
+      0.4040553395341082,
+      0.40045853853225705
+     ],
+     "center": {
+      "x": 0.35675148072281504,
+      "y": 0.37871031761169427
+     },
+     "relative_horizontal_position": -0.2864970385543699,
+     "relative_vertical_position": -0.24257936477661146,
+     "distance_proxy": 0.705343,
+     "normalized_proximity": 0.29465699999999995,
+     "box_area_fraction": 0.004115099087292453,
+     "confidence": 0.870611310005188,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0107",
+     "timestamp_ms": 233.33333333333334,
+     "raw_index": 2,
+     "source": "onnx-runtime-detector"
+    }
+   ],
+   "game_state": {
+    "state": {
+     "time_ms": 233.33333333333334,
+     "player": {
+      "lane": {
+       "value": 1,
+       "name": "center"
+      },
+      "speed": 0.5,
+      "jumping": false,
+      "rolling": false
+     },
+     "obstacle": null,
+     "train": {
+      "present": true,
+      "lane": {
+       "value": 0,
+       "name": "left"
+      },
+      "distance": 0.001286
+     },
+     "coin": null
+    },
+    "player_known": false,
+    "player_lane_known": false,
+    "coins_available": false,
+    "estimated_fields": [
+     "player.lane",
+     "player.speed",
+     "player.jumping",
+     "player.rolling",
+     "train.distance"
+    ],
+    "unrepresented": [
+     {
+      "class_name": "train",
+      "role": "train",
+      "lane": null,
+      "reason": "lane assignment is missing or uncertain"
+     },
+     {
+      "class_name": "boxtrain",
+      "role": "train",
+      "lane": 1,
+      "reason": "only the nearest train is representable by the single-object GameState"
+     }
+    ],
+    "warnings": [
+     "No player detection is available; the schema defaults (centre lane, speed 0.5, not jumping, not rolling) were used.",
+     "Object distances use an uncalibrated bottom-edge image proxy with horizon fraction 0.1500; they are not metric or game distances.",
+     "2 scene object(s) are not represented by the GameState schema; see 'unrepresented'.",
+     "1 object(s) touched more than one lane and were assigned by the configured majority rule.",
+     "The configured detector schema declares no player class; player state is not observed.",
+     "The configured detector schema declares no coin class; coin presence is not observed."
+    ]
+   },
+   "features": {
+    "player_lane": 1.0,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 0.0,
+    "obstacle_lane": null,
+    "obstacle_distance": null,
+    "obstacle_type": null,
+    "train_present": 1.0,
+    "train_lane": 0.0,
+    "train_distance": 0.001286,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   },
+   "feature_groups": [
+    {
+     "group": "player",
+     "feature_names": [
+      "player_lane",
+      "player_speed",
+      "jumping",
+      "rolling"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "the configured detector schema declares no player class"
+    },
+    {
+     "group": "obstacle",
+     "feature_names": [
+      "obstacle_present",
+      "obstacle_lane",
+      "obstacle_distance",
+      "obstacle_type"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "no obstacle detection in this frame"
+    },
+    {
+     "group": "train",
+     "feature_names": [
+      "train_present",
+      "train_lane",
+      "train_distance"
+     ],
+     "present": true,
+     "object_index": 0,
+     "class_name": "train",
+     "confidence": 0.9351644515991211,
+     "valid": true,
+     "visibility": "in_frame",
+     "lane": 0,
+     "distance_proxy": 0.001286,
+     "n_candidates": 3,
+     "reason": null
+    },
+    {
+     "group": "coin",
+     "feature_names": [
+      "coin_present",
+      "coin_lane",
+      "coin_distance"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "coins are unavailable in the configured detector schema"
+    }
+   ]
+  },
+  {
+   "frame_id": "datasetfootage-0108",
+   "timestamp_ms": 266.667,
+   "image_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\train\\images\\datasetfootage_mp4-108_jpg.rf.f85765b2d2abcb5a48d30bfe5c46ab21.jpg",
+   "n_decoded_above_threshold": 28,
+   "detections": [
+    {
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "confidence": 0.950821,
+     "screen_box": [
+      0.4423,
+      477.9845,
+      202.8431,
+      1048.7771
+     ],
+     "normalized_box": [
+      0.00073,
+      0.455223,
+      0.334725,
+      0.998835
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "confidence": 0.900836,
+     "screen_box": [
+      172.3611,
+      360.9842,
+      240.1462,
+      411.6529
+     ],
+     "normalized_box": [
+      0.284424,
+      0.343795,
+      0.396281,
+      0.39205
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "confidence": 0.859448,
+     "screen_box": [
+      256.5588,
+      358.2269,
+      312.5918,
+      428.9146
+     ],
+     "normalized_box": [
+      0.423364,
+      0.341168,
+      0.515828,
+      0.40849
+     ],
+     "clamped": false
+    }
+   ],
+   "rejected": [],
+   "observations": [
+    {
+     "object_index": 0,
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 0,
+     "bbox_screen": {
+      "x1": 0.4422939889799289,
+      "y1": 477.98453807830805,
+      "x2": 202.8431401446583,
+      "y2": 1048.777141571045
+     },
+     "bbox_normalized": [
+      0.0007298580676236451,
+      0.4552233695983886,
+      0.3347246537040566,
+      0.9988353729248047
+     ],
+     "center": {
+      "x": 0.16772725588584012,
+      "y": 0.7270293712615967
+     },
+     "relative_horizontal_position": -0.6645454882283197,
+     "relative_vertical_position": 0.45405874252319345,
+     "distance_proxy": 0.00137,
+     "normalized_proximity": 0.99863,
+     "box_area_fraction": 0.18156357995651826,
+     "confidence": 0.9508209824562073,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0108",
+     "timestamp_ms": 266.6666666666667,
+     "raw_index": 0,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 1,
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": null,
+     "bbox_screen": {
+      "x1": 172.36110296481993,
+      "y1": 360.9842258691787,
+      "x2": 240.1461775865012,
+      "y2": 411.652917265892
+     },
+     "bbox_normalized": [
+      0.2844242623181847,
+      0.34379450082778923,
+      0.396280821099837,
+      0.3920503973960876
+     ],
+     "center": {
+      "x": 0.34035254170901086,
+      "y": 0.3679224491119384
+     },
+     "relative_horizontal_position": -0.3192949165819783,
+     "relative_vertical_position": -0.2641551017761232,
+     "distance_proxy": 0.715235,
+     "normalized_proximity": 0.28476500000000005,
+     "box_area_fraction": 0.0053977385310532006,
+     "confidence": 0.9008357524871826,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0108",
+     "timestamp_ms": 266.6666666666667,
+     "raw_index": 1,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 2,
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 1,
+     "bbox_screen": {
+      "x1": 256.55880538816376,
+      "y1": 358.22692394256586,
+      "x2": 312.59181548327933,
+      "y2": 428.9145898818969
+     },
+     "bbox_normalized": [
+      0.4233643653270029,
+      0.34116849899291984,
+      0.5158280783552465,
+      0.4084900856018066
+     ],
+     "center": {
+      "x": 0.4695962218411247,
+      "y": 0.3748292922973632
+     },
+     "relative_horizontal_position": -0.06080755631775059,
+     "relative_vertical_position": -0.25034141540527355,
+     "distance_proxy": 0.695894,
+     "normalized_proximity": 0.304106,
+     "box_area_fraction": 0.0062248038648101515,
+     "confidence": 0.859447717666626,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0108",
+     "timestamp_ms": 266.6666666666667,
+     "raw_index": 2,
+     "source": "onnx-runtime-detector"
+    }
+   ],
+   "game_state": {
+    "state": {
+     "time_ms": 266.6666666666667,
+     "player": {
+      "lane": {
+       "value": 1,
+       "name": "center"
+      },
+      "speed": 0.5,
+      "jumping": false,
+      "rolling": false
+     },
+     "obstacle": null,
+     "train": {
+      "present": true,
+      "lane": {
+       "value": 0,
+       "name": "left"
+      },
+      "distance": 0.00137
+     },
+     "coin": null
+    },
+    "player_known": false,
+    "player_lane_known": false,
+    "coins_available": false,
+    "estimated_fields": [
+     "player.lane",
+     "player.speed",
+     "player.jumping",
+     "player.rolling",
+     "train.distance"
+    ],
+    "unrepresented": [
+     {
+      "class_name": "train",
+      "role": "train",
+      "lane": null,
+      "reason": "lane assignment is missing or uncertain"
+     },
+     {
+      "class_name": "boxtrain",
+      "role": "train",
+      "lane": 1,
+      "reason": "only the nearest train is representable by the single-object GameState"
+     }
+    ],
+    "warnings": [
+     "No player detection is available; the schema defaults (centre lane, speed 0.5, not jumping, not rolling) were used.",
+     "Object distances use an uncalibrated bottom-edge image proxy with horizon fraction 0.1500; they are not metric or game distances.",
+     "2 scene object(s) are not represented by the GameState schema; see 'unrepresented'.",
+     "The configured detector schema declares no player class; player state is not observed.",
+     "The configured detector schema declares no coin class; coin presence is not observed."
+    ]
+   },
+   "features": {
+    "player_lane": 1.0,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 0.0,
+    "obstacle_lane": null,
+    "obstacle_distance": null,
+    "obstacle_type": null,
+    "train_present": 1.0,
+    "train_lane": 0.0,
+    "train_distance": 0.00137,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   },
+   "feature_groups": [
+    {
+     "group": "player",
+     "feature_names": [
+      "player_lane",
+      "player_speed",
+      "jumping",
+      "rolling"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "the configured detector schema declares no player class"
+    },
+    {
+     "group": "obstacle",
+     "feature_names": [
+      "obstacle_present",
+      "obstacle_lane",
+      "obstacle_distance",
+      "obstacle_type"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "no obstacle detection in this frame"
+    },
+    {
+     "group": "train",
+     "feature_names": [
+      "train_present",
+      "train_lane",
+      "train_distance"
+     ],
+     "present": true,
+     "object_index": 0,
+     "class_name": "train",
+     "confidence": 0.9508209824562073,
+     "valid": true,
+     "visibility": "in_frame",
+     "lane": 0,
+     "distance_proxy": 0.00137,
+     "n_candidates": 3,
+     "reason": null
+    },
+    {
+     "group": "coin",
+     "feature_names": [
+      "coin_present",
+      "coin_lane",
+      "coin_distance"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "coins are unavailable in the configured detector schema"
+    }
+   ]
+  },
+  {
+   "frame_id": "datasetfootage-0109",
+   "timestamp_ms": 300.0,
+   "image_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\train\\images\\datasetfootage_mp4-109_jpg.rf.62e5f1cc4172919a8e78ed9d5bc53009.jpg",
+   "n_decoded_above_threshold": 28,
+   "detections": [
+    {
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "confidence": 0.938407,
+     "screen_box": [
+      1.4203,
+      367.3614,
+      166.6298,
+      1048.1347
+     ],
+     "normalized_box": [
+      0.002344,
+      0.349868,
+      0.274967,
+      0.998223
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "confidence": 0.910182,
+     "screen_box": [
+      262.3583,
+      313.3151,
+      327.0204,
+      390.0012
+     ],
+     "normalized_box": [
+      0.432935,
+      0.298395,
+      0.539638,
+      0.37143
+     ],
+     "clamped": false
+    },
+    {
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "confidence": 0.905853,
+     "screen_box": [
+      175.2109,
+      325.9926,
+      247.9985,
+      383.139
+     ],
+     "normalized_box": [
+      0.289127,
+      0.310469,
+      0.409238,
+      0.364894
+     ],
+     "clamped": false
+    }
+   ],
+   "rejected": [],
+   "observations": [
+    {
+     "object_index": 0,
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 0,
+     "bbox_screen": {
+      "x1": 1.420302476340193,
+      "y1": 367.3614120483398,
+      "x2": 166.6298123491489,
+      "y2": 1048.1346702575684
+     },
+     "bbox_normalized": [
+      0.002343733459307249,
+      0.34986801147460933,
+      0.27496668704480015,
+      0.9982234954833984
+     ],
+     "center": {
+      "x": 0.1386552102520537,
+      "y": 0.6740457534790039
+     },
+     "relative_horizontal_position": -0.7226895794958925,
+     "relative_vertical_position": 0.3480915069580077,
+     "distance_proxy": 0.00209,
+     "normalized_proximity": 0.99791,
+     "box_area_fraction": 0.17675658702382788,
+     "confidence": 0.9384069442749023,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0109",
+     "timestamp_ms": 300.0,
+     "raw_index": 0,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 1,
+     "class_id": 1,
+     "class_name": "boxtrain",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": 1,
+     "bbox_screen": {
+      "x1": 262.3583445975451,
+      "y1": 313.3150774240494,
+      "x2": 327.0204227106358,
+      "y2": 390.00115334987635
+     },
+     "bbox_normalized": [
+      0.43293456204215364,
+      0.29839531183242796,
+      0.539637661238673,
+      0.3714296698570251
+     ],
+     "center": {
+      "x": 0.4862861116404133,
+      "y": 0.3349124908447265
+     },
+     "relative_horizontal_position": -0.027427776719173402,
+     "relative_vertical_position": -0.33017501831054696,
+     "distance_proxy": 0.739495,
+     "normalized_proximity": 0.260505,
+     "box_area_fraction": 0.007792992349052694,
+     "confidence": 0.9101823568344116,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0109",
+     "timestamp_ms": 300.0,
+     "raw_index": 1,
+     "source": "onnx-runtime-detector"
+    },
+    {
+     "object_index": 2,
+     "class_id": 11,
+     "class_name": "train",
+     "role": "train",
+     "game_state_role": "train",
+     "lane": null,
+     "bbox_screen": {
+      "x1": 175.2109171549479,
+      "y1": 325.9925955533981,
+      "x2": 247.9985247356136,
+      "y2": 383.13902199268335
+     },
+     "bbox_normalized": [
+      0.2891269259982639,
+      0.31046913862228387,
+      0.4092384896627287,
+      0.3648943066596984
+     ],
+     "center": {
+      "x": 0.3491827078304963,
+      "y": 0.33768172264099117
+     },
+     "relative_horizontal_position": -0.30163458433900736,
+     "relative_vertical_position": -0.32463655471801767,
+     "distance_proxy": 0.747183,
+     "normalized_proximity": 0.25281699999999996,
+     "box_area_fraction": 0.006537092035675111,
+     "confidence": 0.9058531522750854,
+     "valid": true,
+     "invalid_reason": null,
+     "visibility": "in_frame",
+     "clamped": false,
+     "frame_id": "datasetfootage-0109",
+     "timestamp_ms": 300.0,
+     "raw_index": 2,
+     "source": "onnx-runtime-detector"
+    }
+   ],
+   "game_state": {
+    "state": {
+     "time_ms": 300.0,
+     "player": {
+      "lane": {
+       "value": 1,
+       "name": "center"
+      },
+      "speed": 0.5,
+      "jumping": false,
+      "rolling": false
+     },
+     "obstacle": null,
+     "train": {
+      "present": true,
+      "lane": {
+       "value": 0,
+       "name": "left"
+      },
+      "distance": 0.00209
+     },
+     "coin": null
+    },
+    "player_known": false,
+    "player_lane_known": false,
+    "coins_available": false,
+    "estimated_fields": [
+     "player.lane",
+     "player.speed",
+     "player.jumping",
+     "player.rolling",
+     "train.distance"
+    ],
+    "unrepresented": [
+     {
+      "class_name": "train",
+      "role": "train",
+      "lane": null,
+      "reason": "lane assignment is missing or uncertain"
+     },
+     {
+      "class_name": "boxtrain",
+      "role": "train",
+      "lane": 1,
+      "reason": "only the nearest train is representable by the single-object GameState"
+     }
+    ],
+    "warnings": [
+     "No player detection is available; the schema defaults (centre lane, speed 0.5, not jumping, not rolling) were used.",
+     "Object distances use an uncalibrated bottom-edge image proxy with horizon fraction 0.1500; they are not metric or game distances.",
+     "2 scene object(s) are not represented by the GameState schema; see 'unrepresented'.",
+     "The configured detector schema declares no player class; player state is not observed.",
+     "The configured detector schema declares no coin class; coin presence is not observed."
+    ]
+   },
+   "features": {
+    "player_lane": 1.0,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 0.0,
+    "obstacle_lane": null,
+    "obstacle_distance": null,
+    "obstacle_type": null,
+    "train_present": 1.0,
+    "train_lane": 0.0,
+    "train_distance": 0.00209,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+   },
+   "feature_groups": [
+    {
+     "group": "player",
+     "feature_names": [
+      "player_lane",
+      "player_speed",
+      "jumping",
+      "rolling"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "the configured detector schema declares no player class"
+    },
+    {
+     "group": "obstacle",
+     "feature_names": [
+      "obstacle_present",
+      "obstacle_lane",
+      "obstacle_distance",
+      "obstacle_type"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "no obstacle detection in this frame"
+    },
+    {
+     "group": "train",
+     "feature_names": [
+      "train_present",
+      "train_lane",
+      "train_distance"
+     ],
+     "present": true,
+     "object_index": 0,
+     "class_name": "train",
+     "confidence": 0.9384069442749023,
+     "valid": true,
+     "visibility": "in_frame",
+     "lane": 0,
+     "distance_proxy": 0.00209,
+     "n_candidates": 3,
+     "reason": null
+    },
+    {
+     "group": "coin",
+     "feature_names": [
+      "coin_present",
+      "coin_lane",
+      "coin_distance"
+     ],
+     "present": false,
+     "object_index": null,
+     "class_name": null,
+     "confidence": null,
+     "valid": null,
+     "visibility": null,
+     "lane": null,
+     "distance_proxy": null,
+     "n_candidates": 0,
+     "reason": "coins are unavailable in the configured detector schema"
+    }
+   ]
+  }
+ ],
+ "encoding": {
+  "per_frame": [
+   {
+    "frame_id": "datasetfootage-0100",
+    "timestamp_ms": 0.0,
+    "active_features": {
+     "player_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "player_speed": {
+      "n_units": 12,
+      "max_activation": 0.974504,
+      "active_units": 12
+     }
+    }
+   },
+   {
+    "frame_id": "datasetfootage-0101",
+    "timestamp_ms": 33.333,
+    "active_features": {
+     "player_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "player_speed": {
+      "n_units": 12,
+      "max_activation": 0.974504,
+      "active_units": 12
+     },
+     "train_present": {
+      "n_units": 6,
+      "max_activation": 1.0,
+      "active_units": 6
+     },
+     "train_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "train_distance": {
+      "n_units": 12,
+      "max_activation": 0.987915,
+      "active_units": 12
+     }
+    }
+   },
+   {
+    "frame_id": "datasetfootage-0102",
+    "timestamp_ms": 66.667,
+    "active_features": {
+     "player_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "player_speed": {
+      "n_units": 12,
+      "max_activation": 0.974504,
+      "active_units": 12
+     },
+     "train_present": {
+      "n_units": 6,
+      "max_activation": 1.0,
+      "active_units": 6
+     },
+     "train_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "train_distance": {
+      "n_units": 12,
+      "max_activation": 0.998214,
+      "active_units": 12
+     }
+    }
+   },
+   {
+    "frame_id": "datasetfootage-0103",
+    "timestamp_ms": 100.0,
+    "active_features": {
+     "player_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "player_speed": {
+      "n_units": 12,
+      "max_activation": 0.974504,
+      "active_units": 12
+     }
+    }
+   },
+   {
+    "frame_id": "datasetfootage-0104",
+    "timestamp_ms": 133.333,
+    "active_features": {
+     "player_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "player_speed": {
+      "n_units": 12,
+      "max_activation": 0.974504,
+      "active_units": 12
+     },
+     "train_present": {
+      "n_units": 6,
+      "max_activation": 1.0,
+      "active_units": 6
+     },
+     "train_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "train_distance": {
+      "n_units": 12,
+      "max_activation": 0.98574,
+      "active_units": 12
+     }
+    }
+   },
+   {
+    "frame_id": "datasetfootage-0105",
+    "timestamp_ms": 166.667,
+    "active_features": {
+     "player_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "player_speed": {
+      "n_units": 12,
+      "max_activation": 0.974504,
+      "active_units": 12
+     },
+     "train_present": {
+      "n_units": 6,
+      "max_activation": 1.0,
+      "active_units": 6
+     },
+     "train_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "train_distance": {
+      "n_units": 12,
+      "max_activation": 0.993464,
+      "active_units": 12
+     }
+    }
+   },
+   {
+    "frame_id": "datasetfootage-0106",
+    "timestamp_ms": 200.0,
+    "active_features": {
+     "player_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "player_speed": {
+      "n_units": 12,
+      "max_activation": 0.974504,
+      "active_units": 12
+     },
+     "train_present": {
+      "n_units": 6,
+      "max_activation": 1.0,
+      "active_units": 6
+     },
+     "train_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "train_distance": {
+      "n_units": 12,
+      "max_activation": 0.984873,
+      "active_units": 12
+     }
+    }
+   },
+   {
+    "frame_id": "datasetfootage-0107",
+    "timestamp_ms": 233.333,
+    "active_features": {
+     "player_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "player_speed": {
+      "n_units": 12,
+      "max_activation": 0.974504,
+      "active_units": 12
+     },
+     "train_present": {
+      "n_units": 6,
+      "max_activation": 1.0,
+      "active_units": 6
+     },
+     "train_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "train_distance": {
+      "n_units": 12,
+      "max_activation": 0.999979,
+      "active_units": 12
+     }
+    }
+   },
+   {
+    "frame_id": "datasetfootage-0108",
+    "timestamp_ms": 266.667,
+    "active_features": {
+     "player_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "player_speed": {
+      "n_units": 12,
+      "max_activation": 0.974504,
+      "active_units": 12
+     },
+     "train_present": {
+      "n_units": 6,
+      "max_activation": 1.0,
+      "active_units": 6
+     },
+     "train_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "train_distance": {
+      "n_units": 12,
+      "max_activation": 0.999977,
+      "active_units": 12
+     }
+    }
+   },
+   {
+    "frame_id": "datasetfootage-0109",
+    "timestamp_ms": 300.0,
+    "active_features": {
+     "player_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "player_speed": {
+      "n_units": 12,
+      "max_activation": 0.974504,
+      "active_units": 12
+     },
+     "train_present": {
+      "n_units": 6,
+      "max_activation": 1.0,
+      "active_units": 6
+     },
+     "train_lane": {
+      "n_units": 12,
+      "max_activation": 1.0,
+      "active_units": 4
+     },
+     "train_distance": {
+      "n_units": 12,
+      "max_activation": 0.999945,
+      "active_units": 12
+     }
+    }
+   }
+  ],
+  "aggregate": {
+   "player_lane": {
+    "max_activation": 1.0,
+    "mean_activation_across_frames": 0.333333,
+    "max_active_units": 4
+   },
+   "player_speed": {
+    "max_activation": 0.974504,
+    "mean_activation_across_frames": 0.456817,
+    "max_active_units": 12
+   },
+   "jumping": {
+    "max_activation": 0.0,
+    "mean_activation_across_frames": 0.0,
+    "max_active_units": 0
+   },
+   "rolling": {
+    "max_activation": 0.0,
+    "mean_activation_across_frames": 0.0,
+    "max_active_units": 0
+   },
+   "obstacle_present": {
+    "max_activation": 0.0,
+    "mean_activation_across_frames": 0.0,
+    "max_active_units": 0
+   },
+   "obstacle_lane": {
+    "max_activation": 0.0,
+    "mean_activation_across_frames": 0.0,
+    "max_active_units": 0
+   },
+   "obstacle_distance": {
+    "max_activation": 0.0,
+    "mean_activation_across_frames": 0.0,
+    "max_active_units": 0
+   },
+   "obstacle_type": {
+    "max_activation": 0.0,
+    "mean_activation_across_frames": 0.0,
+    "max_active_units": 0
+   },
+   "train_present": {
+    "max_activation": 1.0,
+    "mean_activation_across_frames": 0.8,
+    "max_active_units": 6
+   },
+   "train_lane": {
+    "max_activation": 1.0,
+    "mean_activation_across_frames": 0.266667,
+    "max_active_units": 4
+   },
+   "train_distance": {
+    "max_activation": 0.999979,
+    "mean_activation_across_frames": 0.302063,
+    "max_active_units": 12
+   },
+   "coin_present": {
+    "max_activation": 0.0,
+    "mean_activation_across_frames": 0.0,
+    "max_active_units": 0
+   },
+   "coin_lane": {
+    "max_activation": 0.0,
+    "mean_activation_across_frames": 0.0,
+    "max_active_units": 0
+   },
+   "coin_distance": {
+    "max_activation": 0.0,
+    "mean_activation_across_frames": 0.0,
+    "max_active_units": 0
+   }
+  }
+ },
+ "schedule": {
+  "kind": "sensory_population_schedule",
+  "dt_ms": 0.5,
+  "duration_ms": 333.3333333333333,
+  "transition_ms": 50.0,
+  "n_segments": 10,
+  "n_stimulated_neurons": 138,
+  "stimulated_neuron_indices": [
+   265,
+   1963,
+   3280,
+   4525,
+   5442,
+   7411,
+   7888,
+   9082,
+   12171,
+   14954,
+   15019,
+   15435,
+   15974,
+   16643,
+   18337,
+   18421,
+   21038,
+   22103,
+   22552,
+   24293,
+   24395,
+   25446,
+   28855,
+   30932,
+   30990,
+   31304,
+   34692,
+   34775,
+   35913,
+   36029,
+   36937,
+   38542,
+   38595,
+   38904,
+   39674,
+   41068,
+   43929,
+   43943,
+   45913,
+   46160,
+   46737,
+   50212,
+   50339,
+   52375,
+   52604,
+   53344,
+   53543,
+   53859,
+   54150,
+   55289,
+   56208,
+   57467,
+   58064,
+   58171,
+   58225,
+   60296,
+   60471,
+   62549,
+   63645,
+   64285,
+   64890,
+   65186,
+   69782,
+   72169,
+   72679,
+   73278,
+   74105,
+   74369,
+   75030,
+   78120,
+   80799,
+   82102,
+   82483,
+   84874,
+   85215,
+   85433,
+   85831,
+   85867,
+   87224,
+   87389,
+   87805,
+   88524,
+   88721,
+   89226,
+   90703,
+   90830,
+   91895,
+   91920,
+   93213,
+   95477,
+   95901,
+   97511,
+   98030,
+   98293,
+   100461,
+   100847,
+   101305,
+   102572,
+   103284,
+   103667,
+   104123,
+   104126,
+   104235,
+   104385,
+   104468,
+   104803,
+   105223,
+   105537,
+   105719,
+   106829,
+   107236,
+   107895,
+   108078,
+   108248,
+   111557,
+   111885,
+   111895,
+   112328,
+   112813,
+   113574,
+   114257,
+   115136,
+   115744,
+   117042,
+   117290,
+   118887,
+   118974,
+   119283,
+   121541,
+   124354,
+   124793,
+   125025,
+   125670,
+   126284,
+   127559,
+   129478,
+   135055,
+   139165
+  ],
+  "peak_total_current_pa": 4992.358134,
+  "features": {
+   "player_lane": {
+    "n_neurons": 12,
+    "neuron_indices": [
+     85433,
+     90703,
+     36937,
+     58225,
+     108248,
+     4525,
+     22103,
+     43929,
+     53859,
+     118974,
+     5442,
+     85215
+    ],
+    "root_ids": {
+     "left": [
+      720575940627897886,
+      720575940628801512,
+      720575940618842196,
+      720575940622967902
+     ],
+     "center": [
+      720575940632292748,
+      720575940607293570,
+      720575940614913698,
+      720575940620491028
+     ],
+     "right": [
+      720575940622190452,
+      720575940635653786,
+      720575940608031154,
+      720575940627860105
+     ]
+    },
+    "peak_total_current_pa": 800.0,
+    "mean_total_current_pa": 800.0,
+    "injected_pa_ms": 266800.0
+   },
+   "player_speed": {
+    "n_neurons": 12,
+    "neuron_indices": [
+     18337,
+     98293,
+     103667,
+     121541,
+     88524,
+     65186,
+     53543,
+     75030,
+     41068,
+     139165,
+     62549,
+     73278
+    ],
+    "root_ids": {
+     "default": [
+      720575940613703282,
+      720575940630280062,
+      720575940631276764,
+      720575940636748911,
+      720575940628409231,
+      720575940624178323,
+      720575940622132656,
+      720575940626065447,
+      720575940619896374,
+      720575940661106305,
+      720575940623721496,
+      720575940625736435
+     ]
+    },
+    "peak_total_current_pa": 1096.360925,
+    "mean_total_current_pa": 1096.360925,
+    "injected_pa_ms": 365636.368588
+   },
+   "jumping": {
+    "n_neurons": 6,
+    "neuron_indices": [
+     265,
+     82102,
+     129478,
+     24293,
+     54150,
+     35913
+    ],
+    "root_ids": {
+     "default": [
+      720575940603639724,
+      720575940627314088,
+      720575940640231131,
+      720575940615540841,
+      720575940622234211,
+      720575940618590262
+     ]
+    },
+    "peak_total_current_pa": 0.0,
+    "mean_total_current_pa": 0.0,
+    "injected_pa_ms": 0.0
+   },
+   "rolling": {
+    "n_neurons": 6,
+    "neuron_indices": [
+     72679,
+     104123,
+     112328,
+     45913,
+     30990,
+     113574
+    ],
+    "root_ids": {
+     "default": [
+      720575940625624464,
+      720575940631367776,
+      720575940633243034,
+      720575940620822893,
+      720575940617434086,
+      720575940633621017
+     ]
+    },
+    "peak_total_current_pa": 0.0,
+    "mean_total_current_pa": 0.0,
+    "injected_pa_ms": 0.0
+   },
+   "obstacle_present": {
+    "n_neurons": 6,
+    "neuron_indices": [
+     104126,
+     15019,
+     78120,
+     111885,
+     63645,
+     126284
+    ],
+    "root_ids": {
+     "default": [
+      720575940631368441,
+      720575940612702426,
+      720575940626685232,
+      720575940633147167,
+      720575940623923336,
+      720575940638844223
+     ]
+    },
+    "peak_total_current_pa": 0.0,
+    "mean_total_current_pa": 0.0,
+    "injected_pa_ms": 0.0
+   },
+   "obstacle_lane": {
+    "n_neurons": 12,
+    "neuron_indices": [
+     101305,
+     104468,
+     82483,
+     135055,
+     9082,
+     69782,
+     98030,
+     18421,
+     117290,
+     15435,
+     85867,
+     107236
+    ],
+    "root_ids": {
+     "left": [
+      720575940630837292,
+      720575940631439734,
+      720575940627378178,
+      720575940645614871
+     ],
+     "center": [
+      720575940610377284,
+      720575940625023467,
+      720575940630229442,
+      720575940613735139
+     ],
+     "right": [
+      720575940635065184,
+      720575940612831857,
+      720575940627970058,
+      720575940632050986
+     ]
+    },
+    "peak_total_current_pa": 0.0,
+    "mean_total_current_pa": 0.0,
+    "injected_pa_ms": 0.0
+   },
+   "obstacle_distance": {
+    "n_neurons": 12,
+    "neuron_indices": [
+     87389,
+     108078,
+     64890,
+     107895,
+     104235,
+     52604,
+     87805,
+     91895,
+     7411,
+     88721,
+     91920,
+     125025
+    ],
+    "root_ids": {
+     "default": [
+      720575940628230223,
+      720575940632256015,
+      720575940624132095,
+      720575940632208971,
+      720575940631392220,
+      720575940621975206,
+      720575940628302609,
+      720575940629017606,
+      720575940609386251,
+      720575940628443947,
+      720575940629022961,
+      720575940638273758
+     ]
+    },
+    "peak_total_current_pa": 0.0,
+    "mean_total_current_pa": 0.0,
+    "injected_pa_ms": 0.0
+   },
+   "obstacle_type": {
+    "n_neurons": 12,
+    "neuron_indices": [
+     52375,
+     104385,
+     74369,
+     124354,
+     85831,
+     3280,
+     102572,
+     95477,
+     7888,
+     30932,
+     105223,
+     15974
+    ],
+    "root_ids": {
+     "low": [
+      720575940621932454,
+      720575940631420665,
+      720575940625943310,
+      720575940638002142,
+      720575940627963146,
+      720575940606462566
+     ],
+     "high": [
+      720575940631077180,
+      720575940629741827,
+      720575940609692683,
+      720575940617419350,
+      720575940631594491,
+      720575940612972211
+     ]
+    },
+    "peak_total_current_pa": 0.0,
+    "mean_total_current_pa": 0.0,
+    "injected_pa_ms": 0.0
+   },
+   "train_present": {
+    "n_neurons": 6,
+    "neuron_indices": [
+     90830,
+     34692,
+     16643,
+     64285,
+     80799,
+     55289
+    ],
+    "root_ids": {
+     "default": [
+      720575940628819953,
+      720575940618295842,
+      720575940613169817,
+      720575940624027160,
+      720575940627120190,
+      720575940622433524
+     ]
+    },
+    "peak_total_current_pa": 1200.0,
+    "mean_total_current_pa": 878.962519,
+    "injected_pa_ms": 293134.0
+   },
+   "train_lane": {
+    "n_neurons": 12,
+    "neuron_indices": [
+     50212,
+     105719,
+     60296,
+     104803,
+     127559,
+     46160,
+     25446,
+     89226,
+     111895,
+     12171,
+     124793,
+     57467
+    ],
+    "root_ids": {
+     "left": [
+      720575940621571974,
+      720575940631702347,
+      720575940623313110,
+      720575940631507052
+     ],
+     "center": [
+      720575940639391165,
+      720575940620871339,
+      720575940615893058,
+      720575940628540359
+     ],
+     "right": [
+      720575940633149215,
+      720575940611743608,
+      720575940638181086,
+      720575940622825221
+     ]
+    },
+    "peak_total_current_pa": 800.0,
+    "mean_total_current_pa": 585.975012,
+    "injected_pa_ms": 195422.666667
+   },
+   "train_distance": {
+    "n_neurons": 12,
+    "neuron_indices": [
+     38904,
+     58064,
+     31304,
+     115744,
+     38542,
+     38595,
+     14954,
+     114257,
+     36029,
+     56208,
+     97511,
+     103284
+    ],
+    "root_ids": {
+     "default": [
+      720575940619336512,
+      720575940622940492,
+      720575940617513589,
+      720575940634434273,
+      720575940619242053,
+      720575940619253573,
+      720575940612685205,
+      720575940633835437,
+      720575940618615586,
+      720575940622610928,
+      720575940630129767,
+      720575940631207276
+     ]
+    },
+    "peak_total_current_pa": 1095.997209,
+    "mean_total_current_pa": 680.483884,
+    "injected_pa_ms": 226941.375375
+   },
+   "coin_present": {
+    "n_neurons": 6,
+    "neuron_indices": [
+     106829,
+     58171,
+     95901,
+     84874,
+     34775,
+     117042
+    ],
+    "root_ids": {
+     "default": [
+      720575940631969295,
+      720575940622958156,
+      720575940629827600,
+      720575940627799677,
+      720575940618317030,
+      720575940634964761
+     ]
+    },
+    "peak_total_current_pa": 0.0,
+    "mean_total_current_pa": 0.0,
+    "injected_pa_ms": 0.0
+   },
+   "coin_lane": {
+    "n_neurons": 12,
+    "neuron_indices": [
+     22552,
+     118887,
+     125670,
+     60471,
+     87224,
+     100847,
+     100461,
+     119283,
+     46737,
+     72169,
+     43943,
+     112813
+    ],
+    "root_ids": {
+     "left": [
+      720575940615051304,
+      720575940635624383,
+      720575940638577215,
+      720575940623338966
+     ],
+     "center": [
+      720575940628203944,
+      720575940630757750,
+      720575940630693676,
+      720575940635754603
+     ],
+     "right": [
+      720575940620961729,
+      720575940625512171,
+      720575940620493141,
+      720575940633380909
+     ]
+    },
+    "peak_total_current_pa": 0.0,
+    "mean_total_current_pa": 0.0,
+    "injected_pa_ms": 0.0
+   },
+   "coin_distance": {
+    "n_neurons": 12,
+    "neuron_indices": [
+     24395,
+     53344,
+     39674,
+     115136,
+     50339,
+     93213,
+     111557,
+     105537,
+     28855,
+     21038,
+     74105,
+     1963
+    ],
+    "root_ids": {
+     "default": [
+      720575940615577250,
+      720575940622105008,
+      720575940619575163,
+      720575940634195923,
+      720575940621591131,
+      720575940629282665,
+      720575940633046343,
+      720575940631658839,
+      720575940616855820,
+      720575940614619944,
+      720575940625892284,
+      720575940605634220
+     ]
+    },
+    "peak_total_current_pa": 0.0,
+    "mean_total_current_pa": 0.0,
+    "injected_pa_ms": 0.0
+   }
+  },
+  "describe": {
+   "kind": "sensory_population_schedule",
+   "dt_ms": 0.5,
+   "duration_ms": 333.3333333333333,
+   "transition_ms": 50.0,
+   "onset_ms": 0.0,
+   "offset_ms": 333.3333333333333,
+   "n_features": 14,
+   "active_features": [
+    "player_lane",
+    "player_speed",
+    "jumping",
+    "rolling",
+    "obstacle_present",
+    "obstacle_lane",
+    "obstacle_distance",
+    "obstacle_type",
+    "train_present",
+    "train_lane",
+    "train_distance",
+    "coin_present",
+    "coin_lane",
+    "coin_distance"
+   ],
+   "n_stimulated_neurons": 138,
+   "features": {
+    "player_lane": {
+     "n_neurons": 12,
+     "current_pa": 200.0,
+     "root_ids": [
+      720575940627897886,
+      720575940628801512,
+      720575940618842196,
+      720575940622967902,
+      720575940632292748,
+      720575940607293570,
+      720575940614913698,
+      720575940620491028,
+      720575940622190452,
+      720575940635653786,
+      720575940608031154,
+      720575940627860105
+     ]
+    },
+    "player_speed": {
+     "n_neurons": 12,
+     "current_pa": 200.0,
+     "root_ids": [
+      720575940613703282,
+      720575940630280062,
+      720575940631276764,
+      720575940636748911,
+      720575940628409231,
+      720575940624178323,
+      720575940622132656,
+      720575940626065447,
+      720575940619896374,
+      720575940661106305,
+      720575940623721496,
+      720575940625736435
+     ]
+    },
+    "jumping": {
+     "n_neurons": 6,
+     "current_pa": 200.0,
+     "root_ids": [
+      720575940603639724,
+      720575940627314088,
+      720575940640231131,
+      720575940615540841,
+      720575940622234211,
+      720575940618590262
+     ]
+    },
+    "rolling": {
+     "n_neurons": 6,
+     "current_pa": 200.0,
+     "root_ids": [
+      720575940625624464,
+      720575940631367776,
+      720575940633243034,
+      720575940620822893,
+      720575940617434086,
+      720575940633621017
+     ]
+    },
+    "obstacle_present": {
+     "n_neurons": 6,
+     "current_pa": 200.0,
+     "root_ids": [
+      720575940631368441,
+      720575940612702426,
+      720575940626685232,
+      720575940633147167,
+      720575940623923336,
+      720575940638844223
+     ]
+    },
+    "obstacle_lane": {
+     "n_neurons": 12,
+     "current_pa": 200.0,
+     "root_ids": [
+      720575940630837292,
+      720575940631439734,
+      720575940627378178,
+      720575940645614871,
+      720575940610377284,
+      720575940625023467,
+      720575940630229442,
+      720575940613735139,
+      720575940635065184,
+      720575940612831857,
+      720575940627970058,
+      720575940632050986
+     ]
+    },
+    "obstacle_distance": {
+     "n_neurons": 12,
+     "current_pa": 200.0,
+     "root_ids": [
+      720575940628230223,
+      720575940632256015,
+      720575940624132095,
+      720575940632208971,
+      720575940631392220,
+      720575940621975206,
+      720575940628302609,
+      720575940629017606,
+      720575940609386251,
+      720575940628443947,
+      720575940629022961,
+      720575940638273758
+     ]
+    },
+    "obstacle_type": {
+     "n_neurons": 12,
+     "current_pa": 200.0,
+     "root_ids": [
+      720575940621932454,
+      720575940631420665,
+      720575940625943310,
+      720575940638002142,
+      720575940627963146,
+      720575940606462566,
+      720575940631077180,
+      720575940629741827,
+      720575940609692683,
+      720575940617419350,
+      720575940631594491,
+      720575940612972211
+     ]
+    },
+    "train_present": {
+     "n_neurons": 6,
+     "current_pa": 200.0,
+     "root_ids": [
+      720575940628819953,
+      720575940618295842,
+      720575940613169817,
+      720575940624027160,
+      720575940627120190,
+      720575940622433524
+     ]
+    },
+    "train_lane": {
+     "n_neurons": 12,
+     "current_pa": 200.0,
+     "root_ids": [
+      720575940621571974,
+      720575940631702347,
+      720575940623313110,
+      720575940631507052,
+      720575940639391165,
+      720575940620871339,
+      720575940615893058,
+      720575940628540359,
+      720575940633149215,
+      720575940611743608,
+      720575940638181086,
+      720575940622825221
+     ]
+    },
+    "train_distance": {
+     "n_neurons": 12,
+     "current_pa": 200.0,
+     "root_ids": [
+      720575940619336512,
+      720575940622940492,
+      720575940617513589,
+      720575940634434273,
+      720575940619242053,
+      720575940619253573,
+      720575940612685205,
+      720575940633835437,
+      720575940618615586,
+      720575940622610928,
+      720575940630129767,
+      720575940631207276
+     ]
+    },
+    "coin_present": {
+     "n_neurons": 6,
+     "current_pa": 200.0,
+     "root_ids": [
+      720575940631969295,
+      720575940622958156,
+      720575940629827600,
+      720575940627799677,
+      720575940618317030,
+      720575940634964761
+     ]
+    },
+    "coin_lane": {
+     "n_neurons": 12,
+     "current_pa": 200.0,
+     "root_ids": [
+      720575940615051304,
+      720575940635624383,
+      720575940638577215,
+      720575940623338966,
+      720575940628203944,
+      720575940630757750,
+      720575940630693676,
+      720575940635754603,
+      720575940620961729,
+      720575940625512171,
+      720575940620493141,
+      720575940633380909
+     ]
+    },
+    "coin_distance": {
+     "n_neurons": 12,
+     "current_pa": 200.0,
+     "root_ids": [
+      720575940615577250,
+      720575940622105008,
+      720575940619575163,
+      720575940634195923,
+      720575940621591131,
+      720575940629282665,
+      720575940633046343,
+      720575940631658839,
+      720575940616855820,
+      720575940614619944,
+      720575940625892284,
+      720575940605634220
+     ]
+    }
+   },
+   "segments": [
+    {
+     "start_ms": 0.0,
+     "state_time_ms": 0.0
+    },
+    {
+     "start_ms": 33.333333333333336,
+     "state_time_ms": 33.333333333333336
+    },
+    {
+     "start_ms": 66.66666666666667,
+     "state_time_ms": 66.66666666666667
+    },
+    {
+     "start_ms": 100.0,
+     "state_time_ms": 100.0
+    },
+    {
+     "start_ms": 133.33333333333334,
+     "state_time_ms": 133.33333333333334
+    },
+    {
+     "start_ms": 166.66666666666669,
+     "state_time_ms": 166.66666666666669
+    },
+    {
+     "start_ms": 200.0,
+     "state_time_ms": 200.0
+    },
+    {
+     "start_ms": 233.33333333333334,
+     "state_time_ms": 233.33333333333334
+    },
+    {
+     "start_ms": 266.6666666666667,
+     "state_time_ms": 266.6666666666667
+    },
+    {
+     "start_ms": 300.0,
+     "state_time_ms": 300.0
+    }
+   ]
+  }
+ },
+ "simulation": {
+  "duration_ms": 333.5,
+  "dt_ms": 0.5,
+  "n_steps": 667,
+  "seed": 20261104,
+  "spikes_total": 136,
+  "spikes_stimulated": 131,
+  "spikes_non_stimulated": 5,
+  "stimulated_neuron_count": 138,
+  "stimulated_neuron_fraction": 0.000991,
+  "spiking_neurons_stimulated": 28,
+  "spiking_neurons_non_stimulated": 5,
+  "first_spike_ms": 28.0,
+  "first_non_stimulated_spike_ms": 195.5,
+  "active_neurons": 33,
+  "silent_neurons": 139222,
+  "active_fraction": 0.000237,
+  "mean_rate_hz": 0.0029,
+  "population_rate_hz": 0.0029,
+  "population_rate_peak_hz": 0.0108,
+  "activity_by_stimulation": {
+   "stimulated_neurons": 138,
+   "stimulated_active_neurons": 28,
+   "stimulated_spikes": 131,
+   "non_stimulated_active_neurons": 5,
+   "non_stimulated_spikes": 5,
+   "non_stimulated_spike_fraction": 0.036765
+  },
+  "spike_capacity": 5000000,
+  "wall_runtime_s": 1.9966,
+  "steps_per_second_wall": 334.08,
+  "synapses": {
+   "excitatory_edges": 2955795,
+   "inhibitory_edges": 776665,
+   "excitatory_neurons": 123238,
+   "inhibitory_neurons": 16017,
+   "silent_neurons": 0,
+   "effective_delay_ms": 1.0,
+   "spike_transmissions": 885,
+   "transmissions_per_spike": 6.507
+  },
+  "diagnostics": {
+   "finite_state": true,
+   "min_membrane_mv": -68.0,
+   "max_membrane_mv": -50.0521,
+   "max_abs_membrane_mv": 68.0,
+   "max_abs_total_current_pa": 1394.3395
+  },
+  "max_recorded_spikes": 5000000
+ },
+ "limitations": [
+  "The detector was trained on the same recording groups; no independent test split exists, so detections are not an accuracy estimate.",
+  "The v15 schema has no player class, so player lane, jumping and rolling are unavailable and remain at schema defaults.",
+  "No coin class is available; coin features remain absent.",
+  "Lane and distance are image geometry; distance is an uncalibrated bottom-edge proxy, not metres.",
+  "Spikes are model output from a fixed connectome with no plasticity. They are not measured biological activity and no action is selected.",
+  "One mapping realization and one seed are used."
+ ],
+ "total_wall_runtime_s": 4.943
+}

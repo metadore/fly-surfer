@@ -1,9 +1,18 @@
 # Phase 3B — Perception to Sensory Integration
 
-**Status:** scripted-detection integration **PASS**; trained-detector
-integration **BLOCKED** (no weights). No visual recognition is claimed.
+**Status (2026-11-06):** scripted-detection integration **PASS**;
+trained-detector integration **BLOCKED at that date** (no weights at the time).
+No visual recognition is claimed.
 
 **Date:** 2026-11-06
+
+> **Later update (2026-11-07).** A trained YOLO11n ONNX detector now exists and
+> was replayed over 100 real frames; see
+> `reports/PHASE_3B2B3_YOLO11N_ONNX_INTEGRATION.md` and
+> `reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md`. That replay is engineering
+> evidence (deterministic pipeline, latency, spike totals), not independent
+> detection accuracy. The scripted result in this document is preserved
+> unchanged.
 
 ---
 
@@ -52,8 +61,13 @@ representation.
 `sensory/game_state.py` keeps the Phase 3A schema: one player, one obstacle,
 one train, one coin. The adapter selects the **nearest** eligible object of
 each kind and records everything else as `UnrepresentedObject` with a reason.
-No field is invented for player or coin, because the dataset has no such
-labels. Existing encoders accept the resulting 14-feature vector unchanged.
+The dataset carries no player or coin labels, so the adapter does **not**
+observe those fields: it fills player lane with `CENTER` (unless exactly one
+player object is detected), speed with `0.5`, and `jumping`/`rolling` with
+`False`, and lists `player.lane`, `player.speed`, `player.jumping` and
+`player.rolling` in `estimated_fields`. Coin features default to absent.
+These are schema defaults, not measurements. Existing encoders accept the
+resulting 14-feature vector unchanged.
 
 ### 2.2 Scene roles
 
@@ -73,7 +87,8 @@ boundary classes are unsupported. Roles are name-derived hypotheses.
   biological role was assigned.
 - Missing player/coin labels produce explicit `player_known = false` /
   `coins_available = false` flags; the encoder defaults are documented, not
-  presented as perception.
+  presented as perception. They are nevertheless encoded and scheduled like
+  observations.
 
 ## 4. Scripted end-to-end evidence
 
@@ -116,13 +131,28 @@ Total suite: **265 passed** (2026-11-06).
 
 ## 6. Limitations
 
-- Integrations use scripted or `MockDetector` detections; no pixel
-  recognition occurred.
+**Status at 2026-11-06.**
+
+- Integrations in this document use scripted or `MockDetector` detections; no
+  pixel recognition occurred.
 - Lane assignment and distance are image geometry, not game semantics.
 - The single-object `GameState` cannot carry multiple obstacles/trains; the
   observation layer does, but downstream encoding uses the nearest object.
-- Player and coin states remain unknown.
-- No real detector error has been propagated into the neural chain.
+- Player and coin states are unobserved; their schema defaults are
+  nevertheless encoded and scheduled (see Section 2.1).
+- At that date no real detector error had been propagated into the neural
+  chain.
+
+**Later replay (2026-11-07).** `experiments/phase_3b/real_sequence_replay.py`
+propagated ONNX detector output through the tracker, temporal encoder,
+`TemporalActivationScheduler` and the full connectome over 100 real frames
+(334 candidates, 327 accepted, 7 rejected as out of bounds; 3,300.5 simulated
+ms, 6,601 steps, 15,654,631 spikes; see
+`reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md`). Detector output therefore did
+enter the neural chain. Detector-error propagation was still **not**
+independently evaluated: the replayed sequence has no annotated object
+identities, no independent test split exists, and the replay is engineering
+evidence rather than an accuracy measurement.
 
 ## 7. Evidence files
 

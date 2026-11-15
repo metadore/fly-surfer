@@ -1,0 +1,5927 @@
+{
+ "phase": "5",
+ "experiment": "BANC reward-modulated synaptic plasticity",
+ "generated_at_utc": "2026-11-15T13:51:58+00:00",
+ "software": {
+  "python": "3.13.14",
+  "numpy": "2.3.4",
+  "pandas": "2.3.3",
+  "platform": "Windows-11-10.0.26200-SP0"
+ },
+ "inputs": {
+  "experiment_config": "configs/plasticity_banc.yaml",
+  "experiment_config_sha256": "616288a40bf864185c33f92a99742be8dd49e62773cbb58cb9287414ad9e5f70",
+  "graph_sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192",
+  "node_table_sha256": "144a2eb09aa1ed2be4f07eff589a6158e98cfe4f18b52db7feef4d2272953e5f",
+  "policy_config_sha256": "88f6449289492e79a919fafa56af93c5ac5e916cb50cc1658d7e14eed2dc399e",
+  "decoder_config_sha256": "525f25e9e0d334e58a38ce9d340fcd8fe3ebc148fe1bf9f08656eccc660d9fae",
+  "neuron_config_sha256": "9b652bde00a795da205cf22affe8690871670264a3718948f58f3b30583d8b77"
+ },
+ "graph": {
+  "source": "BANC v888",
+  "threshold": 5,
+  "n_nodes": 172433,
+  "n_edges": 1535710,
+  "n_synapses": 18552546,
+  "n_isolated": 24320,
+  "structural_checksum": "0c4d602ce0d019709df3c9159d2f4c194e2eaea23413c76efafa3d548814fc80",
+  "policy_digest": "2276b2a285d26f4739377caefb7a8f6e7f332405ebed8cf2494380aaa73ce4af"
+ },
+ "probe": {
+  "selection": "vnc_intrinsic_ranked",
+  "requested_count": 64,
+  "rule": "top-N by integer signed synapse count onto motor neurons; super_class == ventral_nerve_cord_intrinsic; verified excitatory sign; motor neurons excluded",
+  "pool_size": 5622,
+  "tie_break": "ascending graph node index",
+  "node_indices": [
+   784,
+   2368,
+   4001,
+   6494,
+   6792,
+   9156,
+   13874,
+   14849,
+   14864,
+   15006,
+   20330,
+   21272,
+   23835,
+   29347,
+   32587,
+   35652,
+   36353,
+   37188,
+   47959,
+   56392,
+   56713,
+   58840,
+   63351,
+   65395,
+   65657,
+   66352,
+   68870,
+   69347,
+   70914,
+   71887,
+   72123,
+   83391,
+   85318,
+   90106,
+   91891,
+   96719,
+   100883,
+   106245,
+   109429,
+   116615,
+   120082,
+   124420,
+   128045,
+   128277,
+   130286,
+   131180,
+   132749,
+   139295,
+   141019,
+   143196,
+   144384,
+   144989,
+   146610,
+   152400,
+   153198,
+   159272,
+   159312,
+   162045,
+   163268,
+   164895,
+   165155,
+   166057,
+   166118,
+   169154
+  ],
+  "root_ids": [
+   720575941390358788,
+   720575941401753379,
+   720575941408320430,
+   720575941413917724,
+   720575941414508948,
+   720575941429488599,
+   720575941436862527,
+   720575941438373420,
+   720575941438389292,
+   720575941438574303,
+   720575941447809812,
+   720575941449454414,
+   720575941453079209,
+   720575941462497680,
+   720575941469724125,
+   720575941474467633,
+   720575941475399264,
+   720575941476218945,
+   720575941488553422,
+   720575941500785643,
+   720575941501346978,
+   720575941504444354,
+   720575941508299554,
+   720575941511275986,
+   720575941511836432,
+   720575941512896099,
+   720575941515624291,
+   720575941516099500,
+   720575941517357914,
+   720575941518434227,
+   720575941518807468,
+   720575941534150117,
+   720575941535971777,
+   720575941540185213,
+   720575941542442076,
+   720575941548936253,
+   720575941554049307,
+   720575941560221229,
+   720575941564147346,
+   720575941572444830,
+   720575941575681718,
+   720575941581673337,
+   720575941589972876,
+   720575941590291084,
+   720575941592931112,
+   720575941594160421,
+   720575941595919217,
+   720575941609673802,
+   720575941612203996,
+   720575941614257171,
+   720575941616503449,
+   720575941618500821,
+   720575941624450506,
+   720575941633087648,
+   720575941634248133,
+   720575941652545521,
+   720575941652626193,
+   720575941657730328,
+   720575941661300792,
+   720575941668287987,
+   720575941669049587,
+   720575941671280817,
+   720575941671443623,
+   720575941689865880
+  ],
+  "indices_sha256": "670139f67e804e2705b1e05f5b45bd47258a1efefe6f79cc47d6f3a9cee457f1",
+  "current_pa": 300.0,
+  "start_ms": 50.0,
+  "end_ms": 250.0,
+  "phase_4g_reference": {
+   "reference": "experiments/results/phase_4g/phase_4g_experiment.json",
+   "matches_recorded_root_ids": true
+  }
+ },
+ "reward": {
+  "stream": {
+   "classification": "declared experimental reward; not a biological dopamine measurement and not an observed gameplay outcome",
+   "provenance": "events declared by the experimenter for a mechanism test; no game was played",
+   "n_events": 5,
+   "counts": {
+    "positive": 2,
+    "negative": 1,
+    "neutral": 1,
+    "missing": 1
+   },
+   "total_available_reward": 1.0,
+   "events": [
+    {
+     "time_ms": 100.0,
+     "magnitude": 1.0,
+     "source": "experimental_input",
+     "label": "declared_positive",
+     "provenance": "declared before the run",
+     "available": true
+    },
+    {
+     "time_ms": 160.0,
+     "magnitude": -1.0,
+     "source": "experimental_input",
+     "label": "declared_negative",
+     "provenance": "declared before the run",
+     "available": true
+    },
+    {
+     "time_ms": 220.0,
+     "magnitude": 1.0,
+     "source": "experimental_input",
+     "label": "declared_positive",
+     "provenance": "declared before the run",
+     "available": true
+    },
+    {
+     "time_ms": 250.0,
+     "magnitude": 0.0,
+     "source": "experimental_input",
+     "label": "declared_neutral",
+     "provenance": "declared before the run",
+     "available": true
+    },
+    {
+     "time_ms": 280.0,
+     "magnitude": null,
+     "source": "unavailable",
+     "label": "no_outcome_available",
+     "provenance": "explicit missing-reward control",
+     "available": false
+    }
+   ],
+   "digest": "28853c2f488c584202e14229706cdf80eadf86360cca664d2836dc281ebecb1e"
+  },
+  "modulation_config": {
+   "gain": 1.0,
+   "decay_tau_ms": 50.0,
+   "decay_per_ms": 0.980198673307,
+   "baseline": 0.0,
+   "clip_abs": 5.0,
+   "classification": "computational decaying reward modulation; not a biological dopamine model",
+   "interpretation": "phasic modulation is gain * reward for one delivery; the state is a decaying envelope kept for inspection"
+  },
+  "plastic_run_provider": {
+   "provider": "modulation_reward_provider",
+   "stream": {
+    "classification": "declared experimental reward; not a biological dopamine measurement and not an observed gameplay outcome",
+    "provenance": "events declared by the experimenter for a mechanism test; no game was played",
+    "n_events": 5,
+    "counts": {
+     "positive": 2,
+     "negative": 1,
+     "neutral": 1,
+     "missing": 1
+    },
+    "total_available_reward": 1.0,
+    "events": [
+     {
+      "time_ms": 100.0,
+      "magnitude": 1.0,
+      "source": "experimental_input",
+      "label": "declared_positive",
+      "provenance": "declared before the run",
+      "available": true
+     },
+     {
+      "time_ms": 160.0,
+      "magnitude": -1.0,
+      "source": "experimental_input",
+      "label": "declared_negative",
+      "provenance": "declared before the run",
+      "available": true
+     },
+     {
+      "time_ms": 220.0,
+      "magnitude": 1.0,
+      "source": "experimental_input",
+      "label": "declared_positive",
+      "provenance": "declared before the run",
+      "available": true
+     },
+     {
+      "time_ms": 250.0,
+      "magnitude": 0.0,
+      "source": "experimental_input",
+      "label": "declared_neutral",
+      "provenance": "declared before the run",
+      "available": true
+     },
+     {
+      "time_ms": 280.0,
+      "magnitude": null,
+      "source": "unavailable",
+      "label": "no_outcome_available",
+      "provenance": "explicit missing-reward control",
+      "available": false
+     }
+    ],
+    "digest": "28853c2f488c584202e14229706cdf80eadf86360cca664d2836dc281ebecb1e"
+   },
+   "modulation": {
+    "config": {
+     "gain": 1.0,
+     "decay_tau_ms": 50.0,
+     "decay_per_ms": 0.980198673307,
+     "baseline": 0.0,
+     "clip_abs": 5.0,
+     "classification": "computational decaying reward modulation; not a biological dopamine model",
+     "interpretation": "phasic modulation is gain * reward for one delivery; the state is a decaying envelope kept for inspection"
+    },
+    "n_events": 5,
+    "n_available": 4,
+    "n_missing": 1,
+    "records": [
+     {
+      "step": 200,
+      "time_ms": 100.0,
+      "magnitude": 1.0,
+      "source": "experimental_input",
+      "label": "declared_positive",
+      "available": true,
+      "phasic_modulation": 1.0,
+      "modulation_state": 1.0
+     },
+     {
+      "step": 320,
+      "time_ms": 160.0,
+      "magnitude": -1.0,
+      "source": "experimental_input",
+      "label": "declared_negative",
+      "available": true,
+      "phasic_modulation": -1.0,
+      "modulation_state": -0.698805788
+     },
+     {
+      "step": 440,
+      "time_ms": 220.0,
+      "magnitude": 1.0,
+      "source": "experimental_input",
+      "label": "declared_positive",
+      "available": true,
+      "phasic_modulation": 1.0,
+      "modulation_state": 0.789523741
+     },
+     {
+      "step": 500,
+      "time_ms": 250.0,
+      "magnitude": 0.0,
+      "source": "experimental_input",
+      "label": "declared_neutral",
+      "available": true,
+      "phasic_modulation": 0.0,
+      "modulation_state": 0.433299816
+     },
+     {
+      "step": 560,
+      "time_ms": 280.0,
+      "magnitude": null,
+      "source": "unavailable",
+      "label": "no_outcome_available",
+      "available": false,
+      "phasic_modulation": null,
+      "modulation_state": 0.237799981
+     }
+    ],
+    "digest": "9924428a16c444eaaeb401359246f51f80cd5e2a6f169b1a64980d18e16e5236",
+    "classification": "computational decaying reward modulation; not a biological dopamine model"
+   },
+   "n_steps": 600,
+   "n_update_steps": 4,
+   "n_steps_without_reward": 596,
+   "n_missing_events": 1,
+   "emitted_modulation": 1.0,
+   "missing_reward_policy": "no reward information -> step returns None -> no weight update",
+   "classification": "computational decaying reward modulation; not a biological dopamine model"
+  },
+  "control_run_provider": {
+   "n_update_steps": 4,
+   "n_steps_without_reward": 596,
+   "n_missing_events": 1,
+   "emitted_modulation": 1.0
+  },
+  "source_classification": "declared experimental reward inputs; not gameplay-derived outcomes and not a biological dopamine measurement"
+ },
+ "plasticity": {
+  "rule": "delta_w = eta * modulation * eligibility",
+  "eta": 0.5,
+  "control_eta": 0.0,
+  "bounds": {
+   "lower_factor": 0.5,
+   "upper_factor": 2.0,
+   "absolute_min_pa": null,
+   "absolute_max_pa": null,
+   "max_abs_update_pa": 5.0,
+   "interpretation": "relative bounds are a declared modelling choice around the initial structural weight; they are not fitted"
+  },
+  "traces": {
+   "tau_e_ms": 20.0,
+   "dt_ms": 0.5,
+   "decay_per_step": 0.975309912028,
+   "prune_threshold": 0.0001,
+   "prune_interval_steps": 50,
+   "coincidence": "delay_matched",
+   "dtype": "float32"
+  },
+  "initial_weight_digest": "8d19c706f66cb933f3660b96eba922cfa2ecf9a4649676b748e1a677172c08bb",
+  "checkpoint": {
+   "path": "experiments/results/phase_5/checkpoints/banc_reward_plasticity.npz",
+   "format_version": 1,
+   "delta_digest": "6150b171f07781ca6b6d989722c9b51a857b27f6453d43177db8876e1d308e19",
+   "effective_digest": "4e5a067f0f779d6c975c94494898ed63e3c2ebdb62e9cd9a2258fec26ab95c25",
+   "reloaded": true
+  }
+ },
+ "conditions": {
+  "baseline": {
+   "label": "baseline",
+   "eta": 0.0,
+   "spike_hash": "a1c0433e56741c358e3d54e13a8002472bec95abe25bb8454b86551c0ab4b171",
+   "runtime_s": 5.408,
+   "activity": {
+    "total_spikes": 1296,
+    "motor_spikes": 492,
+    "motor_active_neurons": 82,
+    "non_motor_spikes": 804,
+    "stimulated_spikes": 740,
+    "downstream_spikes": 556,
+    "active_neurons": 164
+   },
+   "populations": {
+    "motor": {
+     "name": "motor",
+     "role": "motor_neuron",
+     "size": 805,
+     "definition": "super_class == 'motor'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "descending": {
+     "name": "descending",
+     "role": "descending_neuron",
+     "size": 1316,
+     "definition": "super_class == 'descending'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "ascending": {
+     "name": "ascending",
+     "role": "ascending_neuron",
+     "size": 1849,
+     "definition": "super_class == 'ascending'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "vnc_intrinsic": {
+     "name": "vnc_intrinsic",
+     "role": "vnc_intrinsic_neuron",
+     "size": 12850,
+     "definition": "super_class == 'ventral_nerve_cord_intrinsic'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "unassigned_motor": {
+     "name": "unassigned_motor",
+     "role": "motor_neuron_subset",
+     "size": 414,
+     "definition": "motor neurons outside LEFT, RIGHT and JUMP",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "left_motor": {
+     "name": "left_motor",
+     "role": "motor_neuron_subset",
+     "size": 185,
+     "definition": "Phase 4F LEFT motor population",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "right_motor": {
+     "name": "right_motor",
+     "role": "motor_neuron_subset",
+     "size": 186,
+     "definition": "Phase 4F RIGHT motor population",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "jump_motor": {
+     "name": "jump_motor",
+     "role": "motor_neuron_subset",
+     "size": 20,
+     "definition": "Phase 4F JUMP motor population",
+     "provenance": "BANC v888 published node annotations"
+    }
+   },
+   "decode_window": {
+    "window_start_ms": 50.0,
+    "window_end_ms": 300.0,
+    "duration_ms": 250.0,
+    "n_spikes": 1296,
+    "stimulated_neurons": 64,
+    "populations": {
+     "motor": {
+      "size": 805,
+      "spikes": 492,
+      "active_neurons": 82,
+      "silent_neurons": 723,
+      "active_fraction": 0.101863,
+      "mean_rate_hz": 2.4447,
+      "active_mean_rate_hz": 24.0,
+      "spike_share": 0.37963,
+      "direct_spikes": 0,
+      "downstream_spikes": 492,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 82
+     },
+     "descending": {
+      "size": 1316,
+      "spikes": 2,
+      "active_neurons": 1,
+      "silent_neurons": 1315,
+      "active_fraction": 0.00076,
+      "mean_rate_hz": 0.0061,
+      "active_mean_rate_hz": 8.0,
+      "spike_share": 0.001543,
+      "direct_spikes": 0,
+      "downstream_spikes": 2,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 1
+     },
+     "ascending": {
+      "size": 1849,
+      "spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 1849,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "active_mean_rate_hz": 0.0,
+      "spike_share": 0.0,
+      "direct_spikes": 0,
+      "downstream_spikes": 0,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 0
+     },
+     "vnc_intrinsic": {
+      "size": 12850,
+      "spikes": 802,
+      "active_neurons": 81,
+      "silent_neurons": 12769,
+      "active_fraction": 0.006304,
+      "mean_rate_hz": 0.2496,
+      "active_mean_rate_hz": 39.6049,
+      "spike_share": 0.618827,
+      "direct_spikes": 740,
+      "downstream_spikes": 62,
+      "direct_active_neurons": 64,
+      "downstream_active_neurons": 17
+     },
+     "non_motor": {
+      "size": 171628,
+      "spikes": 804,
+      "active_neurons": 82,
+      "silent_neurons": 171546,
+      "active_fraction": 0.000478,
+      "mean_rate_hz": 0.0187,
+      "active_mean_rate_hz": 39.2195,
+      "spike_share": 0.62037,
+      "direct_spikes": 740,
+      "downstream_spikes": 64,
+      "direct_active_neurons": 64,
+      "downstream_active_neurons": 18
+     },
+     "unassigned_motor": {
+      "size": 414,
+      "spikes": 82,
+      "active_neurons": 11,
+      "silent_neurons": 403,
+      "active_fraction": 0.02657,
+      "mean_rate_hz": 0.7923,
+      "active_mean_rate_hz": 29.8182,
+      "spike_share": 0.063272,
+      "direct_spikes": 0,
+      "downstream_spikes": 82,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 11
+     },
+     "left_motor": {
+      "size": 185,
+      "spikes": 176,
+      "active_neurons": 27,
+      "silent_neurons": 158,
+      "active_fraction": 0.145946,
+      "mean_rate_hz": 3.8054,
+      "active_mean_rate_hz": 26.0741,
+      "spike_share": 0.135802,
+      "direct_spikes": 0,
+      "downstream_spikes": 176,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 27
+     },
+     "right_motor": {
+      "size": 186,
+      "spikes": 155,
+      "active_neurons": 32,
+      "silent_neurons": 154,
+      "active_fraction": 0.172043,
+      "mean_rate_hz": 3.3333,
+      "active_mean_rate_hz": 19.375,
+      "spike_share": 0.119599,
+      "direct_spikes": 0,
+      "downstream_spikes": 155,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 32
+     },
+     "jump_motor": {
+      "size": 20,
+      "spikes": 79,
+      "active_neurons": 12,
+      "silent_neurons": 8,
+      "active_fraction": 0.6,
+      "mean_rate_hz": 15.8,
+      "active_mean_rate_hz": 26.3333,
+      "spike_share": 0.060957,
+      "direct_spikes": 0,
+      "downstream_spikes": 79,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 12
+     }
+    },
+    "direct": {
+     "size": 64,
+     "spikes": 740,
+     "active_neurons": 64,
+     "silent_neurons": 0,
+     "active_fraction": 1.0,
+     "mean_rate_hz": 46.25,
+     "active_mean_rate_hz": 46.25,
+     "spike_share": 0.570988
+    },
+    "downstream": {
+     "size": 172369,
+     "spikes": 556,
+     "active_neurons": 100,
+     "silent_neurons": 172269,
+     "active_fraction": 0.00058,
+     "mean_rate_hz": 0.0129,
+     "active_mean_rate_hz": 22.24,
+     "spike_share": 0.429012
+    }
+   },
+   "decoder_outputs": [
+    {
+     "window_start_ms": 50.0,
+     "window_end_ms": 100.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.55,
+     "activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.11828,
+      "JUMP": 0.55
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.11828,
+      "JUMP": 0.55
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 33,
+       "active_neurons": 24,
+       "active_fraction": 0.12973,
+       "mean_rate_hz": 3.5676,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 26,
+       "active_neurons": 22,
+       "active_fraction": 0.11828,
+       "mean_rate_hz": 2.7957,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 13,
+       "active_neurons": 11,
+       "active_fraction": 0.55,
+       "mean_rate_hz": 13.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 100.0,
+     "window_end_ms": 150.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 47,
+       "active_neurons": 25,
+       "active_fraction": 0.135135,
+       "mean_rate_hz": 5.0811,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 42,
+       "active_neurons": 28,
+       "active_fraction": 0.150538,
+       "mean_rate_hz": 4.5161,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 20,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 20.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 150.0,
+     "window_end_ms": 200.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.134409,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.134409,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 48,
+       "active_neurons": 25,
+       "active_fraction": 0.135135,
+       "mean_rate_hz": 5.1892,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 44,
+       "active_neurons": 25,
+       "active_fraction": 0.134409,
+       "mean_rate_hz": 4.7312,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 24,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 24.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 200.0,
+     "window_end_ms": 250.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 48,
+       "active_neurons": 24,
+       "active_fraction": 0.12973,
+       "mean_rate_hz": 5.1892,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 43,
+       "active_neurons": 28,
+       "active_fraction": 0.150538,
+       "mean_rate_hz": 4.6237,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 22,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 22.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 250.0,
+     "window_end_ms": 300.0,
+     "state": "NO_ACTION",
+     "action": null,
+     "supported": true,
+     "neutral": true,
+     "unmapped": false,
+     "confidence": 0.0,
+     "activation_scores": {
+      "LEFT": 0.0,
+      "RIGHT": 0.0,
+      "JUMP": 0.0
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.0,
+      "RIGHT": 0.0,
+      "JUMP": 0.0
+     },
+     "active_channels": [],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "neutral_no_activation",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      }
+     },
+     "requested_channel": null
+    }
+   ],
+   "decoded_state_counts": {
+    "JUMP": 4,
+    "NO_ACTION": 1
+   },
+   "weights": {
+    "n_plastic_edges": 683100,
+    "n_changed_edges": 0,
+    "changed_share_of_plastic": 0.0,
+    "sum_pa": 0.0,
+    "mean_signed_pa": 0.0,
+    "mean_abs_pa": 0.0,
+    "max_abs_pa": 0.0,
+    "positive_changes": 0,
+    "negative_changes": 0,
+    "abs_percentiles_pa": {
+     "50": 0.0,
+     "90": 0.0,
+     "99": 0.0,
+     "100": 0.0
+    },
+    "histogram": {
+     "bin_edges_pa": [],
+     "counts": []
+    },
+    "bounds": {
+     "lower_factor": 0.5,
+     "upper_factor": 2.0,
+     "absolute_min_pa": null,
+     "absolute_max_pa": null,
+     "max_abs_update_pa": 5.0,
+     "interpretation": "relative bounds are a declared modelling choice around the initial structural weight; they are not fitted"
+    },
+    "n_update_calls": 0,
+    "cumulative_clamp_hits": 0,
+    "cumulative_update_clips": 0,
+    "digests": {
+     "structural": "7459727d883f022b273bd44ae88eb4330cf6585e96c29cd038f1dddba9f26fec",
+     "initial": "8d19c706f66cb933f3660b96eba922cfa2ecf9a4649676b748e1a677172c08bb",
+     "learned_delta": "b88628a13b6355a344f84fd87bef6e1b48859526215235ca22e29ae412863c63",
+     "effective": "dc544f7aad1ca7182f827a6a93f756c3a77fa6f0968df358353cd173e4a8025e"
+    }
+   },
+   "updates": {
+    "n_update_events": 0,
+    "n_changed_events": 0,
+    "sum_abs_applied_pa": 0.0,
+    "max_abs_applied_pa": 0.0,
+    "clamp_hits": 0,
+    "update_clip_hits": 0,
+    "sign_violations": 0,
+    "decayed_edges": 0,
+    "mean_abs_delta_t": 0.0,
+    "max_abs_delta_t": 0.0
+   },
+   "reward_provider": null,
+   "modulation_series": null,
+   "simulation": {
+    "pathway": "plastic_three_factor",
+    "duration_ms": 300.0,
+    "dt_ms": 0.5,
+    "n_steps": 600,
+    "seed": 20261108,
+    "runtime_s": 5.2153,
+    "steps_per_second": 115.0
+   },
+   "diagnostics": {
+    "finite_state": true,
+    "min_membrane_mv": -66.4042,
+    "max_membrane_mv": -63.1259,
+    "max_abs_total_current_pa": 1238.7167,
+    "max_excitatory_synaptic_current_pa": 1238.7167,
+    "max_inhibitory_synaptic_current_pa": 619.8708,
+    "spike_hash": "a1c0433e56741c358e3d54e13a8002472bec95abe25bb8454b86551c0ab4b171"
+   }
+  },
+  "no_plasticity_control": {
+   "label": "no_plasticity_control",
+   "eta": 0.0,
+   "spike_hash": "a1c0433e56741c358e3d54e13a8002472bec95abe25bb8454b86551c0ab4b171",
+   "runtime_s": 4.754,
+   "activity": {
+    "total_spikes": 1296,
+    "motor_spikes": 492,
+    "motor_active_neurons": 82,
+    "non_motor_spikes": 804,
+    "stimulated_spikes": 740,
+    "downstream_spikes": 556,
+    "active_neurons": 164
+   },
+   "populations": {
+    "motor": {
+     "name": "motor",
+     "role": "motor_neuron",
+     "size": 805,
+     "definition": "super_class == 'motor'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "descending": {
+     "name": "descending",
+     "role": "descending_neuron",
+     "size": 1316,
+     "definition": "super_class == 'descending'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "ascending": {
+     "name": "ascending",
+     "role": "ascending_neuron",
+     "size": 1849,
+     "definition": "super_class == 'ascending'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "vnc_intrinsic": {
+     "name": "vnc_intrinsic",
+     "role": "vnc_intrinsic_neuron",
+     "size": 12850,
+     "definition": "super_class == 'ventral_nerve_cord_intrinsic'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "unassigned_motor": {
+     "name": "unassigned_motor",
+     "role": "motor_neuron_subset",
+     "size": 414,
+     "definition": "motor neurons outside LEFT, RIGHT and JUMP",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "left_motor": {
+     "name": "left_motor",
+     "role": "motor_neuron_subset",
+     "size": 185,
+     "definition": "Phase 4F LEFT motor population",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "right_motor": {
+     "name": "right_motor",
+     "role": "motor_neuron_subset",
+     "size": 186,
+     "definition": "Phase 4F RIGHT motor population",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "jump_motor": {
+     "name": "jump_motor",
+     "role": "motor_neuron_subset",
+     "size": 20,
+     "definition": "Phase 4F JUMP motor population",
+     "provenance": "BANC v888 published node annotations"
+    }
+   },
+   "decode_window": {
+    "window_start_ms": 50.0,
+    "window_end_ms": 300.0,
+    "duration_ms": 250.0,
+    "n_spikes": 1296,
+    "stimulated_neurons": 64,
+    "populations": {
+     "motor": {
+      "size": 805,
+      "spikes": 492,
+      "active_neurons": 82,
+      "silent_neurons": 723,
+      "active_fraction": 0.101863,
+      "mean_rate_hz": 2.4447,
+      "active_mean_rate_hz": 24.0,
+      "spike_share": 0.37963,
+      "direct_spikes": 0,
+      "downstream_spikes": 492,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 82
+     },
+     "descending": {
+      "size": 1316,
+      "spikes": 2,
+      "active_neurons": 1,
+      "silent_neurons": 1315,
+      "active_fraction": 0.00076,
+      "mean_rate_hz": 0.0061,
+      "active_mean_rate_hz": 8.0,
+      "spike_share": 0.001543,
+      "direct_spikes": 0,
+      "downstream_spikes": 2,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 1
+     },
+     "ascending": {
+      "size": 1849,
+      "spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 1849,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "active_mean_rate_hz": 0.0,
+      "spike_share": 0.0,
+      "direct_spikes": 0,
+      "downstream_spikes": 0,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 0
+     },
+     "vnc_intrinsic": {
+      "size": 12850,
+      "spikes": 802,
+      "active_neurons": 81,
+      "silent_neurons": 12769,
+      "active_fraction": 0.006304,
+      "mean_rate_hz": 0.2496,
+      "active_mean_rate_hz": 39.6049,
+      "spike_share": 0.618827,
+      "direct_spikes": 740,
+      "downstream_spikes": 62,
+      "direct_active_neurons": 64,
+      "downstream_active_neurons": 17
+     },
+     "non_motor": {
+      "size": 171628,
+      "spikes": 804,
+      "active_neurons": 82,
+      "silent_neurons": 171546,
+      "active_fraction": 0.000478,
+      "mean_rate_hz": 0.0187,
+      "active_mean_rate_hz": 39.2195,
+      "spike_share": 0.62037,
+      "direct_spikes": 740,
+      "downstream_spikes": 64,
+      "direct_active_neurons": 64,
+      "downstream_active_neurons": 18
+     },
+     "unassigned_motor": {
+      "size": 414,
+      "spikes": 82,
+      "active_neurons": 11,
+      "silent_neurons": 403,
+      "active_fraction": 0.02657,
+      "mean_rate_hz": 0.7923,
+      "active_mean_rate_hz": 29.8182,
+      "spike_share": 0.063272,
+      "direct_spikes": 0,
+      "downstream_spikes": 82,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 11
+     },
+     "left_motor": {
+      "size": 185,
+      "spikes": 176,
+      "active_neurons": 27,
+      "silent_neurons": 158,
+      "active_fraction": 0.145946,
+      "mean_rate_hz": 3.8054,
+      "active_mean_rate_hz": 26.0741,
+      "spike_share": 0.135802,
+      "direct_spikes": 0,
+      "downstream_spikes": 176,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 27
+     },
+     "right_motor": {
+      "size": 186,
+      "spikes": 155,
+      "active_neurons": 32,
+      "silent_neurons": 154,
+      "active_fraction": 0.172043,
+      "mean_rate_hz": 3.3333,
+      "active_mean_rate_hz": 19.375,
+      "spike_share": 0.119599,
+      "direct_spikes": 0,
+      "downstream_spikes": 155,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 32
+     },
+     "jump_motor": {
+      "size": 20,
+      "spikes": 79,
+      "active_neurons": 12,
+      "silent_neurons": 8,
+      "active_fraction": 0.6,
+      "mean_rate_hz": 15.8,
+      "active_mean_rate_hz": 26.3333,
+      "spike_share": 0.060957,
+      "direct_spikes": 0,
+      "downstream_spikes": 79,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 12
+     }
+    },
+    "direct": {
+     "size": 64,
+     "spikes": 740,
+     "active_neurons": 64,
+     "silent_neurons": 0,
+     "active_fraction": 1.0,
+     "mean_rate_hz": 46.25,
+     "active_mean_rate_hz": 46.25,
+     "spike_share": 0.570988
+    },
+    "downstream": {
+     "size": 172369,
+     "spikes": 556,
+     "active_neurons": 100,
+     "silent_neurons": 172269,
+     "active_fraction": 0.00058,
+     "mean_rate_hz": 0.0129,
+     "active_mean_rate_hz": 22.24,
+     "spike_share": 0.429012
+    }
+   },
+   "decoder_outputs": [
+    {
+     "window_start_ms": 50.0,
+     "window_end_ms": 100.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.55,
+     "activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.11828,
+      "JUMP": 0.55
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.11828,
+      "JUMP": 0.55
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 33,
+       "active_neurons": 24,
+       "active_fraction": 0.12973,
+       "mean_rate_hz": 3.5676,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 26,
+       "active_neurons": 22,
+       "active_fraction": 0.11828,
+       "mean_rate_hz": 2.7957,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 13,
+       "active_neurons": 11,
+       "active_fraction": 0.55,
+       "mean_rate_hz": 13.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 100.0,
+     "window_end_ms": 150.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 47,
+       "active_neurons": 25,
+       "active_fraction": 0.135135,
+       "mean_rate_hz": 5.0811,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 42,
+       "active_neurons": 28,
+       "active_fraction": 0.150538,
+       "mean_rate_hz": 4.5161,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 20,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 20.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 150.0,
+     "window_end_ms": 200.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.134409,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.134409,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 48,
+       "active_neurons": 25,
+       "active_fraction": 0.135135,
+       "mean_rate_hz": 5.1892,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 44,
+       "active_neurons": 25,
+       "active_fraction": 0.134409,
+       "mean_rate_hz": 4.7312,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 24,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 24.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 200.0,
+     "window_end_ms": 250.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 48,
+       "active_neurons": 24,
+       "active_fraction": 0.12973,
+       "mean_rate_hz": 5.1892,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 43,
+       "active_neurons": 28,
+       "active_fraction": 0.150538,
+       "mean_rate_hz": 4.6237,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 22,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 22.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 250.0,
+     "window_end_ms": 300.0,
+     "state": "NO_ACTION",
+     "action": null,
+     "supported": true,
+     "neutral": true,
+     "unmapped": false,
+     "confidence": 0.0,
+     "activation_scores": {
+      "LEFT": 0.0,
+      "RIGHT": 0.0,
+      "JUMP": 0.0
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.0,
+      "RIGHT": 0.0,
+      "JUMP": 0.0
+     },
+     "active_channels": [],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "neutral_no_activation",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      }
+     },
+     "requested_channel": null
+    }
+   ],
+   "decoded_state_counts": {
+    "JUMP": 4,
+    "NO_ACTION": 1
+   },
+   "weights": {
+    "n_plastic_edges": 683100,
+    "n_changed_edges": 0,
+    "changed_share_of_plastic": 0.0,
+    "sum_pa": 0.0,
+    "mean_signed_pa": 0.0,
+    "mean_abs_pa": 0.0,
+    "max_abs_pa": 0.0,
+    "positive_changes": 0,
+    "negative_changes": 0,
+    "abs_percentiles_pa": {
+     "50": 0.0,
+     "90": 0.0,
+     "99": 0.0,
+     "100": 0.0
+    },
+    "histogram": {
+     "bin_edges_pa": [],
+     "counts": []
+    },
+    "bounds": {
+     "lower_factor": 0.5,
+     "upper_factor": 2.0,
+     "absolute_min_pa": null,
+     "absolute_max_pa": null,
+     "max_abs_update_pa": 5.0,
+     "interpretation": "relative bounds are a declared modelling choice around the initial structural weight; they are not fitted"
+    },
+    "n_update_calls": 0,
+    "cumulative_clamp_hits": 0,
+    "cumulative_update_clips": 0,
+    "digests": {
+     "structural": "7459727d883f022b273bd44ae88eb4330cf6585e96c29cd038f1dddba9f26fec",
+     "initial": "8d19c706f66cb933f3660b96eba922cfa2ecf9a4649676b748e1a677172c08bb",
+     "learned_delta": "b88628a13b6355a344f84fd87bef6e1b48859526215235ca22e29ae412863c63",
+     "effective": "dc544f7aad1ca7182f827a6a93f756c3a77fa6f0968df358353cd173e4a8025e"
+    }
+   },
+   "updates": {
+    "n_update_events": 4,
+    "n_changed_events": 0,
+    "sum_abs_applied_pa": 0.0,
+    "max_abs_applied_pa": 0.0,
+    "clamp_hits": 0,
+    "update_clip_hits": 0,
+    "sign_violations": 0,
+    "decayed_edges": 0,
+    "mean_abs_delta_t": 0.75,
+    "max_abs_delta_t": 1.0,
+    "records": [
+     {
+      "step": 200,
+      "eta": 0.0,
+      "delta_t": 1.0,
+      "n_slots": 57,
+      "n_updates": 0,
+      "sum_applied_pa": 0.0,
+      "sum_abs_applied_pa": 0.0,
+      "max_abs_applied_pa": 0.0,
+      "mean_eligibility": 0.535901929,
+      "max_eligibility": 1.0,
+      "clamp_hits": 0,
+      "update_clip_hits": 0,
+      "sign_violations": 0,
+      "decayed_edges": 0
+     },
+     {
+      "step": 320,
+      "eta": 0.0,
+      "delta_t": -1.0,
+      "n_slots": 145,
+      "n_updates": 0,
+      "sum_applied_pa": 0.0,
+      "sum_abs_applied_pa": 0.0,
+      "max_abs_applied_pa": 0.0,
+      "mean_eligibility": 0.269616864,
+      "max_eligibility": 1.061603469,
+      "clamp_hits": 0,
+      "update_clip_hits": 0,
+      "sign_violations": 0,
+      "decayed_edges": 0
+     },
+     {
+      "step": 440,
+      "eta": 0.0,
+      "delta_t": 1.0,
+      "n_slots": 188,
+      "n_updates": 0,
+      "sum_applied_pa": 0.0,
+      "sum_abs_applied_pa": 0.0,
+      "max_abs_applied_pa": 0.0,
+      "mean_eligibility": 0.095137356,
+      "max_eligibility": 0.904837418,
+      "clamp_hits": 0,
+      "update_clip_hits": 0,
+      "sign_violations": 0,
+      "decayed_edges": 0
+     },
+     {
+      "step": 500,
+      "eta": 0.0,
+      "delta_t": 0.0,
+      "n_slots": 219,
+      "n_updates": 0,
+      "sum_applied_pa": 0.0,
+      "sum_abs_applied_pa": 0.0,
+      "max_abs_applied_pa": 0.0,
+      "mean_eligibility": 0.115663113,
+      "max_eligibility": 1.103453244,
+      "clamp_hits": 0,
+      "update_clip_hits": 0,
+      "sign_violations": 0,
+      "decayed_edges": 0
+     }
+    ]
+   },
+   "reward_provider": {
+    "provider": "modulation_reward_provider",
+    "stream": {
+     "classification": "declared experimental reward; not a biological dopamine measurement and not an observed gameplay outcome",
+     "provenance": "events declared by the experimenter for a mechanism test; no game was played",
+     "n_events": 5,
+     "counts": {
+      "positive": 2,
+      "negative": 1,
+      "neutral": 1,
+      "missing": 1
+     },
+     "total_available_reward": 1.0,
+     "events": [
+      {
+       "time_ms": 100.0,
+       "magnitude": 1.0,
+       "source": "experimental_input",
+       "label": "declared_positive",
+       "provenance": "declared before the run",
+       "available": true
+      },
+      {
+       "time_ms": 160.0,
+       "magnitude": -1.0,
+       "source": "experimental_input",
+       "label": "declared_negative",
+       "provenance": "declared before the run",
+       "available": true
+      },
+      {
+       "time_ms": 220.0,
+       "magnitude": 1.0,
+       "source": "experimental_input",
+       "label": "declared_positive",
+       "provenance": "declared before the run",
+       "available": true
+      },
+      {
+       "time_ms": 250.0,
+       "magnitude": 0.0,
+       "source": "experimental_input",
+       "label": "declared_neutral",
+       "provenance": "declared before the run",
+       "available": true
+      },
+      {
+       "time_ms": 280.0,
+       "magnitude": null,
+       "source": "unavailable",
+       "label": "no_outcome_available",
+       "provenance": "explicit missing-reward control",
+       "available": false
+      }
+     ],
+     "digest": "28853c2f488c584202e14229706cdf80eadf86360cca664d2836dc281ebecb1e"
+    },
+    "modulation": {
+     "config": {
+      "gain": 1.0,
+      "decay_tau_ms": 50.0,
+      "decay_per_ms": 0.980198673307,
+      "baseline": 0.0,
+      "clip_abs": 5.0,
+      "classification": "computational decaying reward modulation; not a biological dopamine model",
+      "interpretation": "phasic modulation is gain * reward for one delivery; the state is a decaying envelope kept for inspection"
+     },
+     "n_events": 5,
+     "n_available": 4,
+     "n_missing": 1,
+     "records": [
+      {
+       "step": 200,
+       "time_ms": 100.0,
+       "magnitude": 1.0,
+       "source": "experimental_input",
+       "label": "declared_positive",
+       "available": true,
+       "phasic_modulation": 1.0,
+       "modulation_state": 1.0
+      },
+      {
+       "step": 320,
+       "time_ms": 160.0,
+       "magnitude": -1.0,
+       "source": "experimental_input",
+       "label": "declared_negative",
+       "available": true,
+       "phasic_modulation": -1.0,
+       "modulation_state": -0.698805788
+      },
+      {
+       "step": 440,
+       "time_ms": 220.0,
+       "magnitude": 1.0,
+       "source": "experimental_input",
+       "label": "declared_positive",
+       "available": true,
+       "phasic_modulation": 1.0,
+       "modulation_state": 0.789523741
+      },
+      {
+       "step": 500,
+       "time_ms": 250.0,
+       "magnitude": 0.0,
+       "source": "experimental_input",
+       "label": "declared_neutral",
+       "available": true,
+       "phasic_modulation": 0.0,
+       "modulation_state": 0.433299816
+      },
+      {
+       "step": 560,
+       "time_ms": 280.0,
+       "magnitude": null,
+       "source": "unavailable",
+       "label": "no_outcome_available",
+       "available": false,
+       "phasic_modulation": null,
+       "modulation_state": 0.237799981
+      }
+     ],
+     "digest": "9924428a16c444eaaeb401359246f51f80cd5e2a6f169b1a64980d18e16e5236",
+     "classification": "computational decaying reward modulation; not a biological dopamine model"
+    },
+    "n_steps": 600,
+    "n_update_steps": 4,
+    "n_steps_without_reward": 596,
+    "n_missing_events": 1,
+    "emitted_modulation": 1.0,
+    "missing_reward_policy": "no reward information -> step returns None -> no weight update",
+    "classification": "computational decaying reward modulation; not a biological dopamine model"
+   },
+   "modulation_series": {
+    "sample_interval_ms": 1.0,
+    "values": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.980198673,
+     0.960789439,
+     0.941764534,
+     0.923116346,
+     0.904837418,
+     0.886920437,
+     0.869358235,
+     0.852143789,
+     0.835270211,
+     0.818730753,
+     0.802518798,
+     0.786627861,
+     0.771051586,
+     0.755783741,
+     0.740818221,
+     0.726149037,
+     0.711770323,
+     0.697676326,
+     0.683861409,
+     0.670320046,
+     0.65704682,
+     0.644036421,
+     0.631283646,
+     0.618783392,
+     0.60653066,
+     0.594520548,
+     0.582748252,
+     0.571209064,
+     0.559898367,
+     0.548811636,
+     0.537944438,
+     0.527292424,
+     0.516851334,
+     0.506616992,
+     0.496585304,
+     0.486752256,
+     0.477113916,
+     0.467666427,
+     0.458406011,
+     0.449328964,
+     0.440431655,
+     0.431710523,
+     0.423162082,
+     0.414782912,
+     0.40656966,
+     0.398519041,
+     0.390627835,
+     0.382892886,
+     0.375311099,
+     0.367879441,
+     0.36059494,
+     0.353454682,
+     0.34645581,
+     0.339595526,
+     0.332871084,
+     0.326279795,
+     0.319819022,
+     0.313486181,
+     0.307278739,
+     -0.698805788,
+     -0.684968506,
+     -0.671405221,
+     -0.658110507,
+     -0.645079046,
+     -0.632305625,
+     -0.619785135,
+     -0.607512567,
+     -0.595483012,
+     -0.583691658,
+     -0.572133789,
+     -0.560804781,
+     -0.549700102,
+     -0.538815311,
+     -0.528146053,
+     -0.517688061,
+     -0.50743715,
+     -0.497389221,
+     -0.487540255,
+     -0.477886311,
+     -0.468423528,
+     -0.459148121,
+     -0.450056379,
+     -0.441144665,
+     -0.432409416,
+     -0.423847136,
+     -0.4154544,
+     -0.407227852,
+     -0.3991642,
+     -0.391260219,
+     -0.383512748,
+     -0.375918687,
+     -0.368474998,
+     -0.361178704,
+     -0.354026887,
+     -0.347016685,
+     -0.340145294,
+     -0.333409966,
+     -0.326808006,
+     -0.320336774,
+     -0.313993681,
+     -0.307776189,
+     -0.301681813,
+     -0.295708112,
+     -0.289852699,
+     -0.284113231,
+     -0.278487413,
+     -0.272972992,
+     -0.267567765,
+     -0.262269568,
+     -0.257076283,
+     -0.251985831,
+     -0.246996178,
+     -0.242105326,
+     -0.237311319,
+     -0.23261224,
+     -0.228006209,
+     -0.223491384,
+     -0.219065958,
+     -0.214728161,
+     0.789523741,
+     0.773890124,
+     0.758566073,
+     0.743545458,
+     0.728822272,
+     0.714390624,
+     0.700244742,
+     0.686378967,
+     0.672787752,
+     0.659465662,
+     0.646407367,
+     0.633607644,
+     0.621061372,
+     0.608763533,
+     0.596709207,
+     0.584893573,
+     0.573311905,
+     0.561959568,
+     0.550832023,
+     0.539924818,
+     0.529233591,
+     0.518754063,
+     0.508482045,
+     0.498413426,
+     0.488544179,
+     0.478870356,
+     0.469388087,
+     0.46009358,
+     0.450983117,
+     0.442053053,
+     0.433299816,
+     0.424719905,
+     0.416309887,
+     0.408066399,
+     0.399986143,
+     0.392065887,
+     0.384302462,
+     0.376692764,
+     0.369233747,
+     0.361922429,
+     0.354755885,
+     0.347731248,
+     0.340845708,
+     0.33409651,
+     0.327480956,
+     0.320996399,
+     0.314640244,
+     0.30840995,
+     0.302303024,
+     0.296317023,
+     0.290449553,
+     0.284698266,
+     0.279060863,
+     0.273535088,
+     0.26811873,
+     0.262809623,
+     0.257605644,
+     0.252504711,
+     0.247504782,
+     0.242603859,
+     0.237799981,
+     0.233091226,
+     0.22847571,
+     0.223951588,
+     0.21951705,
+     0.215170321,
+     0.210909663,
+     0.206733372,
+     0.202639777,
+     0.19862724,
+     0.194694158,
+     0.190838955,
+     0.18706009,
+     0.183356053,
+     0.179725359,
+     0.176166559,
+     0.172678227,
+     0.169258969,
+     0.165907417,
+     0.16262223,
+     0.159402094
+    ]
+   },
+   "simulation": {
+    "pathway": "plastic_three_factor",
+    "duration_ms": 300.0,
+    "dt_ms": 0.5,
+    "n_steps": 600,
+    "seed": 20261108,
+    "runtime_s": 4.5907,
+    "steps_per_second": 130.7
+   },
+   "diagnostics": {
+    "finite_state": true,
+    "min_membrane_mv": -66.4042,
+    "max_membrane_mv": -63.1259,
+    "max_abs_total_current_pa": 1238.7167,
+    "max_excitatory_synaptic_current_pa": 1238.7167,
+    "max_inhibitory_synaptic_current_pa": 619.8708,
+    "spike_hash": "a1c0433e56741c358e3d54e13a8002472bec95abe25bb8454b86551c0ab4b171"
+   }
+  },
+  "reward_modulated": {
+   "label": "reward_modulated",
+   "eta": 0.5,
+   "spike_hash": "a8a11f2940e33d6a377ef86f4f7fff0abd5dd0049132feb86579dfa3fc31e9d2",
+   "runtime_s": 3.714,
+   "activity": {
+    "total_spikes": 1296,
+    "motor_spikes": 492,
+    "motor_active_neurons": 82,
+    "non_motor_spikes": 804,
+    "stimulated_spikes": 740,
+    "downstream_spikes": 556,
+    "active_neurons": 164
+   },
+   "populations": {
+    "motor": {
+     "name": "motor",
+     "role": "motor_neuron",
+     "size": 805,
+     "definition": "super_class == 'motor'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "descending": {
+     "name": "descending",
+     "role": "descending_neuron",
+     "size": 1316,
+     "definition": "super_class == 'descending'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "ascending": {
+     "name": "ascending",
+     "role": "ascending_neuron",
+     "size": 1849,
+     "definition": "super_class == 'ascending'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "vnc_intrinsic": {
+     "name": "vnc_intrinsic",
+     "role": "vnc_intrinsic_neuron",
+     "size": 12850,
+     "definition": "super_class == 'ventral_nerve_cord_intrinsic'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "unassigned_motor": {
+     "name": "unassigned_motor",
+     "role": "motor_neuron_subset",
+     "size": 414,
+     "definition": "motor neurons outside LEFT, RIGHT and JUMP",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "left_motor": {
+     "name": "left_motor",
+     "role": "motor_neuron_subset",
+     "size": 185,
+     "definition": "Phase 4F LEFT motor population",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "right_motor": {
+     "name": "right_motor",
+     "role": "motor_neuron_subset",
+     "size": 186,
+     "definition": "Phase 4F RIGHT motor population",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "jump_motor": {
+     "name": "jump_motor",
+     "role": "motor_neuron_subset",
+     "size": 20,
+     "definition": "Phase 4F JUMP motor population",
+     "provenance": "BANC v888 published node annotations"
+    }
+   },
+   "decode_window": {
+    "window_start_ms": 50.0,
+    "window_end_ms": 300.0,
+    "duration_ms": 250.0,
+    "n_spikes": 1296,
+    "stimulated_neurons": 64,
+    "populations": {
+     "motor": {
+      "size": 805,
+      "spikes": 492,
+      "active_neurons": 82,
+      "silent_neurons": 723,
+      "active_fraction": 0.101863,
+      "mean_rate_hz": 2.4447,
+      "active_mean_rate_hz": 24.0,
+      "spike_share": 0.37963,
+      "direct_spikes": 0,
+      "downstream_spikes": 492,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 82
+     },
+     "descending": {
+      "size": 1316,
+      "spikes": 2,
+      "active_neurons": 1,
+      "silent_neurons": 1315,
+      "active_fraction": 0.00076,
+      "mean_rate_hz": 0.0061,
+      "active_mean_rate_hz": 8.0,
+      "spike_share": 0.001543,
+      "direct_spikes": 0,
+      "downstream_spikes": 2,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 1
+     },
+     "ascending": {
+      "size": 1849,
+      "spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 1849,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "active_mean_rate_hz": 0.0,
+      "spike_share": 0.0,
+      "direct_spikes": 0,
+      "downstream_spikes": 0,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 0
+     },
+     "vnc_intrinsic": {
+      "size": 12850,
+      "spikes": 802,
+      "active_neurons": 81,
+      "silent_neurons": 12769,
+      "active_fraction": 0.006304,
+      "mean_rate_hz": 0.2496,
+      "active_mean_rate_hz": 39.6049,
+      "spike_share": 0.618827,
+      "direct_spikes": 740,
+      "downstream_spikes": 62,
+      "direct_active_neurons": 64,
+      "downstream_active_neurons": 17
+     },
+     "non_motor": {
+      "size": 171628,
+      "spikes": 804,
+      "active_neurons": 82,
+      "silent_neurons": 171546,
+      "active_fraction": 0.000478,
+      "mean_rate_hz": 0.0187,
+      "active_mean_rate_hz": 39.2195,
+      "spike_share": 0.62037,
+      "direct_spikes": 740,
+      "downstream_spikes": 64,
+      "direct_active_neurons": 64,
+      "downstream_active_neurons": 18
+     },
+     "unassigned_motor": {
+      "size": 414,
+      "spikes": 82,
+      "active_neurons": 11,
+      "silent_neurons": 403,
+      "active_fraction": 0.02657,
+      "mean_rate_hz": 0.7923,
+      "active_mean_rate_hz": 29.8182,
+      "spike_share": 0.063272,
+      "direct_spikes": 0,
+      "downstream_spikes": 82,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 11
+     },
+     "left_motor": {
+      "size": 185,
+      "spikes": 176,
+      "active_neurons": 27,
+      "silent_neurons": 158,
+      "active_fraction": 0.145946,
+      "mean_rate_hz": 3.8054,
+      "active_mean_rate_hz": 26.0741,
+      "spike_share": 0.135802,
+      "direct_spikes": 0,
+      "downstream_spikes": 176,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 27
+     },
+     "right_motor": {
+      "size": 186,
+      "spikes": 155,
+      "active_neurons": 32,
+      "silent_neurons": 154,
+      "active_fraction": 0.172043,
+      "mean_rate_hz": 3.3333,
+      "active_mean_rate_hz": 19.375,
+      "spike_share": 0.119599,
+      "direct_spikes": 0,
+      "downstream_spikes": 155,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 32
+     },
+     "jump_motor": {
+      "size": 20,
+      "spikes": 79,
+      "active_neurons": 12,
+      "silent_neurons": 8,
+      "active_fraction": 0.6,
+      "mean_rate_hz": 15.8,
+      "active_mean_rate_hz": 26.3333,
+      "spike_share": 0.060957,
+      "direct_spikes": 0,
+      "downstream_spikes": 79,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 12
+     }
+    },
+    "direct": {
+     "size": 64,
+     "spikes": 740,
+     "active_neurons": 64,
+     "silent_neurons": 0,
+     "active_fraction": 1.0,
+     "mean_rate_hz": 46.25,
+     "active_mean_rate_hz": 46.25,
+     "spike_share": 0.570988
+    },
+    "downstream": {
+     "size": 172369,
+     "spikes": 556,
+     "active_neurons": 100,
+     "silent_neurons": 172269,
+     "active_fraction": 0.00058,
+     "mean_rate_hz": 0.0129,
+     "active_mean_rate_hz": 22.24,
+     "spike_share": 0.429012
+    }
+   },
+   "decoder_outputs": [
+    {
+     "window_start_ms": 50.0,
+     "window_end_ms": 100.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.55,
+     "activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.11828,
+      "JUMP": 0.55
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.11828,
+      "JUMP": 0.55
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 33,
+       "active_neurons": 24,
+       "active_fraction": 0.12973,
+       "mean_rate_hz": 3.5676,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 26,
+       "active_neurons": 22,
+       "active_fraction": 0.11828,
+       "mean_rate_hz": 2.7957,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 13,
+       "active_neurons": 11,
+       "active_fraction": 0.55,
+       "mean_rate_hz": 13.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 100.0,
+     "window_end_ms": 150.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 47,
+       "active_neurons": 25,
+       "active_fraction": 0.135135,
+       "mean_rate_hz": 5.0811,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 42,
+       "active_neurons": 28,
+       "active_fraction": 0.150538,
+       "mean_rate_hz": 4.5161,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 20,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 20.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 150.0,
+     "window_end_ms": 200.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.134409,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.134409,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 48,
+       "active_neurons": 25,
+       "active_fraction": 0.135135,
+       "mean_rate_hz": 5.1892,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 44,
+       "active_neurons": 25,
+       "active_fraction": 0.134409,
+       "mean_rate_hz": 4.7312,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 24,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 24.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 200.0,
+     "window_end_ms": 250.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 48,
+       "active_neurons": 24,
+       "active_fraction": 0.12973,
+       "mean_rate_hz": 5.1892,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 43,
+       "active_neurons": 28,
+       "active_fraction": 0.150538,
+       "mean_rate_hz": 4.6237,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 22,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 22.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 250.0,
+     "window_end_ms": 300.0,
+     "state": "NO_ACTION",
+     "action": null,
+     "supported": true,
+     "neutral": true,
+     "unmapped": false,
+     "confidence": 0.0,
+     "activation_scores": {
+      "LEFT": 0.0,
+      "RIGHT": 0.0,
+      "JUMP": 0.0
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.0,
+      "RIGHT": 0.0,
+      "JUMP": 0.0
+     },
+     "active_channels": [],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "neutral_no_activation",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      }
+     },
+     "requested_channel": null
+    }
+   ],
+   "decoded_state_counts": {
+    "JUMP": 4,
+    "NO_ACTION": 1
+   },
+   "weights": {
+    "n_plastic_edges": 683100,
+    "n_changed_edges": 189,
+    "changed_share_of_plastic": 0.00027668,
+    "sum_pa": 5.211659176,
+    "mean_signed_pa": 0.027574916,
+    "mean_abs_pa": 0.198985539,
+    "max_abs_pa": 0.504374623,
+    "positive_changes": 102,
+    "negative_changes": 87,
+    "abs_percentiles_pa": {
+     "50": 0.188886106,
+     "90": 0.405021799,
+     "99": 0.479138933,
+     "100": 0.504374623
+    },
+    "histogram": {
+     "bin_edges_pa": [
+      -0.504375,
+      -0.403975,
+      -0.303575,
+      -0.203176,
+      -0.102776,
+      -0.002377,
+      0.098023,
+      0.198423,
+      0.298822,
+      0.399222,
+      0.499621
+     ],
+     "counts": [
+      6,
+      15,
+      11,
+      28,
+      27,
+      25,
+      40,
+      14,
+      7,
+      16
+     ]
+    },
+    "bounds": {
+     "lower_factor": 0.5,
+     "upper_factor": 2.0,
+     "absolute_min_pa": null,
+     "absolute_max_pa": null,
+     "max_abs_update_pa": 5.0,
+     "interpretation": "relative bounds are a declared modelling choice around the initial structural weight; they are not fitted"
+    },
+    "n_update_calls": 4,
+    "cumulative_clamp_hits": 0,
+    "cumulative_update_clips": 0,
+    "digests": {
+     "structural": "7459727d883f022b273bd44ae88eb4330cf6585e96c29cd038f1dddba9f26fec",
+     "initial": "8d19c706f66cb933f3660b96eba922cfa2ecf9a4649676b748e1a677172c08bb",
+     "learned_delta": "6150b171f07781ca6b6d989722c9b51a857b27f6453d43177db8876e1d308e19",
+     "effective": "4e5a067f0f779d6c975c94494898ed63e3c2ebdb62e9cd9a2258fec26ab95c25"
+    }
+   },
+   "updates": {
+    "n_update_events": 4,
+    "n_changed_events": 3,
+    "sum_abs_applied_pa": 44.306104233488,
+    "max_abs_applied_pa": 0.530801713467,
+    "clamp_hits": 0,
+    "update_clip_hits": 0,
+    "sign_violations": 0,
+    "decayed_edges": 0,
+    "mean_abs_delta_t": 0.75,
+    "max_abs_delta_t": 1.0,
+    "records": [
+     {
+      "step": 200,
+      "eta": 0.5,
+      "delta_t": 1.0,
+      "n_slots": 57,
+      "n_updates": 57,
+      "sum_applied_pa": 15.273205041885,
+      "sum_abs_applied_pa": 15.273205041885,
+      "max_abs_applied_pa": 0.5,
+      "mean_eligibility": 0.535901929,
+      "max_eligibility": 1.0,
+      "clamp_hits": 0,
+      "update_clip_hits": 0,
+      "sign_violations": 0,
+      "decayed_edges": 0
+     },
+     {
+      "step": 320,
+      "eta": 0.5,
+      "delta_t": -1.0,
+      "n_slots": 145,
+      "n_updates": 145,
+      "sum_applied_pa": -19.547222528607,
+      "sum_abs_applied_pa": 19.547222528607,
+      "max_abs_applied_pa": 0.530801713467,
+      "mean_eligibility": 0.269616864,
+      "max_eligibility": 1.061603469,
+      "clamp_hits": 0,
+      "update_clip_hits": 0,
+      "sign_violations": 0,
+      "decayed_edges": 0
+     },
+     {
+      "step": 440,
+      "eta": 0.5,
+      "delta_t": 1.0,
+      "n_slots": 189,
+      "n_updates": 189,
+      "sum_applied_pa": 9.485676662996,
+      "sum_abs_applied_pa": 9.485676662996,
+      "max_abs_applied_pa": 0.452418714762,
+      "mean_eligibility": 0.100377529,
+      "max_eligibility": 0.904837418,
+      "clamp_hits": 0,
+      "update_clip_hits": 0,
+      "sign_violations": 0,
+      "decayed_edges": 0
+     },
+     {
+      "step": 500,
+      "eta": 0.5,
+      "delta_t": 0.0,
+      "n_slots": 215,
+      "n_updates": 0,
+      "sum_applied_pa": 0.0,
+      "sum_abs_applied_pa": 0.0,
+      "max_abs_applied_pa": 0.0,
+      "mean_eligibility": 0.103535886,
+      "max_eligibility": 1.016285097,
+      "clamp_hits": 0,
+      "update_clip_hits": 0,
+      "sign_violations": 0,
+      "decayed_edges": 0
+     }
+    ]
+   },
+   "reward_provider": {
+    "provider": "modulation_reward_provider",
+    "stream": {
+     "classification": "declared experimental reward; not a biological dopamine measurement and not an observed gameplay outcome",
+     "provenance": "events declared by the experimenter for a mechanism test; no game was played",
+     "n_events": 5,
+     "counts": {
+      "positive": 2,
+      "negative": 1,
+      "neutral": 1,
+      "missing": 1
+     },
+     "total_available_reward": 1.0,
+     "events": [
+      {
+       "time_ms": 100.0,
+       "magnitude": 1.0,
+       "source": "experimental_input",
+       "label": "declared_positive",
+       "provenance": "declared before the run",
+       "available": true
+      },
+      {
+       "time_ms": 160.0,
+       "magnitude": -1.0,
+       "source": "experimental_input",
+       "label": "declared_negative",
+       "provenance": "declared before the run",
+       "available": true
+      },
+      {
+       "time_ms": 220.0,
+       "magnitude": 1.0,
+       "source": "experimental_input",
+       "label": "declared_positive",
+       "provenance": "declared before the run",
+       "available": true
+      },
+      {
+       "time_ms": 250.0,
+       "magnitude": 0.0,
+       "source": "experimental_input",
+       "label": "declared_neutral",
+       "provenance": "declared before the run",
+       "available": true
+      },
+      {
+       "time_ms": 280.0,
+       "magnitude": null,
+       "source": "unavailable",
+       "label": "no_outcome_available",
+       "provenance": "explicit missing-reward control",
+       "available": false
+      }
+     ],
+     "digest": "28853c2f488c584202e14229706cdf80eadf86360cca664d2836dc281ebecb1e"
+    },
+    "modulation": {
+     "config": {
+      "gain": 1.0,
+      "decay_tau_ms": 50.0,
+      "decay_per_ms": 0.980198673307,
+      "baseline": 0.0,
+      "clip_abs": 5.0,
+      "classification": "computational decaying reward modulation; not a biological dopamine model",
+      "interpretation": "phasic modulation is gain * reward for one delivery; the state is a decaying envelope kept for inspection"
+     },
+     "n_events": 5,
+     "n_available": 4,
+     "n_missing": 1,
+     "records": [
+      {
+       "step": 200,
+       "time_ms": 100.0,
+       "magnitude": 1.0,
+       "source": "experimental_input",
+       "label": "declared_positive",
+       "available": true,
+       "phasic_modulation": 1.0,
+       "modulation_state": 1.0
+      },
+      {
+       "step": 320,
+       "time_ms": 160.0,
+       "magnitude": -1.0,
+       "source": "experimental_input",
+       "label": "declared_negative",
+       "available": true,
+       "phasic_modulation": -1.0,
+       "modulation_state": -0.698805788
+      },
+      {
+       "step": 440,
+       "time_ms": 220.0,
+       "magnitude": 1.0,
+       "source": "experimental_input",
+       "label": "declared_positive",
+       "available": true,
+       "phasic_modulation": 1.0,
+       "modulation_state": 0.789523741
+      },
+      {
+       "step": 500,
+       "time_ms": 250.0,
+       "magnitude": 0.0,
+       "source": "experimental_input",
+       "label": "declared_neutral",
+       "available": true,
+       "phasic_modulation": 0.0,
+       "modulation_state": 0.433299816
+      },
+      {
+       "step": 560,
+       "time_ms": 280.0,
+       "magnitude": null,
+       "source": "unavailable",
+       "label": "no_outcome_available",
+       "available": false,
+       "phasic_modulation": null,
+       "modulation_state": 0.237799981
+      }
+     ],
+     "digest": "9924428a16c444eaaeb401359246f51f80cd5e2a6f169b1a64980d18e16e5236",
+     "classification": "computational decaying reward modulation; not a biological dopamine model"
+    },
+    "n_steps": 600,
+    "n_update_steps": 4,
+    "n_steps_without_reward": 596,
+    "n_missing_events": 1,
+    "emitted_modulation": 1.0,
+    "missing_reward_policy": "no reward information -> step returns None -> no weight update",
+    "classification": "computational decaying reward modulation; not a biological dopamine model"
+   },
+   "modulation_series": {
+    "sample_interval_ms": 1.0,
+    "values": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.980198673,
+     0.960789439,
+     0.941764534,
+     0.923116346,
+     0.904837418,
+     0.886920437,
+     0.869358235,
+     0.852143789,
+     0.835270211,
+     0.818730753,
+     0.802518798,
+     0.786627861,
+     0.771051586,
+     0.755783741,
+     0.740818221,
+     0.726149037,
+     0.711770323,
+     0.697676326,
+     0.683861409,
+     0.670320046,
+     0.65704682,
+     0.644036421,
+     0.631283646,
+     0.618783392,
+     0.60653066,
+     0.594520548,
+     0.582748252,
+     0.571209064,
+     0.559898367,
+     0.548811636,
+     0.537944438,
+     0.527292424,
+     0.516851334,
+     0.506616992,
+     0.496585304,
+     0.486752256,
+     0.477113916,
+     0.467666427,
+     0.458406011,
+     0.449328964,
+     0.440431655,
+     0.431710523,
+     0.423162082,
+     0.414782912,
+     0.40656966,
+     0.398519041,
+     0.390627835,
+     0.382892886,
+     0.375311099,
+     0.367879441,
+     0.36059494,
+     0.353454682,
+     0.34645581,
+     0.339595526,
+     0.332871084,
+     0.326279795,
+     0.319819022,
+     0.313486181,
+     0.307278739,
+     -0.698805788,
+     -0.684968506,
+     -0.671405221,
+     -0.658110507,
+     -0.645079046,
+     -0.632305625,
+     -0.619785135,
+     -0.607512567,
+     -0.595483012,
+     -0.583691658,
+     -0.572133789,
+     -0.560804781,
+     -0.549700102,
+     -0.538815311,
+     -0.528146053,
+     -0.517688061,
+     -0.50743715,
+     -0.497389221,
+     -0.487540255,
+     -0.477886311,
+     -0.468423528,
+     -0.459148121,
+     -0.450056379,
+     -0.441144665,
+     -0.432409416,
+     -0.423847136,
+     -0.4154544,
+     -0.407227852,
+     -0.3991642,
+     -0.391260219,
+     -0.383512748,
+     -0.375918687,
+     -0.368474998,
+     -0.361178704,
+     -0.354026887,
+     -0.347016685,
+     -0.340145294,
+     -0.333409966,
+     -0.326808006,
+     -0.320336774,
+     -0.313993681,
+     -0.307776189,
+     -0.301681813,
+     -0.295708112,
+     -0.289852699,
+     -0.284113231,
+     -0.278487413,
+     -0.272972992,
+     -0.267567765,
+     -0.262269568,
+     -0.257076283,
+     -0.251985831,
+     -0.246996178,
+     -0.242105326,
+     -0.237311319,
+     -0.23261224,
+     -0.228006209,
+     -0.223491384,
+     -0.219065958,
+     -0.214728161,
+     0.789523741,
+     0.773890124,
+     0.758566073,
+     0.743545458,
+     0.728822272,
+     0.714390624,
+     0.700244742,
+     0.686378967,
+     0.672787752,
+     0.659465662,
+     0.646407367,
+     0.633607644,
+     0.621061372,
+     0.608763533,
+     0.596709207,
+     0.584893573,
+     0.573311905,
+     0.561959568,
+     0.550832023,
+     0.539924818,
+     0.529233591,
+     0.518754063,
+     0.508482045,
+     0.498413426,
+     0.488544179,
+     0.478870356,
+     0.469388087,
+     0.46009358,
+     0.450983117,
+     0.442053053,
+     0.433299816,
+     0.424719905,
+     0.416309887,
+     0.408066399,
+     0.399986143,
+     0.392065887,
+     0.384302462,
+     0.376692764,
+     0.369233747,
+     0.361922429,
+     0.354755885,
+     0.347731248,
+     0.340845708,
+     0.33409651,
+     0.327480956,
+     0.320996399,
+     0.314640244,
+     0.30840995,
+     0.302303024,
+     0.296317023,
+     0.290449553,
+     0.284698266,
+     0.279060863,
+     0.273535088,
+     0.26811873,
+     0.262809623,
+     0.257605644,
+     0.252504711,
+     0.247504782,
+     0.242603859,
+     0.237799981,
+     0.233091226,
+     0.22847571,
+     0.223951588,
+     0.21951705,
+     0.215170321,
+     0.210909663,
+     0.206733372,
+     0.202639777,
+     0.19862724,
+     0.194694158,
+     0.190838955,
+     0.18706009,
+     0.183356053,
+     0.179725359,
+     0.176166559,
+     0.172678227,
+     0.169258969,
+     0.165907417,
+     0.16262223,
+     0.159402094
+    ]
+   },
+   "simulation": {
+    "pathway": "plastic_three_factor",
+    "duration_ms": 300.0,
+    "dt_ms": 0.5,
+    "n_steps": 600,
+    "seed": 20261108,
+    "runtime_s": 3.5443,
+    "steps_per_second": 169.3
+   },
+   "diagnostics": {
+    "finite_state": true,
+    "min_membrane_mv": -66.3729,
+    "max_membrane_mv": -63.1479,
+    "max_abs_total_current_pa": 1238.7167,
+    "max_excitatory_synaptic_current_pa": 1238.7167,
+    "max_inhibitory_synaptic_current_pa": 619.8708,
+    "spike_hash": "a8a11f2940e33d6a377ef86f4f7fff0abd5dd0049132feb86579dfa3fc31e9d2"
+   }
+  },
+  "reward_modulated_repeat": {
+   "label": "reward_modulated_repeat",
+   "eta": 0.5,
+   "spike_hash": "a8a11f2940e33d6a377ef86f4f7fff0abd5dd0049132feb86579dfa3fc31e9d2",
+   "runtime_s": 3.797,
+   "activity": {
+    "total_spikes": 1296,
+    "motor_spikes": 492,
+    "motor_active_neurons": 82,
+    "non_motor_spikes": 804,
+    "stimulated_spikes": 740,
+    "downstream_spikes": 556,
+    "active_neurons": 164
+   },
+   "populations": {
+    "motor": {
+     "name": "motor",
+     "role": "motor_neuron",
+     "size": 805,
+     "definition": "super_class == 'motor'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "descending": {
+     "name": "descending",
+     "role": "descending_neuron",
+     "size": 1316,
+     "definition": "super_class == 'descending'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "ascending": {
+     "name": "ascending",
+     "role": "ascending_neuron",
+     "size": 1849,
+     "definition": "super_class == 'ascending'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "vnc_intrinsic": {
+     "name": "vnc_intrinsic",
+     "role": "vnc_intrinsic_neuron",
+     "size": 12850,
+     "definition": "super_class == 'ventral_nerve_cord_intrinsic'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "unassigned_motor": {
+     "name": "unassigned_motor",
+     "role": "motor_neuron_subset",
+     "size": 414,
+     "definition": "motor neurons outside LEFT, RIGHT and JUMP",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "left_motor": {
+     "name": "left_motor",
+     "role": "motor_neuron_subset",
+     "size": 185,
+     "definition": "Phase 4F LEFT motor population",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "right_motor": {
+     "name": "right_motor",
+     "role": "motor_neuron_subset",
+     "size": 186,
+     "definition": "Phase 4F RIGHT motor population",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "jump_motor": {
+     "name": "jump_motor",
+     "role": "motor_neuron_subset",
+     "size": 20,
+     "definition": "Phase 4F JUMP motor population",
+     "provenance": "BANC v888 published node annotations"
+    }
+   },
+   "decode_window": {
+    "window_start_ms": 50.0,
+    "window_end_ms": 300.0,
+    "duration_ms": 250.0,
+    "n_spikes": 1296,
+    "stimulated_neurons": 64,
+    "populations": {
+     "motor": {
+      "size": 805,
+      "spikes": 492,
+      "active_neurons": 82,
+      "silent_neurons": 723,
+      "active_fraction": 0.101863,
+      "mean_rate_hz": 2.4447,
+      "active_mean_rate_hz": 24.0,
+      "spike_share": 0.37963,
+      "direct_spikes": 0,
+      "downstream_spikes": 492,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 82
+     },
+     "descending": {
+      "size": 1316,
+      "spikes": 2,
+      "active_neurons": 1,
+      "silent_neurons": 1315,
+      "active_fraction": 0.00076,
+      "mean_rate_hz": 0.0061,
+      "active_mean_rate_hz": 8.0,
+      "spike_share": 0.001543,
+      "direct_spikes": 0,
+      "downstream_spikes": 2,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 1
+     },
+     "ascending": {
+      "size": 1849,
+      "spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 1849,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "active_mean_rate_hz": 0.0,
+      "spike_share": 0.0,
+      "direct_spikes": 0,
+      "downstream_spikes": 0,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 0
+     },
+     "vnc_intrinsic": {
+      "size": 12850,
+      "spikes": 802,
+      "active_neurons": 81,
+      "silent_neurons": 12769,
+      "active_fraction": 0.006304,
+      "mean_rate_hz": 0.2496,
+      "active_mean_rate_hz": 39.6049,
+      "spike_share": 0.618827,
+      "direct_spikes": 740,
+      "downstream_spikes": 62,
+      "direct_active_neurons": 64,
+      "downstream_active_neurons": 17
+     },
+     "non_motor": {
+      "size": 171628,
+      "spikes": 804,
+      "active_neurons": 82,
+      "silent_neurons": 171546,
+      "active_fraction": 0.000478,
+      "mean_rate_hz": 0.0187,
+      "active_mean_rate_hz": 39.2195,
+      "spike_share": 0.62037,
+      "direct_spikes": 740,
+      "downstream_spikes": 64,
+      "direct_active_neurons": 64,
+      "downstream_active_neurons": 18
+     },
+     "unassigned_motor": {
+      "size": 414,
+      "spikes": 82,
+      "active_neurons": 11,
+      "silent_neurons": 403,
+      "active_fraction": 0.02657,
+      "mean_rate_hz": 0.7923,
+      "active_mean_rate_hz": 29.8182,
+      "spike_share": 0.063272,
+      "direct_spikes": 0,
+      "downstream_spikes": 82,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 11
+     },
+     "left_motor": {
+      "size": 185,
+      "spikes": 176,
+      "active_neurons": 27,
+      "silent_neurons": 158,
+      "active_fraction": 0.145946,
+      "mean_rate_hz": 3.8054,
+      "active_mean_rate_hz": 26.0741,
+      "spike_share": 0.135802,
+      "direct_spikes": 0,
+      "downstream_spikes": 176,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 27
+     },
+     "right_motor": {
+      "size": 186,
+      "spikes": 155,
+      "active_neurons": 32,
+      "silent_neurons": 154,
+      "active_fraction": 0.172043,
+      "mean_rate_hz": 3.3333,
+      "active_mean_rate_hz": 19.375,
+      "spike_share": 0.119599,
+      "direct_spikes": 0,
+      "downstream_spikes": 155,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 32
+     },
+     "jump_motor": {
+      "size": 20,
+      "spikes": 79,
+      "active_neurons": 12,
+      "silent_neurons": 8,
+      "active_fraction": 0.6,
+      "mean_rate_hz": 15.8,
+      "active_mean_rate_hz": 26.3333,
+      "spike_share": 0.060957,
+      "direct_spikes": 0,
+      "downstream_spikes": 79,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 12
+     }
+    },
+    "direct": {
+     "size": 64,
+     "spikes": 740,
+     "active_neurons": 64,
+     "silent_neurons": 0,
+     "active_fraction": 1.0,
+     "mean_rate_hz": 46.25,
+     "active_mean_rate_hz": 46.25,
+     "spike_share": 0.570988
+    },
+    "downstream": {
+     "size": 172369,
+     "spikes": 556,
+     "active_neurons": 100,
+     "silent_neurons": 172269,
+     "active_fraction": 0.00058,
+     "mean_rate_hz": 0.0129,
+     "active_mean_rate_hz": 22.24,
+     "spike_share": 0.429012
+    }
+   },
+   "decoder_outputs": [
+    {
+     "window_start_ms": 50.0,
+     "window_end_ms": 100.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.55,
+     "activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.11828,
+      "JUMP": 0.55
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.11828,
+      "JUMP": 0.55
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 33,
+       "active_neurons": 24,
+       "active_fraction": 0.12973,
+       "mean_rate_hz": 3.5676,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 26,
+       "active_neurons": 22,
+       "active_fraction": 0.11828,
+       "mean_rate_hz": 2.7957,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 13,
+       "active_neurons": 11,
+       "active_fraction": 0.55,
+       "mean_rate_hz": 13.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 100.0,
+     "window_end_ms": 150.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 47,
+       "active_neurons": 25,
+       "active_fraction": 0.135135,
+       "mean_rate_hz": 5.0811,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 42,
+       "active_neurons": 28,
+       "active_fraction": 0.150538,
+       "mean_rate_hz": 4.5161,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 20,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 20.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 150.0,
+     "window_end_ms": 200.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.134409,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.134409,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 48,
+       "active_neurons": 25,
+       "active_fraction": 0.135135,
+       "mean_rate_hz": 5.1892,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 44,
+       "active_neurons": 25,
+       "active_fraction": 0.134409,
+       "mean_rate_hz": 4.7312,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 24,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 24.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 200.0,
+     "window_end_ms": 250.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 48,
+       "active_neurons": 24,
+       "active_fraction": 0.12973,
+       "mean_rate_hz": 5.1892,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 43,
+       "active_neurons": 28,
+       "active_fraction": 0.150538,
+       "mean_rate_hz": 4.6237,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 22,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 22.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 250.0,
+     "window_end_ms": 300.0,
+     "state": "NO_ACTION",
+     "action": null,
+     "supported": true,
+     "neutral": true,
+     "unmapped": false,
+     "confidence": 0.0,
+     "activation_scores": {
+      "LEFT": 0.0,
+      "RIGHT": 0.0,
+      "JUMP": 0.0
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.0,
+      "RIGHT": 0.0,
+      "JUMP": 0.0
+     },
+     "active_channels": [],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "neutral_no_activation",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      }
+     },
+     "requested_channel": null
+    }
+   ],
+   "decoded_state_counts": {
+    "JUMP": 4,
+    "NO_ACTION": 1
+   },
+   "weights": {
+    "n_plastic_edges": 683100,
+    "n_changed_edges": 189,
+    "changed_share_of_plastic": 0.00027668,
+    "sum_pa": 5.211659176,
+    "mean_signed_pa": 0.027574916,
+    "mean_abs_pa": 0.198985539,
+    "max_abs_pa": 0.504374623,
+    "positive_changes": 102,
+    "negative_changes": 87,
+    "abs_percentiles_pa": {
+     "50": 0.188886106,
+     "90": 0.405021799,
+     "99": 0.479138933,
+     "100": 0.504374623
+    },
+    "histogram": {
+     "bin_edges_pa": [
+      -0.504375,
+      -0.403975,
+      -0.303575,
+      -0.203176,
+      -0.102776,
+      -0.002377,
+      0.098023,
+      0.198423,
+      0.298822,
+      0.399222,
+      0.499621
+     ],
+     "counts": [
+      6,
+      15,
+      11,
+      28,
+      27,
+      25,
+      40,
+      14,
+      7,
+      16
+     ]
+    },
+    "bounds": {
+     "lower_factor": 0.5,
+     "upper_factor": 2.0,
+     "absolute_min_pa": null,
+     "absolute_max_pa": null,
+     "max_abs_update_pa": 5.0,
+     "interpretation": "relative bounds are a declared modelling choice around the initial structural weight; they are not fitted"
+    },
+    "n_update_calls": 4,
+    "cumulative_clamp_hits": 0,
+    "cumulative_update_clips": 0,
+    "digests": {
+     "structural": "7459727d883f022b273bd44ae88eb4330cf6585e96c29cd038f1dddba9f26fec",
+     "initial": "8d19c706f66cb933f3660b96eba922cfa2ecf9a4649676b748e1a677172c08bb",
+     "learned_delta": "6150b171f07781ca6b6d989722c9b51a857b27f6453d43177db8876e1d308e19",
+     "effective": "4e5a067f0f779d6c975c94494898ed63e3c2ebdb62e9cd9a2258fec26ab95c25"
+    }
+   },
+   "updates": {
+    "n_update_events": 4,
+    "n_changed_events": 3,
+    "sum_abs_applied_pa": 44.306104233488,
+    "max_abs_applied_pa": 0.530801713467,
+    "clamp_hits": 0,
+    "update_clip_hits": 0,
+    "sign_violations": 0,
+    "decayed_edges": 0,
+    "mean_abs_delta_t": 0.75,
+    "max_abs_delta_t": 1.0,
+    "records": [
+     {
+      "step": 200,
+      "eta": 0.5,
+      "delta_t": 1.0,
+      "n_slots": 57,
+      "n_updates": 57,
+      "sum_applied_pa": 15.273205041885,
+      "sum_abs_applied_pa": 15.273205041885,
+      "max_abs_applied_pa": 0.5,
+      "mean_eligibility": 0.535901929,
+      "max_eligibility": 1.0,
+      "clamp_hits": 0,
+      "update_clip_hits": 0,
+      "sign_violations": 0,
+      "decayed_edges": 0
+     },
+     {
+      "step": 320,
+      "eta": 0.5,
+      "delta_t": -1.0,
+      "n_slots": 145,
+      "n_updates": 145,
+      "sum_applied_pa": -19.547222528607,
+      "sum_abs_applied_pa": 19.547222528607,
+      "max_abs_applied_pa": 0.530801713467,
+      "mean_eligibility": 0.269616864,
+      "max_eligibility": 1.061603469,
+      "clamp_hits": 0,
+      "update_clip_hits": 0,
+      "sign_violations": 0,
+      "decayed_edges": 0
+     },
+     {
+      "step": 440,
+      "eta": 0.5,
+      "delta_t": 1.0,
+      "n_slots": 189,
+      "n_updates": 189,
+      "sum_applied_pa": 9.485676662996,
+      "sum_abs_applied_pa": 9.485676662996,
+      "max_abs_applied_pa": 0.452418714762,
+      "mean_eligibility": 0.100377529,
+      "max_eligibility": 0.904837418,
+      "clamp_hits": 0,
+      "update_clip_hits": 0,
+      "sign_violations": 0,
+      "decayed_edges": 0
+     },
+     {
+      "step": 500,
+      "eta": 0.5,
+      "delta_t": 0.0,
+      "n_slots": 215,
+      "n_updates": 0,
+      "sum_applied_pa": 0.0,
+      "sum_abs_applied_pa": 0.0,
+      "max_abs_applied_pa": 0.0,
+      "mean_eligibility": 0.103535886,
+      "max_eligibility": 1.016285097,
+      "clamp_hits": 0,
+      "update_clip_hits": 0,
+      "sign_violations": 0,
+      "decayed_edges": 0
+     }
+    ]
+   },
+   "reward_provider": {
+    "provider": "modulation_reward_provider",
+    "stream": {
+     "classification": "declared experimental reward; not a biological dopamine measurement and not an observed gameplay outcome",
+     "provenance": "events declared by the experimenter for a mechanism test; no game was played",
+     "n_events": 5,
+     "counts": {
+      "positive": 2,
+      "negative": 1,
+      "neutral": 1,
+      "missing": 1
+     },
+     "total_available_reward": 1.0,
+     "events": [
+      {
+       "time_ms": 100.0,
+       "magnitude": 1.0,
+       "source": "experimental_input",
+       "label": "declared_positive",
+       "provenance": "declared before the run",
+       "available": true
+      },
+      {
+       "time_ms": 160.0,
+       "magnitude": -1.0,
+       "source": "experimental_input",
+       "label": "declared_negative",
+       "provenance": "declared before the run",
+       "available": true
+      },
+      {
+       "time_ms": 220.0,
+       "magnitude": 1.0,
+       "source": "experimental_input",
+       "label": "declared_positive",
+       "provenance": "declared before the run",
+       "available": true
+      },
+      {
+       "time_ms": 250.0,
+       "magnitude": 0.0,
+       "source": "experimental_input",
+       "label": "declared_neutral",
+       "provenance": "declared before the run",
+       "available": true
+      },
+      {
+       "time_ms": 280.0,
+       "magnitude": null,
+       "source": "unavailable",
+       "label": "no_outcome_available",
+       "provenance": "explicit missing-reward control",
+       "available": false
+      }
+     ],
+     "digest": "28853c2f488c584202e14229706cdf80eadf86360cca664d2836dc281ebecb1e"
+    },
+    "modulation": {
+     "config": {
+      "gain": 1.0,
+      "decay_tau_ms": 50.0,
+      "decay_per_ms": 0.980198673307,
+      "baseline": 0.0,
+      "clip_abs": 5.0,
+      "classification": "computational decaying reward modulation; not a biological dopamine model",
+      "interpretation": "phasic modulation is gain * reward for one delivery; the state is a decaying envelope kept for inspection"
+     },
+     "n_events": 5,
+     "n_available": 4,
+     "n_missing": 1,
+     "records": [
+      {
+       "step": 200,
+       "time_ms": 100.0,
+       "magnitude": 1.0,
+       "source": "experimental_input",
+       "label": "declared_positive",
+       "available": true,
+       "phasic_modulation": 1.0,
+       "modulation_state": 1.0
+      },
+      {
+       "step": 320,
+       "time_ms": 160.0,
+       "magnitude": -1.0,
+       "source": "experimental_input",
+       "label": "declared_negative",
+       "available": true,
+       "phasic_modulation": -1.0,
+       "modulation_state": -0.698805788
+      },
+      {
+       "step": 440,
+       "time_ms": 220.0,
+       "magnitude": 1.0,
+       "source": "experimental_input",
+       "label": "declared_positive",
+       "available": true,
+       "phasic_modulation": 1.0,
+       "modulation_state": 0.789523741
+      },
+      {
+       "step": 500,
+       "time_ms": 250.0,
+       "magnitude": 0.0,
+       "source": "experimental_input",
+       "label": "declared_neutral",
+       "available": true,
+       "phasic_modulation": 0.0,
+       "modulation_state": 0.433299816
+      },
+      {
+       "step": 560,
+       "time_ms": 280.0,
+       "magnitude": null,
+       "source": "unavailable",
+       "label": "no_outcome_available",
+       "available": false,
+       "phasic_modulation": null,
+       "modulation_state": 0.237799981
+      }
+     ],
+     "digest": "9924428a16c444eaaeb401359246f51f80cd5e2a6f169b1a64980d18e16e5236",
+     "classification": "computational decaying reward modulation; not a biological dopamine model"
+    },
+    "n_steps": 600,
+    "n_update_steps": 4,
+    "n_steps_without_reward": 596,
+    "n_missing_events": 1,
+    "emitted_modulation": 1.0,
+    "missing_reward_policy": "no reward information -> step returns None -> no weight update",
+    "classification": "computational decaying reward modulation; not a biological dopamine model"
+   },
+   "modulation_series": {
+    "sample_interval_ms": 1.0,
+    "values": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.980198673,
+     0.960789439,
+     0.941764534,
+     0.923116346,
+     0.904837418,
+     0.886920437,
+     0.869358235,
+     0.852143789,
+     0.835270211,
+     0.818730753,
+     0.802518798,
+     0.786627861,
+     0.771051586,
+     0.755783741,
+     0.740818221,
+     0.726149037,
+     0.711770323,
+     0.697676326,
+     0.683861409,
+     0.670320046,
+     0.65704682,
+     0.644036421,
+     0.631283646,
+     0.618783392,
+     0.60653066,
+     0.594520548,
+     0.582748252,
+     0.571209064,
+     0.559898367,
+     0.548811636,
+     0.537944438,
+     0.527292424,
+     0.516851334,
+     0.506616992,
+     0.496585304,
+     0.486752256,
+     0.477113916,
+     0.467666427,
+     0.458406011,
+     0.449328964,
+     0.440431655,
+     0.431710523,
+     0.423162082,
+     0.414782912,
+     0.40656966,
+     0.398519041,
+     0.390627835,
+     0.382892886,
+     0.375311099,
+     0.367879441,
+     0.36059494,
+     0.353454682,
+     0.34645581,
+     0.339595526,
+     0.332871084,
+     0.326279795,
+     0.319819022,
+     0.313486181,
+     0.307278739,
+     -0.698805788,
+     -0.684968506,
+     -0.671405221,
+     -0.658110507,
+     -0.645079046,
+     -0.632305625,
+     -0.619785135,
+     -0.607512567,
+     -0.595483012,
+     -0.583691658,
+     -0.572133789,
+     -0.560804781,
+     -0.549700102,
+     -0.538815311,
+     -0.528146053,
+     -0.517688061,
+     -0.50743715,
+     -0.497389221,
+     -0.487540255,
+     -0.477886311,
+     -0.468423528,
+     -0.459148121,
+     -0.450056379,
+     -0.441144665,
+     -0.432409416,
+     -0.423847136,
+     -0.4154544,
+     -0.407227852,
+     -0.3991642,
+     -0.391260219,
+     -0.383512748,
+     -0.375918687,
+     -0.368474998,
+     -0.361178704,
+     -0.354026887,
+     -0.347016685,
+     -0.340145294,
+     -0.333409966,
+     -0.326808006,
+     -0.320336774,
+     -0.313993681,
+     -0.307776189,
+     -0.301681813,
+     -0.295708112,
+     -0.289852699,
+     -0.284113231,
+     -0.278487413,
+     -0.272972992,
+     -0.267567765,
+     -0.262269568,
+     -0.257076283,
+     -0.251985831,
+     -0.246996178,
+     -0.242105326,
+     -0.237311319,
+     -0.23261224,
+     -0.228006209,
+     -0.223491384,
+     -0.219065958,
+     -0.214728161,
+     0.789523741,
+     0.773890124,
+     0.758566073,
+     0.743545458,
+     0.728822272,
+     0.714390624,
+     0.700244742,
+     0.686378967,
+     0.672787752,
+     0.659465662,
+     0.646407367,
+     0.633607644,
+     0.621061372,
+     0.608763533,
+     0.596709207,
+     0.584893573,
+     0.573311905,
+     0.561959568,
+     0.550832023,
+     0.539924818,
+     0.529233591,
+     0.518754063,
+     0.508482045,
+     0.498413426,
+     0.488544179,
+     0.478870356,
+     0.469388087,
+     0.46009358,
+     0.450983117,
+     0.442053053,
+     0.433299816,
+     0.424719905,
+     0.416309887,
+     0.408066399,
+     0.399986143,
+     0.392065887,
+     0.384302462,
+     0.376692764,
+     0.369233747,
+     0.361922429,
+     0.354755885,
+     0.347731248,
+     0.340845708,
+     0.33409651,
+     0.327480956,
+     0.320996399,
+     0.314640244,
+     0.30840995,
+     0.302303024,
+     0.296317023,
+     0.290449553,
+     0.284698266,
+     0.279060863,
+     0.273535088,
+     0.26811873,
+     0.262809623,
+     0.257605644,
+     0.252504711,
+     0.247504782,
+     0.242603859,
+     0.237799981,
+     0.233091226,
+     0.22847571,
+     0.223951588,
+     0.21951705,
+     0.215170321,
+     0.210909663,
+     0.206733372,
+     0.202639777,
+     0.19862724,
+     0.194694158,
+     0.190838955,
+     0.18706009,
+     0.183356053,
+     0.179725359,
+     0.176166559,
+     0.172678227,
+     0.169258969,
+     0.165907417,
+     0.16262223,
+     0.159402094
+    ]
+   },
+   "simulation": {
+    "pathway": "plastic_three_factor",
+    "duration_ms": 300.0,
+    "dt_ms": 0.5,
+    "n_steps": 600,
+    "seed": 20261108,
+    "runtime_s": 3.6089,
+    "steps_per_second": 166.3
+   },
+   "diagnostics": {
+    "finite_state": true,
+    "min_membrane_mv": -66.3729,
+    "max_membrane_mv": -63.1479,
+    "max_abs_total_current_pa": 1238.7167,
+    "max_excitatory_synaptic_current_pa": 1238.7167,
+    "max_inhibitory_synaptic_current_pa": 619.8708,
+    "spike_hash": "a8a11f2940e33d6a377ef86f4f7fff0abd5dd0049132feb86579dfa3fc31e9d2"
+   }
+  },
+  "post_update": {
+   "label": "post_update",
+   "eta": 0.0,
+   "spike_hash": "8bebf327da0ed16ded0d10efc59e5e5c691e2ab6900f18a8b71bce8ff770eb10",
+   "runtime_s": 3.649,
+   "activity": {
+    "total_spikes": 1297,
+    "motor_spikes": 493,
+    "motor_active_neurons": 82,
+    "non_motor_spikes": 804,
+    "stimulated_spikes": 740,
+    "downstream_spikes": 557,
+    "active_neurons": 164
+   },
+   "populations": {
+    "motor": {
+     "name": "motor",
+     "role": "motor_neuron",
+     "size": 805,
+     "definition": "super_class == 'motor'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "descending": {
+     "name": "descending",
+     "role": "descending_neuron",
+     "size": 1316,
+     "definition": "super_class == 'descending'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "ascending": {
+     "name": "ascending",
+     "role": "ascending_neuron",
+     "size": 1849,
+     "definition": "super_class == 'ascending'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "vnc_intrinsic": {
+     "name": "vnc_intrinsic",
+     "role": "vnc_intrinsic_neuron",
+     "size": 12850,
+     "definition": "super_class == 'ventral_nerve_cord_intrinsic'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "unassigned_motor": {
+     "name": "unassigned_motor",
+     "role": "motor_neuron_subset",
+     "size": 414,
+     "definition": "motor neurons outside LEFT, RIGHT and JUMP",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "left_motor": {
+     "name": "left_motor",
+     "role": "motor_neuron_subset",
+     "size": 185,
+     "definition": "Phase 4F LEFT motor population",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "right_motor": {
+     "name": "right_motor",
+     "role": "motor_neuron_subset",
+     "size": 186,
+     "definition": "Phase 4F RIGHT motor population",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "jump_motor": {
+     "name": "jump_motor",
+     "role": "motor_neuron_subset",
+     "size": 20,
+     "definition": "Phase 4F JUMP motor population",
+     "provenance": "BANC v888 published node annotations"
+    }
+   },
+   "decode_window": {
+    "window_start_ms": 50.0,
+    "window_end_ms": 300.0,
+    "duration_ms": 250.0,
+    "n_spikes": 1297,
+    "stimulated_neurons": 64,
+    "populations": {
+     "motor": {
+      "size": 805,
+      "spikes": 493,
+      "active_neurons": 82,
+      "silent_neurons": 723,
+      "active_fraction": 0.101863,
+      "mean_rate_hz": 2.4497,
+      "active_mean_rate_hz": 24.0488,
+      "spike_share": 0.380108,
+      "direct_spikes": 0,
+      "downstream_spikes": 493,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 82
+     },
+     "descending": {
+      "size": 1316,
+      "spikes": 2,
+      "active_neurons": 1,
+      "silent_neurons": 1315,
+      "active_fraction": 0.00076,
+      "mean_rate_hz": 0.0061,
+      "active_mean_rate_hz": 8.0,
+      "spike_share": 0.001542,
+      "direct_spikes": 0,
+      "downstream_spikes": 2,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 1
+     },
+     "ascending": {
+      "size": 1849,
+      "spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 1849,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "active_mean_rate_hz": 0.0,
+      "spike_share": 0.0,
+      "direct_spikes": 0,
+      "downstream_spikes": 0,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 0
+     },
+     "vnc_intrinsic": {
+      "size": 12850,
+      "spikes": 802,
+      "active_neurons": 81,
+      "silent_neurons": 12769,
+      "active_fraction": 0.006304,
+      "mean_rate_hz": 0.2496,
+      "active_mean_rate_hz": 39.6049,
+      "spike_share": 0.61835,
+      "direct_spikes": 740,
+      "downstream_spikes": 62,
+      "direct_active_neurons": 64,
+      "downstream_active_neurons": 17
+     },
+     "non_motor": {
+      "size": 171628,
+      "spikes": 804,
+      "active_neurons": 82,
+      "silent_neurons": 171546,
+      "active_fraction": 0.000478,
+      "mean_rate_hz": 0.0187,
+      "active_mean_rate_hz": 39.2195,
+      "spike_share": 0.619892,
+      "direct_spikes": 740,
+      "downstream_spikes": 64,
+      "direct_active_neurons": 64,
+      "downstream_active_neurons": 18
+     },
+     "unassigned_motor": {
+      "size": 414,
+      "spikes": 83,
+      "active_neurons": 11,
+      "silent_neurons": 403,
+      "active_fraction": 0.02657,
+      "mean_rate_hz": 0.8019,
+      "active_mean_rate_hz": 30.1818,
+      "spike_share": 0.063994,
+      "direct_spikes": 0,
+      "downstream_spikes": 83,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 11
+     },
+     "left_motor": {
+      "size": 185,
+      "spikes": 176,
+      "active_neurons": 27,
+      "silent_neurons": 158,
+      "active_fraction": 0.145946,
+      "mean_rate_hz": 3.8054,
+      "active_mean_rate_hz": 26.0741,
+      "spike_share": 0.135698,
+      "direct_spikes": 0,
+      "downstream_spikes": 176,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 27
+     },
+     "right_motor": {
+      "size": 186,
+      "spikes": 155,
+      "active_neurons": 32,
+      "silent_neurons": 154,
+      "active_fraction": 0.172043,
+      "mean_rate_hz": 3.3333,
+      "active_mean_rate_hz": 19.375,
+      "spike_share": 0.119507,
+      "direct_spikes": 0,
+      "downstream_spikes": 155,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 32
+     },
+     "jump_motor": {
+      "size": 20,
+      "spikes": 79,
+      "active_neurons": 12,
+      "silent_neurons": 8,
+      "active_fraction": 0.6,
+      "mean_rate_hz": 15.8,
+      "active_mean_rate_hz": 26.3333,
+      "spike_share": 0.06091,
+      "direct_spikes": 0,
+      "downstream_spikes": 79,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 12
+     }
+    },
+    "direct": {
+     "size": 64,
+     "spikes": 740,
+     "active_neurons": 64,
+     "silent_neurons": 0,
+     "active_fraction": 1.0,
+     "mean_rate_hz": 46.25,
+     "active_mean_rate_hz": 46.25,
+     "spike_share": 0.570547
+    },
+    "downstream": {
+     "size": 172369,
+     "spikes": 557,
+     "active_neurons": 100,
+     "silent_neurons": 172269,
+     "active_fraction": 0.00058,
+     "mean_rate_hz": 0.0129,
+     "active_mean_rate_hz": 22.28,
+     "spike_share": 0.429453
+    }
+   },
+   "decoder_outputs": [
+    {
+     "window_start_ms": 50.0,
+     "window_end_ms": 100.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.55,
+     "activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.11828,
+      "JUMP": 0.55
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.11828,
+      "JUMP": 0.55
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 33,
+       "active_neurons": 24,
+       "active_fraction": 0.12973,
+       "mean_rate_hz": 3.5676,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 26,
+       "active_neurons": 22,
+       "active_fraction": 0.11828,
+       "mean_rate_hz": 2.7957,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 13,
+       "active_neurons": 11,
+       "active_fraction": 0.55,
+       "mean_rate_hz": 13.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 100.0,
+     "window_end_ms": 150.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 47,
+       "active_neurons": 25,
+       "active_fraction": 0.135135,
+       "mean_rate_hz": 5.0811,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 42,
+       "active_neurons": 28,
+       "active_fraction": 0.150538,
+       "mean_rate_hz": 4.5161,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 20,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 20.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 150.0,
+     "window_end_ms": 200.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.134409,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.134409,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 48,
+       "active_neurons": 25,
+       "active_fraction": 0.135135,
+       "mean_rate_hz": 5.1892,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 44,
+       "active_neurons": 25,
+       "active_fraction": 0.134409,
+       "mean_rate_hz": 4.7312,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 24,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 24.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 200.0,
+     "window_end_ms": 250.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 48,
+       "active_neurons": 24,
+       "active_fraction": 0.12973,
+       "mean_rate_hz": 5.1892,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 43,
+       "active_neurons": 28,
+       "active_fraction": 0.150538,
+       "mean_rate_hz": 4.6237,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 22,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 22.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 250.0,
+     "window_end_ms": 300.0,
+     "state": "NO_ACTION",
+     "action": null,
+     "supported": true,
+     "neutral": true,
+     "unmapped": false,
+     "confidence": 0.0,
+     "activation_scores": {
+      "LEFT": 0.0,
+      "RIGHT": 0.0,
+      "JUMP": 0.0
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.0,
+      "RIGHT": 0.0,
+      "JUMP": 0.0
+     },
+     "active_channels": [],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "neutral_no_activation",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      }
+     },
+     "requested_channel": null
+    }
+   ],
+   "decoded_state_counts": {
+    "JUMP": 4,
+    "NO_ACTION": 1
+   },
+   "weights": {
+    "n_plastic_edges": 683100,
+    "n_changed_edges": 189,
+    "changed_share_of_plastic": 0.00027668,
+    "sum_pa": 5.211659176,
+    "mean_signed_pa": 0.027574916,
+    "mean_abs_pa": 0.198985539,
+    "max_abs_pa": 0.504374623,
+    "positive_changes": 102,
+    "negative_changes": 87,
+    "abs_percentiles_pa": {
+     "50": 0.188886106,
+     "90": 0.405021799,
+     "99": 0.479138933,
+     "100": 0.504374623
+    },
+    "histogram": {
+     "bin_edges_pa": [
+      -0.504375,
+      -0.403975,
+      -0.303575,
+      -0.203176,
+      -0.102776,
+      -0.002377,
+      0.098023,
+      0.198423,
+      0.298822,
+      0.399222,
+      0.499621
+     ],
+     "counts": [
+      6,
+      15,
+      11,
+      28,
+      27,
+      25,
+      40,
+      14,
+      7,
+      16
+     ]
+    },
+    "bounds": {
+     "lower_factor": 0.5,
+     "upper_factor": 2.0,
+     "absolute_min_pa": null,
+     "absolute_max_pa": null,
+     "max_abs_update_pa": 5.0,
+     "interpretation": "relative bounds are a declared modelling choice around the initial structural weight; they are not fitted"
+    },
+    "n_update_calls": 0,
+    "cumulative_clamp_hits": 0,
+    "cumulative_update_clips": 0,
+    "digests": {
+     "structural": "7459727d883f022b273bd44ae88eb4330cf6585e96c29cd038f1dddba9f26fec",
+     "initial": "8d19c706f66cb933f3660b96eba922cfa2ecf9a4649676b748e1a677172c08bb",
+     "learned_delta": "6150b171f07781ca6b6d989722c9b51a857b27f6453d43177db8876e1d308e19",
+     "effective": "4e5a067f0f779d6c975c94494898ed63e3c2ebdb62e9cd9a2258fec26ab95c25"
+    }
+   },
+   "updates": {
+    "n_update_events": 0,
+    "n_changed_events": 0,
+    "sum_abs_applied_pa": 0.0,
+    "max_abs_applied_pa": 0.0,
+    "clamp_hits": 0,
+    "update_clip_hits": 0,
+    "sign_violations": 0,
+    "decayed_edges": 0,
+    "mean_abs_delta_t": 0.0,
+    "max_abs_delta_t": 0.0
+   },
+   "reward_provider": null,
+   "modulation_series": null,
+   "simulation": {
+    "pathway": "plastic_three_factor",
+    "duration_ms": 300.0,
+    "dt_ms": 0.5,
+    "n_steps": 600,
+    "seed": 20261108,
+    "runtime_s": 3.4702,
+    "steps_per_second": 172.9
+   },
+   "diagnostics": {
+    "finite_state": true,
+    "min_membrane_mv": -66.3729,
+    "max_membrane_mv": -63.1479,
+    "max_abs_total_current_pa": 1239.4043,
+    "max_excitatory_synaptic_current_pa": 1239.4043,
+    "max_inhibitory_synaptic_current_pa": 619.8708,
+    "spike_hash": "8bebf327da0ed16ded0d10efc59e5e5c691e2ab6900f18a8b71bce8ff770eb10"
+   }
+  },
+  "post_control": {
+   "label": "post_control",
+   "eta": 0.0,
+   "spike_hash": "a1c0433e56741c358e3d54e13a8002472bec95abe25bb8454b86551c0ab4b171",
+   "runtime_s": 3.435,
+   "activity": {
+    "total_spikes": 1296,
+    "motor_spikes": 492,
+    "motor_active_neurons": 82,
+    "non_motor_spikes": 804,
+    "stimulated_spikes": 740,
+    "downstream_spikes": 556,
+    "active_neurons": 164
+   },
+   "populations": {
+    "motor": {
+     "name": "motor",
+     "role": "motor_neuron",
+     "size": 805,
+     "definition": "super_class == 'motor'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "descending": {
+     "name": "descending",
+     "role": "descending_neuron",
+     "size": 1316,
+     "definition": "super_class == 'descending'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "ascending": {
+     "name": "ascending",
+     "role": "ascending_neuron",
+     "size": 1849,
+     "definition": "super_class == 'ascending'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "vnc_intrinsic": {
+     "name": "vnc_intrinsic",
+     "role": "vnc_intrinsic_neuron",
+     "size": 12850,
+     "definition": "super_class == 'ventral_nerve_cord_intrinsic'",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "unassigned_motor": {
+     "name": "unassigned_motor",
+     "role": "motor_neuron_subset",
+     "size": 414,
+     "definition": "motor neurons outside LEFT, RIGHT and JUMP",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "left_motor": {
+     "name": "left_motor",
+     "role": "motor_neuron_subset",
+     "size": 185,
+     "definition": "Phase 4F LEFT motor population",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "right_motor": {
+     "name": "right_motor",
+     "role": "motor_neuron_subset",
+     "size": 186,
+     "definition": "Phase 4F RIGHT motor population",
+     "provenance": "BANC v888 published node annotations"
+    },
+    "jump_motor": {
+     "name": "jump_motor",
+     "role": "motor_neuron_subset",
+     "size": 20,
+     "definition": "Phase 4F JUMP motor population",
+     "provenance": "BANC v888 published node annotations"
+    }
+   },
+   "decode_window": {
+    "window_start_ms": 50.0,
+    "window_end_ms": 300.0,
+    "duration_ms": 250.0,
+    "n_spikes": 1296,
+    "stimulated_neurons": 64,
+    "populations": {
+     "motor": {
+      "size": 805,
+      "spikes": 492,
+      "active_neurons": 82,
+      "silent_neurons": 723,
+      "active_fraction": 0.101863,
+      "mean_rate_hz": 2.4447,
+      "active_mean_rate_hz": 24.0,
+      "spike_share": 0.37963,
+      "direct_spikes": 0,
+      "downstream_spikes": 492,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 82
+     },
+     "descending": {
+      "size": 1316,
+      "spikes": 2,
+      "active_neurons": 1,
+      "silent_neurons": 1315,
+      "active_fraction": 0.00076,
+      "mean_rate_hz": 0.0061,
+      "active_mean_rate_hz": 8.0,
+      "spike_share": 0.001543,
+      "direct_spikes": 0,
+      "downstream_spikes": 2,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 1
+     },
+     "ascending": {
+      "size": 1849,
+      "spikes": 0,
+      "active_neurons": 0,
+      "silent_neurons": 1849,
+      "active_fraction": 0.0,
+      "mean_rate_hz": 0.0,
+      "active_mean_rate_hz": 0.0,
+      "spike_share": 0.0,
+      "direct_spikes": 0,
+      "downstream_spikes": 0,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 0
+     },
+     "vnc_intrinsic": {
+      "size": 12850,
+      "spikes": 802,
+      "active_neurons": 81,
+      "silent_neurons": 12769,
+      "active_fraction": 0.006304,
+      "mean_rate_hz": 0.2496,
+      "active_mean_rate_hz": 39.6049,
+      "spike_share": 0.618827,
+      "direct_spikes": 740,
+      "downstream_spikes": 62,
+      "direct_active_neurons": 64,
+      "downstream_active_neurons": 17
+     },
+     "non_motor": {
+      "size": 171628,
+      "spikes": 804,
+      "active_neurons": 82,
+      "silent_neurons": 171546,
+      "active_fraction": 0.000478,
+      "mean_rate_hz": 0.0187,
+      "active_mean_rate_hz": 39.2195,
+      "spike_share": 0.62037,
+      "direct_spikes": 740,
+      "downstream_spikes": 64,
+      "direct_active_neurons": 64,
+      "downstream_active_neurons": 18
+     },
+     "unassigned_motor": {
+      "size": 414,
+      "spikes": 82,
+      "active_neurons": 11,
+      "silent_neurons": 403,
+      "active_fraction": 0.02657,
+      "mean_rate_hz": 0.7923,
+      "active_mean_rate_hz": 29.8182,
+      "spike_share": 0.063272,
+      "direct_spikes": 0,
+      "downstream_spikes": 82,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 11
+     },
+     "left_motor": {
+      "size": 185,
+      "spikes": 176,
+      "active_neurons": 27,
+      "silent_neurons": 158,
+      "active_fraction": 0.145946,
+      "mean_rate_hz": 3.8054,
+      "active_mean_rate_hz": 26.0741,
+      "spike_share": 0.135802,
+      "direct_spikes": 0,
+      "downstream_spikes": 176,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 27
+     },
+     "right_motor": {
+      "size": 186,
+      "spikes": 155,
+      "active_neurons": 32,
+      "silent_neurons": 154,
+      "active_fraction": 0.172043,
+      "mean_rate_hz": 3.3333,
+      "active_mean_rate_hz": 19.375,
+      "spike_share": 0.119599,
+      "direct_spikes": 0,
+      "downstream_spikes": 155,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 32
+     },
+     "jump_motor": {
+      "size": 20,
+      "spikes": 79,
+      "active_neurons": 12,
+      "silent_neurons": 8,
+      "active_fraction": 0.6,
+      "mean_rate_hz": 15.8,
+      "active_mean_rate_hz": 26.3333,
+      "spike_share": 0.060957,
+      "direct_spikes": 0,
+      "downstream_spikes": 79,
+      "direct_active_neurons": 0,
+      "downstream_active_neurons": 12
+     }
+    },
+    "direct": {
+     "size": 64,
+     "spikes": 740,
+     "active_neurons": 64,
+     "silent_neurons": 0,
+     "active_fraction": 1.0,
+     "mean_rate_hz": 46.25,
+     "active_mean_rate_hz": 46.25,
+     "spike_share": 0.570988
+    },
+    "downstream": {
+     "size": 172369,
+     "spikes": 556,
+     "active_neurons": 100,
+     "silent_neurons": 172269,
+     "active_fraction": 0.00058,
+     "mean_rate_hz": 0.0129,
+     "active_mean_rate_hz": 22.24,
+     "spike_share": 0.429012
+    }
+   },
+   "decoder_outputs": [
+    {
+     "window_start_ms": 50.0,
+     "window_end_ms": 100.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.55,
+     "activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.11828,
+      "JUMP": 0.55
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.11828,
+      "JUMP": 0.55
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 33,
+       "active_neurons": 24,
+       "active_fraction": 0.12973,
+       "mean_rate_hz": 3.5676,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 26,
+       "active_neurons": 22,
+       "active_fraction": 0.11828,
+       "mean_rate_hz": 2.7957,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 13,
+       "active_neurons": 11,
+       "active_fraction": 0.55,
+       "mean_rate_hz": 13.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 100.0,
+     "window_end_ms": 150.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 47,
+       "active_neurons": 25,
+       "active_fraction": 0.135135,
+       "mean_rate_hz": 5.0811,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 42,
+       "active_neurons": 28,
+       "active_fraction": 0.150538,
+       "mean_rate_hz": 4.5161,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 20,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 20.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 150.0,
+     "window_end_ms": 200.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.134409,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.134409,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 48,
+       "active_neurons": 25,
+       "active_fraction": 0.135135,
+       "mean_rate_hz": 5.1892,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 44,
+       "active_neurons": 25,
+       "active_fraction": 0.134409,
+       "mean_rate_hz": 4.7312,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 24,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 24.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 200.0,
+     "window_end_ms": 250.0,
+     "state": "JUMP",
+     "action": "JUMP",
+     "supported": true,
+     "neutral": false,
+     "unmapped": false,
+     "confidence": 0.6,
+     "activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.12973,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+     },
+     "active_channels": [
+      "JUMP"
+     ],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "single_action",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 48,
+       "active_neurons": 24,
+       "active_fraction": 0.12973,
+       "mean_rate_hz": 5.1892,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 43,
+       "active_neurons": 28,
+       "active_fraction": 0.150538,
+       "mean_rate_hz": 4.6237,
+       "sufficient": true,
+       "reason": "ok"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 22,
+       "active_neurons": 12,
+       "active_fraction": 0.6,
+       "mean_rate_hz": 22.0,
+       "sufficient": true,
+       "reason": "ok"
+      }
+     },
+     "requested_channel": null
+    },
+    {
+     "window_start_ms": 250.0,
+     "window_end_ms": 300.0,
+     "state": "NO_ACTION",
+     "action": null,
+     "supported": true,
+     "neutral": true,
+     "unmapped": false,
+     "confidence": 0.0,
+     "activation_scores": {
+      "LEFT": 0.0,
+      "RIGHT": 0.0,
+      "JUMP": 0.0
+     },
+     "raw_activation_scores": {
+      "LEFT": 0.0,
+      "RIGHT": 0.0,
+      "JUMP": 0.0
+     },
+     "active_channels": [],
+     "simultaneous": false,
+     "unresolved_channels": {
+      "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+      "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+     },
+     "reason": "neutral_no_activation",
+     "evidence": {
+      "LEFT": {
+       "population": "LEFT",
+       "size": 185,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      },
+      "RIGHT": {
+       "population": "RIGHT",
+       "size": 186,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      },
+      "JUMP": {
+       "population": "JUMP",
+       "size": 20,
+       "spikes": 0,
+       "active_neurons": 0,
+       "active_fraction": 0.0,
+       "mean_rate_hz": 0.0,
+       "sufficient": false,
+       "reason": "spikes_below_minimum+active_neurons_below_minimum"
+      }
+     },
+     "requested_channel": null
+    }
+   ],
+   "decoded_state_counts": {
+    "JUMP": 4,
+    "NO_ACTION": 1
+   },
+   "weights": {
+    "n_plastic_edges": 683100,
+    "n_changed_edges": 0,
+    "changed_share_of_plastic": 0.0,
+    "sum_pa": 0.0,
+    "mean_signed_pa": 0.0,
+    "mean_abs_pa": 0.0,
+    "max_abs_pa": 0.0,
+    "positive_changes": 0,
+    "negative_changes": 0,
+    "abs_percentiles_pa": {
+     "50": 0.0,
+     "90": 0.0,
+     "99": 0.0,
+     "100": 0.0
+    },
+    "histogram": {
+     "bin_edges_pa": [],
+     "counts": []
+    },
+    "bounds": {
+     "lower_factor": 0.5,
+     "upper_factor": 2.0,
+     "absolute_min_pa": null,
+     "absolute_max_pa": null,
+     "max_abs_update_pa": 5.0,
+     "interpretation": "relative bounds are a declared modelling choice around the initial structural weight; they are not fitted"
+    },
+    "n_update_calls": 0,
+    "cumulative_clamp_hits": 0,
+    "cumulative_update_clips": 0,
+    "digests": {
+     "structural": "7459727d883f022b273bd44ae88eb4330cf6585e96c29cd038f1dddba9f26fec",
+     "initial": "8d19c706f66cb933f3660b96eba922cfa2ecf9a4649676b748e1a677172c08bb",
+     "learned_delta": "b88628a13b6355a344f84fd87bef6e1b48859526215235ca22e29ae412863c63",
+     "effective": "dc544f7aad1ca7182f827a6a93f756c3a77fa6f0968df358353cd173e4a8025e"
+    }
+   },
+   "updates": {
+    "n_update_events": 0,
+    "n_changed_events": 0,
+    "sum_abs_applied_pa": 0.0,
+    "max_abs_applied_pa": 0.0,
+    "clamp_hits": 0,
+    "update_clip_hits": 0,
+    "sign_violations": 0,
+    "decayed_edges": 0,
+    "mean_abs_delta_t": 0.0,
+    "max_abs_delta_t": 0.0
+   },
+   "reward_provider": null,
+   "modulation_series": null,
+   "simulation": {
+    "pathway": "plastic_three_factor",
+    "duration_ms": 300.0,
+    "dt_ms": 0.5,
+    "n_steps": 600,
+    "seed": 20261108,
+    "runtime_s": 3.2525,
+    "steps_per_second": 184.5
+   },
+   "diagnostics": {
+    "finite_state": true,
+    "min_membrane_mv": -66.4042,
+    "max_membrane_mv": -63.1259,
+    "max_abs_total_current_pa": 1238.7167,
+    "max_excitatory_synaptic_current_pa": 1238.7167,
+    "max_inhibitory_synaptic_current_pa": 619.8708,
+    "spike_hash": "a1c0433e56741c358e3d54e13a8002472bec95abe25bb8454b86551c0ab4b171"
+   }
+  }
+ },
+ "weight_changes": {
+  "n_eligible_connections": 683100,
+  "n_changed_connections": 189,
+  "mean_abs_change_pa": 0.198985539,
+  "max_abs_change_pa": 0.504374623,
+  "positive_changes": 102,
+  "negative_changes": 87,
+  "update_events": 4,
+  "update_events_with_changes": 3
+ },
+ "comparison": {
+  "reward_modulated_training_vs_baseline": {
+   "reference": "baseline",
+   "candidate": "reward_modulated",
+   "spike_hash_equal": false,
+   "activity_delta": {
+    "total_spikes": 0,
+    "motor_spikes": 0,
+    "motor_active_neurons": 0,
+    "non_motor_spikes": 0,
+    "stimulated_spikes": 0,
+    "downstream_spikes": 0,
+    "active_neurons": 0
+   },
+   "population_spike_delta": {
+    "motor": 0,
+    "descending": 0,
+    "ascending": 0,
+    "vnc_intrinsic": 0,
+    "unassigned_motor": 0,
+    "left_motor": 0,
+    "right_motor": 0,
+    "jump_motor": 0
+   },
+   "decoded_state_counts": {
+    "reference": {
+     "JUMP": 4,
+     "NO_ACTION": 1
+    },
+    "candidate": {
+     "JUMP": 4,
+     "NO_ACTION": 1
+    }
+   },
+   "decoded_state_counts_equal": true,
+   "decoder_window_mismatches": 0,
+   "weight_digest_equal": false,
+   "spike_sequence_difference": {
+    "n_neurons_with_count_change": 0,
+    "count_changes_by_neuron": {},
+    "n_neurons_with_timing_change": 14,
+    "timing_changes_by_neuron_ms": {
+     "18643": 0.5,
+     "19425": 0.5,
+     "33520": 0.5,
+     "36353": 0.5,
+     "42471": 0.5,
+     "52884": 0.5,
+     "70914": 0.5,
+     "72152": 0.5,
+     "92591": 0.5,
+     "96719": 0.5,
+     "114045": 0.5,
+     "132077": 0.5,
+     "162045": 0.5,
+     "167765": 1.5
+    },
+    "max_abs_timing_shift_ms": 1.5
+   }
+  },
+  "reward_modulated_post_update_vs_baseline": {
+   "reference": "baseline",
+   "candidate": "post_update",
+   "spike_hash_equal": false,
+   "activity_delta": {
+    "total_spikes": 1,
+    "motor_spikes": 1,
+    "motor_active_neurons": 0,
+    "non_motor_spikes": 0,
+    "stimulated_spikes": 0,
+    "downstream_spikes": 1,
+    "active_neurons": 0
+   },
+   "population_spike_delta": {
+    "motor": 1,
+    "descending": 0,
+    "ascending": 0,
+    "vnc_intrinsic": 0,
+    "unassigned_motor": 1,
+    "left_motor": 0,
+    "right_motor": 0,
+    "jump_motor": 0
+   },
+   "decoded_state_counts": {
+    "reference": {
+     "JUMP": 4,
+     "NO_ACTION": 1
+    },
+    "candidate": {
+     "JUMP": 4,
+     "NO_ACTION": 1
+    }
+   },
+   "decoded_state_counts_equal": true,
+   "decoder_window_mismatches": 0,
+   "weight_digest_equal": false,
+   "spike_sequence_difference": {
+    "n_neurons_with_count_change": 1,
+    "count_changes_by_neuron": {
+     "82451": 1
+    },
+    "n_neurons_with_timing_change": 27,
+    "timing_changes_by_neuron_ms": {
+     "18643": 0.5,
+     "19425": 0.5,
+     "26760": 1.5,
+     "33520": 0.5,
+     "36353": 0.5,
+     "42471": 0.5,
+     "48004": 1.0,
+     "52884": 0.5,
+     "63511": 0.5,
+     "68870": 1.0,
+     "70914": 0.5,
+     "72152": 0.5,
+     "74184": 0.5,
+     "88246": 0.5,
+     "92295": 4.0,
+     "92591": 0.5,
+     "96719": 0.5,
+     "114045": 0.5,
+     "117740": 0.5,
+     "132077": 0.5,
+     "145921": 0.5,
+     "146299": 0.5,
+     "149123": 4.0,
+     "158471": 0.5,
+     "162045": 0.5,
+     "164895": 0.5,
+     "167765": 1.5
+    },
+    "max_abs_timing_shift_ms": 4.0
+   }
+  },
+  "no_plasticity_control_vs_baseline": {
+   "reference": "baseline",
+   "candidate": "no_plasticity_control",
+   "spike_hash_equal": true,
+   "activity_delta": {
+    "total_spikes": 0,
+    "motor_spikes": 0,
+    "motor_active_neurons": 0,
+    "non_motor_spikes": 0,
+    "stimulated_spikes": 0,
+    "downstream_spikes": 0,
+    "active_neurons": 0
+   },
+   "population_spike_delta": {
+    "motor": 0,
+    "descending": 0,
+    "ascending": 0,
+    "vnc_intrinsic": 0,
+    "unassigned_motor": 0,
+    "left_motor": 0,
+    "right_motor": 0,
+    "jump_motor": 0
+   },
+   "decoded_state_counts": {
+    "reference": {
+     "JUMP": 4,
+     "NO_ACTION": 1
+    },
+    "candidate": {
+     "JUMP": 4,
+     "NO_ACTION": 1
+    }
+   },
+   "decoded_state_counts_equal": true,
+   "decoder_window_mismatches": 0,
+   "weight_digest_equal": true,
+   "spike_sequence_difference": {
+    "n_neurons_with_count_change": 0,
+    "count_changes_by_neuron": {},
+    "n_neurons_with_timing_change": 0,
+    "timing_changes_by_neuron_ms": {},
+    "max_abs_timing_shift_ms": 0.0
+   }
+  },
+  "post_control_vs_baseline": {
+   "reference": "baseline",
+   "candidate": "post_control",
+   "spike_hash_equal": true,
+   "activity_delta": {
+    "total_spikes": 0,
+    "motor_spikes": 0,
+    "motor_active_neurons": 0,
+    "non_motor_spikes": 0,
+    "stimulated_spikes": 0,
+    "downstream_spikes": 0,
+    "active_neurons": 0
+   },
+   "population_spike_delta": {
+    "motor": 0,
+    "descending": 0,
+    "ascending": 0,
+    "vnc_intrinsic": 0,
+    "unassigned_motor": 0,
+    "left_motor": 0,
+    "right_motor": 0,
+    "jump_motor": 0
+   },
+   "decoded_state_counts": {
+    "reference": {
+     "JUMP": 4,
+     "NO_ACTION": 1
+    },
+    "candidate": {
+     "JUMP": 4,
+     "NO_ACTION": 1
+    }
+   },
+   "decoded_state_counts_equal": true,
+   "decoder_window_mismatches": 0,
+   "weight_digest_equal": true,
+   "spike_sequence_difference": {
+    "n_neurons_with_count_change": 0,
+    "count_changes_by_neuron": {},
+    "n_neurons_with_timing_change": 0,
+    "timing_changes_by_neuron_ms": {},
+    "max_abs_timing_shift_ms": 0.0
+   }
+  }
+ },
+ "reproducibility": {
+  "seed": 20261108,
+  "plastic_repeat_spike_hash_equal": true,
+  "plastic_repeat_learned_digest_equal": true,
+  "plastic_repeat_effective_digest_equal": true,
+  "plastic_repeat_modulation_digest_equal": true,
+  "control_weights_unchanged": true,
+  "control_spike_hash_equals_baseline": true,
+  "post_control_spike_hash_equals_baseline": true,
+  "checkpoint_reloaded": true,
+  "checkpoint_reload_digest_equal": true,
+  "structural_checksum_before": "0c4d602ce0d019709df3c9159d2f4c194e2eaea23413c76efafa3d548814fc80",
+  "structural_checksum_after": "0c4d602ce0d019709df3c9159d2f4c194e2eaea23413c76efafa3d548814fc80",
+  "structural_unchanged": true,
+  "policy_digest_before": "2276b2a285d26f4739377caefb7a8f6e7f332405ebed8cf2494380aaa73ce4af",
+  "policy_digest_after": "2276b2a285d26f4739377caefb7a8f6e7f332405ebed8cf2494380aaa73ce4af",
+  "policy_unchanged": true
+ },
+ "scientific_status": [
+  "Reward events are declared experimental inputs; no game was played and no gameplay reward was observed.",
+  "Modulation is a computational decaying scalar, not a biological dopamine measurement.",
+  "Weights are transformed structural synapse counts in pA, not physiological conductances.",
+  "A nonzero weight change is not evidence of learning.",
+  "The post-update comparison reports whether the changed weights altered subsequent spike activity; it does not establish a learned behaviour.",
+  "The probe is a structural stimulation of non-motor neurons; no motor neuron was stimulated and no spike was injected.",
+  "BANC and FAFB were not merged; BANC neuron identities are used as published."
+ ],
+ "reproduce": "python experiments/phase_5/run_banc_reward_plasticity.py",
+ "wall_time_s": 31.403
+}

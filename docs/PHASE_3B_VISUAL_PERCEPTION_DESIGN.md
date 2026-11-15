@@ -1,8 +1,13 @@
 # Phase 3B — visual perception design
 
-Status: **proposed design. Not implemented.** No screenshots, perception code,
-computer-vision dependency or game integration exists in the repository. This
-document is an audit and experimental plan, not a claim that perception works.
+Status: **partially implemented; the design and acceptance gates below remain
+proposed.** The `perception/` package, curated dataset and split, evaluation
+harness, YOLO11n ONNX detector integration and a 100-frame real-frame replay
+exist. This does not mean the Phase 3B gates are met: no independent test
+split exists, no independent detection-accuracy metric is reported,
+`boots-powerup` and `jump-electric` are unevaluable, and player/coin states are
+unobserved schema defaults. This document is an audit and experimental plan,
+not a claim that general perception works.
 
 ## 1. Scope
 
@@ -55,6 +60,16 @@ simulator. All remain out of scope.
 The current schema is deliberately narrow. It can represent the MVPs of Phase
 3B, but it cannot represent two obstacles, two coins, or a power-up. That gap
 must be handled explicitly rather than hidden by silently discarding objects.
+
+**Later implementation (2026-11-06/07).** The rows above describe the
+repository before Phase 3B was implemented. Since then `perception/` (pipeline,
+detector backends, ONNX inference, tracking, temporal encoder, adapter,
+evaluation), a curated 2,316-image dataset with a grouped split, and a trained
+YOLO11n ONNX detector exist; `requirements.txt` gained the corresponding
+inference dependencies. The gate status is unchanged: no independent test
+split, no independent detection-accuracy metric, and player/coin fields remain
+unobserved defaults. See `reports/PHASE_3B2B3_YOLO11N_ONNX_INTEGRATION.md` and
+`reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md`.
 
 ## 3. Reference and technology audit
 
@@ -389,7 +404,9 @@ Phase 3B is accepted only when all of the following hold:
 
 ## 12. Claims this design does not make
 
-- It does not claim that any detector works on Subway Surfers yet.
+- It does not claim that detector accuracy has been independently established:
+  a trained YOLO11n ONNX detector has run on real Subway Surfers frames, but no
+  held-out test split exists and no independent accuracy metric is reported.
 - It does not claim that normalised distance is physical distance.
 - It does not claim that FlyVis can consume ordinary screenshots unchanged.
 - It does not claim that a perceived `GameState` reproduces the real game

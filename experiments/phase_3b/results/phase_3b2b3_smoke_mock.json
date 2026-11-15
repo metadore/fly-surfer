@@ -1,0 +1,427 @@
+{
+  "frame": {
+    "frame_id": "datasetfootage_mp4-0_jpg.rf.0097bea70e5bd8e7224782e5df9ff31e",
+    "source_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\train\\images\\datasetfootage_mp4-0_jpg.rf.0097bea70e5bd8e7224782e5df9ff31e.jpg",
+    "timestamp_ms": null,
+    "original_size": [
+      606,
+      1050
+    ],
+    "crop_box": [
+      0,
+      0,
+      606,
+      1050
+    ],
+    "viewport_size": [
+      606,
+      1050
+    ],
+    "processed_size": [
+      606,
+      1050
+    ],
+    "scale": [
+      1.0,
+      1.0
+    ]
+  },
+  "detector": {
+    "name": "mock-scripted",
+    "kind": "scripted_test_detector",
+    "test_only": true,
+    "produces": "untrusted RawDetection records in processed-image pixels",
+    "notes": [
+      "Does not inspect pixels and performs no visual recognition.",
+      "Used only to exercise validation, lane assignment and conversion.",
+      "Never report outputs from this detector as model accuracy."
+    ],
+    "n_default_detections": 0,
+    "frame_ids": []
+  },
+  "config": {
+    "source_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\configs\\perception_config.yaml",
+    "preprocess": {
+      "crop_left_fraction": 0.0,
+      "crop_right_fraction": 0.0,
+      "crop_top_fraction": 0.0,
+      "crop_bottom_fraction": 0.0,
+      "resize": null,
+      "mode": "RGB"
+    },
+    "validation": {
+      "confidence_threshold": 0.25,
+      "min_box_pixels": 2.0,
+      "min_area_fraction": 0.0,
+      "bounds_tolerance_pixels": 0.0
+    },
+    "lanes": {
+      "n_lanes": 3,
+      "boundaries": [
+        0.0,
+        0.3333333333333333,
+        0.6666666666666666,
+        1.0
+      ],
+      "min_overlap_fraction": 0.15,
+      "majority_fraction": 0.75
+    },
+    "distance": {
+      "mode": "bottom_edge_proxy",
+      "horizon_fraction": 0.15
+    },
+    "schema": {
+      "classes": [
+        {
+          "id": 0,
+          "name": "boots-powerup",
+          "role": "powerup",
+          "game_state_role": "unsupported"
+        },
+        {
+          "id": 1,
+          "name": "boxtrain",
+          "role": "train",
+          "game_state_role": "train"
+        },
+        {
+          "id": 2,
+          "name": "jump-barrier",
+          "role": "obstacle",
+          "game_state_role": "obstacle_low"
+        },
+        {
+          "id": 3,
+          "name": "jump-electric",
+          "role": "obstacle",
+          "game_state_role": "obstacle_low"
+        },
+        {
+          "id": 4,
+          "name": "jump-hedge",
+          "role": "obstacle",
+          "game_state_role": "obstacle_low"
+        },
+        {
+          "id": 5,
+          "name": "jump-roll-barrier",
+          "role": "obstacle",
+          "game_state_role": "obstacle_low"
+        },
+        {
+          "id": 6,
+          "name": "jump-trash",
+          "role": "obstacle",
+          "game_state_role": "obstacle_low"
+        },
+        {
+          "id": 7,
+          "name": "ledge",
+          "role": "terrain",
+          "game_state_role": "unsupported"
+        },
+        {
+          "id": 8,
+          "name": "pogstick-powerup",
+          "role": "powerup",
+          "game_state_role": "unsupported"
+        },
+        {
+          "id": 9,
+          "name": "ramp",
+          "role": "terrain",
+          "game_state_role": "unsupported"
+        },
+        {
+          "id": 10,
+          "name": "roll-barrier",
+          "role": "obstacle",
+          "game_state_role": "obstacle_high"
+        },
+        {
+          "id": 11,
+          "name": "train",
+          "role": "train",
+          "game_state_role": "train"
+        },
+        {
+          "id": 12,
+          "name": "undercover-barrier",
+          "role": "obstacle",
+          "game_state_role": "obstacle_high"
+        },
+        {
+          "id": 13,
+          "name": "wall",
+          "role": "boundary",
+          "game_state_role": "unsupported"
+        }
+      ],
+      "player_class_ids": [],
+      "coin_class_ids": []
+    }
+  },
+  "validation": {
+    "n_received": 0,
+    "n_accepted": 0,
+    "n_rejected": 0,
+    "accepted": [],
+    "rejected": []
+  },
+  "scene": {
+    "frame_id": "datasetfootage_mp4-0_jpg.rf.0097bea70e5bd8e7224782e5df9ff31e",
+    "timestamp_ms": null,
+    "source_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\train\\images\\datasetfootage_mp4-0_jpg.rf.0097bea70e5bd8e7224782e5df9ff31e.jpg",
+    "original_size": [
+      606,
+      1050
+    ],
+    "viewport_size": [
+      606,
+      1050
+    ],
+    "objects": [],
+    "lane_occupancy": [
+      {
+        "lane": 0,
+        "obstacle_count": 0,
+        "train_count": 0,
+        "coin_count": 0,
+        "other_count": 0,
+        "occupied": false
+      },
+      {
+        "lane": 1,
+        "obstacle_count": 0,
+        "train_count": 0,
+        "coin_count": 0,
+        "other_count": 0,
+        "occupied": false
+      },
+      {
+        "lane": 2,
+        "obstacle_count": 0,
+        "train_count": 0,
+        "coin_count": 0,
+        "other_count": 0,
+        "occupied": false
+      }
+    ],
+    "modality": {
+      "player_available": false,
+      "player_status": "unavailable_in_schema",
+      "coins_available": false,
+      "coin_status": "unavailable_in_schema",
+      "notes": [
+        "The configured detector schema declares no player class; player state is not observed.",
+        "The configured detector schema declares no coin class; coin presence is not observed."
+      ]
+    },
+    "uncertainty": {
+      "rejected_detections": 0,
+      "unassigned_objects": 0,
+      "ambiguous_objects": 0,
+      "notes": [
+        "Lane assignment uses horizontal overlap only; perspective, occlusion and 3D track geometry are not modelled."
+      ]
+    },
+    "rejected": []
+  },
+  "game_state": {
+    "state": {
+      "time_ms": 0.0,
+      "player": {
+        "lane": {
+          "value": 1,
+          "name": "center"
+        },
+        "speed": 0.5,
+        "jumping": false,
+        "rolling": false
+      },
+      "obstacle": null,
+      "train": null,
+      "coin": null
+    },
+    "player_known": false,
+    "player_lane_known": false,
+    "coins_available": false,
+    "estimated_fields": [
+      "player.lane",
+      "player.speed",
+      "player.jumping",
+      "player.rolling"
+    ],
+    "unrepresented": [],
+    "warnings": [
+      "No player detection is available; the schema defaults (centre lane, speed 0.5, not jumping, not rolling) were used.",
+      "Object distances use an uncalibrated bottom-edge image proxy with horizon fraction 0.1500; they are not metric or game distances.",
+      "The configured detector schema declares no player class; player state is not observed.",
+      "The configured detector schema declares no coin class; coin presence is not observed."
+    ]
+  },
+  "observations": {
+    "frame_id": "datasetfootage_mp4-0_jpg.rf.0097bea70e5bd8e7224782e5df9ff31e",
+    "timestamp_ms": null,
+    "source_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\train\\images\\datasetfootage_mp4-0_jpg.rf.0097bea70e5bd8e7224782e5df9ff31e.jpg",
+    "original_size": [
+      606,
+      1050
+    ],
+    "viewport_size": [
+      606,
+      1050
+    ],
+    "n_observations": 0,
+    "n_rejected": 0,
+    "observations": [],
+    "rejected": [],
+    "notes": [
+      "distance_proxy is an uncalibrated bottom-edge image proxy (horizon fraction 0.1500); it is not a metric distance.",
+      "Visibility is inferred from box geometry only; occlusion is not observable from a single frame."
+    ]
+  },
+  "features": {
+    "player_lane": 1,
+    "player_speed": 0.5,
+    "jumping": 0.0,
+    "rolling": 0.0,
+    "obstacle_present": 0.0,
+    "obstacle_lane": null,
+    "obstacle_distance": null,
+    "obstacle_type": null,
+    "train_present": 0.0,
+    "train_lane": null,
+    "train_distance": null,
+    "coin_present": 0.0,
+    "coin_lane": null,
+    "coin_distance": null
+  },
+  "feature_groups": [
+    {
+      "group": "player",
+      "feature_names": [
+        "player_lane",
+        "player_speed",
+        "jumping",
+        "rolling"
+      ],
+      "present": false,
+      "object_index": null,
+      "class_name": null,
+      "confidence": null,
+      "valid": null,
+      "visibility": null,
+      "lane": null,
+      "distance_proxy": null,
+      "n_candidates": 0,
+      "reason": "the configured detector schema declares no player class"
+    },
+    {
+      "group": "obstacle",
+      "feature_names": [
+        "obstacle_present",
+        "obstacle_lane",
+        "obstacle_distance",
+        "obstacle_type"
+      ],
+      "present": false,
+      "object_index": null,
+      "class_name": null,
+      "confidence": null,
+      "valid": null,
+      "visibility": null,
+      "lane": null,
+      "distance_proxy": null,
+      "n_candidates": 0,
+      "reason": "no obstacle detection in this frame"
+    },
+    {
+      "group": "train",
+      "feature_names": [
+        "train_present",
+        "train_lane",
+        "train_distance"
+      ],
+      "present": false,
+      "object_index": null,
+      "class_name": null,
+      "confidence": null,
+      "valid": null,
+      "visibility": null,
+      "lane": null,
+      "distance_proxy": null,
+      "n_candidates": 0,
+      "reason": "no train detection in this frame"
+    },
+    {
+      "group": "coin",
+      "feature_names": [
+        "coin_present",
+        "coin_lane",
+        "coin_distance"
+      ],
+      "present": false,
+      "object_index": null,
+      "class_name": null,
+      "confidence": null,
+      "valid": null,
+      "visibility": null,
+      "lane": null,
+      "distance_proxy": null,
+      "n_candidates": 0,
+      "reason": "coins are unavailable in the configured detector schema"
+    }
+  ],
+  "input": {
+    "image": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\external\\subway surfers\\roboflow_v15_yolov8\\subway surfers object dataset.v15-added.yolov8\\train\\images\\datasetfootage_mp4-0_jpg.rf.0097bea70e5bd8e7224782e5df9ff31e.jpg",
+    "mode": "empty_no_detector",
+    "predictions": null,
+    "detector_config": null
+  },
+  "visual_recognition_available": false,
+  "detector_test_only": true,
+  "curation": {
+    "status": "curated",
+    "assignment": {
+      "path": "train/images/datasetfootage_mp4-0_jpg.rf.0097bea70e5bd8e7224782e5df9ff31e.jpg",
+      "group": "datasetfootage",
+      "split": "valid",
+      "excluded": false,
+      "exclusion_reason": null,
+      "split_source": "curation_manifest_fixed_split"
+    },
+    "manifest": {
+      "source": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\reports\\PHASE_3B1_SPLIT_MANIFEST.json",
+      "dataset_root": "datasets/external/subway surfers/roboflow_v15_yolov8/subway surfers object dataset.v15-added.yolov8",
+      "class_names": [
+        "boots-powerup",
+        "boxtrain",
+        "jump-barrier",
+        "jump-electric",
+        "jump-hedge",
+        "jump-roll-barrier",
+        "jump-trash",
+        "ledge",
+        "pogstick-powerup",
+        "ramp",
+        "roll-barrier",
+        "train",
+        "undercover-barrier",
+        "wall"
+      ],
+      "train_groups": [
+        "subwayavitomp4",
+        "subwayedited2",
+        "subwayedtied"
+      ],
+      "valid_groups": [
+        "datasetfootage",
+        "subwayy1_1"
+      ],
+      "n_exclusions": 12,
+      "split_source": "curation_manifest_fixed_split"
+    }
+  },
+  "claim": "Scripted detections exercise the pipeline plumbing and are not model predictions, visual recognition or accuracy evidence."
+}

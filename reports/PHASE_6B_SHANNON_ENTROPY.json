@@ -1,0 +1,411 @@
+{
+  "phase": "6B",
+  "title": "Shannon entropy of archived FLY-SURFER variables",
+  "status": "COMPLETE - ARCHIVED-DATA ENTROPY ONLY, NO NEW RECORDING",
+  "generated_at_utc": "2026-11-10T08:57:50+00:00",
+  "project_root": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER",
+  "log_base": 2,
+  "seed": 20261110,
+  "config": {
+    "path": "configs\\information_theory.yaml",
+    "sha256": "6770f4274037f08b2a324ecbfbd1c419235b062d61536f97b7e7b26ef6d19726"
+  },
+  "data_sources": {
+    "replay_0101": "4a4d6ea656fe6f6af355b55e4a5a4104365681d11ef5e3d572f09cd511b43d0d",
+    "segment_0_99": "a0f7f4917b5588d6ffaeaa4b15a9768bd0677a2c287c237c74ca15504f22a8d3",
+    "segment_200_299": "c42b31464e655d5eab955404616966c9e41594f63c5751dd66b6400f37fd2fb7"
+  },
+  "marginal_entropy": [
+    {
+      "endpoint": "E01_event_class_marginal",
+      "label": "event_class_marginal",
+      "provenance": "measured",
+      "n": 515,
+      "k_observed": 6,
+      "k_declared": 6,
+      "H_plugin": 2.47659382,
+      "H_miller_madow": 2.4835972,
+      "H_max_declared": 2.5849625,
+      "excess_over_max_bits": 0.10836868,
+      "ci_low": 2.41460361,
+      "ci_high": 2.50998287,
+      "clusters": 231,
+      "warnings": []
+    },
+    {
+      "endpoint": "E02_frame_event_count",
+      "label": "frame_event_count",
+      "provenance": "derived",
+      "n": 300,
+      "k_observed": 4,
+      "k_declared": 4,
+      "H_plugin": 1.89604934,
+      "H_miller_madow": 1.90326282,
+      "H_max_declared": 2.0,
+      "excess_over_max_bits": 0.10395066,
+      "ci_low": 1.80797807,
+      "ci_high": 1.94825179,
+      "clusters": 30,
+      "warnings": []
+    },
+    {
+      "endpoint": "E03_decoder_state",
+      "label": "decoder_state",
+      "provenance": "simulated",
+      "n": 330,
+      "k_observed": 4,
+      "k_declared": 4,
+      "H_plugin": 1.45680178,
+      "H_miller_madow": 1.46335949,
+      "H_max_declared": 2.0,
+      "excess_over_max_bits": 0.54319822,
+      "ci_low": 1.19982418,
+      "ci_high": 1.63301739,
+      "clusters": 66,
+      "warnings": []
+    },
+    {
+      "endpoint": "E04_decoder_score_bin",
+      "label": "decoder_max_score_bin",
+      "provenance": "simulated",
+      "n": 330,
+      "k_observed": 3,
+      "k_declared": 3,
+      "H_plugin": 1.0906528,
+      "H_miller_madow": 1.09502461,
+      "H_max_declared": 1.5849625,
+      "excess_over_max_bits": 0.4943097,
+      "ci_low": 0.86593199,
+      "ci_high": 1.25154162,
+      "clusters": 66,
+      "warnings": []
+    }
+  ],
+  "reward_entropy": [
+    {
+      "condition": "A",
+      "label": "fixed_weights_outcome_reward",
+      "n": 480,
+      "k_observed": 2,
+      "H_plugin": 0.71774181,
+      "H_miller_madow": 0.71924462,
+      "ci_low": 0.6098403,
+      "ci_high": 0.81127812,
+      "clusters": 3,
+      "warnings": [
+        "1 declared level(s) never observed",
+        "only 3 clusters; cluster bootstrap is unstable"
+      ]
+    },
+    {
+      "condition": "B",
+      "label": "plastic_outcome_reward",
+      "n": 480,
+      "k_observed": 2,
+      "H_plugin": 0.48206615,
+      "H_miller_madow": 0.48356896,
+      "ci_low": 0.36124149,
+      "ci_high": 0.66901584,
+      "clusters": 3,
+      "warnings": [
+        "1 declared level(s) never observed",
+        "only 3 clusters; cluster bootstrap is unstable"
+      ]
+    },
+    {
+      "condition": "C",
+      "label": "plastic_zero_reward",
+      "n": 480,
+      "k_observed": 1,
+      "H_plugin": -0.0,
+      "H_miller_madow": 0.0,
+      "ci_low": -0.0,
+      "ci_high": 0.0,
+      "clusters": 3,
+      "warnings": [
+        "2 declared level(s) never observed",
+        "only 3 clusters; cluster bootstrap is unstable"
+      ]
+    },
+    {
+      "condition": "D",
+      "label": "plastic_shuffled_reward",
+      "n": 480,
+      "k_observed": 3,
+      "H_plugin": 1.50846563,
+      "H_miller_madow": 1.51147124,
+      "ci_low": 1.45019318,
+      "ci_high": 1.55887185,
+      "clusters": 3,
+      "warnings": [
+        "only 3 clusters; cluster bootstrap is unstable"
+      ]
+    },
+    {
+      "condition": "E",
+      "label": "plastic_random_connectivity",
+      "n": 480,
+      "k_observed": 2,
+      "H_plugin": 0.49486823,
+      "H_miller_madow": 0.49637104,
+      "ci_low": 0.44886449,
+      "ci_high": 0.54356444,
+      "clusters": 3,
+      "warnings": [
+        "1 declared level(s) never observed",
+        "only 3 clusters; cluster bootstrap is unstable"
+      ]
+    },
+    {
+      "condition": "F",
+      "label": "plastic_traces_disabled",
+      "n": 480,
+      "k_observed": 2,
+      "H_plugin": 0.71774181,
+      "H_miller_madow": 0.71924462,
+      "ci_low": 0.6098403,
+      "ci_high": 0.81127812,
+      "clusters": 3,
+      "warnings": [
+        "1 declared level(s) never observed",
+        "only 3 clusters; cluster bootstrap is unstable"
+      ]
+    },
+    {
+      "condition": "G",
+      "label": "conventional_perceptron",
+      "n": 480,
+      "k_observed": 2,
+      "H_plugin": 0.13436344,
+      "H_miller_madow": 0.13586625,
+      "ci_low": 0.13436344,
+      "ci_high": 0.13436344,
+      "clusters": 3,
+      "warnings": [
+        "1 declared level(s) never observed",
+        "only 3 clusters; cluster bootstrap is unstable"
+      ]
+    }
+  ],
+  "joint_conditional": {
+    "label": "event_class_by_segment",
+    "provenance": "measured",
+    "joint": {
+      "n": 515,
+      "k_declared_product": 18,
+      "k_observed": 18,
+      "H_joint_plugin": 4.03558922,
+      "H_joint_miller_madow": 4.05940069,
+      "estimator": "plug-in + Miller-Madow"
+    },
+    "conditional_H_event_given_segment": 2.4728801,
+    "H_event": 2.47659382,
+    "mutual_information_bits": 0.00371373,
+    "interpretation": "H(event) - H(event|segment) is the information the segment label carries about the event class; it is reported here as a descriptive quantity, not a hypothesis test.",
+    "segment_entropy": 1.56270912
+  },
+  "bias_comparison": [
+    {
+      "endpoint": "E01_event_class_marginal",
+      "label": "event_class_marginal",
+      "n": 515,
+      "k_observed": 6,
+      "H_plugin": 2.47659382,
+      "H_miller_madow": 2.4835972,
+      "delta_bits": 0.00700338,
+      "delta_fraction": 0.002828
+    },
+    {
+      "endpoint": "E02_frame_event_count",
+      "label": "frame_event_count",
+      "n": 300,
+      "k_observed": 4,
+      "H_plugin": 1.89604934,
+      "H_miller_madow": 1.90326282,
+      "delta_bits": 0.00721348,
+      "delta_fraction": 0.003804
+    },
+    {
+      "endpoint": "E03_decoder_state",
+      "label": "decoder_state",
+      "n": 330,
+      "k_observed": 4,
+      "H_plugin": 1.45680178,
+      "H_miller_madow": 1.46335949,
+      "delta_bits": 0.00655771,
+      "delta_fraction": 0.004501
+    },
+    {
+      "endpoint": "E04_decoder_score_bin",
+      "label": "decoder_max_score_bin",
+      "n": 330,
+      "k_observed": 3,
+      "H_plugin": 1.0906528,
+      "H_miller_madow": 1.09502461,
+      "delta_bits": 0.00437181,
+      "delta_fraction": 0.004008
+    }
+  ],
+  "sensitivity": {
+    "frame_event_count_cap": [
+      {
+        "cap": 1,
+        "k_declared": 2,
+        "H_plugin": 0.7780113
+      },
+      {
+        "cap": 2,
+        "k_declared": 3,
+        "H_plugin": 1.54424939
+      },
+      {
+        "cap": 3,
+        "k_declared": 4,
+        "H_plugin": 1.89604934
+      },
+      {
+        "cap": 5,
+        "k_declared": 6,
+        "H_plugin": 1.89604934
+      }
+    ],
+    "decoder_score_bins": [
+      {
+        "bins": 2,
+        "H_plugin": 0.90239328,
+        "counts": [
+          225,
+          105
+        ]
+      },
+      {
+        "bins": 3,
+        "H_plugin": 1.0906528,
+        "counts": [
+          225,
+          15,
+          90
+        ]
+      },
+      {
+        "bins": 4,
+        "H_plugin": 1.33157962,
+        "counts": [
+          210,
+          15,
+          15,
+          90
+        ]
+      },
+      {
+        "bins": 5,
+        "H_plugin": 1.33157962,
+        "counts": [
+          210,
+          15,
+          15,
+          0,
+          90
+        ]
+      }
+    ],
+    "event_class_per_segment": {
+      "replay_0101": {
+        "n": 215,
+        "k_observed": 6,
+        "H_plugin": 2.47861268,
+        "H_miller_madow": 2.49538821,
+        "n_frame_clusters": 83
+      },
+      "segment_0_99": {
+        "n": 148,
+        "k_observed": 6,
+        "H_plugin": 2.46277664,
+        "H_miller_madow": 2.48714649,
+        "n_frame_clusters": 71
+      },
+      "segment_200_299": {
+        "n": 152,
+        "k_observed": 6,
+        "H_plugin": 2.47460908,
+        "H_miller_madow": 2.49833762,
+        "n_frame_clusters": 77
+      }
+    }
+  },
+  "statistics": {
+    "method": "cluster percentile bootstrap",
+    "n_resamples": 2000,
+    "permutation": "Entropy has no exchangeability null, so no permutation test is performed in 6B. Uncertainty is reported with a cluster bootstrap."
+  },
+  "unavailable": [
+    {
+      "id": "U01",
+      "label": "spike_train_entropy",
+      "reason": "The only archived recording with individual spike times is a single replay run (74 spikes). Entropy of a spike train needs repeated trials or a declared time-discretisation with enough samples per bin; neither exists here."
+    },
+    {
+      "id": "U02",
+      "label": "population_response_entropy",
+      "reason": "The 138-neuron sensory population has a nominal support of 2^138 and no archived repeat structure. Plug-in entropy over that support is not estimable at any available sample size."
+    },
+    {
+      "id": "U03",
+      "label": "membrane_potential_entropy",
+      "reason": "Membrane potentials were never recorded; only spike counts and times."
+    },
+    {
+      "id": "U04",
+      "label": "cue_to_population_code_mi",
+      "reason": "Aggregate spike counts per episode are constant within conditions A-F, so no neural response variable exists to relate to the cue."
+    }
+  ],
+  "software": {
+    "python": "3.13.14",
+    "numpy": "2.3.4",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64"
+  },
+  "runtime_seconds": 3.653,
+  "files": {
+    "results": "experiments/results/phase_6b/entropy_results.json",
+    "figure": "experiments/results/phase_6b/figures/entropy_summary.png",
+    "config": "configs/information_theory.yaml",
+    "runner": "experiments/phase_6b/run_entropy_analysis.py",
+    "report_builder": "experiments/phase_6b/build_report.py",
+    "estimators": [
+      "information/entropy.py",
+      "information/mutual_information.py",
+      "information/bias_correction.py",
+      "information/discretization.py",
+      "information/permutation.py",
+      "information/diagnostics.py",
+      "information/artifact_readers.py"
+    ],
+    "tests": "tests/test_information.py"
+  },
+  "integrity": {
+    "baseline": {
+      "checked": 37,
+      "failures": [],
+      "pass": true
+    },
+    "protected_paths_dirty": [],
+    "staged_files": [],
+    "modified_tracked_files": [
+      "configs/detector_config.yaml",
+      "experiments/phase_3b/evaluate_detector.py",
+      "experiments/phase_3b/run_inference.py",
+      "experiments/phase_3c/integration_check.py",
+      "perception/detection.py",
+      "perception/detector_config.py",
+      "perception/inference.py",
+      "perception/pipeline.py",
+      "perception/temporal.py",
+      "requirements.txt",
+      "tests/test_detector_backend.py",
+      "tests/test_evaluation.py",
+      "tests/test_perception.py"
+    ]
+  }
+}

@@ -85,9 +85,12 @@ SENSITIVITY_DURATION_MS = 400.0
 STABLE_SPIKE_LIMIT = 10_000
 
 PROTECTED = {
+    # Baseline is the committed README. Commit 2745cf7 changed one section
+    # title after the previous value was recorded; update this only for
+    # intentional, committed README changes.
     "README.md": (
         PROJECT_ROOT / "README.md",
-        "6277ffbb3db8e0b1be9bb320d44ff0f894a07ff04d6ea698efd03fe5a9ef9b10",
+        "8ab6a8cc2d0316653e48c0fbb1c72b22b9d27b26799dde6bc71d38cd15590563",
     ),
     "split_manifest": (
         PROJECT_ROOT / "reports" / "PHASE_3B1_SPLIT_MANIFEST.json",

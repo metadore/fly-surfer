@@ -1,0 +1,91 @@
+# Phase 5 - reward-modulated synaptic plasticity on the real BANC graph.
+#
+# SCIENTIFIC STATUS
+#   reward events   declared experimental inputs, NOT gameplay outcomes
+#   modulation      a computational decaying scalar, not a dopamine measurement
+#   weights         transformed structural synapse counts (pA), not conductances
+#   learning rate   a declared mechanism-demonstration parameter, not fitted
+#
+# The reward events below exist only to exercise the mechanism. No game engine
+# was played, no outcome was observed, and the events must not be described as
+# rewards earned by the network. The `unavailable` event is an explicit
+# negative control for missing reward information: it produces no update.
+
+version: 1
+phase: 5
+classification: >-
+  computational reward-modulated plasticity experiment; findings are model
+  outputs, not measurements of biological learning
+
+graph:
+  artifact_dir: datasets/processed/banc_v888
+  node_table: datasets/processed/banc_v888/banc_nodes.csv.gz
+  threshold: 5
+
+simulation:
+  dt_ms: 0.5
+  duration_ms: 300.0
+  seed: 20261108
+  max_recorded_spikes: 5000000
+  tau_exc_ms: 5.0
+  tau_inh_ms: 8.0
+  delay_ms: 1.0
+  background_current_pa: 0.0
+  noise_std_pa: 0.0
+
+probe:
+  # Same declared structural probe as the Phase 4 motor-output demonstration:
+  # VNC intrinsic verified-excitatory non-motor neurons ranked by signed
+  # synapse count onto motor neurons. No motor neuron is stimulated.
+  selection: vnc_intrinsic_ranked
+  count: 64
+  current_pa: 300.0
+  start_ms: 50.0
+  end_ms: 250.0
+
+reward:
+  classification: >-
+    declared experimental reward; not a biological dopamine measurement and not
+    an observed gameplay outcome
+  provenance: >-
+    events declared by the experimenter for a mechanism test; no game was played
+  stream_name: experimental_mechanism_test
+  # [time_ms, magnitude, source, label, provenance]
+  events:
+    - [100.0, 1.0, experimental_input, declared_positive, declared before the run]
+    - [160.0, -1.0, experimental_input, declared_negative, declared before the run]
+    - [220.0, 1.0, experimental_input, declared_positive, declared before the run]
+    - [250.0, 0.0, experimental_input, declared_neutral, declared before the run]
+    - [280.0, null, unavailable, no_outcome_available, explicit missing-reward control]
+
+modulation:
+  # Phasic value = gain * reward, clipped; state = decaying envelope.
+  gain: 1.0
+  decay_tau_ms: 50.0
+  baseline: 0.0
+  clip_abs: 5.0
+
+plasticity:
+  # eta is the declared learning rate of the three-factor rule
+  # delta_w = eta * modulation * eligibility. 0.5 is a mechanism-demonstration
+  # magnitude chosen before the run, not tuned to produce an activity change.
+  eta: 0.5
+  control_eta: 0.0
+  bounds:
+    lower_factor: 0.5
+    upper_factor: 2.0
+    max_abs_update_pa: 5.0
+  traces:
+    tau_e_ms: 20.0
+    dt_ms: 0.5
+    prune_threshold: 1.0e-4
+    prune_interval_steps: 50
+    dtype: float32
+    coincidence: delay_matched
+
+decoder:
+  config: configs/motor_decoder.yaml
+
+output:
+  json: experiments/results/phase_5/banc_reward_plasticity.json
+  checkpoint: experiments/results/phase_5/checkpoints/banc_reward_plasticity.npz

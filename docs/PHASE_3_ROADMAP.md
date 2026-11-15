@@ -1,12 +1,14 @@
 # Phase 3 roadmap — sensory, perception and temporal processing
 
 Status: **living roadmap.** Phase 3A and Phase 3A.5 are implemented and
-validated. Phase 3B is implemented up to a scripted perception chain, but the
-trained detector remains blocked by approvals and resources. Phase 3C is
-implemented and calibrated on synthetic and scripted sequences; real-sequence
-replay is blocked on the Phase 3B detector. This roadmap does not modify the
-root README, the datasets, the validated connectome artifact or the external
-reference repositories.
+validated. Phase 3B is implemented through a scripted perception chain, an
+integrated YOLO11n ONNX detector and a 100-frame real-frame engineering replay;
+independent detector accuracy remains blocked. Phase 3C is implemented and
+calibrated on synthetic and scripted sequences and has been exercised through
+the 3B.2C real-frame replay; the Phase 3C acceptance experiments (3C.1–3C.9
+controls and real-sequence temporal evaluation) have not been executed. This
+roadmap does not modify the root README, the datasets, the validated connectome
+artifact or the external reference repositories.
 
 The milestone names 3A.5, 3B and 3C are a project planning convention. The
 repository already contains Phase 3A; the other three names are defined here
@@ -30,13 +32,18 @@ an external specification.
 | Phase 2.5 | Complete | 800 → 139,255 neurons, full-graph stability and memory reports |
 | 3A | Complete | 14 features, 138 mapped neurons, 23-condition run, 106 passing tests, subprocess reproducibility |
 | 3A.5 | Complete | 84-condition full-graph sweep, 114 passing tests, selected 200 pA / sigma 0.20 / 4 neurons, 3/3 ordered seeds, subprocess reproducibility |
-| 3B | Implemented, detector blocked | Perception package, curated split, evaluation harness, scripted end-to-end integration, 265 passing tests; no trained-detector result |
-| 3C | Implemented on synthetic/scripted data | Tracking, temporal features, lifecycle events, activation scheduler, 50-sequence calibration, scripted connectome run; real replay blocked |
+| 3B | Implemented; independent detector metrics blocked | Perception package, curated split, evaluation harness, scripted integration, YOLO11n ONNX integration (`e6ad18f9…b6aa77`), 100-frame real-frame replay; no independent detection-accuracy number |
+| 3C | Implemented on synthetic/scripted data; 3B.2C replay exercised; acceptance experiments not executed | Tracking, temporal features, lifecycle events, activation scheduler, 50-sequence calibration, scripted 300.5 ms connectome run, 3,300.5 ms real-frame replay; 3C.1–3C.9 controls unexecuted |
 
 The Phase 3B/3C code, configurations, tests and reports exist in the working
-tree. They have not been staged or committed. The trained detector has not
-been run: no weights were downloaded, no package was installed and no training
-was started. Evidence is in `reports/PHASE_3B_3C_FINAL_VERIFICATION.md`.
+tree. They have not been staged or committed. A trained YOLO11n ONNX detector
+was integrated on 2026-11-07 and replayed over 100 real frames; the numbers in
+`reports/PHASE_3B2B3_YOLO11N_ONNX_INTEGRATION.md` and
+`reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md` are training-run validation
+metrics and an engineering replay, not independent detection accuracy. The
+frozen evaluation in `reports/PHASE_3B_EVALUATION.md` remains `blocked` because
+no independent test split exists. Historical status is preserved in
+`reports/PHASE_3B_3C_FINAL_VERIFICATION.md` (2026-11-06).
 
 ## 3. Dependency graph
 
@@ -51,7 +58,9 @@ Phase 2 (simulator) ──> 3A (structured encoding, complete)
                                        |
                                        +──> 3B (perception validated)
                                                 |
-                                                +──> 3C (real-sequence replay)
+                                                +──> 3B.2B.3 ONNX + 3B.2C replay (engineering)
+                                                |
+                                                +──> 3C (real-sequence replay; acceptance pending)
 
 3C temporal encoder + synthetic-sequence harness
     may start after 3A.5, in parallel with 3B
@@ -204,9 +213,9 @@ Ultralytics YOLO; distance reported as metres without calibration;
 A learned detector needs one small training run and inference, GPU recommended
 but not assumed. FlyVis is excluded.
 
-**Deliverables (proposed).** `perception/` modules, dataset manifest and split,
-evaluation report, compatibility test with 3A, documented unrepresented objects
-and unmet gates.
+**Deliverables (implemented; gates unmet).** `perception/` modules, dataset
+manifest and split, evaluation report, compatibility test with 3A, documented
+unrepresented objects and unmet gates.
 
 **Measured outcome (2026-11-06).** Dataset validation passed: 2,316 curated
 images, 8,666 boxes, group-atomic split with 0 cross-split groups, 5 LOGO
@@ -219,6 +228,18 @@ with Python 3.13 / PyTorch 2.10. No detection metric is reported. A scripted
 10-frame chain through the real pipeline, tracker, scheduler and connectome
 passes 16/16 checks. Full detail is in
 `reports/PHASE_3B_3C_FINAL_VERIFICATION.md`.
+
+**Later outcome (2026-11-07).** A trained YOLO11n ONNX detector was integrated
+(`best.onnx`, SHA-256 `e6ad18f9…b6aa77`; input `[1,3,640,640]`, output
+`[1,18,8400]`, identity 14-class map, confidence 0.426, IoU 0.7, CPU).
+`reports/PHASE_3B2B3_YOLO11N_ONNX_INTEGRATION.md` records validation-split
+metrics taken from the training run — precision 0.937310, recall 0.810829,
+mAP@0.5 0.897776, mAP@0.5:0.95 0.687726 on 1,128 fixed-split images. A
+100-frame real-frame replay followed
+(`reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md`). These are held-out validation
+and engineering-replay numbers, not independent test accuracy:
+`detector_evaluation.json` remains `status: blocked`, `boots-powerup` and
+`jump-electric` remain unevaluable, and no independent test split exists.
 
 ### 4.4 Phase 3C — integrated temporal sensory processing
 
@@ -236,7 +257,12 @@ session replay. The encoder and synthetic-sequence harness can be developed in
 parallel with 3B after 3A.5.
 
 **Protocol.** 600 ms synthetic sequences with known ground truth, zero
-background and noise, calibrated operating point. Experiments 3C.1–3C.9 cover
+background and noise, and the Phase 3A.5 amplitude (200 pA) and tuning
+(`sigma_fraction` 0.20). The obstacle-distance population is the shipped **12**
+neurons, not the **four** calibrated in 3A.5, so this is not the complete
+calibrated operating point (see §4.2 and
+`docs/PHASE_3_SENSORY_ENCODING.md`, "Operating-point mismatch"). Experiments
+3C.1–3C.9 cover
 static equivalence, approach vs retreat, entry/exit timing, lane ordering,
 jump/roll intervals, frame-rate sensitivity at 200/100/50 ms, encoding
 ablations and controls (no input, reversed, shuffled, dropped frame). About
@@ -263,9 +289,12 @@ scope creep into a second simulator.
 per 600 ms condition, plus graph load and reporting. Memory close to the Phase
 3A footprint plus small activation buffers; to be measured.
 
-**Deliverables (proposed).** `sensory/temporal_encoder.py`, an activation
-scheduler if approved, `configs/temporal_sensory.yaml`, sequence schema,
-`experiments/phase_3c/`, report, decision on temporal separability.
+**Deliverables (partially implemented).** `perception/temporal.py` (the
+temporal encoder lives in the perception layer),
+`sensory/temporal_scheduler.py`, sequence schema, `experiments/phase_3c/`,
+calibration and integration reports. The full 3C.1–3C.9 suite, a
+`configs/temporal_sensory.yaml` experiment matrix and the final temporal
+separability decision are not delivered.
 
 **Measured outcome (2026-11-06).** Tracking, causal temporal features,
 lifecycle events and a versioned `TemporalActivationScheduler` are
@@ -278,9 +307,24 @@ switches, all 6 adversarial checks passing and identical repeated output.
 Scheduler `apply` p95 is 9.5 µs over 41,115 calls. A 10-frame scripted chain
 through the full connectome produces 560 spikes (444 stimulated) in 300.5 ms
 with deterministic signatures and matching protected hashes. Agreement is
-rule consistency, not independent recognition, and no trained-detector
-sequence has been replayed. Full detail is in
+rule consistency, not independent recognition. Full detail is in
 `reports/PHASE_3C_EVALUATION.md`.
+
+**Later replay (2026-11-07).** The 3B.2C runner exercised the same chain on
+100 real detector frames: 3,300.5 simulated ms, 6,601 steps, 15,654,631 spikes,
+3,710 stimulated, 15,650,921 non-stimulated (99.976%), with 72/138 stimulated
+neurons spiking. This is an engineering replay of a working deterministic
+pipeline, not a Phase 3C temporal-separability result and not independent
+perception accuracy. The 400 ms duration probe from the scripted run
+(233,203 spikes, 232,639 non-stimulated, stimulated 444 → 564) remains an
+observation, not an accepted operating regime.
+
+**Not executed.** The 3C.1–3C.9 experiments — static equivalence, approach vs
+retreat, entry/exit timing, lane ordering, jump/roll intervals, frame-rate
+aliasing at 200/100/50 ms, T1/T2/T3 encoding ablations and the no-input,
+reversed, shuffled and dropped-frame controls — have **not** been run. The
+50-sequence calibration and the two scripted/real-frame replays are the only
+3C measurements. No temporal-separability conclusion is claimed.
 
 ## 5. Independent and dependent work
 
@@ -293,7 +337,7 @@ sequence has been replayed. Full detail is in
 | 3B `PerceivedScene`/`GameState` adapter | 3A contract | 3A.5 | 3B.3 |
 | 3B end-to-end neural integration | 3A.5 operating point | — | 3B.4 |
 | 3C temporal encoder and synthetic harness | 3A, 3A.5 | 3B | 3C static equivalence |
-| 3C real-sequence replay | 3B | — | 3C.9 |
+| 3C real-sequence replay | 3B.2B.3 ONNX detector | — | 3C.9 (engineering replay done 2026-11-07; temporal acceptance not run) |
 | 3C final acceptance | 3B and calibrated point | — | 3C |
 
 Key points:
@@ -316,9 +360,13 @@ Key points:
    result). **Done 2026-11-04.**
 3. In parallel, freeze the 3B dataset schema and capture the pilot set.
 4. Build and evaluate the 3B classical baseline and adapter; integrate with 3A
-   using the calibrated point.
+   using the calibrated point. **Done 2026-11-06; a YOLO11n ONNX detector was
+   integrated and replayed on 2026-11-07, but independent accuracy remains
+   blocked.**
 5. Implement the 3C temporal encoder and synthetic harness; replay 3B sessions
-   and report temporal separability.
+   and report temporal separability. **Encoder, calibration and a 3B.2C replay
+   exist; the 3C.1–3C.9 acceptance experiments and the separability decision
+   remain open.**
 6. Revisit motor decoding and learning only after 3B and 3C are validated.
 
 Each step is gated by its own acceptance criteria. A failed gate stops the
@@ -378,11 +426,13 @@ Before any implementation begins, the project owner should confirm:
 |---|---|
 | `docs/PHASE_3_SENSORY_ENCODING.md` | Implemented Phase 3A design and results |
 | `docs/PHASE_3A5_SENSORY_CALIBRATION_DESIGN.md` | Implemented calibration design, selection rule and measured outcome |
-| `docs/PHASE_3B_VISUAL_PERCEPTION_DESIGN.md` | Proposed perception milestone |
-| `docs/PHASE_3C_TEMPORAL_SENSORY_DESIGN.md` | Proposed temporal milestone |
+| `docs/PHASE_3B_VISUAL_PERCEPTION_DESIGN.md` | Partially implemented perception milestone; design and acceptance gates still proposed and unmet |
+| `docs/PHASE_3C_TEMPORAL_SENSORY_DESIGN.md` | Partially implemented temporal milestone; definition and acceptance experiments still proposed |
 | `reports/PHASE_3B_DATASET_AND_DETECTOR.md` | Curated dataset and detector status |
 | `reports/PHASE_3B_EVALUATION.md` | Evaluation protocol, harness and blocked result |
 | `reports/PHASE_3B_INTEGRATION.md` | Perception-to-encoder integration |
+| `reports/PHASE_3B2B3_YOLO11N_ONNX_INTEGRATION.md` | Integrated ONNX detector, validation-run metrics and smoke evaluation |
+| `reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md` | 100-frame real-frame engineering replay |
 | `reports/PHASE_3C_TEMPORAL_ARCHITECTURE.md` | Implemented temporal architecture |
 | `reports/PHASE_3C_CALIBRATION.md` | Synthetic temporal calibration |
 | `reports/PHASE_3C_EVALUATION.md` | Temporal and end-to-end measurements |

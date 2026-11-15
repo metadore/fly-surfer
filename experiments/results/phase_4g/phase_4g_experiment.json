@@ -1,0 +1,6332 @@
+{
+  "phase": "4G.5",
+  "generated_at_utc": "2026-11-08T08:25:11+00:00",
+  "software": {
+    "python": "3.13.14",
+    "numpy": "2.3.4",
+    "pandas": "2.3.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "inputs": {
+    "graph_threshold_1_sha256": "fee8e5e7f7dbd9b6d43ef125695b1b11f6c9613088c8c04dd0d883ff12ecc01e",
+    "graph_threshold_5_sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192",
+    "graph_threshold_10_sha256": "00b3f447e2755660c273a63e11bc60a8afd8247906bbe0576f3a27a6ee1dc7a0",
+    "node_table_sha256": "144a2eb09aa1ed2be4f07eff589a6158e98cfe4f18b52db7feef4d2272953e5f",
+    "policy_config_sha256": "88f6449289492e79a919fafa56af93c5ac5e916cb50cc1658d7e14eed2dc399e",
+    "decoder_config_sha256": "525f25e9e0d334e58a38ce9d340fcd8fe3ebc148fe1bf9f08656eccc660d9fae",
+    "load_threshold_5_s": 2.578
+  },
+  "design": {
+    "purpose": "Couple BANC structural propagation to the unchanged Phase 4F decoder and compare connectivity-selected upstream stimulation against matched controls.",
+    "fixed_parameters": {
+      "threshold": 5,
+      "duration_ms": 300.0,
+      "dt_ms": 0.5,
+      "seed": 20261108,
+      "stimulus_current_pa": 300.0,
+      "stimulus_start_ms": 50.0,
+      "stimulus_end_ms": 250.0,
+      "decode_start_ms": 50.0,
+      "decode_end_ms": 300.0,
+      "candidate_size": 64,
+      "neuron_model": "unchanged Phase 2 LIFParameters defaults",
+      "synapse_model": "unchanged exponential currents, 5 ms / 8 ms",
+      "weight_policy": {
+        "transform": "power",
+        "exponent": 0.75,
+        "scale_pa": 5.0,
+        "cap_pa": 300.0
+      },
+      "decoder": {
+        "window_ms": 50.0,
+        "step_ms": 50.0,
+        "activation_threshold": 0.2,
+        "release_threshold": 0.1,
+        "min_active_neurons": 3,
+        "min_spikes": 5,
+        "tie_tolerance": 1e-09,
+        "priority": [
+          "LEFT",
+          "RIGHT",
+          "JUMP"
+        ],
+        "arbitration": "all_above_threshold",
+        "smoothing": "none",
+        "smoothing_windows": 3,
+        "hysteresis": false
+      }
+    },
+    "motor_populations": {
+      "n_neurons": 172433,
+      "graph_threshold": 5,
+      "sizes": {
+        "LEFT": 185,
+        "RIGHT": 186,
+        "JUMP": 20
+      },
+      "motor_neurons": 805,
+      "assigned_motor_neurons": 391,
+      "unassigned_motor_neurons": 414,
+      "composition": {
+        "motor": {
+          "size": 805,
+          "motor_neurons": 805,
+          "left": 392,
+          "right": 413,
+          "unknown_side": 0,
+          "effectors": {
+            "abdomen": 168,
+            "antenna": 2,
+            "antenna, scape": 8,
+            "crop": 7,
+            "eye": 4,
+            "front_leg": 139,
+            "haltere": 27,
+            "hind_leg": 126,
+            "middle_leg": 126,
+            "neck": 49,
+            "pharynx": 22,
+            "proboscis": 35,
+            "salivary_gland": 2,
+            "spiracle": 18,
+            "unknown": 2,
+            "uterus": 6,
+            "wing": 64
+          },
+          "proofread_true": 805
+        },
+        "LEFT": {
+          "size": 185,
+          "motor_neurons": 185,
+          "left": 185,
+          "right": 0,
+          "unknown_side": 0,
+          "effectors": {
+            "front_leg": 65,
+            "hind_leg": 60,
+            "middle_leg": 60
+          },
+          "proofread_true": 185
+        },
+        "RIGHT": {
+          "size": 186,
+          "motor_neurons": 186,
+          "left": 0,
+          "right": 186,
+          "unknown_side": 0,
+          "effectors": {
+            "front_leg": 66,
+            "hind_leg": 60,
+            "middle_leg": 60
+          },
+          "proofread_true": 186
+        },
+        "JUMP": {
+          "size": 20,
+          "motor_neurons": 20,
+          "left": 10,
+          "right": 10,
+          "unknown_side": 0,
+          "effectors": {
+            "front_leg": 8,
+            "hind_leg": 6,
+            "middle_leg": 6
+          },
+          "proofread_true": 20
+        },
+        "UNASSIGNED": {
+          "size": 414,
+          "motor_neurons": 414,
+          "left": 197,
+          "right": 217,
+          "unknown_side": 0,
+          "effectors": {
+            "abdomen": 168,
+            "antenna": 2,
+            "antenna, scape": 8,
+            "crop": 7,
+            "eye": 4,
+            "haltere": 27,
+            "neck": 49,
+            "pharynx": 22,
+            "proboscis": 35,
+            "salivary_gland": 2,
+            "spiracle": 18,
+            "unknown": 2,
+            "uterus": 6,
+            "wing": 64
+          },
+          "proofread_true": 414
+        },
+        "motor_missing_side": 0,
+        "motor_missing_effector": 0,
+        "jump_candidates_in_leg_pools": 20
+      },
+      "provenance": {
+        "source": "Phase 4D BANC v888 node table (annotations only)",
+        "graph_threshold": 5,
+        "definitions": {
+          "LEFT": "super_class == 'motor' and side == 'left' and body_part_effector in ['front_leg', 'middle_leg', 'hind_leg'] and not a tergotrochanter candidate",
+          "RIGHT": "super_class == 'motor' and side == 'right' and body_part_effector in ['front_leg', 'middle_leg', 'hind_leg'] and not a tergotrochanter candidate",
+          "JUMP": "super_class == 'motor' and peripheral_target_type == 'tergotrochanter_extensor_muscle'",
+          "UNASSIGNED": "motor neurons not covered by LEFT, RIGHT or JUMP",
+          "ROLL": "unsupported: No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+          "DUCK": "unsupported: No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+        },
+        "options": {
+          "leg_effectors": [
+            "front_leg",
+            "middle_leg",
+            "hind_leg"
+          ],
+          "jump_target": "tergotrochanter_extensor_muscle",
+          "jump_membership_in_leg_pools": false
+        },
+        "overlap_policy": "tergotrochanter candidates are also leg motor neurons; by default they are removed from LEFT/RIGHT so the action populations are disjoint and JUMP activity is not double-counted",
+        "unsupported_actions": {
+          "ROLL": "No published BANC annotation in this export defines a roll motor population; a roll signal would need evidence not present in the structural tables.",
+          "DUCK": "No published BANC annotation in this export defines a duck or crouch motor population; a duck signal would need evidence not present in the structural tables."
+        },
+        "scientific_status": "LEFT, RIGHT and JUMP are decoder labels derived from published effector annotations. They are not identified biological motor commands."
+      }
+    },
+    "decoder": {
+      "n_neurons": 172433,
+      "populations": {
+        "LEFT": 185,
+        "RIGHT": 186,
+        "JUMP": 20
+      },
+      "decision_signal": "active_fraction",
+      "window_semantics": "[start_ms, end_ms)",
+      "config": {
+        "window_ms": 50.0,
+        "step_ms": 50.0,
+        "activation_threshold": 0.2,
+        "release_threshold": 0.1,
+        "min_active_neurons": 3,
+        "min_spikes": 5,
+        "tie_tolerance": 1e-09,
+        "priority": [
+          "LEFT",
+          "RIGHT",
+          "JUMP"
+        ],
+        "arbitration": "all_above_threshold",
+        "smoothing": "none",
+        "smoothing_windows": 3,
+        "hysteresis": false
+      }
+    },
+    "candidate_rules": {
+      "B": "Top verified-excitatory descending neurons ranked by total synapses onto motor neurons at threshold 5 (Phase 4E direct descending pathway).",
+      "C": "Top verified-excitatory ventral-nerve-cord intrinsic neurons ranked by total direct synapses onto motor neurons at threshold 5 (Phase 4E two-hop intermediate population).",
+      "D": "Random verified-excitatory non-motor neurons, matched in size, excluding groups B and C.",
+      "E": "Shuffled assignment: random verified-excitatory descending neurons, matched in size, excluding the connectivity-ranked group B."
+    },
+    "non_claims": [
+      "LEFT, RIGHT and JUMP are decoder labels from published annotations, not identified motor commands.",
+      "Stimulated neurons are upstream candidates; motor pools are not stimulated.",
+      "A decoded action is not evidence of biological motor control.",
+      "Structural connectivity and synapse counts are not conductance or physiological connectivity."
+    ]
+  },
+  "candidates": {
+    "B_descending_candidate": {
+      "label": "B",
+      "rule": "Top verified-excitatory descending neurons ranked by total synapses onto motor neurons at threshold 5 (Phase 4E direct descending pathway).",
+      "seed": null,
+      "size": 64,
+      "banc_888_ids": [
+        720575941390623382,
+        720575941402821923,
+        720575941406194800,
+        720575941407841071,
+        720575941409519022,
+        720575941432123640,
+        720575941432405167,
+        720575941433155799,
+        720575941438465298,
+        720575941439029951,
+        720575941439437586,
+        720575941440683743,
+        720575941441643867,
+        720575941445707284,
+        720575941445859754,
+        720575941447863316,
+        720575941447973140,
+        720575941450506830,
+        720575941455714541,
+        720575941456897005,
+        720575941462512851,
+        720575941470254400,
+        720575941478215985,
+        720575941486574598,
+        720575941489083596,
+        720575941492697264,
+        720575941494986951,
+        720575941496426695,
+        720575941501552983,
+        720575941503528171,
+        720575941504703938,
+        720575941506196247,
+        720575941507073303,
+        720575941510475536,
+        720575941510642192,
+        720575941516764819,
+        720575941526772836,
+        720575941528667814,
+        720575941531514808,
+        720575941535086424,
+        720575941535862506,
+        720575941536301288,
+        720575941539809997,
+        720575941541750141,
+        720575941542664284,
+        720575941545991429,
+        720575941551589181,
+        720575941553985875,
+        720575941557316004,
+        720575941558607396,
+        720575941561224463,
+        720575941565255570,
+        720575941566493282,
+        720575941590381380,
+        720575941591448972,
+        720575941593683051,
+        720575941595189029,
+        720575941598950556,
+        720575941602323897,
+        720575941618895231,
+        720575941662506040,
+        720575941681032125,
+        720575941688189935,
+        720575941692162456
+      ],
+      "node_indices": [
+        801,
+        2608,
+        3448,
+        3844,
+        4488,
+        10884,
+        11230,
+        12047,
+        14932,
+        15351,
+        15691,
+        17320,
+        18148,
+        19719,
+        19744,
+        20365,
+        20418,
+        21844,
+        25147,
+        25658,
+        29362,
+        32842,
+        38941,
+        46526,
+        48282,
+        51138,
+        52377,
+        53118,
+        56800,
+        58060,
+        59150,
+        61057,
+        61900,
+        65116,
+        65153,
+        70117,
+        77652,
+        79780,
+        81442,
+        84404,
+        85202,
+        85833,
+        89793,
+        91463,
+        91980,
+        94033,
+        98772,
+        100823,
+        104015,
+        104997,
+        106964,
+        110645,
+        112139,
+        128333,
+        129137,
+        130785,
+        132122,
+        134989,
+        136488,
+        145177,
+        163583,
+        166793,
+        168014,
+        170076
+      ],
+      "verified_sign_classes": {
+        "verified_excitatory": 64
+      },
+      "motor_neurons_in_selection": 0,
+      "edges_to_motor": 645,
+      "synapses_to_motor": 9832,
+      "out_edges_total": 4976,
+      "motor_target_coverage": {
+        "LEFT": 133,
+        "RIGHT": 146,
+        "JUMP": 7
+      },
+      "super_class_composition": {
+        "descending": 64
+      },
+      "side_composition": {
+        "right": 32,
+        "left": 32
+      },
+      "body_part_effector_composition": {
+        "unknown": 64
+      }
+    },
+    "C_vnc_intrinsic_candidate": {
+      "label": "C",
+      "rule": "Top verified-excitatory ventral-nerve-cord intrinsic neurons ranked by total direct synapses onto motor neurons at threshold 5 (Phase 4E two-hop intermediate population).",
+      "seed": null,
+      "size": 64,
+      "banc_888_ids": [
+        720575941390358788,
+        720575941401753379,
+        720575941408320430,
+        720575941413917724,
+        720575941414508948,
+        720575941429488599,
+        720575941436862527,
+        720575941438373420,
+        720575941438389292,
+        720575941438574303,
+        720575941447809812,
+        720575941449454414,
+        720575941453079209,
+        720575941462497680,
+        720575941469724125,
+        720575941474467633,
+        720575941475399264,
+        720575941476218945,
+        720575941488553422,
+        720575941500785643,
+        720575941501346978,
+        720575941504444354,
+        720575941508299554,
+        720575941511275986,
+        720575941511836432,
+        720575941512896099,
+        720575941515624291,
+        720575941516099500,
+        720575941517357914,
+        720575941518434227,
+        720575941518807468,
+        720575941534150117,
+        720575941535971777,
+        720575941540185213,
+        720575941542442076,
+        720575941548936253,
+        720575941554049307,
+        720575941560221229,
+        720575941564147346,
+        720575941572444830,
+        720575941575681718,
+        720575941581673337,
+        720575941589972876,
+        720575941590291084,
+        720575941592931112,
+        720575941594160421,
+        720575941595919217,
+        720575941609673802,
+        720575941612203996,
+        720575941614257171,
+        720575941616503449,
+        720575941618500821,
+        720575941624450506,
+        720575941633087648,
+        720575941634248133,
+        720575941652545521,
+        720575941652626193,
+        720575941657730328,
+        720575941661300792,
+        720575941668287987,
+        720575941669049587,
+        720575941671280817,
+        720575941671443623,
+        720575941689865880
+      ],
+      "node_indices": [
+        784,
+        2368,
+        4001,
+        6494,
+        6792,
+        9156,
+        13874,
+        14849,
+        14864,
+        15006,
+        20330,
+        21272,
+        23835,
+        29347,
+        32587,
+        35652,
+        36353,
+        37188,
+        47959,
+        56392,
+        56713,
+        58840,
+        63351,
+        65395,
+        65657,
+        66352,
+        68870,
+        69347,
+        70914,
+        71887,
+        72123,
+        83391,
+        85318,
+        90106,
+        91891,
+        96719,
+        100883,
+        106245,
+        109429,
+        116615,
+        120082,
+        124420,
+        128045,
+        128277,
+        130286,
+        131180,
+        132749,
+        139295,
+        141019,
+        143196,
+        144384,
+        144989,
+        146610,
+        152400,
+        153198,
+        159272,
+        159312,
+        162045,
+        163268,
+        164895,
+        165155,
+        166057,
+        166118,
+        169154
+      ],
+      "verified_sign_classes": {
+        "verified_excitatory": 64
+      },
+      "motor_neurons_in_selection": 0,
+      "edges_to_motor": 1767,
+      "synapses_to_motor": 64986,
+      "out_edges_total": 5028,
+      "motor_target_coverage": {
+        "LEFT": 640,
+        "RIGHT": 719,
+        "JUMP": 167
+      },
+      "super_class_composition": {
+        "ventral_nerve_cord_intrinsic": 64
+      },
+      "side_composition": {
+        "left": 32,
+        "right": 31,
+        "unknown": 1
+      },
+      "body_part_effector_composition": {
+        "unknown": 64
+      }
+    },
+    "D_random_matched": {
+      "label": "D",
+      "rule": "Random verified-excitatory non-motor neurons, matched in size, excluding groups B and C.",
+      "seed": 20261108,
+      "size": 64,
+      "banc_888_ids": [
+        720575941394040836,
+        720575941409746479,
+        720575941410016942,
+        720575941411673967,
+        720575941437883103,
+        720575941439452690,
+        720575941440517695,
+        720575941451021237,
+        720575941451379015,
+        720575941452604467,
+        720575941454737133,
+        720575941469194871,
+        720575941473252363,
+        720575941475034976,
+        720575941478281834,
+        720575941479263618,
+        720575941479528322,
+        720575941483488710,
+        720575941484881594,
+        720575941485269645,
+        720575941487707533,
+        720575941492552396,
+        720575941493115879,
+        720575941496125566,
+        720575941496399742,
+        720575941503488491,
+        720575941515381507,
+        720575941515860803,
+        720575941516865795,
+        720575941518602156,
+        720575941522728371,
+        720575941523776843,
+        720575941524657995,
+        720575941527668482,
+        720575941527966052,
+        720575941542455388,
+        720575941543364697,
+        720575941546199176,
+        720575941546544985,
+        720575941558010639,
+        720575941559475245,
+        720575941562630546,
+        720575941562690962,
+        720575941569951476,
+        720575941571506164,
+        720575941574924904,
+        720575941584523518,
+        720575941590419524,
+        720575941590862955,
+        720575941590936204,
+        720575941592453995,
+        720575941595131175,
+        720575941596668608,
+        720575941598977577,
+        720575941603523574,
+        720575941605118966,
+        720575941609803594,
+        720575941611607260,
+        720575941624049098,
+        720575941639167861,
+        720575941642730578,
+        720575941643511672,
+        720575941653136401,
+        720575941659562008
+      ],
+      "node_indices": [
+        1667,
+        4642,
+        4860,
+        5399,
+        14575,
+        15709,
+        17139,
+        22317,
+        22675,
+        23559,
+        24819,
+        32278,
+        35067,
+        36045,
+        39039,
+        40361,
+        40624,
+        44365,
+        45551,
+        45879,
+        47281,
+        50992,
+        51470,
+        52840,
+        53097,
+        58014,
+        68602,
+        69086,
+        70265,
+        72034,
+        75044,
+        75512,
+        76064,
+        78449,
+        78860,
+        91898,
+        92290,
+        94211,
+        94526,
+        104565,
+        105741,
+        108195,
+        108235,
+        114990,
+        116090,
+        119113,
+        125416,
+        128361,
+        128700,
+        128771,
+        129886,
+        132061,
+        133562,
+        135005,
+        136842,
+        137693,
+        139341,
+        140439,
+        146334,
+        154136,
+        155503,
+        155909,
+        159644,
+        162547
+      ],
+      "verified_sign_classes": {
+        "verified_excitatory": 64
+      },
+      "motor_neurons_in_selection": 0,
+      "edges_to_motor": 38,
+      "synapses_to_motor": 1075,
+      "out_edges_total": 677,
+      "motor_target_coverage": {
+        "LEFT": 15,
+        "RIGHT": 6,
+        "JUMP": 1
+      },
+      "super_class_composition": {
+        "optic_lobe_intrinsic": 47,
+        "ventral_nerve_cord_intrinsic": 6,
+        "central_brain_intrinsic": 4,
+        "sensory": 4,
+        "visual_projection": 2,
+        "ascending": 1
+      },
+      "side_composition": {
+        "right": 37,
+        "left": 18,
+        "unknown": 9
+      },
+      "body_part_effector_composition": {
+        "unknown": 64
+      }
+    },
+    "E_shuffled_assignment": {
+      "label": "E",
+      "rule": "Shuffled assignment: random verified-excitatory descending neurons, matched in size, excluding the connectivity-ranked group B.",
+      "seed": 20261108,
+      "size": 64,
+      "banc_888_ids": [
+        720575941354281776,
+        720575941398969123,
+        720575941411472555,
+        720575941426612564,
+        720575941431211951,
+        720575941431577007,
+        720575941432295639,
+        720575941433116046,
+        720575941441452373,
+        720575941447935764,
+        720575941460006128,
+        720575941471537629,
+        720575941491012809,
+        720575941491065653,
+        720575941491649255,
+        720575941492591024,
+        720575941492968423,
+        720575941498998395,
+        720575941499708745,
+        720575941501635927,
+        720575941502273419,
+        720575941505929506,
+        720575941521454003,
+        720575941540466381,
+        720575941549156980,
+        720575941549490209,
+        720575941552163583,
+        720575941559104813,
+        720575941559176942,
+        720575941561430829,
+        720575941568894202,
+        720575941574744329,
+        720575941575652105,
+        720575941583264121,
+        720575941586006111,
+        720575941586653062,
+        720575941591151500,
+        720575941591761704,
+        720575941592811404,
+        720575941596218225,
+        720575941598158469,
+        720575941607634285,
+        720575941614906387,
+        720575941619021269,
+        720575941620273535,
+        720575941623407050,
+        720575941623634122,
+        720575941625621500,
+        720575941628167225,
+        720575941632002720,
+        720575941632978629,
+        720575941633206944,
+        720575941644587109,
+        720575941647038664,
+        720575941657879576,
+        720575941660948348,
+        720575941661415224,
+        720575941662395704,
+        720575941662407992,
+        720575941663102520,
+        720575941687421302,
+        720575941691308952,
+        720575941721638714,
+        720575941730332715
+      ],
+      "node_indices": [
+        638,
+        2069,
+        5341,
+        8295,
+        10139,
+        10434,
+        11111,
+        12008,
+        18015,
+        20407,
+        27442,
+        33686,
+        49532,
+        49567,
+        50098,
+        51032,
+        51392,
+        55014,
+        55489,
+        56844,
+        57202,
+        60746,
+        74251,
+        90411,
+        96908,
+        97134,
+        99197,
+        105452,
+        105523,
+        107251,
+        114194,
+        118897,
+        120038,
+        124922,
+        126088,
+        126370,
+        128950,
+        129361,
+        130198,
+        133070,
+        134692,
+        138609,
+        143542,
+        145226,
+        145467,
+        146150,
+        146224,
+        147408,
+        149566,
+        151577,
+        152322,
+        152473,
+        156630,
+        158380,
+        162071,
+        163214,
+        163292,
+        163551,
+        163555,
+        163736,
+        167680,
+        169780,
+        171171,
+        171734
+      ],
+      "verified_sign_classes": {
+        "verified_excitatory": 64
+      },
+      "motor_neurons_in_selection": 0,
+      "edges_to_motor": 47,
+      "synapses_to_motor": 393,
+      "out_edges_total": 3282,
+      "motor_target_coverage": {
+        "LEFT": 0,
+        "RIGHT": 0,
+        "JUMP": 1
+      },
+      "super_class_composition": {
+        "descending": 64
+      },
+      "side_composition": {
+        "right": 34,
+        "left": 28,
+        "unknown": 2
+      },
+      "body_part_effector_composition": {
+        "unknown": 64
+      }
+    }
+  },
+  "conditions": {
+    "A_no_stimulation": {
+      "description": "No stimulation, no background, no noise.",
+      "stimulated_neurons": 0,
+      "current_pa": null,
+      "background_pa": 0.0,
+      "noise_pa": 0.0,
+      "spike_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decision_hash": "65cbcc1a884c2bc0831d30976f68ed8895db5f334fb78da3d8c2fe8795d09a22",
+      "window_records": [
+        {
+          "window_start_ms": 50.0,
+          "window_end_ms": 100.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "A_no_stimulation",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 100.0,
+          "window_end_ms": 150.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "A_no_stimulation",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 150.0,
+          "window_end_ms": 200.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "A_no_stimulation",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 200.0,
+          "window_end_ms": 250.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "A_no_stimulation",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 250.0,
+          "window_end_ms": 300.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "A_no_stimulation",
+          "threshold": 5,
+          "seed": 20261108
+        }
+      ],
+      "decoder_state_counts": {
+        "NEUTRAL": 5
+      },
+      "neutral_windows": 5,
+      "max_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "max_raw_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "population_activity": {
+        "window_start_ms": 50.0,
+        "window_end_ms": 300.0,
+        "n_spikes": 0,
+        "populations": {
+          "LEFT": {
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "RIGHT": {
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "JUMP": {
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          }
+        },
+        "motor": {
+          "size": 805,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "unassigned_motor": {
+          "size": 414,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "network": {
+          "size": 172433,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        }
+      },
+      "activity": {
+        "n_spikes": 0,
+        "active_neurons": 0,
+        "stimulated_spikes": 0,
+        "non_stimulated_spikes": 0,
+        "non_stimulated_active_neurons": 0,
+        "motor_spikes": 0,
+        "motor_active_neurons": 0
+      },
+      "summary": {
+        "generated_at_utc": "2026-11-08T06:48:42+00:00",
+        "simulation": {
+          "duration_ms": 300.0,
+          "dt_ms": 0.5,
+          "n_steps": 600,
+          "seed": 20261108,
+          "runtime_s": 2.4119,
+          "steps_per_second": 248.8
+        },
+        "graph": {
+          "source": "BANC v888",
+          "graph_threshold": 5,
+          "n_nodes": 172433,
+          "n_edges": 1535710,
+          "n_synapses": 18552546,
+          "n_isolated": 24320
+        },
+        "model": {
+          "neuron": {
+            "capacitance_pf": 200.0,
+            "leak_conductance_ns": 10.0,
+            "resting_potential_mv": -65.0,
+            "threshold_mv": -50.0,
+            "reset_potential_mv": -68.0,
+            "refractory_ms": 2.0,
+            "initial_potential_mv": -65.0,
+            "minimum_potential_mv": -90.0
+          },
+          "synapse": {
+            "tau_exc_ms": 5.0,
+            "tau_inh_ms": 8.0,
+            "effective_delay_ms": 1.0,
+            "delay_steps": 2,
+            "weight_source": "structural synapse count (count), not norm"
+          }
+        },
+        "synaptic_policy": {
+          "sign_policy": {
+            "verified_excitatory": [
+              "acetylcholine",
+              "glutamate"
+            ],
+            "verified_inhibitory": [
+              "gaba",
+              "glycine"
+            ],
+            "modulators_without_fixed_sign": [
+              "dopamine",
+              "serotonin",
+              "octopamine",
+              "tyramine",
+              "histamine",
+              "nitric_oxide"
+            ],
+            "conflict_policy": "unknown",
+            "modulator_only_policy": "unknown",
+            "predicted_fallback": false,
+            "unknown_edge_policy": "exclude",
+            "interpretation": "excitatory and inhibitory are modelling priors applied to the presynaptic neuron; they are not established postsynaptic effects at every target"
+          },
+          "weight_policy": {
+            "transform": "power",
+            "exponent": 0.75,
+            "scale_pa": 5.0,
+            "cap_pa": 300.0,
+            "weight_source": "integer synapse count (`count`); `norm` is never used",
+            "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+          },
+          "signed_edges": 683100,
+          "excluded_edges": 852610,
+          "excitatory_edges": 502727,
+          "inhibitory_edges": 180373
+        },
+        "stimulation": null,
+        "input_schedule": null,
+        "activity": {
+          "duration_ms": 300.0,
+          "n_neurons": 172433,
+          "n_spikes": 0,
+          "active_neurons": 0,
+          "silent_neurons": 172433,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "rate_percentiles_hz": {
+            "50": 0.0,
+            "90": 0.0,
+            "95": 0.0,
+            "99": 0.0,
+            "100": 0.0
+          },
+          "population_rate_hz": 0.0,
+          "population_rate_peak_hz": 0.0,
+          "spike_capacity": 2000000
+        },
+        "activity_by_stimulation": {
+          "stimulated_neurons": 0,
+          "stimulated_active_neurons": 0,
+          "stimulated_spikes": 0,
+          "non_stimulated_active_neurons": 0,
+          "non_stimulated_spikes": 0,
+          "non_stimulated_spike_fraction": 0.0
+        },
+        "synaptic_transmission": {
+          "spike_transmissions": 0,
+          "transmissions_per_spike": 0.0
+        },
+        "diagnostics": {
+          "finite_state": true,
+          "min_membrane_mv": -65.0,
+          "max_membrane_mv": -65.0,
+          "max_abs_membrane_mv": 65.0,
+          "max_abs_total_current_pa": 0.0,
+          "max_excitatory_synaptic_current_pa": 0.0,
+          "max_inhibitory_synaptic_current_pa": 0.0
+        },
+        "memory": {
+          "graph_arrays_bytes": 43366573,
+          "policy_arrays_bytes": 12630546,
+          "neuron_state_bytes": 2069196,
+          "synapse_state_bytes": 16424072,
+          "synapse_arrays_bytes": 13665144,
+          "delay_buffer_bytes": 2758928,
+          "spike_recorder_bytes": 16000000,
+          "retained_arrays_bytes": 90490387,
+          "recorder_capacity": 2000000,
+          "recorder_capacity_bytes": 16000000,
+          "components_mb": {
+            "graph_arrays": 41.3576,
+            "policy_arrays": 12.0454,
+            "neuron_state": 1.9733,
+            "synapse_state": 15.6632,
+            "delay_buffers": 2.6311,
+            "spike_recorder": 15.2588
+          },
+          "retained_arrays_mb": 86.2984
+        }
+      }
+    },
+    "B_descending_candidate": {
+      "description": "64 connectivity-ranked verified-excitatory descending neurons.",
+      "stimulated_neurons": 64,
+      "current_pa": 300.0,
+      "background_pa": 0.0,
+      "noise_pa": 0.0,
+      "spike_hash": "408dcc5589ea0bb41c7acf026c155356025f7a17623ce58fee1544de13ec3693",
+      "decision_hash": "6d22ef073eb2de892bbf50b70265001a1dbd1eb5f9533ff7f259a64c3d119cf3",
+      "window_records": [
+        {
+          "window_start_ms": 50.0,
+          "window_end_ms": 100.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "B_descending_candidate",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 100.0,
+          "window_end_ms": 150.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "B_descending_candidate",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 150.0,
+          "window_end_ms": 200.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "B_descending_candidate",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 200.0,
+          "window_end_ms": 250.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "B_descending_candidate",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 250.0,
+          "window_end_ms": 300.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "B_descending_candidate",
+          "threshold": 5,
+          "seed": 20261108
+        }
+      ],
+      "decoder_state_counts": {
+        "NEUTRAL": 5
+      },
+      "neutral_windows": 5,
+      "max_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "max_raw_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "population_activity": {
+        "window_start_ms": 50.0,
+        "window_end_ms": 300.0,
+        "n_spikes": 781,
+        "populations": {
+          "LEFT": {
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "RIGHT": {
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "JUMP": {
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          }
+        },
+        "motor": {
+          "size": 805,
+          "spikes": 18,
+          "active_neurons": 3,
+          "active_fraction": 0.003727,
+          "mean_rate_hz": 0.0894,
+          "spike_share": 0.023047
+        },
+        "unassigned_motor": {
+          "size": 414,
+          "spikes": 18,
+          "active_neurons": 3,
+          "active_fraction": 0.007246,
+          "mean_rate_hz": 0.1739,
+          "spike_share": 0.023047
+        },
+        "network": {
+          "size": 172433,
+          "spikes": 781,
+          "active_neurons": 77,
+          "active_fraction": 0.000447,
+          "mean_rate_hz": 0.0181,
+          "spike_share": 1.0
+        }
+      },
+      "activity": {
+        "n_spikes": 781,
+        "active_neurons": 77,
+        "stimulated_spikes": 720,
+        "non_stimulated_spikes": 61,
+        "non_stimulated_active_neurons": 13,
+        "motor_spikes": 18,
+        "motor_active_neurons": 3
+      },
+      "summary": {
+        "generated_at_utc": "2026-11-08T06:48:47+00:00",
+        "simulation": {
+          "duration_ms": 300.0,
+          "dt_ms": 0.5,
+          "n_steps": 600,
+          "seed": 20261108,
+          "runtime_s": 2.7616,
+          "steps_per_second": 217.3
+        },
+        "graph": {
+          "source": "BANC v888",
+          "graph_threshold": 5,
+          "n_nodes": 172433,
+          "n_edges": 1535710,
+          "n_synapses": 18552546,
+          "n_isolated": 24320
+        },
+        "model": {
+          "neuron": {
+            "capacitance_pf": 200.0,
+            "leak_conductance_ns": 10.0,
+            "resting_potential_mv": -65.0,
+            "threshold_mv": -50.0,
+            "reset_potential_mv": -68.0,
+            "refractory_ms": 2.0,
+            "initial_potential_mv": -65.0,
+            "minimum_potential_mv": -90.0
+          },
+          "synapse": {
+            "tau_exc_ms": 5.0,
+            "tau_inh_ms": 8.0,
+            "effective_delay_ms": 1.0,
+            "delay_steps": 2,
+            "weight_source": "structural synapse count (count), not norm"
+          }
+        },
+        "synaptic_policy": {
+          "sign_policy": {
+            "verified_excitatory": [
+              "acetylcholine",
+              "glutamate"
+            ],
+            "verified_inhibitory": [
+              "gaba",
+              "glycine"
+            ],
+            "modulators_without_fixed_sign": [
+              "dopamine",
+              "serotonin",
+              "octopamine",
+              "tyramine",
+              "histamine",
+              "nitric_oxide"
+            ],
+            "conflict_policy": "unknown",
+            "modulator_only_policy": "unknown",
+            "predicted_fallback": false,
+            "unknown_edge_policy": "exclude",
+            "interpretation": "excitatory and inhibitory are modelling priors applied to the presynaptic neuron; they are not established postsynaptic effects at every target"
+          },
+          "weight_policy": {
+            "transform": "power",
+            "exponent": 0.75,
+            "scale_pa": 5.0,
+            "cap_pa": 300.0,
+            "weight_source": "integer synapse count (`count`); `norm` is never used",
+            "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+          },
+          "signed_edges": 683100,
+          "excluded_edges": 852610,
+          "excitatory_edges": 502727,
+          "inhibitory_edges": 180373
+        },
+        "stimulation": {
+          "label": "phase4g5:B",
+          "n_neurons": 64,
+          "root_ids": [
+            720575941390623382,
+            720575941402821923,
+            720575941406194800,
+            720575941407841071,
+            720575941409519022,
+            720575941432123640,
+            720575941432405167,
+            720575941433155799,
+            720575941438465298,
+            720575941439029951,
+            720575941439437586,
+            720575941440683743,
+            720575941441643867,
+            720575941445707284,
+            720575941445859754,
+            720575941447863316,
+            720575941447973140,
+            720575941450506830,
+            720575941455714541,
+            720575941456897005,
+            720575941462512851,
+            720575941470254400,
+            720575941478215985,
+            720575941486574598,
+            720575941489083596,
+            720575941492697264,
+            720575941494986951,
+            720575941496426695,
+            720575941501552983,
+            720575941503528171,
+            720575941504703938,
+            720575941506196247,
+            720575941507073303,
+            720575941510475536,
+            720575941510642192,
+            720575941516764819,
+            720575941526772836,
+            720575941528667814,
+            720575941531514808,
+            720575941535086424,
+            720575941535862506,
+            720575941536301288,
+            720575941539809997,
+            720575941541750141,
+            720575941542664284,
+            720575941545991429,
+            720575941551589181,
+            720575941553985875,
+            720575941557316004,
+            720575941558607396,
+            720575941561224463,
+            720575941565255570,
+            720575941566493282,
+            720575941590381380,
+            720575941591448972,
+            720575941593683051,
+            720575941595189029,
+            720575941598950556,
+            720575941602323897,
+            720575941618895231,
+            720575941662506040,
+            720575941681032125,
+            720575941688189935,
+            720575941692162456
+          ],
+          "current_pa": 300.0,
+          "start_ms": 50.0,
+          "end_ms": 250.0
+        },
+        "input_schedule": null,
+        "activity": {
+          "duration_ms": 300.0,
+          "n_neurons": 172433,
+          "n_spikes": 781,
+          "active_neurons": 77,
+          "silent_neurons": 172356,
+          "active_fraction": 0.000447,
+          "mean_rate_hz": 0.0151,
+          "rate_percentiles_hz": {
+            "50": 0.0,
+            "90": 0.0,
+            "95": 0.0,
+            "99": 0.0,
+            "100": 43.3333
+          },
+          "population_rate_hz": 0.0151,
+          "population_rate_peak_hz": 0.04,
+          "spike_capacity": 2000000
+        },
+        "activity_by_stimulation": {
+          "stimulated_neurons": 64,
+          "stimulated_active_neurons": 64,
+          "stimulated_spikes": 720,
+          "non_stimulated_active_neurons": 13,
+          "non_stimulated_spikes": 61,
+          "non_stimulated_spike_fraction": 0.078105
+        },
+        "synaptic_transmission": {
+          "spike_transmissions": 60950,
+          "transmissions_per_spike": 78.041
+        },
+        "diagnostics": {
+          "finite_state": true,
+          "min_membrane_mv": -72.3222,
+          "max_membrane_mv": -50.3143,
+          "max_abs_membrane_mv": 72.3222,
+          "max_abs_total_current_pa": 851.7744,
+          "max_excitatory_synaptic_current_pa": 851.7744,
+          "max_inhibitory_synaptic_current_pa": 262.8774
+        },
+        "memory": {
+          "graph_arrays_bytes": 43366573,
+          "policy_arrays_bytes": 12630546,
+          "neuron_state_bytes": 2069196,
+          "synapse_state_bytes": 16424072,
+          "synapse_arrays_bytes": 13665144,
+          "delay_buffer_bytes": 2758928,
+          "spike_recorder_bytes": 16000000,
+          "retained_arrays_bytes": 90490387,
+          "recorder_capacity": 2000000,
+          "recorder_capacity_bytes": 16000000,
+          "components_mb": {
+            "graph_arrays": 41.3576,
+            "policy_arrays": 12.0454,
+            "neuron_state": 1.9733,
+            "synapse_state": 15.6632,
+            "delay_buffers": 2.6311,
+            "spike_recorder": 15.2588
+          },
+          "retained_arrays_mb": 86.2984
+        }
+      }
+    },
+    "C_vnc_intrinsic_candidate": {
+      "description": "64 connectivity-ranked verified-excitatory VNC intrinsic neurons.",
+      "stimulated_neurons": 64,
+      "current_pa": 300.0,
+      "background_pa": 0.0,
+      "noise_pa": 0.0,
+      "spike_hash": "397e888ffb7f001e0509bdcfbc9121c09bafb1e2d355b555b298b5c2fed10a95",
+      "decision_hash": "4380fc38bda54359effdd93f9f4f89aee91640857f459b711dcca9b35a865799",
+      "window_records": [
+        {
+          "window_start_ms": 50.0,
+          "window_end_ms": 100.0,
+          "decoded_state": "JUMP",
+          "primary_action": "JUMP",
+          "active_actions": [
+            "JUMP"
+          ],
+          "neutral": false,
+          "reason": "single_action",
+          "raw_scores": {
+            "LEFT": 0.12973,
+            "RIGHT": 0.11828,
+            "JUMP": 0.55
+          },
+          "scores": {
+            "LEFT": 0.12973,
+            "RIGHT": 0.11828,
+            "JUMP": 0.55
+          },
+          "lateralization": 0.046168,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 33,
+              "active_neurons": 24,
+              "active_fraction": 0.12973,
+              "mean_rate_hz": 3.5676,
+              "sufficient": true,
+              "reason": "ok"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 26,
+              "active_neurons": 22,
+              "active_fraction": 0.11828,
+              "mean_rate_hz": 2.7957,
+              "sufficient": true,
+              "reason": "ok"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 13,
+              "active_neurons": 11,
+              "active_fraction": 0.55,
+              "mean_rate_hz": 13.0,
+              "sufficient": true,
+              "reason": "ok"
+            }
+          },
+          "condition": "C_vnc_intrinsic_candidate",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 100.0,
+          "window_end_ms": 150.0,
+          "decoded_state": "JUMP",
+          "primary_action": "JUMP",
+          "active_actions": [
+            "JUMP"
+          ],
+          "neutral": false,
+          "reason": "single_action",
+          "raw_scores": {
+            "LEFT": 0.135135,
+            "RIGHT": 0.150538,
+            "JUMP": 0.6
+          },
+          "scores": {
+            "LEFT": 0.135135,
+            "RIGHT": 0.150538,
+            "JUMP": 0.6
+          },
+          "lateralization": -0.053917,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 47,
+              "active_neurons": 25,
+              "active_fraction": 0.135135,
+              "mean_rate_hz": 5.0811,
+              "sufficient": true,
+              "reason": "ok"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 42,
+              "active_neurons": 28,
+              "active_fraction": 0.150538,
+              "mean_rate_hz": 4.5161,
+              "sufficient": true,
+              "reason": "ok"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 20,
+              "active_neurons": 12,
+              "active_fraction": 0.6,
+              "mean_rate_hz": 20.0,
+              "sufficient": true,
+              "reason": "ok"
+            }
+          },
+          "condition": "C_vnc_intrinsic_candidate",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 150.0,
+          "window_end_ms": 200.0,
+          "decoded_state": "JUMP",
+          "primary_action": "JUMP",
+          "active_actions": [
+            "JUMP"
+          ],
+          "neutral": false,
+          "reason": "single_action",
+          "raw_scores": {
+            "LEFT": 0.135135,
+            "RIGHT": 0.134409,
+            "JUMP": 0.6
+          },
+          "scores": {
+            "LEFT": 0.135135,
+            "RIGHT": 0.134409,
+            "JUMP": 0.6
+          },
+          "lateralization": 0.002695,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 48,
+              "active_neurons": 25,
+              "active_fraction": 0.135135,
+              "mean_rate_hz": 5.1892,
+              "sufficient": true,
+              "reason": "ok"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 44,
+              "active_neurons": 25,
+              "active_fraction": 0.134409,
+              "mean_rate_hz": 4.7312,
+              "sufficient": true,
+              "reason": "ok"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 24,
+              "active_neurons": 12,
+              "active_fraction": 0.6,
+              "mean_rate_hz": 24.0,
+              "sufficient": true,
+              "reason": "ok"
+            }
+          },
+          "condition": "C_vnc_intrinsic_candidate",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 200.0,
+          "window_end_ms": 250.0,
+          "decoded_state": "JUMP",
+          "primary_action": "JUMP",
+          "active_actions": [
+            "JUMP"
+          ],
+          "neutral": false,
+          "reason": "single_action",
+          "raw_scores": {
+            "LEFT": 0.12973,
+            "RIGHT": 0.150538,
+            "JUMP": 0.6
+          },
+          "scores": {
+            "LEFT": 0.12973,
+            "RIGHT": 0.150538,
+            "JUMP": 0.6
+          },
+          "lateralization": -0.074243,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 48,
+              "active_neurons": 24,
+              "active_fraction": 0.12973,
+              "mean_rate_hz": 5.1892,
+              "sufficient": true,
+              "reason": "ok"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 43,
+              "active_neurons": 28,
+              "active_fraction": 0.150538,
+              "mean_rate_hz": 4.6237,
+              "sufficient": true,
+              "reason": "ok"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 22,
+              "active_neurons": 12,
+              "active_fraction": 0.6,
+              "mean_rate_hz": 22.0,
+              "sufficient": true,
+              "reason": "ok"
+            }
+          },
+          "condition": "C_vnc_intrinsic_candidate",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 250.0,
+          "window_end_ms": 300.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "C_vnc_intrinsic_candidate",
+          "threshold": 5,
+          "seed": 20261108
+        }
+      ],
+      "decoder_state_counts": {
+        "JUMP": 4,
+        "NEUTRAL": 1
+      },
+      "neutral_windows": 1,
+      "max_scores": {
+        "LEFT": 0.135135,
+        "RIGHT": 0.150538,
+        "JUMP": 0.6
+      },
+      "max_raw_scores": {
+        "LEFT": 0.135135,
+        "RIGHT": 0.150538,
+        "JUMP": 0.6
+      },
+      "population_activity": {
+        "window_start_ms": 50.0,
+        "window_end_ms": 300.0,
+        "n_spikes": 1296,
+        "populations": {
+          "LEFT": {
+            "size": 185,
+            "spikes": 176,
+            "active_neurons": 27,
+            "active_fraction": 0.145946,
+            "mean_rate_hz": 3.8054,
+            "spike_share": 0.135802
+          },
+          "RIGHT": {
+            "size": 186,
+            "spikes": 155,
+            "active_neurons": 32,
+            "active_fraction": 0.172043,
+            "mean_rate_hz": 3.3333,
+            "spike_share": 0.119599
+          },
+          "JUMP": {
+            "size": 20,
+            "spikes": 79,
+            "active_neurons": 12,
+            "active_fraction": 0.6,
+            "mean_rate_hz": 15.8,
+            "spike_share": 0.060957
+          }
+        },
+        "motor": {
+          "size": 805,
+          "spikes": 492,
+          "active_neurons": 82,
+          "active_fraction": 0.101863,
+          "mean_rate_hz": 2.4447,
+          "spike_share": 0.37963
+        },
+        "unassigned_motor": {
+          "size": 414,
+          "spikes": 82,
+          "active_neurons": 11,
+          "active_fraction": 0.02657,
+          "mean_rate_hz": 0.7923,
+          "spike_share": 0.063272
+        },
+        "network": {
+          "size": 172433,
+          "spikes": 1296,
+          "active_neurons": 164,
+          "active_fraction": 0.000951,
+          "mean_rate_hz": 0.0301,
+          "spike_share": 1.0
+        }
+      },
+      "activity": {
+        "n_spikes": 1296,
+        "active_neurons": 164,
+        "stimulated_spikes": 740,
+        "non_stimulated_spikes": 556,
+        "non_stimulated_active_neurons": 100,
+        "motor_spikes": 492,
+        "motor_active_neurons": 82
+      },
+      "summary": {
+        "generated_at_utc": "2026-11-08T06:48:53+00:00",
+        "simulation": {
+          "duration_ms": 300.0,
+          "dt_ms": 0.5,
+          "n_steps": 600,
+          "seed": 20261108,
+          "runtime_s": 2.9746,
+          "steps_per_second": 201.7
+        },
+        "graph": {
+          "source": "BANC v888",
+          "graph_threshold": 5,
+          "n_nodes": 172433,
+          "n_edges": 1535710,
+          "n_synapses": 18552546,
+          "n_isolated": 24320
+        },
+        "model": {
+          "neuron": {
+            "capacitance_pf": 200.0,
+            "leak_conductance_ns": 10.0,
+            "resting_potential_mv": -65.0,
+            "threshold_mv": -50.0,
+            "reset_potential_mv": -68.0,
+            "refractory_ms": 2.0,
+            "initial_potential_mv": -65.0,
+            "minimum_potential_mv": -90.0
+          },
+          "synapse": {
+            "tau_exc_ms": 5.0,
+            "tau_inh_ms": 8.0,
+            "effective_delay_ms": 1.0,
+            "delay_steps": 2,
+            "weight_source": "structural synapse count (count), not norm"
+          }
+        },
+        "synaptic_policy": {
+          "sign_policy": {
+            "verified_excitatory": [
+              "acetylcholine",
+              "glutamate"
+            ],
+            "verified_inhibitory": [
+              "gaba",
+              "glycine"
+            ],
+            "modulators_without_fixed_sign": [
+              "dopamine",
+              "serotonin",
+              "octopamine",
+              "tyramine",
+              "histamine",
+              "nitric_oxide"
+            ],
+            "conflict_policy": "unknown",
+            "modulator_only_policy": "unknown",
+            "predicted_fallback": false,
+            "unknown_edge_policy": "exclude",
+            "interpretation": "excitatory and inhibitory are modelling priors applied to the presynaptic neuron; they are not established postsynaptic effects at every target"
+          },
+          "weight_policy": {
+            "transform": "power",
+            "exponent": 0.75,
+            "scale_pa": 5.0,
+            "cap_pa": 300.0,
+            "weight_source": "integer synapse count (`count`); `norm` is never used",
+            "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+          },
+          "signed_edges": 683100,
+          "excluded_edges": 852610,
+          "excitatory_edges": 502727,
+          "inhibitory_edges": 180373
+        },
+        "stimulation": {
+          "label": "phase4g5:C",
+          "n_neurons": 64,
+          "root_ids": [
+            720575941390358788,
+            720575941401753379,
+            720575941408320430,
+            720575941413917724,
+            720575941414508948,
+            720575941429488599,
+            720575941436862527,
+            720575941438373420,
+            720575941438389292,
+            720575941438574303,
+            720575941447809812,
+            720575941449454414,
+            720575941453079209,
+            720575941462497680,
+            720575941469724125,
+            720575941474467633,
+            720575941475399264,
+            720575941476218945,
+            720575941488553422,
+            720575941500785643,
+            720575941501346978,
+            720575941504444354,
+            720575941508299554,
+            720575941511275986,
+            720575941511836432,
+            720575941512896099,
+            720575941515624291,
+            720575941516099500,
+            720575941517357914,
+            720575941518434227,
+            720575941518807468,
+            720575941534150117,
+            720575941535971777,
+            720575941540185213,
+            720575941542442076,
+            720575941548936253,
+            720575941554049307,
+            720575941560221229,
+            720575941564147346,
+            720575941572444830,
+            720575941575681718,
+            720575941581673337,
+            720575941589972876,
+            720575941590291084,
+            720575941592931112,
+            720575941594160421,
+            720575941595919217,
+            720575941609673802,
+            720575941612203996,
+            720575941614257171,
+            720575941616503449,
+            720575941618500821,
+            720575941624450506,
+            720575941633087648,
+            720575941634248133,
+            720575941652545521,
+            720575941652626193,
+            720575941657730328,
+            720575941661300792,
+            720575941668287987,
+            720575941669049587,
+            720575941671280817,
+            720575941671443623,
+            720575941689865880
+          ],
+          "current_pa": 300.0,
+          "start_ms": 50.0,
+          "end_ms": 250.0
+        },
+        "input_schedule": null,
+        "activity": {
+          "duration_ms": 300.0,
+          "n_neurons": 172433,
+          "n_spikes": 1296,
+          "active_neurons": 164,
+          "silent_neurons": 172269,
+          "active_fraction": 0.000951,
+          "mean_rate_hz": 0.0251,
+          "rate_percentiles_hz": {
+            "50": 0.0,
+            "90": 0.0,
+            "95": 0.0,
+            "99": 0.0,
+            "100": 53.3333
+          },
+          "population_rate_hz": 0.0251,
+          "population_rate_peak_hz": 0.0626,
+          "spike_capacity": 2000000
+        },
+        "activity_by_stimulation": {
+          "stimulated_neurons": 64,
+          "stimulated_active_neurons": 64,
+          "stimulated_spikes": 740,
+          "non_stimulated_active_neurons": 100,
+          "non_stimulated_spikes": 556,
+          "non_stimulated_spike_fraction": 0.429012
+        },
+        "synaptic_transmission": {
+          "spike_transmissions": 65131,
+          "transmissions_per_spike": 50.255
+        },
+        "diagnostics": {
+          "finite_state": true,
+          "min_membrane_mv": -73.3752,
+          "max_membrane_mv": -50.0055,
+          "max_abs_membrane_mv": 73.3752,
+          "max_abs_total_current_pa": 1238.7167,
+          "max_excitatory_synaptic_current_pa": 1238.7167,
+          "max_inhibitory_synaptic_current_pa": 619.8708
+        },
+        "memory": {
+          "graph_arrays_bytes": 43366573,
+          "policy_arrays_bytes": 12630546,
+          "neuron_state_bytes": 2069196,
+          "synapse_state_bytes": 16424072,
+          "synapse_arrays_bytes": 13665144,
+          "delay_buffer_bytes": 2758928,
+          "spike_recorder_bytes": 16000000,
+          "retained_arrays_bytes": 90490387,
+          "recorder_capacity": 2000000,
+          "recorder_capacity_bytes": 16000000,
+          "components_mb": {
+            "graph_arrays": 41.3576,
+            "policy_arrays": 12.0454,
+            "neuron_state": 1.9733,
+            "synapse_state": 15.6632,
+            "delay_buffers": 2.6311,
+            "spike_recorder": 15.2588
+          },
+          "retained_arrays_mb": 86.2984
+        }
+      }
+    },
+    "D_random_matched": {
+      "description": "64 random verified-excitatory non-motor neurons.",
+      "stimulated_neurons": 64,
+      "current_pa": 300.0,
+      "background_pa": 0.0,
+      "noise_pa": 0.0,
+      "spike_hash": "3cd7933901eada9b29253440df63e7df940c1aee251289027ee15fa6848851c6",
+      "decision_hash": "b82c0f338c3cf3524f6569d8ab92b03e78ffe2d0627652c3eb8fd29930301f0b",
+      "window_records": [
+        {
+          "window_start_ms": 50.0,
+          "window_end_ms": 100.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "D_random_matched",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 100.0,
+          "window_end_ms": 150.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "D_random_matched",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 150.0,
+          "window_end_ms": 200.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "D_random_matched",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 200.0,
+          "window_end_ms": 250.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "D_random_matched",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 250.0,
+          "window_end_ms": 300.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "D_random_matched",
+          "threshold": 5,
+          "seed": 20261108
+        }
+      ],
+      "decoder_state_counts": {
+        "NEUTRAL": 5
+      },
+      "neutral_windows": 5,
+      "max_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "max_raw_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "population_activity": {
+        "window_start_ms": 50.0,
+        "window_end_ms": 300.0,
+        "n_spikes": 704,
+        "populations": {
+          "LEFT": {
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "RIGHT": {
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "JUMP": {
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          }
+        },
+        "motor": {
+          "size": 805,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "unassigned_motor": {
+          "size": 414,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "network": {
+          "size": 172433,
+          "spikes": 704,
+          "active_neurons": 64,
+          "active_fraction": 0.000371,
+          "mean_rate_hz": 0.0163,
+          "spike_share": 1.0
+        }
+      },
+      "activity": {
+        "n_spikes": 704,
+        "active_neurons": 64,
+        "stimulated_spikes": 704,
+        "non_stimulated_spikes": 0,
+        "non_stimulated_active_neurons": 0,
+        "motor_spikes": 0,
+        "motor_active_neurons": 0
+      },
+      "summary": {
+        "generated_at_utc": "2026-11-08T06:48:58+00:00",
+        "simulation": {
+          "duration_ms": 300.0,
+          "dt_ms": 0.5,
+          "n_steps": 600,
+          "seed": 20261108,
+          "runtime_s": 2.5709,
+          "steps_per_second": 233.4
+        },
+        "graph": {
+          "source": "BANC v888",
+          "graph_threshold": 5,
+          "n_nodes": 172433,
+          "n_edges": 1535710,
+          "n_synapses": 18552546,
+          "n_isolated": 24320
+        },
+        "model": {
+          "neuron": {
+            "capacitance_pf": 200.0,
+            "leak_conductance_ns": 10.0,
+            "resting_potential_mv": -65.0,
+            "threshold_mv": -50.0,
+            "reset_potential_mv": -68.0,
+            "refractory_ms": 2.0,
+            "initial_potential_mv": -65.0,
+            "minimum_potential_mv": -90.0
+          },
+          "synapse": {
+            "tau_exc_ms": 5.0,
+            "tau_inh_ms": 8.0,
+            "effective_delay_ms": 1.0,
+            "delay_steps": 2,
+            "weight_source": "structural synapse count (count), not norm"
+          }
+        },
+        "synaptic_policy": {
+          "sign_policy": {
+            "verified_excitatory": [
+              "acetylcholine",
+              "glutamate"
+            ],
+            "verified_inhibitory": [
+              "gaba",
+              "glycine"
+            ],
+            "modulators_without_fixed_sign": [
+              "dopamine",
+              "serotonin",
+              "octopamine",
+              "tyramine",
+              "histamine",
+              "nitric_oxide"
+            ],
+            "conflict_policy": "unknown",
+            "modulator_only_policy": "unknown",
+            "predicted_fallback": false,
+            "unknown_edge_policy": "exclude",
+            "interpretation": "excitatory and inhibitory are modelling priors applied to the presynaptic neuron; they are not established postsynaptic effects at every target"
+          },
+          "weight_policy": {
+            "transform": "power",
+            "exponent": 0.75,
+            "scale_pa": 5.0,
+            "cap_pa": 300.0,
+            "weight_source": "integer synapse count (`count`); `norm` is never used",
+            "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+          },
+          "signed_edges": 683100,
+          "excluded_edges": 852610,
+          "excitatory_edges": 502727,
+          "inhibitory_edges": 180373
+        },
+        "stimulation": {
+          "label": "phase4g5:D",
+          "n_neurons": 64,
+          "root_ids": [
+            720575941394040836,
+            720575941409746479,
+            720575941410016942,
+            720575941411673967,
+            720575941437883103,
+            720575941439452690,
+            720575941440517695,
+            720575941451021237,
+            720575941451379015,
+            720575941452604467,
+            720575941454737133,
+            720575941469194871,
+            720575941473252363,
+            720575941475034976,
+            720575941478281834,
+            720575941479263618,
+            720575941479528322,
+            720575941483488710,
+            720575941484881594,
+            720575941485269645,
+            720575941487707533,
+            720575941492552396,
+            720575941493115879,
+            720575941496125566,
+            720575941496399742,
+            720575941503488491,
+            720575941515381507,
+            720575941515860803,
+            720575941516865795,
+            720575941518602156,
+            720575941522728371,
+            720575941523776843,
+            720575941524657995,
+            720575941527668482,
+            720575941527966052,
+            720575941542455388,
+            720575941543364697,
+            720575941546199176,
+            720575941546544985,
+            720575941558010639,
+            720575941559475245,
+            720575941562630546,
+            720575941562690962,
+            720575941569951476,
+            720575941571506164,
+            720575941574924904,
+            720575941584523518,
+            720575941590419524,
+            720575941590862955,
+            720575941590936204,
+            720575941592453995,
+            720575941595131175,
+            720575941596668608,
+            720575941598977577,
+            720575941603523574,
+            720575941605118966,
+            720575941609803594,
+            720575941611607260,
+            720575941624049098,
+            720575941639167861,
+            720575941642730578,
+            720575941643511672,
+            720575941653136401,
+            720575941659562008
+          ],
+          "current_pa": 300.0,
+          "start_ms": 50.0,
+          "end_ms": 250.0
+        },
+        "input_schedule": null,
+        "activity": {
+          "duration_ms": 300.0,
+          "n_neurons": 172433,
+          "n_spikes": 704,
+          "active_neurons": 64,
+          "silent_neurons": 172369,
+          "active_fraction": 0.000371,
+          "mean_rate_hz": 0.0136,
+          "rate_percentiles_hz": {
+            "50": 0.0,
+            "90": 0.0,
+            "95": 0.0,
+            "99": 0.0,
+            "100": 36.6667
+          },
+          "population_rate_hz": 0.0136,
+          "population_rate_peak_hz": 0.0371,
+          "spike_capacity": 2000000
+        },
+        "activity_by_stimulation": {
+          "stimulated_neurons": 64,
+          "stimulated_active_neurons": 64,
+          "stimulated_spikes": 704,
+          "non_stimulated_active_neurons": 0,
+          "non_stimulated_spikes": 0,
+          "non_stimulated_spike_fraction": 0.0
+        },
+        "synaptic_transmission": {
+          "spike_transmissions": 7447,
+          "transmissions_per_spike": 10.578
+        },
+        "diagnostics": {
+          "finite_state": true,
+          "min_membrane_mv": -68.0,
+          "max_membrane_mv": -53.1108,
+          "max_abs_membrane_mv": 68.0,
+          "max_abs_total_current_pa": 300.0,
+          "max_excitatory_synaptic_current_pa": 223.1872,
+          "max_inhibitory_synaptic_current_pa": 0.0
+        },
+        "memory": {
+          "graph_arrays_bytes": 43366573,
+          "policy_arrays_bytes": 12630546,
+          "neuron_state_bytes": 2069196,
+          "synapse_state_bytes": 16424072,
+          "synapse_arrays_bytes": 13665144,
+          "delay_buffer_bytes": 2758928,
+          "spike_recorder_bytes": 16000000,
+          "retained_arrays_bytes": 90490387,
+          "recorder_capacity": 2000000,
+          "recorder_capacity_bytes": 16000000,
+          "components_mb": {
+            "graph_arrays": 41.3576,
+            "policy_arrays": 12.0454,
+            "neuron_state": 1.9733,
+            "synapse_state": 15.6632,
+            "delay_buffers": 2.6311,
+            "spike_recorder": 15.2588
+          },
+          "retained_arrays_mb": 86.2984
+        }
+      }
+    },
+    "E_shuffled_assignment": {
+      "description": "64 random verified-excitatory descending neurons (shuffled assignment).",
+      "stimulated_neurons": 64,
+      "current_pa": 300.0,
+      "background_pa": 0.0,
+      "noise_pa": 0.0,
+      "spike_hash": "8a9d6d08716739072efac5e093893058be068238c7f5ae226a9940e743edc8f9",
+      "decision_hash": "0a3503c70d6ec3ce3286eabda54695758eb2d7407049a018663f0cc660b5d061",
+      "window_records": [
+        {
+          "window_start_ms": 50.0,
+          "window_end_ms": 100.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "E_shuffled_assignment",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 100.0,
+          "window_end_ms": 150.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "E_shuffled_assignment",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 150.0,
+          "window_end_ms": 200.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "E_shuffled_assignment",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 200.0,
+          "window_end_ms": 250.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "E_shuffled_assignment",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 250.0,
+          "window_end_ms": 300.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "E_shuffled_assignment",
+          "threshold": 5,
+          "seed": 20261108
+        }
+      ],
+      "decoder_state_counts": {
+        "NEUTRAL": 5
+      },
+      "neutral_windows": 5,
+      "max_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "max_raw_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "population_activity": {
+        "window_start_ms": 50.0,
+        "window_end_ms": 300.0,
+        "n_spikes": 728,
+        "populations": {
+          "LEFT": {
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "RIGHT": {
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "JUMP": {
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          }
+        },
+        "motor": {
+          "size": 805,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "unassigned_motor": {
+          "size": 414,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "network": {
+          "size": 172433,
+          "spikes": 728,
+          "active_neurons": 69,
+          "active_fraction": 0.0004,
+          "mean_rate_hz": 0.0169,
+          "spike_share": 1.0
+        }
+      },
+      "activity": {
+        "n_spikes": 728,
+        "active_neurons": 69,
+        "stimulated_spikes": 712,
+        "non_stimulated_spikes": 16,
+        "non_stimulated_active_neurons": 5,
+        "motor_spikes": 0,
+        "motor_active_neurons": 0
+      },
+      "summary": {
+        "generated_at_utc": "2026-11-08T06:49:03+00:00",
+        "simulation": {
+          "duration_ms": 300.0,
+          "dt_ms": 0.5,
+          "n_steps": 600,
+          "seed": 20261108,
+          "runtime_s": 2.2763,
+          "steps_per_second": 263.6
+        },
+        "graph": {
+          "source": "BANC v888",
+          "graph_threshold": 5,
+          "n_nodes": 172433,
+          "n_edges": 1535710,
+          "n_synapses": 18552546,
+          "n_isolated": 24320
+        },
+        "model": {
+          "neuron": {
+            "capacitance_pf": 200.0,
+            "leak_conductance_ns": 10.0,
+            "resting_potential_mv": -65.0,
+            "threshold_mv": -50.0,
+            "reset_potential_mv": -68.0,
+            "refractory_ms": 2.0,
+            "initial_potential_mv": -65.0,
+            "minimum_potential_mv": -90.0
+          },
+          "synapse": {
+            "tau_exc_ms": 5.0,
+            "tau_inh_ms": 8.0,
+            "effective_delay_ms": 1.0,
+            "delay_steps": 2,
+            "weight_source": "structural synapse count (count), not norm"
+          }
+        },
+        "synaptic_policy": {
+          "sign_policy": {
+            "verified_excitatory": [
+              "acetylcholine",
+              "glutamate"
+            ],
+            "verified_inhibitory": [
+              "gaba",
+              "glycine"
+            ],
+            "modulators_without_fixed_sign": [
+              "dopamine",
+              "serotonin",
+              "octopamine",
+              "tyramine",
+              "histamine",
+              "nitric_oxide"
+            ],
+            "conflict_policy": "unknown",
+            "modulator_only_policy": "unknown",
+            "predicted_fallback": false,
+            "unknown_edge_policy": "exclude",
+            "interpretation": "excitatory and inhibitory are modelling priors applied to the presynaptic neuron; they are not established postsynaptic effects at every target"
+          },
+          "weight_policy": {
+            "transform": "power",
+            "exponent": 0.75,
+            "scale_pa": 5.0,
+            "cap_pa": 300.0,
+            "weight_source": "integer synapse count (`count`); `norm` is never used",
+            "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+          },
+          "signed_edges": 683100,
+          "excluded_edges": 852610,
+          "excitatory_edges": 502727,
+          "inhibitory_edges": 180373
+        },
+        "stimulation": {
+          "label": "phase4g5:E",
+          "n_neurons": 64,
+          "root_ids": [
+            720575941354281776,
+            720575941398969123,
+            720575941411472555,
+            720575941426612564,
+            720575941431211951,
+            720575941431577007,
+            720575941432295639,
+            720575941433116046,
+            720575941441452373,
+            720575941447935764,
+            720575941460006128,
+            720575941471537629,
+            720575941491012809,
+            720575941491065653,
+            720575941491649255,
+            720575941492591024,
+            720575941492968423,
+            720575941498998395,
+            720575941499708745,
+            720575941501635927,
+            720575941502273419,
+            720575941505929506,
+            720575941521454003,
+            720575941540466381,
+            720575941549156980,
+            720575941549490209,
+            720575941552163583,
+            720575941559104813,
+            720575941559176942,
+            720575941561430829,
+            720575941568894202,
+            720575941574744329,
+            720575941575652105,
+            720575941583264121,
+            720575941586006111,
+            720575941586653062,
+            720575941591151500,
+            720575941591761704,
+            720575941592811404,
+            720575941596218225,
+            720575941598158469,
+            720575941607634285,
+            720575941614906387,
+            720575941619021269,
+            720575941620273535,
+            720575941623407050,
+            720575941623634122,
+            720575941625621500,
+            720575941628167225,
+            720575941632002720,
+            720575941632978629,
+            720575941633206944,
+            720575941644587109,
+            720575941647038664,
+            720575941657879576,
+            720575941660948348,
+            720575941661415224,
+            720575941662395704,
+            720575941662407992,
+            720575941663102520,
+            720575941687421302,
+            720575941691308952,
+            720575941721638714,
+            720575941730332715
+          ],
+          "current_pa": 300.0,
+          "start_ms": 50.0,
+          "end_ms": 250.0
+        },
+        "input_schedule": null,
+        "activity": {
+          "duration_ms": 300.0,
+          "n_neurons": 172433,
+          "n_spikes": 728,
+          "active_neurons": 69,
+          "silent_neurons": 172364,
+          "active_fraction": 0.0004,
+          "mean_rate_hz": 0.0141,
+          "rate_percentiles_hz": {
+            "50": 0.0,
+            "90": 0.0,
+            "95": 0.0,
+            "99": 0.0,
+            "100": 43.3333
+          },
+          "population_rate_hz": 0.0141,
+          "population_rate_peak_hz": 0.0377,
+          "spike_capacity": 2000000
+        },
+        "activity_by_stimulation": {
+          "stimulated_neurons": 64,
+          "stimulated_active_neurons": 64,
+          "stimulated_spikes": 712,
+          "non_stimulated_active_neurons": 5,
+          "non_stimulated_spikes": 16,
+          "non_stimulated_spike_fraction": 0.021978
+        },
+        "synaptic_transmission": {
+          "spike_transmissions": 42469,
+          "transmissions_per_spike": 58.337
+        },
+        "diagnostics": {
+          "finite_state": true,
+          "min_membrane_mv": -68.0,
+          "max_membrane_mv": -50.2927,
+          "max_abs_membrane_mv": 68.0,
+          "max_abs_total_current_pa": 540.851,
+          "max_excitatory_synaptic_current_pa": 540.851,
+          "max_inhibitory_synaptic_current_pa": 0.0
+        },
+        "memory": {
+          "graph_arrays_bytes": 43366573,
+          "policy_arrays_bytes": 12630546,
+          "neuron_state_bytes": 2069196,
+          "synapse_state_bytes": 16424072,
+          "synapse_arrays_bytes": 13665144,
+          "delay_buffer_bytes": 2758928,
+          "spike_recorder_bytes": 16000000,
+          "retained_arrays_bytes": 90490387,
+          "recorder_capacity": 2000000,
+          "recorder_capacity_bytes": 16000000,
+          "components_mb": {
+            "graph_arrays": 41.3576,
+            "policy_arrays": 12.0454,
+            "neuron_state": 1.9733,
+            "synapse_state": 15.6632,
+            "delay_buffers": 2.6311,
+            "spike_recorder": 15.2588
+          },
+          "retained_arrays_mb": 86.2984
+        }
+      }
+    },
+    "F_background_noise": {
+      "description": "No stimulation; declared background 50 pA and 50 pA Gaussian noise.",
+      "stimulated_neurons": 0,
+      "current_pa": null,
+      "background_pa": 50.0,
+      "noise_pa": 50.0,
+      "spike_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decision_hash": "9257c61cd7ac0ce8680bd48fbfc378fc489d0f74f0b61d7f0420b6a6f7c92b80",
+      "window_records": [
+        {
+          "window_start_ms": 50.0,
+          "window_end_ms": 100.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "F_background_noise",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 100.0,
+          "window_end_ms": 150.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "F_background_noise",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 150.0,
+          "window_end_ms": 200.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "F_background_noise",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 200.0,
+          "window_end_ms": 250.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "F_background_noise",
+          "threshold": 5,
+          "seed": 20261108
+        },
+        {
+          "window_start_ms": 250.0,
+          "window_end_ms": 300.0,
+          "decoded_state": "NEUTRAL",
+          "primary_action": null,
+          "active_actions": [],
+          "neutral": true,
+          "reason": "neutral_no_activation",
+          "raw_scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "scores": {
+            "LEFT": 0.0,
+            "RIGHT": 0.0,
+            "JUMP": 0.0
+          },
+          "lateralization": null,
+          "evidence": {
+            "LEFT": {
+              "population": "LEFT",
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "RIGHT": {
+              "population": "RIGHT",
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            },
+            "JUMP": {
+              "population": "JUMP",
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "sufficient": false,
+              "reason": "spikes_below_minimum+active_neurons_below_minimum"
+            }
+          },
+          "condition": "F_background_noise",
+          "threshold": 5,
+          "seed": 20261108
+        }
+      ],
+      "decoder_state_counts": {
+        "NEUTRAL": 5
+      },
+      "neutral_windows": 5,
+      "max_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "max_raw_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "population_activity": {
+        "window_start_ms": 50.0,
+        "window_end_ms": 300.0,
+        "n_spikes": 0,
+        "populations": {
+          "LEFT": {
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "RIGHT": {
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "JUMP": {
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          }
+        },
+        "motor": {
+          "size": 805,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "unassigned_motor": {
+          "size": 414,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "network": {
+          "size": 172433,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        }
+      },
+      "activity": {
+        "n_spikes": 0,
+        "active_neurons": 0,
+        "stimulated_spikes": 0,
+        "non_stimulated_spikes": 0,
+        "non_stimulated_active_neurons": 0,
+        "motor_spikes": 0,
+        "motor_active_neurons": 0
+      },
+      "summary": {
+        "generated_at_utc": "2026-11-08T06:49:09+00:00",
+        "simulation": {
+          "duration_ms": 300.0,
+          "dt_ms": 0.5,
+          "n_steps": 600,
+          "seed": 20261108,
+          "runtime_s": 3.2986,
+          "steps_per_second": 181.9
+        },
+        "graph": {
+          "source": "BANC v888",
+          "graph_threshold": 5,
+          "n_nodes": 172433,
+          "n_edges": 1535710,
+          "n_synapses": 18552546,
+          "n_isolated": 24320
+        },
+        "model": {
+          "neuron": {
+            "capacitance_pf": 200.0,
+            "leak_conductance_ns": 10.0,
+            "resting_potential_mv": -65.0,
+            "threshold_mv": -50.0,
+            "reset_potential_mv": -68.0,
+            "refractory_ms": 2.0,
+            "initial_potential_mv": -65.0,
+            "minimum_potential_mv": -90.0
+          },
+          "synapse": {
+            "tau_exc_ms": 5.0,
+            "tau_inh_ms": 8.0,
+            "effective_delay_ms": 1.0,
+            "delay_steps": 2,
+            "weight_source": "structural synapse count (count), not norm"
+          }
+        },
+        "synaptic_policy": {
+          "sign_policy": {
+            "verified_excitatory": [
+              "acetylcholine",
+              "glutamate"
+            ],
+            "verified_inhibitory": [
+              "gaba",
+              "glycine"
+            ],
+            "modulators_without_fixed_sign": [
+              "dopamine",
+              "serotonin",
+              "octopamine",
+              "tyramine",
+              "histamine",
+              "nitric_oxide"
+            ],
+            "conflict_policy": "unknown",
+            "modulator_only_policy": "unknown",
+            "predicted_fallback": false,
+            "unknown_edge_policy": "exclude",
+            "interpretation": "excitatory and inhibitory are modelling priors applied to the presynaptic neuron; they are not established postsynaptic effects at every target"
+          },
+          "weight_policy": {
+            "transform": "power",
+            "exponent": 0.75,
+            "scale_pa": 5.0,
+            "cap_pa": 300.0,
+            "weight_source": "integer synapse count (`count`); `norm` is never used",
+            "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+          },
+          "signed_edges": 683100,
+          "excluded_edges": 852610,
+          "excitatory_edges": 502727,
+          "inhibitory_edges": 180373
+        },
+        "stimulation": null,
+        "input_schedule": null,
+        "activity": {
+          "duration_ms": 300.0,
+          "n_neurons": 172433,
+          "n_spikes": 0,
+          "active_neurons": 0,
+          "silent_neurons": 172433,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "rate_percentiles_hz": {
+            "50": 0.0,
+            "90": 0.0,
+            "95": 0.0,
+            "99": 0.0,
+            "100": 0.0
+          },
+          "population_rate_hz": 0.0,
+          "population_rate_peak_hz": 0.0,
+          "spike_capacity": 2000000
+        },
+        "activity_by_stimulation": {
+          "stimulated_neurons": 0,
+          "stimulated_active_neurons": 0,
+          "stimulated_spikes": 0,
+          "non_stimulated_active_neurons": 0,
+          "non_stimulated_spikes": 0,
+          "non_stimulated_spike_fraction": 0.0
+        },
+        "synaptic_transmission": {
+          "spike_transmissions": 0,
+          "transmissions_per_spike": 0.0
+        },
+        "diagnostics": {
+          "finite_state": true,
+          "min_membrane_mv": -62.4839,
+          "max_membrane_mv": -57.4851,
+          "max_abs_membrane_mv": 62.4839,
+          "max_abs_total_current_pa": 337.4016,
+          "max_excitatory_synaptic_current_pa": 0.0,
+          "max_inhibitory_synaptic_current_pa": 0.0
+        },
+        "memory": {
+          "graph_arrays_bytes": 43366573,
+          "policy_arrays_bytes": 12630546,
+          "neuron_state_bytes": 2069196,
+          "synapse_state_bytes": 16424072,
+          "synapse_arrays_bytes": 13665144,
+          "delay_buffer_bytes": 2758928,
+          "spike_recorder_bytes": 16000000,
+          "retained_arrays_bytes": 90490387,
+          "recorder_capacity": 2000000,
+          "recorder_capacity_bytes": 16000000,
+          "components_mb": {
+            "graph_arrays": 41.3576,
+            "policy_arrays": 12.0454,
+            "neuron_state": 1.9733,
+            "synapse_state": 15.6632,
+            "delay_buffers": 2.6311,
+            "spike_recorder": 15.2588
+          },
+          "retained_arrays_mb": 86.2984
+        }
+      }
+    }
+  },
+  "signal_overview": {
+    "A_no_stimulation": {
+      "spikes": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "decoded_states": {
+        "NEUTRAL": 5
+      },
+      "population_active_fractions": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      }
+    },
+    "B_descending_candidate": {
+      "spikes": 781,
+      "motor_spikes": 18,
+      "motor_active_neurons": 3,
+      "decoded_states": {
+        "NEUTRAL": 5
+      },
+      "population_active_fractions": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      }
+    },
+    "C_vnc_intrinsic_candidate": {
+      "spikes": 1296,
+      "motor_spikes": 492,
+      "motor_active_neurons": 82,
+      "decoded_states": {
+        "JUMP": 4,
+        "NEUTRAL": 1
+      },
+      "population_active_fractions": {
+        "LEFT": 0.145946,
+        "RIGHT": 0.172043,
+        "JUMP": 0.6
+      }
+    },
+    "D_random_matched": {
+      "spikes": 704,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "decoded_states": {
+        "NEUTRAL": 5
+      },
+      "population_active_fractions": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      }
+    },
+    "E_shuffled_assignment": {
+      "spikes": 728,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "decoded_states": {
+        "NEUTRAL": 5
+      },
+      "population_active_fractions": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      }
+    },
+    "F_background_noise": {
+      "spikes": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "decoded_states": {
+        "NEUTRAL": 5
+      },
+      "population_active_fractions": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      }
+    }
+  },
+  "determinism": {
+    "A_no_stimulation": {
+      "spike_hash_run1": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "spike_hash_run2": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "spike_match": true,
+      "decision_hash_run1": "65cbcc1a884c2bc0831d30976f68ed8895db5f334fb78da3d8c2fe8795d09a22",
+      "decision_hash_run2": "65cbcc1a884c2bc0831d30976f68ed8895db5f334fb78da3d8c2fe8795d09a22",
+      "decision_match": true
+    },
+    "B_descending_candidate": {
+      "spike_hash_run1": "408dcc5589ea0bb41c7acf026c155356025f7a17623ce58fee1544de13ec3693",
+      "spike_hash_run2": "408dcc5589ea0bb41c7acf026c155356025f7a17623ce58fee1544de13ec3693",
+      "spike_match": true,
+      "decision_hash_run1": "6d22ef073eb2de892bbf50b70265001a1dbd1eb5f9533ff7f259a64c3d119cf3",
+      "decision_hash_run2": "6d22ef073eb2de892bbf50b70265001a1dbd1eb5f9533ff7f259a64c3d119cf3",
+      "decision_match": true
+    },
+    "C_vnc_intrinsic_candidate": {
+      "spike_hash_run1": "397e888ffb7f001e0509bdcfbc9121c09bafb1e2d355b555b298b5c2fed10a95",
+      "spike_hash_run2": "397e888ffb7f001e0509bdcfbc9121c09bafb1e2d355b555b298b5c2fed10a95",
+      "spike_match": true,
+      "decision_hash_run1": "4380fc38bda54359effdd93f9f4f89aee91640857f459b711dcca9b35a865799",
+      "decision_hash_run2": "4380fc38bda54359effdd93f9f4f89aee91640857f459b711dcca9b35a865799",
+      "decision_match": true
+    },
+    "D_random_matched": {
+      "spike_hash_run1": "3cd7933901eada9b29253440df63e7df940c1aee251289027ee15fa6848851c6",
+      "spike_hash_run2": "3cd7933901eada9b29253440df63e7df940c1aee251289027ee15fa6848851c6",
+      "spike_match": true,
+      "decision_hash_run1": "b82c0f338c3cf3524f6569d8ab92b03e78ffe2d0627652c3eb8fd29930301f0b",
+      "decision_hash_run2": "b82c0f338c3cf3524f6569d8ab92b03e78ffe2d0627652c3eb8fd29930301f0b",
+      "decision_match": true
+    },
+    "E_shuffled_assignment": {
+      "spike_hash_run1": "8a9d6d08716739072efac5e093893058be068238c7f5ae226a9940e743edc8f9",
+      "spike_hash_run2": "8a9d6d08716739072efac5e093893058be068238c7f5ae226a9940e743edc8f9",
+      "spike_match": true,
+      "decision_hash_run1": "0a3503c70d6ec3ce3286eabda54695758eb2d7407049a018663f0cc660b5d061",
+      "decision_hash_run2": "0a3503c70d6ec3ce3286eabda54695758eb2d7407049a018663f0cc660b5d061",
+      "decision_match": true
+    },
+    "F_background_noise": {
+      "spike_hash_run1": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "spike_hash_run2": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "spike_match": true,
+      "decision_hash_run1": "9257c61cd7ac0ce8680bd48fbfc378fc489d0f74f0b61d7f0420b6a6f7c92b80",
+      "decision_hash_run2": "9257c61cd7ac0ce8680bd48fbfc378fc489d0f74f0b61d7f0420b6a6f7c92b80",
+      "decision_match": true
+    }
+  },
+  "repeats": {
+    "A_no_stimulation": {
+      "spike_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decision_hash": "65cbcc1a884c2bc0831d30976f68ed8895db5f334fb78da3d8c2fe8795d09a22",
+      "decoded_states": {
+        "NEUTRAL": 5
+      },
+      "neutral_windows": 5,
+      "max_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "max_raw_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "activity": {
+        "n_spikes": 0,
+        "active_neurons": 0,
+        "stimulated_spikes": 0,
+        "non_stimulated_spikes": 0,
+        "non_stimulated_active_neurons": 0,
+        "motor_spikes": 0,
+        "motor_active_neurons": 0
+      },
+      "population_activity": {
+        "window_start_ms": 50.0,
+        "window_end_ms": 300.0,
+        "n_spikes": 0,
+        "populations": {
+          "LEFT": {
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "RIGHT": {
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "JUMP": {
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          }
+        },
+        "motor": {
+          "size": 805,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "unassigned_motor": {
+          "size": 414,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "network": {
+          "size": 172433,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        }
+      }
+    },
+    "B_descending_candidate": {
+      "spike_hash": "408dcc5589ea0bb41c7acf026c155356025f7a17623ce58fee1544de13ec3693",
+      "decision_hash": "6d22ef073eb2de892bbf50b70265001a1dbd1eb5f9533ff7f259a64c3d119cf3",
+      "decoded_states": {
+        "NEUTRAL": 5
+      },
+      "neutral_windows": 5,
+      "max_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "max_raw_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "activity": {
+        "n_spikes": 781,
+        "active_neurons": 77,
+        "stimulated_spikes": 720,
+        "non_stimulated_spikes": 61,
+        "non_stimulated_active_neurons": 13,
+        "motor_spikes": 18,
+        "motor_active_neurons": 3
+      },
+      "population_activity": {
+        "window_start_ms": 50.0,
+        "window_end_ms": 300.0,
+        "n_spikes": 781,
+        "populations": {
+          "LEFT": {
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "RIGHT": {
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "JUMP": {
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          }
+        },
+        "motor": {
+          "size": 805,
+          "spikes": 18,
+          "active_neurons": 3,
+          "active_fraction": 0.003727,
+          "mean_rate_hz": 0.0894,
+          "spike_share": 0.023047
+        },
+        "unassigned_motor": {
+          "size": 414,
+          "spikes": 18,
+          "active_neurons": 3,
+          "active_fraction": 0.007246,
+          "mean_rate_hz": 0.1739,
+          "spike_share": 0.023047
+        },
+        "network": {
+          "size": 172433,
+          "spikes": 781,
+          "active_neurons": 77,
+          "active_fraction": 0.000447,
+          "mean_rate_hz": 0.0181,
+          "spike_share": 1.0
+        }
+      }
+    },
+    "C_vnc_intrinsic_candidate": {
+      "spike_hash": "397e888ffb7f001e0509bdcfbc9121c09bafb1e2d355b555b298b5c2fed10a95",
+      "decision_hash": "4380fc38bda54359effdd93f9f4f89aee91640857f459b711dcca9b35a865799",
+      "decoded_states": {
+        "JUMP": 4,
+        "NEUTRAL": 1
+      },
+      "neutral_windows": 1,
+      "max_scores": {
+        "LEFT": 0.135135,
+        "RIGHT": 0.150538,
+        "JUMP": 0.6
+      },
+      "max_raw_scores": {
+        "LEFT": 0.135135,
+        "RIGHT": 0.150538,
+        "JUMP": 0.6
+      },
+      "activity": {
+        "n_spikes": 1296,
+        "active_neurons": 164,
+        "stimulated_spikes": 740,
+        "non_stimulated_spikes": 556,
+        "non_stimulated_active_neurons": 100,
+        "motor_spikes": 492,
+        "motor_active_neurons": 82
+      },
+      "population_activity": {
+        "window_start_ms": 50.0,
+        "window_end_ms": 300.0,
+        "n_spikes": 1296,
+        "populations": {
+          "LEFT": {
+            "size": 185,
+            "spikes": 176,
+            "active_neurons": 27,
+            "active_fraction": 0.145946,
+            "mean_rate_hz": 3.8054,
+            "spike_share": 0.135802
+          },
+          "RIGHT": {
+            "size": 186,
+            "spikes": 155,
+            "active_neurons": 32,
+            "active_fraction": 0.172043,
+            "mean_rate_hz": 3.3333,
+            "spike_share": 0.119599
+          },
+          "JUMP": {
+            "size": 20,
+            "spikes": 79,
+            "active_neurons": 12,
+            "active_fraction": 0.6,
+            "mean_rate_hz": 15.8,
+            "spike_share": 0.060957
+          }
+        },
+        "motor": {
+          "size": 805,
+          "spikes": 492,
+          "active_neurons": 82,
+          "active_fraction": 0.101863,
+          "mean_rate_hz": 2.4447,
+          "spike_share": 0.37963
+        },
+        "unassigned_motor": {
+          "size": 414,
+          "spikes": 82,
+          "active_neurons": 11,
+          "active_fraction": 0.02657,
+          "mean_rate_hz": 0.7923,
+          "spike_share": 0.063272
+        },
+        "network": {
+          "size": 172433,
+          "spikes": 1296,
+          "active_neurons": 164,
+          "active_fraction": 0.000951,
+          "mean_rate_hz": 0.0301,
+          "spike_share": 1.0
+        }
+      }
+    },
+    "D_random_matched": {
+      "spike_hash": "3cd7933901eada9b29253440df63e7df940c1aee251289027ee15fa6848851c6",
+      "decision_hash": "b82c0f338c3cf3524f6569d8ab92b03e78ffe2d0627652c3eb8fd29930301f0b",
+      "decoded_states": {
+        "NEUTRAL": 5
+      },
+      "neutral_windows": 5,
+      "max_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "max_raw_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "activity": {
+        "n_spikes": 704,
+        "active_neurons": 64,
+        "stimulated_spikes": 704,
+        "non_stimulated_spikes": 0,
+        "non_stimulated_active_neurons": 0,
+        "motor_spikes": 0,
+        "motor_active_neurons": 0
+      },
+      "population_activity": {
+        "window_start_ms": 50.0,
+        "window_end_ms": 300.0,
+        "n_spikes": 704,
+        "populations": {
+          "LEFT": {
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "RIGHT": {
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "JUMP": {
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          }
+        },
+        "motor": {
+          "size": 805,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "unassigned_motor": {
+          "size": 414,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "network": {
+          "size": 172433,
+          "spikes": 704,
+          "active_neurons": 64,
+          "active_fraction": 0.000371,
+          "mean_rate_hz": 0.0163,
+          "spike_share": 1.0
+        }
+      }
+    },
+    "E_shuffled_assignment": {
+      "spike_hash": "8a9d6d08716739072efac5e093893058be068238c7f5ae226a9940e743edc8f9",
+      "decision_hash": "0a3503c70d6ec3ce3286eabda54695758eb2d7407049a018663f0cc660b5d061",
+      "decoded_states": {
+        "NEUTRAL": 5
+      },
+      "neutral_windows": 5,
+      "max_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "max_raw_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "activity": {
+        "n_spikes": 728,
+        "active_neurons": 69,
+        "stimulated_spikes": 712,
+        "non_stimulated_spikes": 16,
+        "non_stimulated_active_neurons": 5,
+        "motor_spikes": 0,
+        "motor_active_neurons": 0
+      },
+      "population_activity": {
+        "window_start_ms": 50.0,
+        "window_end_ms": 300.0,
+        "n_spikes": 728,
+        "populations": {
+          "LEFT": {
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "RIGHT": {
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "JUMP": {
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          }
+        },
+        "motor": {
+          "size": 805,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "unassigned_motor": {
+          "size": 414,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "network": {
+          "size": 172433,
+          "spikes": 728,
+          "active_neurons": 69,
+          "active_fraction": 0.0004,
+          "mean_rate_hz": 0.0169,
+          "spike_share": 1.0
+        }
+      }
+    },
+    "F_background_noise": {
+      "spike_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decision_hash": "9257c61cd7ac0ce8680bd48fbfc378fc489d0f74f0b61d7f0420b6a6f7c92b80",
+      "decoded_states": {
+        "NEUTRAL": 5
+      },
+      "neutral_windows": 5,
+      "max_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "max_raw_scores": {
+        "LEFT": 0.0,
+        "RIGHT": 0.0,
+        "JUMP": 0.0
+      },
+      "activity": {
+        "n_spikes": 0,
+        "active_neurons": 0,
+        "stimulated_spikes": 0,
+        "non_stimulated_spikes": 0,
+        "non_stimulated_active_neurons": 0,
+        "motor_spikes": 0,
+        "motor_active_neurons": 0
+      },
+      "population_activity": {
+        "window_start_ms": 50.0,
+        "window_end_ms": 300.0,
+        "n_spikes": 0,
+        "populations": {
+          "LEFT": {
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "RIGHT": {
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "JUMP": {
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          }
+        },
+        "motor": {
+          "size": 805,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "unassigned_motor": {
+          "size": 414,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        },
+        "network": {
+          "size": 172433,
+          "spikes": 0,
+          "active_neurons": 0,
+          "active_fraction": 0.0,
+          "mean_rate_hz": 0.0,
+          "spike_share": 0.0
+        }
+      }
+    }
+  },
+  "sensitivity": {
+    "threshold": [
+      {
+        "variant": "threshold_1",
+        "threshold": 1,
+        "spike_hash": "df1ac3b0f7e6f7b8a70cba73eb3cda62415eebfa7159f51bb371c1421fd203de",
+        "decision_hash": "ab75d8d6212935be947f454936c505e69f7698d3284921d797f13c85dc6748b0",
+        "decoded_states": {
+          "JUMP": 4,
+          "NEUTRAL": 1
+        },
+        "neutral_windows": 1,
+        "max_scores": {
+          "LEFT": 0.156757,
+          "RIGHT": 0.182796,
+          "JUMP": 0.65
+        },
+        "max_raw_scores": {
+          "LEFT": 0.156757,
+          "RIGHT": 0.182796,
+          "JUMP": 0.65
+        },
+        "activity": {
+          "n_spikes": 1399,
+          "active_neurons": 180,
+          "stimulated_spikes": 758,
+          "non_stimulated_spikes": 641,
+          "non_stimulated_active_neurons": 116,
+          "motor_spikes": 564,
+          "motor_active_neurons": 96
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 1399,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 199,
+              "active_neurons": 33,
+              "active_fraction": 0.178378,
+              "mean_rate_hz": 4.3027,
+              "spike_share": 0.142244
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 192,
+              "active_neurons": 37,
+              "active_fraction": 0.198925,
+              "mean_rate_hz": 4.129,
+              "spike_share": 0.137241
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 85,
+              "active_neurons": 13,
+              "active_fraction": 0.65,
+              "mean_rate_hz": 17.0,
+              "spike_share": 0.060758
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 564,
+            "active_neurons": 96,
+            "active_fraction": 0.119255,
+            "mean_rate_hz": 2.8025,
+            "spike_share": 0.403145
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 88,
+            "active_neurons": 13,
+            "active_fraction": 0.031401,
+            "mean_rate_hz": 0.8502,
+            "spike_share": 0.062902
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 1399,
+            "active_neurons": 180,
+            "active_fraction": 0.001044,
+            "mean_rate_hz": 0.0325,
+            "spike_share": 1.0
+          }
+        }
+      },
+      {
+        "variant": "threshold_10",
+        "threshold": 10,
+        "spike_hash": "8b661a2b102bc27713956027b9a377b13739c4e3e26da652b395e42bbe586550",
+        "decision_hash": "72747aec3a2e7001f92059cc67f8d21b31cfad6fb95aab8bcede7b4c744474c0",
+        "decoded_states": {
+          "JUMP": 4,
+          "NEUTRAL": 1
+        },
+        "neutral_windows": 1,
+        "max_scores": {
+          "LEFT": 0.140541,
+          "RIGHT": 0.129032,
+          "JUMP": 0.6
+        },
+        "max_raw_scores": {
+          "LEFT": 0.140541,
+          "RIGHT": 0.129032,
+          "JUMP": 0.6
+        },
+        "activity": {
+          "n_spikes": 1253,
+          "active_neurons": 155,
+          "stimulated_spikes": 742,
+          "non_stimulated_spikes": 511,
+          "non_stimulated_active_neurons": 91,
+          "motor_spikes": 456,
+          "motor_active_neurons": 75
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 1253,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 167,
+              "active_neurons": 26,
+              "active_fraction": 0.140541,
+              "mean_rate_hz": 3.6108,
+              "spike_share": 0.13328
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 134,
+              "active_neurons": 26,
+              "active_fraction": 0.139785,
+              "mean_rate_hz": 2.8817,
+              "spike_share": 0.106943
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 74,
+              "active_neurons": 12,
+              "active_fraction": 0.6,
+              "mean_rate_hz": 14.8,
+              "spike_share": 0.059058
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 456,
+            "active_neurons": 75,
+            "active_fraction": 0.093168,
+            "mean_rate_hz": 2.2658,
+            "spike_share": 0.363927
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 81,
+            "active_neurons": 11,
+            "active_fraction": 0.02657,
+            "mean_rate_hz": 0.7826,
+            "spike_share": 0.064645
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 1253,
+            "active_neurons": 155,
+            "active_fraction": 0.000899,
+            "mean_rate_hz": 0.0291,
+            "spike_share": 1.0
+          }
+        }
+      }
+    ],
+    "intensity": [
+      {
+        "variant": "current_100pA",
+        "current_pa": 100.0,
+        "spike_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "decision_hash": "9fb79a2f391f295747ed6b04d10af10f0d903d989922250f86ca192a96070453",
+        "decoded_states": {
+          "NEUTRAL": 5
+        },
+        "neutral_windows": 5,
+        "max_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "max_raw_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "activity": {
+          "n_spikes": 0,
+          "active_neurons": 0,
+          "stimulated_spikes": 0,
+          "non_stimulated_spikes": 0,
+          "non_stimulated_active_neurons": 0,
+          "motor_spikes": 0,
+          "motor_active_neurons": 0
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 0,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          }
+        }
+      },
+      {
+        "variant": "current_600pA",
+        "current_pa": 600.0,
+        "spike_hash": "4e62060e434eae2b6df82345917fff94af55aa40894609525cbdf2f70581713f",
+        "decision_hash": "8b90090b7da7ece6edfd41fd039dd91de69921fc653d0c46a24b081b1635e8c5",
+        "decoded_states": {
+          "JUMP": 5
+        },
+        "neutral_windows": 0,
+        "max_scores": {
+          "LEFT": 0.291892,
+          "RIGHT": 0.333333,
+          "JUMP": 0.9
+        },
+        "max_raw_scores": {
+          "LEFT": 0.291892,
+          "RIGHT": 0.333333,
+          "JUMP": 0.9
+        },
+        "activity": {
+          "n_spikes": 3493,
+          "active_neurons": 289,
+          "stimulated_spikes": 1474,
+          "non_stimulated_spikes": 2019,
+          "non_stimulated_active_neurons": 225,
+          "motor_spikes": 1645,
+          "motor_active_neurons": 169
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 3493,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 560,
+              "active_neurons": 56,
+              "active_fraction": 0.302703,
+              "mean_rate_hz": 12.1081,
+              "spike_share": 0.160321
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 563,
+              "active_neurons": 68,
+              "active_fraction": 0.365591,
+              "mean_rate_hz": 12.1075,
+              "spike_share": 0.16118
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 222,
+              "active_neurons": 18,
+              "active_fraction": 0.9,
+              "mean_rate_hz": 44.4,
+              "spike_share": 0.063556
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 1645,
+            "active_neurons": 169,
+            "active_fraction": 0.209938,
+            "mean_rate_hz": 8.1739,
+            "spike_share": 0.470942
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 300,
+            "active_neurons": 27,
+            "active_fraction": 0.065217,
+            "mean_rate_hz": 2.8986,
+            "spike_share": 0.085886
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 3493,
+            "active_neurons": 289,
+            "active_fraction": 0.001676,
+            "mean_rate_hz": 0.081,
+            "spike_share": 1.0
+          }
+        }
+      }
+    ],
+    "weight_transform": [
+      {
+        "variant": "linear_capped",
+        "weight_policy": {
+          "transform": "linear",
+          "exponent": 1.0,
+          "scale_pa": 0.5,
+          "cap_pa": 300.0,
+          "weight_source": "integer synapse count (`count`); `norm` is never used",
+          "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+        },
+        "spike_hash": "ee6c0bfd3e77c333c10c3e074d9e263cbcbd3ec3ffd08d042702589213774b96",
+        "decision_hash": "d04c519004006dceee0b2f569ec9cfe644fcb46e4ff866f860753003e36fd445",
+        "decoded_states": {
+          "NEUTRAL": 5
+        },
+        "neutral_windows": 5,
+        "max_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "max_raw_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "activity": {
+          "n_spikes": 723,
+          "active_neurons": 66,
+          "stimulated_spikes": 718,
+          "non_stimulated_spikes": 5,
+          "non_stimulated_active_neurons": 2,
+          "motor_spikes": 5,
+          "motor_active_neurons": 2
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 723,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 3,
+              "active_neurons": 1,
+              "active_fraction": 0.005405,
+              "mean_rate_hz": 0.0649,
+              "spike_share": 0.004149
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 2,
+              "active_neurons": 1,
+              "active_fraction": 0.005376,
+              "mean_rate_hz": 0.043,
+              "spike_share": 0.002766
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 5,
+            "active_neurons": 2,
+            "active_fraction": 0.002484,
+            "mean_rate_hz": 0.0248,
+            "spike_share": 0.006916
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 723,
+            "active_neurons": 66,
+            "active_fraction": 0.000383,
+            "mean_rate_hz": 0.0168,
+            "spike_share": 1.0
+          }
+        }
+      },
+      {
+        "variant": "log1p",
+        "weight_policy": {
+          "transform": "log1p",
+          "exponent": 1.0,
+          "scale_pa": 10.0,
+          "cap_pa": null,
+          "weight_source": "integer synapse count (`count`); `norm` is never used",
+          "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+        },
+        "spike_hash": "7330bc8564d385eaac211f85538ab6f3b502e2ea3d0c2f282d30de515c71f0e8",
+        "decision_hash": "9fb79a2f391f295747ed6b04d10af10f0d903d989922250f86ca192a96070453",
+        "decoded_states": {
+          "NEUTRAL": 5
+        },
+        "neutral_windows": 5,
+        "max_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "max_raw_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "activity": {
+          "n_spikes": 755,
+          "active_neurons": 64,
+          "stimulated_spikes": 755,
+          "non_stimulated_spikes": 0,
+          "non_stimulated_active_neurons": 0,
+          "motor_spikes": 0,
+          "motor_active_neurons": 0
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 755,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 755,
+            "active_neurons": 64,
+            "active_fraction": 0.000371,
+            "mean_rate_hz": 0.0175,
+            "spike_share": 1.0
+          }
+        }
+      },
+      {
+        "variant": "power_half",
+        "weight_policy": {
+          "transform": "power",
+          "exponent": 0.5,
+          "scale_pa": 5.0,
+          "cap_pa": 300.0,
+          "weight_source": "integer synapse count (`count`); `norm` is never used",
+          "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+        },
+        "spike_hash": "7ebe71675b60c85817dad39a2cd2d9719fc828550a578d1332369de32afe4cd1",
+        "decision_hash": "9fb79a2f391f295747ed6b04d10af10f0d903d989922250f86ca192a96070453",
+        "decoded_states": {
+          "NEUTRAL": 5
+        },
+        "neutral_windows": 5,
+        "max_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "max_raw_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "activity": {
+          "n_spikes": 740,
+          "active_neurons": 64,
+          "stimulated_spikes": 740,
+          "non_stimulated_spikes": 0,
+          "non_stimulated_active_neurons": 0,
+          "motor_spikes": 0,
+          "motor_active_neurons": 0
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 740,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 740,
+            "active_neurons": 64,
+            "active_fraction": 0.000371,
+            "mean_rate_hz": 0.0172,
+            "spike_share": 1.0
+          }
+        }
+      },
+      {
+        "variant": "power_1",
+        "weight_policy": {
+          "transform": "power",
+          "exponent": 1.0,
+          "scale_pa": 0.5,
+          "cap_pa": 300.0,
+          "weight_source": "integer synapse count (`count`); `norm` is never used",
+          "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+        },
+        "spike_hash": "ee6c0bfd3e77c333c10c3e074d9e263cbcbd3ec3ffd08d042702589213774b96",
+        "decision_hash": "d04c519004006dceee0b2f569ec9cfe644fcb46e4ff866f860753003e36fd445",
+        "decoded_states": {
+          "NEUTRAL": 5
+        },
+        "neutral_windows": 5,
+        "max_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "max_raw_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "activity": {
+          "n_spikes": 723,
+          "active_neurons": 66,
+          "stimulated_spikes": 718,
+          "non_stimulated_spikes": 5,
+          "non_stimulated_active_neurons": 2,
+          "motor_spikes": 5,
+          "motor_active_neurons": 2
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 723,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 3,
+              "active_neurons": 1,
+              "active_fraction": 0.005405,
+              "mean_rate_hz": 0.0649,
+              "spike_share": 0.004149
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 2,
+              "active_neurons": 1,
+              "active_fraction": 0.005376,
+              "mean_rate_hz": 0.043,
+              "spike_share": 0.002766
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 5,
+            "active_neurons": 2,
+            "active_fraction": 0.002484,
+            "mean_rate_hz": 0.0248,
+            "spike_share": 0.006916
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 723,
+            "active_neurons": 66,
+            "active_fraction": 0.000383,
+            "mean_rate_hz": 0.0168,
+            "spike_share": 1.0
+          }
+        }
+      },
+      {
+        "variant": "uncapped_power",
+        "weight_policy": {
+          "transform": "power",
+          "exponent": 0.75,
+          "scale_pa": 5.0,
+          "cap_pa": null,
+          "weight_source": "integer synapse count (`count`); `norm` is never used",
+          "interpretation": "weights are structural synapse counts raised to a monotone transform and scaled to pA; they are not conductances"
+        },
+        "spike_hash": "33459eb05629141e2f22df578c80931c9d5e3fb553c1279ffba0f3c633b79558",
+        "decision_hash": "146c45c879c62252ee2bc8a3f041929eefda426874df8aca24ce20e5bbd69d43",
+        "decoded_states": {
+          "JUMP": 4,
+          "NEUTRAL": 1
+        },
+        "neutral_windows": 1,
+        "max_scores": {
+          "LEFT": 0.135135,
+          "RIGHT": 0.145161,
+          "JUMP": 0.6
+        },
+        "max_raw_scores": {
+          "LEFT": 0.135135,
+          "RIGHT": 0.145161,
+          "JUMP": 0.6
+        },
+        "activity": {
+          "n_spikes": 1281,
+          "active_neurons": 162,
+          "stimulated_spikes": 728,
+          "non_stimulated_spikes": 553,
+          "non_stimulated_active_neurons": 98,
+          "motor_spikes": 481,
+          "motor_active_neurons": 80
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 1281,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 175,
+              "active_neurons": 26,
+              "active_fraction": 0.140541,
+              "mean_rate_hz": 3.7838,
+              "spike_share": 0.136612
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 146,
+              "active_neurons": 31,
+              "active_fraction": 0.166667,
+              "mean_rate_hz": 3.1398,
+              "spike_share": 0.113973
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 78,
+              "active_neurons": 12,
+              "active_fraction": 0.6,
+              "mean_rate_hz": 15.6,
+              "spike_share": 0.06089
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 481,
+            "active_neurons": 80,
+            "active_fraction": 0.099379,
+            "mean_rate_hz": 2.3901,
+            "spike_share": 0.375488
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 82,
+            "active_neurons": 11,
+            "active_fraction": 0.02657,
+            "mean_rate_hz": 0.7923,
+            "spike_share": 0.064012
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 1281,
+            "active_neurons": 162,
+            "active_fraction": 0.000939,
+            "mean_rate_hz": 0.0297,
+            "spike_share": 1.0
+          }
+        }
+      }
+    ],
+    "unknown_edge_policy": [
+      {
+        "variant": "unknown_edges_zero",
+        "unknown_edge_policy": "zero",
+        "identical_to_primary": true,
+        "spike_hash": "397e888ffb7f001e0509bdcfbc9121c09bafb1e2d355b555b298b5c2fed10a95",
+        "decision_hash": "4380fc38bda54359effdd93f9f4f89aee91640857f459b711dcca9b35a865799",
+        "decoded_states": {
+          "JUMP": 4,
+          "NEUTRAL": 1
+        },
+        "neutral_windows": 1,
+        "max_scores": {
+          "LEFT": 0.135135,
+          "RIGHT": 0.150538,
+          "JUMP": 0.6
+        },
+        "max_raw_scores": {
+          "LEFT": 0.135135,
+          "RIGHT": 0.150538,
+          "JUMP": 0.6
+        },
+        "activity": {
+          "n_spikes": 1296,
+          "active_neurons": 164,
+          "stimulated_spikes": 740,
+          "non_stimulated_spikes": 556,
+          "non_stimulated_active_neurons": 100,
+          "motor_spikes": 492,
+          "motor_active_neurons": 82
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 1296,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 176,
+              "active_neurons": 27,
+              "active_fraction": 0.145946,
+              "mean_rate_hz": 3.8054,
+              "spike_share": 0.135802
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 155,
+              "active_neurons": 32,
+              "active_fraction": 0.172043,
+              "mean_rate_hz": 3.3333,
+              "spike_share": 0.119599
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 79,
+              "active_neurons": 12,
+              "active_fraction": 0.6,
+              "mean_rate_hz": 15.8,
+              "spike_share": 0.060957
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 492,
+            "active_neurons": 82,
+            "active_fraction": 0.101863,
+            "mean_rate_hz": 2.4447,
+            "spike_share": 0.37963
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 82,
+            "active_neurons": 11,
+            "active_fraction": 0.02657,
+            "mean_rate_hz": 0.7923,
+            "spike_share": 0.063272
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 1296,
+            "active_neurons": 164,
+            "active_fraction": 0.000951,
+            "mean_rate_hz": 0.0301,
+            "spike_share": 1.0
+          }
+        }
+      }
+    ],
+    "predicted_fallback": [
+      {
+        "variant": "predicted_fallback_on",
+        "declared_policy": "verified-then-predicted",
+        "spike_hash": "fcf4ff91f00b51f9e1a61b95bb29c2257b99ba140e920a29a5e4c6820484c221",
+        "decision_hash": "970fe8792e9169fd3e815c37b10d94365ef5d88532f5392489a2b485e594b2cf",
+        "decoded_states": {
+          "JUMP": 4,
+          "NEUTRAL": 1
+        },
+        "neutral_windows": 1,
+        "max_scores": {
+          "LEFT": 0.140541,
+          "RIGHT": 0.145161,
+          "JUMP": 0.6
+        },
+        "max_raw_scores": {
+          "LEFT": 0.140541,
+          "RIGHT": 0.145161,
+          "JUMP": 0.6
+        },
+        "activity": {
+          "n_spikes": 1271,
+          "active_neurons": 165,
+          "stimulated_spikes": 737,
+          "non_stimulated_spikes": 534,
+          "non_stimulated_active_neurons": 101,
+          "motor_spikes": 471,
+          "motor_active_neurons": 83
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 1271,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 168,
+              "active_neurons": 28,
+              "active_fraction": 0.151351,
+              "mean_rate_hz": 3.6324,
+              "spike_share": 0.132179
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 152,
+              "active_neurons": 32,
+              "active_fraction": 0.172043,
+              "mean_rate_hz": 3.2688,
+              "spike_share": 0.119591
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 76,
+              "active_neurons": 12,
+              "active_fraction": 0.6,
+              "mean_rate_hz": 15.2,
+              "spike_share": 0.059795
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 471,
+            "active_neurons": 83,
+            "active_fraction": 0.103106,
+            "mean_rate_hz": 2.3404,
+            "spike_share": 0.370574
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 75,
+            "active_neurons": 11,
+            "active_fraction": 0.02657,
+            "mean_rate_hz": 0.7246,
+            "spike_share": 0.059009
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 1271,
+            "active_neurons": 165,
+            "active_fraction": 0.000957,
+            "mean_rate_hz": 0.0295,
+            "spike_share": 1.0
+          }
+        }
+      }
+    ],
+    "seed": [
+      {
+        "variant": "seed_20261108",
+        "seed": 20261108,
+        "note": "same run as condition F primary",
+        "spike_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "decision_hash": "9257c61cd7ac0ce8680bd48fbfc378fc489d0f74f0b61d7f0420b6a6f7c92b80",
+        "decoded_states": {
+          "NEUTRAL": 5
+        },
+        "neutral_windows": 5,
+        "max_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "max_raw_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "activity": {
+          "n_spikes": 0,
+          "active_neurons": 0,
+          "stimulated_spikes": 0,
+          "non_stimulated_spikes": 0,
+          "non_stimulated_active_neurons": 0,
+          "motor_spikes": 0,
+          "motor_active_neurons": 0
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 0,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          }
+        }
+      },
+      {
+        "variant": "seed_1",
+        "seed": 1,
+        "spike_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "decision_hash": "4fd98be674c1ab48d9a2bd4b67b4e4fb21517c0f8691b0f974acb6e1b4d078e6",
+        "decoded_states": {
+          "NEUTRAL": 5
+        },
+        "neutral_windows": 5,
+        "max_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "max_raw_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "activity": {
+          "n_spikes": 0,
+          "active_neurons": 0,
+          "stimulated_spikes": 0,
+          "non_stimulated_spikes": 0,
+          "non_stimulated_active_neurons": 0,
+          "motor_spikes": 0,
+          "motor_active_neurons": 0
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 0,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          }
+        }
+      },
+      {
+        "variant": "seed_2",
+        "seed": 2,
+        "spike_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "decision_hash": "45d410060cccc4292683ecd85811346e8ff0d6e23335d4a4cbc324dccfe003d6",
+        "decoded_states": {
+          "NEUTRAL": 5
+        },
+        "neutral_windows": 5,
+        "max_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "max_raw_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "activity": {
+          "n_spikes": 0,
+          "active_neurons": 0,
+          "stimulated_spikes": 0,
+          "non_stimulated_spikes": 0,
+          "non_stimulated_active_neurons": 0,
+          "motor_spikes": 0,
+          "motor_active_neurons": 0
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 0,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 0,
+              "active_neurons": 0,
+              "active_fraction": 0.0,
+              "mean_rate_hz": 0.0,
+              "spike_share": 0.0
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "spike_share": 0.0
+          }
+        }
+      }
+    ],
+    "decoder_window": [
+      {
+        "variant": "window_25ms",
+        "decoder_config": {
+          "window_ms": 25.0,
+          "step_ms": 25.0,
+          "activation_threshold": 0.2,
+          "release_threshold": 0.1,
+          "min_active_neurons": 3,
+          "min_spikes": 5,
+          "tie_tolerance": 1e-09,
+          "priority": [
+            "LEFT",
+            "RIGHT",
+            "JUMP"
+          ],
+          "arbitration": "all_above_threshold",
+          "smoothing": "none",
+          "smoothing_windows": 3,
+          "hysteresis": false
+        },
+        "spike_hash": "397e888ffb7f001e0509bdcfbc9121c09bafb1e2d355b555b298b5c2fed10a95",
+        "decision_hash": "0a97a5a237b1e1e86479ba51ce64d5fb6c4c0bc1cfc8423bbcb33712d413f09e",
+        "decoded_states": {
+          "JUMP": 7,
+          "NEUTRAL": 3
+        },
+        "neutral_windows": 3,
+        "max_scores": {
+          "LEFT": 0.12973,
+          "RIGHT": 0.123656,
+          "JUMP": 0.55
+        },
+        "max_raw_scores": {
+          "LEFT": 0.12973,
+          "RIGHT": 0.123656,
+          "JUMP": 0.55
+        },
+        "activity": {
+          "n_spikes": 1296,
+          "active_neurons": 164,
+          "stimulated_spikes": 740,
+          "non_stimulated_spikes": 556,
+          "non_stimulated_active_neurons": 100,
+          "motor_spikes": 492,
+          "motor_active_neurons": 82
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 1296,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 176,
+              "active_neurons": 27,
+              "active_fraction": 0.145946,
+              "mean_rate_hz": 3.8054,
+              "spike_share": 0.135802
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 155,
+              "active_neurons": 32,
+              "active_fraction": 0.172043,
+              "mean_rate_hz": 3.3333,
+              "spike_share": 0.119599
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 79,
+              "active_neurons": 12,
+              "active_fraction": 0.6,
+              "mean_rate_hz": 15.8,
+              "spike_share": 0.060957
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 492,
+            "active_neurons": 82,
+            "active_fraction": 0.101863,
+            "mean_rate_hz": 2.4447,
+            "spike_share": 0.37963
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 82,
+            "active_neurons": 11,
+            "active_fraction": 0.02657,
+            "mean_rate_hz": 0.7923,
+            "spike_share": 0.063272
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 1296,
+            "active_neurons": 164,
+            "active_fraction": 0.000951,
+            "mean_rate_hz": 0.0301,
+            "spike_share": 1.0
+          }
+        }
+      },
+      {
+        "variant": "window_100ms",
+        "decoder_config": {
+          "window_ms": 100.0,
+          "step_ms": 100.0,
+          "activation_threshold": 0.2,
+          "release_threshold": 0.1,
+          "min_active_neurons": 3,
+          "min_spikes": 5,
+          "tie_tolerance": 1e-09,
+          "priority": [
+            "LEFT",
+            "RIGHT",
+            "JUMP"
+          ],
+          "arbitration": "all_above_threshold",
+          "smoothing": "none",
+          "smoothing_windows": 3,
+          "hysteresis": false
+        },
+        "spike_hash": "397e888ffb7f001e0509bdcfbc9121c09bafb1e2d355b555b298b5c2fed10a95",
+        "decision_hash": "5ab6794ae9add3e0d48040fc5ad2b6e73466a146b48e313b85b86d55fcbeb2c6",
+        "decoded_states": {
+          "JUMP": 2,
+          "NEUTRAL": 1
+        },
+        "neutral_windows": 1,
+        "max_scores": {
+          "LEFT": 0.145946,
+          "RIGHT": 0.166667,
+          "JUMP": 0.6
+        },
+        "max_raw_scores": {
+          "LEFT": 0.145946,
+          "RIGHT": 0.166667,
+          "JUMP": 0.6
+        },
+        "activity": {
+          "n_spikes": 1296,
+          "active_neurons": 164,
+          "stimulated_spikes": 740,
+          "non_stimulated_spikes": 556,
+          "non_stimulated_active_neurons": 100,
+          "motor_spikes": 492,
+          "motor_active_neurons": 82
+        },
+        "population_activity": {
+          "window_start_ms": 50.0,
+          "window_end_ms": 300.0,
+          "n_spikes": 1296,
+          "populations": {
+            "LEFT": {
+              "size": 185,
+              "spikes": 176,
+              "active_neurons": 27,
+              "active_fraction": 0.145946,
+              "mean_rate_hz": 3.8054,
+              "spike_share": 0.135802
+            },
+            "RIGHT": {
+              "size": 186,
+              "spikes": 155,
+              "active_neurons": 32,
+              "active_fraction": 0.172043,
+              "mean_rate_hz": 3.3333,
+              "spike_share": 0.119599
+            },
+            "JUMP": {
+              "size": 20,
+              "spikes": 79,
+              "active_neurons": 12,
+              "active_fraction": 0.6,
+              "mean_rate_hz": 15.8,
+              "spike_share": 0.060957
+            }
+          },
+          "motor": {
+            "size": 805,
+            "spikes": 492,
+            "active_neurons": 82,
+            "active_fraction": 0.101863,
+            "mean_rate_hz": 2.4447,
+            "spike_share": 0.37963
+          },
+          "unassigned_motor": {
+            "size": 414,
+            "spikes": 82,
+            "active_neurons": 11,
+            "active_fraction": 0.02657,
+            "mean_rate_hz": 0.7923,
+            "spike_share": 0.063272
+          },
+          "network": {
+            "size": 172433,
+            "spikes": 1296,
+            "active_neurons": 164,
+            "active_fraction": 0.000951,
+            "mean_rate_hz": 0.0301,
+            "spike_share": 1.0
+          }
+        }
+      }
+    ]
+  },
+  "sensitivity_summary": {
+    "seed": {
+      "n_spikes": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "min": 0,
+        "max": 0,
+        "range": 0
+      },
+      "active_neurons": {
+        "values": [
+          0,
+          0,
+          0
+        ],
+        "min": 0,
+        "max": 0,
+        "range": 0
+      },
+      "max_scores": {
+        "LEFT": {
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "RIGHT": {
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "JUMP": {
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "decoded_states": [
+        {
+          "NEUTRAL": 5
+        },
+        {
+          "NEUTRAL": 5
+        },
+        {
+          "NEUTRAL": 5
+        }
+      ]
+    },
+    "unknown_edge_policy_equivalence": true,
+    "threshold_variants": 2,
+    "intensity_variants": 2,
+    "weight_transform_variants": 5,
+    "decoder_window_variants": 2
+  },
+  "all_conditions_deterministic": true,
+  "verdict": "PASS",
+  "limitations": [
+    "Only verified-transmitter neurons can carry current under the primary policy; most BANC neurons and edges are excluded.",
+    "Candidate groups are 64 neurons selected by structural ranking, not by any physiological criterion.",
+    "The primary weight transform, cap and scale are declared calibrations, not measured conductances.",
+    "One graph threshold (5) is primary; threshold 1 and 10 are sensitivity variants only.",
+    "Conditions A-E have no stochastic term, so their seed sensitivity is trivially exact; only the noise-only control F varies with seed."
+  ],
+  "runtime_s": 5795.532
+}

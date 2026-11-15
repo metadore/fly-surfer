@@ -1,10 +1,14 @@
 # Phase 3C — integrated temporal sensory processing (proposed design)
 
-Status: **proposed design, definition proposed by this document. Not
-implemented.** No prior Phase 3C specification exists in this repository, in
+Status: **partially implemented; the definition remains proposed by this
+document.** No prior Phase 3C specification exists in this repository, in
 `docs/PROJECT_VISION.md`, in the root README, or in the external reference
-repositories. The name, scope and acceptance criteria below are therefore a
-proposal for review, not an established project definition.
+repositories. The name, scope and acceptance criteria below therefore remain a
+proposal for review, not an established project definition. Implemented:
+tracking, causal temporal features, lifecycle events,
+`TemporalActivationScheduler`, 50-sequence synthetic calibration and
+scripted/real-frame replays. Not executed: the 3C.1–3C.9 experiments below.
+See Section 5.1 for the representation status.
 
 ## 1. Definition status
 
@@ -113,7 +117,21 @@ defined from recorded fields, not inferred from wall-clock timing.
 
 ### 5.1 Candidate representations
 
-All are **proposed**; none is implemented.
+The representations below remain the proposed design space. Current
+implementation status:
+
+| ID | Status |
+|---|---|
+| T1 | Implemented — `SensoryInputScheduler(transition_ms=...)` is the Phase 3A control |
+| T2 | Not implemented |
+| T3 | Not implemented |
+| T4 | Not implemented |
+| T5 | Partially implemented — `TemporalActivationScheduler` adds lifecycle event pulses with gain and linear decay |
+
+`TemporalActivationScheduler` also provides sample-and-hold across frames
+(version `phase_3c_temporal_scheduler_v1`, `max_hold_ms` 250, `pulse_gain`
+0.5, `pulse_decay_ms` 150). It does **not** implement T2 low-pass smoothing or
+T3 ON/OFF sub-populations, and the 3C.8 T1/T2/T3 ablation has not been run.
 
 | ID | Representation | How it maps onto current code | Extra mapping neurons | Cost |
 |---|---|---|---|---|
@@ -127,16 +145,20 @@ T1 is the Phase 3A behaviour and remains the control. T2 and T3 are the
 proposed first implementation because they add temporal sensitivity without
 requiring a new representation of the scene. T4 is a later option if T2/T3
 fail to separate sequences, and it needs a capacity check on the mapping pools.
-T5 is only a convenience if T3 populations exist.
+T5 in the proposal reuses T3 populations; the implemented scheduler instead
+adds lifecycle-event pulses through the existing feature encoders, so it is
+only a partial T5.
 
-### 5.2 Proposed encoder interface
+### 5.2 Temporal encoder interface
 
 ```
 TemporalEncoder.step(timestamp_ms, GameState) -> ActivationFrame
 ActivationFrame: feature -> per-neuron activation in [0, 1], plus events
 ```
 
-Proposed module: `sensory/temporal_encoder.py`. It must:
+Implemented module: `perception/temporal.py` (the temporal encoder lives in
+the perception layer so it can consume tracker output directly). The interface
+requirements below remain the specification:
 
 - be causal: output at time `t` may use only frames with timestamp ≤ `t`;
 - reject duplicate or decreasing timestamps;
@@ -150,7 +172,7 @@ Proposed module: `sensory/temporal_encoder.py`. It must:
 ### 5.3 Drive delivery without changing the simulator
 
 The existing `SensoryInputScheduler.apply(step, time_ms, current_pa)` is the
-integration point. Two delivery options are proposed, in order:
+integration point. Two delivery options were proposed:
 
 1. **Timeline expansion (T1/T2).** The temporal encoder emits a list of
    `(time_ms, GameState)` segments. T2 cannot be expressed this way exactly,
@@ -163,6 +185,10 @@ integration point. Two delivery options are proposed, in order:
    indices. It contains **no** neuron, synapse or time-step logic; it only adds
    currents to the provided array. The simulator is unchanged and remains
    unaware of the temporal layer.
+
+Option 2 is implemented as
+`sensory/temporal_scheduler.py::TemporalActivationScheduler`; option 1 remains
+the Phase 3A `SensoryInputScheduler`.
 
 Both options must satisfy:
 
@@ -196,8 +222,17 @@ No interface change to `BrainSimulator` is permitted in 3C.
 
 All experiments use synthetic timestamped sequences with known ground truth,
 the frozen connectome artifact, zero background current and zero noise, and the
-calibrated operating point from Phase 3A.5. Sequence length is 600 ms unless
-stated. The 3A.5 recommendation governs amplitude, tuning and population size.
+Phase 3A.5 amplitude and tuning settings. Sequence length is 600 ms unless
+stated.
+
+Only part of the 3A.5 selection is reproduced in the shipped configuration.
+The 200 pA per-neuron amplitude and `sigma_fraction` 0.20 follow the 3A.5
+recommendation, but 3A.5 calibrated an `obstacle_distance` population of
+**four** neurons, whereas `configs/sensory_config.yaml` and the Phase 3B/3C
+runs use **twelve**. Mapping indices, threshold geometry and recruitment
+therefore differ, and these runs are **not** at the calibrated four-neuron
+operating point. See `docs/PHASE_3_SENSORY_ENCODING.md`, "Operating-point
+mismatch (4 versus 12 neurons)".
 
 ### 6.1 Conditions
 
@@ -219,6 +254,11 @@ Proposed total: about 57 conditions, with the seed-sensitivity subset
 A full factorial across every factor is not proposed. Each experiment varies
 one factor against a fixed control, and all runs share the same mapping unless
 the factor is the mapping seed.
+
+**Execution status (2026-11-13): none of the 3C.1–3C.9 conditions has been
+run.** The 50-sequence synthetic calibration and the scripted/real-frame
+replays are separate exercises and do not satisfy these conditions. No
+temporal-separability conclusion may be drawn from them.
 
 ### 6.2 Protocols
 
@@ -351,14 +391,37 @@ assumed.
 
 ## 11. Deliverables
 
+**Implemented (2026-11-06/07).**
+
 - This design document.
-- A proposed `configs/temporal_sensory.yaml` and sequence-file schema.
-- `sensory/temporal_encoder.py`, an activation scheduler if approved, and unit
-  tests, if the milestone is implemented.
-- `experiments/phase_3c/` runner, condition JSON, plots and a generated report.
-- A documented decision on temporal separability, including negative results.
-- No changes to the root README, datasets, connectome artifact, Phase 3A
-  results or external references.
+- `perception/temporal.py` — the causal temporal encoder and lifecycle events
+  (it lives in the perception layer so it can consume tracker output directly).
+- `sensory/temporal_scheduler.py` — `TemporalActivationScheduler` and its
+  `TemporalSchedulerConfig` (version `phase_3c_temporal_scheduler_v1`,
+  `max_hold_ms` 250, `pulse_gain` 0.5, `pulse_decay_ms` 150).
+- `experiments/phase_3c/integration_check.py` and
+  `experiments/phase_3c/temporal_calibration.py`, with
+  `experiments/phase_3c/results/integration.json` and
+  `results/temporal_calibration.json`.
+- `experiments/phase_3b/real_sequence_replay.py` and
+  `experiments/phase_3b/results/phase_3b2c_real_sequence_replay.json` — the
+  100-frame engineering replay added 2026-11-07.
+- Unit tests in `tests/test_temporal.py`, `tests/test_temporal_calibration.py`,
+  `tests/test_temporal_scheduler.py` and `tests/test_tracking.py`.
+
+**Not delivered.** The 3C.1–3C.9 condition suite, a `configs/temporal_sensory.yaml`
+experiment matrix and the final temporal-separability decision. No
+`configs/temporal_sensory.yaml` file exists: scheduler behaviour is configured
+by `TemporalSchedulerConfig` defaults plus `configs/sensory_config.yaml`.
+
+**Superseded proposal.** The original deliverables list named a proposed
+`configs/temporal_sensory.yaml` and `sensory/temporal_encoder.py`. Both are
+historical: the encoder is `perception/temporal.py`, the scheduler is
+`sensory/temporal_scheduler.py`, and no separate temporal YAML was created.
+This paragraph is retained so the earlier proposal is not silently rewritten.
+
+No changes were made to the root README, datasets, connectome artifact, Phase 3A
+results or external references.
 
 ## 12. Open questions for review
 

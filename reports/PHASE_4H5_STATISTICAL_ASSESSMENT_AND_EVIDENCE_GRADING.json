@@ -1,0 +1,3787 @@
+{
+ "phase": "4H.5",
+ "title": "Statistical assessment and evidence grading",
+ "generated_at_utc": "2026-11-08T17:34:54+00:00",
+ "artifact_audit": {
+  "4H.1_result": {
+   "path": "experiments/results/phase_4h/control_draws.json",
+   "available": true,
+   "bytes": 4752502
+  },
+  "4H.2_result": {
+   "path": "experiments/results/phase_4h/population_sensitivity.json",
+   "available": true,
+   "bytes": 3043241
+  },
+  "4H.3_result": {
+   "path": "experiments/results/phase_4h/weight_sensitivity.json",
+   "available": true,
+   "bytes": 1624140
+  },
+  "4H.4_result": {
+   "path": "experiments/results/phase_4h/sensory_roundtrip.json",
+   "available": true,
+   "bytes": 2908139
+  },
+  "4H.4_analysis": {
+   "path": "reports/PHASE_4H4_SENSORY_TO_BANC_ROUND_TRIP.json",
+   "available": true,
+   "bytes": 931852
+  },
+  "4H.1_report": {
+   "path": "reports/PHASE_4H1_RANDOM_CONTROL_VALIDATION.md",
+   "available": true,
+   "bytes": 26559
+  },
+  "4H.2_report": {
+   "path": "reports/PHASE_4H2_POPULATION_SENSITIVITY.md",
+   "available": true,
+   "bytes": 22115
+  },
+  "4H.3_report": {
+   "path": "reports/PHASE_4H3_WEIGHT_SENSITIVITY.md",
+   "available": true,
+   "bytes": 20666
+  },
+  "4H.4_report": {
+   "path": "reports/PHASE_4H4_SENSORY_TO_BANC_ROUND_TRIP.md",
+   "available": true,
+   "bytes": 30226
+  },
+  "protocol": {
+   "path": "reports/PHASE_4H_EXPERIMENTAL_PROTOCOL.md",
+   "available": true,
+   "bytes": 19711
+  }
+ },
+ "grade_scale": {
+  "note": "E0-E4 are internal computational evidence grades defined for this project; they are not an established neuroscience standard. The Phase 4H protocol used a different E0-E4 wording, so the definitions below are the ones applied in this report.",
+  "definitions": {
+   "E0": "Infrastructure: data integrity, graph construction, deterministic execution and software validation.",
+   "E1": "Computational activity: the model produces reproducible neural activity under stated assumptions.",
+   "E2": "Population-level sensitivity: activity changes reproducibly with controlled inputs or perturbations.",
+   "E3": "Functional pathway evidence: input-dependent activity propagates through relevant intermediate populations and reaches the intended output population.",
+   "E4": "Validated behavioural evidence: controlled learning and behavioural performance, supported by appropriate independent validation."
+  }
+ },
+ "audit": {
+  "4H.1": {
+   "available": true,
+   "generated_at_utc": "2026-11-08T12:24:27+00:00",
+   "n_draws": 500,
+   "n_failures": 0,
+   "families": [
+    "A_vnc_intrinsic_random",
+    "B_motor_projecting_random",
+    "C_all_verified_excitatory_random",
+    "D_rank_stratum_shuffled",
+    "E_connectivity_annotation_matched"
+   ],
+   "reference_motor_spikes": 492,
+   "reference_jump_windows": 4,
+   "p_values_p1": {
+    "A_vnc_intrinsic_random": 0.00990099,
+    "B_motor_projecting_random": 0.00990099,
+    "C_all_verified_excitatory_random": 0.00990099,
+    "D_rank_stratum_shuffled": 0.00990099,
+    "E_connectivity_annotation_matched": 0.00990099
+   },
+   "p_values_p2": {
+    "A_vnc_intrinsic_random": 0.00990099,
+    "B_motor_projecting_random": 0.00990099,
+    "C_all_verified_excitatory_random": 0.00990099,
+    "D_rank_stratum_shuffled": 0.00990099,
+    "E_connectivity_annotation_matched": 0.00990099
+   },
+   "holm_rejected_p1": {
+    "A_vnc_intrinsic_random": true,
+    "B_motor_projecting_random": true,
+    "C_all_verified_excitatory_random": true,
+    "D_rank_stratum_shuffled": true,
+    "E_connectivity_annotation_matched": true
+   },
+   "holm_rejected_p2": {
+    "A_vnc_intrinsic_random": true,
+    "B_motor_projecting_random": true,
+    "C_all_verified_excitatory_random": true,
+    "D_rank_stratum_shuffled": true,
+    "E_connectivity_annotation_matched": true
+   },
+   "any_confirmatory_difference": true,
+   "spike_hash_matches_phase_4g": true,
+   "integrity_pass": true,
+   "n_integrity_checks": 37,
+   "runtime": {
+    "wall_time_s": 1517.27,
+    "mean_draw_wall_time_s": 2.9971,
+    "max_retained_memory_mb": 109.1865,
+    "max_process_peak_wset_mb": 247.21,
+    "memory_note": "retained_arrays_mb is the simulator's retained array total; peak_wset_mb is the process peak working set"
+   },
+   "limitations": [
+    "The five families are not equally matched to C; family E is an approximation and the realised standardised differences are reported.",
+    "A deterministic simulator makes repeated identical candidate sets identical; replication comes from distinct candidate sets only.",
+    "A difference from these controls is not evidence of biological motor control; the motor response is a simulated decoder output.",
+    "Zero noise means no spontaneous activity; background/noise conditions are outside 4H.1.",
+    "Phase 4G condition C was selected on motor-synapse rank, so the reference lies at the extreme tail of families A-E by construction."
+   ]
+  },
+  "4H.2": {
+   "available": true,
+   "generated_at_utc": "2026-11-08T12:38:00+00:00",
+   "n_runs": 175,
+   "n_failures": 0,
+   "n_cells": 7,
+   "confirmatory": {
+    "comparison": "size 64 connectivity_ranked (the Phase 4G condition C candidate set) versus the 100 Phase 4H.1 family A draws",
+    "P1": {
+     "observed": 492,
+     "control_n": 100,
+     "control_max": 8,
+     "p_one_sided_greater": 0.00990099
+    },
+    "P2": {
+     "observed": 4,
+     "control_n": 100,
+     "control_max": 0,
+     "p_one_sided_greater": 0.00990099
+    },
+    "holm": {
+     "adjusted": {
+      "P1_motor_spikes": 0.01980198,
+      "P2_jump_windows": 0.01980198
+     },
+     "rejected": {
+      "P1_motor_spikes": true,
+      "P2_jump_windows": true
+     },
+     "alpha": 0.05,
+     "method": "Holm-Bonferroni"
+    },
+    "any_confirmatory_difference": true
+   },
+   "connectivity_size_curve": {
+    "8": {
+     "motor_spikes": 5.0,
+     "jump_windows": 0.0,
+     "total_spikes": 102.0,
+     "jump_detected_runs": 0
+    },
+    "16": {
+     "motor_spikes": 14.0,
+     "jump_windows": 0.0,
+     "total_spikes": 214.0,
+     "jump_detected_runs": 0
+    },
+    "32": {
+     "motor_spikes": 104.0,
+     "jump_windows": 0.0,
+     "total_spikes": 490.0,
+     "jump_detected_runs": 0
+    },
+    "48": {
+     "motor_spikes": 334.0,
+     "jump_windows": 3.0,
+     "total_spikes": 915.0,
+     "jump_detected_runs": 1
+    },
+    "64": {
+     "motor_spikes": 492.0,
+     "jump_windows": 4.0,
+     "total_spikes": 1296.0,
+     "jump_detected_runs": 1
+    },
+    "96": {
+     "motor_spikes": 863.0,
+     "jump_windows": 4.0,
+     "total_spikes": 2155.0,
+     "jump_detected_runs": 1
+    },
+    "128": {
+     "motor_spikes": 1126.0,
+     "jump_windows": 4.0,
+     "total_spikes": 2836.0,
+     "jump_detected_runs": 1
+    }
+   },
+   "integrity_pass": true,
+   "n_integrity_checks": 37,
+   "runtime": {
+    "assembly_wall_time_s": 4.141,
+    "sum_run_wall_time_s": 460.15,
+    "mean_run_wall_time_s": 2.6294,
+    "max_retained_memory_mb": 109.1865,
+    "estimated_steps_per_run": 600,
+    "execution_note": "the surface may be assembled from a resumed checkpoint; sum_run_wall_time_s is the summed duration of the 175 stored runs, while assembly_wall_time_s covers only this invocation"
+   },
+   "limitations": [
+    "Ranked rules are deterministic and run once, so they carry no sampling uncertainty; only random rules quantify variability.",
+    "Degree is a structural property of the threshold-5 graph; no biological meaning is assigned to in-, out- or combined degree.",
+    "The eligible pool is fixed by the Phase 4F verified-excitatory policy; unverified or inhibitory neurons are outside this surface.",
+    "The JUMP null model reuses motor spike counts from one run and tests pool size and identity, not biological recruitment.",
+    "A single pre-registered confirmatory comparison is made at size 64; the rest of the surface is exploratory and not corrected."
+   ]
+  },
+  "4H.3": {
+   "available": true,
+   "generated_at_utc": "2026-11-08T15:15:36+00:00",
+   "n_runs": 220,
+   "n_failures": 0,
+   "n_configs": 22,
+   "preregistration_sha256": "372ec71cd171431e4b7c4f1940eaf54dce9a19742c463373f1da39cdbece1994",
+   "preregistration_matches": true,
+   "config_summary": {
+    "D0_W0_S0": {
+     "weight": "W0",
+     "sign": "S0",
+     "drive": "D0",
+     "current_pa": 300.0,
+     "motor_spikes": 492.0,
+     "jump_windows": 4.0,
+     "total_spikes": 1296.0,
+     "silent": false,
+     "neutral_only": false,
+     "all_hashes_equal": true
+    },
+    "D0_W1_S0": {
+     "weight": "W1",
+     "sign": "S0",
+     "drive": "D0",
+     "current_pa": 300.0,
+     "motor_spikes": 5.0,
+     "jump_windows": 0.0,
+     "total_spikes": 723.0,
+     "silent": false,
+     "neutral_only": true,
+     "all_hashes_equal": true
+    },
+    "D0_W2_S0": {
+     "weight": "W2",
+     "sign": "S0",
+     "drive": "D0",
+     "current_pa": 300.0,
+     "motor_spikes": 0.0,
+     "jump_windows": 0.0,
+     "total_spikes": 755.0,
+     "silent": true,
+     "neutral_only": true,
+     "all_hashes_equal": true
+    },
+    "D0_W3_S0": {
+     "weight": "W3",
+     "sign": "S0",
+     "drive": "D0",
+     "current_pa": 300.0,
+     "motor_spikes": 0.0,
+     "jump_windows": 0.0,
+     "total_spikes": 740.0,
+     "silent": true,
+     "neutral_only": true,
+     "all_hashes_equal": true
+    },
+    "D0_W4_S0": {
+     "weight": "W4",
+     "sign": "S0",
+     "drive": "D0",
+     "current_pa": 300.0,
+     "motor_spikes": 5.0,
+     "jump_windows": 0.0,
+     "total_spikes": 723.0,
+     "silent": false,
+     "neutral_only": true,
+     "all_hashes_equal": true
+    },
+    "D0_W5_S0": {
+     "weight": "W5",
+     "sign": "S0",
+     "drive": "D0",
+     "current_pa": 300.0,
+     "motor_spikes": 481.0,
+     "jump_windows": 4.0,
+     "total_spikes": 1281.0,
+     "silent": false,
+     "neutral_only": false,
+     "all_hashes_equal": true
+    },
+    "D0_W6_S0": {
+     "weight": "W6",
+     "sign": "S0",
+     "drive": "D0",
+     "current_pa": 300.0,
+     "motor_spikes": 1295.0,
+     "jump_windows": 4.0,
+     "total_spikes": 2204.0,
+     "silent": false,
+     "neutral_only": false,
+     "all_hashes_equal": true
+    },
+    "D0_W7_S0": {
+     "weight": "W7",
+     "sign": "S0",
+     "drive": "D0",
+     "current_pa": 300.0,
+     "motor_spikes": 0.0,
+     "jump_windows": 0.0,
+     "total_spikes": 704.0,
+     "silent": true,
+     "neutral_only": true,
+     "all_hashes_equal": true
+    },
+    "D0_W1_S1": {
+     "weight": "W1",
+     "sign": "S1",
+     "drive": "D0",
+     "current_pa": 300.0,
+     "motor_spikes": 5.0,
+     "jump_windows": 0.0,
+     "total_spikes": 723.0,
+     "silent": false,
+     "neutral_only": true,
+     "all_hashes_equal": true
+    },
+    "D0_W2_S1": {
+     "weight": "W2",
+     "sign": "S1",
+     "drive": "D0",
+     "current_pa": 300.0,
+     "motor_spikes": 0.0,
+     "jump_windows": 0.0,
+     "total_spikes": 755.0,
+     "silent": true,
+     "neutral_only": true,
+     "all_hashes_equal": true
+    },
+    "D0_W3_S1": {
+     "weight": "W3",
+     "sign": "S1",
+     "drive": "D0",
+     "current_pa": 300.0,
+     "motor_spikes": 0.0,
+     "jump_windows": 0.0,
+     "total_spikes": 740.0,
+     "silent": true,
+     "neutral_only": true,
+     "all_hashes_equal": true
+    },
+    "D0_W0_S2": {
+     "weight": "W0",
+     "sign": "S2",
+     "drive": "D0",
+     "current_pa": 300.0,
+     "motor_spikes": 492.0,
+     "jump_windows": 4.0,
+     "total_spikes": 1296.0,
+     "silent": false,
+     "neutral_only": false,
+     "all_hashes_equal": true
+    },
+    "D0_W0_S3": {
+     "weight": "W0",
+     "sign": "S3",
+     "drive": "D0",
+     "current_pa": 300.0,
+     "motor_spikes": 0.0,
+     "jump_windows": 0.0,
+     "total_spikes": 605.0,
+     "silent": true,
+     "neutral_only": true,
+     "all_hashes_equal": true
+    },
+    "D0_W0_S4": {
+     "weight": "W0",
+     "sign": "S4",
+     "drive": "D0",
+     "current_pa": 300.0,
+     "motor_spikes": 0.0,
+     "jump_windows": 0.0,
+     "total_spikes": 605.0,
+     "silent": true,
+     "neutral_only": true,
+     "all_hashes_equal": true
+    },
+    "D1_W0_S0": {
+     "weight": "W0",
+     "sign": "S0",
+     "drive": "D1",
+     "current_pa": 300.0,
+     "motor_spikes": 492.0,
+     "jump_windows": 4.0,
+     "total_spikes": 1296.0,
+     "silent": false,
+     "neutral_only": false,
+     "all_hashes_equal": true
+    },
+    "D1_W1_S0": {
+     "weight": "W1",
+     "sign": "S0",
+     "drive": "D1",
+     "current_pa": 1000.0,
+     "motor_spikes": 399.0,
+     "jump_windows": 4.0,
+     "total_spikes": 2752.0,
+     "silent": false,
+     "neutral_only": false,
+     "all_hashes_equal": true
+    },
+    "D1_W2_S0": {
+     "weight": "W2",
+     "sign": "S0",
+     "drive": "D1",
+     "current_pa": 530.265423692526,
+     "motor_spikes": 220.0,
+     "jump_windows": 4.0,
+     "total_spikes": 1649.0,
+     "silent": false,
+     "neutral_only": false,
+     "all_hashes_equal": true
+    },
+    "D1_W3_S0": {
+     "weight": "W3",
+     "sign": "S0",
+     "drive": "D1",
+     "current_pa": 684.3907535757153,
+     "motor_spikes": 317.0,
+     "jump_windows": 4.0,
+     "total_spikes": 2089.0,
+     "silent": false,
+     "neutral_only": false,
+     "all_hashes_equal": true
+    },
+    "D1_W4_S0": {
+     "weight": "W4",
+     "sign": "S0",
+     "drive": "D1",
+     "current_pa": 1000.0,
+     "motor_spikes": 399.0,
+     "jump_windows": 4.0,
+     "total_spikes": 2752.0,
+     "silent": false,
+     "neutral_only": false,
+     "all_hashes_equal": true
+    },
+    "D1_W5_S0": {
+     "weight": "W5",
+     "sign": "S0",
+     "drive": "D1",
+     "current_pa": 298.52435191919767,
+     "motor_spikes": 486.0,
+     "jump_windows": 4.0,
+     "total_spikes": 1283.0,
+     "silent": false,
+     "neutral_only": false,
+     "all_hashes_equal": true
+    },
+    "D1_W6_S0": {
+     "weight": "W6",
+     "sign": "S0",
+     "drive": "D1",
+     "current_pa": 152.36966054387443,
+     "motor_spikes": 162.0,
+     "jump_windows": 2.0,
+     "total_spikes": 328.0,
+     "silent": false,
+     "neutral_only": false,
+     "all_hashes_equal": true
+    },
+    "D1_W7_S0": {
+     "weight": "W7",
+     "sign": "S0",
+     "drive": "D1",
+     "current_pa": 1000.0,
+     "motor_spikes": 0.0,
+     "jump_windows": 0.0,
+     "total_spikes": 2304.0,
+     "silent": true,
+     "neutral_only": true,
+     "all_hashes_equal": true
+    }
+   },
+   "s2_equals_s0": {
+    "spike_hash_equal": true,
+    "decision_hash_equal": true,
+    "metrics_equal": true,
+    "note": "S2 retains unknown-sign edges with zero weight, which is numerically identical to excluding them; any difference would be a bug, not a scientific result"
+   },
+   "w4_equals_w1": {
+    "spike_hash_equal": true,
+    "decision_hash_equal": true,
+    "note": "power exponent 1.0 with scale 0.5 and cap 300 is the same transform as linear with scale 0.5 and cap 300"
+   },
+   "cap_saturation": {
+    "edges": 1535710,
+    "edges_at_cap_W0": 643,
+    "fraction_edges_at_cap_W0": 0.000419,
+    "count_at_cap_threshold": 234.8921,
+    "interpretation": "the W0 cap binds for an edge whose structural count reaches the threshold; above it W0 and W5 differ only by the cap"
+   },
+   "unavailable_family": {
+    "id": "target_normalized_dataset",
+    "definition": "count / post_count using the dataset's post_count field",
+    "status": "unavailable",
+    "reason": "the raw edge table with post_count is not present in the repository; datasets/processed/banc_v888/banc_edges.csv.gz is absent and datasets/external/banc_v888/raw is empty",
+    "substitute": "W7 target_normalized_graph_local uses the threshold-graph in-synapse sum and is reported as a separate, labelled approximation"
+   },
+   "integrity_pass": true,
+   "n_integrity_checks": 37,
+   "runtime": {
+    "wall_time_s": 9219.692,
+    "mean_run_wall_time_s": 41.5917,
+    "max_retained_memory_mb": 109.1865
+   },
+   "limitations": [
+    "No transform is established as the correct model of synaptic strength.",
+    "The result is conditional on the fixed Phase 4G condition C group.",
+    "A JUMP decoder label is not a biological jump command.",
+    "Sign policies are annotation assumptions, not measured biology.",
+    "W7 is a labelled approximation of count/post_count; the dataset family is unavailable.",
+    "The 10 repeats are deterministic and provide no inferential replication; permutation tests are numerical equivalence checks."
+   ]
+  },
+  "4H.4": {
+   "available": true,
+   "analysis_available": true,
+   "generated_at_utc": "2026-11-08T16:55:00+00:00",
+   "n_runs": 27,
+   "matrix_complete": true,
+   "determinism": {
+    "full_100_199": {
+     "B_actual": {
+      "complete": true,
+      "spike_hash_equal": true,
+      "decision_hash_equal": true,
+      "drive_hash_equal": true,
+      "metrics_equal": true
+     },
+     "G_background_noise": {
+      "complete": true,
+      "spike_hash_equal": true,
+      "decision_hash_equal": true,
+      "drive_hash_equal": true,
+      "metrics_equal": true
+     }
+    },
+    "seg_0_99": {
+     "B_actual": {
+      "complete": true,
+      "spike_hash_equal": true,
+      "decision_hash_equal": true,
+      "drive_hash_equal": true,
+      "metrics_equal": true
+     },
+     "G_background_noise": {
+      "complete": true,
+      "spike_hash_equal": true,
+      "decision_hash_equal": true,
+      "drive_hash_equal": true,
+      "metrics_equal": true
+     }
+    },
+    "seg_200_299": {
+     "B_actual": {
+      "complete": true,
+      "spike_hash_equal": true,
+      "decision_hash_equal": true,
+      "drive_hash_equal": true,
+      "metrics_equal": true
+     },
+     "G_background_noise": {
+      "complete": true,
+      "spike_hash_equal": true,
+      "decision_hash_equal": true,
+      "drive_hash_equal": true,
+      "metrics_equal": true
+     }
+    }
+   },
+   "integrity_pass": true,
+   "n_integrity_checks": 37,
+   "config_verification_pass": true,
+   "config_verification_checks": 47,
+   "condition_tables": {
+    "full_100_199": {
+     "A_no_events": {
+      "stream": "full_100_199",
+      "condition": "A_no_events",
+      "events_used": 0,
+      "pulses_used": 0,
+      "seed": 20661109,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 0,
+      "stimulated_spikes": 0,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 0,
+      "stimulated_active_neurons": 0,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": null,
+      "events_total": 0,
+      "alignment_best_r": null,
+      "spike_time_min_ms": null,
+      "spike_time_max_ms": null,
+      "spike_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": null,
+      "wall_time_s": 18.884
+     },
+     "B_actual": {
+      "stream": "full_100_199",
+      "condition": "B_actual",
+      "events_used": 215,
+      "pulses_used": 43,
+      "seed": 20661110,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 3562,
+      "stimulated_spikes": 3562,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 171,
+      "stimulated_active_neurons": 171,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": 215,
+      "events_total": 215,
+      "alignment_best_r": null,
+      "spike_time_min_ms": 135.0,
+      "spike_time_max_ms": 3102.0,
+      "spike_sha256": "12f2e939bb240814d302245495bba9e0f213287dde1e21c5e2f0fa08310f76b2",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "482b516c5dd4aac42637bbdadbc1999db7b89901d2edf3fafb10935f6f2cb7e3",
+      "wall_time_s": 17.657
+     },
+     "C_temporal_shuffle": {
+      "stream": "full_100_199",
+      "condition": "C_temporal_shuffle",
+      "events_used": 215,
+      "pulses_used": 43,
+      "seed": 20661111,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 3760,
+      "stimulated_spikes": 3760,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 154,
+      "stimulated_active_neurons": 154,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": 215,
+      "events_total": 215,
+      "alignment_best_r": null,
+      "spike_time_min_ms": 101.5,
+      "spike_time_max_ms": 3281.5,
+      "spike_sha256": "3ff61202f21e0190d1cb9c44bb9f014d386a31099504b9851b73cec96460ea0b",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "a5f6321061c621296d2e2c04e6d9afbfbd688791c5f7656165b2cda2e26f5019",
+      "wall_time_s": 18.337
+     },
+     "D_feature_identity_shuffle": {
+      "stream": "full_100_199",
+      "condition": "D_feature_identity_shuffle",
+      "events_used": 215,
+      "pulses_used": 43,
+      "seed": 20661112,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 3648,
+      "stimulated_spikes": 3648,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 169,
+      "stimulated_active_neurons": 169,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": 215,
+      "events_total": 215,
+      "alignment_best_r": null,
+      "spike_time_min_ms": 135.0,
+      "spike_time_max_ms": 3097.5,
+      "spike_sha256": "7d87135240faf3d725b7957018e17d9de612175a83bd36baf3420c3d8271fc51",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "7c132403e1e21a8ab070f0903337063bfc334054282fa240eed53ae3c7fc8aca",
+      "wall_time_s": 19.755
+     },
+     "E_random_matched_mapping": {
+      "stream": "full_100_199",
+      "condition": "E_random_matched_mapping",
+      "events_used": 215,
+      "pulses_used": 43,
+      "seed": 20661113,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 3561,
+      "stimulated_spikes": 3561,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 171,
+      "stimulated_active_neurons": 171,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": 215,
+      "events_total": 215,
+      "alignment_best_r": null,
+      "spike_time_min_ms": 135.0,
+      "spike_time_max_ms": 3102.0,
+      "spike_sha256": "61a802c3a4a2f75cf298e0d0a86650e6858ca8dc85e56adc9b96cea3146e291c",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "28b1492693f9d109ac056f0678f19386192bf8d627468289f7690249ad615915",
+      "wall_time_s": 20.709
+     },
+     "F_constant_matched_charge": {
+      "stream": "full_100_199",
+      "condition": "F_constant_matched_charge",
+      "events_used": 0,
+      "pulses_used": 0,
+      "seed": 20661114,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 0,
+      "stimulated_spikes": 0,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 0,
+      "stimulated_active_neurons": 0,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": null,
+      "events_total": 0,
+      "alignment_best_r": null,
+      "spike_time_min_ms": null,
+      "spike_time_max_ms": null,
+      "spike_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "a13ea13256f14e1cce697104e87d921863afd4f32f68b7155ba60ce6667c971b",
+      "wall_time_s": 18.54
+     },
+     "G_background_noise": {
+      "stream": "full_100_199",
+      "condition": "G_background_noise",
+      "events_used": 0,
+      "pulses_used": 0,
+      "seed": 20661115,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 0,
+      "stimulated_spikes": 0,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 0,
+      "stimulated_active_neurons": 0,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": null,
+      "events_total": 0,
+      "alignment_best_r": null,
+      "spike_time_min_ms": null,
+      "spike_time_max_ms": null,
+      "spike_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": null,
+      "wall_time_s": 33.189
+     }
+    },
+    "seg_0_99": {
+     "A_no_events": {
+      "stream": "seg_0_99",
+      "condition": "A_no_events",
+      "events_used": 0,
+      "pulses_used": 0,
+      "seed": 20661209,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 0,
+      "stimulated_spikes": 0,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 0,
+      "stimulated_active_neurons": 0,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": null,
+      "events_total": 0,
+      "alignment_best_r": null,
+      "spike_time_min_ms": null,
+      "spike_time_max_ms": null,
+      "spike_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": null,
+      "wall_time_s": 18.316
+     },
+     "B_actual": {
+      "stream": "seg_0_99",
+      "condition": "B_actual",
+      "events_used": 148,
+      "pulses_used": 27,
+      "seed": 20661210,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 1990,
+      "stimulated_spikes": 1990,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 103,
+      "stimulated_active_neurons": 103,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": 148,
+      "events_total": 148,
+      "alignment_best_r": null,
+      "spike_time_min_ms": 43.5,
+      "spike_time_max_ms": 2641.0,
+      "spike_sha256": "7a61c4b4b4cae96587ab119c575d21585aa349694c278d7f80c93c919a0bd706",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "aafbf08d6e59b033a4e9154ed31bb6e0272356794f66eece179f842c472179bf",
+      "wall_time_s": 5057.381
+     },
+     "C_temporal_shuffle": {
+      "stream": "seg_0_99",
+      "condition": "C_temporal_shuffle",
+      "events_used": 148,
+      "pulses_used": 27,
+      "seed": 20661211,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 1873,
+      "stimulated_spikes": 1873,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 88,
+      "stimulated_active_neurons": 88,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": 148,
+      "events_total": 148,
+      "alignment_best_r": null,
+      "spike_time_min_ms": 610.0,
+      "spike_time_max_ms": 2998.5,
+      "spike_sha256": "68f2b6b8352d35d99848619de246dbea2fa65645b9ac1029bc9c0807cb9ba147",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "fb1dc88b0161f90ccd586ce8dcb1c78e8f9ca85f8226fb008964e03e8b5a5240",
+      "wall_time_s": 45.013
+     },
+     "D_feature_identity_shuffle": {
+      "stream": "seg_0_99",
+      "condition": "D_feature_identity_shuffle",
+      "events_used": 148,
+      "pulses_used": 27,
+      "seed": 20661212,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 1991,
+      "stimulated_spikes": 1991,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 87,
+      "stimulated_active_neurons": 87,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": 148,
+      "events_total": 148,
+      "alignment_best_r": null,
+      "spike_time_min_ms": 43.5,
+      "spike_time_max_ms": 2630.5,
+      "spike_sha256": "60142a8d53e990f3c26d2398267c9ef3d35cedc7417d940fb4a72c9bb2e516e4",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "0f109ebcdedd08c85675a4a799fd8f3de8d2ee5f2adfdd2e99cb29417cec77d1",
+      "wall_time_s": 25.852
+     },
+     "E_random_matched_mapping": {
+      "stream": "seg_0_99",
+      "condition": "E_random_matched_mapping",
+      "events_used": 148,
+      "pulses_used": 27,
+      "seed": 20661213,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 1990,
+      "stimulated_spikes": 1990,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 103,
+      "stimulated_active_neurons": 103,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": 148,
+      "events_total": 148,
+      "alignment_best_r": null,
+      "spike_time_min_ms": 43.5,
+      "spike_time_max_ms": 2641.0,
+      "spike_sha256": "005d8fd445a4f20cd22db94b74903c1067a458b57be6eb307fd924a105da81d7",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "db3a1fc7b2e15bc19733fbd9d01a146f344de4e7cc47346cc7232f64cb35b819",
+      "wall_time_s": 19.709
+     },
+     "F_constant_matched_charge": {
+      "stream": "seg_0_99",
+      "condition": "F_constant_matched_charge",
+      "events_used": 0,
+      "pulses_used": 0,
+      "seed": 20661214,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 0,
+      "stimulated_spikes": 0,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 0,
+      "stimulated_active_neurons": 0,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": null,
+      "events_total": 0,
+      "alignment_best_r": null,
+      "spike_time_min_ms": null,
+      "spike_time_max_ms": null,
+      "spike_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "179b232d6baed46e33fa5dd22a6520c17a5df1a867160ce89256f89a5fa5dbc8",
+      "wall_time_s": 18.413
+     },
+     "G_background_noise": {
+      "stream": "seg_0_99",
+      "condition": "G_background_noise",
+      "events_used": 0,
+      "pulses_used": 0,
+      "seed": 20661215,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 0,
+      "stimulated_spikes": 0,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 0,
+      "stimulated_active_neurons": 0,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": null,
+      "events_total": 0,
+      "alignment_best_r": null,
+      "spike_time_min_ms": null,
+      "spike_time_max_ms": null,
+      "spike_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": null,
+      "wall_time_s": 34.801
+     }
+    },
+    "seg_200_299": {
+     "A_no_events": {
+      "stream": "seg_200_299",
+      "condition": "A_no_events",
+      "events_used": 0,
+      "pulses_used": 0,
+      "seed": 20661309,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 0,
+      "stimulated_spikes": 0,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 0,
+      "stimulated_active_neurons": 0,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": null,
+      "events_total": 0,
+      "alignment_best_r": null,
+      "spike_time_min_ms": null,
+      "spike_time_max_ms": null,
+      "spike_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": null,
+      "wall_time_s": 15.243
+     },
+     "B_actual": {
+      "stream": "seg_200_299",
+      "condition": "B_actual",
+      "events_used": 152,
+      "pulses_used": 37,
+      "seed": 20661310,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 2374,
+      "stimulated_spikes": 2374,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 151,
+      "stimulated_active_neurons": 151,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": 152,
+      "events_total": 152,
+      "alignment_best_r": null,
+      "spike_time_min_ms": 68.0,
+      "spike_time_max_ms": 2968.0,
+      "spike_sha256": "3d6b17bce952f9df912ca104ab9b61958fd4f9863a8859daaddf9bdb4854abf6",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "82ead856a56302daf1c9f89b79b68ab598df8f60fa58581e4157e9b76225ebfb",
+      "wall_time_s": 17.346
+     },
+     "C_temporal_shuffle": {
+      "stream": "seg_200_299",
+      "condition": "C_temporal_shuffle",
+      "events_used": 152,
+      "pulses_used": 37,
+      "seed": 20661311,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 2266,
+      "stimulated_spikes": 2266,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 155,
+      "stimulated_active_neurons": 155,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": 152,
+      "events_total": 152,
+      "alignment_best_r": null,
+      "spike_time_min_ms": 68.0,
+      "spike_time_max_ms": 3298.0,
+      "spike_sha256": "a6a83a64c2baa1315042ca2e8cdc0618a840d90defa0d4715a94ebea0b09a341",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "9cd2326ce4e707773a7759b0f027266a06ae53a4ab62cd47a1d002d30cf28bf6",
+      "wall_time_s": 20.837
+     },
+     "D_feature_identity_shuffle": {
+      "stream": "seg_200_299",
+      "condition": "D_feature_identity_shuffle",
+      "events_used": 152,
+      "pulses_used": 37,
+      "seed": 20661312,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 2080,
+      "stimulated_spikes": 2080,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 126,
+      "stimulated_active_neurons": 126,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": 152,
+      "events_total": 152,
+      "alignment_best_r": null,
+      "spike_time_min_ms": 869.5,
+      "spike_time_max_ms": 3209.0,
+      "spike_sha256": "889efc8388834f46d0522a5c62d1a6c8e3f51717014bc972571b389abe0be9cf",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "f110b3e8878a125406f0498b8c74e89ae2b2d2483f32ee97abcf881d87d1eb71",
+      "wall_time_s": 20.62
+     },
+     "E_random_matched_mapping": {
+      "stream": "seg_200_299",
+      "condition": "E_random_matched_mapping",
+      "events_used": 152,
+      "pulses_used": 37,
+      "seed": 20661313,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 2374,
+      "stimulated_spikes": 2374,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 151,
+      "stimulated_active_neurons": 151,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": 152,
+      "events_total": 152,
+      "alignment_best_r": null,
+      "spike_time_min_ms": 68.0,
+      "spike_time_max_ms": 2968.0,
+      "spike_sha256": "5f9dfd2cd495049ad09d799680a297987433f23fb00da94b2878535729c2511b",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "b439125236462215eea7b30f2f4edb95a98d55b90a17f8f6564a91820c75670b",
+      "wall_time_s": 18.966
+     },
+     "F_constant_matched_charge": {
+      "stream": "seg_200_299",
+      "condition": "F_constant_matched_charge",
+      "events_used": 0,
+      "pulses_used": 0,
+      "seed": 20661314,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 0,
+      "stimulated_spikes": 0,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 0,
+      "stimulated_active_neurons": 0,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": null,
+      "events_total": 0,
+      "alignment_best_r": null,
+      "spike_time_min_ms": null,
+      "spike_time_max_ms": null,
+      "spike_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": "e790ec90cfe888093eb397d3282bf4fcb3e85a056dae75af3ff39eacf1e6dd85",
+      "wall_time_s": 17.331
+     },
+     "G_background_noise": {
+      "stream": "seg_200_299",
+      "condition": "G_background_noise",
+      "events_used": 0,
+      "pulses_used": 0,
+      "seed": 20661315,
+      "duration_ms": 3300.5000000000005,
+      "total_spikes": 0,
+      "stimulated_spikes": 0,
+      "non_stimulated_spikes": 0,
+      "active_neurons": 0,
+      "stimulated_active_neurons": 0,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0,
+      "descending_spikes": null,
+      "first_hop_spikes": null,
+      "second_hop_spikes": null,
+      "decoded_state_counts": {
+       "NEUTRAL": 67
+      },
+      "n_windows": 67,
+      "jump_windows": 0,
+      "left_windows": 0,
+      "right_windows": 0,
+      "event_locked_downstream_spikes": 0,
+      "events_with_zero_downstream_spikes": null,
+      "events_total": 0,
+      "alignment_best_r": null,
+      "spike_time_min_ms": null,
+      "spike_time_max_ms": null,
+      "spike_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decision_sha256": "58ff54f404cb2cb45f56c83f0232a0d4216fe83e78b00b3fbd861db36e6c681a",
+      "drive_sha256": null,
+      "wall_time_s": 35.779
+     }
+    }
+   },
+   "full_stream_B": {
+    "total_spikes": 3562,
+    "stimulated_spikes": 3562,
+    "non_stimulated_spikes": 0,
+    "motor_spikes": 0,
+    "decoded_state_counts": {
+     "NEUTRAL": 67
+    },
+    "event_locked_downstream_spikes": 0,
+    "alignment_best_r": null
+   },
+   "propagation_B_full": {
+    "structure": {
+     "stimulated_neurons": 232,
+     "signed_outgoing_edges": 662,
+     "first_hop_targets_all": 608,
+     "first_hop_downstream_targets": 607,
+     "first_hop_excluded_stimulated": 1,
+     "first_hop_signed_outgoing_edges": 5259,
+     "second_hop_targets_all": 3865,
+     "second_hop_downstream_targets": 3576,
+     "first_hop_descending": 9,
+     "second_hop_descending": 103,
+     "second_hop_motor": 4,
+     "first_hop_targets_motor": 0
+    },
+    "transmission": {
+     "total_spike_edge_transmissions": 25332,
+     "signed_transmissions": 9499,
+     "unsigned_transmissions": 15833,
+     "signed_share": 0.37498
+    },
+    "stimulated": {
+     "n": 232,
+     "spikes": 3562,
+     "active_neurons": 171,
+     "max_synaptic_current_pa": 17.024717,
+     "max_membrane_mv": -50.0
+    },
+    "first_hop": {
+     "n": 607,
+     "spikes": 0,
+     "active_neurons": 0,
+     "receiving_neurons": 473,
+     "max_synaptic_current_pa": 164.443222,
+     "max_membrane_mv": -56.926064,
+     "max_depolarization_mv": 8.073936,
+     "closest_deficit_mv": 6.926064,
+     "n_within_1mv": 0,
+     "n_within_5mv": 0,
+     "n_within_10mv": 1
+    },
+    "second_hop": {
+     "n": 3576,
+     "spikes": 0,
+     "active_neurons": 0,
+     "receiving_neurons": 0,
+     "max_membrane_mv": -65.0,
+     "closest_deficit_mv": 15.0
+    },
+    "descending": {
+     "n": 1316,
+     "spikes": 0,
+     "active_neurons": 0,
+     "receiving_neurons": 9,
+     "max_synaptic_current_pa": 67.207764,
+     "max_membrane_mv": -62.158092,
+     "max_depolarization_mv": 2.841908,
+     "closest_deficit_mv": 12.158092
+    },
+    "motor": {
+     "n": 805,
+     "spikes": 0,
+     "active_neurons": 0,
+     "receiving_neurons": 0,
+     "max_synaptic_current_pa": 0.0,
+     "max_membrane_mv": -65.0,
+     "max_depolarization_mv": 0.0,
+     "closest_deficit_mv": 15.0
+    },
+    "non_stimulated_non_motor": {
+     "n": 171396,
+     "spikes": 0,
+     "active_neurons": 0,
+     "receiving_neurons": 473,
+     "max_synaptic_current_pa": 164.443222,
+     "max_membrane_mv": -56.926064,
+     "max_depolarization_mv": 8.073936,
+     "closest_deficit_mv": 6.926064
+    },
+    "drive": {
+     "kind": "banc_event_drive",
+     "total_charge_pa_ms": 35756120.787771,
+     "background_pa": 0.0,
+     "noise_std_pa": 0.0,
+     "max_input_current_all_pa": 687.777733,
+     "max_input_current_stimulated_pa": 687.777733
+    },
+    "threshold": {
+     "threshold_mv": -50.0,
+     "resting_mv": -65.0,
+     "rheobase_pa": 150.0
+    },
+    "event_locked_stimulated": {
+     "n_events": 215,
+     "window_ms": 50.0,
+     "spikes_in_window": {
+      "n": 215,
+      "mean": 80.213953,
+      "sd": 87.17273,
+      "median": 48.0,
+      "q1": 0.0,
+      "q3": 124.0,
+      "min": 0.0,
+      "max": 299.0
+     },
+     "total_spikes_in_window": 17246,
+     "events_with_zero_spikes": 67,
+     "latency_ms": {
+      "n": 209,
+      "mean": 64.26794,
+      "sd": 115.399062,
+      "median": 7.1667,
+      "q1": 1.3333,
+      "q3": 68.3333,
+      "min": 0.0,
+      "max": 634.6667
+     },
+     "n_events_without_spike": 6,
+     "mean_spikes_per_event": 80.213953
+    }
+   },
+   "runtime": {
+    "analysis_wall_time_s": 674.617,
+    "replay_wall_time_s": 671.304,
+    "n_replays": 27
+   },
+   "limitations": [
+    "The three streams are non-overlapping segments of one recording group, not independent recordings.",
+    "Event timestamps are synthesized at 30 fps because the images carry no timestamps; ordering and gaps come from the unchanged Phase 3B pipeline.",
+    "Only lifecycle events carrying feature values drive current; the archived replay exposes events, not per-frame GameState features, so no held per-frame state is used.",
+    "The mapping from a game feature to a BANC annotation pool is a labelled hypothesis or convention, not a measured sensory pathway.",
+    "No confirmatory p-value is claimed across the three non-independent streams; evidence level E4 is not claimed.",
+    "A motor spike or decoder label is not a biological motor command."
+   ]
+  }
+ },
+ "questions": {
+  "Q1_decoder_deterministic": {
+   "question": "Is the motor decoder deterministic?",
+   "answer": "yes",
+   "evidence": {
+    "4H.4_repeat_hashes_equal": true,
+    "4H.3_repeats_all_hashes_equal": true,
+    "4H.1_reference_matches_phase_4g": true
+   },
+   "grade": "E0",
+   "caveat": "Determinism is a software property, not biological reproducibility."
+  },
+  "Q2_robust_to_random_draws": {
+   "question": "Is the decoder output robust to random control draws?",
+   "answer": "yes_with_limits",
+   "evidence": {
+    "4H.1_families": [
+     "A_vnc_intrinsic_random",
+     "B_motor_projecting_random",
+     "C_all_verified_excitatory_random",
+     "D_rank_stratum_shuffled",
+     "E_connectivity_annotation_matched"
+    ],
+    "p_values_P1": {
+     "A_vnc_intrinsic_random": 0.00990099,
+     "B_motor_projecting_random": 0.00990099,
+     "C_all_verified_excitatory_random": 0.00990099,
+     "D_rank_stratum_shuffled": 0.00990099,
+     "E_connectivity_annotation_matched": 0.00990099
+    },
+    "p_values_P2": {
+     "A_vnc_intrinsic_random": 0.00990099,
+     "B_motor_projecting_random": 0.00990099,
+     "C_all_verified_excitatory_random": 0.00990099,
+     "D_rank_stratum_shuffled": 0.00990099,
+     "E_connectivity_annotation_matched": 0.00990099
+    },
+    "holm_rejected": {
+     "A_vnc_intrinsic_random": true,
+     "B_motor_projecting_random": true,
+     "C_all_verified_excitatory_random": true,
+     "D_rank_stratum_shuffled": true,
+     "E_connectivity_annotation_matched": true
+    },
+    "minimum_attainable_p": 0.00990099,
+    "selection_bias": "condition C was selected on the same motor-synapse rank used for the comparison"
+   },
+   "grade": "E2",
+   "caveat": "The p-value is at the floor of the 100-draw design; the controls are matched approximations, not a random sample of all neurons."
+  },
+  "Q3_sensitive_to_population_selection_and_size": {
+   "question": "Is the decoder output sensitive to population selection and size?",
+   "answer": "yes",
+   "evidence": {
+    "connectivity_size_curve": {
+     "8": {
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 102.0,
+      "jump_detected_runs": 0
+     },
+     "16": {
+      "motor_spikes": 14.0,
+      "jump_windows": 0.0,
+      "total_spikes": 214.0,
+      "jump_detected_runs": 0
+     },
+     "32": {
+      "motor_spikes": 104.0,
+      "jump_windows": 0.0,
+      "total_spikes": 490.0,
+      "jump_detected_runs": 0
+     },
+     "48": {
+      "motor_spikes": 334.0,
+      "jump_windows": 3.0,
+      "total_spikes": 915.0,
+      "jump_detected_runs": 1
+     },
+     "64": {
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "jump_detected_runs": 1
+     },
+     "96": {
+      "motor_spikes": 863.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2155.0,
+      "jump_detected_runs": 1
+     },
+     "128": {
+      "motor_spikes": 1126.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2836.0,
+      "jump_detected_runs": 1
+     }
+    },
+    "size_64_confirmatory": {
+     "comparison": "size 64 connectivity_ranked (the Phase 4G condition C candidate set) versus the 100 Phase 4H.1 family A draws",
+     "P1": {
+      "observed": 492,
+      "control_n": 100,
+      "control_max": 8,
+      "p_one_sided_greater": 0.00990099
+     },
+     "P2": {
+      "observed": 4,
+      "control_n": 100,
+      "control_max": 0,
+      "p_one_sided_greater": 0.00990099
+     },
+     "holm": {
+      "adjusted": {
+       "P1_motor_spikes": 0.01980198,
+       "P2_jump_windows": 0.01980198
+      },
+      "rejected": {
+       "P1_motor_spikes": true,
+       "P2_jump_windows": true
+      },
+      "alpha": 0.05,
+      "method": "Holm-Bonferroni"
+     },
+     "any_confirmatory_difference": true
+    }
+   },
+   "grade": "E2",
+   "caveat": "Only the size-64 comparison is pre-registered; the size surface is exploratory."
+  },
+  "Q4_stable_across_weight_transformations": {
+   "question": "Is the output stable across weight transformations?",
+   "answer": "no",
+   "evidence": {
+    "config_summary": {
+     "D0_W0_S0": {
+      "weight": "W0",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W1_S0": {
+      "weight": "W1",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W2_S0": {
+      "weight": "W2",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 755.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W3_S0": {
+      "weight": "W3",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 740.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W4_S0": {
+      "weight": "W4",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W5_S0": {
+      "weight": "W5",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 481.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1281.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W6_S0": {
+      "weight": "W6",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 1295.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2204.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W7_S0": {
+      "weight": "W7",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 704.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W1_S1": {
+      "weight": "W1",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W2_S1": {
+      "weight": "W2",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 755.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W3_S1": {
+      "weight": "W3",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 740.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S2": {
+      "weight": "W0",
+      "sign": "S2",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S3": {
+      "weight": "W0",
+      "sign": "S3",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 605.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S4": {
+      "weight": "W0",
+      "sign": "S4",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 605.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D1_W0_S0": {
+      "weight": "W0",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W1_S0": {
+      "weight": "W1",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 399.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2752.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W2_S0": {
+      "weight": "W2",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 530.265423692526,
+      "motor_spikes": 220.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1649.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W3_S0": {
+      "weight": "W3",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 684.3907535757153,
+      "motor_spikes": 317.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2089.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W4_S0": {
+      "weight": "W4",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 399.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2752.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W5_S0": {
+      "weight": "W5",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 298.52435191919767,
+      "motor_spikes": 486.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1283.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W6_S0": {
+      "weight": "W6",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 152.36966054387443,
+      "motor_spikes": 162.0,
+      "jump_windows": 2.0,
+      "total_spikes": 328.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W7_S0": {
+      "weight": "W7",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 2304.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     }
+    },
+    "s2_equals_s0": {
+     "spike_hash_equal": true,
+     "decision_hash_equal": true,
+     "metrics_equal": true,
+     "note": "S2 retains unknown-sign edges with zero weight, which is numerically identical to excluding them; any difference would be a bug, not a scientific result"
+    },
+    "w4_equals_w1": {
+     "spike_hash_equal": true,
+     "decision_hash_equal": true,
+     "note": "power exponent 1.0 with scale 0.5 and cap 300 is the same transform as linear with scale 0.5 and cap 300"
+    },
+    "cap_saturation": {
+     "edges": 1535710,
+     "edges_at_cap_W0": 643,
+     "fraction_edges_at_cap_W0": 0.000419,
+     "count_at_cap_threshold": 234.8921,
+     "interpretation": "the W0 cap binds for an edge whose structural count reaches the threshold; above it W0 and W5 differ only by the cap"
+    }
+   },
+   "grade": "E2",
+   "caveat": "JUMP is present only for W0/W5/W6 at nominal drive; W1-W4/W7 produce no JUMP. Matched-amplitude D1 restores JUMP for W1-W6, so the effect is amplitude- as well as transform-dependent."
+  },
+  "Q5_sensory_downstream_propagation": {
+   "question": "Does sensory stimulation produce downstream propagation?",
+   "answer": "no",
+   "evidence": {
+    "non_stimulated_spikes_B_full": 0,
+    "first_hop_targets_downstream": 607,
+    "first_hop_receiving_neurons": 473,
+    "first_hop_max_synaptic_current_pa": 164.443222,
+    "first_hop_max_membrane_mv": -56.926064,
+    "first_hop_closest_deficit_mv": 6.926064,
+    "first_hop_spikes": 0,
+    "second_hop_spikes": 0,
+    "signed_transmissions": 9499
+   },
+   "grade": null,
+   "caveat": "662 signed edges produced 9,499 signed spike-to-edge transmissions, but no first-hop spike. Structural connectivity does not imply effective propagation."
+  },
+  "Q6_actual_vs_shuffled": {
+   "question": "Does actual sensory-event structure produce distinguishable responses compared with shuffled controls?",
+   "answer": "partial_at_input_only",
+   "evidence": {
+    "B_full_total": 3562,
+    "C_full_total": 3760,
+    "D_full_total": 3648,
+    "E_full_total": 3561,
+    "F_full_total": 0,
+    "G_full_total": 0,
+    "B_full_non_stimulated": 0,
+    "B_full_event_locked_downstream": 0,
+    "B_full_decoder_states": {
+     "NEUTRAL": 67
+    },
+    "C_full_decoder_states": {
+     "NEUTRAL": 67
+    },
+    "D_full_decoder_states": {
+     "NEUTRAL": 67
+    }
+   },
+   "evidence_D": {
+    "B_full_total": 3562,
+    "D_full_total": 3648
+   },
+   "grade": "E1",
+   "caveat": "The difference is confined to stimulated spike totals; it has no downstream or decoder consequence and changes sign across the three streams. E2/E3 are not awarded."
+  },
+  "Q7_activity_reaches_descending_and_motor": {
+   "question": "Does activity reach descending and motor populations?",
+   "answer": "no",
+   "evidence": {
+    "descending_spikes": 0,
+    "descending_receiving_neurons": 9,
+    "descending_max_membrane_mv": -62.158092,
+    "descending_closest_deficit_mv": 12.158092,
+    "motor_spikes": 0,
+    "motor_receiving_neurons": 0,
+    "motor_max_membrane_mv": -65.0,
+    "second_hop_motor_targets": 4
+   },
+   "grade": null,
+   "caveat": "Four motor neurons are structurally reachable at two signed hops; none receives current because the first hop does not fire."
+  },
+  "Q8_assumption_dependence": {
+   "question": "Are apparent effects dependent on specific model assumptions?",
+   "answer": "yes",
+   "evidence": {
+    "weight_sign_sensitivity": {
+     "D0_W0_S0": {
+      "weight": "W0",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W1_S0": {
+      "weight": "W1",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W2_S0": {
+      "weight": "W2",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 755.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W3_S0": {
+      "weight": "W3",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 740.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W4_S0": {
+      "weight": "W4",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W5_S0": {
+      "weight": "W5",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 481.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1281.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W6_S0": {
+      "weight": "W6",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 1295.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2204.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W7_S0": {
+      "weight": "W7",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 704.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W1_S1": {
+      "weight": "W1",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W2_S1": {
+      "weight": "W2",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 755.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W3_S1": {
+      "weight": "W3",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 740.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S2": {
+      "weight": "W0",
+      "sign": "S2",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S3": {
+      "weight": "W0",
+      "sign": "S3",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 605.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S4": {
+      "weight": "W0",
+      "sign": "S4",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 605.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D1_W0_S0": {
+      "weight": "W0",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W1_S0": {
+      "weight": "W1",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 399.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2752.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W2_S0": {
+      "weight": "W2",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 530.265423692526,
+      "motor_spikes": 220.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1649.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W3_S0": {
+      "weight": "W3",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 684.3907535757153,
+      "motor_spikes": 317.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2089.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W4_S0": {
+      "weight": "W4",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 399.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2752.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W5_S0": {
+      "weight": "W5",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 298.52435191919767,
+      "motor_spikes": 486.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1283.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W6_S0": {
+      "weight": "W6",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 152.36966054387443,
+      "motor_spikes": 162.0,
+      "jump_windows": 2.0,
+      "total_spikes": 328.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W7_S0": {
+      "weight": "W7",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 2304.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     }
+    },
+    "signed_edge_coverage_t5": 0.444811,
+    "predicted_vs_verified_transmitters": "verified-only policy; predicted fallback disabled",
+    "mapping": "annotation-defined hypothesis"
+   },
+   "grade": "E2",
+   "caveat": "The direction of the 4G result is not invariant to the weight transform or sign policy; the sensory round-trip is additionally conditional on the annotation mapping."
+  }
+ },
+ "separate_dimensions": {
+  "reproducibility": {
+   "status": "strong",
+   "grade": "E0",
+   "evidence": {
+    "4H.4_repeat_hashes_equal": true,
+    "4H.3_repeats_all_hashes_equal": true,
+    "4H.1_reference_matches_phase_4g": true
+   }
+  },
+  "statistical_robustness": {
+   "status": "moderate",
+   "grade": "E2",
+   "evidence": {
+    "4H.1": {
+     "4H.1_families": [
+      "A_vnc_intrinsic_random",
+      "B_motor_projecting_random",
+      "C_all_verified_excitatory_random",
+      "D_rank_stratum_shuffled",
+      "E_connectivity_annotation_matched"
+     ],
+     "p_values_P1": {
+      "A_vnc_intrinsic_random": 0.00990099,
+      "B_motor_projecting_random": 0.00990099,
+      "C_all_verified_excitatory_random": 0.00990099,
+      "D_rank_stratum_shuffled": 0.00990099,
+      "E_connectivity_annotation_matched": 0.00990099
+     },
+     "p_values_P2": {
+      "A_vnc_intrinsic_random": 0.00990099,
+      "B_motor_projecting_random": 0.00990099,
+      "C_all_verified_excitatory_random": 0.00990099,
+      "D_rank_stratum_shuffled": 0.00990099,
+      "E_connectivity_annotation_matched": 0.00990099
+     },
+     "holm_rejected": {
+      "A_vnc_intrinsic_random": true,
+      "B_motor_projecting_random": true,
+      "C_all_verified_excitatory_random": true,
+      "D_rank_stratum_shuffled": true,
+      "E_connectivity_annotation_matched": true
+     },
+     "minimum_attainable_p": 0.00990099,
+     "selection_bias": "condition C was selected on the same motor-synapse rank used for the comparison"
+    },
+    "4H.2": {
+     "connectivity_size_curve": {
+      "8": {
+       "motor_spikes": 5.0,
+       "jump_windows": 0.0,
+       "total_spikes": 102.0,
+       "jump_detected_runs": 0
+      },
+      "16": {
+       "motor_spikes": 14.0,
+       "jump_windows": 0.0,
+       "total_spikes": 214.0,
+       "jump_detected_runs": 0
+      },
+      "32": {
+       "motor_spikes": 104.0,
+       "jump_windows": 0.0,
+       "total_spikes": 490.0,
+       "jump_detected_runs": 0
+      },
+      "48": {
+       "motor_spikes": 334.0,
+       "jump_windows": 3.0,
+       "total_spikes": 915.0,
+       "jump_detected_runs": 1
+      },
+      "64": {
+       "motor_spikes": 492.0,
+       "jump_windows": 4.0,
+       "total_spikes": 1296.0,
+       "jump_detected_runs": 1
+      },
+      "96": {
+       "motor_spikes": 863.0,
+       "jump_windows": 4.0,
+       "total_spikes": 2155.0,
+       "jump_detected_runs": 1
+      },
+      "128": {
+       "motor_spikes": 1126.0,
+       "jump_windows": 4.0,
+       "total_spikes": 2836.0,
+       "jump_detected_runs": 1
+      }
+     },
+     "size_64_confirmatory": {
+      "comparison": "size 64 connectivity_ranked (the Phase 4G condition C candidate set) versus the 100 Phase 4H.1 family A draws",
+      "P1": {
+       "observed": 492,
+       "control_n": 100,
+       "control_max": 8,
+       "p_one_sided_greater": 0.00990099
+      },
+      "P2": {
+       "observed": 4,
+       "control_n": 100,
+       "control_max": 0,
+       "p_one_sided_greater": 0.00990099
+      },
+      "holm": {
+       "adjusted": {
+        "P1_motor_spikes": 0.01980198,
+        "P2_jump_windows": 0.01980198
+       },
+       "rejected": {
+        "P1_motor_spikes": true,
+        "P2_jump_windows": true
+       },
+       "alpha": 0.05,
+       "method": "Holm-Bonferroni"
+      },
+      "any_confirmatory_difference": true
+     }
+    }
+   }
+  },
+  "parameter_sensitivity": {
+   "status": "high",
+   "grade": "E2",
+   "evidence": {
+    "config_summary": {
+     "D0_W0_S0": {
+      "weight": "W0",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W1_S0": {
+      "weight": "W1",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W2_S0": {
+      "weight": "W2",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 755.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W3_S0": {
+      "weight": "W3",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 740.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W4_S0": {
+      "weight": "W4",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W5_S0": {
+      "weight": "W5",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 481.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1281.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W6_S0": {
+      "weight": "W6",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 1295.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2204.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W7_S0": {
+      "weight": "W7",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 704.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W1_S1": {
+      "weight": "W1",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W2_S1": {
+      "weight": "W2",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 755.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W3_S1": {
+      "weight": "W3",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 740.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S2": {
+      "weight": "W0",
+      "sign": "S2",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S3": {
+      "weight": "W0",
+      "sign": "S3",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 605.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S4": {
+      "weight": "W0",
+      "sign": "S4",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 605.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D1_W0_S0": {
+      "weight": "W0",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W1_S0": {
+      "weight": "W1",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 399.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2752.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W2_S0": {
+      "weight": "W2",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 530.265423692526,
+      "motor_spikes": 220.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1649.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W3_S0": {
+      "weight": "W3",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 684.3907535757153,
+      "motor_spikes": 317.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2089.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W4_S0": {
+      "weight": "W4",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 399.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2752.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W5_S0": {
+      "weight": "W5",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 298.52435191919767,
+      "motor_spikes": 486.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1283.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W6_S0": {
+      "weight": "W6",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 152.36966054387443,
+      "motor_spikes": 162.0,
+      "jump_windows": 2.0,
+      "total_spikes": 328.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W7_S0": {
+      "weight": "W7",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 2304.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     }
+    },
+    "s2_equals_s0": {
+     "spike_hash_equal": true,
+     "decision_hash_equal": true,
+     "metrics_equal": true,
+     "note": "S2 retains unknown-sign edges with zero weight, which is numerically identical to excluding them; any difference would be a bug, not a scientific result"
+    },
+    "w4_equals_w1": {
+     "spike_hash_equal": true,
+     "decision_hash_equal": true,
+     "note": "power exponent 1.0 with scale 0.5 and cap 300 is the same transform as linear with scale 0.5 and cap 300"
+    },
+    "cap_saturation": {
+     "edges": 1535710,
+     "edges_at_cap_W0": 643,
+     "fraction_edges_at_cap_W0": 0.000419,
+     "count_at_cap_threshold": 234.8921,
+     "interpretation": "the W0 cap binds for an edge whose structural count reaches the threshold; above it W0 and W5 differ only by the cap"
+    }
+   }
+  },
+  "sensory_specificity": {
+   "status": "not_established",
+   "grade": "E1",
+   "evidence": {
+    "B_full_total": 3562,
+    "C_full_total": 3760,
+    "D_full_total": 3648,
+    "E_full_total": 3561,
+    "F_full_total": 0,
+    "G_full_total": 0,
+    "B_full_non_stimulated": 0,
+    "B_full_event_locked_downstream": 0,
+    "B_full_decoder_states": {
+     "NEUTRAL": 67
+    },
+    "C_full_decoder_states": {
+     "NEUTRAL": 67
+    },
+    "D_full_decoder_states": {
+     "NEUTRAL": 67
+    }
+   }
+  },
+  "downstream_propagation": {
+   "status": "absent_under_tested_drive",
+   "grade": null,
+   "evidence": {
+    "non_stimulated_spikes_B_full": 0,
+    "first_hop_targets_downstream": 607,
+    "first_hop_receiving_neurons": 473,
+    "first_hop_max_synaptic_current_pa": 164.443222,
+    "first_hop_max_membrane_mv": -56.926064,
+    "first_hop_closest_deficit_mv": 6.926064,
+    "first_hop_spikes": 0,
+    "second_hop_spikes": 0,
+    "signed_transmissions": 9499
+   }
+  },
+  "motor_output": {
+   "status": "simulated_decoder_output_only",
+   "grade": "E2",
+   "evidence": {
+    "motor_spikes_4G_C": 492,
+    "jump_windows_4G_C": 4,
+    "validated_motor_command": false
+   }
+  },
+  "biological_plausibility": {
+   "status": "unknown",
+   "grade": null,
+   "evidence": {
+    "structural_connectivity_not_physiology": true,
+    "predicted_not_verified_transmitters": "verified-only policy leaves 44.5% of t5 edges signed",
+    "synaptic_weights_uncertain": true,
+    "annotation_incomplete": true,
+    "banc_specimen_export_limits": true,
+    "no_validated_behavioural_labels": true
+   }
+  }
+ },
+ "claims": [
+  {
+   "id": "C01_integrity_determinism",
+   "dimension": "reproducibility",
+   "claim": "The BANC graph, node table and phase artifacts are intact, and identical simulations produce identical spike, decision and drive hashes.",
+   "criteria": {
+    "e0": true
+   },
+   "status": "supported",
+   "evidence": {
+    "4H.4_integrity_pass": true,
+    "4H.4_repeat_hashes_equal": true,
+    "4H.1_integrity_pass": true,
+    "4H.2_integrity_pass": true,
+    "4H.3_integrity_pass": true
+   },
+   "reason": "E0 is awarded for reproducible software execution and data integrity.",
+   "grade": "E0",
+   "grade_definition": "Infrastructure: data integrity, graph construction, deterministic execution and software validation."
+  },
+  {
+   "id": "C02_stimulated_sensory_spiking",
+   "claim": "The event-pulsed sensory drive produces reproducible spikes in the stimulated sensory neurons.",
+   "criteria": {
+    "e0": true,
+    "e1": true
+   },
+   "status": "supported",
+   "evidence": {
+    "B_full_stimulated_spikes": 3562,
+    "B_full_total_spikes": 3562,
+    "A_F_G_total_spikes": {
+     "A_no_events": 0,
+     "F_constant_matched_charge": 0,
+     "G_background_noise": 0
+    }
+   },
+   "reason": "E1 is awarded for reproducible activity in the directly stimulated population.",
+   "dimension": "computational_activity",
+   "grade": "E1",
+   "grade_definition": "Computational activity: the model produces reproducible neural activity under stated assumptions."
+  },
+  {
+   "id": "C03_condition_c_decoder_output",
+   "claim": "The Phase 4G condition C group produces reproducible motor-neuron spikes and decoder JUMP windows under the fixed protocol.",
+   "criteria": {
+    "e0": true,
+    "e1": true
+   },
+   "status": "supported",
+   "evidence": {
+    "motor_spikes": 492,
+    "jump_windows": 4,
+    "spike_hash_matches_phase_4g": true,
+    "repeats_hash_equal": true
+   },
+   "reason": "E1 is the highest grade: the output is a simulated decoder result, not yet a propagated sensory or behavioural result.",
+   "dimension": "computational_activity",
+   "grade": "E1",
+   "grade_definition": "Computational activity: the model produces reproducible neural activity under stated assumptions."
+  },
+  {
+   "id": "C04_condition_c_vs_random_controls",
+   "claim": "Condition C is distinguishable from five pre-declared matched random-control families on motor spikes and JUMP windows.",
+   "criteria": {
+    "e0": true,
+    "e1": true,
+    "e2": true
+   },
+   "status": "supported_with_limits",
+   "evidence": {
+    "p_values_P1": {
+     "A_vnc_intrinsic_random": 0.00990099,
+     "B_motor_projecting_random": 0.00990099,
+     "C_all_verified_excitatory_random": 0.00990099,
+     "D_rank_stratum_shuffled": 0.00990099,
+     "E_connectivity_annotation_matched": 0.00990099
+    },
+    "p_values_P2": {
+     "A_vnc_intrinsic_random": 0.00990099,
+     "B_motor_projecting_random": 0.00990099,
+     "C_all_verified_excitatory_random": 0.00990099,
+     "D_rank_stratum_shuffled": 0.00990099,
+     "E_connectivity_annotation_matched": 0.00990099
+    },
+    "holm_P1": {
+     "A_vnc_intrinsic_random": true,
+     "B_motor_projecting_random": true,
+     "C_all_verified_excitatory_random": true,
+     "D_rank_stratum_shuffled": true,
+     "E_connectivity_annotation_matched": true
+    },
+    "holm_P2": {
+     "A_vnc_intrinsic_random": true,
+     "B_motor_projecting_random": true,
+     "C_all_verified_excitatory_random": true,
+     "D_rank_stratum_shuffled": true,
+     "E_connectivity_annotation_matched": true
+    },
+    "minimum_attainable_p": 0.00990099,
+    "selection_bias": "condition C was selected on the same motor-synapse rank used for the comparison"
+   },
+   "reason": "E2 is awarded for statistical sensitivity to population identity within the tested control families; it is not pathway evidence.",
+   "dimension": "statistical_robustness",
+   "grade": "E2",
+   "grade_definition": "Population-level sensitivity: activity changes reproducibly with controlled inputs or perturbations."
+  },
+  {
+   "id": "C05_population_size_and_rule",
+   "claim": "Motor-neuron spikes and JUMP windows depend reproducibly on the driven population size and on the selection rule.",
+   "criteria": {
+    "e0": true,
+    "e1": true,
+    "e2": true
+   },
+   "status": "supported",
+   "evidence": {
+    "connectivity_size_curve": {
+     "8": {
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 102.0,
+      "jump_detected_runs": 0
+     },
+     "16": {
+      "motor_spikes": 14.0,
+      "jump_windows": 0.0,
+      "total_spikes": 214.0,
+      "jump_detected_runs": 0
+     },
+     "32": {
+      "motor_spikes": 104.0,
+      "jump_windows": 0.0,
+      "total_spikes": 490.0,
+      "jump_detected_runs": 0
+     },
+     "48": {
+      "motor_spikes": 334.0,
+      "jump_windows": 3.0,
+      "total_spikes": 915.0,
+      "jump_detected_runs": 1
+     },
+     "64": {
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "jump_detected_runs": 1
+     },
+     "96": {
+      "motor_spikes": 863.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2155.0,
+      "jump_detected_runs": 1
+     },
+     "128": {
+      "motor_spikes": 1126.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2836.0,
+      "jump_detected_runs": 1
+     }
+    },
+    "size_64_confirmatory": {
+     "comparison": "size 64 connectivity_ranked (the Phase 4G condition C candidate set) versus the 100 Phase 4H.1 family A draws",
+     "P1": {
+      "observed": 492,
+      "control_n": 100,
+      "control_max": 8,
+      "p_one_sided_greater": 0.00990099
+     },
+     "P2": {
+      "observed": 4,
+      "control_n": 100,
+      "control_max": 0,
+      "p_one_sided_greater": 0.00990099
+     },
+     "holm": {
+      "adjusted": {
+       "P1_motor_spikes": 0.01980198,
+       "P2_jump_windows": 0.01980198
+      },
+      "rejected": {
+       "P1_motor_spikes": true,
+       "P2_jump_windows": true
+      },
+      "alpha": 0.05,
+      "method": "Holm-Bonferroni"
+     },
+     "any_confirmatory_difference": true
+    }
+   },
+   "reason": "E2 is awarded for a reproducible dose-response and rule dependence.",
+   "dimension": "statistical_robustness",
+   "grade": "E2",
+   "grade_definition": "Population-level sensitivity: activity changes reproducibly with controlled inputs or perturbations."
+  },
+  {
+   "id": "C06_weight_sign_drive_sensitivity",
+   "claim": "The decoder output is sensitive to weight transform, transmitter sign policy and drive amplitude.",
+   "criteria": {
+    "e0": true,
+    "e1": true,
+    "e2": true
+   },
+   "status": "supported",
+   "evidence": {
+    "preregistration_matches": true,
+    "config_summary": {
+     "D0_W0_S0": {
+      "weight": "W0",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W1_S0": {
+      "weight": "W1",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W2_S0": {
+      "weight": "W2",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 755.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W3_S0": {
+      "weight": "W3",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 740.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W4_S0": {
+      "weight": "W4",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W5_S0": {
+      "weight": "W5",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 481.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1281.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W6_S0": {
+      "weight": "W6",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 1295.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2204.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W7_S0": {
+      "weight": "W7",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 704.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W1_S1": {
+      "weight": "W1",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W2_S1": {
+      "weight": "W2",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 755.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W3_S1": {
+      "weight": "W3",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 740.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S2": {
+      "weight": "W0",
+      "sign": "S2",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S3": {
+      "weight": "W0",
+      "sign": "S3",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 605.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S4": {
+      "weight": "W0",
+      "sign": "S4",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 605.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D1_W0_S0": {
+      "weight": "W0",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W1_S0": {
+      "weight": "W1",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 399.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2752.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W2_S0": {
+      "weight": "W2",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 530.265423692526,
+      "motor_spikes": 220.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1649.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W3_S0": {
+      "weight": "W3",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 684.3907535757153,
+      "motor_spikes": 317.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2089.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W4_S0": {
+      "weight": "W4",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 399.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2752.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W5_S0": {
+      "weight": "W5",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 298.52435191919767,
+      "motor_spikes": 486.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1283.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W6_S0": {
+      "weight": "W6",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 152.36966054387443,
+      "motor_spikes": 162.0,
+      "jump_windows": 2.0,
+      "total_spikes": 328.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W7_S0": {
+      "weight": "W7",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 2304.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     }
+    },
+    "s2_equals_s0": {
+     "spike_hash_equal": true,
+     "decision_hash_equal": true,
+     "metrics_equal": true,
+     "note": "S2 retains unknown-sign edges with zero weight, which is numerically identical to excluding them; any difference would be a bug, not a scientific result"
+    },
+    "w4_equals_w1": {
+     "spike_hash_equal": true,
+     "decision_hash_equal": true,
+     "note": "power exponent 1.0 with scale 0.5 and cap 300 is the same transform as linear with scale 0.5 and cap 300"
+    },
+    "cap_saturation": {
+     "edges": 1535710,
+     "edges_at_cap_W0": 643,
+     "fraction_edges_at_cap_W0": 0.000419,
+     "count_at_cap_threshold": 234.8921,
+     "interpretation": "the W0 cap binds for an edge whose structural count reaches the threshold; above it W0 and W5 differ only by the cap"
+    }
+   },
+   "reason": "E2 is awarded for reproducible parameter sensitivity. The result does not establish which transform is biologically correct.",
+   "dimension": "parameter_sensitivity",
+   "grade": "E2",
+   "grade_definition": "Population-level sensitivity: activity changes reproducibly with controlled inputs or perturbations."
+  },
+  {
+   "id": "C07_sensory_downstream_propagation",
+   "claim": "Sensory stimulation propagates beyond the directly stimulated neurons to first-hop and later populations.",
+   "criteria": {
+    "e0": true,
+    "e1": false,
+    "e2": false,
+    "e3": false
+   },
+   "status": "contradicted",
+   "evidence": {
+    "non_stimulated_spikes": 0,
+    "first_hop_targets_downstream": 607,
+    "first_hop_receiving_neurons": 473,
+    "first_hop_max_membrane_mv": -56.926064,
+    "first_hop_closest_deficit_mv": 6.926064,
+    "first_hop_spikes": 0,
+    "second_hop_spikes": 0,
+    "signed_transmissions": 9499
+   },
+   "reason": "No non-stimulated neuron spiked. Synaptic current reached 473 of 607 downstream first-hop targets, but the closest neuron remained 6.926 mV below threshold. E3 is not awarded.",
+   "dimension": "downstream_propagation",
+   "grade": null,
+   "highest_grade_not_awarded": "E3",
+   "grade_definition": null
+  },
+  {
+   "id": "C08_actual_vs_shuffled_propagated_response",
+   "claim": "Actual sensory-event structure produces a distinguishable propagated downstream response compared with shuffled controls.",
+   "criteria": {
+    "e0": true,
+    "e1": true,
+    "e2": false,
+    "e3": false
+   },
+   "status": "not_supported",
+   "evidence": {
+    "B_vs_C": {
+     "B_full_total": 3562,
+     "C_full_total": 3760,
+     "D_full_total": 3648,
+     "E_full_total": 3561,
+     "F_full_total": 0,
+     "G_full_total": 0,
+     "B_full_non_stimulated": 0,
+     "B_full_event_locked_downstream": 0,
+     "B_full_decoder_states": {
+      "NEUTRAL": 67
+     },
+     "C_full_decoder_states": {
+      "NEUTRAL": 67
+     },
+     "D_full_decoder_states": {
+      "NEUTRAL": 67
+     }
+    },
+    "B_vs_D": {
+     "B_full_total": 3562,
+     "D_full_total": 3648
+    },
+    "downstream_event_locked_spikes_B": 0,
+    "decoder_states_B": {
+     "NEUTRAL": 67
+    }
+   },
+   "reason": "A small difference exists in stimulated spike totals, but there is no propagated or decoder-level difference; the sign of the B-versus-C difference is also mixed across streams. E2/E3 are not awarded.",
+   "dimension": "sensory_specificity",
+   "grade": null,
+   "highest_grade_not_awarded": "E3",
+   "grade_definition": null
+  },
+  {
+   "id": "C09_descending_motor_recruitment",
+   "claim": "Sensory activity reaches descending neurons and motor neurons.",
+   "criteria": {
+    "e0": true,
+    "e1": false,
+    "e2": false,
+    "e3": false
+   },
+   "status": "contradicted",
+   "evidence": {
+    "descending_spikes": 0,
+    "descending_receiving_neurons": 9,
+    "descending_max_membrane_mv": -62.158092,
+    "descending_closest_deficit_mv": 12.158092,
+    "motor_spikes": 0,
+    "motor_receiving_neurons": 0,
+    "motor_max_membrane_mv": -65.0,
+    "second_hop_motor_targets": 4
+   },
+   "reason": "4 motor neurons are structurally two signed hops from the stimulated group, but none receives current or spikes. E3 is not awarded.",
+   "dimension": "motor_output",
+   "grade": null,
+   "highest_grade_not_awarded": "E3",
+   "grade_definition": null
+  },
+  {
+   "id": "C10_decoder_is_validated_motor_command",
+   "claim": "A LEFT, RIGHT or JUMP decoder output is a validated biological motor command or behavioural action.",
+   "criteria": {
+    "e0": true,
+    "e1": true,
+    "e2": true,
+    "e3": false,
+    "e4": false
+   },
+   "status": "not_supported",
+   "evidence": {
+    "left_right_jump_labels": "annotation-derived decoder labels",
+    "behavioural_learning": "none",
+    "independent_validation": "none"
+   },
+   "reason": "E4 requires controlled behavioural learning and independent validation; neither exists.",
+   "dimension": "motor_output",
+   "grade": null,
+   "highest_grade_not_awarded": "E4",
+   "grade_definition": null
+  },
+  {
+   "id": "C11_mapping_is_measured_pathway",
+   "claim": "The game-feature-to-BANC mapping is a measured visual or sensory pathway.",
+   "criteria": {
+    "e0": true,
+    "e1": false,
+    "e2": false,
+    "e3": false
+   },
+   "status": "not_supported",
+   "evidence": {
+    "mapping_status": "annotation-defined populations with labelled hypotheses",
+    "motor_overlap": 0,
+    "signed_edge_coverage_t5": 0.444811,
+    "fafb_banc_merge": "none; identities are never merged"
+   },
+   "reason": "The mapping is a computational convention, not a measured pathway.",
+   "dimension": "biological_plausibility",
+   "grade": null,
+   "highest_grade_not_awarded": "E3",
+   "grade_definition": null
+  },
+  {
+   "id": "C12_robust_across_assumptions",
+   "claim": "The reported effects are invariant to the main model assumptions (weight transform, sign policy, drive, mapping).",
+   "criteria": {
+    "e0": true,
+    "e1": true,
+    "e2": false,
+    "e3": false
+   },
+   "status": "contradicted",
+   "evidence": {
+    "weight_and_sign": {
+     "D0_W0_S0": {
+      "weight": "W0",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W1_S0": {
+      "weight": "W1",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W2_S0": {
+      "weight": "W2",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 755.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W3_S0": {
+      "weight": "W3",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 740.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W4_S0": {
+      "weight": "W4",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W5_S0": {
+      "weight": "W5",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 481.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1281.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W6_S0": {
+      "weight": "W6",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 1295.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2204.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W7_S0": {
+      "weight": "W7",
+      "sign": "S0",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 704.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W1_S1": {
+      "weight": "W1",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 5.0,
+      "jump_windows": 0.0,
+      "total_spikes": 723.0,
+      "silent": false,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W2_S1": {
+      "weight": "W2",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 755.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W3_S1": {
+      "weight": "W3",
+      "sign": "S1",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 740.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S2": {
+      "weight": "W0",
+      "sign": "S2",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S3": {
+      "weight": "W0",
+      "sign": "S3",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 605.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D0_W0_S4": {
+      "weight": "W0",
+      "sign": "S4",
+      "drive": "D0",
+      "current_pa": 300.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 605.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     },
+     "D1_W0_S0": {
+      "weight": "W0",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 300.0,
+      "motor_spikes": 492.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1296.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W1_S0": {
+      "weight": "W1",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 399.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2752.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W2_S0": {
+      "weight": "W2",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 530.265423692526,
+      "motor_spikes": 220.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1649.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W3_S0": {
+      "weight": "W3",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 684.3907535757153,
+      "motor_spikes": 317.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2089.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W4_S0": {
+      "weight": "W4",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 399.0,
+      "jump_windows": 4.0,
+      "total_spikes": 2752.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W5_S0": {
+      "weight": "W5",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 298.52435191919767,
+      "motor_spikes": 486.0,
+      "jump_windows": 4.0,
+      "total_spikes": 1283.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W6_S0": {
+      "weight": "W6",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 152.36966054387443,
+      "motor_spikes": 162.0,
+      "jump_windows": 2.0,
+      "total_spikes": 328.0,
+      "silent": false,
+      "neutral_only": false,
+      "all_hashes_equal": true
+     },
+     "D1_W7_S0": {
+      "weight": "W7",
+      "sign": "S0",
+      "drive": "D1",
+      "current_pa": 1000.0,
+      "motor_spikes": 0.0,
+      "jump_windows": 0.0,
+      "total_spikes": 2304.0,
+      "silent": true,
+      "neutral_only": true,
+      "all_hashes_equal": true
+     }
+    },
+    "sensory_mapping": "annotation convention",
+    "synaptic_coverage": 0.444811
+   },
+   "reason": "At nominal drive JUMP is present only for ['D0_W0_S0', 'D0_W0_S2', 'D0_W5_S0', 'D0_W6_S0'] and absent elsewhere; the silent configurations are ['D0_W0_S3', 'D0_W0_S4', 'D0_W2_S0', 'D0_W2_S1', 'D0_W3_S0', 'D0_W3_S1', 'D0_W7_S0']. E2 sensitivity is supported, but assumption-invariance is not.",
+   "dimension": "parameter_sensitivity",
+   "grade": null,
+   "highest_grade_not_awarded": "E3",
+   "grade_definition": null
+  }
+ ],
+ "strongest_supported_conclusion": "Under the fixed verified-only sign policy and W0 weight transform, a 64-neuron VNC-intrinsic group selected on motor-synapse rank produces a reproducible simulated motor/JUMP decoder output that is distinguishable from five matched random-control families (E2). The output is strongly dependent on weight transform, sign policy and drive amplitude. Sensory stimulation at the tested 200 pA per-feature drive produces spikes only in the stimulated sensory neurons; synaptic current reaches first-hop targets but does not bring any of them to threshold, so there is no propagation to descending or motor populations and no E3 functional-pathway evidence.",
+ "unsupported_claims": [
+  "That sensory events drive descending or motor-neuron activity in this model.",
+  "That actual event structure produces a distinguishable propagated response compared with shuffled controls.",
+  "That 662 signed outgoing edges imply effective downstream activation.",
+  "That a LEFT, RIGHT or JUMP decoder label is a biological motor command or observed behaviour.",
+  "That the game-feature-to-BANC mapping is a measured visual pathway.",
+  "That the Phase 4G JUMP result is invariant to weight transform or sign policy.",
+  "That the model provides E3 functional-pathway evidence or E4 behavioural evidence.",
+  "That stationary or constant-charge drive is equivalent to the actual event sequence."
+ ],
+ "remaining_uncertainties": [
+  "Structural connectivity is not physiological connectivity: sign, weight and delay are model priors.",
+  "44.5% of threshold-5 edges carry a verified transmitter sign; the rest are excluded and may change propagation.",
+  "Synaptic weights are monotone transforms of structural synapse counts, not measured conductances.",
+  "The 232-neuron sensory mapping is an annotation-defined hypothesis, not a measured receptive-field map.",
+  "BANC is one specimen and one dataset export; annotation completeness and proofreading are limited.",
+  "Event timestamps are synthesized at 30 fps because the source images carry no timestamps.",
+  "No validated biological labels exist for LEFT, RIGHT or JUMP.",
+  "The absence of propagation at 200 pA does not prove that the network cannot propagate at other drives or weights.",
+  "The three streams are non-overlapping segments of one recording group, not independent recordings.",
+  "A motor-neuron spike in the simulator is not a validated motor command or behaviour."
+ ],
+ "recommended_next_experiment": {
+  "title": "Pre-registered sensory-drive threshold and propagation calibration",
+  "rationale": "The current experiment establishes that 200 pA per-feature pulses reach first-hop membranes but remain subthreshold. The next step is to estimate the input level at which the first hop crosses threshold, not to search for a setting that produces motor activity.",
+  "design": [
+   "Pre-register a fixed geometric drive series (for example 200, 400, 800, 1200 pA per feature) with all seven conditions A-G on all three streams.",
+   "Record the same first-hop, second-hop, descending and motor diagnostics with hash-verified replays.",
+   "Report every cell, including silent cells; do not select a drive after observing motor output.",
+   "Add a direct first-hop current-injection positive control to verify that first-hop neurons can spike under the model.",
+   "Add a single-first-hop-spike test to measure whether one first-hop spike produces any second-hop current or spike.",
+   "Repeat the analysis on an independent recording or a second specimen before any E3/E4 claim."
+  ],
+  "decision_rule": "The experiment succeeds if it estimates a threshold and reports it, regardless of whether motor activity appears."
+ },
+ "overall_verdict": {
+  "phase_4h": "PASS WITH LIMITATIONS",
+  "phase_4h4": "PASS WITH LIMITATIONS",
+  "rationale": "All 27 Phase 4H.4 runs completed with verified configuration, determinism and integrity. Phase 4H.1-4H.4 support E0-E2 claims. The sensory round-trip is reproducibly motor-silent and produces no E3 pathway evidence. This is a controlled negative result, not an execution failure.",
+  "highest_grade_awarded": "E2",
+  "e3_awarded": false,
+  "e4_awarded": false
+ },
+ "limitations": [
+  "Evidence grades are project-specific and were assigned after the results were known.",
+  "The 4H.1 p-values are at the minimum attainable value for 100 control draws.",
+  "Condition C was selected on the same motor-synapse rank used in the control comparison.",
+  "The weight and sign studies are deterministic sweeps, not independent biological replicates.",
+  "The sensory streams are non-independent segments of one recording.",
+  "No claim about behaviour, perception or biological motor control is supported."
+ ],
+ "artifacts": {
+  "4H.1_result": {
+   "path": "experiments/results/phase_4h/control_draws.json",
+   "available": true,
+   "bytes": 4752502
+  },
+  "4H.2_result": {
+   "path": "experiments/results/phase_4h/population_sensitivity.json",
+   "available": true,
+   "bytes": 3043241
+  },
+  "4H.3_result": {
+   "path": "experiments/results/phase_4h/weight_sensitivity.json",
+   "available": true,
+   "bytes": 1624140
+  },
+  "4H.4_result": {
+   "path": "experiments/results/phase_4h/sensory_roundtrip.json",
+   "available": true,
+   "bytes": 2908139
+  },
+  "4H.4_analysis": {
+   "path": "reports/PHASE_4H4_SENSORY_TO_BANC_ROUND_TRIP.json",
+   "available": true,
+   "bytes": 931852
+  },
+  "4H.1_report": {
+   "path": "reports/PHASE_4H1_RANDOM_CONTROL_VALIDATION.md",
+   "available": true,
+   "bytes": 26559
+  },
+  "4H.2_report": {
+   "path": "reports/PHASE_4H2_POPULATION_SENSITIVITY.md",
+   "available": true,
+   "bytes": 22115
+  },
+  "4H.3_report": {
+   "path": "reports/PHASE_4H3_WEIGHT_SENSITIVITY.md",
+   "available": true,
+   "bytes": 20666
+  },
+  "4H.4_report": {
+   "path": "reports/PHASE_4H4_SENSORY_TO_BANC_ROUND_TRIP.md",
+   "available": true,
+   "bytes": 30226
+  },
+  "protocol": {
+   "path": "reports/PHASE_4H_EXPERIMENTAL_PROTOCOL.md",
+   "available": true,
+   "bytes": 19711
+  }
+ },
+ "first_hop_summary": {
+  "n": 607,
+  "spikes": 0,
+  "active_neurons": 0,
+  "receiving_neurons": 473,
+  "max_synaptic_current_pa": 164.443222,
+  "max_membrane_mv": -56.926064,
+  "max_depolarization_mv": 8.073936,
+  "closest_deficit_mv": 6.926064,
+  "n_within_1mv": 0,
+  "n_within_5mv": 0,
+  "n_within_10mv": 1
+ },
+ "missing_artifacts": []
+}

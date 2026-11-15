@@ -1,10 +1,18 @@
 # Phase 3C — Evaluation
 
-**Status:** synthetic temporal evaluation **PASS**; scripted end-to-end
-integration **PASS** (16/16 checks); real-sequence replay with a trained
-detector **BLOCKED** (no weights).
+**Status (2026-11-06):** synthetic temporal evaluation **PASS**; scripted
+end-to-end integration **PASS** (16/16 checks); real-sequence replay with a
+trained detector **BLOCKED** at the time (no weights).
 
 **Date:** 2026-11-06
+
+> **Later update (2026-11-07).** A trained YOLO11n ONNX detector was integrated
+> and a 100-frame real-frame replay was run
+> (`reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md`). That replay is an engineering
+> exercise of the pipeline — deterministic output, latency and spike totals —
+> not a Phase 3C temporal-separability evaluation and not independent
+> perception accuracy. The 3C.1–3C.9 acceptance experiments remain unexecuted,
+> so the 3C acceptance status in this document is unchanged.
 
 ---
 
@@ -62,6 +70,32 @@ and a one-frame right-lane train flicker at frame 3.
 | Scheduler memory | 16,672 bytes |
 | Integration checks | **16 / 16 pass** |
 
+**Stimulated-spike attribution (recorded payload).** The 444 stimulated spikes
+are not all object-driven. `simulation.spikes_by_feature` in
+`integration.json` decomposes them exactly:
+
+| Feature | Spikes | Provenance in this scripted run |
+| --- | ---: | --- |
+| `player_lane` | 36 | defaulted — no player label |
+| `player_speed` | 24 | defaulted — schema value `0.5` |
+| `obstacle_present` | 62 | scripted object label |
+| `obstacle_type` | 60 | scripted object label |
+| `obstacle_lane` | 41 | geometry-derived proxy |
+| `obstacle_distance` | 31 | geometry-derived proxy |
+| `train_present` | 84 | scripted object label |
+| `train_lane` | 56 | geometry-derived proxy |
+| `train_distance` | 50 | geometry-derived proxy |
+| `jumping`, `rolling`, `coin_*` | 0 | absent or defaulted |
+| **Total** | **444** | |
+
+60 of the 444 (13.5%) come from the two defaulted player features. The
+remaining 384 come from the object features of the scripted scenes: 206 from
+scripted presence/type labels and 178 from geometry-derived lane and distance
+proxies. They are **not** detector-derived here, because the detections are
+scripted rather than recognised from pixels. In the 2026-11-07 real-frame
+replay the corresponding object features are detector-derived, but the reported
+payload for that run does not decompose its stimulated spikes per feature.
+
 Events observed: `uncertain` at frame 0 for the three tracks, `appeared`
 (frame 1), `approaching` (frame 2), a one-frame `uncertain` flicker (frame 3,
 never confirmed), `occluded` (frame 5) and `approaching` again (frame 6).
@@ -73,12 +107,15 @@ activity summary. All four protected artifact hashes match.
 ### 3.1 Scheduled current
 
 Per-feature values are population sums of the maximum scheduled current, not
-simultaneous totals. Per-neuron peak is 200 pA (the Phase 3A.5 operating
-point). The highest population peak is `train_present` at 2,264 pA summed
-over its population. The simulator's recorded maximum absolute total current
-was 1,715.36 pA, i.e. the features do not all peak at the same instant.
-Feature sums in the scheduler statistics are therefore an upper bound, not a
-simultaneous current.
+simultaneous totals. Per-neuron peak is 200 pA, the amplitude selected by
+Phase 3A.5. This run uses **12** `obstacle_distance` neurons, whereas the 3A.5
+calibration selected **four**; only the amplitude is shared, so this is not the
+calibrated four-neuron operating point (see
+`docs/PHASE_3_SENSORY_ENCODING.md`, "Operating-point mismatch"). The highest
+population peak is `train_present` at 2,264 pA summed over its population. The
+simulator's recorded maximum absolute total current was 1,715.36 pA, i.e. the
+features do not all peak at the same instant. Feature sums in the scheduler
+statistics are therefore an upper bound, not a simultaneous current.
 
 Coin currents are exactly zero because the dataset and the scripted scenes
 contain no coin detections.
@@ -101,15 +138,28 @@ result, and the reported protocol does not extend into that regime.
 
 ## 4. What is NOT evaluated
 
-- No trained detector has produced the input; no pixel recognition occurred.
-- No real game recording has been replayed.
+**Status at 2026-11-06**, the date of every measurement in Sections 2–3.
+
+- No trained detector had produced the input measured here; no pixel
+  recognition occurred in these runs.
+- No real game recording had been replayed.
 - No independent ground truth for temporal events exists; calibration uses
   rule-derived expectations.
 - No biological coding claim is made from spike counts.
 - No latency claim is made for the perception pipeline; scheduler timing is
   Python scheduling overhead only.
-- `boots-powerup` and `jump-electric` remain unevaluable in detection terms,
-  and no detection metric exists at all yet.
+- `boots-powerup` and `jump-electric` remained unevaluable in detection terms,
+  and no independent detection metric existed.
+
+**Later context (2026-11-07).** `experiments/phase_3b/real_sequence_replay.py`
+did replay 100 real detector frames through the same tracker, temporal encoder,
+scheduler and connectome (327 accepted detections, 3,300.5 simulated ms,
+6,601 steps, 15,654,631 spikes; see
+`reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md`). That run is engineering evidence
+for a deterministic pipeline. It does not evaluate temporal separability,
+supplies no independent detection accuracy, carries no annotated identities for
+the replayed sequence, and does not execute any of the 3C.1–3C.9 conditions.
+The statements above therefore remain true for the measurements in this report.
 
 ## 5. Limitations
 

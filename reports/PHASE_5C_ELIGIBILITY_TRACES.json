@@ -1,0 +1,344 @@
+{
+ "phase": "5C",
+ "title": "Sparse edge-indexed eligibility traces",
+ "status": "complete",
+ "successful": true,
+ "date": "2026-11-09",
+ "repository": "FLY-SURFER",
+ "preceding_phase": "5B",
+ "scope": "Sparse per-edge eligibility traces, coincidence selection, a sparse delay line and a trace benchmark at synthetic sizes and at the BANC t5 edge count. No neuron simulated, no weight modified.",
+ "classification": "Eligibility traces are a model of short-lived synaptic tagging. tau_e is a declared modelling parameter, not a fitted biological time constant.",
+ "non_claims": [
+  "The trace is not a measured biological eligibility trace and has arbitrary units.",
+  "No learning, weight change or behavioural claim is made in Phase 5C.",
+  "The lazy decay does not model any measured biological decay law.",
+  "The wall-clock benchmark is not evidence that the implementation is faster than the dense reference."
+ ],
+ "implemented_interfaces": {
+  "M04": {
+   "name": "eligibility store",
+   "module": "plasticity/traces.py",
+   "class": "EligibilityStore",
+   "methods": [
+    "accumulate",
+    "value",
+    "advance",
+    "decay",
+    "prune",
+    "reset",
+    "memory_bytes",
+    "sparsity_report",
+    "digest",
+    "describe"
+   ]
+  },
+  "M05": {
+   "name": "trace benchmark and sparse-index contract",
+   "module": "experiments/phase_5/benchmark_traces.py",
+   "checks": [
+    "measured memory",
+    "measured runtime",
+    "sparse update count",
+    "delay-line completeness",
+    "CSR edge mapping"
+   ]
+  }
+ },
+ "modules": {
+  "created": [
+   "plasticity/traces.py",
+   "experiments/phase_5/benchmark_traces.py",
+   "tests/test_plasticity_traces.py",
+   "experiments/results/phase_5c/trace_benchmark.json"
+  ],
+  "modified": [
+   "plasticity/__init__.py (adds trace exports)",
+   "configs/plasticity.yaml (adds traces section)",
+   "tests/test_plasticity_reward.py (renames one package-isolation test; assertions unchanged)"
+  ],
+  "brain_unchanged": true
+ },
+ "model": {
+  "update": "e_ij(t) = lambda * e_ij(t-1) + f(pre_i, post_j)",
+  "decay": "lambda = exp(-dt_ms / tau_e_ms)",
+  "storage": "float32 value per edge, int32 last-write stamp per edge, int32 touched-slot list",
+  "decay_mode": "lazy: advance is O(1); values are materialised on read or update",
+  "pruning": "touched entries below the threshold are dropped on a periodic prune",
+  "coincidence": "delay_matched: pre spike at step t pairs with post spikes at delivery step t + delay_steps",
+  "delay_steps_at_0p5ms": 2,
+  "no_pairwise_matrix": true
+ },
+ "configuration": {
+  "path": "configs/plasticity.yaml",
+  "sha256": "1c732d81b4f5a3a668555696ad9953c1dacae2a4a99a1a74181d9905067d40ab",
+  "traces": {
+   "tau_e_ms": 20.0,
+   "dt_ms": 0.5,
+   "decay_per_step": 0.975309912028,
+   "prune_threshold": 0.0001,
+   "prune_interval_steps": 50,
+   "coincidence": "delay_matched",
+   "dtype": "float32"
+  },
+  "benchmark": {
+   "sizes": [1000, 10000, 100000, 683100, 1535710],
+   "n_steps": 600,
+   "active_fraction_per_step": 0.01,
+   "reward_read_steps": [150, 300, 450],
+   "seed": 20261112
+  },
+  "banc": {
+   "n_steps": 200,
+   "active_fraction_per_step": 0.001,
+   "prune_interval_steps": 50,
+   "seed": 20261113
+  }
+ },
+ "validation": {
+  "runner": "python -m experiments.phase_5.benchmark_traces",
+  "result_file": "experiments/results/phase_5c/trace_benchmark.json",
+  "result_file_sha256": "065c8c5bffc0004753bf0ec448530795b63796737f840f9ea22615113281d8e9",
+  "all_checks_passed": true,
+  "checks": {
+   "lazy_matches_dense_reads": true,
+   "no_pair_matrix": true,
+   "sparse_work_scales_with_active_edges": true,
+   "touched_list_bounded": true,
+   "banc_mapping": true,
+   "banc_count_matches_policy": true,
+   "banc_storage_bounded": true,
+   "banc_delay_line_complete": true,
+   "no_simulation": true
+  },
+  "quick_mode": {
+   "sizes_max": 100000,
+   "n_steps": 60,
+   "all_checks_passed": true,
+   "runtime_s": 3.4484
+  },
+  "synthetic_sizes": [
+   {
+    "n_edges": 1000,
+    "sparse_runtime_s": 0.058453,
+    "dense_runtime_s": 0.012593,
+    "speedup": 0.2154,
+    "sparse_memory_bytes": 11900,
+    "dense_value_bytes": 4000,
+    "memory_ratio": 2.975,
+    "edge_updates": 5970
+   },
+   {
+    "n_edges": 10000,
+    "sparse_runtime_s": 0.076027,
+    "dense_runtime_s": 0.018226,
+    "speedup": 0.2397,
+    "sparse_memory_bytes": 119008,
+    "dense_value_bytes": 40000,
+    "memory_ratio": 2.9752,
+    "edge_updates": 59710
+   },
+   {
+    "n_edges": 100000,
+    "sparse_runtime_s": 0.262139,
+    "dense_runtime_s": 0.079861,
+    "speedup": 0.3047,
+    "sparse_memory_bytes": 1190968,
+    "dense_value_bytes": 400000,
+    "memory_ratio": 2.9774,
+    "edge_updates": 597032
+   },
+   {
+    "n_edges": 683100,
+    "sparse_runtime_s": 1.626697,
+    "dense_runtime_s": 0.677078,
+    "speedup": 0.4162,
+    "sparse_memory_bytes": 8135276,
+    "dense_value_bytes": 2732400,
+    "memory_ratio": 2.9773,
+    "edge_updates": 4078190
+   },
+   {
+    "n_edges": 1535710,
+    "sparse_runtime_s": 4.355772,
+    "dense_runtime_s": 1.962848,
+    "speedup": 0.4506,
+    "sparse_memory_bytes": 18289896,
+    "dense_value_bytes": 6142840,
+    "memory_ratio": 2.9774,
+    "edge_updates": 9168195
+   }
+  ],
+  "activity_regime": [
+   {
+    "n_edges": 1535710,
+    "n_steps": 100,
+    "active_fraction": 0.01,
+    "sparse_runtime_s": 0.529197,
+    "dense_runtime_s": 0.333317,
+    "speedup": 0.6299,
+    "decay_work_ratio": 100.4986
+   },
+   {
+    "n_edges": 1535710,
+    "n_steps": 100,
+    "active_fraction": 0.001,
+    "sparse_runtime_s": 0.073172,
+    "dense_runtime_s": 0.061604,
+    "speedup": 0.8419,
+    "decay_work_ratio": 1000.2931
+   }
+  ],
+  "wall_clock_result": {
+   "status": "negative",
+   "statement": "The lazy store was slower in wall-clock time than the vectorised dense reference at every measured size and activity in this run.",
+   "interpretation": "The dense baseline decays the whole array in one NumPy pass; the sparse path pays per-step Python/NumPy overhead and per-update validation. The sparse path still performs 100-1000x fewer per-edge decay operations and allocates no pairwise object.",
+   "preserved": true
+  },
+  "banc": {
+   "available": true,
+   "graph": {
+    "path": "datasets/processed/banc_v888/banc_graph_t5.npz",
+    "n_nodes": 172433,
+    "n_edges": 1535710,
+    "n_synapses": 18552546
+   },
+   "policy": {
+    "path": "configs/banc_synapse_policy.yaml",
+    "n_plastic_edges": 683100,
+    "signed_edges_reported": 683100,
+    "plastic_edge_share": 0.444810544,
+    "counts_match": true
+   },
+   "mapping": {
+    "sample_size": 2000,
+    "positions_are_sorted_and_plastic": true,
+    "destinations_in_range": true
+   },
+   "storage": {
+    "compact_capacity_bytes": 5464800,
+    "all_edge_capacity_bytes": 12285680,
+    "dense_plastic_value_bytes": 2732400,
+    "compact_under_20mb": true
+   },
+   "sparse": {
+    "n_steps": 200,
+    "runtime_s": 0.073761,
+    "per_step_ms": 0.368803,
+    "n_touched": 123620,
+    "store_memory_bytes": 5959280
+   },
+   "dense": {
+    "runtime_s": 0.030784,
+    "full_array_updates": 136620000
+   },
+   "speedup": 0.4173,
+   "delay_line": {
+    "delay_steps": 2,
+    "edges_pushed": 136523,
+    "edges_delivered": 136523,
+    "pending_at_end": 0,
+    "all_packets_delivered": true
+   },
+   "load_and_policy_s": 3.3605,
+   "simulated_neurons": false,
+   "weights_modified": false
+  },
+  "numerical_behaviour": [
+   "float32 overflow raises FloatingPointError before writing",
+   "non-finite increments raise ValueError",
+   "negative increments raise ValueError",
+   "duplicate or out-of-range edges raise ValueError",
+   "reads before the current clock raise ValueError",
+   "the clock is guarded against int32 timestamp overflow"
+  ]
+ },
+ "tests": {
+  "focused": {
+   "path": "tests/test_plasticity_traces.py",
+   "n_tests": 48,
+   "result": "48 passed in 0.30 s"
+  },
+  "regression_subset": {
+   "paths": [
+    "tests/test_plasticity_traces.py",
+    "tests/test_plasticity_reward.py",
+    "tests/test_configs.py"
+   ],
+   "result": "112 passed in 1.54 s"
+  },
+  "full_suite": {
+   "result": "601 passed in 30.42 s"
+  },
+  "existing_tests_modified": false,
+  "coverage_summary": [
+   "construction and validation",
+   "decay constant",
+   "accumulation and closed-form decay",
+   "rejection of reads in the past",
+   "integer decay steps",
+   "reset",
+   "duplicate and out-of-range edges",
+   "array increments",
+   "non-finite and negative increments",
+   "float32 overflow rejection",
+   "pruning",
+   "lazy versus manual decay over a tracked clock",
+   "coincidence with no activity, pre only, post only and both",
+   "delay line at 0 and 2 steps",
+   "missed delivery guard",
+   "two-neuron delay-matched case",
+   "linear memory",
+   "digest determinism and decay sensitivity",
+   "configuration loading and rejection paths",
+   "missing traces section"
+  ]
+ },
+ "resources": {
+  "benchmark_runtime_s": 14.358,
+  "largest_capacity_bytes": 12285680,
+  "largest_store_bytes": 18289896,
+  "banc_compact_capacity_bytes": 5464800,
+  "python": "3.13.14",
+  "numpy": "2.3.4",
+  "data_touched": "BANC t5 graph and policy read-only",
+  "weights_modified": false,
+  "neurons_simulated": false
+ },
+ "integrity": {
+  "phase_4h_snapshot": "37/37 unchanged",
+  "readme_unchanged": true,
+  "phase_4h_outputs_unchanged": true,
+  "datasets_unchanged": true,
+  "brain_unchanged": true
+ },
+ "limitations": [
+  "Active edges are drawn uniformly at random, not from a simulated spike pattern.",
+  "The lazy store was slower in wall-clock time than the vectorised dense reference at every measured size and activity in this run; the result is preserved.",
+  "The lazy store uses about 3x the value-only dense memory (value, timestamp and touched list).",
+  "At 1% activity over 600 steps nearly every edge is touched, so the touched list approaches the full slot count.",
+  "Timings are a single run on one machine; no variance or confidence interval is claimed.",
+  "Only two activity levels were measured in the regime table.",
+  "The delay line models the simulator's uniform 1 ms delay only.",
+  "tau_e is declared, not fitted; no claim is made that 20 ms is a biological time constant of any synapse in this connectome."
+ ],
+ "exit_criteria": {
+  "sparse_edge_indexed_trace_store": "implemented",
+  "no_dense_pairwise_matrix": "enforced and asserted",
+  "update_and_decay_formula": "implemented and tested",
+  "creation_accumulation_decay": "implemented and tested",
+  "reset": "implemented and tested",
+  "pre_only_post_only_coincident": "tested",
+  "delayed_reward_compatible": "delay-matched convention and delay line tested",
+  "edge_indexing_consistency": "tested and checked against the CSR policy",
+  "lazy_or_sparse_decay": "implemented (lazy)",
+  "memory_and_runtime_measurement": "measured at five sizes and BANC t5",
+  "banc_t5_benchmark": "completed read-only at 683100 plastic edges",
+  "module_config_tests_runner_reports": "all delivered",
+  "status": "pass"
+ },
+ "next_phase": "5D",
+ "derived_from": [
+  "reports/PHASE_5A_PLASTICITY_ARCHITECTURE_AUDIT.md (M04, M05, T02, T03, R04)",
+  "reports/PHASE_5B_REWARD_SYSTEM.md"
+ ]
+}

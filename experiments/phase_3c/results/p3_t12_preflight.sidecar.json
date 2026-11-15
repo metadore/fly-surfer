@@ -1,0 +1,13 @@
+{
+ "output": "p3_t12_preflight.json",
+ "phase": "P3-T12-preflight",
+ "version": "p3-t12-preflight-v1",
+ "mode": "preflight",
+ "verdict": "READY",
+ "generated_at_utc": "2026-11-13T18:12:03+00:00",
+ "smoke_sha256": "ce0dd7c5187dcdcb6b557082868219859a7d2e9e94f09adf7c01515b4857f92e",
+ "config_sha256": "18018b686e38226b5f2bb126868e7ed67f66ad1d9be7bfa95a6f5ac91b52ea03",
+ "protocol_sha256": "49c09424b15db3b09cfdef5b28afcf0cbcaa6dbc72a9f657de6b31a82201b173",
+ "ready_for_full_run": true,
+ "failures": []
+}

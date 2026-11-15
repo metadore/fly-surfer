@@ -1,0 +1,339 @@
+{
+  "phase": "4G.5-addendum",
+  "purpose": "Measure dependence of the condition C result on the excitatory sign prior of the stimulated neurons.",
+  "variant": {
+    "stimulated_neurons": 64,
+    "changed_field": "neurotransmitter_verified",
+    "changed_value": "gaba",
+    "unchanged": [
+      "graph",
+      "edge counts",
+      "synaptic weight transform",
+      "decoder populations",
+      "decoder thresholds",
+      "stimulus current and timing",
+      "seed"
+    ]
+  },
+  "primary": {
+    "spike_hash": "397e888ffb7f001e0509bdcfbc9121c09bafb1e2d355b555b298b5c2fed10a95",
+    "decoded_states": {
+      "JUMP": 4,
+      "NEUTRAL": 1
+    },
+    "max_scores": {
+      "LEFT": 0.135135,
+      "RIGHT": 0.150538,
+      "JUMP": 0.6
+    },
+    "activity": {
+      "n_spikes": 1296,
+      "active_neurons": 164,
+      "stimulated_spikes": 740,
+      "non_stimulated_spikes": 556,
+      "non_stimulated_active_neurons": 100,
+      "motor_spikes": 492,
+      "motor_active_neurons": 82
+    }
+  },
+  "sign_flipped": {
+    "spike_hash": "00a482dc74dcaba1a2539225a6d37ce8c12a3d68ec1b2d7b110bd4d2dee1ef1a",
+    "decoded_states": {
+      "NEUTRAL": 5
+    },
+    "max_scores": {
+      "LEFT": 0.0,
+      "RIGHT": 0.0,
+      "JUMP": 0.0
+    },
+    "activity": {
+      "n_spikes": 605,
+      "active_neurons": 64,
+      "stimulated_spikes": 605,
+      "non_stimulated_spikes": 0,
+      "non_stimulated_active_neurons": 0,
+      "motor_spikes": 0,
+      "motor_active_neurons": 0
+    },
+    "window_records": [
+      {
+        "window_start_ms": 50.0,
+        "window_end_ms": 100.0,
+        "decoded_state": "NEUTRAL",
+        "primary_action": null,
+        "active_actions": [],
+        "neutral": true,
+        "reason": "neutral_no_activation",
+        "raw_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "lateralization": null,
+        "evidence": {
+          "LEFT": {
+            "population": "LEFT",
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          },
+          "RIGHT": {
+            "population": "RIGHT",
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          },
+          "JUMP": {
+            "population": "JUMP",
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          }
+        },
+        "condition": "C_vnc_intrinsic_candidate_sign_flipped",
+        "threshold": 5,
+        "seed": 20261108
+      },
+      {
+        "window_start_ms": 100.0,
+        "window_end_ms": 150.0,
+        "decoded_state": "NEUTRAL",
+        "primary_action": null,
+        "active_actions": [],
+        "neutral": true,
+        "reason": "neutral_no_activation",
+        "raw_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "lateralization": null,
+        "evidence": {
+          "LEFT": {
+            "population": "LEFT",
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          },
+          "RIGHT": {
+            "population": "RIGHT",
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          },
+          "JUMP": {
+            "population": "JUMP",
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          }
+        },
+        "condition": "C_vnc_intrinsic_candidate_sign_flipped",
+        "threshold": 5,
+        "seed": 20261108
+      },
+      {
+        "window_start_ms": 150.0,
+        "window_end_ms": 200.0,
+        "decoded_state": "NEUTRAL",
+        "primary_action": null,
+        "active_actions": [],
+        "neutral": true,
+        "reason": "neutral_no_activation",
+        "raw_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "lateralization": null,
+        "evidence": {
+          "LEFT": {
+            "population": "LEFT",
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          },
+          "RIGHT": {
+            "population": "RIGHT",
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          },
+          "JUMP": {
+            "population": "JUMP",
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          }
+        },
+        "condition": "C_vnc_intrinsic_candidate_sign_flipped",
+        "threshold": 5,
+        "seed": 20261108
+      },
+      {
+        "window_start_ms": 200.0,
+        "window_end_ms": 250.0,
+        "decoded_state": "NEUTRAL",
+        "primary_action": null,
+        "active_actions": [],
+        "neutral": true,
+        "reason": "neutral_no_activation",
+        "raw_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "lateralization": null,
+        "evidence": {
+          "LEFT": {
+            "population": "LEFT",
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          },
+          "RIGHT": {
+            "population": "RIGHT",
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          },
+          "JUMP": {
+            "population": "JUMP",
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          }
+        },
+        "condition": "C_vnc_intrinsic_candidate_sign_flipped",
+        "threshold": 5,
+        "seed": 20261108
+      },
+      {
+        "window_start_ms": 250.0,
+        "window_end_ms": 300.0,
+        "decoded_state": "NEUTRAL",
+        "primary_action": null,
+        "active_actions": [],
+        "neutral": true,
+        "reason": "neutral_no_activation",
+        "raw_scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "scores": {
+          "LEFT": 0.0,
+          "RIGHT": 0.0,
+          "JUMP": 0.0
+        },
+        "lateralization": null,
+        "evidence": {
+          "LEFT": {
+            "population": "LEFT",
+            "size": 185,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          },
+          "RIGHT": {
+            "population": "RIGHT",
+            "size": 186,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          },
+          "JUMP": {
+            "population": "JUMP",
+            "size": 20,
+            "spikes": 0,
+            "active_neurons": 0,
+            "active_fraction": 0.0,
+            "mean_rate_hz": 0.0,
+            "sufficient": false,
+            "reason": "spikes_below_minimum+active_neurons_below_minimum"
+          }
+        },
+        "condition": "C_vnc_intrinsic_candidate_sign_flipped",
+        "threshold": 5,
+        "seed": 20261108
+      }
+    ]
+  },
+  "identical_spikes": false,
+  "verdict": "PASS",
+  "note": "The stimulated neurons still receive direct current and spike; only their outgoing sign changes. A different decoded outcome therefore measures sign dependence, not excitability."
+}

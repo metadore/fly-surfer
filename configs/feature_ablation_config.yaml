@@ -1,0 +1,72 @@
+# P3-T3 — leave-one-feature-out ablation of the P3-T2 full-input condition.
+#
+# Research question: which single sensory feature, when removed from the full
+# 14-feature input, changes the onset, magnitude or spatial distribution of
+# recurrent network activity?
+#
+# Every scientific constant (graph, mapping, seeds, duration, timestep,
+# neuron/synapse parameters, protected input hashes, archived Phase 3B.2C
+# reference hashes) is inherited unchanged from configs/causal_control_config.yaml
+# via that file's validated loader. This file only names the ablations, the
+# output path and the reproducibility settings. It must never redefine a
+# scientific constant.
+
+version: p3-t3-feature-ablation-v1
+
+description: >-
+  Leave-one-feature-out ablation around the P3-T2 C3 baseline. The baseline
+  is the full 14-feature condition; each ablation removes exactly one feature
+  and keeps the other thirteen, using the same cached frames, graph, mapping,
+  simulation seed, initial conditions, duration and timestep as P3-T2.
+
+causal_control_config: configs/causal_control_config.yaml
+
+# Exactly the 14 canonical features, in encoder order. Each entry generates
+# one condition that removes it; the loader fails if this list differs.
+removed_features:
+  - player_lane
+  - player_speed
+  - jumping
+  - rolling
+  - obstacle_present
+  - obstacle_lane
+  - obstacle_distance
+  - obstacle_type
+  - train_present
+  - train_lane
+  - train_distance
+  - coin_present
+  - coin_lane
+  - coin_distance
+
+baseline_name: full-input
+
+output: experiments/phase_3c/results/p3_t3_ablation.json
+
+# Conditions re-run in fresh interpreters and compared against the parent
+# report. The baseline is mandatory; every ablation is included by default.
+subprocess_conditions:
+  - full-input
+  - no-player_lane
+  - no-player_speed
+  - no-jumping
+  - no-rolling
+  - no-obstacle_present
+  - no-obstacle_lane
+  - no-obstacle_distance
+  - no-obstacle_type
+  - no-train_present
+  - no-train_lane
+  - no-train_distance
+  - no-coin_present
+  - no-coin_lane
+  - no-coin_distance
+
+limitations:
+  - "Removing a feature measures necessity within this schedule; it does not"
+  - "establish that the feature is sufficient to cause ignition."
+  - "Reduced recurrent activity is not automatically better behaviour."
+  - "Network ignition is not sensory routing; downstream spikes are not proof"
+  - "of meaningful information transmission."
+  - "Structural connectivity is not physiological validation; no biological"
+  - "perception or learning is claimed."

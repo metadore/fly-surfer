@@ -1,0 +1,932 @@
+{
+ "phase": "5B",
+ "title": "Reward signal and reward prediction error",
+ "generated_at": "2026-11-09T15:10:44.304657+00:00",
+ "repository": "FLY-SURFER",
+ "config": {
+  "path": "configs\\plasticity.yaml",
+  "sha256": "1acaee386ba62653b6f604b63f2898b0a15a8c9c136958e3825925b5aae57fe5",
+  "reward": {
+   "classification": "computational task reward; not a biological dopamine, octopamine or serotonin measurement",
+   "delay_ms": 0.0,
+   "schedule_names": [
+    "delayed_mixed",
+    "mixed",
+    "negative_single",
+    "positive_single",
+    "zero_reward"
+   ],
+   "schedules": {
+    "positive_single": {
+     "classification": "computational task reward; not a biological dopamine, octopamine or serotonin measurement",
+     "delay_ms": 0.0,
+     "n_events": 1,
+     "total_reward": 1.0,
+     "counts": {
+      "positive": 1,
+      "negative": 0,
+      "zero": 0
+     },
+     "events": [
+      {
+       "time_ms": 100.0,
+       "magnitude": 1.0,
+       "label": "correct"
+      }
+     ]
+    },
+    "negative_single": {
+     "classification": "computational task reward; not a biological dopamine, octopamine or serotonin measurement",
+     "delay_ms": 0.0,
+     "n_events": 1,
+     "total_reward": -1.0,
+     "counts": {
+      "positive": 0,
+      "negative": 1,
+      "zero": 0
+     },
+     "events": [
+      {
+       "time_ms": 100.0,
+       "magnitude": -1.0,
+       "label": "collision"
+      }
+     ]
+    },
+    "zero_reward": {
+     "classification": "computational task reward; not a biological dopamine, octopamine or serotonin measurement",
+     "delay_ms": 0.0,
+     "n_events": 1,
+     "total_reward": 0.0,
+     "counts": {
+      "positive": 0,
+      "negative": 0,
+      "zero": 1
+     },
+     "events": [
+      {
+       "time_ms": 100.0,
+       "magnitude": 0.0,
+       "label": "neutral"
+      }
+     ]
+    },
+    "mixed": {
+     "classification": "computational task reward; not a biological dopamine, octopamine or serotonin measurement",
+     "delay_ms": 0.0,
+     "n_events": 3,
+     "total_reward": 0.5,
+     "counts": {
+      "positive": 2,
+      "negative": 1,
+      "zero": 0
+     },
+     "events": [
+      {
+       "time_ms": 80.0,
+       "magnitude": 1.0,
+       "label": "correct"
+      },
+      {
+       "time_ms": 160.0,
+       "magnitude": -1.0,
+       "label": "collision"
+      },
+      {
+       "time_ms": 240.0,
+       "magnitude": 0.5,
+       "label": "partial"
+      }
+     ]
+    },
+    "delayed_mixed": {
+     "classification": "computational task reward; not a biological dopamine, octopamine or serotonin measurement",
+     "delay_ms": 50.0,
+     "n_events": 3,
+     "total_reward": 0.5,
+     "counts": {
+      "positive": 2,
+      "negative": 1,
+      "zero": 0
+     },
+     "events": [
+      {
+       "time_ms": 80.0,
+       "magnitude": 1.0,
+       "label": "correct"
+      },
+      {
+       "time_ms": 160.0,
+       "magnitude": -1.0,
+       "label": "collision"
+      },
+      {
+       "time_ms": 240.0,
+       "magnitude": 0.5,
+       "label": "partial"
+      }
+     ]
+    }
+   },
+   "digests": {
+    "positive_single": "de2c075fbff7d9f73c83bdace6e1798438a37954ad0bb9253cc70ce5e6fa327e",
+    "negative_single": "6b18f473f2d1e5bd4c11387ededdb5de28f5acc4fc700a601deb81a91d867ecf",
+    "zero_reward": "d031b71588702bf8235769d3430905b048e7fe419168d12ed694f2c0d874c1c7",
+    "mixed": "ae694c8d72e9556a397731facb2458faf9cb21a94b7eab628dd4e18bd6b613e2",
+    "delayed_mixed": "7eea08d30ab6b5d472eaf6484cb1e3c563748402aa0561f7cd656b84afa33504"
+   }
+  },
+  "predictor": {
+   "gamma": 0.9,
+   "learning_rate": 0.2,
+   "initial_value": 0.0,
+   "value_bound": 100.0
+  },
+  "gamma_grid": [
+   0.0,
+   0.5,
+   0.9,
+   0.99
+  ],
+  "convergence": {
+   "schedule": "mixed",
+   "n_episodes": 400,
+   "tolerance": 0.001
+  },
+  "demonstration": {
+   "dt_ms": 0.5,
+   "episode_duration_ms": 300.0,
+   "schedule": "mixed",
+   "delayed_schedule": "delayed_mixed",
+   "shuffle_seed": 20261111
+  }
+ },
+ "classification": "computational task reward; not a biological dopamine, octopamine or serotonin measurement",
+ "sign_checks": {
+  "positive_single": {
+   "total": 1.0,
+   "counts": {
+    "positive": 1,
+    "negative": 0,
+    "zero": 0
+   },
+   "sign_expected": "positive"
+  },
+  "negative_single": {
+   "total": -1.0,
+   "counts": {
+    "positive": 0,
+    "negative": 1,
+    "zero": 0
+   },
+   "sign_expected": "negative"
+  },
+  "zero_reward": {
+   "total": 0.0,
+   "counts": {
+    "positive": 0,
+    "negative": 0,
+    "zero": 1
+   },
+   "sign_expected": "zero"
+  }
+ },
+ "episode": {
+  "schedule": "mixed",
+  "expected_times_ms": [
+   80.0,
+   160.0,
+   240.0
+  ],
+  "immediate": {
+   "summary": {
+    "n_steps": 600,
+    "total_reward": 0.5,
+    "deliveries": [
+     {
+      "step": 159,
+      "time_ms": 80.0,
+      "reward": 1.0
+     },
+     {
+      "step": 319,
+      "time_ms": 160.0,
+      "reward": -1.0
+     },
+     {
+      "step": 479,
+      "time_ms": 240.0,
+      "reward": 0.5
+     }
+    ],
+    "mean_abs_prediction_error": 0.004166667,
+    "final_values": {
+     "stage_0": 0.2,
+     "stage_1": -0.2,
+     "stage_2": 0.1
+    },
+    "values_digest": "e5a52409fdcb9d5a670adeef2a628f10a734d92753a269e3b7bb9d6d3c6c12c8"
+   },
+   "log_summary": {
+    "n_steps": 600,
+    "total_reward": 0.5,
+    "positive_steps": 2,
+    "negative_steps": 1,
+    "zero_steps": 597,
+    "mean_prediction_error": 0.000833333,
+    "max_abs_prediction_error": 1.0
+   },
+   "log_digest": "8bea469f4b79990eb12f519345536c4b53e34b259a96c529de68e5769e997862",
+   "n_positive_steps": 2,
+   "n_negative_steps": 1,
+   "n_nonzero_steps": 3,
+   "records_head": [
+    {
+     "step": 0,
+     "time_ms": 0.5,
+     "reward": 0.0,
+     "value": 0.0,
+     "next_value": 0.0,
+     "prediction_error": 0.0,
+     "state": "stage_0",
+     "next_state": "stage_0"
+    },
+    {
+     "step": 1,
+     "time_ms": 1.0,
+     "reward": 0.0,
+     "value": 0.0,
+     "next_value": 0.0,
+     "prediction_error": 0.0,
+     "state": "stage_0",
+     "next_state": "stage_0"
+    },
+    {
+     "step": 2,
+     "time_ms": 1.5,
+     "reward": 0.0,
+     "value": 0.0,
+     "next_value": 0.0,
+     "prediction_error": 0.0,
+     "state": "stage_0",
+     "next_state": "stage_0"
+    },
+    {
+     "step": 3,
+     "time_ms": 2.0,
+     "reward": 0.0,
+     "value": 0.0,
+     "next_value": 0.0,
+     "prediction_error": 0.0,
+     "state": "stage_0",
+     "next_state": "stage_0"
+    },
+    {
+     "step": 4,
+     "time_ms": 2.5,
+     "reward": 0.0,
+     "value": 0.0,
+     "next_value": 0.0,
+     "prediction_error": 0.0,
+     "state": "stage_0",
+     "next_state": "stage_0"
+    }
+   ]
+  },
+  "delayed": {
+   "summary": {
+    "n_steps": 600,
+    "total_reward": 0.5,
+    "deliveries": [
+     {
+      "step": 259,
+      "time_ms": 130.0,
+      "reward": 1.0
+     },
+     {
+      "step": 419,
+      "time_ms": 210.0,
+      "reward": -1.0
+     },
+     {
+      "step": 579,
+      "time_ms": 290.0,
+      "reward": 0.5
+     }
+    ],
+    "mean_abs_prediction_error": 0.004166667,
+    "final_values": {
+     "stage_0": 0.2,
+     "stage_1": -0.2,
+     "stage_2": 0.1
+    },
+    "values_digest": "e5a52409fdcb9d5a670adeef2a628f10a734d92753a269e3b7bb9d6d3c6c12c8"
+   },
+   "log_summary": {
+    "n_steps": 600,
+    "total_reward": 0.5,
+    "positive_steps": 2,
+    "negative_steps": 1,
+    "zero_steps": 597,
+    "mean_prediction_error": 0.000833333,
+    "max_abs_prediction_error": 1.0
+   },
+   "log_digest": "df098c59de869afdfc0f575b3d33dc24bcff4fdfe2a28da260e5e51fb002ab55",
+   "n_positive_steps": 2,
+   "n_negative_steps": 1,
+   "n_nonzero_steps": 3,
+   "records_head": [
+    {
+     "step": 0,
+     "time_ms": 0.5,
+     "reward": 0.0,
+     "value": 0.0,
+     "next_value": 0.0,
+     "prediction_error": 0.0,
+     "state": "stage_0",
+     "next_state": "stage_0"
+    },
+    {
+     "step": 1,
+     "time_ms": 1.0,
+     "reward": 0.0,
+     "value": 0.0,
+     "next_value": 0.0,
+     "prediction_error": 0.0,
+     "state": "stage_0",
+     "next_state": "stage_0"
+    },
+    {
+     "step": 2,
+     "time_ms": 1.5,
+     "reward": 0.0,
+     "value": 0.0,
+     "next_value": 0.0,
+     "prediction_error": 0.0,
+     "state": "stage_0",
+     "next_state": "stage_0"
+    },
+    {
+     "step": 3,
+     "time_ms": 2.0,
+     "reward": 0.0,
+     "value": 0.0,
+     "next_value": 0.0,
+     "prediction_error": 0.0,
+     "state": "stage_0",
+     "next_state": "stage_0"
+    },
+    {
+     "step": 4,
+     "time_ms": 2.5,
+     "reward": 0.0,
+     "value": 0.0,
+     "next_value": 0.0,
+     "prediction_error": 0.0,
+     "state": "stage_0",
+     "next_state": "stage_0"
+    }
+   ]
+  }
+ },
+ "delay_check": {
+  "delay_ms": 50.0,
+  "expected_delivery_times_ms": [
+   130.0,
+   210.0,
+   290.0
+  ],
+  "observed_delivery_times_ms": [
+   130.0,
+   210.0,
+   290.0
+  ],
+  "times_match": true,
+  "first_delivery_ahead_by_steps": 100,
+  "expected_shift_steps": 100,
+  "shift_matches": true,
+  "total_preserved": true,
+  "terminal_values_equal": true
+ },
+ "convergence": [
+  {
+   "gamma": 0.0,
+   "learning_rate": 0.2,
+   "n_episodes": 400,
+   "analytic_values": {
+    "stage_2": 0.5,
+    "stage_1": -1.0,
+    "stage_0": 1.0
+   },
+   "learned_values": {
+    "stage_2": 0.5,
+    "stage_1": -1.0,
+    "stage_0": 1.0
+   },
+   "errors": {
+    "stage_2": -0.0,
+    "stage_1": 0.0,
+    "stage_0": -0.0
+   },
+   "max_abs_error": 0.0,
+   "tolerance": 0.001,
+   "converged": true,
+   "first_episode": {
+    "n_steps": 600,
+    "total_reward": 0.5,
+    "deliveries": [
+     {
+      "step": 159,
+      "time_ms": 80.0,
+      "reward": 1.0
+     },
+     {
+      "step": 319,
+      "time_ms": 160.0,
+      "reward": -1.0
+     },
+     {
+      "step": 479,
+      "time_ms": 240.0,
+      "reward": 0.5
+     }
+    ],
+    "mean_abs_prediction_error": 0.004166667,
+    "final_values": {
+     "stage_0": 0.2,
+     "stage_1": -0.2,
+     "stage_2": 0.1
+    },
+    "values_digest": "e5a52409fdcb9d5a670adeef2a628f10a734d92753a269e3b7bb9d6d3c6c12c8"
+   },
+   "curve": [
+    {
+     "episode": 1,
+     "stage_0": 0.2,
+     "stage_1": -0.2,
+     "stage_2": 0.1
+    },
+    {
+     "episode": 2,
+     "stage_0": 0.36,
+     "stage_1": -0.36,
+     "stage_2": 0.18
+    },
+    {
+     "episode": 3,
+     "stage_0": 0.488,
+     "stage_1": -0.488,
+     "stage_2": 0.244
+    },
+    {
+     "episode": 10,
+     "stage_0": 0.892625818,
+     "stage_1": -0.892625818,
+     "stage_2": 0.446312909
+    },
+    {
+     "episode": 50,
+     "stage_0": 0.999985728,
+     "stage_1": -0.999985728,
+     "stage_2": 0.499992864
+    },
+    {
+     "episode": 100,
+     "stage_0": 1.0,
+     "stage_1": -1.0,
+     "stage_2": 0.5
+    },
+    {
+     "episode": 200,
+     "stage_0": 1.0,
+     "stage_1": -1.0,
+     "stage_2": 0.5
+    },
+    {
+     "episode": 400,
+     "stage_0": 1.0,
+     "stage_1": -1.0,
+     "stage_2": 0.5
+    }
+   ],
+   "values_digest": "7a8b4dd65fb8b45cf03d610cca0077afbd7e9f7597b2e0daa1a083c3182b6cc5"
+  },
+  {
+   "gamma": 0.5,
+   "learning_rate": 0.2,
+   "n_episodes": 400,
+   "analytic_values": {
+    "stage_2": 0.5,
+    "stage_1": -0.75,
+    "stage_0": 0.625
+   },
+   "learned_values": {
+    "stage_2": 0.5,
+    "stage_1": -0.75,
+    "stage_0": 0.625
+   },
+   "errors": {
+    "stage_2": -0.0,
+    "stage_1": -0.0,
+    "stage_0": -0.0
+   },
+   "max_abs_error": 0.0,
+   "tolerance": 0.001,
+   "converged": true,
+   "first_episode": {
+    "n_steps": 600,
+    "total_reward": 0.5,
+    "deliveries": [
+     {
+      "step": 159,
+      "time_ms": 80.0,
+      "reward": 1.0
+     },
+     {
+      "step": 319,
+      "time_ms": 160.0,
+      "reward": -1.0
+     },
+     {
+      "step": 479,
+      "time_ms": 240.0,
+      "reward": 0.5
+     }
+    ],
+    "mean_abs_prediction_error": 0.004166667,
+    "final_values": {
+     "stage_0": 0.2,
+     "stage_1": -0.2,
+     "stage_2": 0.1
+    },
+    "values_digest": "e5a52409fdcb9d5a670adeef2a628f10a734d92753a269e3b7bb9d6d3c6c12c8"
+   },
+   "curve": [
+    {
+     "episode": 1,
+     "stage_0": 0.2,
+     "stage_1": -0.2,
+     "stage_2": 0.1
+    },
+    {
+     "episode": 2,
+     "stage_0": 0.34,
+     "stage_1": -0.35,
+     "stage_2": 0.18
+    },
+    {
+     "episode": 3,
+     "stage_0": 0.437,
+     "stage_1": -0.462,
+     "stage_2": 0.244
+    },
+    {
+     "episode": 10,
+     "stage_0": 0.620805696,
+     "stage_1": -0.736578227,
+     "stage_2": 0.446312909
+    },
+    {
+     "episode": 50,
+     "stage_0": 0.62492139,
+     "stage_1": -0.750033897,
+     "stage_2": 0.499992864
+    },
+    {
+     "episode": 100,
+     "stage_0": 0.624999994,
+     "stage_1": -0.750000001,
+     "stage_2": 0.5
+    },
+    {
+     "episode": 200,
+     "stage_0": 0.625,
+     "stage_1": -0.75,
+     "stage_2": 0.5
+    },
+    {
+     "episode": 400,
+     "stage_0": 0.625,
+     "stage_1": -0.75,
+     "stage_2": 0.5
+    }
+   ],
+   "values_digest": "ab22d5c2683013982a5e9ccf97cd67fa726ec66b6c1896c6557f49cb8ed2e299"
+  },
+  {
+   "gamma": 0.9,
+   "learning_rate": 0.2,
+   "n_episodes": 400,
+   "analytic_values": {
+    "stage_2": 0.5,
+    "stage_1": -0.55,
+    "stage_0": 0.505
+   },
+   "learned_values": {
+    "stage_2": 0.5,
+    "stage_1": -0.55,
+    "stage_0": 0.505
+   },
+   "errors": {
+    "stage_2": -0.0,
+    "stage_1": -0.0,
+    "stage_0": -0.0
+   },
+   "max_abs_error": 0.0,
+   "tolerance": 0.001,
+   "converged": true,
+   "first_episode": {
+    "n_steps": 600,
+    "total_reward": 0.5,
+    "deliveries": [
+     {
+      "step": 159,
+      "time_ms": 80.0,
+      "reward": 1.0
+     },
+     {
+      "step": 319,
+      "time_ms": 160.0,
+      "reward": -1.0
+     },
+     {
+      "step": 479,
+      "time_ms": 240.0,
+      "reward": 0.5
+     }
+    ],
+    "mean_abs_prediction_error": 0.004166667,
+    "final_values": {
+     "stage_0": 0.2,
+     "stage_1": -0.2,
+     "stage_2": 0.1
+    },
+    "values_digest": "e5a52409fdcb9d5a670adeef2a628f10a734d92753a269e3b7bb9d6d3c6c12c8"
+   },
+   "curve": [
+    {
+     "episode": 1,
+     "stage_0": 0.2,
+     "stage_1": -0.2,
+     "stage_2": 0.1
+    },
+    {
+     "episode": 2,
+     "stage_0": 0.324,
+     "stage_1": -0.342,
+     "stage_2": 0.18
+    },
+    {
+     "episode": 3,
+     "stage_0": 0.39764,
+     "stage_1": -0.4412,
+     "stage_2": 0.244
+    },
+    {
+     "episode": 10,
+     "stage_0": 0.461345684,
+     "stage_1": -0.611740155,
+     "stage_2": 0.446312909
+    },
+    {
+     "episode": 50,
+     "stage_0": 0.504638545,
+     "stage_1": -0.550072433,
+     "stage_2": 0.499992864
+    },
+    {
+     "episode": 100,
+     "stage_0": 0.504999977,
+     "stage_1": -0.550000002,
+     "stage_2": 0.5
+    },
+    {
+     "episode": 200,
+     "stage_0": 0.505,
+     "stage_1": -0.55,
+     "stage_2": 0.5
+    },
+    {
+     "episode": 400,
+     "stage_0": 0.505,
+     "stage_1": -0.55,
+     "stage_2": 0.5
+    }
+   ],
+   "values_digest": "7a42e5642e10febae13738b5c7c1d2e8b170a23ce974fa19decaa72dee237402"
+  },
+  {
+   "gamma": 0.99,
+   "learning_rate": 0.2,
+   "n_episodes": 400,
+   "analytic_values": {
+    "stage_2": 0.5,
+    "stage_1": -0.505,
+    "stage_0": 0.50005
+   },
+   "learned_values": {
+    "stage_2": 0.5,
+    "stage_1": -0.505,
+    "stage_0": 0.50005
+   },
+   "errors": {
+    "stage_2": -0.0,
+    "stage_1": -0.0,
+    "stage_0": -0.0
+   },
+   "max_abs_error": 0.0,
+   "tolerance": 0.001,
+   "converged": true,
+   "first_episode": {
+    "n_steps": 600,
+    "total_reward": 0.5,
+    "deliveries": [
+     {
+      "step": 159,
+      "time_ms": 80.0,
+      "reward": 1.0
+     },
+     {
+      "step": 319,
+      "time_ms": 160.0,
+      "reward": -1.0
+     },
+     {
+      "step": 479,
+      "time_ms": 240.0,
+      "reward": 0.5
+     }
+    ],
+    "mean_abs_prediction_error": 0.004166667,
+    "final_values": {
+     "stage_0": 0.2,
+     "stage_1": -0.2,
+     "stage_2": 0.1
+    },
+    "values_digest": "e5a52409fdcb9d5a670adeef2a628f10a734d92753a269e3b7bb9d6d3c6c12c8"
+   },
+   "curve": [
+    {
+     "episode": 1,
+     "stage_0": 0.2,
+     "stage_1": -0.2,
+     "stage_2": 0.1
+    },
+    {
+     "episode": 2,
+     "stage_0": 0.3204,
+     "stage_1": -0.3402,
+     "stage_2": 0.18
+    },
+    {
+     "episode": 3,
+     "stage_0": 0.3889604,
+     "stage_1": -0.43652,
+     "stage_2": 0.244
+    },
+    {
+     "episode": 10,
+     "stage_0": 0.432571702,
+     "stage_1": -0.583651589,
+     "stage_2": 0.446312909
+    },
+    {
+     "episode": 50,
+     "stage_0": 0.499596562,
+     "stage_1": -0.505081103,
+     "stage_2": 0.499992864
+    },
+    {
+     "episode": 100,
+     "stage_0": 0.500049972,
+     "stage_1": -0.505000002,
+     "stage_2": 0.5
+    },
+    {
+     "episode": 200,
+     "stage_0": 0.50005,
+     "stage_1": -0.505,
+     "stage_2": 0.5
+    },
+    {
+     "episode": 400,
+     "stage_0": 0.50005,
+     "stage_1": -0.505,
+     "stage_2": 0.5
+    }
+   ],
+   "values_digest": "b148acfe25c30ecf1aa03ab192a312651934a414d6ae762182352126929a6cc4"
+  }
+ ],
+ "delayed_convergence": {
+  "gamma": 0.9,
+  "max_abs_error": 0.0,
+  "converged": true,
+  "learned_values": {
+   "stage_2": 0.5,
+   "stage_1": -0.55,
+   "stage_0": 0.505
+  },
+  "immediate_learned_values": {
+   "stage_2": 0.5,
+   "stage_1": -0.55,
+   "stage_0": 0.505
+  }
+ },
+ "shuffled_control": {
+  "seed": 20261111,
+  "original_digest": "ae694c8d72e9556a397731facb2458faf9cb21a94b7eab628dd4e18bd6b613e2",
+  "shuffled_digest": "378d86cca297e8b0c84a7674b02d10d1ffd2df07be01987e3fa14edeef38aa15",
+  "digest_changed": true,
+  "magnitudes_preserved": true,
+  "times_preserved": true,
+  "total_preserved": true,
+  "describe": {
+   "classification": "computational task reward; not a biological dopamine, octopamine or serotonin measurement",
+   "delay_ms": 0.0,
+   "n_events": 3,
+   "total_reward": 0.5,
+   "counts": {
+    "positive": 2,
+    "negative": 1,
+    "zero": 0
+   },
+   "events": [
+    {
+     "time_ms": 80.0,
+     "magnitude": 0.5,
+     "label": "shuffled:correct"
+    },
+    {
+     "time_ms": 160.0,
+     "magnitude": -1.0,
+     "label": "shuffled:collision"
+    },
+    {
+     "time_ms": 240.0,
+     "magnitude": 1.0,
+     "label": "shuffled:partial"
+    }
+   ]
+  }
+ },
+ "stability_probes": {
+  "bounded_large_reward": {
+   "delta": 1000000.0,
+   "value": 10.0,
+   "finite": true,
+   "within_bound": true
+  },
+  "zero_reward": {
+   "value_x": 0.0,
+   "value_y": 0.0,
+   "all_zero": true
+  },
+  "negative_reward": {
+   "value": -2.0,
+   "sign_preserved": true
+  },
+  "non_finite_reward": {
+   "nan": "rejected",
+   "inf": "rejected"
+  },
+  "overflow_guard": {
+   "result": "rejected",
+   "value_finite": true,
+   "delta_finite": true
+  }
+ },
+ "determinism": {
+  "first_digest": "7a42e5642e10febae13738b5c7c1d2e8b170a23ce974fa19decaa72dee237402",
+  "repeat_digest": "7a42e5642e10febae13738b5c7c1d2e8b170a23ce974fa19decaa72dee237402",
+  "identical": true,
+  "episode_log_digest": "8bea469f4b79990eb12f519345536c4b53e34b259a96c529de68e5769e997862",
+  "episode_log_digest_repeat": "8bea469f4b79990eb12f519345536c4b53e34b259a96c529de68e5769e997862",
+  "episode_log_identical": true
+ },
+ "checks": {
+  "reward_signs": true,
+  "reward_timing": true,
+  "single_emission": true,
+  "delayed_reward": true,
+  "predictor_convergence": true,
+  "numerical_stability": true,
+  "determinism": true,
+  "logging": true,
+  "shuffled_control": true
+ },
+ "all_checks_passed": true,
+ "resources": {
+  "runtime_s": 26.0367,
+  "peak_tracemalloc_bytes": 811962,
+  "peak_tracemalloc_mb": 0.774,
+  "python": "3.13.14",
+  "numpy": "2.3.4"
+ },
+ "limitations": [
+  "Reward is a computational task scalar, not a measured neuromodulator.",
+  "The tabular predictor is one declared model of value, not a biological reward prediction signal.",
+  "A converged predictor demonstrates arithmetic and temporal credit assignment in this model only.",
+  "No synapse, weight, trace or simulator state is touched by this runner."
+ ]
+}

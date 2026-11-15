@@ -1,0 +1,1289 @@
+{
+ "phase": "P3-T4.1",
+ "version": "p3_t4_1_four_neuron_validation_v1",
+ "mode": "preflight",
+ "generated_at_utc": "2026-11-14T03:00:52.244781+00:00",
+ "protocol_sha256": "59f92c89813a11ac1e8812fdb5a23da789fc1cb124b210eadbfa7aba8bc4fd25",
+ "sensory_config_sha256": "26d782a3b5910c05d433fa6678557f7c806dc9947ee8ad279e246fa34f4e96db",
+ "temporal_config_sha256": "ef68efb14e35e5ece1d4fb00e268064f4018fbbd801c81ecf8789471e6b8adf4",
+ "seeds": [
+  20261104,
+  20261105,
+  20261106
+ ],
+ "population_definitions": {
+  "P4": {
+   "mapping_n_neurons": 4,
+   "encoder_n_neurons": 4,
+   "stimulated_cells": "all_mapped"
+  },
+  "P12": {
+   "mapping_n_neurons": 12,
+   "encoder_n_neurons": 12,
+   "stimulated_cells": "all_mapped"
+  },
+  "P12S": {
+   "mapping_n_neurons": 12,
+   "encoder_n_neurons": 12,
+   "stimulated_cells": "four_neuron_mapping"
+  }
+ },
+ "per_seed": {
+  "20261104": {
+   "populations": {
+    "P4": {
+     "mapping_n_neurons": 4,
+     "encoder_n_neurons": 4,
+     "stimulated_cells": "all_mapped",
+     "indices_in_mapping_order": [
+      87389,
+      108078,
+      64890,
+      107895
+     ],
+     "sorted_indices": [
+      64890,
+      87389,
+      107895,
+      108078
+     ],
+     "root_ids": {
+      "default": [
+       720575940628230223,
+       720575940632256015,
+       720575940624132095,
+       720575940632208971
+      ]
+     },
+     "encoder_preferred": [
+      0.0,
+      0.333333,
+      0.666667,
+      1.0
+     ],
+     "encoder_sigma": 0.2,
+     "injected_current_at_constants": {
+      "0.15": {
+       "per_neuron_pa": [
+        150.96792,
+        131.391114,
+        7.110068,
+        0.023923
+       ],
+       "total_pa": 289.493025,
+       "max_pa": 150.96792
+      },
+      "0.55": {
+       "per_neuron_pa": [
+        4.558836,
+        111.220177,
+        168.70953,
+        15.911902
+       ],
+       "total_pa": 300.400444,
+       "max_pa": 168.70953
+      },
+      "0.9": {
+       "per_neuron_pa": [
+        0.008013,
+        3.612603,
+        101.267123,
+        176.499381
+       ],
+       "total_pa": 281.38712,
+       "max_pa": 176.499381
+      }
+     },
+     "other_feature_sizes": {
+      "player_lane": 12,
+      "player_speed": 12,
+      "jumping": 6,
+      "rolling": 6,
+      "obstacle_present": 6,
+      "obstacle_lane": 12,
+      "obstacle_type": 12,
+      "train_present": 6,
+      "train_lane": 12,
+      "train_distance": 12,
+      "coin_present": 6,
+      "coin_lane": 12,
+      "coin_distance": 12
+     },
+     "amplitude_pa": 200.0
+    },
+    "P12": {
+     "mapping_n_neurons": 12,
+     "encoder_n_neurons": 12,
+     "stimulated_cells": "all_mapped",
+     "indices_in_mapping_order": [
+      87389,
+      108078,
+      64890,
+      107895,
+      104235,
+      52604,
+      87805,
+      91895,
+      7411,
+      88721,
+      91920,
+      125025
+     ],
+     "sorted_indices": [
+      7411,
+      52604,
+      64890,
+      87389,
+      87805,
+      88721,
+      91895,
+      91920,
+      104235,
+      107895,
+      108078,
+      125025
+     ],
+     "root_ids": {
+      "default": [
+       720575940628230223,
+       720575940632256015,
+       720575940624132095,
+       720575940632208971,
+       720575940631392220,
+       720575940621975206,
+       720575940628302609,
+       720575940629017606,
+       720575940609386251,
+       720575940628443947,
+       720575940629022961,
+       720575940638273758
+      ]
+     },
+     "encoder_preferred": [
+      0.0,
+      0.090909,
+      0.181818,
+      0.272727,
+      0.363636,
+      0.454545,
+      0.545455,
+      0.636364,
+      0.727273,
+      0.818182,
+      0.909091,
+      1.0
+     ],
+     "encoder_sigma": 0.2,
+     "injected_current_at_constants": {
+      "0.15": {
+       "per_neuron_pa": [
+        150.96792,
+        191.458423,
+        197.484956,
+        165.677408,
+        113.047849,
+        62.738054,
+        28.318453,
+        10.396275,
+        3.104243,
+        0.753882,
+        0.148909,
+        0.023923
+       ],
+       "total_pa": 924.120294,
+       "max_pa": 197.484956
+      },
+      "0.55": {
+       "per_neuron_pa": [
+        4.558836,
+        14.350167,
+        36.739197,
+        76.501879,
+        129.563979,
+        178.470396,
+        199.948354,
+        182.196158,
+        135.030019,
+        81.393773,
+        39.90449,
+        15.911902
+       ],
+       "total_pa": 1094.56915,
+       "max_pa": 199.948354
+      },
+      "0.9": {
+       "per_neuron_pa": [
+        0.008013,
+        0.055881,
+        0.316955,
+        1.462181,
+        5.486239,
+        16.742417,
+        41.55577,
+        83.89078,
+        137.742153,
+        183.94553,
+        199.793495,
+        176.499381
+       ],
+       "total_pa": 847.498794,
+       "max_pa": 199.793495
+      }
+     },
+     "other_feature_sizes": {
+      "player_lane": 12,
+      "player_speed": 12,
+      "jumping": 6,
+      "rolling": 6,
+      "obstacle_present": 6,
+      "obstacle_lane": 12,
+      "obstacle_type": 12,
+      "train_present": 6,
+      "train_lane": 12,
+      "train_distance": 12,
+      "coin_present": 6,
+      "coin_lane": 12,
+      "coin_distance": 12
+     },
+     "amplitude_pa": 200.0
+    },
+    "P12S": {
+     "mapping_n_neurons": 12,
+     "encoder_n_neurons": 12,
+     "stimulated_cells": "four_neuron_mapping",
+     "indices_in_mapping_order": [
+      87389,
+      108078,
+      64890,
+      107895,
+      104235,
+      52604,
+      87805,
+      91895,
+      7411,
+      88721,
+      91920,
+      125025
+     ],
+     "sorted_indices": [
+      7411,
+      52604,
+      64890,
+      87389,
+      87805,
+      88721,
+      91895,
+      91920,
+      104235,
+      107895,
+      108078,
+      125025
+     ],
+     "root_ids": {
+      "default": [
+       720575940628230223,
+       720575940632256015,
+       720575940624132095,
+       720575940632208971,
+       720575940631392220,
+       720575940621975206,
+       720575940628302609,
+       720575940629017606,
+       720575940609386251,
+       720575940628443947,
+       720575940629022961,
+       720575940638273758
+      ]
+     },
+     "encoder_preferred": [
+      0.0,
+      0.090909,
+      0.181818,
+      0.272727,
+      0.363636,
+      0.454545,
+      0.545455,
+      0.636364,
+      0.727273,
+      0.818182,
+      0.909091,
+      1.0
+     ],
+     "encoder_sigma": 0.2,
+     "injected_current_at_constants": {
+      "0.15": {
+       "per_neuron_pa": [
+        150.96792,
+        191.458423,
+        197.484956,
+        165.677408,
+        113.047849,
+        62.738054,
+        28.318453,
+        10.396275,
+        3.104243,
+        0.753882,
+        0.148909,
+        0.023923
+       ],
+       "total_pa": 924.120294,
+       "max_pa": 197.484956
+      },
+      "0.55": {
+       "per_neuron_pa": [
+        4.558836,
+        14.350167,
+        36.739197,
+        76.501879,
+        129.563979,
+        178.470396,
+        199.948354,
+        182.196158,
+        135.030019,
+        81.393773,
+        39.90449,
+        15.911902
+       ],
+       "total_pa": 1094.56915,
+       "max_pa": 199.948354
+      },
+      "0.9": {
+       "per_neuron_pa": [
+        0.008013,
+        0.055881,
+        0.316955,
+        1.462181,
+        5.486239,
+        16.742417,
+        41.55577,
+        83.89078,
+        137.742153,
+        183.94553,
+        199.793495,
+        176.499381
+       ],
+       "total_pa": 847.498794,
+       "max_pa": 199.793495
+      }
+     },
+     "other_feature_sizes": {
+      "player_lane": 12,
+      "player_speed": 12,
+      "jumping": 6,
+      "rolling": 6,
+      "obstacle_present": 6,
+      "obstacle_lane": 12,
+      "obstacle_type": 12,
+      "train_present": 6,
+      "train_lane": 12,
+      "train_distance": 12,
+      "coin_present": 6,
+      "coin_lane": 12,
+      "coin_distance": 12
+     },
+     "amplitude_pa": 200.0
+    },
+    "properties": {
+     "four_is_subset_of_twelve": true,
+     "four_is_prefix_of_twelve": true,
+     "shared_cells": [
+      64890,
+      87389,
+      107895,
+      108078
+     ]
+    }
+   },
+   "config_equivalence": {
+    "seed": 20261104,
+    "differing_paths": [
+     [
+      "features",
+      "obstacle_distance",
+      "n_neurons"
+     ],
+     [
+      "mapping",
+      "populations",
+      "obstacle_distance",
+      "n_neurons"
+     ]
+    ],
+    "expected_paths": [
+     [
+      "features",
+      "obstacle_distance",
+      "n_neurons"
+     ],
+     [
+      "mapping",
+      "populations",
+      "obstacle_distance",
+      "n_neurons"
+     ]
+    ],
+    "only_intended_fields_differ": true
+   }
+  },
+  "20261105": {
+   "populations": {
+    "P4": {
+     "mapping_n_neurons": 4,
+     "encoder_n_neurons": 4,
+     "stimulated_cells": "all_mapped",
+     "indices_in_mapping_order": [
+      14480,
+      135717,
+      3324,
+      68984
+     ],
+     "sorted_indices": [
+      3324,
+      14480,
+      68984,
+      135717
+     ],
+     "root_ids": {
+      "default": [
+       720575940612538517,
+       720575940646382190,
+       720575940606492350,
+       720575940624887881
+      ]
+     },
+     "encoder_preferred": [
+      0.0,
+      0.333333,
+      0.666667,
+      1.0
+     ],
+     "encoder_sigma": 0.2,
+     "injected_current_at_constants": {
+      "0.15": {
+       "per_neuron_pa": [
+        150.96792,
+        131.391114,
+        7.110068,
+        0.023923
+       ],
+       "total_pa": 289.493025,
+       "max_pa": 150.96792
+      },
+      "0.55": {
+       "per_neuron_pa": [
+        4.558836,
+        111.220177,
+        168.70953,
+        15.911902
+       ],
+       "total_pa": 300.400444,
+       "max_pa": 168.70953
+      },
+      "0.9": {
+       "per_neuron_pa": [
+        0.008013,
+        3.612603,
+        101.267123,
+        176.499381
+       ],
+       "total_pa": 281.38712,
+       "max_pa": 176.499381
+      }
+     },
+     "other_feature_sizes": {
+      "player_lane": 12,
+      "player_speed": 12,
+      "jumping": 6,
+      "rolling": 6,
+      "obstacle_present": 6,
+      "obstacle_lane": 12,
+      "obstacle_type": 12,
+      "train_present": 6,
+      "train_lane": 12,
+      "train_distance": 12,
+      "coin_present": 6,
+      "coin_lane": 12,
+      "coin_distance": 12
+     },
+     "amplitude_pa": 200.0
+    },
+    "P12": {
+     "mapping_n_neurons": 12,
+     "encoder_n_neurons": 12,
+     "stimulated_cells": "all_mapped",
+     "indices_in_mapping_order": [
+      14480,
+      135717,
+      3324,
+      68984,
+      106520,
+      63388,
+      12735,
+      36976,
+      14892,
+      48939,
+      56757,
+      79823
+     ],
+     "sorted_indices": [
+      3324,
+      12735,
+      14480,
+      14892,
+      36976,
+      48939,
+      56757,
+      63388,
+      68984,
+      79823,
+      106520,
+      135717
+     ],
+     "root_ids": {
+      "default": [
+       720575940612538517,
+       720575940646382190,
+       720575940606492350,
+       720575940624887881,
+       720575940631904719,
+       720575940623881741,
+       720575940611945058,
+       720575940618850075,
+       720575940612668529,
+       720575940621351302,
+       720575940622701695,
+       720575940626970298
+      ]
+     },
+     "encoder_preferred": [
+      0.0,
+      0.090909,
+      0.181818,
+      0.272727,
+      0.363636,
+      0.454545,
+      0.545455,
+      0.636364,
+      0.727273,
+      0.818182,
+      0.909091,
+      1.0
+     ],
+     "encoder_sigma": 0.2,
+     "injected_current_at_constants": {
+      "0.15": {
+       "per_neuron_pa": [
+        150.96792,
+        191.458423,
+        197.484956,
+        165.677408,
+        113.047849,
+        62.738054,
+        28.318453,
+        10.396275,
+        3.104243,
+        0.753882,
+        0.148909,
+        0.023923
+       ],
+       "total_pa": 924.120294,
+       "max_pa": 197.484956
+      },
+      "0.55": {
+       "per_neuron_pa": [
+        4.558836,
+        14.350167,
+        36.739197,
+        76.501879,
+        129.563979,
+        178.470396,
+        199.948354,
+        182.196158,
+        135.030019,
+        81.393773,
+        39.90449,
+        15.911902
+       ],
+       "total_pa": 1094.56915,
+       "max_pa": 199.948354
+      },
+      "0.9": {
+       "per_neuron_pa": [
+        0.008013,
+        0.055881,
+        0.316955,
+        1.462181,
+        5.486239,
+        16.742417,
+        41.55577,
+        83.89078,
+        137.742153,
+        183.94553,
+        199.793495,
+        176.499381
+       ],
+       "total_pa": 847.498794,
+       "max_pa": 199.793495
+      }
+     },
+     "other_feature_sizes": {
+      "player_lane": 12,
+      "player_speed": 12,
+      "jumping": 6,
+      "rolling": 6,
+      "obstacle_present": 6,
+      "obstacle_lane": 12,
+      "obstacle_type": 12,
+      "train_present": 6,
+      "train_lane": 12,
+      "train_distance": 12,
+      "coin_present": 6,
+      "coin_lane": 12,
+      "coin_distance": 12
+     },
+     "amplitude_pa": 200.0
+    },
+    "P12S": {
+     "mapping_n_neurons": 12,
+     "encoder_n_neurons": 12,
+     "stimulated_cells": "four_neuron_mapping",
+     "indices_in_mapping_order": [
+      14480,
+      135717,
+      3324,
+      68984,
+      106520,
+      63388,
+      12735,
+      36976,
+      14892,
+      48939,
+      56757,
+      79823
+     ],
+     "sorted_indices": [
+      3324,
+      12735,
+      14480,
+      14892,
+      36976,
+      48939,
+      56757,
+      63388,
+      68984,
+      79823,
+      106520,
+      135717
+     ],
+     "root_ids": {
+      "default": [
+       720575940612538517,
+       720575940646382190,
+       720575940606492350,
+       720575940624887881,
+       720575940631904719,
+       720575940623881741,
+       720575940611945058,
+       720575940618850075,
+       720575940612668529,
+       720575940621351302,
+       720575940622701695,
+       720575940626970298
+      ]
+     },
+     "encoder_preferred": [
+      0.0,
+      0.090909,
+      0.181818,
+      0.272727,
+      0.363636,
+      0.454545,
+      0.545455,
+      0.636364,
+      0.727273,
+      0.818182,
+      0.909091,
+      1.0
+     ],
+     "encoder_sigma": 0.2,
+     "injected_current_at_constants": {
+      "0.15": {
+       "per_neuron_pa": [
+        150.96792,
+        191.458423,
+        197.484956,
+        165.677408,
+        113.047849,
+        62.738054,
+        28.318453,
+        10.396275,
+        3.104243,
+        0.753882,
+        0.148909,
+        0.023923
+       ],
+       "total_pa": 924.120294,
+       "max_pa": 197.484956
+      },
+      "0.55": {
+       "per_neuron_pa": [
+        4.558836,
+        14.350167,
+        36.739197,
+        76.501879,
+        129.563979,
+        178.470396,
+        199.948354,
+        182.196158,
+        135.030019,
+        81.393773,
+        39.90449,
+        15.911902
+       ],
+       "total_pa": 1094.56915,
+       "max_pa": 199.948354
+      },
+      "0.9": {
+       "per_neuron_pa": [
+        0.008013,
+        0.055881,
+        0.316955,
+        1.462181,
+        5.486239,
+        16.742417,
+        41.55577,
+        83.89078,
+        137.742153,
+        183.94553,
+        199.793495,
+        176.499381
+       ],
+       "total_pa": 847.498794,
+       "max_pa": 199.793495
+      }
+     },
+     "other_feature_sizes": {
+      "player_lane": 12,
+      "player_speed": 12,
+      "jumping": 6,
+      "rolling": 6,
+      "obstacle_present": 6,
+      "obstacle_lane": 12,
+      "obstacle_type": 12,
+      "train_present": 6,
+      "train_lane": 12,
+      "train_distance": 12,
+      "coin_present": 6,
+      "coin_lane": 12,
+      "coin_distance": 12
+     },
+     "amplitude_pa": 200.0
+    },
+    "properties": {
+     "four_is_subset_of_twelve": true,
+     "four_is_prefix_of_twelve": true,
+     "shared_cells": [
+      3324,
+      14480,
+      68984,
+      135717
+     ]
+    }
+   },
+   "config_equivalence": {
+    "seed": 20261105,
+    "differing_paths": [
+     [
+      "features",
+      "obstacle_distance",
+      "n_neurons"
+     ],
+     [
+      "mapping",
+      "populations",
+      "obstacle_distance",
+      "n_neurons"
+     ]
+    ],
+    "expected_paths": [
+     [
+      "features",
+      "obstacle_distance",
+      "n_neurons"
+     ],
+     [
+      "mapping",
+      "populations",
+      "obstacle_distance",
+      "n_neurons"
+     ]
+    ],
+    "only_intended_fields_differ": true
+   }
+  },
+  "20261106": {
+   "populations": {
+    "P4": {
+     "mapping_n_neurons": 4,
+     "encoder_n_neurons": 4,
+     "stimulated_cells": "all_mapped",
+     "indices_in_mapping_order": [
+      128884,
+      100241,
+      49729,
+      1400
+     ],
+     "sorted_indices": [
+      1400,
+      49729,
+      100241,
+      128884
+     ],
+     "root_ids": {
+      "default": [
+       720575940639975733,
+       720575940630657792,
+       720575940621487195,
+       720575940605179360
+      ]
+     },
+     "encoder_preferred": [
+      0.0,
+      0.333333,
+      0.666667,
+      1.0
+     ],
+     "encoder_sigma": 0.2,
+     "injected_current_at_constants": {
+      "0.15": {
+       "per_neuron_pa": [
+        150.96792,
+        131.391114,
+        7.110068,
+        0.023923
+       ],
+       "total_pa": 289.493025,
+       "max_pa": 150.96792
+      },
+      "0.55": {
+       "per_neuron_pa": [
+        4.558836,
+        111.220177,
+        168.70953,
+        15.911902
+       ],
+       "total_pa": 300.400444,
+       "max_pa": 168.70953
+      },
+      "0.9": {
+       "per_neuron_pa": [
+        0.008013,
+        3.612603,
+        101.267123,
+        176.499381
+       ],
+       "total_pa": 281.38712,
+       "max_pa": 176.499381
+      }
+     },
+     "other_feature_sizes": {
+      "player_lane": 12,
+      "player_speed": 12,
+      "jumping": 6,
+      "rolling": 6,
+      "obstacle_present": 6,
+      "obstacle_lane": 12,
+      "obstacle_type": 12,
+      "train_present": 6,
+      "train_lane": 12,
+      "train_distance": 12,
+      "coin_present": 6,
+      "coin_lane": 12,
+      "coin_distance": 12
+     },
+     "amplitude_pa": 200.0
+    },
+    "P12": {
+     "mapping_n_neurons": 12,
+     "encoder_n_neurons": 12,
+     "stimulated_cells": "all_mapped",
+     "indices_in_mapping_order": [
+      128884,
+      100241,
+      49729,
+      1400,
+      116364,
+      68586,
+      55737,
+      38473,
+      62434,
+      102596,
+      70748,
+      93847
+     ],
+     "sorted_indices": [
+      1400,
+      38473,
+      49729,
+      55737,
+      62434,
+      68586,
+      70748,
+      93847,
+      100241,
+      102596,
+      116364,
+      128884
+     ],
+     "root_ids": {
+      "default": [
+       720575940639975733,
+       720575940630657792,
+       720575940621487195,
+       720575940605179360,
+       720575940634698009,
+       720575940624816637,
+       720575940622515188,
+       720575940619219525,
+       720575940623695896,
+       720575940631082358,
+       720575940625211400,
+       720575940629414897
+      ]
+     },
+     "encoder_preferred": [
+      0.0,
+      0.090909,
+      0.181818,
+      0.272727,
+      0.363636,
+      0.454545,
+      0.545455,
+      0.636364,
+      0.727273,
+      0.818182,
+      0.909091,
+      1.0
+     ],
+     "encoder_sigma": 0.2,
+     "injected_current_at_constants": {
+      "0.15": {
+       "per_neuron_pa": [
+        150.96792,
+        191.458423,
+        197.484956,
+        165.677408,
+        113.047849,
+        62.738054,
+        28.318453,
+        10.396275,
+        3.104243,
+        0.753882,
+        0.148909,
+        0.023923
+       ],
+       "total_pa": 924.120294,
+       "max_pa": 197.484956
+      },
+      "0.55": {
+       "per_neuron_pa": [
+        4.558836,
+        14.350167,
+        36.739197,
+        76.501879,
+        129.563979,
+        178.470396,
+        199.948354,
+        182.196158,
+        135.030019,
+        81.393773,
+        39.90449,
+        15.911902
+       ],
+       "total_pa": 1094.56915,
+       "max_pa": 199.948354
+      },
+      "0.9": {
+       "per_neuron_pa": [
+        0.008013,
+        0.055881,
+        0.316955,
+        1.462181,
+        5.486239,
+        16.742417,
+        41.55577,
+        83.89078,
+        137.742153,
+        183.94553,
+        199.793495,
+        176.499381
+       ],
+       "total_pa": 847.498794,
+       "max_pa": 199.793495
+      }
+     },
+     "other_feature_sizes": {
+      "player_lane": 12,
+      "player_speed": 12,
+      "jumping": 6,
+      "rolling": 6,
+      "obstacle_present": 6,
+      "obstacle_lane": 12,
+      "obstacle_type": 12,
+      "train_present": 6,
+      "train_lane": 12,
+      "train_distance": 12,
+      "coin_present": 6,
+      "coin_lane": 12,
+      "coin_distance": 12
+     },
+     "amplitude_pa": 200.0
+    },
+    "P12S": {
+     "mapping_n_neurons": 12,
+     "encoder_n_neurons": 12,
+     "stimulated_cells": "four_neuron_mapping",
+     "indices_in_mapping_order": [
+      128884,
+      100241,
+      49729,
+      1400,
+      116364,
+      68586,
+      55737,
+      38473,
+      62434,
+      102596,
+      70748,
+      93847
+     ],
+     "sorted_indices": [
+      1400,
+      38473,
+      49729,
+      55737,
+      62434,
+      68586,
+      70748,
+      93847,
+      100241,
+      102596,
+      116364,
+      128884
+     ],
+     "root_ids": {
+      "default": [
+       720575940639975733,
+       720575940630657792,
+       720575940621487195,
+       720575940605179360,
+       720575940634698009,
+       720575940624816637,
+       720575940622515188,
+       720575940619219525,
+       720575940623695896,
+       720575940631082358,
+       720575940625211400,
+       720575940629414897
+      ]
+     },
+     "encoder_preferred": [
+      0.0,
+      0.090909,
+      0.181818,
+      0.272727,
+      0.363636,
+      0.454545,
+      0.545455,
+      0.636364,
+      0.727273,
+      0.818182,
+      0.909091,
+      1.0
+     ],
+     "encoder_sigma": 0.2,
+     "injected_current_at_constants": {
+      "0.15": {
+       "per_neuron_pa": [
+        150.96792,
+        191.458423,
+        197.484956,
+        165.677408,
+        113.047849,
+        62.738054,
+        28.318453,
+        10.396275,
+        3.104243,
+        0.753882,
+        0.148909,
+        0.023923
+       ],
+       "total_pa": 924.120294,
+       "max_pa": 197.484956
+      },
+      "0.55": {
+       "per_neuron_pa": [
+        4.558836,
+        14.350167,
+        36.739197,
+        76.501879,
+        129.563979,
+        178.470396,
+        199.948354,
+        182.196158,
+        135.030019,
+        81.393773,
+        39.90449,
+        15.911902
+       ],
+       "total_pa": 1094.56915,
+       "max_pa": 199.948354
+      },
+      "0.9": {
+       "per_neuron_pa": [
+        0.008013,
+        0.055881,
+        0.316955,
+        1.462181,
+        5.486239,
+        16.742417,
+        41.55577,
+        83.89078,
+        137.742153,
+        183.94553,
+        199.793495,
+        176.499381
+       ],
+       "total_pa": 847.498794,
+       "max_pa": 199.793495
+      }
+     },
+     "other_feature_sizes": {
+      "player_lane": 12,
+      "player_speed": 12,
+      "jumping": 6,
+      "rolling": 6,
+      "obstacle_present": 6,
+      "obstacle_lane": 12,
+      "obstacle_type": 12,
+      "train_present": 6,
+      "train_lane": 12,
+      "train_distance": 12,
+      "coin_present": 6,
+      "coin_lane": 12,
+      "coin_distance": 12
+     },
+     "amplitude_pa": 200.0
+    },
+    "properties": {
+     "four_is_subset_of_twelve": true,
+     "four_is_prefix_of_twelve": true,
+     "shared_cells": [
+      1400,
+      49729,
+      100241,
+      128884
+     ]
+    }
+   },
+   "config_equivalence": {
+    "seed": 20261106,
+    "differing_paths": [
+     [
+      "features",
+      "obstacle_distance",
+      "n_neurons"
+     ],
+     [
+      "mapping",
+      "populations",
+      "obstacle_distance",
+      "n_neurons"
+     ]
+    ],
+    "expected_paths": [
+     [
+      "features",
+      "obstacle_distance",
+      "n_neurons"
+     ],
+     [
+      "mapping",
+      "populations",
+      "obstacle_distance",
+      "n_neurons"
+     ]
+    ],
+    "only_intended_fields_differ": true
+   }
+  }
+ },
+ "prior_evidence": {
+  "phase_3_5_selection": {
+   "amplitude_pa": 200.0,
+   "sigma_fraction": 0.2,
+   "population_size": 4,
+   "mapping_seed": 20261104,
+   "baseline": 0.0,
+   "amplitudes_considered": [
+    200.0
+   ],
+   "sources": {
+    "amplitude": "fallback_no_ordered_amplitude",
+    "tuning": "fallback_no_ordered_tuning",
+    "population": "ordered"
+   },
+   "fallbacks": [
+    "amplitude",
+    "tuning"
+   ]
+  },
+  "phase_3_5_selection_has_no_neuron_ids": true,
+  "phase_3_t4_recorded_indices_4": [
+   64890,
+   87389,
+   107895,
+   108078
+  ],
+  "phase_3_t4_recorded_indices_12": [
+   7411,
+   52604,
+   64890,
+   87389,
+   87805,
+   88721,
+   91895,
+   91920,
+   104235,
+   107895,
+   108078,
+   125025
+  ],
+  "phase_3_t7_3C2": {
+   "dprime_threshold": 1.0,
+   "direction": {}
+  }
+ },
+ "protected_hashes": {
+  "README.md": {
+   "expected": "8ab6a8cc2d0316653e48c0fbb1c72b22b9d27b26799dde6bc71d38cd15590563",
+   "actual": "8ab6a8cc2d0316653e48c0fbb1c72b22b9d27b26799dde6bc71d38cd15590563"
+  },
+  "connectome.npz": {
+   "expected": "3f568f24e3d77134a8d2d38f82856b8d685c310a1b0cfe941a1c95eeab5f33d8",
+   "actual": "3f568f24e3d77134a8d2d38f82856b8d685c310a1b0cfe941a1c95eeab5f33d8"
+  }
+ },
+ "git": {
+  "head": "62a64309cadc0db7353c856607cee5369993bd65",
+  "branch": "main",
+  "working_tree_dirty": true,
+  "n_status_entries": 209,
+  "staged_changes": false
+ },
+ "environment": {
+  "python": "3.13.14",
+  "numpy": "2.3.4",
+  "platform": "Windows-11-10.0.26200-SP0"
+ }
+}

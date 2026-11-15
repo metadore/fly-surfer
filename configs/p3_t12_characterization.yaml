@@ -1,0 +1,71 @@
+# P3-T12 network ignition and stability characterization.
+#
+# This configuration only points at the validated P3-T2 causal-control
+# constants. It does not redefine the graph, the mapping, the LIF or synapse
+# model, the cached frames, the seeds or the recorder capacity. The single
+# extension is the C3-washout condition, which runs the archived C3 schedule
+# for a longer window so that the post-drive dynamics can be observed.
+version: p3_t12_network_characterization_v1
+description: >
+  Descriptive characterization of how the configured FLY-SURFER network moves
+  from localized sensory current injection into population-scale activity, and
+  which measurable properties separate bounded sparse discharge from the P3-T2
+  C3 regime.
+causal_control_config: configs/causal_control_config.yaml
+output: experiments/phase_3c/results/p3_t12_network_characterization.json
+smoke_output: experiments/phase_3c/results/p3_t12_smoke.json
+repeats: 2
+conditions:
+  - C0
+  - C1
+  - C2
+  - C3
+  - no-player_lane
+  - no-train_lane
+  - C3-washout
+subprocess_conditions:
+  - C3
+  - C3-washout
+sampling:
+  bin_ms: 10.0
+  partition_bin_ms: 100.0
+  membrane_sample_interval_ms: 10.0
+  membrane_histogram_edges_mv:
+    - -90.0
+    - -85.0
+    - -80.0
+    - -75.0
+    - -70.0
+    - -65.0
+    - -60.0
+    - -55.0
+    - -50.0
+  membrane_percentiles: [1, 5, 10, 25, 50, 75, 90, 95, 99]
+  rate_percentiles: [1, 5, 10, 25, 50, 75, 90, 95, 99, 100]
+  rate_histogram_edges_hz: [0.0, 0.1, 1.0, 5.0, 10.0, 20.0, 50.0, 100.0, 200.0, 400.0]
+  tail_window_ms: 500.0
+  near_threshold_margin_mv: 0.05
+  recruitment_checkpoints: [0.01, 0.05, 0.10, 0.25]
+  distance_bucket_edges: [0, 1, 2, 3, 4, 5, 6, 11, 21]
+washout:
+  name: C3-washout
+  base_condition: C3
+  # 250 ms is the scheduler max_hold_ms after the last frame; 500 ms is a
+  # silent window in which neither frame hold nor pulse tail can inject
+  # current. Total extension is therefore 750 ms and the duration is 4050.5 ms.
+  extra_ms: 750.0
+  silent_window_ms: 500.0
+limitations:
+  - Spikes are model output under configured assumptions (assumed LIF
+    parameters, sign-by-transmitter policy, transformed structural synapse
+    counts), not measured biological activity.
+  - Outside A_c means not eligible for direct current injection; it is not
+    proof that a spike was caused synaptically.
+  - Hop distance is structural graph distance, not axonal length, conduction
+    delay or spatial position. The graph has no coordinates.
+  - Membrane sampling every 10 ms summarises 139,255 neurons per sample; exact
+    per-neuron traces are not retained.
+  - The washout extension lies outside the validated 3,300.5 ms window; the
+    prefix gate only proves that its first 3,300.5 ms equal C3.
+  - No action is selected and no claim is made about perception, learning,
+    decisions, information routing or behaviour.

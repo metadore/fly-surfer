@@ -1,0 +1,185 @@
+# FLY-SURFER Phase 4H.4 — sensory feature to BANC population mapping.
+#
+# Every population below is an *experimental input population* selected from
+# published BANC v888 annotation columns. Selecting a cell annotated
+# `visual_projection` or `photoreceptor` does NOT establish that it carries the
+# game feature assigned to it, and it does NOT establish a functional visual
+# pathway to motor control. Each entry therefore carries:
+#   evidence   - what the annotation itself supports
+#   hypothesis - the identifier and statement of the untested assignment
+#
+# No FAFB root ID is transferred and no neuron is selected by connectivity.
+# The motor mask and the LEFT/RIGHT/JUMP masks are excluded from every pool
+# before selection; the adapter asserts zero overlap.
+#
+# Unmapped modalities (coins, player pose) are absent from the v15 detector
+# schema and are reported as unmapped, not invented.
+
+mapping:
+  seed: 20261109
+  allow_duplicates: false
+  # Annotation labels are matched exactly against the BANC node table. The
+  # alias `unassigned` matches an empty or missing value.
+  pools:
+    visual_projection:
+      super_class: [visual_projection]
+    visual_projection_left:
+      super_class: [visual_projection]
+      side: [left]
+    visual_projection_center:
+      super_class: [visual_projection]
+      side: [unassigned]
+    visual_projection_right:
+      super_class: [visual_projection]
+      side: [right]
+    optic_lobe_achromatic:
+      super_class: [optic_lobe_intrinsic]
+      cell_function: [visual_achromatic]
+    photoreceptor:
+      peripheral_target_type: [photoreceptor]
+
+  # Allocation order is the order below. Groups sharing a pool receive
+  # disjoint neurons. Lane groups are consumed in lane-code order.
+  populations:
+    train_lane:
+      lane_pools:
+        left: visual_projection_left
+        center: visual_projection_center
+        right: visual_projection_right
+      neurons_per_lane: 16
+      evidence: computational convention
+      hypothesis: H4H4-B
+      statement: >-
+        Game lanes are assigned to anatomical sides of the visual-projection
+        pool; the center lane uses the side-unassigned remainder. There is no
+        measured receptive-field or lane map in the BANC annotation.
+    obstacle_lane:
+      lane_pools:
+        left: visual_projection_left
+        center: visual_projection_center
+        right: visual_projection_right
+      neurons_per_lane: 16
+      evidence: computational convention
+      hypothesis: H4H4-E
+      statement: >-
+        The same side convention as H4H4-B, applied to obstacle events; the
+        center group is a small side-unassigned pool.
+    train_present:
+      pool: visual_projection
+      n_neurons: 24
+      evidence: published annotation
+      hypothesis: H4H4-A
+      statement: >-
+        Visual-projection output cells stand in for the presence of a train.
+        The annotation supports the cell class, not this feature assignment.
+    train_distance:
+      pool: optic_lobe_achromatic
+      n_neurons: 32
+      evidence: connectivity hypothesis
+      hypothesis: H4H4-C
+      statement: >-
+        Achromatic optic-lobe intrinsic cells stand in for a distance/looming
+        proxy. Achromatic tuning is annotated; looming selectivity is not.
+    obstacle_present:
+      pool: photoreceptor
+      n_neurons: 24
+      evidence: published annotation
+      hypothesis: H4H4-D
+      statement: >-
+        Photoreceptors stand in for obstacle presence. The annotation supports
+        the receptor class, not the game feature.
+    obstacle_distance:
+      pool: optic_lobe_achromatic
+      n_neurons: 32
+      evidence: connectivity hypothesis
+      hypothesis: H4H4-F
+      statement: >-
+        The same achromatic intrinsic pool as H4H4-C, drawn disjointly, stands
+        in for obstacle distance.
+    obstacle_type:
+      lane_pools:
+        low: photoreceptor
+        high: photoreceptor
+      neurons_per_lane: 12
+      evidence: computational convention
+      hypothesis: H4H4-G
+      statement: >-
+        Obstacle type is encoded as two arbitrary halves of the photoreceptor
+        pool; the annotation does not define obstacle classes.
+
+  unmapped_features:
+    player_lane: no player pose in the v15 event schema
+    player_speed: no player pose in the v15 event schema
+    jumping: no player pose in the v15 event schema
+    rolling: no player pose in the v15 event schema
+    coin_present: coin class is absent from the v15 detector schema
+    coin_lane: coin class is absent from the v15 detector schema
+    coin_distance: coin class is absent from the v15 detector schema
+
+# Phase 3A encoder parameters are copied unchanged for the seven features the
+# v15 event stream emits. Copying avoids importing the FlyWire mapping while
+# keeping the activation shape identical to Phase 3.
+features:
+  train_present:
+    kind: boolean
+    n_neurons: 24
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  train_lane:
+    kind: lane
+    lanes: 3
+    neurons_per_lane: 16
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  train_distance:
+    kind: gaussian
+    n_neurons: 32
+    minimum: 0.0
+    maximum: 1.0
+    sigma_fraction: 0.2
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  obstacle_present:
+    kind: boolean
+    n_neurons: 24
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  obstacle_lane:
+    kind: lane
+    lanes: 3
+    neurons_per_lane: 16
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  obstacle_distance:
+    kind: gaussian
+    n_neurons: 32
+    minimum: 0.0
+    maximum: 1.0
+    sigma_fraction: 0.2
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+  obstacle_type:
+    kind: lane
+    lanes: 2
+    neurons_per_lane: 12
+    amplitude: 1.0
+    baseline: 0.0
+    current_pa: 200.0
+
+drive:
+  dt_ms: 0.5
+  decay_ms: 150.0
+  # Event-driven only: no held per-frame state exists in the archived events.
+  # The amplitude is the unchanged Phase 3A current; the decay is the
+  # unchanged Phase 3C pulse decay. The gain is 1.0 because there is no held
+  # frame component to sum with.
+  pulse_gain: 1.0
+  background_pa_condition_g: 50.0
+  noise_std_pa_condition_g: 50.0
+  duration_ms: 3300.5
