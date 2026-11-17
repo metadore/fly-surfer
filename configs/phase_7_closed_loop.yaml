@@ -1,0 +1,65 @@
+# Phase 7 live neural closed loop.
+#
+# Fixed-weight control demonstration: the existing BANC simulation drives the
+# existing controlled game through the existing Phase 3 encoders and Phase 4
+# decoder. No plasticity is enabled and no synaptic weight is modified.
+#
+# This file records the closed-loop settings. It does not redefine the game,
+# the neuron model, the synapse policy, the sensory encoders or the motor
+# decoder; those keep their own frozen configuration files.
+
+game:
+  # The game settings below are read directly; no game file is modified.
+  game_root: null                 # resolved by environment/endless_surfer.py
+  game_config: null               # null = the game's own default difficulty
+  distance_horizon: 25.0
+  max_steps: 900
+  render_mode: null               # headless
+
+neural:
+  nodes: datasets/processed/banc_v888/banc_nodes.csv.gz
+  graph: datasets/processed/banc_v888/banc_graph_t5.npz
+  policy_config: configs/banc_synapse_policy.yaml
+  neuron_config: configs/neuron_config.yaml
+  dt_ms: 0.5
+  # Nominal duration for the simulator object. The live stepper advances on the
+  # game clock; this value only satisfies the simulator's constructor.
+  nominal_duration_ms: 60000.0
+  background_current_pa: 0.0
+  noise_std_pa: 0.0
+  seed: 20261116
+
+sensory:
+  mapping_config: configs/banc_sensory_mapping.yaml
+  # Every population defined in the mapping config is driven; the seven
+  # unimplemented modalities stay unmapped and are reported, not invented.
+  hold: zero_order_hold
+
+motor:
+  decoder_config: configs/motor_decoder.yaml
+  # window_ms defaults to decoder.window_ms in that config (50 ms).
+
+clock:
+  game_dt_s: 0.016666666666666666   # 1/60 s per game update
+  neural_dt_ms: 0.5
+  # Steps per update are derived from the absolute game clock:
+  #   target_step = round(game_time_ms / neural_dt_ms)
+  # giving 33 or 34 steps per update with no accumulated drift.
+
+recording:
+  output: experiments/results/phase_7/neural_closed_loop.json
+  game_recording: experiments/results/phase_7/neural_closed_loop_game_recording.json
+  neural_activity: experiments/results/phase_7/neural_closed_loop_activity.npz
+
+plasticity:
+  enabled: false
+  note: >-
+    The Phase 5 reward interface receives the game rewards as deliveries, but
+    no eligibility trace, three-factor rule or weight update runs here. Phase 8
+    owns training.
+
+demonstration:
+  seed: 42
+  max_updates: 300
+  # A second identical run is compared by neural and control fingerprints.
+  repeat: true

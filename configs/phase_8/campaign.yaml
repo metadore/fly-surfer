@@ -1,0 +1,93 @@
+# FLY-SURFER Phase 8 — campaign design constants.
+#
+# PROPOSED. Every number here is a declared convention from REV3 Appendix C, or
+# an implementation constant (seed ranges) that the protocol leaves to the
+# harness. None of it is fitted to data, and none may be changed after seeing
+# campaign outcomes.
+#
+# The file is hashed into every episode record and into the run manifest
+# (REV3 §8.1). `experiments/phase_8/config.py` validates it strictly; an
+# unknown key, a wrong type or an inconsistent range stops the campaign before
+# any episode runs.
+
+schema_version: 1
+name: phase_8_campaign
+
+# REV3 §6.3, R18 and Appendix C.
+master_seed: 20261116
+
+design:
+  # U7: N = 16 is primary; N = 10 exists only as the predeclared fallback of
+  # §7.1. `n_seeds_selected` stays null until the 10.8 pilot decision is
+  # recorded; a campaign may not start while it is null.
+  n_seeds_primary: 16
+  n_seeds_fallback: 10
+  n_seeds_selected: null
+  # REV4 §7.1/§7.4: the exact value implied by 2.801585 * sigma_max / sqrt(10)
+  # <= SEI = 100 is 112.8718..., so the bound is declared as 112.87. REV3's
+  # 113.05 was not derivable from the declared formula and is withdrawn.
+  fallback_max_paired_sd: 112.87
+  episodes_per_seed: 10            # K, U6
+  max_game_updates: 900            # game configuration, unchanged
+  sei_updates: 100                 # §5.2 declared smallest effect of interest
+
+  # The six conditions (REV3 §3). Control arms and the exploratory arm are
+  # listed separately because they support no confirmatory claim of their own.
+  conditions: [A, B, C, D, E, F]
+  control_arms: [A_prime, C_prime, F_beta, F_init]
+  exploratory_arms: [E_full]
+  floor_arm: floor
+
+  # E-full is a variant of E and is recorded as its own arm id so that rows
+  # can never be merged into E-matched by accident.
+  e_matched_id: E
+  e_full_id: E_full
+
+statistics:
+  alpha: 0.05                      # two-sided, family-wise
+  # U14 decides between m = 4 (C1–C4) and m = 3 (C1–C3). Both are declared; the
+  # campaign config does not choose. The analysis must state which was used.
+  holm_family_sizes: [4, 3]
+  bootstrap_resamples: 10000       # §7.7
+  bootstrap_seed: 20261116         # declared; analysis-only, not a design seed
+
+seeds:
+  # Campaign seed indices, not derived values. Derivation is in seeds.py.
+  # The primary design uses the first n_seeds_selected entries.
+  campaign: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+  # Reserved for E and F/Fβ training. Must be disjoint from `campaign` and
+  # `pilot`; the loader asserts this.
+  training: [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010,
+             1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020]
+  # Pilot seeds are recorded separately and are never merged into the campaign
+  # dataset (REV3 §10, "What the pilots do and do not establish").
+  pilot: [9001, 9002, 9003]
+
+budget:
+  # §9.3. The gate is free physical memory, not total; it is not rounded down.
+  memory_gate_gb: 4.0
+
+training:
+  # F and Fβ: declared in Appendix C; readout hyper-parameters come from
+  # readout.ReinforceConfig and are recorded by the condition module.
+  readout_episodes_per_seed: 20
+  # E: declared in Appendix C.
+  e_gradient_updates: 2000
+
+paths:
+  # All Phase 8 writes stay under these roots (REV3 §6.10).
+  results_root: experiments/results/phase_8
+  run_manifest_name: manifest.json
+  episode_store_name: episodes.jsonl
+
+frozen_inputs:
+  # REV3 §8.5. Every file is hashed into the run manifest and into each
+  # episode row. These are the frozen Phase 3–5 artifacts, referenced
+  # unchanged; listing them here records provenance, not ownership.
+  graph: datasets/processed/banc_v888/banc_graph_t5.npz
+  nodes: datasets/processed/banc_v888/banc_nodes.csv.gz
+  synapse_policy: configs/banc_synapse_policy.yaml
+  neuron_config: configs/neuron_config.yaml
+  sensory_mapping: configs/banc_sensory_mapping.yaml
+  motor_decoder: configs/motor_decoder.yaml
+  plasticity: configs/plasticity_banc.yaml

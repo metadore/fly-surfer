@@ -1,0 +1,156 @@
+# FLY-SURFER Phase 8 — per-condition declared parameters.
+#
+# PROPOSED. REV3 §3 fixes every value below. Frozen Phase 5, Phase 3A and
+# Phase 4 files keep their own configuration; this file references them and
+# records their SHA-256 in the run manifest, it does not restate or override
+# them.
+#
+# `trains` is the exhaustive list of what may change during an evaluation
+# episode (REV3 §6.7). Anything not listed must be asserted unchanged.
+
+schema_version: 1
+name: phase_8_conditions
+
+plasticity:
+  # Phase 5 declarations, reused unchanged (configs/plasticity_banc.yaml).
+  config: configs/plasticity_banc.yaml
+  eta: 0.5
+  eta_identity: 0.0
+  weight_bounds: [0.5, 2.0]       # multiples of the initial structural weight
+  max_delta_pa: 5.0
+  eligibility_tau_ms: 20.0
+  modulation_gain: 1.0
+  modulation_tau_ms: 50.0
+  modulation_clip: [-5.0, 5.0]
+
+sensory:
+  mapping_config: configs/banc_sensory_mapping.yaml
+  current_pa: 200.0
+  n_features: 7
+  n_features_full: 14
+
+decoder:
+  config: configs/motor_decoder.yaml
+  window_ms: 50.0
+  activation: 0.20
+  release: 0.10
+  min_active_neurons: 3
+  min_spikes: 5
+  priority: [LEFT, RIGHT, JUMP]
+
+readout:
+  # F, Fβ, F-init. Readout hyper-parameters come from
+  # readout.trainer.ReinforceConfig (lr 0.01, gamma 0.99, SGD, no baseline).
+  init_std: 0.01
+  actions: [LEFT, RIGHT, JUMP, NO_ACTION]
+  f_trainable: all readout parameters
+  fbeta_trainable: output biases only
+  fbeta_feature_weights: fixed at exactly 0.0
+
+e_learner:
+  # E-matched and E-full (REV3 §3.5, U5). Direct implementation against the
+  # five-tuple environment API; no Gymnasium and no Stable-Baselines3.
+  hidden_units: 64
+  hidden_layers: 2
+  activation: tanh
+  algorithm: reinforce_with_value_baseline
+  optimizer: adam
+  learning_rate: 0.0003
+  entropy_coefficient: 0.01
+  value_coefficient: 0.5
+  discount: 0.99
+  max_grad_norm: 1.0
+  actions: [LEFT, RIGHT, JUMP, NO_ACTION]
+
+# `trains` values: none | synapses | readout | policy
+conditions:
+  A:
+    role: reference
+    substrate: biological
+    plasticity: none
+    controller: fixed_decoder
+    trains: [none]
+    eta: null
+  B:
+    role: condition
+    substrate: biological
+    plasticity: three_factor
+    controller: fixed_decoder
+    trains: [synapses]
+    eta: 0.5
+  C:
+    role: condition
+    substrate: random_degree_sign_preserved
+    plasticity: none
+    controller: fixed_decoder
+    trains: [none]
+    eta: null
+    requires_structure: true
+  D:
+    role: condition
+    substrate: random_degree_sign_preserved
+    plasticity: three_factor
+    controller: fixed_decoder
+    trains: [synapses]
+    eta: 0.5
+    requires_structure: true
+  E:
+    role: condition
+    substrate: none
+    plasticity: none
+    controller: mlp
+    trains: [policy]
+    eta: null
+    feature_set: matched_7
+  F:
+    role: condition
+    substrate: biological
+    plasticity: none
+    controller: linear_readout
+    trains: [readout]
+    eta: null
+
+controls:
+  A_prime:
+    role: control
+    substrate: biological
+    plasticity: three_factor
+    controller: fixed_decoder
+    trains: [none]
+    eta: 0.0
+    requires_exact_match_of: A
+  C_prime:
+    role: control
+    substrate: random_degree_sign_preserved
+    plasticity: three_factor
+    controller: fixed_decoder
+    trains: [none]
+    eta: 0.0
+    requires_structure: true
+    requires_exact_match_of: C
+  F_beta:
+    role: control
+    substrate: biological
+    plasticity: none
+    controller: bias_only_readout
+    trains: [readout]
+    eta: null
+    state_independent: true
+  F_init:
+    role: control
+    substrate: biological
+    plasticity: none
+    controller: linear_readout
+    trains: [none]
+    eta: null
+    init_only: true
+
+exploratory:
+  E_full:
+    role: exploratory
+    substrate: none
+    plasticity: none
+    controller: mlp
+    trains: [policy]
+    eta: null
+    feature_set: full_14

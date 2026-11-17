@@ -1,0 +1,587 @@
+{
+  "checks": {
+    "all_headless": true,
+    "all_replays_ok": true,
+    "all_reproducible": true,
+    "all_rewards_match_phase5": true
+  },
+  "command": "run_integration_demo.py",
+  "conditions": [
+    {
+      "action_counts": {
+        "JUMP": 15,
+        "LEFT": 15,
+        "NO_ACTION": 151,
+        "RIGHT": 16,
+        "ROLL": 16
+      },
+      "adapters": {
+        "game_state_conversions": 214,
+        "sensory_timeline_segments": 214,
+        "unrepresented_objects": 58
+      },
+      "agent": "random",
+      "coins_collected": 2,
+      "collisions": 1,
+      "headless": true,
+      "mapping_counts": {
+        "JUMP->JUMP": 15,
+        "LEFT->LEFT": 15,
+        "NO_ACTION->NO_ACTION": 151,
+        "RIGHT->RIGHT": 16,
+        "ROLL->ROLL": 16
+      },
+      "max_steps": 900,
+      "phase5": {
+        "emitted_modulation": 3.12,
+        "matches_game_reward": true,
+        "provider_update_steps": 213,
+        "scripted_total": 3.12
+      },
+      "recording_digest": "b6a18f464d763a534add461721cbadfd037810b6357e5c1f54c1c09dafb07883",
+      "renderer_created": false,
+      "replay_ok": true,
+      "reproduce": "python experiments/phase_7/run_game_episode.py --agent random --seed 42 --max-steps 900",
+      "reproducible": true,
+      "reward_components": {
+        "coin_collection": 2.0,
+        "collision_penalty": -1.0,
+        "obstacle_avoided": 0.0,
+        "survival_reward": 2.12
+      },
+      "reward_stream_digest": "0bf7b879c18f70c270f136c5dfe33e771b34f2de028d12064eb0b456a28422be",
+      "score": 5.549999999999992,
+      "seed": 42,
+      "steps": 213,
+      "summary": {
+        "coins_collected": 2,
+        "collisions": 1,
+        "distance_travelled": 25.35646666666667,
+        "final_score": 5.549999999999992,
+        "maximum_speed": 7.284,
+        "obstacles_avoided": 0,
+        "simulation_steps": 213,
+        "survival_duration": 3.55,
+        "termination_reason": "collision"
+      },
+      "terminated": true,
+      "termination_reason": "collision",
+      "total_reward": 3.12,
+      "truncated": false
+    },
+    {
+      "action_counts": {
+        "JUMP": 21,
+        "LEFT": 17,
+        "NO_ACTION": 245,
+        "RIGHT": 28,
+        "ROLL": 21
+      },
+      "adapters": {
+        "game_state_conversions": 333,
+        "sensory_timeline_segments": 333,
+        "unrepresented_objects": 109
+      },
+      "agent": "random",
+      "coins_collected": 2,
+      "collisions": 1,
+      "headless": true,
+      "mapping_counts": {
+        "JUMP->JUMP": 21,
+        "LEFT->LEFT": 17,
+        "NO_ACTION->NO_ACTION": 245,
+        "RIGHT->RIGHT": 28,
+        "ROLL->ROLL": 21
+      },
+      "max_steps": 900,
+      "phase5": {
+        "emitted_modulation": 4.31,
+        "matches_game_reward": true,
+        "provider_update_steps": 332,
+        "scripted_total": 4.31
+      },
+      "recording_digest": "464b26380bf3ae18ff7ec07655591a051250b332e57427987da46573b61b07c0",
+      "renderer_created": false,
+      "replay_ok": true,
+      "reproduce": "python experiments/phase_7/run_game_episode.py --agent random --seed 7 --max-steps 900",
+      "reproducible": true,
+      "reward_components": {
+        "coin_collection": 2.0,
+        "collision_penalty": -1.0,
+        "obstacle_avoided": 0.0,
+        "survival_reward": 3.31
+      },
+      "reward_stream_digest": "143cd96b64d5215ae06d23027fa9b9fc822754e1419624148e093dc8b9d43e12",
+      "score": 7.533333333333319,
+      "seed": 7,
+      "steps": 332,
+      "summary": {
+        "coins_collected": 2,
+        "collisions": 1,
+        "distance_travelled": 39.961733333333335,
+        "final_score": 7.533333333333319,
+        "maximum_speed": 7.442666666666667,
+        "obstacles_avoided": 1,
+        "simulation_steps": 332,
+        "survival_duration": 5.533333333333333,
+        "termination_reason": "collision"
+      },
+      "terminated": true,
+      "termination_reason": "collision",
+      "total_reward": 4.31,
+      "truncated": false
+    },
+    {
+      "action_counts": {
+        "JUMP": 17,
+        "LEFT": 14,
+        "NO_ACTION": 155,
+        "RIGHT": 22,
+        "ROLL": 10
+      },
+      "adapters": {
+        "game_state_conversions": 219,
+        "sensory_timeline_segments": 219,
+        "unrepresented_objects": 70
+      },
+      "agent": "random",
+      "coins_collected": 1,
+      "collisions": 1,
+      "headless": true,
+      "mapping_counts": {
+        "JUMP->JUMP": 17,
+        "LEFT->LEFT": 14,
+        "NO_ACTION->NO_ACTION": 155,
+        "RIGHT->RIGHT": 22,
+        "ROLL->ROLL": 10
+      },
+      "max_steps": 900,
+      "phase5": {
+        "emitted_modulation": 2.17,
+        "matches_game_reward": true,
+        "provider_update_steps": 218,
+        "scripted_total": 2.17
+      },
+      "recording_digest": "016867ae30c391e6dd6df49da913b3a5d6958881f8d5b8c892ce801ca9a83ab4",
+      "renderer_created": false,
+      "replay_ok": true,
+      "reproduce": "python experiments/phase_7/run_game_episode.py --agent random --seed 123 --max-steps 900",
+      "reproducible": true,
+      "reward_components": {
+        "coin_collection": 1.0,
+        "collision_penalty": -1.0,
+        "obstacle_avoided": 0.0,
+        "survival_reward": 2.17
+      },
+      "reward_stream_digest": "d42e5a579b1e11161ede6b4a68e0b9a14910613f7e77b784c1e424389bb02260",
+      "score": 4.633333333333326,
+      "seed": 123,
+      "steps": 218,
+      "summary": {
+        "coins_collected": 1,
+        "collisions": 1,
+        "distance_travelled": 25.963800000000003,
+        "final_score": 4.633333333333326,
+        "maximum_speed": 7.290666666666667,
+        "obstacles_avoided": 0,
+        "simulation_steps": 218,
+        "survival_duration": 3.6333333333333333,
+        "termination_reason": "collision"
+      },
+      "terminated": true,
+      "termination_reason": "collision",
+      "total_reward": 2.17,
+      "truncated": false
+    },
+    {
+      "action_counts": {
+        "LEFT": 3,
+        "NO_ACTION": 427,
+        "RIGHT": 2
+      },
+      "adapters": {
+        "game_state_conversions": 433,
+        "sensory_timeline_segments": 433,
+        "unrepresented_objects": 97
+      },
+      "agent": "rule_based",
+      "coins_collected": 7,
+      "collisions": 1,
+      "headless": true,
+      "mapping_counts": {
+        "LEFT->LEFT": 3,
+        "NO_ACTION->NO_ACTION": 427,
+        "RIGHT->RIGHT": 2
+      },
+      "max_steps": 900,
+      "phase5": {
+        "emitted_modulation": 10.31,
+        "matches_game_reward": true,
+        "provider_update_steps": 432,
+        "scripted_total": 10.31
+      },
+      "recording_digest": "5e4e45c535f414775b0dc8d6e77d4bea4414ba1d99fa308a45512961c57f289b",
+      "renderer_created": false,
+      "replay_ok": true,
+      "reproduce": "python experiments/phase_7/run_game_episode.py --agent rule_based --seed 42 --max-steps 900",
+      "reproducible": true,
+      "reward_components": {
+        "coin_collection": 7.0,
+        "collision_penalty": -1.0,
+        "obstacle_avoided": 0.0,
+        "survival_reward": 4.31
+      },
+      "reward_stream_digest": "0fd8012536aee0b1aa42adf900537a7eea56f8932a27aba35017fe97af868d7a",
+      "score": 14.200000000000134,
+      "seed": 42,
+      "steps": 432,
+      "summary": {
+        "coins_collected": 7,
+        "collisions": 1,
+        "distance_travelled": 52.4784,
+        "final_score": 14.200000000000134,
+        "maximum_speed": 7.5760000000000005,
+        "obstacles_avoided": 2,
+        "simulation_steps": 432,
+        "survival_duration": 7.2,
+        "termination_reason": "collision"
+      },
+      "terminated": true,
+      "termination_reason": "collision",
+      "total_reward": 10.31,
+      "truncated": false
+    },
+    {
+      "action_counts": {
+        "LEFT": 8,
+        "NO_ACTION": 515,
+        "RIGHT": 8
+      },
+      "adapters": {
+        "game_state_conversions": 532,
+        "sensory_timeline_segments": 532,
+        "unrepresented_objects": 136
+      },
+      "agent": "rule_based",
+      "coins_collected": 8,
+      "collisions": 1,
+      "headless": true,
+      "mapping_counts": {
+        "LEFT->LEFT": 8,
+        "NO_ACTION->NO_ACTION": 515,
+        "RIGHT->RIGHT": 8
+      },
+      "max_steps": 900,
+      "phase5": {
+        "emitted_modulation": 12.3,
+        "matches_game_reward": true,
+        "provider_update_steps": 531,
+        "scripted_total": 12.3
+      },
+      "recording_digest": "ea64b922e48d2e99e1062111f7785be7199997ba1048d2eaa7591e9933776925",
+      "renderer_created": false,
+      "replay_ok": true,
+      "reproduce": "python experiments/phase_7/run_game_episode.py --agent rule_based --seed 7 --max-steps 900",
+      "reproducible": true,
+      "reward_components": {
+        "coin_collection": 8.0,
+        "collision_penalty": -1.0,
+        "obstacle_avoided": 0.0,
+        "survival_reward": 5.3
+      },
+      "reward_stream_digest": "fc7b7a722f74b71bdcd5d7ef720cda1f8696292c62f25bbec2835afd4235db28",
+      "score": 16.8500000000001,
+      "seed": 7,
+      "steps": 531,
+      "summary": {
+        "coins_collected": 8,
+        "collisions": 1,
+        "distance_travelled": 65.0888,
+        "final_score": 16.8500000000001,
+        "maximum_speed": 7.708,
+        "obstacles_avoided": 3,
+        "simulation_steps": 531,
+        "survival_duration": 8.85,
+        "termination_reason": "collision"
+      },
+      "terminated": true,
+      "termination_reason": "collision",
+      "total_reward": 12.3,
+      "truncated": false
+    },
+    {
+      "action_counts": {
+        "LEFT": 3,
+        "NO_ACTION": 426,
+        "RIGHT": 3
+      },
+      "adapters": {
+        "game_state_conversions": 433,
+        "sensory_timeline_segments": 433,
+        "unrepresented_objects": 97
+      },
+      "agent": "rule_based",
+      "coins_collected": 7,
+      "collisions": 1,
+      "headless": true,
+      "mapping_counts": {
+        "LEFT->LEFT": 3,
+        "NO_ACTION->NO_ACTION": 426,
+        "RIGHT->RIGHT": 3
+      },
+      "max_steps": 900,
+      "phase5": {
+        "emitted_modulation": 10.31,
+        "matches_game_reward": true,
+        "provider_update_steps": 432,
+        "scripted_total": 10.31
+      },
+      "recording_digest": "c387c72d1e7fce485e97196ca5c8467fefd56f3886c224848468583ac07d2ad0",
+      "renderer_created": false,
+      "replay_ok": true,
+      "reproduce": "python experiments/phase_7/run_game_episode.py --agent rule_based --seed 123 --max-steps 900",
+      "reproducible": true,
+      "reward_components": {
+        "coin_collection": 7.0,
+        "collision_penalty": -1.0,
+        "obstacle_avoided": 0.0,
+        "survival_reward": 4.31
+      },
+      "reward_stream_digest": "0fd8012536aee0b1aa42adf900537a7eea56f8932a27aba35017fe97af868d7a",
+      "score": 14.200000000000134,
+      "seed": 123,
+      "steps": 432,
+      "summary": {
+        "coins_collected": 7,
+        "collisions": 1,
+        "distance_travelled": 52.4784,
+        "final_score": 14.200000000000134,
+        "maximum_speed": 7.5760000000000005,
+        "obstacles_avoided": 2,
+        "simulation_steps": 432,
+        "survival_duration": 7.2,
+        "termination_reason": "collision"
+      },
+      "terminated": true,
+      "termination_reason": "collision",
+      "total_reward": 10.31,
+      "truncated": false
+    }
+  ],
+  "config": {
+    "demo_max_steps": 900,
+    "distance_horizon": 25.0,
+    "game_config": "configs/default.yaml",
+    "seeds": [
+      42,
+      7,
+      123
+    ],
+    "source": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\configs\\phase_7_environment.yaml"
+  },
+  "examples": {
+    "coin_collection": {
+      "coins_collected": 1,
+      "events": [
+        "coin_collected"
+      ],
+      "player_lane": 1,
+      "player_state": "RUNNING",
+      "reward_components": {
+        "coin_collection": 1.0,
+        "collision_penalty": 0.0,
+        "obstacle_avoided": 0.0,
+        "survival_reward": 0.01
+      },
+      "step": 111,
+      "termination_reason": null,
+      "time_ms": 1850.0,
+      "total_reward": 1.01
+    },
+    "collision": {
+      "coins_collected": 7,
+      "events": [
+        "collision"
+      ],
+      "player_lane": 0,
+      "player_state": "COLLIDED",
+      "reward_components": {
+        "coin_collection": 0.0,
+        "collision_penalty": -1.0,
+        "obstacle_avoided": 0.0,
+        "survival_reward": 0.0
+      },
+      "step": 432,
+      "termination_reason": "collision",
+      "time_ms": 7200.0,
+      "total_reward": -1.0
+    },
+    "unmapped_motor_output": {
+      "channel": "ROLL",
+      "executed_action": "NO_ACTION",
+      "reason": "the Phase 4 decoder reported UNMAPPED; NO_ACTION is executed rather than an arbitrary game action",
+      "requested_state": "UNMAPPED",
+      "supported": false,
+      "unmapped": true
+    }
+  },
+  "game": {
+    "observation_schema_version": 1,
+    "recording_schema_version": 1,
+    "root": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\external\\endless-surfer-main\\endless-surfer-main",
+    "simulation_dt_s": 0.016666666666666666
+  },
+  "generated_at_utc": "2026-11-16T11:44:42.950611+00:00",
+  "phase": "7",
+  "phase3": {
+    "n_encoders": 14,
+    "n_neurons": 138,
+    "note": "the final converted GameState is encoded by the existing Phase 3 population encoders; no neural simulation is run here",
+    "source": "configs/sensory_config.yaml",
+    "state_time_ms": 7200.0,
+    "total_activation": 42.78541481
+  },
+  "phase4_conditions": [
+    {
+      "action_counts": {
+        "JUMP": 200,
+        "NO_ACTION": 100
+      },
+      "adapters": {
+        "game_state_conversions": 301,
+        "sensory_timeline_segments": 301,
+        "unrepresented_objects": 84
+      },
+      "agent": "phase4",
+      "coins_collected": 3,
+      "collisions": 0,
+      "headless": true,
+      "mapping_counts": {
+        "JUMP->JUMP": 200,
+        "NO_ACTION->NO_ACTION": 50,
+        "UNMAPPED->NO_ACTION": 50
+      },
+      "max_steps": 300,
+      "phase5": {
+        "emitted_modulation": 6.0,
+        "matches_game_reward": true,
+        "provider_update_steps": 300,
+        "scripted_total": 6.0
+      },
+      "recording_digest": "7f7ab5604718e11e4f755c9c3e5a02c46ac207eeb356e3389362590cbe60d31f",
+      "renderer_created": false,
+      "replay_ok": true,
+      "reproduce": "python experiments/phase_7/run_game_episode.py --agent phase4 --seed 42 --max-steps 300",
+      "reproducible": true,
+      "reward_components": {
+        "coin_collection": 3.0,
+        "collision_penalty": 0.0,
+        "obstacle_avoided": 0.0,
+        "survival_reward": 3.0
+      },
+      "reward_stream_digest": "0ef02df8641c27e70ee43e0ab44439ea13c5e0d9e0eebf683801643fa4695900",
+      "score": 7.999999999999987,
+      "seed": 42,
+      "steps": 300,
+      "summary": {
+        "coins_collected": 3,
+        "collisions": 0,
+        "distance_travelled": 36.00333333333334,
+        "final_score": 7.999999999999987,
+        "maximum_speed": 7.4,
+        "obstacles_avoided": 1,
+        "simulation_steps": 300,
+        "survival_duration": 5.0,
+        "termination_reason": "time_limit"
+      },
+      "terminated": false,
+      "termination_reason": "time_limit",
+      "total_reward": 6.0,
+      "truncated": true
+    },
+    {
+      "action_counts": {
+        "JUMP": 200,
+        "NO_ACTION": 100
+      },
+      "adapters": {
+        "game_state_conversions": 301,
+        "sensory_timeline_segments": 301,
+        "unrepresented_objects": 122
+      },
+      "agent": "phase4",
+      "coins_collected": 0,
+      "collisions": 0,
+      "headless": true,
+      "mapping_counts": {
+        "JUMP->JUMP": 200,
+        "NO_ACTION->NO_ACTION": 50,
+        "UNMAPPED->NO_ACTION": 50
+      },
+      "max_steps": 300,
+      "phase5": {
+        "emitted_modulation": 3.0,
+        "matches_game_reward": true,
+        "provider_update_steps": 300,
+        "scripted_total": 3.0
+      },
+      "recording_digest": "e16993cb3b3826ed210f80d8ffafa8b43e4f744a8f71076bf5feb3d1f422fd68",
+      "renderer_created": false,
+      "replay_ok": true,
+      "reproduce": "python experiments/phase_7/run_game_episode.py --agent phase4 --seed 7 --max-steps 300",
+      "reproducible": true,
+      "reward_components": {
+        "coin_collection": 0.0,
+        "collision_penalty": 0.0,
+        "obstacle_avoided": 0.0,
+        "survival_reward": 3.0
+      },
+      "reward_stream_digest": "b12d27f7a388ab1dc19de973d576dbdf120ae861fc0d965570667e5b95b8ee8e",
+      "score": 4.999999999999988,
+      "seed": 7,
+      "steps": 300,
+      "summary": {
+        "coins_collected": 0,
+        "collisions": 0,
+        "distance_travelled": 36.00333333333334,
+        "final_score": 4.999999999999988,
+        "maximum_speed": 7.4,
+        "obstacles_avoided": 1,
+        "simulation_steps": 300,
+        "survival_duration": 5.0,
+        "termination_reason": "time_limit"
+      },
+      "terminated": false,
+      "termination_reason": "time_limit",
+      "total_reward": 3.0,
+      "truncated": true
+    }
+  ],
+  "reward_classification": "synthetic task reward derived from controlled-game events; not a biological dopamine, octopamine or serotonin measurement",
+  "scientific_status": [
+    "The reward is a synthetic task reward defined by the game rules; it is not a biological dopamine measurement.",
+    "Distances are game world units normalised by the declared horizon, not metric distances.",
+    "The Phase 4 motor outputs are replayed open loop from a previous experiment; no BANC simulation runs during these episodes.",
+    "No learning or Phase 8 training is performed."
+  ],
+  "title": "Controlled endless-surfer integration",
+  "truncation": {
+    "reproduce": "python experiments/phase_7/run_game_episode.py --agent rule_based --seed 42 --max-steps 100",
+    "seed": 42,
+    "steps": 100,
+    "summary": {
+      "coins_collected": 0,
+      "collisions": 0,
+      "distance_travelled": 11.778888888888892,
+      "final_score": 1.6666666666666656,
+      "maximum_speed": 7.133333333333334,
+      "obstacles_avoided": 0,
+      "simulation_steps": 100,
+      "survival_duration": 1.6666666666666667,
+      "termination_reason": "time_limit"
+    },
+    "terminated": false,
+    "termination_reason": "time_limit",
+    "truncated": true
+  }
+}

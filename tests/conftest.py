@@ -78,3 +78,118 @@ def make_graph(
 @pytest.fixture
 def graph_factory():
     return make_graph
+
+
+# ---------------------------------------------------------------------------
+# Phase 8 synthetic rows
+# ---------------------------------------------------------------------------
+
+PHASE8_SHA = "a" * 64
+PHASE8_ROLES = {
+    "A": "reference",
+    "B": "condition",
+    "C": "condition",
+    "D": "condition",
+    "E": "condition",
+    "E_full": "exploratory",
+    "F": "condition",
+    "F_beta": "control",
+    "F_init": "control",
+    "A_prime": "control",
+    "C_prime": "control",
+    "floor": "floor",
+}
+
+
+def make_phase8_row(
+    condition,
+    seed,
+    episode,
+    *,
+    steps=20,
+    non_no_action=0,
+    role=None,
+    status="ok",
+    error=None,
+    decision_classes=None,
+    motor_summary=None,
+    weights_before=None,
+    weights_after=None,
+    total_reward=0.0,
+    termination_reason="collision",
+    terminated=True,
+    truncated=False,
+):
+    """Build one schema-valid Phase 8 episode row for analysis tests.
+
+    The capped survival score is ``steps`` (the cap is 900), so a test can
+    express the primary outcome directly. ``non_no_action`` transfers that many
+    decisions from ``NO_ACTION`` to ``LEFT``; no game is constructed.
+    """
+    if status not in ("ok", "error"):
+        raise ValueError("status must be 'ok' or 'error'")
+    steps = int(steps)
+    non_no_action = int(non_no_action)
+    if status == "error":
+        steps = 0
+        counts = {"NO_ACTION": 0}
+        terminated = False
+        truncated = False
+        termination_reason = None
+    else:
+        if not 0 <= non_no_action <= steps:
+            raise ValueError("non_no_action must lie in [0, steps]")
+        counts = {"NO_ACTION": steps - non_no_action}
+        if non_no_action:
+            counts["LEFT"] = non_no_action
+        if truncated:
+            termination_reason = termination_reason or "rollout_step_cap"
+    row = {
+        "schema_version": 1,
+        "condition": condition,
+        "role": PHASE8_ROLES[condition] if role is None else role,
+        "seed": int(seed),
+        "episode": int(episode),
+        "environment_seed": 123456 + int(seed) * 100 + int(episode),
+        "training": False,
+        "steps": steps,
+        "observed_updates": steps,
+        "survival_score": float(steps),
+        "max_game_updates": 900,
+        "total_reward": float(total_reward),
+        "terminated": bool(terminated),
+        "truncated": bool(truncated),
+        "termination_reason": termination_reason,
+        "action_counts": counts,
+        "no_action_fraction": (
+            counts["NO_ACTION"] / steps if steps else 0.0
+        ),
+        "motor_spikes": 0,
+        "spike_sha256": PHASE8_SHA,
+        "action_sha256": PHASE8_SHA,
+        "weights_before": (
+            PHASE8_SHA if weights_before is None else weights_before
+        ),
+        "weights_after": PHASE8_SHA if weights_after is None else weights_after,
+        "config_hashes": {
+            "environment": PHASE8_SHA,
+            "campaign": PHASE8_SHA,
+            "conditions": PHASE8_SHA,
+        },
+        "input_hashes": {"graph": PHASE8_SHA},
+        "started_at": "2026-11-17T00:00:00Z",
+        "wall_time_s": 0.5,
+    }
+    if status == "error":
+        row["status"] = "error"
+        row["error"] = error or "synthetic failure"
+    if decision_classes is not None:
+        row["decision_classes"] = dict(decision_classes)
+    if motor_summary is not None:
+        row["motor_summary"] = dict(motor_summary)
+    return row
+
+
+@pytest.fixture
+def phase_8_row():
+    return make_phase8_row

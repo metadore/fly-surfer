@@ -1,0 +1,24 @@
+# Phase 7 controlled-game integration.
+#
+# These are declared integration assumptions, not measurements. The game root
+# is resolved by environment/endless_surfer.py from FLY_SURFER_GAME_ROOT or the
+# vendored external/ candidates.
+
+game_root: null
+game_config: null
+distance_horizon: 25.0
+
+reward:
+  classification: >-
+    synthetic task reward derived from controlled-game events; not a
+    biological dopamine, octopamine or serotonin measurement
+
+demo:
+  max_steps: 900
+  seeds: [42, 7, 123]
+  agents: [random, rule_based]
+  phase4:
+    artifact: experiments/results/phase_4/motor_output_demo.json
+    max_steps: 300
+    seeds: [42, 7]
+  output: experiments/results/phase_7/game_integration_demo.json

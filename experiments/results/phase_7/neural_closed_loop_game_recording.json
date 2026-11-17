@@ -1,0 +1,6904 @@
+{
+  "actions": [
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION",
+    "NO_ACTION"
+  ],
+  "config": {
+    "acceleration": 0.08,
+    "coin_interval": 0.8,
+    "coin_reward": 1.0,
+    "collision_penalty": -1.0,
+    "initial_speed": 7.0,
+    "jump_duration": 0.72,
+    "max_speed": 16.0,
+    "max_steps": 900,
+    "min_spawn_interval": 1.15,
+    "obstacle_probabilities": [
+      0.42,
+      0.31,
+      0.27
+    ],
+    "obstacle_reward": 0.0,
+    "progression_rate": 0.035,
+    "roll_duration": 0.65,
+    "spawn_interval": 2.1,
+    "survival_reward": 0.01
+  },
+  "events": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      {
+        "event_id": 2,
+        "lane": 1,
+        "obstacle_id": 1,
+        "obstacle_type": null,
+        "player_state": "RUNNING",
+        "step": 111,
+        "time": 1.8499999999999999,
+        "type": "coin_collected"
+      }
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      {
+        "event_id": 3,
+        "lane": 1,
+        "obstacle_id": 2,
+        "obstacle_type": null,
+        "player_state": "RUNNING",
+        "step": 159,
+        "time": 2.65,
+        "type": "coin_collected"
+      }
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      {
+        "event_id": 4,
+        "lane": 1,
+        "obstacle_id": 3,
+        "obstacle_type": "BARRIER",
+        "player_state": "COLLIDED",
+        "step": 213,
+        "time": 3.55,
+        "type": "collision"
+      }
+    ]
+  ],
+  "metrics": {
+    "coins_collected": 2,
+    "collisions": 1,
+    "distance_travelled": 25.35646666666667,
+    "final_score": 5.549999999999992,
+    "maximum_speed": 7.284,
+    "obstacles_avoided": 0,
+    "simulation_steps": 213,
+    "survival_duration": 3.55,
+    "termination_reason": "collision"
+  },
+  "observations": [
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 0.0,
+        "speed": 7.0,
+        "step": 0,
+        "time": 0.0
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.0
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 0.11668888888888888,
+        "speed": 7.001333333333333,
+        "step": 1,
+        "time": 0.016666666666666666
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.016666666666666666
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 0.2334,
+        "speed": 7.002666666666666,
+        "step": 2,
+        "time": 0.03333333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.03333333333333333
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 0.3501333333333333,
+        "speed": 7.004,
+        "step": 3,
+        "time": 0.05
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.05
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 0.46688888888888885,
+        "speed": 7.005333333333334,
+        "step": 4,
+        "time": 0.06666666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.06666666666666667
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 0.5836666666666667,
+        "speed": 7.006666666666667,
+        "step": 5,
+        "time": 0.08333333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.08333333333333333
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 0.7004666666666667,
+        "speed": 7.008,
+        "step": 6,
+        "time": 0.1
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.09999999999999999
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 0.817288888888889,
+        "speed": 7.009333333333333,
+        "step": 7,
+        "time": 0.11666666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.11666666666666665
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 0.9341333333333334,
+        "speed": 7.010666666666666,
+        "step": 8,
+        "time": 0.13333333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.13333333333333333
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 1.051,
+        "speed": 7.012,
+        "step": 9,
+        "time": 0.15
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.15
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 1.1678888888888888,
+        "speed": 7.013333333333334,
+        "step": 10,
+        "time": 0.16666666666666666
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.16666666666666666
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 1.2848,
+        "speed": 7.014666666666667,
+        "step": 11,
+        "time": 0.18333333333333332
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.18333333333333332
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 1.4017333333333333,
+        "speed": 7.016,
+        "step": 12,
+        "time": 0.2
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.19999999999999998
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 1.5186888888888888,
+        "speed": 7.017333333333333,
+        "step": 13,
+        "time": 0.21666666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.21666666666666665
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 1.6356666666666666,
+        "speed": 7.018666666666666,
+        "step": 14,
+        "time": 0.23333333333333334
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.2333333333333333
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 1.7526666666666666,
+        "speed": 7.02,
+        "step": 15,
+        "time": 0.25
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.24999999999999997
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 1.8696888888888887,
+        "speed": 7.021333333333334,
+        "step": 16,
+        "time": 0.26666666666666666
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.26666666666666666
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 1.9867333333333332,
+        "speed": 7.022666666666667,
+        "step": 17,
+        "time": 0.2833333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.2833333333333333
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 2.1038,
+        "speed": 7.024,
+        "step": 18,
+        "time": 0.3
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.3
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 2.220888888888889,
+        "speed": 7.025333333333333,
+        "step": 19,
+        "time": 0.31666666666666665
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.31666666666666665
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 2.338,
+        "speed": 7.026666666666666,
+        "step": 20,
+        "time": 0.3333333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.3333333333333333
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 2.4551333333333334,
+        "speed": 7.028,
+        "step": 21,
+        "time": 0.35
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.35
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 2.572288888888889,
+        "speed": 7.029333333333334,
+        "step": 22,
+        "time": 0.36666666666666664
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.36666666666666664
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 2.6894666666666667,
+        "speed": 7.030666666666667,
+        "step": 23,
+        "time": 0.3833333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.3833333333333333
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 2.8066666666666666,
+        "speed": 7.032,
+        "step": 24,
+        "time": 0.4
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.39999999999999997
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 2.923888888888889,
+        "speed": 7.033333333333333,
+        "step": 25,
+        "time": 0.4166666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.41666666666666663
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 3.0411333333333332,
+        "speed": 7.034666666666666,
+        "step": 26,
+        "time": 0.43333333333333335
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.4333333333333333
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 3.1584,
+        "speed": 7.036,
+        "step": 27,
+        "time": 0.45
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.44999999999999996
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 3.275688888888889,
+        "speed": 7.037333333333334,
+        "step": 28,
+        "time": 0.4666666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.4666666666666666
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 3.393,
+        "speed": 7.038666666666667,
+        "step": 29,
+        "time": 0.48333333333333334
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.4833333333333333
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 3.510333333333333,
+        "speed": 7.04,
+        "step": 30,
+        "time": 0.5
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.49999999999999994
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 3.6276888888888887,
+        "speed": 7.041333333333333,
+        "step": 31,
+        "time": 0.5166666666666666
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.5166666666666666
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 3.7450666666666663,
+        "speed": 7.042666666666666,
+        "step": 32,
+        "time": 0.5333333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.5333333333333333
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 3.8624666666666663,
+        "speed": 7.044,
+        "step": 33,
+        "time": 0.55
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.55
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 3.9798888888888886,
+        "speed": 7.045333333333334,
+        "step": 34,
+        "time": 0.5666666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.5666666666666668
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 4.097333333333333,
+        "speed": 7.046666666666667,
+        "step": 35,
+        "time": 0.5833333333333334
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.5833333333333335
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 4.2148,
+        "speed": 7.048,
+        "step": 36,
+        "time": 0.6
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.6000000000000002
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 4.332288888888889,
+        "speed": 7.049333333333333,
+        "step": 37,
+        "time": 0.6166666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.6166666666666669
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 4.4498,
+        "speed": 7.050666666666666,
+        "step": 38,
+        "time": 0.6333333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.6333333333333336
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 4.567333333333333,
+        "speed": 7.052,
+        "step": 39,
+        "time": 0.65
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.6500000000000004
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 4.684888888888889,
+        "speed": 7.053333333333334,
+        "step": 40,
+        "time": 0.6666666666666666
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.6666666666666671
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 4.802466666666667,
+        "speed": 7.054666666666667,
+        "step": 41,
+        "time": 0.6833333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.6833333333333338
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 4.920066666666667,
+        "speed": 7.056,
+        "step": 42,
+        "time": 0.7
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.7000000000000005
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 5.037688888888889,
+        "speed": 7.057333333333333,
+        "step": 43,
+        "time": 0.7166666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.7166666666666672
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 5.155333333333333,
+        "speed": 7.058666666666666,
+        "step": 44,
+        "time": 0.7333333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.733333333333334
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 5.273,
+        "speed": 7.06,
+        "step": 45,
+        "time": 0.75
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.7500000000000007
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 5.390688888888889,
+        "speed": 7.061333333333334,
+        "step": 46,
+        "time": 0.7666666666666666
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.7666666666666674
+    },
+    {
+      "coins": [],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 5.5084,
+        "speed": 7.062666666666667,
+        "step": 47,
+        "time": 0.7833333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.7833333333333341
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 8.0
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 5.626133333333334,
+        "speed": 7.064,
+        "step": 48,
+        "time": 0.8
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.8000000000000008
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 7.882244444444445
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 5.743888888888889,
+        "speed": 7.065333333333333,
+        "step": 49,
+        "time": 0.8166666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.8166666666666675
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 7.764466666666667
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 5.861666666666666,
+        "speed": 7.066666666666666,
+        "step": 50,
+        "time": 0.8333333333333334
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.8333333333333343
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 7.646666666666667
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 5.979466666666666,
+        "speed": 7.068,
+        "step": 51,
+        "time": 0.85
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.850000000000001
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 7.528844444444445
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 6.0972888888888885,
+        "speed": 7.069333333333334,
+        "step": 52,
+        "time": 0.8666666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.8666666666666677
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 7.4110000000000005
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 6.215133333333333,
+        "speed": 7.070666666666667,
+        "step": 53,
+        "time": 0.8833333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.8833333333333344
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 7.2931333333333335
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 6.333,
+        "speed": 7.072,
+        "step": 54,
+        "time": 0.9
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.9000000000000011
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 7.175244444444445
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 6.450888888888889,
+        "speed": 7.073333333333333,
+        "step": 55,
+        "time": 0.9166666666666666
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.9166666666666679
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 7.057333333333334
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 6.5687999999999995,
+        "speed": 7.074666666666666,
+        "step": 56,
+        "time": 0.9333333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.9333333333333346
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 6.939400000000001
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 6.686733333333333,
+        "speed": 7.076,
+        "step": 57,
+        "time": 0.95
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.9500000000000013
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 6.821444444444445
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 6.804688888888888,
+        "speed": 7.077333333333334,
+        "step": 58,
+        "time": 0.9666666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.966666666666668
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 6.703466666666667
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 6.922666666666666,
+        "speed": 7.078666666666667,
+        "step": 59,
+        "time": 0.9833333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 0.9833333333333347
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 6.585466666666667
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 7.040666666666667,
+        "speed": 7.08,
+        "step": 60,
+        "time": 1.0
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.0000000000000013
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 6.467444444444445
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 7.158688888888888,
+        "speed": 7.081333333333333,
+        "step": 61,
+        "time": 1.0166666666666666
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.016666666666668
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 6.349400000000001
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 7.276733333333333,
+        "speed": 7.082666666666666,
+        "step": 62,
+        "time": 1.0333333333333332
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.0333333333333345
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 6.2313333333333345
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 7.394799999999999,
+        "speed": 7.084,
+        "step": 63,
+        "time": 1.05
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.0500000000000012
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 6.113244444444446
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 7.512888888888888,
+        "speed": 7.085333333333334,
+        "step": 64,
+        "time": 1.0666666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.0666666666666678
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 5.995133333333334
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 7.630999999999999,
+        "speed": 7.086666666666667,
+        "step": 65,
+        "time": 1.0833333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.0833333333333344
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 5.877000000000001
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 7.749133333333333,
+        "speed": 7.088,
+        "step": 66,
+        "time": 1.1
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.100000000000001
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 5.7588444444444455
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 7.867288888888888,
+        "speed": 7.089333333333333,
+        "step": 67,
+        "time": 1.1166666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.1166666666666676
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 5.640666666666668
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 7.985466666666666,
+        "speed": 7.0906666666666665,
+        "step": 68,
+        "time": 1.1333333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.1333333333333342
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 5.522466666666668
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 8.103666666666665,
+        "speed": 7.092,
+        "step": 69,
+        "time": 1.15
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.1500000000000008
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 5.404244444444446
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 8.221888888888888,
+        "speed": 7.093333333333334,
+        "step": 70,
+        "time": 1.1666666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.1666666666666674
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 5.286000000000001
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 8.340133333333332,
+        "speed": 7.094666666666667,
+        "step": 71,
+        "time": 1.1833333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.183333333333334
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 5.167733333333334
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 8.4584,
+        "speed": 7.096,
+        "step": 72,
+        "time": 1.2
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.2000000000000006
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 5.049444444444445
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 8.576688888888889,
+        "speed": 7.097333333333333,
+        "step": 73,
+        "time": 1.2166666666666666
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.2166666666666672
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 4.931133333333334
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 8.695,
+        "speed": 7.0986666666666665,
+        "step": 74,
+        "time": 1.2333333333333334
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.2333333333333338
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 4.812800000000001
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 8.813333333333334,
+        "speed": 7.1,
+        "step": 75,
+        "time": 1.25
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.2500000000000004
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 4.6944444444444455
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 8.93168888888889,
+        "speed": 7.101333333333334,
+        "step": 76,
+        "time": 1.2666666666666666
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.266666666666667
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 4.576066666666668
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 9.050066666666668,
+        "speed": 7.102666666666667,
+        "step": 77,
+        "time": 1.2833333333333332
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.2833333333333337
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 4.457666666666667
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 9.168466666666667,
+        "speed": 7.104,
+        "step": 78,
+        "time": 1.3
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.3000000000000003
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 4.339244444444445
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 9.286888888888889,
+        "speed": 7.105333333333333,
+        "step": 79,
+        "time": 1.3166666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.3166666666666669
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 4.2208000000000006
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 9.405333333333333,
+        "speed": 7.1066666666666665,
+        "step": 80,
+        "time": 1.3333333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.3333333333333335
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 4.102333333333334
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 9.5238,
+        "speed": 7.108,
+        "step": 81,
+        "time": 1.35
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.35
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 3.983844444444445
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 9.642288888888888,
+        "speed": 7.109333333333334,
+        "step": 82,
+        "time": 1.3666666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.3666666666666667
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 3.865333333333334
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 9.7608,
+        "speed": 7.110666666666667,
+        "step": 83,
+        "time": 1.3833333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.3833333333333333
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 3.746800000000001
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 9.879333333333333,
+        "speed": 7.112,
+        "step": 84,
+        "time": 1.4
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.4
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 3.6282444444444453
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 9.99788888888889,
+        "speed": 7.113333333333333,
+        "step": 85,
+        "time": 1.4166666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.4166666666666665
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 3.5096666666666674
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 10.116466666666668,
+        "speed": 7.1146666666666665,
+        "step": 86,
+        "time": 1.4333333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.4333333333333331
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 3.3910666666666676
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 10.235066666666668,
+        "speed": 7.116,
+        "step": 87,
+        "time": 1.45
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.4499999999999997
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 3.2724444444444454
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 10.353688888888891,
+        "speed": 7.117333333333334,
+        "step": 88,
+        "time": 1.4666666666666666
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.4666666666666663
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 3.153800000000001
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 10.472333333333335,
+        "speed": 7.118666666666667,
+        "step": 89,
+        "time": 1.4833333333333334
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.483333333333333
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 3.0351333333333343
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 10.591000000000001,
+        "speed": 7.12,
+        "step": 90,
+        "time": 1.5
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.4999999999999996
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 2.9164444444444455
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 10.70968888888889,
+        "speed": 7.121333333333333,
+        "step": 91,
+        "time": 1.5166666666666666
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.5166666666666662
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 2.7977333333333343
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 10.8284,
+        "speed": 7.1226666666666665,
+        "step": 92,
+        "time": 1.5333333333333332
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.5333333333333328
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 2.679000000000001
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 10.947133333333333,
+        "speed": 7.124,
+        "step": 93,
+        "time": 1.55
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.5499999999999994
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 2.5602444444444457
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 11.065888888888889,
+        "speed": 7.125333333333334,
+        "step": 94,
+        "time": 1.5666666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.566666666666666
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 2.441466666666668
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 11.184666666666667,
+        "speed": 7.126666666666667,
+        "step": 95,
+        "time": 1.5833333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.5833333333333326
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 2.322666666666668
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 8.0
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 11.303466666666667,
+        "speed": 7.128,
+        "step": 96,
+        "time": 1.6
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.5999999999999992
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 2.203844444444446
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 7.881177777777777
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 11.42228888888889,
+        "speed": 7.129333333333333,
+        "step": 97,
+        "time": 1.6166666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.6166666666666658
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 2.0850000000000013
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 7.762333333333333
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 11.541133333333335,
+        "speed": 7.1306666666666665,
+        "step": 98,
+        "time": 1.6333333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.6333333333333324
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 1.9661333333333346
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 7.643466666666667
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 11.660000000000002,
+        "speed": 7.132,
+        "step": 99,
+        "time": 1.65
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.649999999999999
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 1.8472444444444458
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 7.524577777777778
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 11.778888888888892,
+        "speed": 7.133333333333334,
+        "step": 100,
+        "time": 1.6666666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.6666666666666656
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 1.7283333333333346
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 7.405666666666667
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 11.897800000000002,
+        "speed": 7.134666666666667,
+        "step": 101,
+        "time": 1.6833333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.6833333333333322
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 1.6094000000000013
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 7.286733333333333
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 12.016733333333335,
+        "speed": 7.136,
+        "step": 102,
+        "time": 1.7
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.6999999999999988
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 1.4904444444444458
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 7.167777777777777
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 12.13568888888889,
+        "speed": 7.137333333333333,
+        "step": 103,
+        "time": 1.7166666666666666
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.7166666666666655
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 1.371466666666668
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 7.0488
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 12.254666666666667,
+        "speed": 7.1386666666666665,
+        "step": 104,
+        "time": 1.7333333333333334
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.733333333333332
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 1.252466666666668
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 6.9298
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 12.373666666666667,
+        "speed": 7.14,
+        "step": 105,
+        "time": 1.75
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.7499999999999987
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 1.1334444444444458
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 6.810777777777778
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 12.492688888888889,
+        "speed": 7.141333333333334,
+        "step": 106,
+        "time": 1.7666666666666666
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.7666666666666653
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 1.0144000000000013
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 6.6917333333333335
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 12.611733333333333,
+        "speed": 7.142666666666667,
+        "step": 107,
+        "time": 1.7833333333333332
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.7833333333333319
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 0.8953333333333346
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 6.572666666666667
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 12.7308,
+        "speed": 7.144,
+        "step": 108,
+        "time": 1.8
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.7999999999999985
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 0.7762444444444457
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 6.453577777777777
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 12.84988888888889,
+        "speed": 7.145333333333333,
+        "step": 109,
+        "time": 1.8166666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.816666666666665
+    },
+    {
+      "coins": [
+        {
+          "id": 1,
+          "lane": 1,
+          "relative_distance": 0.6571333333333347
+        },
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 6.334466666666667
+        }
+      ],
+      "coins_collected": 0,
+      "environment": {
+        "distance": 12.969000000000001,
+        "speed": 7.1466666666666665,
+        "step": 110,
+        "time": 1.8333333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 1.8333333333333317
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 6.215333333333334
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 13.088133333333335,
+        "speed": 7.148,
+        "step": 111,
+        "time": 1.8499999999999999
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 2.8499999999999983
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 6.096177777777778
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 13.207288888888892,
+        "speed": 7.149333333333334,
+        "step": 112,
+        "time": 1.8666666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 2.866666666666665
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 5.977
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 13.326466666666668,
+        "speed": 7.150666666666667,
+        "step": 113,
+        "time": 1.8833333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 2.8833333333333315
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 5.8578
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 13.445666666666668,
+        "speed": 7.152,
+        "step": 114,
+        "time": 1.9
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 2.899999999999998
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 5.7385777777777776
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 13.56488888888889,
+        "speed": 7.153333333333333,
+        "step": 115,
+        "time": 1.9166666666666667
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 2.9166666666666647
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 5.6193333333333335
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 13.684133333333333,
+        "speed": 7.1546666666666665,
+        "step": 116,
+        "time": 1.9333333333333333
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 2.9333333333333313
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 5.500066666666667
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 13.8034,
+        "speed": 7.156,
+        "step": 117,
+        "time": 1.95
+      },
+      "obstacles": [],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 2.949999999999998
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 5.380777777777778
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 13.922688888888889,
+        "speed": 7.157333333333334,
+        "step": 118,
+        "time": 1.9666666666666666
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 12.0,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 2.9666666666666646
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 5.261466666666667
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 14.042,
+        "speed": 7.158666666666667,
+        "step": 119,
+        "time": 1.9833333333333334
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 11.880688888888889,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 2.983333333333331
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 5.142133333333334
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 14.161333333333333,
+        "speed": 7.16,
+        "step": 120,
+        "time": 2.0
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 11.761355555555555,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 2.999999999999998
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 5.022777777777778
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 14.28068888888889,
+        "speed": 7.161333333333333,
+        "step": 121,
+        "time": 2.0166666666666666
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 11.642,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.0166666666666644
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 4.9034
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 14.400066666666667,
+        "speed": 7.1626666666666665,
+        "step": 122,
+        "time": 2.033333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 11.522622222222221,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.033333333333331
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 4.784000000000001
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 14.519466666666668,
+        "speed": 7.164,
+        "step": 123,
+        "time": 2.05
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 11.40322222222222,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.0499999999999976
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 4.664577777777779
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 14.638888888888891,
+        "speed": 7.165333333333333,
+        "step": 124,
+        "time": 2.0666666666666664
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 11.283799999999998,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.066666666666664
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 4.545133333333334
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 14.758333333333335,
+        "speed": 7.166666666666667,
+        "step": 125,
+        "time": 2.0833333333333335
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 11.164355555555554,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.083333333333331
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 4.425666666666667
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 14.8778,
+        "speed": 7.168,
+        "step": 126,
+        "time": 2.1
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 11.044888888888888,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.0999999999999974
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 4.306177777777778
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 14.997288888888889,
+        "speed": 7.169333333333333,
+        "step": 127,
+        "time": 2.1166666666666667
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 10.9254,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.116666666666664
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 4.186666666666667
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 15.1168,
+        "speed": 7.1706666666666665,
+        "step": 128,
+        "time": 2.1333333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 10.805888888888889,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.1333333333333306
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 4.067133333333334
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 15.236333333333333,
+        "speed": 7.172,
+        "step": 129,
+        "time": 2.15
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 10.686355555555556,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.1499999999999972
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 3.947577777777779
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 15.355888888888888,
+        "speed": 7.173333333333333,
+        "step": 130,
+        "time": 2.1666666666666665
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 10.5668,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.166666666666664
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 3.828000000000001
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 15.475466666666666,
+        "speed": 7.174666666666667,
+        "step": 131,
+        "time": 2.183333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 10.447222222222223,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.1833333333333305
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 3.708400000000001
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 15.595066666666666,
+        "speed": 7.176,
+        "step": 132,
+        "time": 2.2
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 10.327622222222223,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.199999999999997
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 3.588777777777779
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 15.714688888888888,
+        "speed": 7.177333333333333,
+        "step": 133,
+        "time": 2.216666666666667
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 10.208,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.2166666666666637
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 3.4691333333333345
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 15.834333333333333,
+        "speed": 7.1786666666666665,
+        "step": 134,
+        "time": 2.2333333333333334
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 10.088355555555555,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.2333333333333303
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 3.3494666666666677
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 15.954,
+        "speed": 7.18,
+        "step": 135,
+        "time": 2.25
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 9.968688888888888,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.249999999999997
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 3.229777777777779
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 16.07368888888889,
+        "speed": 7.181333333333333,
+        "step": 136,
+        "time": 2.2666666666666666
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 9.848999999999998,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.2666666666666635
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 3.110066666666668
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 16.1934,
+        "speed": 7.182666666666667,
+        "step": 137,
+        "time": 2.283333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 9.729288888888886,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.28333333333333
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 2.9903333333333344
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 16.313133333333333,
+        "speed": 7.184,
+        "step": 138,
+        "time": 2.3
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 9.609555555555554,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.2999999999999967
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 2.870577777777779
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 16.43288888888889,
+        "speed": 7.185333333333333,
+        "step": 139,
+        "time": 2.3166666666666664
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 9.489799999999999,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.3166666666666633
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 2.7508000000000012
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 16.552666666666667,
+        "speed": 7.1866666666666665,
+        "step": 140,
+        "time": 2.3333333333333335
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 9.370022222222222,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.33333333333333
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 2.631000000000001
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 16.67246666666667,
+        "speed": 7.188,
+        "step": 141,
+        "time": 2.35
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 9.250222222222222,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.3499999999999965
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 2.511177777777779
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 16.79228888888889,
+        "speed": 7.189333333333334,
+        "step": 142,
+        "time": 2.3666666666666667
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 9.1304,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.366666666666663
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 2.3913333333333346
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 16.912133333333337,
+        "speed": 7.190666666666667,
+        "step": 143,
+        "time": 2.3833333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 9.010555555555555,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.3833333333333298
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 2.271466666666668
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 8.0
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 17.032000000000004,
+        "speed": 7.192,
+        "step": 144,
+        "time": 2.4
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 8.890688888888889,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.3999999999999964
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 2.151577777777779
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 7.880111111111111
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 17.15188888888889,
+        "speed": 7.193333333333333,
+        "step": 145,
+        "time": 2.4166666666666665
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 8.7708,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.416666666666663
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 2.031666666666668
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 7.760199999999999
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 17.271800000000002,
+        "speed": 7.1946666666666665,
+        "step": 146,
+        "time": 2.433333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 8.650888888888888,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.4333333333333296
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 1.9117333333333348
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 7.640266666666666
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 17.391733333333335,
+        "speed": 7.196,
+        "step": 147,
+        "time": 2.45
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 8.530955555555554,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.449999999999996
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 1.7917777777777792
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 7.520311111111111
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 17.51168888888889,
+        "speed": 7.197333333333333,
+        "step": 148,
+        "time": 2.466666666666667
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 8.410999999999998,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.466666666666663
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 1.6718000000000015
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 7.400333333333333
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 17.631666666666668,
+        "speed": 7.198666666666667,
+        "step": 149,
+        "time": 2.4833333333333334
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 8.29102222222222,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.4833333333333294
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 1.5518000000000014
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 7.280333333333333
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 17.75166666666667,
+        "speed": 7.2,
+        "step": 150,
+        "time": 2.5
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 8.17102222222222,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.499999999999996
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 1.4317777777777791
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 7.160311111111111
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 17.87168888888889,
+        "speed": 7.201333333333333,
+        "step": 151,
+        "time": 2.5166666666666666
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 8.050999999999998,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.5166666666666626
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 1.3117333333333348
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 7.040266666666666
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 17.991733333333336,
+        "speed": 7.2026666666666666,
+        "step": 152,
+        "time": 2.533333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 7.9309555555555535,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.533333333333329
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 1.1916666666666682
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 6.9201999999999995
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 18.111800000000002,
+        "speed": 7.204,
+        "step": 153,
+        "time": 2.55
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 7.810888888888887,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.549999999999996
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 1.0715777777777793
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 6.800111111111111
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 18.231888888888893,
+        "speed": 7.205333333333333,
+        "step": 154,
+        "time": 2.5666666666666664
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 7.6907999999999985,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.5666666666666624
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 0.9514666666666682
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 6.68
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 18.352000000000004,
+        "speed": 7.206666666666667,
+        "step": 155,
+        "time": 2.5833333333333335
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 7.5706888888888875,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.583333333333329
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 0.8313333333333349
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 6.559866666666666
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 18.472133333333336,
+        "speed": 7.208,
+        "step": 156,
+        "time": 2.6
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 7.450555555555554,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.5999999999999956
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 0.7111777777777794
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 6.4397111111111105
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 18.59228888888889,
+        "speed": 7.209333333333333,
+        "step": 157,
+        "time": 2.6166666666666667
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 7.330399999999998,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.6166666666666623
+    },
+    {
+      "coins": [
+        {
+          "id": 2,
+          "lane": 1,
+          "relative_distance": 0.5910000000000015
+        },
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 6.319533333333332
+        }
+      ],
+      "coins_collected": 1,
+      "environment": {
+        "distance": 18.712466666666668,
+        "speed": 7.210666666666667,
+        "step": 158,
+        "time": 2.6333333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 7.21022222222222,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 3.633333333333329
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 6.199333333333333
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 18.832666666666668,
+        "speed": 7.212,
+        "step": 159,
+        "time": 2.65
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 7.0900222222222204,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.649999999999995
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 6.079111111111111
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 18.95288888888889,
+        "speed": 7.213333333333333,
+        "step": 160,
+        "time": 2.6666666666666665
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 6.969799999999998,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.666666666666662
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 5.958866666666666
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 19.073133333333335,
+        "speed": 7.214666666666667,
+        "step": 161,
+        "time": 2.683333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 6.849555555555554,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.683333333333328
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 5.8386
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 19.1934,
+        "speed": 7.216,
+        "step": 162,
+        "time": 2.7
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 6.729288888888887,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.699999999999995
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 5.7183111111111105
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 19.31368888888889,
+        "speed": 7.217333333333333,
+        "step": 163,
+        "time": 2.716666666666667
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 6.608999999999998,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.7166666666666615
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 5.597999999999999
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 19.434,
+        "speed": 7.218666666666667,
+        "step": 164,
+        "time": 2.7333333333333334
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 6.488688888888887,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.733333333333328
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 5.477666666666666
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 19.554333333333336,
+        "speed": 7.22,
+        "step": 165,
+        "time": 2.75
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 6.368355555555554,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.749999999999995
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 5.357311111111111
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 19.67468888888889,
+        "speed": 7.221333333333333,
+        "step": 166,
+        "time": 2.7666666666666666
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 6.247999999999998,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.766666666666661
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 5.236933333333333
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 19.79506666666667,
+        "speed": 7.222666666666667,
+        "step": 167,
+        "time": 2.783333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 6.127622222222221,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.783333333333328
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 5.116533333333333
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 19.91546666666667,
+        "speed": 7.224,
+        "step": 168,
+        "time": 2.8
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 6.007222222222221,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.7999999999999945
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 4.9961111111111105
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 20.03588888888889,
+        "speed": 7.225333333333333,
+        "step": 169,
+        "time": 2.8166666666666664
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 5.886799999999998,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.816666666666661
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 4.875666666666666
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 20.156333333333336,
+        "speed": 7.226666666666667,
+        "step": 170,
+        "time": 2.8333333333333335
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 5.7663555555555535,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.833333333333328
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 4.755199999999999
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 20.2768,
+        "speed": 7.228,
+        "step": 171,
+        "time": 2.85
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 5.645888888888887,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.849999999999994
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 4.634711111111111
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 20.39728888888889,
+        "speed": 7.229333333333333,
+        "step": 172,
+        "time": 2.8666666666666667
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 5.5253999999999985,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.866666666666661
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 4.5142
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 20.5178,
+        "speed": 7.230666666666667,
+        "step": 173,
+        "time": 2.8833333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 5.4048888888888875,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.8833333333333275
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 4.393666666666666
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 20.638333333333335,
+        "speed": 7.232,
+        "step": 174,
+        "time": 2.9
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 5.284355555555554,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.899999999999994
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 4.273111111111111
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 20.75888888888889,
+        "speed": 7.233333333333333,
+        "step": 175,
+        "time": 2.9166666666666665
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 5.163799999999998,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.916666666666661
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 4.1525333333333325
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 20.87946666666667,
+        "speed": 7.234666666666667,
+        "step": 176,
+        "time": 2.933333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 5.04322222222222,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.933333333333327
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 4.031933333333333
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 21.00006666666667,
+        "speed": 7.236,
+        "step": 177,
+        "time": 2.95
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 4.922622222222221,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.949999999999994
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 3.9113111111111105
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 21.120688888888893,
+        "speed": 7.237333333333333,
+        "step": 178,
+        "time": 2.966666666666667
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 4.801999999999999,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.966666666666661
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 3.790666666666666
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 21.241333333333337,
+        "speed": 7.238666666666667,
+        "step": 179,
+        "time": 2.9833333333333334
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 4.681355555555554,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.983333333333327
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 3.6699999999999995
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 21.362000000000002,
+        "speed": 7.24,
+        "step": 180,
+        "time": 3.0
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 4.560688888888888,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 4.999999999999994
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 3.5493111111111104
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 21.48268888888889,
+        "speed": 7.241333333333333,
+        "step": 181,
+        "time": 3.0166666666666666
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 4.439999999999999,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.01666666666666
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 3.4285999999999994
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 21.6034,
+        "speed": 7.242666666666667,
+        "step": 182,
+        "time": 3.033333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 4.319288888888887,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.033333333333327
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 3.307866666666666
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 21.724133333333334,
+        "speed": 7.244,
+        "step": 183,
+        "time": 3.05
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 4.198555555555554,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.049999999999994
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 3.1871111111111103
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 21.84488888888889,
+        "speed": 7.245333333333333,
+        "step": 184,
+        "time": 3.0666666666666664
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 4.077799999999999,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.06666666666666
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 3.0663333333333327
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 21.965666666666667,
+        "speed": 7.246666666666667,
+        "step": 185,
+        "time": 3.0833333333333335
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 3.9570222222222213,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.083333333333327
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 2.9455333333333327
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 22.086466666666666,
+        "speed": 7.248,
+        "step": 186,
+        "time": 3.1
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 3.8362222222222213,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.099999999999993
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 2.8247111111111103
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 22.20728888888889,
+        "speed": 7.249333333333333,
+        "step": 187,
+        "time": 3.1166666666666667
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 3.715399999999999,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.11666666666666
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 2.703866666666666
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 22.328133333333334,
+        "speed": 7.250666666666667,
+        "step": 188,
+        "time": 3.1333333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 3.5945555555555546,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.133333333333327
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 2.5829999999999993
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 22.449,
+        "speed": 7.252,
+        "step": 189,
+        "time": 3.15
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 3.473688888888888,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.149999999999993
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 2.4621111111111103
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 22.56988888888889,
+        "speed": 7.253333333333333,
+        "step": 190,
+        "time": 3.1666666666666665
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 3.352799999999999,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.16666666666666
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 2.3411999999999993
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 22.690800000000003,
+        "speed": 7.254666666666667,
+        "step": 191,
+        "time": 3.183333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 3.231888888888888,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.1833333333333265
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 2.220266666666666
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 8.0
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 22.811733333333336,
+        "speed": 7.256,
+        "step": 192,
+        "time": 3.2
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 3.1109555555555546,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.199999999999993
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 2.0993111111111102
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 7.879044444444444
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 22.93268888888889,
+        "speed": 7.257333333333333,
+        "step": 193,
+        "time": 3.216666666666667
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 2.989999999999999,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.21666666666666
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 1.9783333333333324
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 7.758066666666666
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 23.05366666666667,
+        "speed": 7.258666666666667,
+        "step": 194,
+        "time": 3.2333333333333334
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 2.8690222222222213,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.233333333333326
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 1.8573333333333324
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 7.637066666666666
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 23.174666666666667,
+        "speed": 7.26,
+        "step": 195,
+        "time": 3.25
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 2.7480222222222213,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.249999999999993
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 1.7363111111111103
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 7.516044444444444
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 23.29568888888889,
+        "speed": 7.261333333333333,
+        "step": 196,
+        "time": 3.2666666666666666
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 2.626999999999999,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.2666666666666595
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 1.6152666666666657
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 7.395
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 23.416733333333333,
+        "speed": 7.262666666666667,
+        "step": 197,
+        "time": 3.283333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 2.5059555555555546,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.283333333333326
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 1.494199999999999
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 7.273933333333333
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 23.5378,
+        "speed": 7.264,
+        "step": 198,
+        "time": 3.3
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 2.384888888888888,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.299999999999993
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 1.3731111111111103
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 7.152844444444444
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 23.65888888888889,
+        "speed": 7.265333333333333,
+        "step": 199,
+        "time": 3.3166666666666664
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 2.263799999999999,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.316666666666659
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 1.2519999999999991
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 7.0317333333333325
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 23.78,
+        "speed": 7.266666666666667,
+        "step": 200,
+        "time": 3.3333333333333335
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 2.142688888888888,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.333333333333326
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 1.1308666666666658
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 6.910599999999999
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 23.901133333333334,
+        "speed": 7.268,
+        "step": 201,
+        "time": 3.35
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 2.0215555555555547,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.3499999999999925
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 1.0097111111111103
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 6.7894444444444435
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 24.02228888888889,
+        "speed": 7.269333333333333,
+        "step": 202,
+        "time": 3.3666666666666667
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 1.9003999999999992,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.366666666666659
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 0.8885333333333325
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 6.668266666666666
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 24.14346666666667,
+        "speed": 7.270666666666667,
+        "step": 203,
+        "time": 3.3833333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 1.7792222222222214,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.383333333333326
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 0.7673333333333325
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 6.547066666666666
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 24.26466666666667,
+        "speed": 7.272,
+        "step": 204,
+        "time": 3.4
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 1.6580222222222214,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.399999999999992
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 0.6461111111111103
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 6.425844444444444
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 24.385888888888893,
+        "speed": 7.273333333333333,
+        "step": 205,
+        "time": 3.4166666666666665
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 1.5367999999999993,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.416666666666659
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 0.5248666666666658
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 6.304599999999999
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 24.507133333333336,
+        "speed": 7.274666666666667,
+        "step": 206,
+        "time": 3.433333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 1.4155555555555548,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.433333333333326
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 0.4035999999999992
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 6.183333333333332
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 24.628400000000003,
+        "speed": 7.276,
+        "step": 207,
+        "time": 3.4499999999999997
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 1.2942888888888882,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.449999999999992
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 0.2823111111111103
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 6.062044444444443
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 24.74968888888889,
+        "speed": 7.277333333333333,
+        "step": 208,
+        "time": 3.466666666666667
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 1.1729999999999994,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.466666666666659
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 0.16099999999999917
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 5.940733333333332
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 24.871000000000002,
+        "speed": 7.278666666666667,
+        "step": 209,
+        "time": 3.4833333333333334
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 1.0516888888888882,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.483333333333325
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": 0.03966666666666584
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 5.819399999999999
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 24.992333333333335,
+        "speed": 7.28,
+        "step": 210,
+        "time": 3.5
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 0.9303555555555549,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.499999999999992
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": -0.08168888888888971
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 5.698044444444443
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 25.11368888888889,
+        "speed": 7.281333333333333,
+        "step": 211,
+        "time": 3.5166666666666666
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 0.8089999999999994,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.516666666666659
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": -0.2030666666666675
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 5.576666666666665
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 25.23506666666667,
+        "speed": 7.282666666666667,
+        "step": 212,
+        "time": 3.533333333333333
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 0.6876222222222216,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "RUNNING"
+      },
+      "schema_version": 1,
+      "score": 5.533333333333325
+    },
+    {
+      "coins": [
+        {
+          "id": 4,
+          "lane": 0,
+          "relative_distance": -0.3244666666666675
+        },
+        {
+          "id": 5,
+          "lane": 1,
+          "relative_distance": 5.455266666666665
+        }
+      ],
+      "coins_collected": 2,
+      "environment": {
+        "distance": 25.35646666666667,
+        "speed": 7.284,
+        "step": 213,
+        "time": 3.55
+      },
+      "obstacles": [
+        {
+          "depth": 0.65,
+          "id": 3,
+          "lane": 1,
+          "relative_distance": 0.5662222222222216,
+          "type": "BARRIER",
+          "width": 0.72
+        }
+      ],
+      "player": {
+        "jump_progress": 0.0,
+        "lane": 1,
+        "roll_progress": 0.0,
+        "state": "COLLIDED"
+      },
+      "schema_version": 1,
+      "score": 5.549999999999992
+    }
+  ],
+  "rewards": [
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    1.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    1.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    -1.0
+  ],
+  "schema_version": 1,
+  "seed": 42,
+  "simulation_dt": 0.016666666666666666,
+  "termination_reason": "collision"
+}
