@@ -18,6 +18,7 @@ from environment.game_state import (
     ObservationConversion,
     UnrepresentedObject,
 )
+from environment.game_controller import ControllerCycle, GameController
 from environment.reward_function import (
     REWARD_CLASSIFICATION,
     REWARD_COMPONENTS,
@@ -34,9 +35,11 @@ __all__ = [
     "ActionMapping",
     "AdapterStep",
     "ControlledGameEnvironment",
+    "ControllerCycle",
     "EpisodeRun",
     "GameAPI",
     "GameActionAdapter",
+    "GameController",
     "GameEnvironmentAdapter",
     "GameObservationAdapter",
     "GameRewardFunction",

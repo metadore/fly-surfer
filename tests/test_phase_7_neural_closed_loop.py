@@ -35,6 +35,7 @@ from environment.live_loop import (
 )
 from environment.reward_function import REWARD_COMPONENTS
 from motor.action_decoder import GameActionDecoder
+from motor.action_selection import ActionSelector, SelectionConfig
 from motor.motor_decoder import DecoderConfig
 from motor.populations import MotorPopulations
 from sensory.game_state import (
@@ -176,6 +177,7 @@ def make_loop(
     max_steps: int = 400,
     clock: ClockSync | None = None,
     decoder: GameActionDecoder | None = None,
+    action_selector=None,
 ) -> SimpleNamespace:
     drive = LiveSensoryDrive(
         world.mapping, world.encoders, current_pa=world.current_pa
@@ -202,6 +204,7 @@ def make_loop(
         decoder,
         clock=clock,
         max_updates=max_updates,
+        action_selector=action_selector,
     )
     return SimpleNamespace(
         drive=drive,
@@ -407,6 +410,37 @@ def test_decoder_output_reaches_the_environment(world):
     assert record.observation["environment"]["step"] == 1
     assert int(record.game_state.player.lane) == 0
     assert record.terminated is False
+
+
+def test_phase_4_selector_is_optional_and_records_its_rules(world):
+    """End-to-end with the Phase 4 selector: observation -> BANC -> game.
+
+    The selector adds conflict, minimum-hold and cooldown records; the neural
+    pathway, decoder and game are the same objects used by Phase 7.
+    """
+    selector = ActionSelector(
+        SelectionConfig(min_hold_ms=100.0, cooldown_ms=200.0)
+    )
+    loop = make_loop(world, max_updates=130, action_selector=selector)
+    run = loop.loop.run(seed=42, max_updates=130)
+    records = run["records"]
+    assert records
+    assert all("selection" in record for record in records)
+    assert all(
+        set(record) == set(RECORD_FIELDS) | {"selection"}
+        for record in records
+    )
+    executed = [record["executed_action"] for record in records]
+    assert any(action == "LEFT" for action in executed)
+    assert all(
+        action in {"LEFT", "RIGHT", "JUMP", "NO_ACTION"} for action in executed
+    )
+    summary = run["summary"]["selection"]
+    assert summary["updates"] == len(records)
+    assert summary["conflicts"] == 0
+    assert summary["unmapped_updates"] == 0
+    assert run["summary"]["weights_unchanged"] is True
+    assert loop.environment.n_steps == len(records)
 
 
 # ---------------------------------------------------------------------------

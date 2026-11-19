@@ -556,6 +556,11 @@ class NeuralClosedLoop:
     before the record is appended. Phase 8 conditions B and D pass a hook that
     applies one three-factor weight update to the live plastic stepper; the
     default ``None`` keeps the Phase 7 fixed-weight pathway byte-identical.
+
+    ``action_selector`` is optional. When set, the decoded state passes through
+    the Phase 4 ``ActionSelector`` (conflict handling, minimum hold, cooldown)
+    before the Phase 7 adapter, and each record gains a ``selection`` block.
+    The default ``None`` preserves the exact Phase 7 and Phase 8 record schema.
     """
 
     def __init__(
@@ -572,6 +577,7 @@ class NeuralClosedLoop:
         record_motor_activity: bool = False,
         sufficiency: Any | None = None,
         post_update: Any | None = None,
+        action_selector: Any | None = None,
     ) -> None:
         if action_decoder is None and decision_source is None:
             raise ValueError("an action decoder or a decision source is required")
@@ -611,6 +617,12 @@ class NeuralClosedLoop:
             raise ValueError("max_updates must be a positive integer or None")
         if post_update is not None and not callable(post_update):
             raise TypeError("post_update must be callable or None")
+        if action_selector is not None:
+            for name in ("select", "reset"):
+                if not callable(getattr(action_selector, name, None)):
+                    raise TypeError(
+                        f"action_selector must provide {name}()"
+                    )
         self.adapter = adapter
         self.stepper = stepper
         self.drive = drive
@@ -623,6 +635,7 @@ class NeuralClosedLoop:
         self.record_motor_activity = bool(record_motor_activity)
         self.sufficiency = sufficiency
         self.post_update = post_update
+        self.action_selector = action_selector
 
     def run(self, *, seed: int, max_updates: int | None = None) -> dict:
         if isinstance(seed, bool) or not isinstance(seed, int):
@@ -638,6 +651,8 @@ class NeuralClosedLoop:
             self.action_decoder.reset()
         if self.decision_source is not None:
             self.decision_source.reset()
+        if self.action_selector is not None:
+            self.action_selector.reset()
         resets_at_start = self.stepper.resets
 
         state = self.adapter.game.game_state
@@ -688,6 +703,16 @@ class NeuralClosedLoop:
                 output = None
                 decision, readout_record = self.decision_source.decide(
                     motor_block
+                )
+            step_selection = None
+            if self.action_selector is not None:
+                step_selection = self.action_selector.select(
+                    decision, window_end_ms=neural_time_ms
+                )
+                decision = (
+                    step_selection.requested_state
+                    if step_selection.unmapped
+                    else step_selection.selected_state
                 )
             step = self.adapter.step(decision)
             if self.decision_source is not None and hasattr(
@@ -764,6 +789,8 @@ class NeuralClosedLoop:
             }
             if motor_block is not None:
                 record["motor_activity"] = motor_block
+            if step_selection is not None:
+                record["selection"] = step_selection.as_dict()
             if self.decision_source is not None:
                 record["readout"] = readout_record
             if weight_update is not None:
@@ -908,6 +935,30 @@ class NeuralClosedLoop:
             ),
             "limitations": LIMITATIONS,
         }
+        if self.action_selector is not None:
+            selections = [
+                record["selection"] for record in records if "selection" in record
+            ]
+            summary["selection"] = {
+                "updates": len(selections),
+                "conflicts": sum(1 for item in selections if item["conflict"]),
+                "held_updates": sum(1 for item in selections if item["held"]),
+                "cooldown_blocked_updates": sum(
+                    1 for item in selections if item["cooldown_blocked"]
+                ),
+                "unmapped_updates": sum(
+                    1 for item in selections if item["unmapped"]
+                ),
+                "suppressed_channel_counts": dict(
+                    sorted(
+                        Counter(
+                            channel
+                            for item in selections
+                            for channel in item["suppressed_channels"]
+                        ).items()
+                    )
+                ),
+            }
         if self.post_update is not None:
             summary["plasticity"] = self._plasticity_summary()
         return summary

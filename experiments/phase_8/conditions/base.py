@@ -304,6 +304,18 @@ def _check_structure(structure: dict | None) -> dict:
             "the randomization gates did not pass; C/D/C′ may not run on this "
             f"graph (failures: {quality.get('failures')})"
         )
+    if structure.get("certificate_path") is not None:
+        from experiments.phase_8_random.certification import (
+            CertificationError,
+            verify_structure_record,
+        )
+
+        try:
+            verify_structure_record(structure)
+        except CertificationError as error:
+            raise ConditionError(
+                f"the structure certificate was refused: {error}"
+            ) from error
     return structure
 
 

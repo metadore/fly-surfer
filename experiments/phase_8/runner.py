@@ -26,7 +26,7 @@ from .config import (
 from .manifest import build_manifest, load_manifest, write_manifest
 from .registry import evaluation_plan
 from .schema import SchemaError, episode_key, validate_episode_row
-from .seeds import environment_seed, seed_plan
+from .seeds import FLOOR_ID, environment_seed, seed_plan
 from .store import EpisodeStore, StoreError, resolve_run_directory
 
 
@@ -144,13 +144,18 @@ class CampaignRunner:
     # -- execution -------------------------------------------------------
 
     def context(self, condition: str, seed: int, episode: int) -> dict:
-        """Everything an arm may need that the harness guarantees is shared."""
+        """Everything an arm may need that the harness guarantees is shared.
+
+        The substrate-free floor owns no neural stream, so its ``seed_plan`` is
+        ``None``; it still receives the paired environment seed.
+        """
+        master = self.config.campaign.master_seed
         return {
-            "master_seed": self.config.campaign.master_seed,
-            "environment_seed": environment_seed(
-                self.config.campaign.master_seed, seed, episode
+            "master_seed": master,
+            "environment_seed": environment_seed(master, seed, episode),
+            "seed_plan": (
+                None if condition == FLOOR_ID else seed_plan(master, condition, seed)
             ),
-            "seed_plan": seed_plan(self.config.campaign.master_seed, condition, seed),
             "config_hashes": {
                 name: entry["sha256"] for name, entry in self.config.hashes.items()
             },
