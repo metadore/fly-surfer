@@ -1,0 +1,428 @@
+{
+  "checks": {
+    "condition_a_only": {
+      "detail": {
+        "condition_id": "A",
+        "controller": "fixed_decoder",
+        "eta": null,
+        "plasticity": "none",
+        "requires_structure": false,
+        "role": "reference",
+        "substrate": "biological",
+        "trains": [
+          "none"
+        ]
+      },
+      "passed": true,
+      "required": true
+    },
+    "configuration_constants": {
+      "detail": {
+        "episodes_per_seed": 10,
+        "master_seed": 20261116,
+        "max_game_updates": 900,
+        "memory_gate_gb": 4.0,
+        "pilot_seeds": [
+          9001,
+          9002,
+          9003
+        ],
+        "results_root": "experiments/results/phase_8"
+      },
+      "passed": true,
+      "required": true
+    },
+    "configuration_hashes": {
+      "detail": {
+        "campaign": {
+          "actual": "b9a2d3d5f9fc397af07e12cda97bb1ae854cb505edc304e5727c0e2d83477e19",
+          "declared": "b9a2d3d5f9fc397af07e12cda97bb1ae854cb505edc304e5727c0e2d83477e19",
+          "matches": true,
+          "path": "C:/Users/Hp/fruitfly/FLY-SURFER/configs/phase_8/campaign.yaml"
+        },
+        "conditions": {
+          "actual": "9a93f04771a2489b09a14c2b74418ffb423ad9702d7bc3a47492a2012d42f671",
+          "declared": "9a93f04771a2489b09a14c2b74418ffb423ad9702d7bc3a47492a2012d42f671",
+          "matches": true,
+          "path": "C:/Users/Hp/fruitfly/FLY-SURFER/configs/phase_8/conditions.yaml"
+        },
+        "environment": {
+          "actual": "b391ecf71fd7acac0517a677f9198d6a252a00428aabf8c58d3b6b343a3281dc",
+          "declared": "b391ecf71fd7acac0517a677f9198d6a252a00428aabf8c58d3b6b343a3281dc",
+          "matches": true,
+          "path": "C:/Users/Hp/fruitfly/FLY-SURFER/configs/phase_8/environment.yaml"
+        }
+      },
+      "passed": true,
+      "required": true
+    },
+    "d1_approval": {
+      "detail": {
+        "approval_date": "2026-11-20",
+        "approval_id": "D1",
+        "approved": true,
+        "bound_to_protocol": true,
+        "decision_status": "APPROVED - recorded owner decision D1",
+        "path": "C:/Users/Hp/fruitfly/FLY-SURFER/reports/phase_8_owner_approvals/D1.json",
+        "protocol_sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c",
+        "reason": "REV4 \u00a712 and U1-U18 are approved as written by recorded owner decision D1 (2026-11-20), bound to REV4 SHA-256 e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c. The approval authorises no parameter change and does not bypass any other gate: every independent gate remains active.",
+        "record_sha256": "5c183c992c7f68ed1e5756aab61b362b6eace1ec15871b7926982371f364d489"
+      },
+      "passed": true,
+      "required": true
+    },
+    "d2_decision": {
+      "detail": {
+        "accepts_g3_deviation": false,
+        "approval_date": "2026-11-20",
+        "approval_id": "D2",
+        "bound_to_rev4": true,
+        "failures": [],
+        "path": "C:/Users/Hp/fruitfly/FLY-SURFER/reports/phase_8_owner_approvals/D2.json",
+        "pilot1_exempt": true,
+        "record_sha256": "b5b0c229edded8347722e903bec134f9327a21eb4823fb3bdd4595e8c0c17327",
+        "scope": {
+          "accepts_g3_deviation": false,
+          "arms": [
+            "A"
+          ],
+          "condition": "A only, biological substrate",
+          "episodes_per_seed": 3,
+          "g3_applicability": "not_applicable_to_pilot1_only",
+          "g3_still_blocks": [
+            "Pilot 2",
+            "the confirmatory campaign",
+            "training",
+            "every condition that loads a randomized graph (C, D, C_prime and any certified-random-graph arm)"
+          ],
+          "n_episodes": 9,
+          "parameter_modifications_authorised": false,
+          "seeds": [
+            9001,
+            9002,
+            9003
+          ],
+          "stage": "pilot1",
+          "uses_randomized_graph": false,
+          "uses_trained_artifact": false,
+          "weakens_graph_certification": false
+        },
+        "valid": true,
+        "weakens_graph_certification": false
+      },
+      "passed": true,
+      "required": true
+    },
+    "g3_deviation_preserved": {
+      "detail": {
+        "certified_seeds": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "construction_runs_below_gate": true,
+        "gate_gb": 4.0,
+        "gate_weakened": false,
+        "min_observed_free_gb": 1.628,
+        "note": "the certified graphs were built below the \u00a79.3 4.00 GB gate; G3 is not complete and the graphs may not be used for experimental data collection until an approved amendment or a compliant rerun exists",
+        "present": true,
+        "status": "deviation_recorded",
+        "summary_path": "C:/Users/Hp/fruitfly/FLY-SURFER/experiments/results/phase_8_random/campaign_seed_summary.json"
+      },
+      "passed": true,
+      "required": true
+    },
+    "memory_gate_4gib": {
+      "detail": {
+        "available_gb": 5.924,
+        "gate_gb": 4.0,
+        "passed": true,
+        "percent_used": 61.4,
+        "reason": "at or above the gate",
+        "source": "psutil.virtual_memory().available",
+        "total_gb": 15.342
+      },
+      "passed": true,
+      "required": true
+    },
+    "no_randomized_graph_dependency": {
+      "detail": {
+        "certified_graph_needed": false,
+        "condition_a_requires_structure": false,
+        "note": "condition A runs the fixed-weight biological graph; no certified randomised structure record is requested or loaded"
+      },
+      "passed": true,
+      "required": true
+    },
+    "no_trained_artifact_dependency": {
+      "detail": {
+        "condition_a_trains": [
+          "none"
+        ],
+        "training_artifacts_empty": true,
+        "training_describe": {
+          "agents": [],
+          "provenance": "caller-supplied",
+          "readouts": [],
+          "training_implemented_here": false
+        }
+      },
+      "passed": true,
+      "required": true
+    },
+    "plan_exact_nine_episode_grid": {
+      "detail": {
+        "arms": [
+          "A"
+        ],
+        "configured_pilot_seeds": [
+          9001,
+          9002,
+          9003
+        ],
+        "entries": [
+          {
+            "arm": "A",
+            "environment_seed": 563774599,
+            "episode": 0,
+            "seed": 9001
+          },
+          {
+            "arm": "A",
+            "environment_seed": 2911696168,
+            "episode": 1,
+            "seed": 9001
+          },
+          {
+            "arm": "A",
+            "environment_seed": 4240939637,
+            "episode": 2,
+            "seed": 9001
+          },
+          {
+            "arm": "A",
+            "environment_seed": 2632356062,
+            "episode": 0,
+            "seed": 9002
+          },
+          {
+            "arm": "A",
+            "environment_seed": 307060235,
+            "episode": 1,
+            "seed": 9002
+          },
+          {
+            "arm": "A",
+            "environment_seed": 4241804999,
+            "episode": 2,
+            "seed": 9002
+          },
+          {
+            "arm": "A",
+            "environment_seed": 2839813884,
+            "episode": 0,
+            "seed": 9003
+          },
+          {
+            "arm": "A",
+            "environment_seed": 756850162,
+            "episode": 1,
+            "seed": 9003
+          },
+          {
+            "arm": "A",
+            "environment_seed": 2981106662,
+            "episode": 2,
+            "seed": 9003
+          }
+        ],
+        "episodes_per_seed": 3,
+        "estimates_contrasts": false,
+        "n_entries": 9,
+        "seeds": [
+          9001,
+          9002,
+          9003
+        ],
+        "stage": "pilot1"
+      },
+      "passed": true,
+      "required": true
+    },
+    "production_runner_available": {
+      "detail": {
+        "class": "Pilot1EpisodeRunner",
+        "condition": "A",
+        "frozen_inputs_declared": {
+          "graph": "datasets/processed/banc_v888/banc_graph_t5.npz",
+          "motor_decoder": "configs/motor_decoder.yaml",
+          "neuron_config": "configs/neuron_config.yaml",
+          "nodes": "datasets/processed/banc_v888/banc_nodes.csv.gz",
+          "plasticity": "configs/plasticity_banc.yaml",
+          "sensory_mapping": "configs/banc_sensory_mapping.yaml",
+          "synapse_policy": "configs/banc_synapse_policy.yaml"
+        },
+        "frozen_inputs_present": {
+          "graph": true,
+          "motor_decoder": true,
+          "neuron_config": true,
+          "nodes": true,
+          "plasticity": true,
+          "sensory_mapping": true,
+          "synapse_policy": true
+        },
+        "input_hashes": {
+          "graph": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192",
+          "motor_decoder": "525f25e9e0d334e58a38ce9d340fcd8fe3ebc148fe1bf9f08656eccc660d9fae",
+          "neuron_config": "9b652bde00a795da205cf22affe8690871670264a3718948f58f3b30583d8b77",
+          "nodes": "144a2eb09aa1ed2be4f07eff589a6158e98cfe4f18b52db7feef4d2272953e5f",
+          "plasticity": "616288a40bf864185c33f92a99742be8dd49e62773cbb58cb9287414ad9e5f70",
+          "sensory_mapping": "64c716a42c44ded58c77fccdcd865b0a9732a06b86019d673e6fb4c902dfc4ff",
+          "synapse_policy": "88f6449289492e79a919fafa56af93c5ac5e916cb50cc1658d7e14eed2dc399e"
+        },
+        "n_input_hashes": 7,
+        "runner_id": "phase_8.stages.pilot1_runner.Pilot1EpisodeRunner"
+      },
+      "passed": true,
+      "required": true
+    },
+    "results_paths_free": {
+      "detail": {
+        "episode_store_name": "episodes.jsonl",
+        "pilot_base": "C:/Users/Hp/fruitfly/FLY-SURFER/experiments/results/phase_8/pilot1",
+        "pilot_base_exists": false,
+        "results_root": "C:/Users/Hp/fruitfly/FLY-SURFER/experiments/results/phase_8",
+        "results_root_exists": false,
+        "run_manifest_name": "manifest.json",
+        "target_run_dir": "C:/Users/Hp/fruitfly/FLY-SURFER/experiments/results/phase_8/pilot1/pilot1",
+        "target_run_exists": false
+      },
+      "passed": true,
+      "required": true
+    },
+    "rev4_identity": {
+      "detail": {
+        "authorises_execution": false,
+        "expected_sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c",
+        "matches_expected": true,
+        "path": "C:/Users/Hp/fruitfly/FLY-SURFER/docs/PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4.md",
+        "present": true,
+        "sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c"
+      },
+      "passed": true,
+      "required": true
+    },
+    "stage_authorization_pilot1": {
+      "detail": {
+        "authorized": true,
+        "blockers": [],
+        "exemption": {
+          "applied": true,
+          "approval_date": "2026-11-20",
+          "approval_id": "D2",
+          "reason": "D2 records that the G3 deviation is not applicable to this exact Pilot 1 grid (condition A, seeds 9001-9003, three episodes each, no randomized graph, no trained artifact). The deviation itself remains recorded and unaccepted.",
+          "record": "C:/Users/Hp/fruitfly/FLY-SURFER/reports/phase_8_owner_approvals/D2.json",
+          "scope": {
+            "arms": [
+              "A"
+            ],
+            "episodes_per_seed": 3,
+            "n_episodes": 9,
+            "seeds": [
+              9001,
+              9002,
+              9003
+            ],
+            "stage": "pilot1",
+            "uses_randomized_graph": false,
+            "uses_trained_artifact": false
+          }
+        },
+        "g3_applicability": {
+          "accepts_g3_deviation": false,
+          "approval_date": "2026-11-20",
+          "approval_id": "D2",
+          "bound_to_rev4": true,
+          "document_matches_rev4": true,
+          "failures": [],
+          "path": "C:/Users/Hp/fruitfly/FLY-SURFER/reports/phase_8_owner_approvals/D2.json",
+          "pilot1_exempt": true,
+          "present": true,
+          "recorded_document_sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c",
+          "scope": {
+            "accepts_g3_deviation": false,
+            "arms": [
+              "A"
+            ],
+            "condition": "A only, biological substrate",
+            "episodes_per_seed": 3,
+            "g3_applicability": "not_applicable_to_pilot1_only",
+            "g3_still_blocks": [
+              "Pilot 2",
+              "the confirmatory campaign",
+              "training",
+              "every condition that loads a randomized graph (C, D, C_prime and any certified-random-graph arm)"
+            ],
+            "n_episodes": 9,
+            "parameter_modifications_authorised": false,
+            "seeds": [
+              9001,
+              9002,
+              9003
+            ],
+            "stage": "pilot1",
+            "uses_randomized_graph": false,
+            "uses_trained_artifact": false,
+            "weakens_graph_certification": false
+          },
+          "valid": true,
+          "weakens_graph_certification": false
+        }
+      },
+      "passed": true,
+      "required": true
+    }
+  },
+  "duration_seconds": 0.077,
+  "failed_checks": [],
+  "generated_at_utc": "2026-11-20T10:56:02Z",
+  "passed": true,
+  "platform": {
+    "machine": "AMD64",
+    "python": "3.13.14",
+    "release": "11",
+    "system": "Windows"
+  },
+  "record_kind": "phase_8_pilot1_preflight",
+  "required_checks": [
+    "rev4_identity",
+    "d1_approval",
+    "d2_decision",
+    "g3_deviation_preserved",
+    "stage_authorization_pilot1",
+    "plan_exact_nine_episode_grid",
+    "condition_a_only",
+    "no_randomized_graph_dependency",
+    "no_trained_artifact_dependency",
+    "production_runner_available",
+    "memory_gate_4gib",
+    "results_paths_free",
+    "configuration_hashes",
+    "configuration_constants"
+  ],
+  "rev4_step": "10.3",
+  "stage": "pilot1"
+}

@@ -1,0 +1,47 @@
+{
+  "record_kind": "phase_8_owner_approval",
+  "approval_id": "D1",
+  "approval_date": "2026-11-20",
+  "recorded_by": "project owner",
+  "approved_document": {
+    "protocol_id": "PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4",
+    "path": "docs/PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4.md",
+    "sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c",
+    "lines": 1915
+  },
+  "scope": {
+    "sections": ["§12"],
+    "decision_items": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "U10",
+      "U11",
+      "U12",
+      "U13",
+      "U14",
+      "U15",
+      "U16",
+      "U17",
+      "U18"
+    ],
+    "approved_as": "as written, with the existing proposed values and definitions",
+    "parameter_modifications_authorised": false
+  },
+  "statement": "The project owner approves docs/PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4.md §12 as written, including U1-U18 with their existing proposed values and definitions. No parameter, value or definition is modified by this approval.",
+  "does_not_authorise": [
+    "bypassing any other execution gate, including the design (U7/B2), training-operation (B3-B6), memory (B8) and G3 (B7) gates",
+    "any change to a parameter, value or definition",
+    "regeneration of the G3 random graphs or acceptance of the recorded §9.3 memory-gate deviation",
+    "use of the certified G3 graphs for experimental data collection while B7 remains open"
+  ],
+  "evidence_kind": "owner_decision",
+  "protocol_text_preserved": true,
+  "note": "This is a separate owner-decision record. REV4 itself is unchanged; its closing paragraph still says the document authorises no execution. The approval is bound to the recorded SHA-256 and is invalid if that hash changes."
+}

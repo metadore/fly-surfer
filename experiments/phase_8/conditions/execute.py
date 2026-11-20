@@ -250,7 +250,7 @@ def error_row(
         terminated=False,
         truncated=False,
         termination_reason=None,
-        action_counts=action_counts or {},
+        action_counts=counts,
         motor_spikes=0,
         spike_sha256=None,
         action_sha256=None,

@@ -1,0 +1,1365 @@
+{
+  "episodes": [
+    {
+      "condition": "A",
+      "environment_seed": 563774599,
+      "episode": 0,
+      "finished_at": "2026-11-20T10:59:24Z",
+      "motor_spikes": 0,
+      "seed": 9001,
+      "started_at": "2026-11-20T10:58:51Z",
+      "status": "ok",
+      "steps": 323,
+      "termination_reason": "collision",
+      "total_reward": 5.22,
+      "wall_time_s": 32.668
+    },
+    {
+      "condition": "A",
+      "environment_seed": 2911696168,
+      "episode": 1,
+      "finished_at": "2026-11-20T11:00:37Z",
+      "motor_spikes": 0,
+      "seed": 9001,
+      "started_at": "2026-11-20T10:59:24Z",
+      "status": "ok",
+      "steps": 620,
+      "termination_reason": "collision",
+      "total_reward": 10.19,
+      "wall_time_s": 72.949
+    },
+    {
+      "condition": "A",
+      "environment_seed": 4240939637,
+      "episode": 2,
+      "finished_at": "2026-11-20T11:01:04Z",
+      "motor_spikes": 0,
+      "seed": 9001,
+      "started_at": "2026-11-20T11:00:37Z",
+      "status": "ok",
+      "steps": 323,
+      "termination_reason": "collision",
+      "total_reward": 4.22,
+      "wall_time_s": 26.947
+    },
+    {
+      "condition": "A",
+      "environment_seed": 2632356062,
+      "episode": 0,
+      "finished_at": "2026-11-20T11:02:03Z",
+      "motor_spikes": 0,
+      "seed": 9002,
+      "started_at": "2026-11-20T11:01:04Z",
+      "status": "ok",
+      "steps": 620,
+      "termination_reason": "collision",
+      "total_reward": 7.19,
+      "wall_time_s": 59.412
+    },
+    {
+      "condition": "A",
+      "environment_seed": 307060235,
+      "episode": 1,
+      "finished_at": "2026-11-20T11:02:42Z",
+      "motor_spikes": 0,
+      "seed": 9002,
+      "started_at": "2026-11-20T11:02:03Z",
+      "status": "ok",
+      "steps": 426,
+      "termination_reason": "collision",
+      "total_reward": 3.25,
+      "wall_time_s": 38.577
+    },
+    {
+      "condition": "A",
+      "environment_seed": 4241804999,
+      "episode": 2,
+      "finished_at": "2026-11-20T11:03:35Z",
+      "motor_spikes": 0,
+      "seed": 9002,
+      "started_at": "2026-11-20T11:02:42Z",
+      "status": "ok",
+      "steps": 620,
+      "termination_reason": "collision",
+      "total_reward": 8.19,
+      "wall_time_s": 53.25
+    },
+    {
+      "condition": "A",
+      "environment_seed": 2839813884,
+      "episode": 0,
+      "finished_at": "2026-11-20T11:03:53Z",
+      "motor_spikes": 0,
+      "seed": 9003,
+      "started_at": "2026-11-20T11:03:35Z",
+      "status": "ok",
+      "steps": 213,
+      "termination_reason": "collision",
+      "total_reward": 3.12,
+      "wall_time_s": 18.185
+    },
+    {
+      "condition": "A",
+      "environment_seed": 756850162,
+      "episode": 1,
+      "finished_at": "2026-11-20T11:04:30Z",
+      "motor_spikes": 0,
+      "seed": 9003,
+      "started_at": "2026-11-20T11:03:53Z",
+      "status": "ok",
+      "steps": 426,
+      "termination_reason": "collision",
+      "total_reward": 4.25,
+      "wall_time_s": 36.984
+    },
+    {
+      "condition": "A",
+      "environment_seed": 2981106662,
+      "episode": 2,
+      "finished_at": "2026-11-20T11:04:48Z",
+      "motor_spikes": 0,
+      "seed": 9003,
+      "started_at": "2026-11-20T11:04:30Z",
+      "status": "ok",
+      "steps": 213,
+      "termination_reason": "collision",
+      "total_reward": 2.12,
+      "wall_time_s": 17.947
+    }
+  ],
+  "error": null,
+  "execution_finished_at_utc": "2026-11-20T11:04:48Z",
+  "execution_started_at_utc": "2026-11-20T10:58:51Z",
+  "memory_sampling": {
+    "available_gb_max": 5.6728,
+    "available_gb_min": 4.1997,
+    "interval_s": 2.0,
+    "n_samples": 177,
+    "rss_gb_max": 0.3725,
+    "rss_gb_min": 0.3206,
+    "samples": [
+      {
+        "available_gb": 5.6728,
+        "rss_gb": 0.3206,
+        "t_s": 2.045
+      },
+      {
+        "available_gb": 5.6094,
+        "rss_gb": 0.3644,
+        "t_s": 4.051
+      },
+      {
+        "available_gb": 5.5936,
+        "rss_gb": 0.3646,
+        "t_s": 6.066
+      },
+      {
+        "available_gb": 5.5907,
+        "rss_gb": 0.3646,
+        "t_s": 8.076
+      },
+      {
+        "available_gb": 5.595,
+        "rss_gb": 0.3648,
+        "t_s": 10.083
+      },
+      {
+        "available_gb": 5.6127,
+        "rss_gb": 0.3651,
+        "t_s": 12.093
+      },
+      {
+        "available_gb": 5.6103,
+        "rss_gb": 0.3653,
+        "t_s": 14.106
+      },
+      {
+        "available_gb": 5.6129,
+        "rss_gb": 0.3664,
+        "t_s": 16.118
+      },
+      {
+        "available_gb": 5.6171,
+        "rss_gb": 0.3666,
+        "t_s": 18.119
+      },
+      {
+        "available_gb": 5.6333,
+        "rss_gb": 0.3668,
+        "t_s": 20.12
+      },
+      {
+        "available_gb": 5.6303,
+        "rss_gb": 0.367,
+        "t_s": 22.133
+      },
+      {
+        "available_gb": 5.6181,
+        "rss_gb": 0.3673,
+        "t_s": 24.142
+      },
+      {
+        "available_gb": 5.6211,
+        "rss_gb": 0.3676,
+        "t_s": 26.152
+      },
+      {
+        "available_gb": 5.6262,
+        "rss_gb": 0.3678,
+        "t_s": 28.163
+      },
+      {
+        "available_gb": 5.6239,
+        "rss_gb": 0.3681,
+        "t_s": 30.179
+      },
+      {
+        "available_gb": 5.6186,
+        "rss_gb": 0.3684,
+        "t_s": 32.19
+      },
+      {
+        "available_gb": 5.5992,
+        "rss_gb": 0.3679,
+        "t_s": 34.201
+      },
+      {
+        "available_gb": 5.5748,
+        "rss_gb": 0.3678,
+        "t_s": 36.207
+      },
+      {
+        "available_gb": 5.5673,
+        "rss_gb": 0.3679,
+        "t_s": 38.219
+      },
+      {
+        "available_gb": 5.5349,
+        "rss_gb": 0.3679,
+        "t_s": 40.227
+      },
+      {
+        "available_gb": 5.5169,
+        "rss_gb": 0.3679,
+        "t_s": 42.231
+      },
+      {
+        "available_gb": 5.5126,
+        "rss_gb": 0.3681,
+        "t_s": 44.238
+      },
+      {
+        "available_gb": 5.5265,
+        "rss_gb": 0.3686,
+        "t_s": 46.249
+      },
+      {
+        "available_gb": 5.5473,
+        "rss_gb": 0.3688,
+        "t_s": 48.259
+      },
+      {
+        "available_gb": 5.5616,
+        "rss_gb": 0.3686,
+        "t_s": 50.266
+      },
+      {
+        "available_gb": 5.564,
+        "rss_gb": 0.3688,
+        "t_s": 52.276
+      },
+      {
+        "available_gb": 5.5612,
+        "rss_gb": 0.3686,
+        "t_s": 54.277
+      },
+      {
+        "available_gb": 5.4768,
+        "rss_gb": 0.3686,
+        "t_s": 56.283
+      },
+      {
+        "available_gb": 5.1961,
+        "rss_gb": 0.3686,
+        "t_s": 58.284
+      },
+      {
+        "available_gb": 4.9672,
+        "rss_gb": 0.3687,
+        "t_s": 60.292
+      },
+      {
+        "available_gb": 4.8642,
+        "rss_gb": 0.3688,
+        "t_s": 62.296
+      },
+      {
+        "available_gb": 4.8583,
+        "rss_gb": 0.3689,
+        "t_s": 64.305
+      },
+      {
+        "available_gb": 4.8566,
+        "rss_gb": 0.369,
+        "t_s": 66.32
+      },
+      {
+        "available_gb": 4.7614,
+        "rss_gb": 0.3689,
+        "t_s": 68.322
+      },
+      {
+        "available_gb": 4.7567,
+        "rss_gb": 0.369,
+        "t_s": 70.327
+      },
+      {
+        "available_gb": 4.5758,
+        "rss_gb": 0.369,
+        "t_s": 72.327
+      },
+      {
+        "available_gb": 4.5279,
+        "rss_gb": 0.369,
+        "t_s": 74.339
+      },
+      {
+        "available_gb": 4.4053,
+        "rss_gb": 0.3692,
+        "t_s": 76.34
+      },
+      {
+        "available_gb": 4.3008,
+        "rss_gb": 0.3693,
+        "t_s": 78.35
+      },
+      {
+        "available_gb": 4.2438,
+        "rss_gb": 0.3695,
+        "t_s": 80.354
+      },
+      {
+        "available_gb": 4.2368,
+        "rss_gb": 0.3697,
+        "t_s": 82.356
+      },
+      {
+        "available_gb": 4.283,
+        "rss_gb": 0.3699,
+        "t_s": 84.357
+      },
+      {
+        "available_gb": 4.2625,
+        "rss_gb": 0.3701,
+        "t_s": 86.362
+      },
+      {
+        "available_gb": 4.2725,
+        "rss_gb": 0.3701,
+        "t_s": 88.372
+      },
+      {
+        "available_gb": 4.2517,
+        "rss_gb": 0.3703,
+        "t_s": 90.374
+      },
+      {
+        "available_gb": 4.2557,
+        "rss_gb": 0.3705,
+        "t_s": 92.381
+      },
+      {
+        "available_gb": 4.2609,
+        "rss_gb": 0.3707,
+        "t_s": 94.391
+      },
+      {
+        "available_gb": 4.268,
+        "rss_gb": 0.3709,
+        "t_s": 96.398
+      },
+      {
+        "available_gb": 4.1997,
+        "rss_gb": 0.3711,
+        "t_s": 98.411
+      },
+      {
+        "available_gb": 4.2573,
+        "rss_gb": 0.3716,
+        "t_s": 100.422
+      },
+      {
+        "available_gb": 4.3981,
+        "rss_gb": 0.3715,
+        "t_s": 102.434
+      },
+      {
+        "available_gb": 4.4069,
+        "rss_gb": 0.3717,
+        "t_s": 104.449
+      },
+      {
+        "available_gb": 4.5454,
+        "rss_gb": 0.3714,
+        "t_s": 106.458
+      },
+      {
+        "available_gb": 4.5346,
+        "rss_gb": 0.372,
+        "t_s": 108.459
+      },
+      {
+        "available_gb": 4.5477,
+        "rss_gb": 0.3714,
+        "t_s": 110.474
+      },
+      {
+        "available_gb": 4.7406,
+        "rss_gb": 0.3716,
+        "t_s": 112.48
+      },
+      {
+        "available_gb": 4.7554,
+        "rss_gb": 0.3714,
+        "t_s": 114.492
+      },
+      {
+        "available_gb": 4.7572,
+        "rss_gb": 0.372,
+        "t_s": 116.502
+      },
+      {
+        "available_gb": 4.7608,
+        "rss_gb": 0.372,
+        "t_s": 118.503
+      },
+      {
+        "available_gb": 4.7647,
+        "rss_gb": 0.372,
+        "t_s": 120.507
+      },
+      {
+        "available_gb": 4.8136,
+        "rss_gb": 0.3714,
+        "t_s": 122.515
+      },
+      {
+        "available_gb": 4.8217,
+        "rss_gb": 0.3714,
+        "t_s": 124.517
+      },
+      {
+        "available_gb": 4.8211,
+        "rss_gb": 0.3722,
+        "t_s": 126.531
+      },
+      {
+        "available_gb": 4.8489,
+        "rss_gb": 0.3723,
+        "t_s": 128.532
+      },
+      {
+        "available_gb": 4.8568,
+        "rss_gb": 0.3723,
+        "t_s": 130.536
+      },
+      {
+        "available_gb": 4.8408,
+        "rss_gb": 0.3725,
+        "t_s": 132.551
+      },
+      {
+        "available_gb": 4.8302,
+        "rss_gb": 0.3714,
+        "t_s": 134.566
+      },
+      {
+        "available_gb": 4.8476,
+        "rss_gb": 0.3714,
+        "t_s": 136.576
+      },
+      {
+        "available_gb": 4.8476,
+        "rss_gb": 0.3714,
+        "t_s": 138.578
+      },
+      {
+        "available_gb": 4.8529,
+        "rss_gb": 0.3714,
+        "t_s": 140.591
+      },
+      {
+        "available_gb": 4.8503,
+        "rss_gb": 0.3721,
+        "t_s": 142.594
+      },
+      {
+        "available_gb": 4.7463,
+        "rss_gb": 0.3722,
+        "t_s": 144.604
+      },
+      {
+        "available_gb": 4.7563,
+        "rss_gb": 0.3725,
+        "t_s": 146.613
+      },
+      {
+        "available_gb": 4.7219,
+        "rss_gb": 0.3721,
+        "t_s": 148.627
+      },
+      {
+        "available_gb": 4.7385,
+        "rss_gb": 0.3722,
+        "t_s": 150.628
+      },
+      {
+        "available_gb": 4.7599,
+        "rss_gb": 0.3722,
+        "t_s": 152.636
+      },
+      {
+        "available_gb": 4.7984,
+        "rss_gb": 0.3723,
+        "t_s": 154.641
+      },
+      {
+        "available_gb": 4.8081,
+        "rss_gb": 0.3722,
+        "t_s": 156.646
+      },
+      {
+        "available_gb": 4.811,
+        "rss_gb": 0.3722,
+        "t_s": 158.646
+      },
+      {
+        "available_gb": 4.8132,
+        "rss_gb": 0.3722,
+        "t_s": 160.654
+      },
+      {
+        "available_gb": 4.8054,
+        "rss_gb": 0.3722,
+        "t_s": 162.664
+      },
+      {
+        "available_gb": 4.7607,
+        "rss_gb": 0.3722,
+        "t_s": 164.671
+      },
+      {
+        "available_gb": 4.8431,
+        "rss_gb": 0.3722,
+        "t_s": 166.671
+      },
+      {
+        "available_gb": 4.8467,
+        "rss_gb": 0.3721,
+        "t_s": 168.677
+      },
+      {
+        "available_gb": 4.8515,
+        "rss_gb": 0.3722,
+        "t_s": 170.691
+      },
+      {
+        "available_gb": 4.8647,
+        "rss_gb": 0.3722,
+        "t_s": 172.694
+      },
+      {
+        "available_gb": 4.8767,
+        "rss_gb": 0.3722,
+        "t_s": 174.702
+      },
+      {
+        "available_gb": 4.8699,
+        "rss_gb": 0.3722,
+        "t_s": 176.705
+      },
+      {
+        "available_gb": 4.8682,
+        "rss_gb": 0.3721,
+        "t_s": 178.708
+      },
+      {
+        "available_gb": 4.8729,
+        "rss_gb": 0.3721,
+        "t_s": 180.721
+      },
+      {
+        "available_gb": 4.8767,
+        "rss_gb": 0.3721,
+        "t_s": 182.728
+      },
+      {
+        "available_gb": 4.8745,
+        "rss_gb": 0.3721,
+        "t_s": 184.733
+      },
+      {
+        "available_gb": 4.8768,
+        "rss_gb": 0.3721,
+        "t_s": 186.747
+      },
+      {
+        "available_gb": 4.8701,
+        "rss_gb": 0.3721,
+        "t_s": 188.761
+      },
+      {
+        "available_gb": 4.8572,
+        "rss_gb": 0.3721,
+        "t_s": 190.775
+      },
+      {
+        "available_gb": 4.8561,
+        "rss_gb": 0.3703,
+        "t_s": 192.788
+      },
+      {
+        "available_gb": 4.8554,
+        "rss_gb": 0.3652,
+        "t_s": 194.789
+      },
+      {
+        "available_gb": 4.8646,
+        "rss_gb": 0.3659,
+        "t_s": 196.802
+      },
+      {
+        "available_gb": 4.8269,
+        "rss_gb": 0.3652,
+        "t_s": 198.804
+      },
+      {
+        "available_gb": 4.8211,
+        "rss_gb": 0.3652,
+        "t_s": 200.819
+      },
+      {
+        "available_gb": 4.8353,
+        "rss_gb": 0.3652,
+        "t_s": 202.827
+      },
+      {
+        "available_gb": 4.8525,
+        "rss_gb": 0.366,
+        "t_s": 204.833
+      },
+      {
+        "available_gb": 4.8487,
+        "rss_gb": 0.366,
+        "t_s": 206.843
+      },
+      {
+        "available_gb": 4.854,
+        "rss_gb": 0.366,
+        "t_s": 208.857
+      },
+      {
+        "available_gb": 4.8585,
+        "rss_gb": 0.3659,
+        "t_s": 210.858
+      },
+      {
+        "available_gb": 4.8601,
+        "rss_gb": 0.3652,
+        "t_s": 212.87
+      },
+      {
+        "available_gb": 4.8566,
+        "rss_gb": 0.3659,
+        "t_s": 214.873
+      },
+      {
+        "available_gb": 4.8558,
+        "rss_gb": 0.3659,
+        "t_s": 216.882
+      },
+      {
+        "available_gb": 4.8055,
+        "rss_gb": 0.3659,
+        "t_s": 218.886
+      },
+      {
+        "available_gb": 4.7933,
+        "rss_gb": 0.3659,
+        "t_s": 220.893
+      },
+      {
+        "available_gb": 4.7952,
+        "rss_gb": 0.3659,
+        "t_s": 222.903
+      },
+      {
+        "available_gb": 4.7955,
+        "rss_gb": 0.3658,
+        "t_s": 224.903
+      },
+      {
+        "available_gb": 4.8047,
+        "rss_gb": 0.3659,
+        "t_s": 226.904
+      },
+      {
+        "available_gb": 4.8213,
+        "rss_gb": 0.3659,
+        "t_s": 228.916
+      },
+      {
+        "available_gb": 4.8191,
+        "rss_gb": 0.3711,
+        "t_s": 230.92
+      },
+      {
+        "available_gb": 4.8195,
+        "rss_gb": 0.3652,
+        "t_s": 232.933
+      },
+      {
+        "available_gb": 4.8295,
+        "rss_gb": 0.3652,
+        "t_s": 234.936
+      },
+      {
+        "available_gb": 4.8379,
+        "rss_gb": 0.3652,
+        "t_s": 236.938
+      },
+      {
+        "available_gb": 4.8285,
+        "rss_gb": 0.3652,
+        "t_s": 238.942
+      },
+      {
+        "available_gb": 4.8341,
+        "rss_gb": 0.3659,
+        "t_s": 240.946
+      },
+      {
+        "available_gb": 4.8297,
+        "rss_gb": 0.3659,
+        "t_s": 242.949
+      },
+      {
+        "available_gb": 4.8276,
+        "rss_gb": 0.3658,
+        "t_s": 244.96
+      },
+      {
+        "available_gb": 4.8307,
+        "rss_gb": 0.3659,
+        "t_s": 246.974
+      },
+      {
+        "available_gb": 4.8507,
+        "rss_gb": 0.3659,
+        "t_s": 248.976
+      },
+      {
+        "available_gb": 4.851,
+        "rss_gb": 0.3659,
+        "t_s": 250.983
+      },
+      {
+        "available_gb": 4.8531,
+        "rss_gb": 0.3661,
+        "t_s": 252.995
+      },
+      {
+        "available_gb": 4.8511,
+        "rss_gb": 0.3659,
+        "t_s": 254.996
+      },
+      {
+        "available_gb": 4.8516,
+        "rss_gb": 0.366,
+        "t_s": 257.009
+      },
+      {
+        "available_gb": 4.8475,
+        "rss_gb": 0.3654,
+        "t_s": 259.019
+      },
+      {
+        "available_gb": 4.8433,
+        "rss_gb": 0.3658,
+        "t_s": 261.032
+      },
+      {
+        "available_gb": 4.8415,
+        "rss_gb": 0.3658,
+        "t_s": 263.04
+      },
+      {
+        "available_gb": 4.8376,
+        "rss_gb": 0.3659,
+        "t_s": 265.054
+      },
+      {
+        "available_gb": 4.8363,
+        "rss_gb": 0.3658,
+        "t_s": 267.064
+      },
+      {
+        "available_gb": 4.8391,
+        "rss_gb": 0.3657,
+        "t_s": 269.078
+      },
+      {
+        "available_gb": 4.8359,
+        "rss_gb": 0.3657,
+        "t_s": 271.089
+      },
+      {
+        "available_gb": 4.8349,
+        "rss_gb": 0.3657,
+        "t_s": 273.104
+      },
+      {
+        "available_gb": 4.8359,
+        "rss_gb": 0.3657,
+        "t_s": 275.117
+      },
+      {
+        "available_gb": 4.8334,
+        "rss_gb": 0.3659,
+        "t_s": 277.126
+      },
+      {
+        "available_gb": 4.8398,
+        "rss_gb": 0.3657,
+        "t_s": 279.131
+      },
+      {
+        "available_gb": 4.8433,
+        "rss_gb": 0.3657,
+        "t_s": 281.133
+      },
+      {
+        "available_gb": 4.842,
+        "rss_gb": 0.3657,
+        "t_s": 283.136
+      },
+      {
+        "available_gb": 4.8414,
+        "rss_gb": 0.3654,
+        "t_s": 285.144
+      },
+      {
+        "available_gb": 4.8423,
+        "rss_gb": 0.3651,
+        "t_s": 287.156
+      },
+      {
+        "available_gb": 4.8378,
+        "rss_gb": 0.3651,
+        "t_s": 289.167
+      },
+      {
+        "available_gb": 4.8381,
+        "rss_gb": 0.3651,
+        "t_s": 291.172
+      },
+      {
+        "available_gb": 4.8414,
+        "rss_gb": 0.3651,
+        "t_s": 293.176
+      },
+      {
+        "available_gb": 4.8423,
+        "rss_gb": 0.3652,
+        "t_s": 295.19
+      },
+      {
+        "available_gb": 4.843,
+        "rss_gb": 0.3664,
+        "t_s": 297.2
+      },
+      {
+        "available_gb": 4.84,
+        "rss_gb": 0.3665,
+        "t_s": 299.212
+      },
+      {
+        "available_gb": 4.8298,
+        "rss_gb": 0.3664,
+        "t_s": 301.213
+      },
+      {
+        "available_gb": 4.8119,
+        "rss_gb": 0.3658,
+        "t_s": 303.226
+      },
+      {
+        "available_gb": 4.8126,
+        "rss_gb": 0.3658,
+        "t_s": 305.235
+      },
+      {
+        "available_gb": 4.8153,
+        "rss_gb": 0.3658,
+        "t_s": 307.25
+      },
+      {
+        "available_gb": 4.815,
+        "rss_gb": 0.3658,
+        "t_s": 309.262
+      },
+      {
+        "available_gb": 4.813,
+        "rss_gb": 0.366,
+        "t_s": 311.265
+      },
+      {
+        "available_gb": 4.8063,
+        "rss_gb": 0.3667,
+        "t_s": 313.271
+      },
+      {
+        "available_gb": 4.8175,
+        "rss_gb": 0.3667,
+        "t_s": 315.282
+      },
+      {
+        "available_gb": 4.8306,
+        "rss_gb": 0.3664,
+        "t_s": 317.295
+      },
+      {
+        "available_gb": 4.8326,
+        "rss_gb": 0.3667,
+        "t_s": 319.303
+      },
+      {
+        "available_gb": 4.8335,
+        "rss_gb": 0.3664,
+        "t_s": 321.304
+      },
+      {
+        "available_gb": 4.8572,
+        "rss_gb": 0.3665,
+        "t_s": 323.314
+      },
+      {
+        "available_gb": 4.8594,
+        "rss_gb": 0.3667,
+        "t_s": 325.318
+      },
+      {
+        "available_gb": 4.8596,
+        "rss_gb": 0.3664,
+        "t_s": 327.33
+      },
+      {
+        "available_gb": 4.8562,
+        "rss_gb": 0.3665,
+        "t_s": 329.345
+      },
+      {
+        "available_gb": 4.859,
+        "rss_gb": 0.3666,
+        "t_s": 331.359
+      },
+      {
+        "available_gb": 4.8591,
+        "rss_gb": 0.3666,
+        "t_s": 333.373
+      },
+      {
+        "available_gb": 4.8567,
+        "rss_gb": 0.3664,
+        "t_s": 335.381
+      },
+      {
+        "available_gb": 4.8544,
+        "rss_gb": 0.3666,
+        "t_s": 337.392
+      },
+      {
+        "available_gb": 4.8434,
+        "rss_gb": 0.372,
+        "t_s": 339.402
+      },
+      {
+        "available_gb": 4.8479,
+        "rss_gb": 0.3657,
+        "t_s": 341.413
+      },
+      {
+        "available_gb": 4.8528,
+        "rss_gb": 0.3657,
+        "t_s": 343.422
+      },
+      {
+        "available_gb": 4.8537,
+        "rss_gb": 0.3657,
+        "t_s": 345.436
+      },
+      {
+        "available_gb": 4.8526,
+        "rss_gb": 0.3657,
+        "t_s": 347.447
+      },
+      {
+        "available_gb": 4.8579,
+        "rss_gb": 0.3666,
+        "t_s": 349.461
+      },
+      {
+        "available_gb": 4.8605,
+        "rss_gb": 0.3664,
+        "t_s": 351.475
+      },
+      {
+        "available_gb": 4.8577,
+        "rss_gb": 0.3664,
+        "t_s": 353.485
+      },
+      {
+        "available_gb": 4.8618,
+        "rss_gb": 0.3666,
+        "t_s": 355.495
+      }
+    ]
+  },
+  "post_execution_verification": {
+    "all_evidence_pilot": true,
+    "all_rows_A": true,
+    "all_rows_ok": true,
+    "all_weights_fixed": true,
+    "grid": [
+      {
+        "action_counts": {
+          "NO_ACTION": 323
+        },
+        "condition": "A",
+        "episode": 0,
+        "evidence_kind": "pilot",
+        "experimental_evidence": true,
+        "motor_spikes": 0,
+        "n_input_hashes": 7,
+        "per_population_spikes": {
+          "JUMP": 0,
+          "LEFT": 0,
+          "RIGHT": 0
+        },
+        "recorded_config_hashes": [
+          "campaign",
+          "conditions",
+          "environment"
+        ],
+        "seed": 9001,
+        "spike_sha256": "90a86622938be95483b7da39c9d4403f65aad806977680270953dac0a72372ae",
+        "status": "ok",
+        "steps": 323,
+        "survival_score": 323.0,
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_reward": 5.22,
+        "truncated": false,
+        "wall_time_s": 30.074185,
+        "weight_fingerprint_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before_equal_after": true
+      },
+      {
+        "action_counts": {
+          "NO_ACTION": 620
+        },
+        "condition": "A",
+        "episode": 1,
+        "evidence_kind": "pilot",
+        "experimental_evidence": true,
+        "motor_spikes": 0,
+        "n_input_hashes": 7,
+        "per_population_spikes": {
+          "JUMP": 0,
+          "LEFT": 0,
+          "RIGHT": 0
+        },
+        "recorded_config_hashes": [
+          "campaign",
+          "conditions",
+          "environment"
+        ],
+        "seed": 9001,
+        "spike_sha256": "e1ba05b3b6446b129b2cb97483d64f46eb27039f252e9fef2442138d291d6c49",
+        "status": "ok",
+        "steps": 620,
+        "survival_score": 620.0,
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_reward": 10.19,
+        "truncated": false,
+        "wall_time_s": 72.807897,
+        "weight_fingerprint_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before_equal_after": true
+      },
+      {
+        "action_counts": {
+          "NO_ACTION": 323
+        },
+        "condition": "A",
+        "episode": 2,
+        "evidence_kind": "pilot",
+        "experimental_evidence": true,
+        "motor_spikes": 0,
+        "n_input_hashes": 7,
+        "per_population_spikes": {
+          "JUMP": 0,
+          "LEFT": 0,
+          "RIGHT": 0
+        },
+        "recorded_config_hashes": [
+          "campaign",
+          "conditions",
+          "environment"
+        ],
+        "seed": 9001,
+        "spike_sha256": "90a86622938be95483b7da39c9d4403f65aad806977680270953dac0a72372ae",
+        "status": "ok",
+        "steps": 323,
+        "survival_score": 323.0,
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_reward": 4.22,
+        "truncated": false,
+        "wall_time_s": 26.806746,
+        "weight_fingerprint_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before_equal_after": true
+      },
+      {
+        "action_counts": {
+          "NO_ACTION": 620
+        },
+        "condition": "A",
+        "episode": 0,
+        "evidence_kind": "pilot",
+        "experimental_evidence": true,
+        "motor_spikes": 0,
+        "n_input_hashes": 7,
+        "per_population_spikes": {
+          "JUMP": 0,
+          "LEFT": 0,
+          "RIGHT": 0
+        },
+        "recorded_config_hashes": [
+          "campaign",
+          "conditions",
+          "environment"
+        ],
+        "seed": 9002,
+        "spike_sha256": "189c676ab1e2f57a44bb4332c521bbfe3c62364479ee2b93e747286007bf2057",
+        "status": "ok",
+        "steps": 620,
+        "survival_score": 620.0,
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_reward": 7.19,
+        "truncated": false,
+        "wall_time_s": 59.269329,
+        "weight_fingerprint_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before_equal_after": true
+      },
+      {
+        "action_counts": {
+          "NO_ACTION": 426
+        },
+        "condition": "A",
+        "episode": 1,
+        "evidence_kind": "pilot",
+        "experimental_evidence": true,
+        "motor_spikes": 0,
+        "n_input_hashes": 7,
+        "per_population_spikes": {
+          "JUMP": 0,
+          "LEFT": 0,
+          "RIGHT": 0
+        },
+        "recorded_config_hashes": [
+          "campaign",
+          "conditions",
+          "environment"
+        ],
+        "seed": 9002,
+        "spike_sha256": "c3fb0c44d109af3f72925a48f70daabdb32dfcb02a0004e6b15a239492b8ab96",
+        "status": "ok",
+        "steps": 426,
+        "survival_score": 426.0,
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_reward": 3.25,
+        "truncated": false,
+        "wall_time_s": 38.412809,
+        "weight_fingerprint_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before_equal_after": true
+      },
+      {
+        "action_counts": {
+          "NO_ACTION": 620
+        },
+        "condition": "A",
+        "episode": 2,
+        "evidence_kind": "pilot",
+        "experimental_evidence": true,
+        "motor_spikes": 0,
+        "n_input_hashes": 7,
+        "per_population_spikes": {
+          "JUMP": 0,
+          "LEFT": 0,
+          "RIGHT": 0
+        },
+        "recorded_config_hashes": [
+          "campaign",
+          "conditions",
+          "environment"
+        ],
+        "seed": 9002,
+        "spike_sha256": "0d05816f7622ec106a82a9b09dac524f903daca885d5c9bfb2bb13ed64555b67",
+        "status": "ok",
+        "steps": 620,
+        "survival_score": 620.0,
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_reward": 8.19,
+        "truncated": false,
+        "wall_time_s": 53.108996,
+        "weight_fingerprint_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before_equal_after": true
+      },
+      {
+        "action_counts": {
+          "NO_ACTION": 213
+        },
+        "condition": "A",
+        "episode": 0,
+        "evidence_kind": "pilot",
+        "experimental_evidence": true,
+        "motor_spikes": 0,
+        "n_input_hashes": 7,
+        "per_population_spikes": {
+          "JUMP": 0,
+          "LEFT": 0,
+          "RIGHT": 0
+        },
+        "recorded_config_hashes": [
+          "campaign",
+          "conditions",
+          "environment"
+        ],
+        "seed": 9003,
+        "spike_sha256": "ab5d124b43507e08cb60ea70b2b40d155bdbc3cf4909275b3b9816d992bfef74",
+        "status": "ok",
+        "steps": 213,
+        "survival_score": 213.0,
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_reward": 3.12,
+        "truncated": false,
+        "wall_time_s": 18.04225,
+        "weight_fingerprint_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before_equal_after": true
+      },
+      {
+        "action_counts": {
+          "NO_ACTION": 426
+        },
+        "condition": "A",
+        "episode": 1,
+        "evidence_kind": "pilot",
+        "experimental_evidence": true,
+        "motor_spikes": 0,
+        "n_input_hashes": 7,
+        "per_population_spikes": {
+          "JUMP": 0,
+          "LEFT": 0,
+          "RIGHT": 0
+        },
+        "recorded_config_hashes": [
+          "campaign",
+          "conditions",
+          "environment"
+        ],
+        "seed": 9003,
+        "spike_sha256": "c86cdd82acd31b42c6fb546f343ebd46edb6f00e8429d0ad8096e23a43934e30",
+        "status": "ok",
+        "steps": 426,
+        "survival_score": 426.0,
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_reward": 4.25,
+        "truncated": false,
+        "wall_time_s": 36.83681,
+        "weight_fingerprint_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before_equal_after": true
+      },
+      {
+        "action_counts": {
+          "NO_ACTION": 213
+        },
+        "condition": "A",
+        "episode": 2,
+        "evidence_kind": "pilot",
+        "experimental_evidence": true,
+        "motor_spikes": 0,
+        "n_input_hashes": 7,
+        "per_population_spikes": {
+          "JUMP": 0,
+          "LEFT": 0,
+          "RIGHT": 0
+        },
+        "recorded_config_hashes": [
+          "campaign",
+          "conditions",
+          "environment"
+        ],
+        "seed": 9003,
+        "spike_sha256": "cca811f31c939c7ddd4251432cd8038df8182a15fe6de3b78f761328d3d3b2fb",
+        "status": "ok",
+        "steps": 213,
+        "survival_score": 213.0,
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_reward": 2.12,
+        "truncated": false,
+        "wall_time_s": 17.793215,
+        "weight_fingerprint_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before_equal_after": true
+      }
+    ],
+    "n_rows": 9,
+    "problems": [],
+    "run_dir": "C:/Users/Hp/fruitfly/FLY-SURFER/experiments/results/phase_8/pilot1/pilot1"
+  },
+  "record_kind": "phase_8_pilot1_execution",
+  "runner_id": "phase_8.stages.pilot1_runner.Pilot1EpisodeRunner",
+  "summary": {
+    "complete": true,
+    "estimates_contrasts": false,
+    "evidence_kind": "pilot",
+    "executed": true,
+    "experimental_evidence": true,
+    "memory_preflight": {
+      "available_gb": 5.745,
+      "gate_gb": 4.0,
+      "passed": true,
+      "percent_used": 62.6,
+      "reason": "at or above the gate",
+      "source": "psutil.virtual_memory().available",
+      "total_gb": 15.342
+    },
+    "merged_into_campaign": false,
+    "note": "executed under an authorised protocol",
+    "planned": 9,
+    "record_kind": "phase_8_stage_record",
+    "rev4_step": "10.3",
+    "rows_executed": 9,
+    "rows_stored": 9,
+    "run_dir": "C:/Users/Hp/fruitfly/FLY-SURFER/experiments/results/phase_8/pilot1/pilot1",
+    "stage": "pilot1",
+    "title": "Pilot 1 \u2014 A viability"
+  },
+  "wall_time_s": 357.046
+}

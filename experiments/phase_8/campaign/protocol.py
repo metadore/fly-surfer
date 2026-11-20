@@ -3,17 +3,34 @@
 SCIENTIFIC STATUS
     Validating a configuration against REV4 says that the declared constants
     match the protocol text. It says nothing about scientific validity and it
-    does not authorise execution. REV4 §12 is **not approved**; U1-U18 are all
-    ``PROPOSED - not approved``; the document's final paragraph states that it
-    "authorises no execution". :func:`assert_campaign_authorized` therefore
-    always raises, and the CLI has no code path that starts a campaign.
+    does not authorise execution.
+
+    Approval now comes from a separate, auditable owner-decision record rather
+    than from the document text. Record **D1** (2026-11-20) approves REV4 §12
+    and U1-U18 as written, bound to the document's SHA-256. The REV4 file
+    itself is unchanged and its closing paragraph still says it "authorises no
+    execution"; D1 is external to the frozen document and is recognised here
+    only when the recorded hash matches the protocol on disk. D1 authorises no
+    parameter change and bypasses no other gate.
+
+    Record **D2** (2026-11-20) decides that the G3 §9.3 deviation is *not
+    applicable to Pilot 1 only*: condition A, seeds 9001-9003, three episodes
+    each, no randomized graph and no trained artifact. D2 accepts no deviation
+    and weakens no certification. :func:`assert_stage_authorized` applies it
+    only to a grid that matches that scope field for field; every other stage
+    and every other grid still receives the unchanged B7 refusal.
+
+    :func:`assert_campaign_authorized` is deliberately *not* stage-aware and
+    therefore still raises while any independent gate is open, in particular
+    the G3 §9.3 deviation (B7). Campaign, Pilot 2 and training entry points
+    call it and cannot inherit the Pilot 1 exemption.
 
 The G3 §9.3 deviation is reported here as a fact, not resolved:
 ``experiments/results/phase_8_random/campaign_seed_summary.json`` records
 ``compliance.status = "deviation_recorded"`` and ``gate_weakened: false``. The
 16 graphs are certified, but G3 is not complete and the graphs may not be used
-for experimental data collection until an approved amendment or a compliant
-rerun exists (G5 brief §4-§5).
+for experimental data collection until the owner resolves B7 or an approved
+amendment / compliant rerun exists (G5 brief §4-§5).
 """
 
 from __future__ import annotations
@@ -48,6 +65,26 @@ ARMS_ACTIVE = (
 CAMPAIGN_SUMMARY = (
     PROJECT_ROOT / "experiments" / "results" / "phase_8_random" / "campaign_seed_summary.json"
 )
+#: Separate, auditable owner-decision record; not part of the frozen protocol.
+OWNER_APPROVAL_RECORD = (
+    PROJECT_ROOT / "reports" / "phase_8_owner_approvals" / "D1.json"
+)
+#: Owner decision that the G3 deviation does not apply to this exact Pilot 1 grid.
+OWNER_DECISION_D2_RECORD = (
+    PROJECT_ROOT / "reports" / "phase_8_owner_approvals" / "D2.json"
+)
+DECISION_ITEM_IDS = tuple(f"U{index}" for index in range(1, 19))
+
+#: The only grid D2 exempts from B7. Anything else receives the unchanged B7
+#: refusal; the values are fixed here rather than read from configuration so a
+#: changed configuration cannot widen the exemption.
+PILOT1_G3_SCOPE = {
+    "stage": "pilot1",
+    "arms": ("A",),
+    "seeds": (9001, 9002, 9003),
+    "episodes_per_seed": 3,
+    "n_episodes": 9,
+}
 
 #: Appendix C and §6.3 declared constants, in the order the protocol lists them.
 DECLARED = {
@@ -145,22 +182,156 @@ def protocol_identity(path: str | Path = PROTOCOL_PATH) -> dict:
     }
 
 
-def approval_status(protocol_path: str | Path = PROTOCOL_PATH) -> dict:
-    """REV4 §12 is unapproved; every decision item is still proposed."""
+def _read_approval_record(record_path: str | Path) -> dict:
+    """Read the separate owner-decision record and check its own structure."""
+    source = Path(record_path)
+    if not source.is_file():
+        return {
+            "path": source.as_posix(),
+            "present": False,
+            "valid": False,
+            "payload": {},
+            "failures": ["the owner-approval record is missing"],
+        }
+    try:
+        payload = json.loads(source.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as error:
+        return {
+            "path": source.as_posix(),
+            "present": True,
+            "valid": False,
+            "payload": {},
+            "failures": [f"the owner-approval record is not valid JSON: {error}"],
+        }
+    if not isinstance(payload, dict):
+        return {
+            "path": source.as_posix(),
+            "present": True,
+            "valid": False,
+            "payload": {},
+            "failures": ["the owner-approval record must be a JSON object"],
+        }
+
+    failures: list[str] = []
+    if payload.get("record_kind") != "phase_8_owner_approval":
+        failures.append("record_kind is not 'phase_8_owner_approval'")
+    for name in ("approval_id", "approval_date"):
+        value = payload.get(name)
+        if not isinstance(value, str) or not value.strip():
+            failures.append(f"{name} must be a non-empty string")
+
+    document = payload.get("approved_document")
+    if not isinstance(document, dict):
+        failures.append("approved_document must be an object")
+        document = {}
+    if not isinstance(document.get("sha256"), str) or not (
+        len(document.get("sha256", "")) == 64
+        and all(character in "0123456789abcdef" for character in document.get("sha256", ""))
+    ):
+        failures.append("approved_document.sha256 must be a 64-hex digest")
+
+    scope = payload.get("scope")
+    if not isinstance(scope, dict):
+        failures.append("scope must be an object")
+        scope = {}
+    sections = [str(item).strip() for item in (scope.get("sections") or [])]
+    if not ({"§12", "12", "section 12", "Section 12"} & set(sections)):
+        failures.append("scope.sections must include §12")
+    items = {str(item) for item in (scope.get("decision_items") or [])}
+    missing = sorted(set(DECISION_ITEM_IDS) - items)
+    if missing:
+        failures.append(f"scope.decision_items is missing {missing}")
+    if scope.get("parameter_modifications_authorised") is not False:
+        failures.append("scope.parameter_modifications_authorised must be false")
+
+    return {
+        "path": source.as_posix(),
+        "present": True,
+        "valid": not failures,
+        "payload": payload,
+        "failures": failures,
+    }
+
+
+def approval_status(
+    protocol_path: str | Path = PROTOCOL_PATH,
+    record_path: str | Path = OWNER_APPROVAL_RECORD,
+) -> dict:
+    """The recorded owner decision, recognised only when bound to this REV4.
+
+    Approval is *recorded* rather than inferred from the document text: the
+    separate D1 record must exist, be structurally valid, and carry the same
+    SHA-256 as the REV4 file on disk. A changed protocol invalidates the
+    recorded approval instead of silently inheriting it.
+    """
     identity = protocol_identity(protocol_path)
+    record = _read_approval_record(record_path)
+    payload = record["payload"]
+    document = payload.get("approved_document") or {}
+    scope = payload.get("scope") or {}
+    recorded_sha = document.get("sha256")
+    bound = (
+        record["valid"]
+        and identity["present"]
+        and identity["matches_expected"]
+        and recorded_sha == identity["sha256"]
+    )
+    approved = bool(bound)
+
+    if approved:
+        reason = (
+            "REV4 §12 and U1-U18 are approved as written by recorded owner "
+            f"decision {payload.get('approval_id')} "
+            f"({payload.get('approval_date')}), bound to REV4 SHA-256 "
+            f"{recorded_sha}. The approval authorises no parameter change and "
+            "does not bypass any other gate: every independent gate remains "
+            "active."
+        )
+    else:
+        failures = list(record["failures"])
+        if record["present"] and record["valid"]:
+            if not identity["present"]:
+                failures.append("the REV4 document is missing")
+            elif not identity["matches_expected"]:
+                failures.append("the REV4 document hash does not match the expected freeze")
+            elif recorded_sha != identity["sha256"]:
+                failures.append(
+                    "the recorded approval hash does not match the REV4 document"
+                )
+        reason = (
+            "no valid owner approval is recorded: "
+            + ("; ".join(failures) if failures else "unknown reason")
+            + ". No campaign, training run, pilot or confirmatory data "
+            "collection may start."
+        )
+
     return {
         "protocol_id": PROTOCOL_ID,
-        "approved": False,
-        "decision_status": "PROPOSED - not approved",
-        "decision_items": [f"U{index}" for index in range(1, 19)],
+        "approved": approved,
+        "decision_status": (
+            "APPROVED - recorded owner decision D1" if approved else "PROPOSED - not approved"
+        ),
+        "decision_items": list(DECISION_ITEM_IDS),
         "protocol_sha256": identity["sha256"],
         "protocol_matches_expected": identity["matches_expected"],
         "document_authorises_execution": identity["authorises_execution"],
-        "reason": (
-            "REV4 §12 is not approved; U1-U18 remain PROPOSED. The protocol's "
-            "final paragraph authorises no execution. No campaign, training "
-            "run, pilot or confirmatory data collection may start."
-        ),
+        "approval_basis": "recorded owner decision (external to the frozen document)",
+        "approval_record": {
+            "path": record["path"],
+            "present": record["present"],
+            "valid": record["valid"],
+            "approval_id": payload.get("approval_id"),
+            "approval_date": payload.get("approval_date"),
+            "approved_document_sha256": recorded_sha,
+            "document_matches_rev4": recorded_sha == identity["sha256"],
+            "scope_sections": list(scope.get("sections") or []),
+            "decision_items": list(scope.get("decision_items") or []),
+            "parameter_modifications_authorised": scope.get(
+                "parameter_modifications_authorised"
+            ),
+            "failures": record["failures"],
+        },
+        "reason": reason,
     }
 
 
@@ -195,17 +366,325 @@ def randomization_deviation(path: str | Path = CAMPAIGN_SUMMARY) -> dict:
     }
 
 
+def _read_owner_decision(record_path: str | Path) -> dict:
+    """Read the D2 record and check its own structure and declared scope."""
+    source = Path(record_path)
+    if not source.is_file():
+        return {
+            "path": source.as_posix(),
+            "present": False,
+            "valid": False,
+            "payload": {},
+            "failures": ["the D2 owner-decision record is missing"],
+        }
+    try:
+        payload = json.loads(source.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as error:
+        return {
+            "path": source.as_posix(),
+            "present": True,
+            "valid": False,
+            "payload": {},
+            "failures": [f"the D2 record is not valid JSON: {error}"],
+        }
+    if not isinstance(payload, dict):
+        return {
+            "path": source.as_posix(),
+            "present": True,
+            "valid": False,
+            "payload": {},
+            "failures": ["the D2 record must be a JSON object"],
+        }
+
+    failures: list[str] = []
+    if payload.get("record_kind") != "phase_8_owner_decision":
+        failures.append("record_kind is not 'phase_8_owner_decision'")
+    if payload.get("approval_id") != "D2":
+        failures.append("approval_id is not 'D2'")
+    for name in ("approval_date", "decision"):
+        value = payload.get(name)
+        if not isinstance(value, str) or not value.strip():
+            failures.append(f"{name} must be a non-empty string")
+
+    document = payload.get("approved_document")
+    if not isinstance(document, dict):
+        failures.append("approved_document must be an object")
+        document = {}
+    digest = document.get("sha256")
+    if not (
+        isinstance(digest, str)
+        and len(digest) == 64
+        and all(character in "0123456789abcdef" for character in digest)
+    ):
+        failures.append("approved_document.sha256 must be a 64-hex digest")
+
+    depends_on = payload.get("depends_on")
+    if not isinstance(depends_on, dict) or depends_on.get("approval_id") != "D1":
+        failures.append("depends_on.approval_id must be 'D1'")
+
+    scope = payload.get("scope")
+    if not isinstance(scope, dict):
+        failures.append("scope must be an object")
+        scope = {}
+    if scope.get("stage") != PILOT1_G3_SCOPE["stage"]:
+        failures.append("scope.stage must be 'pilot1'")
+    if list(scope.get("arms") or []) != list(PILOT1_G3_SCOPE["arms"]):
+        failures.append("scope.arms must be ['A']")
+    if [int(item) for item in (scope.get("seeds") or [])] != list(
+        PILOT1_G3_SCOPE["seeds"]
+    ):
+        failures.append("scope.seeds must be [9001, 9002, 9003]")
+    if scope.get("episodes_per_seed") != PILOT1_G3_SCOPE["episodes_per_seed"]:
+        failures.append("scope.episodes_per_seed must be 3")
+    if scope.get("n_episodes") != PILOT1_G3_SCOPE["n_episodes"]:
+        failures.append("scope.n_episodes must be 9")
+    if scope.get("uses_randomized_graph") is not False:
+        failures.append("scope.uses_randomized_graph must be false")
+    if scope.get("uses_trained_artifact") is not False:
+        failures.append("scope.uses_trained_artifact must be false")
+    if scope.get("g3_applicability") != "not_applicable_to_pilot1_only":
+        failures.append("scope.g3_applicability must be 'not_applicable_to_pilot1_only'")
+    if scope.get("accepts_g3_deviation") is not False:
+        failures.append("scope.accepts_g3_deviation must be false")
+    if scope.get("weakens_graph_certification") is not False:
+        failures.append("scope.weakens_graph_certification must be false")
+    if scope.get("parameter_modifications_authorised") is not False:
+        failures.append("scope.parameter_modifications_authorised must be false")
+
+    return {
+        "path": source.as_posix(),
+        "present": True,
+        "valid": not failures,
+        "payload": payload,
+        "failures": failures,
+    }
+
+
+def g3_applicability(
+    record_path: str | Path = OWNER_DECISION_D2_RECORD,
+    protocol_path: str | Path = PROTOCOL_PATH,
+) -> dict:
+    """D2, recognised only when it is valid and bound to this REV4.
+
+    ``pilot1_exempt`` is true only for a structurally valid D2 whose recorded
+    document hash matches the REV4 file on disk. It never changes the recorded
+    deviation; it only reports that the deviation does not apply to the exact
+    Pilot 1 grid.
+    """
+    identity = protocol_identity(protocol_path)
+    record = _read_owner_decision(record_path)
+    payload = record["payload"]
+    document = payload.get("approved_document") or {}
+    scope = payload.get("scope") or {}
+    recorded_sha = document.get("sha256")
+    bound = (
+        record["valid"]
+        and identity["present"]
+        and identity["matches_expected"]
+        and recorded_sha == identity["sha256"]
+    )
+    failures = list(record["failures"])
+    if record["valid"] and not bound:
+        if not identity["present"]:
+            failures.append("the REV4 document is missing")
+        elif not identity["matches_expected"]:
+            failures.append("the REV4 document hash does not match the expected freeze")
+        else:
+            failures.append(
+                "the recorded D2 document hash does not match the REV4 document"
+            )
+    return {
+        "path": record["path"],
+        "present": record["present"],
+        "valid": record["valid"],
+        "bound_to_rev4": bool(bound),
+        "pilot1_exempt": bool(bound),
+        "approval_id": payload.get("approval_id"),
+        "approval_date": payload.get("approval_date"),
+        "scope": dict(scope),
+        "recorded_document_sha256": recorded_sha,
+        "document_matches_rev4": recorded_sha == identity["sha256"],
+        "accepts_g3_deviation": scope.get("accepts_g3_deviation"),
+        "weakens_graph_certification": scope.get("weakens_graph_certification"),
+        "failures": failures,
+    }
+
+
+def _pilot1_scope_failures(config: Phase8Config | None, plan: Any) -> list[str]:
+    """Every way a requested grid differs from the exact D2 scope."""
+    failures: list[str] = []
+    if plan is None:
+        return ["no Pilot 1 plan was supplied, so the D2 scope cannot be checked"]
+    if getattr(plan, "stage", None) != PILOT1_G3_SCOPE["stage"]:
+        failures.append(f"stage is {getattr(plan, 'stage', None)!r}, not 'pilot1'")
+    arms = tuple(str(item) for item in (getattr(plan, "arms", ()) or ()))
+    if arms != PILOT1_G3_SCOPE["arms"]:
+        failures.append(f"arms are {list(arms)!r}, not ['A']")
+    try:
+        seeds = tuple(int(item) for item in (getattr(plan, "seeds", ()) or ()))
+    except (TypeError, ValueError):
+        failures.append("seeds are not integers")
+        seeds = ()
+    if seeds != PILOT1_G3_SCOPE["seeds"]:
+        failures.append(f"seeds are {list(seeds)!r}, not [9001, 9002, 9003]")
+    if int(getattr(plan, "episodes", -1)) != PILOT1_G3_SCOPE["episodes_per_seed"]:
+        failures.append("episodes_per_seed is not 3")
+    if bool(getattr(plan, "estimates_contrasts", True)):
+        failures.append("the plan estimates contrasts; Pilot 1 may not")
+    try:
+        n_entries = len(plan.entries())
+    except Exception:  # noqa: BLE001 - a malformed plan is a scope failure
+        failures.append("the plan exposes no entry grid")
+        n_entries = -1
+    if n_entries != PILOT1_G3_SCOPE["n_episodes"]:
+        failures.append(f"the plan has {n_entries} entries, not 9")
+
+    if config is None:
+        failures.append("no configuration was supplied, so the substrate cannot be checked")
+        return failures
+
+    try:
+        spec = build_registry(config.conditions).spec("A")
+    except ConfigError as error:
+        failures.append(f"condition A is not registered: {error}")
+        return failures
+    if spec.substrate != "biological":
+        failures.append(f"condition A substrate is {spec.substrate!r}, not 'biological'")
+    if spec.requires_structure:
+        failures.append("condition A requires a certified structure record")
+    if tuple(spec.trains) != ("none",):
+        failures.append(f"condition A trains {list(spec.trains)!r}, so it needs an artifact")
+    if spec.eta is not None:
+        failures.append("condition A declares a plasticity rate")
+    declared = tuple(int(item) for item in config.campaign.pilot_seeds[:3])
+    if declared != PILOT1_G3_SCOPE["seeds"]:
+        failures.append(
+            f"the configured pilot seeds are {list(declared)!r}, not [9001, 9002, 9003]"
+        )
+    return failures
+
+
+def stage_authorization(
+    stage: str,
+    *,
+    config: Phase8Config | None = None,
+    plan: Any = None,
+    protocol_path: str | Path = PROTOCOL_PATH,
+    approval_record_path: str | Path = OWNER_APPROVAL_RECORD,
+    decision_record_path: str | Path = OWNER_DECISION_D2_RECORD,
+    deviation_path: str | Path = CAMPAIGN_SUMMARY,
+) -> dict:
+    """Authorisation for one named stage, with B7 resolved only for Pilot 1.
+
+    The recorded approval (B1) must hold for every stage. B7 is waived only
+    when the stage is ``pilot1`` *and* the supplied plan matches
+    :data:`PILOT1_G3_SCOPE` field for field *and* the D2 record is valid and
+    bound to this REV4. No other stage inherits the exemption.
+    """
+    approval = approval_status(protocol_path, approval_record_path)
+    deviation = randomization_deviation(deviation_path)
+    decision = g3_applicability(decision_record_path, protocol_path)
+    blockers: list[str] = []
+    exemption = {
+        "applied": False,
+        "record": decision["path"],
+        "reason": "the G3 exemption is available to the exact Pilot 1 grid only",
+    }
+
+    if not approval["approved"]:
+        blockers.append("B1: " + approval["reason"])
+
+    if deviation.get("status") != "compliant":
+        if stage != PILOT1_G3_SCOPE["stage"]:
+            blockers.append(
+                f"B7: stage {stage!r} does not inherit the D2 Pilot 1 exemption; "
+                "the G3 randomization set has a recorded §9.3 deviation "
+                f"(status {deviation.get('status')!r}, gate weakened: "
+                f"{deviation.get('gate_weakened')}) and remains blocking"
+            )
+        elif not decision["pilot1_exempt"]:
+            blockers.append(
+                "B7: the G3 deviation remains blocking because the D2 record is "
+                "not valid and bound to this REV4: "
+                + "; ".join(decision["failures"] or ["unknown reason"])
+            )
+        else:
+            scope_failures = _pilot1_scope_failures(config, plan)
+            if scope_failures:
+                blockers.append(
+                    "B7: the requested grid is not the D2 Pilot 1 scope: "
+                    + "; ".join(scope_failures)
+                )
+            else:
+                exemption = {
+                    "applied": True,
+                    "record": decision["path"],
+                    "approval_id": decision["approval_id"],
+                    "approval_date": decision["approval_date"],
+                    "reason": (
+                        "D2 records that the G3 deviation is not applicable to "
+                        "this exact Pilot 1 grid (condition A, seeds 9001-9003, "
+                        "three episodes each, no randomized graph, no trained "
+                        "artifact). The deviation itself remains recorded and "
+                        "unaccepted."
+                    ),
+                    "scope": {
+                        "stage": PILOT1_G3_SCOPE["stage"],
+                        "arms": list(PILOT1_G3_SCOPE["arms"]),
+                        "seeds": list(PILOT1_G3_SCOPE["seeds"]),
+                        "episodes_per_seed": PILOT1_G3_SCOPE["episodes_per_seed"],
+                        "n_episodes": PILOT1_G3_SCOPE["n_episodes"],
+                        "uses_randomized_graph": False,
+                        "uses_trained_artifact": False,
+                    },
+                }
+
+    return {
+        "stage": str(stage),
+        "authorized": not blockers,
+        "blockers": blockers,
+        "exemption": exemption,
+        "approval": approval,
+        "g3_applicability": decision,
+        "randomization_deviation": deviation,
+    }
+
+
+def assert_stage_authorized(stage: str, **kwargs: Any) -> dict:
+    """Raise unless :func:`stage_authorization` authorises this stage."""
+    report = stage_authorization(stage, **kwargs)
+    if not report["authorized"]:
+        raise CampaignNotAuthorized(
+            " ".join(report["blockers"]) + " This entry point does not start the stage."
+        )
+    return report
+
+
 def assert_campaign_authorized(*_args: Any, **_kwargs: Any) -> None:
-    """Always refuse: the protocol is unapproved and the G3 deviation is open."""
+    """Refuse unless a recorded approval exists and no other gate is open.
+
+    This is the campaign-wide gate: it is deliberately not stage-aware, so the
+    D2 Pilot 1 exemption cannot be inherited by a campaign, a pilot other than
+    Pilot 1, or a training run. With D1 recorded and B7 open it still raises.
+    """
     status = approval_status()
     deviation = randomization_deviation()
-    raise CampaignNotAuthorized(
-        status["reason"]
-        + " The G3 randomization set has a recorded §9.3 deviation "
-        f"(status {deviation['status']!r}, gate weakened: "
-        f"{deviation['gate_weakened']}). "
-        "This entry point does not start campaigns."
-    )
+    reasons: list[str] = []
+    if not status["approved"]:
+        reasons.append(status["reason"])
+    if deviation.get("status") != "compliant":
+        reasons.append(
+            "the G3 randomization set has a recorded §9.3 deviation "
+            f"(status {deviation['status']!r}, gate weakened: "
+            f"{deviation['gate_weakened']}); B7 remains open and the certified "
+            "graphs may not be used for experimental data collection until the "
+            "owner resolves its applicability or an approved amendment / "
+            "compliant rerun exists"
+        )
+    if reasons:
+        raise CampaignNotAuthorized(
+            " ".join(reasons) + " This entry point does not start campaigns."
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -539,16 +1018,23 @@ __all__ = [
     "CAMPAIGN_SUMMARY",
     "CampaignNotAuthorized",
     "CampaignProtocolError",
+    "DECISION_ITEM_IDS",
     "DECLARED",
     "EXPECTED_CONDITIONS",
     "EXPECTED_CONTROLS",
     "EXPECTED_EXPLORATORY",
+    "OWNER_APPROVAL_RECORD",
+    "OWNER_DECISION_D2_RECORD",
+    "PILOT1_G3_SCOPE",
     "PROTOCOL_ID",
     "PROTOCOL_PATH",
     "approval_status",
     "assert_campaign_authorized",
+    "assert_stage_authorized",
     "describe",
+    "g3_applicability",
     "protocol_identity",
     "randomization_deviation",
+    "stage_authorization",
     "validate_campaign",
 ]

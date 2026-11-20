@@ -1,0 +1,49 @@
+{
+  "record_kind": "phase_8_owner_decision",
+  "approval_id": "D2",
+  "approval_date": "2026-11-20",
+  "recorded_by": "project owner",
+  "decision": "The G3 deviation is NOT APPLICABLE to Pilot 1 only.",
+  "approved_document": {
+    "protocol_id": "PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4",
+    "path": "docs/PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4.md",
+    "sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c",
+    "lines": 1915
+  },
+  "depends_on": {
+    "approval_id": "D1",
+    "record": "reports/phase_8_owner_approvals/D1.json"
+  },
+  "scope": {
+    "stage": "pilot1",
+    "arms": ["A"],
+    "seeds": [9001, 9002, 9003],
+    "episodes_per_seed": 3,
+    "n_episodes": 9,
+    "condition": "A only, biological substrate",
+    "uses_randomized_graph": false,
+    "uses_trained_artifact": false,
+    "g3_applicability": "not_applicable_to_pilot1_only",
+    "g3_still_blocks": [
+      "Pilot 2",
+      "the confirmatory campaign",
+      "training",
+      "every condition that loads a randomized graph (C, D, C_prime and any certified-random-graph arm)"
+    ],
+    "accepts_g3_deviation": false,
+    "weakens_graph_certification": false,
+    "parameter_modifications_authorised": false
+  },
+  "statement": "The project owner decides that the G3 §9.3 randomization-set deviation is not applicable to Pilot 1 only. Pilot 1 runs biological condition A only for nine episodes (seeds 9001, 9002, 9003 by three episodes each), loads no randomized graph and requires no trained artifact. G3 remains blocking for every experiment that requires randomized graphs, and the original G3 deviation remains recorded and unaccepted.",
+  "does_not_authorise": [
+    "accepting or resolving the G3 §9.3 deviation",
+    "weakening, waiving or reinterpreting any graph certification requirement",
+    "running Pilot 2, the confirmatory campaign, training, or any randomized-graph condition",
+    "bypassing the 4 GiB memory gate or any other independent gate",
+    "any change to a parameter, value or definition",
+    "any change to the frozen REV4 document"
+  ],
+  "evidence_kind": "owner_decision",
+  "protocol_text_preserved": true,
+  "note": "This is a separate owner-decision record bound to the REV4 SHA-256. It is not an amendment to REV4 and it does not modify the G3 deviation record or any certified graph."
+}

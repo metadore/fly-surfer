@@ -6,10 +6,10 @@ seeds, statistics, budget) and ``conditions.yaml`` (per-condition declarations).
 This module validates them and records their SHA-256 so every episode row and
 the run manifest can be traced to the exact configuration that produced it.
 
-The protocol is **not approved** (REV3 §10.0, §12). Loading a configuration
-does not authorise execution; :func:`memory_preflight` enforces the §9.3 gate
-and :meth:`CampaignConfig.active_seeds` refuses to resolve a design whose pilot
-decision (``n_seeds_selected``) is still null.
+The protocol approval comes from a separate owner-decision record (D1); loading
+a configuration does not authorise execution. :func:`memory_preflight` enforces
+the §9.3 gate and :meth:`CampaignConfig.active_seeds` refuses to resolve a design
+whose pilot decision (``n_seeds_selected``) is still null.
 """
 
 from __future__ import annotations
@@ -848,9 +848,14 @@ class Phase8Config:
     hashes: dict
 
     def describe(self) -> dict:
+        # Deferred import: protocol.py imports this module at load time.
+        from .campaign.protocol import approval_status
+
+        approval = approval_status()
         return {
             "protocol": "PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4",
-            "approval": "not approved: REV4 §10.0/§12",
+            "approval": approval["decision_status"],
+            "approval_basis": approval["approval_basis"],
             "files": dict(self.hashes),
             "environment": self.environment.as_dict(),
             "campaign": self.campaign.as_dict(),

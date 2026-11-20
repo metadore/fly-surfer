@@ -1,12 +1,13 @@
 """Phase 8 campaign entry point — read-only checks and a refusing start.
 
 SCIENTIFIC STATUS
-    REV4 §12 is not approved, U1-U18 remain PROPOSED, and the certified G3
-    random graphs carry a recorded §9.3 memory-gate deviation. This entry
-    point therefore cannot start a campaign: ``start`` and ``resume`` collect
-    the blockers, call :func:`~experiments.phase_8.campaign.assert_campaign_authorized`
-    and exit with code 2. No game episode, training run, pilot or confirmatory
-    episode is executed by any subcommand.
+    Recorded owner decision D1 approves REV4 §12 and U1-U18 as written, but the
+    certified G3 random graphs still carry a recorded §9.3 memory-gate deviation
+    (B7) and the campaign design is unresolved. This entry point therefore
+    cannot start a campaign: ``start`` and ``resume`` collect the blockers, call
+    :func:`~experiments.phase_8.campaign.assert_campaign_authorized` and exit
+    with code 2. No game episode, training run, pilot or confirmatory episode is
+    executed by any subcommand.
 
 The read-only subcommands exist so that the state of the configuration, the
 seed assignment, the certified graphs and an interrupted run directory can be
@@ -105,11 +106,26 @@ def cmd_check(args: argparse.Namespace) -> int:
     report = validate_campaign(config, strict=False)
     gate = memory_preflight(config.campaign.memory_gate_gb)
     graphs = _graph_summary()
+    approval = report["approval"]
+    deviation = report["randomization_deviation"]
+    execution_blockers: list[str] = []
+    if not approval["approved"]:
+        execution_blockers.append(
+            "B1: no valid recorded owner approval of §12/U1-U18"
+        )
+    if deviation.get("status") != "compliant":
+        execution_blockers.append(
+            "B7: the G3 §9.3 memory-gate deviation is unresolved"
+        )
+    if not report["design_resolved"]:
+        execution_blockers.append(
+            "B2: design.n_seeds_selected is null until the 10.8 pilot decision (U7)"
+        )
     payload = {
         "command": "check",
         "protocol": report["protocol"],
-        "approval": report["approval"],
-        "randomization_deviation": report["randomization_deviation"],
+        "approval": approval,
+        "randomization_deviation": deviation,
         "config_files": config.hashes,
         "design_resolved": report["design_resolved"],
         "n_seeds_selected": report["n_seeds_selected"],
@@ -122,11 +138,7 @@ def cmd_check(args: argparse.Namespace) -> int:
         "memory_preflight": gate,
         "certified_graphs": graphs,
         "executable": False,
-        "execution_blockers": [
-            "REV4 §12 is not approved; U1-U18 remain PROPOSED",
-            "the G3 §9.3 memory-gate deviation is unresolved",
-            "design.n_seeds_selected is null until the 10.7/10.8 pilot decision",
-        ],
+        "execution_blockers": execution_blockers,
         "note": NO_EXECUTION_NOTE,
     }
     _emit(payload, args.pretty)

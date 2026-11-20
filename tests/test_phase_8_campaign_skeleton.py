@@ -208,7 +208,8 @@ def test_declared_design_cannot_start_before_the_pilot_decision(config):
 
 def test_describe_includes_seed_derivation_and_approval(config):
     described = config.describe()
-    assert described["approval"].startswith("not approved")
+    assert described["approval"] == "APPROVED - recorded owner decision D1"
+    assert described["approval_basis"].startswith("recorded owner decision")
     assert described["seed_derivation"]["master_seed"] == 20261116
     assert described["seed_derivation"]["condition_codes"]["F_beta"] == 8
 

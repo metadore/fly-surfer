@@ -1,0 +1,1997 @@
+{
+ "status": "certified",
+ "campaign_seed": 15,
+ "master_seed": 20261116,
+ "structure_seed": 2692053485,
+ "protocol": {
+  "path": "docs/PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4.md",
+  "bytes": 146643,
+  "sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c"
+ },
+ "original_graph": {
+  "path": "datasets/processed/banc_v888/banc_graph_t5.npz",
+  "bytes": 13484120,
+  "sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192"
+ },
+ "output_graph": {
+  "path": "datasets/processed/banc_v888_random/seed_15/banc_graph_random_t5_seed_15.npz",
+  "bytes": 13553465,
+  "sha256": "5c69af74cb32e5415c06bb15ea2f3df5440dd3473b82de53657e5352f37a2499"
+ },
+ "certificate": {
+  "path": "datasets/processed/banc_v888_random/seed_15/randomization_certificate.json",
+  "sha256": "4c7444c454d7edfdaece812acad01f4c34e2f0998874f4ece78febaf65c64ccb"
+ },
+ "manifest": {
+  "path": "datasets/processed/banc_v888_random/seed_15/manifest.json",
+  "sha256": "265df03326067639e1e085dd1287246d452c54c1a4ba4fbdfdb29afb7a5d9d3d"
+ },
+ "gates": {
+  "R1": {
+   "swaps_attempted": 15456106,
+   "gate": "reported only"
+  },
+  "R2": {
+   "swaps_accepted": 15357100,
+   "target_accepted": 15357100,
+   "complete": true,
+   "gate": "reported only"
+  },
+  "R3": {
+   "swaps_rejected": {
+    "duplicate_pair": 96462,
+    "self_loop": 1063,
+    "no_change": 1481,
+    "out_of_range": 0
+   },
+   "acceptance_rate": 0.993594376,
+   "progress": true,
+   "gate": "reported only; the acceptance rate must exceed 0 to make progress",
+   "pass": true
+  },
+  "R4": {
+   "fraction_rewired": 0.997890227,
+   "gate": 0.99,
+   "pass": true
+  },
+  "R5": {
+   "jaccard": 0.001056001,
+   "intersection": 3240,
+   "gate": 0.01,
+   "pass": true
+  },
+  "R6": {
+   "max_abs_out_degree_change": 0,
+   "out_degree_sum": 1535710,
+   "expected_sum": 1535710,
+   "pass": true
+  },
+  "R7": {
+   "max_abs_in_degree_change": 0,
+   "in_degree_sum": 1535710,
+   "expected_sum": 1535710,
+   "pass": true
+  },
+  "R8": {
+   "evaluated": true,
+   "parameterisation": "target_exchange (U18 option a, PROPOSED)",
+   "per_edge_sign_reordering_equal": true,
+   "per_node_codes_equal": true,
+   "per_node_signs_equal": true,
+   "signed_edges_original": 683100,
+   "signed_edges_new": 683100,
+   "signed_synapses_original": 8426168,
+   "signed_synapses_new": 8426168,
+   "unsigned_edges_original": 852610,
+   "unsigned_edges_new": 852610,
+   "pass": true
+  },
+  "R9": {
+   "multiset_equal": true,
+   "synapse_sum": 18552546,
+   "min": 5,
+   "max": 913,
+   "pass": true
+  },
+  "R9b": {
+   "per_source_weight_multiset_equal": true,
+   "out_degree_profile_equal": true,
+   "pass": true
+  },
+  "R10": {
+   "duplicate_pairs": 0,
+   "pass": true
+  },
+  "R11": {
+   "self_edges": 0,
+   "pass": true
+  },
+  "R12": {
+   "csr_invariants_pass": true,
+   "pass": true
+  },
+  "R13": {
+   "mean_out_neighbour_jaccard": 0.000349828,
+   "mean_out_neighbour_jaccard_all_nodes": 0.242237424,
+   "active_nodes": 130709,
+   "isolated_in_both": 41724,
+   "statistic": "mean_over_active_nodes",
+   "gate": 0.01,
+   "pass": true,
+   "note": "gated value averages over nodes with an out-neighbour in at least one graph; Jaccard(empty, empty) is undefined, not 1.0"
+  },
+  "R14": {
+   "evaluated": true,
+   "tail_samples": 31,
+   "max_abs_change": 4.0130501e-05,
+   "final_jaccard": 0.001049475262,
+   "gate": 0.0001,
+   "pass": true,
+   "note": "plateau diagnostic on the rewiring distance, not mixing"
+  },
+  "R15": {
+   "before": {
+    "n_components": 24470,
+    "largest_component": 147759,
+    "size_histogram": {
+     "1": 24320,
+     "2": 119,
+     "3": 21,
+     "4": 2,
+     "5": 5,
+     "9": 1,
+     "11": 1,
+     "147759": 1
+    }
+   },
+   "after": {
+    "n_components": 24341,
+    "largest_component": 148073,
+    "size_histogram": {
+     "1": 24320,
+     "2": 20,
+     "148073": 1
+    }
+   },
+   "changed": true,
+   "gated": false
+  },
+  "R16": {
+   "reciprocity_before": 0.11520274,
+   "reciprocity_after": 0.001631819,
+   "degree_assortativity_before": -0.061929933,
+   "degree_assortativity_after": -0.011113129,
+   "gated": false
+  },
+  "R17": {
+   "evaluated": true,
+   "graph_digest": "912b81c384dba4889accf099b7c3815a93e34b0d1affcee661d198ab359f2459",
+   "reference_digest": "912b81c384dba4889accf099b7c3815a93e34b0d1affcee661d198ab359f2459",
+   "pass": true
+  },
+  "R18": {
+   "master_seed": 20261116,
+   "campaign_seed": 15,
+   "structure_stream_code": 4,
+   "entropy": [
+    20261116,
+    15,
+    4
+   ],
+   "derived_structure_seed": 2692053485,
+   "seed_used": 2692053485,
+   "derivation_verified": true,
+   "recorded": true,
+   "note": "the seed is the structure-stream value; R18 is not gated"
+  }
+ },
+ "failures": [],
+ "reproducibility": {
+  "fields_compared": [
+   "edge_src",
+   "edge_dst",
+   "edge_weight",
+   "out_indptr",
+   "in_indptr"
+  ],
+  "fields_equal": {
+   "edge_src": true,
+   "edge_dst": true,
+   "edge_weight": true,
+   "out_indptr": true,
+   "in_indptr": true
+  },
+  "first_build_digest": "912b81c384dba4889accf099b7c3815a93e34b0d1affcee661d198ab359f2459",
+  "second_build_digest": "912b81c384dba4889accf099b7c3815a93e34b0d1affcee661d198ab359f2459",
+  "byte_identical": true
+ },
+ "integrity": {
+  "intersection_recomputed": 3240,
+  "intersection_reported": 3240,
+  "match": true
+ },
+ "summary": {
+  "construction": "target_exchange",
+  "seed": 2692053485,
+  "swaps_per_edge": 10.0,
+  "target_accepted": 15357100,
+  "attempted": 15456106,
+  "accepted": 15357100,
+  "rejected": {
+   "duplicate_pair": 96462,
+   "self_loop": 1063,
+   "no_change": 1481,
+   "out_of_range": 0
+  },
+  "acceptance_rate": 0.993594376,
+  "fraction_of_original_edges_rewired": 0.997890227,
+  "jaccard_vs_original": 0.001056001,
+  "complete": true,
+  "incomplete_reason": null,
+  "graph_digest": "912b81c384dba4889accf099b7c3815a93e34b0d1affcee661d198ab359f2459",
+  "algorithm": {
+   "candidate_block": 4096,
+   "batch_size": 100000,
+   "plateau_interval": 100000,
+   "max_attempts": 307142000
+  },
+  "elapsed_seconds": 52.281,
+  "memory": {
+   "sampling": "explicit checkpoints; not a continuous peak measurement",
+   "peak_rss_mb": 526.461,
+   "min_available_gb": 2.628,
+   "checkpoints": [
+    {
+     "label": "graph_loaded",
+     "rss_mb": 292.895,
+     "available_gb": 2.932
+    },
+    {
+     "label": "edge_sets_built",
+     "rss_mb": 455.98,
+     "available_gb": 2.782
+    },
+    {
+     "label": "accepted_100000",
+     "rss_mb": 462.527,
+     "available_gb": 2.774
+    },
+    {
+     "label": "accepted_200000",
+     "rss_mb": 473.352,
+     "available_gb": 2.758
+    },
+    {
+     "label": "accepted_300000",
+     "rss_mb": 488.652,
+     "available_gb": 2.737
+    },
+    {
+     "label": "accepted_400000",
+     "rss_mb": 490.023,
+     "available_gb": 2.737
+    },
+    {
+     "label": "accepted_500000",
+     "rss_mb": 496.949,
+     "available_gb": 2.729
+    },
+    {
+     "label": "accepted_600000",
+     "rss_mb": 501.383,
+     "available_gb": 2.725
+    },
+    {
+     "label": "accepted_700000",
+     "rss_mb": 502.527,
+     "available_gb": 2.723
+    },
+    {
+     "label": "accepted_800000",
+     "rss_mb": 507.559,
+     "available_gb": 2.722
+    },
+    {
+     "label": "accepted_900000",
+     "rss_mb": 510.605,
+     "available_gb": 2.719
+    },
+    {
+     "label": "accepted_1000000",
+     "rss_mb": 503.504,
+     "available_gb": 2.724
+    },
+    {
+     "label": "accepted_1100000",
+     "rss_mb": 512.258,
+     "available_gb": 2.722
+    },
+    {
+     "label": "accepted_1200000",
+     "rss_mb": 515.34,
+     "available_gb": 2.718
+    },
+    {
+     "label": "accepted_1300000",
+     "rss_mb": 508.488,
+     "available_gb": 2.719
+    },
+    {
+     "label": "accepted_1400000",
+     "rss_mb": 513.84,
+     "available_gb": 2.712
+    },
+    {
+     "label": "accepted_1500000",
+     "rss_mb": 515.59,
+     "available_gb": 2.711
+    },
+    {
+     "label": "accepted_1600000",
+     "rss_mb": 511.906,
+     "available_gb": 2.715
+    },
+    {
+     "label": "accepted_1700000",
+     "rss_mb": 516.031,
+     "available_gb": 2.715
+    },
+    {
+     "label": "accepted_1800000",
+     "rss_mb": 520.344,
+     "available_gb": 2.71
+    },
+    {
+     "label": "accepted_1900000",
+     "rss_mb": 514.176,
+     "available_gb": 2.715
+    },
+    {
+     "label": "accepted_2000000",
+     "rss_mb": 519.828,
+     "available_gb": 2.708
+    },
+    {
+     "label": "accepted_2100000",
+     "rss_mb": 521.207,
+     "available_gb": 2.709
+    },
+    {
+     "label": "accepted_2200000",
+     "rss_mb": 523.344,
+     "available_gb": 2.709
+    },
+    {
+     "label": "accepted_2300000",
+     "rss_mb": 519.082,
+     "available_gb": 2.715
+    },
+    {
+     "label": "accepted_2400000",
+     "rss_mb": 523.363,
+     "available_gb": 2.709
+    },
+    {
+     "label": "accepted_2500000",
+     "rss_mb": 524.289,
+     "available_gb": 2.707
+    },
+    {
+     "label": "accepted_2600000",
+     "rss_mb": 519.703,
+     "available_gb": 2.705
+    },
+    {
+     "label": "accepted_2700000",
+     "rss_mb": 522.023,
+     "available_gb": 2.705
+    },
+    {
+     "label": "accepted_2800000",
+     "rss_mb": 522.473,
+     "available_gb": 2.705
+    },
+    {
+     "label": "accepted_2900000",
+     "rss_mb": 517.598,
+     "available_gb": 2.711
+    },
+    {
+     "label": "accepted_3000000",
+     "rss_mb": 525.352,
+     "available_gb": 2.703
+    },
+    {
+     "label": "accepted_3100000",
+     "rss_mb": 525.586,
+     "available_gb": 2.703
+    },
+    {
+     "label": "accepted_3200000",
+     "rss_mb": 518.008,
+     "available_gb": 2.71
+    },
+    {
+     "label": "accepted_3300000",
+     "rss_mb": 522.684,
+     "available_gb": 2.711
+    },
+    {
+     "label": "accepted_3400000",
+     "rss_mb": 524.734,
+     "available_gb": 2.71
+    },
+    {
+     "label": "accepted_3500000",
+     "rss_mb": 524.793,
+     "available_gb": 2.708
+    },
+    {
+     "label": "accepted_3600000",
+     "rss_mb": 524.359,
+     "available_gb": 2.71
+    },
+    {
+     "label": "accepted_3700000",
+     "rss_mb": 526.09,
+     "available_gb": 2.708
+    },
+    {
+     "label": "accepted_3800000",
+     "rss_mb": 526.094,
+     "available_gb": 2.681
+    },
+    {
+     "label": "accepted_3900000",
+     "rss_mb": 523.164,
+     "available_gb": 2.684
+    },
+    {
+     "label": "accepted_4000000",
+     "rss_mb": 523.387,
+     "available_gb": 2.687
+    },
+    {
+     "label": "accepted_4100000",
+     "rss_mb": 525.859,
+     "available_gb": 2.683
+    },
+    {
+     "label": "accepted_4200000",
+     "rss_mb": 518.113,
+     "available_gb": 2.689
+    },
+    {
+     "label": "accepted_4300000",
+     "rss_mb": 521.816,
+     "available_gb": 2.681
+    },
+    {
+     "label": "accepted_4400000",
+     "rss_mb": 523.188,
+     "available_gb": 2.666
+    },
+    {
+     "label": "accepted_4500000",
+     "rss_mb": 518.156,
+     "available_gb": 2.66
+    },
+    {
+     "label": "accepted_4600000",
+     "rss_mb": 521.207,
+     "available_gb": 2.658
+    },
+    {
+     "label": "accepted_4700000",
+     "rss_mb": 526.078,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_4800000",
+     "rss_mb": 518.148,
+     "available_gb": 2.646
+    },
+    {
+     "label": "accepted_4900000",
+     "rss_mb": 523.227,
+     "available_gb": 2.64
+    },
+    {
+     "label": "accepted_5000000",
+     "rss_mb": 524.859,
+     "available_gb": 2.637
+    },
+    {
+     "label": "accepted_5100000",
+     "rss_mb": 518.082,
+     "available_gb": 2.631
+    },
+    {
+     "label": "accepted_5200000",
+     "rss_mb": 523.137,
+     "available_gb": 2.628
+    },
+    {
+     "label": "accepted_5300000",
+     "rss_mb": 525.609,
+     "available_gb": 2.641
+    },
+    {
+     "label": "accepted_5400000",
+     "rss_mb": 518.078,
+     "available_gb": 2.645
+    },
+    {
+     "label": "accepted_5500000",
+     "rss_mb": 521.867,
+     "available_gb": 2.642
+    },
+    {
+     "label": "accepted_5600000",
+     "rss_mb": 523.234,
+     "available_gb": 2.637
+    },
+    {
+     "label": "accepted_5700000",
+     "rss_mb": 518.133,
+     "available_gb": 2.649
+    },
+    {
+     "label": "accepted_5800000",
+     "rss_mb": 521.215,
+     "available_gb": 2.635
+    },
+    {
+     "label": "accepted_5900000",
+     "rss_mb": 526.098,
+     "available_gb": 2.632
+    },
+    {
+     "label": "accepted_6000000",
+     "rss_mb": 518.129,
+     "available_gb": 2.642
+    },
+    {
+     "label": "accepted_6100000",
+     "rss_mb": 523.199,
+     "available_gb": 2.639
+    },
+    {
+     "label": "accepted_6200000",
+     "rss_mb": 524.824,
+     "available_gb": 2.639
+    },
+    {
+     "label": "accepted_6300000",
+     "rss_mb": 518.078,
+     "available_gb": 2.644
+    },
+    {
+     "label": "accepted_6400000",
+     "rss_mb": 523.145,
+     "available_gb": 2.641
+    },
+    {
+     "label": "accepted_6500000",
+     "rss_mb": 525.629,
+     "available_gb": 2.64
+    },
+    {
+     "label": "accepted_6600000",
+     "rss_mb": 526.156,
+     "available_gb": 2.644
+    },
+    {
+     "label": "accepted_6700000",
+     "rss_mb": 521.242,
+     "available_gb": 2.65
+    },
+    {
+     "label": "accepted_6800000",
+     "rss_mb": 523.23,
+     "available_gb": 2.65
+    },
+    {
+     "label": "accepted_6900000",
+     "rss_mb": 523.422,
+     "available_gb": 2.648
+    },
+    {
+     "label": "accepted_7000000",
+     "rss_mb": 518.023,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_7100000",
+     "rss_mb": 524.938,
+     "available_gb": 2.648
+    },
+    {
+     "label": "accepted_7200000",
+     "rss_mb": 524.973,
+     "available_gb": 2.646
+    },
+    {
+     "label": "accepted_7300000",
+     "rss_mb": 525.98,
+     "available_gb": 2.648
+    },
+    {
+     "label": "accepted_7400000",
+     "rss_mb": 521.625,
+     "available_gb": 2.652
+    },
+    {
+     "label": "accepted_7500000",
+     "rss_mb": 521.82,
+     "available_gb": 2.651
+    },
+    {
+     "label": "accepted_7600000",
+     "rss_mb": 526.059,
+     "available_gb": 2.648
+    },
+    {
+     "label": "accepted_7700000",
+     "rss_mb": 523.93,
+     "available_gb": 2.648
+    },
+    {
+     "label": "accepted_7800000",
+     "rss_mb": 525.52,
+     "available_gb": 2.647
+    },
+    {
+     "label": "accepted_7900000",
+     "rss_mb": 526.277,
+     "available_gb": 2.653
+    },
+    {
+     "label": "accepted_8000000",
+     "rss_mb": 518.078,
+     "available_gb": 2.658
+    },
+    {
+     "label": "accepted_8100000",
+     "rss_mb": 523.129,
+     "available_gb": 2.649
+    },
+    {
+     "label": "accepted_8200000",
+     "rss_mb": 525.586,
+     "available_gb": 2.648
+    },
+    {
+     "label": "accepted_8300000",
+     "rss_mb": 518.008,
+     "available_gb": 2.655
+    },
+    {
+     "label": "accepted_8400000",
+     "rss_mb": 521.797,
+     "available_gb": 2.658
+    },
+    {
+     "label": "accepted_8500000",
+     "rss_mb": 523.168,
+     "available_gb": 2.653
+    },
+    {
+     "label": "accepted_8600000",
+     "rss_mb": 523.383,
+     "available_gb": 2.65
+    },
+    {
+     "label": "accepted_8700000",
+     "rss_mb": 520.25,
+     "available_gb": 2.654
+    },
+    {
+     "label": "accepted_8800000",
+     "rss_mb": 526.0,
+     "available_gb": 2.647
+    },
+    {
+     "label": "accepted_8900000",
+     "rss_mb": 526.012,
+     "available_gb": 2.649
+    },
+    {
+     "label": "accepted_9000000",
+     "rss_mb": 517.996,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_9100000",
+     "rss_mb": 522.754,
+     "available_gb": 2.655
+    },
+    {
+     "label": "accepted_9200000",
+     "rss_mb": 524.742,
+     "available_gb": 2.652
+    },
+    {
+     "label": "accepted_9300000",
+     "rss_mb": 518.016,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_9400000",
+     "rss_mb": 525.156,
+     "available_gb": 2.649
+    },
+    {
+     "label": "accepted_9500000",
+     "rss_mb": 526.055,
+     "available_gb": 2.647
+    },
+    {
+     "label": "accepted_9600000",
+     "rss_mb": 526.07,
+     "available_gb": 2.654
+    },
+    {
+     "label": "accepted_9700000",
+     "rss_mb": 523.121,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_9800000",
+     "rss_mb": 523.344,
+     "available_gb": 2.654
+    },
+    {
+     "label": "accepted_9900000",
+     "rss_mb": 525.812,
+     "available_gb": 2.665
+    },
+    {
+     "label": "accepted_10000000",
+     "rss_mb": 517.996,
+     "available_gb": 2.667
+    },
+    {
+     "label": "accepted_10100000",
+     "rss_mb": 521.754,
+     "available_gb": 2.665
+    },
+    {
+     "label": "accepted_10200000",
+     "rss_mb": 523.145,
+     "available_gb": 2.662
+    },
+    {
+     "label": "accepted_10300000",
+     "rss_mb": 518.062,
+     "available_gb": 2.668
+    },
+    {
+     "label": "accepted_10400000",
+     "rss_mb": 523.113,
+     "available_gb": 2.661
+    },
+    {
+     "label": "accepted_10500000",
+     "rss_mb": 523.199,
+     "available_gb": 2.663
+    },
+    {
+     "label": "accepted_10600000",
+     "rss_mb": 517.961,
+     "available_gb": 2.666
+    },
+    {
+     "label": "accepted_10700000",
+     "rss_mb": 524.949,
+     "available_gb": 2.656
+    },
+    {
+     "label": "accepted_10800000",
+     "rss_mb": 524.973,
+     "available_gb": 2.658
+    },
+    {
+     "label": "accepted_10900000",
+     "rss_mb": 525.965,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_11000000",
+     "rss_mb": 521.652,
+     "available_gb": 2.66
+    },
+    {
+     "label": "accepted_11100000",
+     "rss_mb": 525.492,
+     "available_gb": 2.662
+    },
+    {
+     "label": "accepted_11200000",
+     "rss_mb": 526.027,
+     "available_gb": 2.658
+    },
+    {
+     "label": "accepted_11300000",
+     "rss_mb": 518.062,
+     "available_gb": 2.669
+    },
+    {
+     "label": "accepted_11400000",
+     "rss_mb": 523.109,
+     "available_gb": 2.663
+    },
+    {
+     "label": "accepted_11500000",
+     "rss_mb": 523.348,
+     "available_gb": 2.66
+    },
+    {
+     "label": "accepted_11600000",
+     "rss_mb": 518.012,
+     "available_gb": 2.664
+    },
+    {
+     "label": "accepted_11700000",
+     "rss_mb": 525.82,
+     "available_gb": 2.656
+    },
+    {
+     "label": "accepted_11800000",
+     "rss_mb": 525.867,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_11900000",
+     "rss_mb": 526.203,
+     "available_gb": 2.66
+    },
+    {
+     "label": "accepted_12000000",
+     "rss_mb": 522.672,
+     "available_gb": 2.665
+    },
+    {
+     "label": "accepted_12100000",
+     "rss_mb": 524.676,
+     "available_gb": 2.662
+    },
+    {
+     "label": "accepted_12200000",
+     "rss_mb": 524.734,
+     "available_gb": 2.664
+    },
+    {
+     "label": "accepted_12300000",
+     "rss_mb": 518.059,
+     "available_gb": 2.653
+    },
+    {
+     "label": "accepted_12400000",
+     "rss_mb": 524.957,
+     "available_gb": 2.648
+    },
+    {
+     "label": "accepted_12500000",
+     "rss_mb": 524.977,
+     "available_gb": 2.65
+    },
+    {
+     "label": "accepted_12600000",
+     "rss_mb": 518.0,
+     "available_gb": 2.668
+    },
+    {
+     "label": "accepted_12700000",
+     "rss_mb": 522.816,
+     "available_gb": 2.66
+    },
+    {
+     "label": "accepted_12800000",
+     "rss_mb": 525.414,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_12900000",
+     "rss_mb": 526.461,
+     "available_gb": 2.654
+    },
+    {
+     "label": "accepted_13000000",
+     "rss_mb": 522.07,
+     "available_gb": 2.659
+    },
+    {
+     "label": "accepted_13100000",
+     "rss_mb": 522.336,
+     "available_gb": 2.659
+    },
+    {
+     "label": "accepted_13200000",
+     "rss_mb": 522.332,
+     "available_gb": 2.66
+    },
+    {
+     "label": "accepted_13300000",
+     "rss_mb": 517.949,
+     "available_gb": 2.666
+    },
+    {
+     "label": "accepted_13400000",
+     "rss_mb": 524.082,
+     "available_gb": 2.658
+    },
+    {
+     "label": "accepted_13500000",
+     "rss_mb": 525.969,
+     "available_gb": 2.661
+    },
+    {
+     "label": "accepted_13600000",
+     "rss_mb": 518.008,
+     "available_gb": 2.669
+    },
+    {
+     "label": "accepted_13700000",
+     "rss_mb": 521.305,
+     "available_gb": 2.668
+    },
+    {
+     "label": "accepted_13800000",
+     "rss_mb": 526.02,
+     "available_gb": 2.662
+    },
+    {
+     "label": "accepted_13900000",
+     "rss_mb": 526.059,
+     "available_gb": 2.661
+    },
+    {
+     "label": "accepted_14000000",
+     "rss_mb": 524.031,
+     "available_gb": 2.661
+    },
+    {
+     "label": "accepted_14100000",
+     "rss_mb": 524.504,
+     "available_gb": 2.661
+    },
+    {
+     "label": "accepted_14200000",
+     "rss_mb": 524.527,
+     "available_gb": 2.659
+    },
+    {
+     "label": "accepted_14300000",
+     "rss_mb": 517.949,
+     "available_gb": 2.667
+    },
+    {
+     "label": "accepted_14400000",
+     "rss_mb": 524.016,
+     "available_gb": 2.66
+    },
+    {
+     "label": "accepted_14500000",
+     "rss_mb": 526.18,
+     "available_gb": 2.669
+    },
+    {
+     "label": "accepted_14600000",
+     "rss_mb": 518.0,
+     "available_gb": 2.683
+    },
+    {
+     "label": "accepted_14700000",
+     "rss_mb": 522.828,
+     "available_gb": 2.678
+    },
+    {
+     "label": "accepted_14800000",
+     "rss_mb": 523.082,
+     "available_gb": 2.674
+    },
+    {
+     "label": "accepted_14900000",
+     "rss_mb": 518.062,
+     "available_gb": 2.682
+    },
+    {
+     "label": "accepted_15000000",
+     "rss_mb": 523.109,
+     "available_gb": 2.68
+    },
+    {
+     "label": "accepted_15100000",
+     "rss_mb": 523.195,
+     "available_gb": 2.674
+    },
+    {
+     "label": "accepted_15200000",
+     "rss_mb": 517.957,
+     "available_gb": 2.678
+    },
+    {
+     "label": "accepted_15300000",
+     "rss_mb": 524.918,
+     "available_gb": 2.67
+    },
+    {
+     "label": "swap_loop_finished",
+     "rss_mb": 398.934,
+     "available_gb": 2.801
+    },
+    {
+     "label": "graph_built",
+     "rss_mb": 401.898,
+     "available_gb": 2.793
+    }
+   ]
+  }
+ },
+ "memory": {
+  "construction": {
+   "sampling": "explicit checkpoints; not a continuous peak measurement",
+   "peak_rss_mb": 526.461,
+   "min_available_gb": 2.628,
+   "checkpoints": [
+    {
+     "label": "graph_loaded",
+     "rss_mb": 292.895,
+     "available_gb": 2.932
+    },
+    {
+     "label": "edge_sets_built",
+     "rss_mb": 455.98,
+     "available_gb": 2.782
+    },
+    {
+     "label": "accepted_100000",
+     "rss_mb": 462.527,
+     "available_gb": 2.774
+    },
+    {
+     "label": "accepted_200000",
+     "rss_mb": 473.352,
+     "available_gb": 2.758
+    },
+    {
+     "label": "accepted_300000",
+     "rss_mb": 488.652,
+     "available_gb": 2.737
+    },
+    {
+     "label": "accepted_400000",
+     "rss_mb": 490.023,
+     "available_gb": 2.737
+    },
+    {
+     "label": "accepted_500000",
+     "rss_mb": 496.949,
+     "available_gb": 2.729
+    },
+    {
+     "label": "accepted_600000",
+     "rss_mb": 501.383,
+     "available_gb": 2.725
+    },
+    {
+     "label": "accepted_700000",
+     "rss_mb": 502.527,
+     "available_gb": 2.723
+    },
+    {
+     "label": "accepted_800000",
+     "rss_mb": 507.559,
+     "available_gb": 2.722
+    },
+    {
+     "label": "accepted_900000",
+     "rss_mb": 510.605,
+     "available_gb": 2.719
+    },
+    {
+     "label": "accepted_1000000",
+     "rss_mb": 503.504,
+     "available_gb": 2.724
+    },
+    {
+     "label": "accepted_1100000",
+     "rss_mb": 512.258,
+     "available_gb": 2.722
+    },
+    {
+     "label": "accepted_1200000",
+     "rss_mb": 515.34,
+     "available_gb": 2.718
+    },
+    {
+     "label": "accepted_1300000",
+     "rss_mb": 508.488,
+     "available_gb": 2.719
+    },
+    {
+     "label": "accepted_1400000",
+     "rss_mb": 513.84,
+     "available_gb": 2.712
+    },
+    {
+     "label": "accepted_1500000",
+     "rss_mb": 515.59,
+     "available_gb": 2.711
+    },
+    {
+     "label": "accepted_1600000",
+     "rss_mb": 511.906,
+     "available_gb": 2.715
+    },
+    {
+     "label": "accepted_1700000",
+     "rss_mb": 516.031,
+     "available_gb": 2.715
+    },
+    {
+     "label": "accepted_1800000",
+     "rss_mb": 520.344,
+     "available_gb": 2.71
+    },
+    {
+     "label": "accepted_1900000",
+     "rss_mb": 514.176,
+     "available_gb": 2.715
+    },
+    {
+     "label": "accepted_2000000",
+     "rss_mb": 519.828,
+     "available_gb": 2.708
+    },
+    {
+     "label": "accepted_2100000",
+     "rss_mb": 521.207,
+     "available_gb": 2.709
+    },
+    {
+     "label": "accepted_2200000",
+     "rss_mb": 523.344,
+     "available_gb": 2.709
+    },
+    {
+     "label": "accepted_2300000",
+     "rss_mb": 519.082,
+     "available_gb": 2.715
+    },
+    {
+     "label": "accepted_2400000",
+     "rss_mb": 523.363,
+     "available_gb": 2.709
+    },
+    {
+     "label": "accepted_2500000",
+     "rss_mb": 524.289,
+     "available_gb": 2.707
+    },
+    {
+     "label": "accepted_2600000",
+     "rss_mb": 519.703,
+     "available_gb": 2.705
+    },
+    {
+     "label": "accepted_2700000",
+     "rss_mb": 522.023,
+     "available_gb": 2.705
+    },
+    {
+     "label": "accepted_2800000",
+     "rss_mb": 522.473,
+     "available_gb": 2.705
+    },
+    {
+     "label": "accepted_2900000",
+     "rss_mb": 517.598,
+     "available_gb": 2.711
+    },
+    {
+     "label": "accepted_3000000",
+     "rss_mb": 525.352,
+     "available_gb": 2.703
+    },
+    {
+     "label": "accepted_3100000",
+     "rss_mb": 525.586,
+     "available_gb": 2.703
+    },
+    {
+     "label": "accepted_3200000",
+     "rss_mb": 518.008,
+     "available_gb": 2.71
+    },
+    {
+     "label": "accepted_3300000",
+     "rss_mb": 522.684,
+     "available_gb": 2.711
+    },
+    {
+     "label": "accepted_3400000",
+     "rss_mb": 524.734,
+     "available_gb": 2.71
+    },
+    {
+     "label": "accepted_3500000",
+     "rss_mb": 524.793,
+     "available_gb": 2.708
+    },
+    {
+     "label": "accepted_3600000",
+     "rss_mb": 524.359,
+     "available_gb": 2.71
+    },
+    {
+     "label": "accepted_3700000",
+     "rss_mb": 526.09,
+     "available_gb": 2.708
+    },
+    {
+     "label": "accepted_3800000",
+     "rss_mb": 526.094,
+     "available_gb": 2.681
+    },
+    {
+     "label": "accepted_3900000",
+     "rss_mb": 523.164,
+     "available_gb": 2.684
+    },
+    {
+     "label": "accepted_4000000",
+     "rss_mb": 523.387,
+     "available_gb": 2.687
+    },
+    {
+     "label": "accepted_4100000",
+     "rss_mb": 525.859,
+     "available_gb": 2.683
+    },
+    {
+     "label": "accepted_4200000",
+     "rss_mb": 518.113,
+     "available_gb": 2.689
+    },
+    {
+     "label": "accepted_4300000",
+     "rss_mb": 521.816,
+     "available_gb": 2.681
+    },
+    {
+     "label": "accepted_4400000",
+     "rss_mb": 523.188,
+     "available_gb": 2.666
+    },
+    {
+     "label": "accepted_4500000",
+     "rss_mb": 518.156,
+     "available_gb": 2.66
+    },
+    {
+     "label": "accepted_4600000",
+     "rss_mb": 521.207,
+     "available_gb": 2.658
+    },
+    {
+     "label": "accepted_4700000",
+     "rss_mb": 526.078,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_4800000",
+     "rss_mb": 518.148,
+     "available_gb": 2.646
+    },
+    {
+     "label": "accepted_4900000",
+     "rss_mb": 523.227,
+     "available_gb": 2.64
+    },
+    {
+     "label": "accepted_5000000",
+     "rss_mb": 524.859,
+     "available_gb": 2.637
+    },
+    {
+     "label": "accepted_5100000",
+     "rss_mb": 518.082,
+     "available_gb": 2.631
+    },
+    {
+     "label": "accepted_5200000",
+     "rss_mb": 523.137,
+     "available_gb": 2.628
+    },
+    {
+     "label": "accepted_5300000",
+     "rss_mb": 525.609,
+     "available_gb": 2.641
+    },
+    {
+     "label": "accepted_5400000",
+     "rss_mb": 518.078,
+     "available_gb": 2.645
+    },
+    {
+     "label": "accepted_5500000",
+     "rss_mb": 521.867,
+     "available_gb": 2.642
+    },
+    {
+     "label": "accepted_5600000",
+     "rss_mb": 523.234,
+     "available_gb": 2.637
+    },
+    {
+     "label": "accepted_5700000",
+     "rss_mb": 518.133,
+     "available_gb": 2.649
+    },
+    {
+     "label": "accepted_5800000",
+     "rss_mb": 521.215,
+     "available_gb": 2.635
+    },
+    {
+     "label": "accepted_5900000",
+     "rss_mb": 526.098,
+     "available_gb": 2.632
+    },
+    {
+     "label": "accepted_6000000",
+     "rss_mb": 518.129,
+     "available_gb": 2.642
+    },
+    {
+     "label": "accepted_6100000",
+     "rss_mb": 523.199,
+     "available_gb": 2.639
+    },
+    {
+     "label": "accepted_6200000",
+     "rss_mb": 524.824,
+     "available_gb": 2.639
+    },
+    {
+     "label": "accepted_6300000",
+     "rss_mb": 518.078,
+     "available_gb": 2.644
+    },
+    {
+     "label": "accepted_6400000",
+     "rss_mb": 523.145,
+     "available_gb": 2.641
+    },
+    {
+     "label": "accepted_6500000",
+     "rss_mb": 525.629,
+     "available_gb": 2.64
+    },
+    {
+     "label": "accepted_6600000",
+     "rss_mb": 526.156,
+     "available_gb": 2.644
+    },
+    {
+     "label": "accepted_6700000",
+     "rss_mb": 521.242,
+     "available_gb": 2.65
+    },
+    {
+     "label": "accepted_6800000",
+     "rss_mb": 523.23,
+     "available_gb": 2.65
+    },
+    {
+     "label": "accepted_6900000",
+     "rss_mb": 523.422,
+     "available_gb": 2.648
+    },
+    {
+     "label": "accepted_7000000",
+     "rss_mb": 518.023,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_7100000",
+     "rss_mb": 524.938,
+     "available_gb": 2.648
+    },
+    {
+     "label": "accepted_7200000",
+     "rss_mb": 524.973,
+     "available_gb": 2.646
+    },
+    {
+     "label": "accepted_7300000",
+     "rss_mb": 525.98,
+     "available_gb": 2.648
+    },
+    {
+     "label": "accepted_7400000",
+     "rss_mb": 521.625,
+     "available_gb": 2.652
+    },
+    {
+     "label": "accepted_7500000",
+     "rss_mb": 521.82,
+     "available_gb": 2.651
+    },
+    {
+     "label": "accepted_7600000",
+     "rss_mb": 526.059,
+     "available_gb": 2.648
+    },
+    {
+     "label": "accepted_7700000",
+     "rss_mb": 523.93,
+     "available_gb": 2.648
+    },
+    {
+     "label": "accepted_7800000",
+     "rss_mb": 525.52,
+     "available_gb": 2.647
+    },
+    {
+     "label": "accepted_7900000",
+     "rss_mb": 526.277,
+     "available_gb": 2.653
+    },
+    {
+     "label": "accepted_8000000",
+     "rss_mb": 518.078,
+     "available_gb": 2.658
+    },
+    {
+     "label": "accepted_8100000",
+     "rss_mb": 523.129,
+     "available_gb": 2.649
+    },
+    {
+     "label": "accepted_8200000",
+     "rss_mb": 525.586,
+     "available_gb": 2.648
+    },
+    {
+     "label": "accepted_8300000",
+     "rss_mb": 518.008,
+     "available_gb": 2.655
+    },
+    {
+     "label": "accepted_8400000",
+     "rss_mb": 521.797,
+     "available_gb": 2.658
+    },
+    {
+     "label": "accepted_8500000",
+     "rss_mb": 523.168,
+     "available_gb": 2.653
+    },
+    {
+     "label": "accepted_8600000",
+     "rss_mb": 523.383,
+     "available_gb": 2.65
+    },
+    {
+     "label": "accepted_8700000",
+     "rss_mb": 520.25,
+     "available_gb": 2.654
+    },
+    {
+     "label": "accepted_8800000",
+     "rss_mb": 526.0,
+     "available_gb": 2.647
+    },
+    {
+     "label": "accepted_8900000",
+     "rss_mb": 526.012,
+     "available_gb": 2.649
+    },
+    {
+     "label": "accepted_9000000",
+     "rss_mb": 517.996,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_9100000",
+     "rss_mb": 522.754,
+     "available_gb": 2.655
+    },
+    {
+     "label": "accepted_9200000",
+     "rss_mb": 524.742,
+     "available_gb": 2.652
+    },
+    {
+     "label": "accepted_9300000",
+     "rss_mb": 518.016,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_9400000",
+     "rss_mb": 525.156,
+     "available_gb": 2.649
+    },
+    {
+     "label": "accepted_9500000",
+     "rss_mb": 526.055,
+     "available_gb": 2.647
+    },
+    {
+     "label": "accepted_9600000",
+     "rss_mb": 526.07,
+     "available_gb": 2.654
+    },
+    {
+     "label": "accepted_9700000",
+     "rss_mb": 523.121,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_9800000",
+     "rss_mb": 523.344,
+     "available_gb": 2.654
+    },
+    {
+     "label": "accepted_9900000",
+     "rss_mb": 525.812,
+     "available_gb": 2.665
+    },
+    {
+     "label": "accepted_10000000",
+     "rss_mb": 517.996,
+     "available_gb": 2.667
+    },
+    {
+     "label": "accepted_10100000",
+     "rss_mb": 521.754,
+     "available_gb": 2.665
+    },
+    {
+     "label": "accepted_10200000",
+     "rss_mb": 523.145,
+     "available_gb": 2.662
+    },
+    {
+     "label": "accepted_10300000",
+     "rss_mb": 518.062,
+     "available_gb": 2.668
+    },
+    {
+     "label": "accepted_10400000",
+     "rss_mb": 523.113,
+     "available_gb": 2.661
+    },
+    {
+     "label": "accepted_10500000",
+     "rss_mb": 523.199,
+     "available_gb": 2.663
+    },
+    {
+     "label": "accepted_10600000",
+     "rss_mb": 517.961,
+     "available_gb": 2.666
+    },
+    {
+     "label": "accepted_10700000",
+     "rss_mb": 524.949,
+     "available_gb": 2.656
+    },
+    {
+     "label": "accepted_10800000",
+     "rss_mb": 524.973,
+     "available_gb": 2.658
+    },
+    {
+     "label": "accepted_10900000",
+     "rss_mb": 525.965,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_11000000",
+     "rss_mb": 521.652,
+     "available_gb": 2.66
+    },
+    {
+     "label": "accepted_11100000",
+     "rss_mb": 525.492,
+     "available_gb": 2.662
+    },
+    {
+     "label": "accepted_11200000",
+     "rss_mb": 526.027,
+     "available_gb": 2.658
+    },
+    {
+     "label": "accepted_11300000",
+     "rss_mb": 518.062,
+     "available_gb": 2.669
+    },
+    {
+     "label": "accepted_11400000",
+     "rss_mb": 523.109,
+     "available_gb": 2.663
+    },
+    {
+     "label": "accepted_11500000",
+     "rss_mb": 523.348,
+     "available_gb": 2.66
+    },
+    {
+     "label": "accepted_11600000",
+     "rss_mb": 518.012,
+     "available_gb": 2.664
+    },
+    {
+     "label": "accepted_11700000",
+     "rss_mb": 525.82,
+     "available_gb": 2.656
+    },
+    {
+     "label": "accepted_11800000",
+     "rss_mb": 525.867,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_11900000",
+     "rss_mb": 526.203,
+     "available_gb": 2.66
+    },
+    {
+     "label": "accepted_12000000",
+     "rss_mb": 522.672,
+     "available_gb": 2.665
+    },
+    {
+     "label": "accepted_12100000",
+     "rss_mb": 524.676,
+     "available_gb": 2.662
+    },
+    {
+     "label": "accepted_12200000",
+     "rss_mb": 524.734,
+     "available_gb": 2.664
+    },
+    {
+     "label": "accepted_12300000",
+     "rss_mb": 518.059,
+     "available_gb": 2.653
+    },
+    {
+     "label": "accepted_12400000",
+     "rss_mb": 524.957,
+     "available_gb": 2.648
+    },
+    {
+     "label": "accepted_12500000",
+     "rss_mb": 524.977,
+     "available_gb": 2.65
+    },
+    {
+     "label": "accepted_12600000",
+     "rss_mb": 518.0,
+     "available_gb": 2.668
+    },
+    {
+     "label": "accepted_12700000",
+     "rss_mb": 522.816,
+     "available_gb": 2.66
+    },
+    {
+     "label": "accepted_12800000",
+     "rss_mb": 525.414,
+     "available_gb": 2.657
+    },
+    {
+     "label": "accepted_12900000",
+     "rss_mb": 526.461,
+     "available_gb": 2.654
+    },
+    {
+     "label": "accepted_13000000",
+     "rss_mb": 522.07,
+     "available_gb": 2.659
+    },
+    {
+     "label": "accepted_13100000",
+     "rss_mb": 522.336,
+     "available_gb": 2.659
+    },
+    {
+     "label": "accepted_13200000",
+     "rss_mb": 522.332,
+     "available_gb": 2.66
+    },
+    {
+     "label": "accepted_13300000",
+     "rss_mb": 517.949,
+     "available_gb": 2.666
+    },
+    {
+     "label": "accepted_13400000",
+     "rss_mb": 524.082,
+     "available_gb": 2.658
+    },
+    {
+     "label": "accepted_13500000",
+     "rss_mb": 525.969,
+     "available_gb": 2.661
+    },
+    {
+     "label": "accepted_13600000",
+     "rss_mb": 518.008,
+     "available_gb": 2.669
+    },
+    {
+     "label": "accepted_13700000",
+     "rss_mb": 521.305,
+     "available_gb": 2.668
+    },
+    {
+     "label": "accepted_13800000",
+     "rss_mb": 526.02,
+     "available_gb": 2.662
+    },
+    {
+     "label": "accepted_13900000",
+     "rss_mb": 526.059,
+     "available_gb": 2.661
+    },
+    {
+     "label": "accepted_14000000",
+     "rss_mb": 524.031,
+     "available_gb": 2.661
+    },
+    {
+     "label": "accepted_14100000",
+     "rss_mb": 524.504,
+     "available_gb": 2.661
+    },
+    {
+     "label": "accepted_14200000",
+     "rss_mb": 524.527,
+     "available_gb": 2.659
+    },
+    {
+     "label": "accepted_14300000",
+     "rss_mb": 517.949,
+     "available_gb": 2.667
+    },
+    {
+     "label": "accepted_14400000",
+     "rss_mb": 524.016,
+     "available_gb": 2.66
+    },
+    {
+     "label": "accepted_14500000",
+     "rss_mb": 526.18,
+     "available_gb": 2.669
+    },
+    {
+     "label": "accepted_14600000",
+     "rss_mb": 518.0,
+     "available_gb": 2.683
+    },
+    {
+     "label": "accepted_14700000",
+     "rss_mb": 522.828,
+     "available_gb": 2.678
+    },
+    {
+     "label": "accepted_14800000",
+     "rss_mb": 523.082,
+     "available_gb": 2.674
+    },
+    {
+     "label": "accepted_14900000",
+     "rss_mb": 518.062,
+     "available_gb": 2.682
+    },
+    {
+     "label": "accepted_15000000",
+     "rss_mb": 523.109,
+     "available_gb": 2.68
+    },
+    {
+     "label": "accepted_15100000",
+     "rss_mb": 523.195,
+     "available_gb": 2.674
+    },
+    {
+     "label": "accepted_15200000",
+     "rss_mb": 517.957,
+     "available_gb": 2.678
+    },
+    {
+     "label": "accepted_15300000",
+     "rss_mb": 524.918,
+     "available_gb": 2.67
+    },
+    {
+     "label": "swap_loop_finished",
+     "rss_mb": 398.934,
+     "available_gb": 2.801
+    },
+    {
+     "label": "graph_built",
+     "rss_mb": 401.898,
+     "available_gb": 2.793
+    }
+   ]
+  },
+  "runner": {
+   "sampling": "explicit checkpoints; not a continuous peak measurement",
+   "peak_rss_mb": 432.625,
+   "min_available_gb": 2.745,
+   "checkpoints": [
+    {
+     "label": "start",
+     "rss_mb": 292.887,
+     "available_gb": 2.932
+    },
+    {
+     "label": "first_construction",
+     "rss_mb": 386.199,
+     "available_gb": 2.807
+    },
+    {
+     "label": "second_construction",
+     "rss_mb": 428.266,
+     "available_gb": 2.762
+    },
+    {
+     "label": "second_build_released",
+     "rss_mb": 423.07,
+     "available_gb": 2.775
+    },
+    {
+     "label": "policies_built",
+     "rss_mb": 432.625,
+     "available_gb": 2.77
+    },
+    {
+     "label": "validation_finished",
+     "rss_mb": 429.473,
+     "available_gb": 2.766
+    },
+    {
+     "label": "graph_written",
+     "rss_mb": 431.895,
+     "available_gb": 2.745
+    }
+   ]
+  },
+  "preflight": {
+   "estimate": {
+    "graph_arrays_mb": 26.064,
+    "swap_copies_mb": 35.15,
+    "duplicate_key_set_mb": 140.598,
+    "checkpoint_transient_mb": 35.15,
+    "validation_transient_mb": 74.246,
+    "signed_policies_mb": 15.663,
+    "total_mb": 326.871
+   },
+   "safety_factor": 1.5,
+   "floor_gb": 0.75,
+   "available_gb": 2.932,
+   "required_gb": 0.75,
+   "allowed": true,
+   "note": "construction-specific preflight; the 4 GB campaign gate of REV4 \u00a79.3 is unchanged and no campaign step is run"
+  }
+ },
+ "runtime_seconds": 116.912,
+ "structure_record": {
+  "graph_digest": "912b81c384dba4889accf099b7c3815a93e34b0d1affcee661d198ab359f2459",
+  "graph_path": "datasets/processed/banc_v888_random/seed_15/banc_graph_random_t5_seed_15.npz",
+  "graph_sha256": "5c69af74cb32e5415c06bb15ea2f3df5440dd3473b82de53657e5352f37a2499",
+  "construction": "target_exchange",
+  "u18_status": "PROPOSED \u2014 not approved",
+  "certificate_path": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\datasets\\processed\\banc_v888_random\\seed_15\\randomization_certificate.json",
+  "certificate_sha256": "4c7444c454d7edfdaece812acad01f4c34e2f0998874f4ece78febaf65c64ccb",
+  "protocol_sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c",
+  "master_seed": 20261116,
+  "campaign_seed": 15,
+  "seed": 2692053485,
+  "randomization_quality": {
+   "construction": "target_exchange",
+   "u18": "PROPOSED \u2014 not approved",
+   "protocol_sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c",
+   "graph_digest": "912b81c384dba4889accf099b7c3815a93e34b0d1affcee661d198ab359f2459",
+   "passed": true,
+   "failures": [],
+   "gates": {
+    "R4": {
+     "fraction_rewired": 0.997890227,
+     "gate": 0.99,
+     "pass": true
+    },
+    "R5": {
+     "jaccard": 0.001056001,
+     "intersection": 3240,
+     "gate": 0.01,
+     "pass": true
+    },
+    "R6": {
+     "max_abs_out_degree_change": 0,
+     "out_degree_sum": 1535710,
+     "expected_sum": 1535710,
+     "pass": true
+    },
+    "R7": {
+     "max_abs_in_degree_change": 0,
+     "in_degree_sum": 1535710,
+     "expected_sum": 1535710,
+     "pass": true
+    },
+    "R8": {
+     "evaluated": true,
+     "parameterisation": "target_exchange (U18 option a, PROPOSED)",
+     "per_edge_sign_reordering_equal": true,
+     "per_node_codes_equal": true,
+     "per_node_signs_equal": true,
+     "signed_edges_original": 683100,
+     "signed_edges_new": 683100,
+     "signed_synapses_original": 8426168,
+     "signed_synapses_new": 8426168,
+     "unsigned_edges_original": 852610,
+     "unsigned_edges_new": 852610,
+     "pass": true
+    },
+    "R9": {
+     "multiset_equal": true,
+     "synapse_sum": 18552546,
+     "min": 5,
+     "max": 913,
+     "pass": true
+    },
+    "R9b": {
+     "per_source_weight_multiset_equal": true,
+     "out_degree_profile_equal": true,
+     "pass": true
+    },
+    "R10": {
+     "duplicate_pairs": 0,
+     "pass": true
+    },
+    "R11": {
+     "self_edges": 0,
+     "pass": true
+    },
+    "R12": {
+     "csr_invariants_pass": true,
+     "pass": true
+    },
+    "R13": {
+     "mean_out_neighbour_jaccard": 0.000349828,
+     "mean_out_neighbour_jaccard_all_nodes": 0.242237424,
+     "active_nodes": 130709,
+     "isolated_in_both": 41724,
+     "statistic": "mean_over_active_nodes",
+     "gate": 0.01,
+     "pass": true,
+     "note": "gated value averages over nodes with an out-neighbour in at least one graph; Jaccard(empty, empty) is undefined, not 1.0"
+    },
+    "R14": {
+     "evaluated": true,
+     "tail_samples": 31,
+     "max_abs_change": 4.0130501e-05,
+     "final_jaccard": 0.001049475262,
+     "gate": 0.0001,
+     "pass": true,
+     "note": "plateau diagnostic on the rewiring distance, not mixing"
+    },
+    "R17": {
+     "evaluated": true,
+     "graph_digest": "912b81c384dba4889accf099b7c3815a93e34b0d1affcee661d198ab359f2459",
+     "reference_digest": "912b81c384dba4889accf099b7c3815a93e34b0d1affcee661d198ab359f2459",
+     "pass": true
+    }
+   },
+   "not_a_mixing_proof": "R14 is a plateau diagnostic on the rewiring distance; neither it nor degree preservation proves that the chain has mixed"
+  }
+ },
+ "certificate_written": true
+}

@@ -1,0 +1,113 @@
+{
+  "evidence_kind": "pilot",
+  "executed": false,
+  "experimental_evidence": false,
+  "note": "construction-only output; this is not experimental evidence",
+  "plan": {
+    "arms": [
+      "A"
+    ],
+    "campaign_effects_estimated": false,
+    "does_not_establish": "no C1-C4 contrast is estimated; no hypothesis is tested; the full three-case U1 decision needs F and is made at 10.8",
+    "entries": [
+      {
+        "arm": "A",
+        "environment_seed": 563774599,
+        "episode": 0,
+        "learning_seed": 2430192945,
+        "network_seed": 3336197789,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A",
+        "environment_seed": 2911696168,
+        "episode": 1,
+        "learning_seed": 2430192945,
+        "network_seed": 3336197789,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A",
+        "environment_seed": 4240939637,
+        "episode": 2,
+        "learning_seed": 2430192945,
+        "network_seed": 3336197789,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A",
+        "environment_seed": 2632356062,
+        "episode": 0,
+        "learning_seed": 1008514826,
+        "network_seed": 2627053973,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A",
+        "environment_seed": 307060235,
+        "episode": 1,
+        "learning_seed": 1008514826,
+        "network_seed": 2627053973,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A",
+        "environment_seed": 4241804999,
+        "episode": 2,
+        "learning_seed": 1008514826,
+        "network_seed": 2627053973,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A",
+        "environment_seed": 2839813884,
+        "episode": 0,
+        "learning_seed": 4049183526,
+        "network_seed": 2618100565,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "A",
+        "environment_seed": 756850162,
+        "episode": 1,
+        "learning_seed": 4049183526,
+        "network_seed": 2618100565,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "A",
+        "environment_seed": 2981106662,
+        "episode": 2,
+        "learning_seed": 4049183526,
+        "network_seed": 2618100565,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      }
+    ],
+    "episodes_per_seed": 3,
+    "establishes": "whether the A pipeline runs, and records survival, action counts, motor spikes and the floor status",
+    "estimates_contrasts": false,
+    "hypothesis_tests": [],
+    "merged_into_campaign": false,
+    "n_entries": 9,
+    "rev4_step": "10.3",
+    "seeds": [
+      9001,
+      9002,
+      9003
+    ],
+    "stage": "pilot1"
+  },
+  "record_kind": "phase_8_stage_record",
+  "rev4_step": "10.3",
+  "stage": "pilot1",
+  "title": "Pilot 1 \u2014 A viability"
+}

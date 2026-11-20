@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "estimates_contrasts": false,
+  "evidence_kind": "pilot",
+  "executed": true,
+  "experimental_evidence": true,
+  "memory_preflight": {
+    "available_gb": 5.745,
+    "gate_gb": 4.0,
+    "passed": true,
+    "percent_used": 62.6,
+    "reason": "at or above the gate",
+    "source": "psutil.virtual_memory().available",
+    "total_gb": 15.342
+  },
+  "merged_into_campaign": false,
+  "note": "executed under an authorised protocol",
+  "planned": 9,
+  "record_kind": "phase_8_stage_record",
+  "rev4_step": "10.3",
+  "rows_executed": 9,
+  "rows_stored": 9,
+  "run_dir": "C:/Users/Hp/fruitfly/FLY-SURFER/experiments/results/phase_8/pilot1/pilot1",
+  "stage": "pilot1",
+  "title": "Pilot 1 \u2014 A viability"
+}

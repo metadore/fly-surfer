@@ -237,8 +237,12 @@ def test_validate_campaign_reports_conformance_and_open_deviation(config):
     assert report["checks_total"] == report["checks_passed"]
     assert report["design_resolved"] is False
     assert report["n_seeds_selected"] is None
-    assert report["approval"]["approved"] is False
-    assert report["approval"]["decision_status"] == "PROPOSED - not approved"
+    assert report["approval"]["approved"] is True
+    assert (
+        report["approval"]["decision_status"]
+        == "APPROVED - recorded owner decision D1"
+    )
+    assert report["approval"]["approval_record"]["approval_id"] == "D1"
     deviation = report["randomization_deviation"]
     assert deviation["status"] == "deviation_recorded"
     assert deviation["gate_weakened"] is False
@@ -266,8 +270,8 @@ def test_protocol_identity_matches_the_frozen_document():
     assert approval_status()["protocol_matches_expected"] is True
 
 
-def test_authorisation_gate_always_refuses():
-    with pytest.raises(CampaignNotAuthorized, match="not approved"):
+def test_authorisation_gate_refuses_while_b7_is_open():
+    with pytest.raises(CampaignNotAuthorized, match="G3"):
         assert_campaign_authorized()
 
 
@@ -848,7 +852,8 @@ def test_cli_check_is_read_only_and_never_executable(capsys):
     assert code in (cli.EXIT_OK, cli.EXIT_INCOMPLETE)
     assert payload["executable"] is False
     assert payload["conformance"]["conforms"] is True
-    assert len(payload["execution_blockers"]) == 3
+    assert len(payload["execution_blockers"]) == 2
+    assert any(item.startswith("B7") for item in payload["execution_blockers"])
     assert payload["certified_graphs"]["required"] == 16
 
 
@@ -874,7 +879,7 @@ def test_cli_start_and_resume_refuse_without_side_effects(tmp_path, capsys):
     assert start_payload["executed"] is False
     assert start_payload["episodes_run"] == 0
     assert start_payload["rows_written"] == 0
-    assert "not approved" in start_payload["reason"]
+    assert "G3" in start_payload["reason"]
 
     resume_code = cli.main(["resume", str(tmp_path / "absent")])
     resume_payload = json.loads(capsys.readouterr().out)

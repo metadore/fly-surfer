@@ -436,7 +436,9 @@ class CampaignFactory:
             raise FactoryError(f"{arm!r} does not run the neural closed loop")
         requirements = conditions_base.requirements_for(arm)
         declared = self.spec(arm)
-        plan = seed_plan(master_seed, arm, seed)
+        # The environment stream is per-episode; network, learning and
+        # structure streams are not.
+        plan = seed_plan(master_seed, arm, seed, episode=int(episode))
         if int(environment_seed) != int(plan["environment"]):
             raise FactoryError(
                 "the environment seed does not match the paired environment stream"

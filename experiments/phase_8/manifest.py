@@ -120,10 +120,14 @@ def build_manifest(
     capture: Mapping[str, Any] | None = None,
 ) -> dict:
     """Assemble and validate the run manifest."""
+    # Deferred import: the protocol module imports this package's config.
+    from .campaign.protocol import approval_status
+
     campaign: CampaignConfig = config.campaign
     if input_hashes is None:
         input_hashes = hash_inputs(phase8_input_paths(config))
 
+    approval = approval_status()
     design = {
         "n_seeds": campaign.n_seeds_selected,
         "n_seeds_primary": campaign.n_seeds_primary,
@@ -138,7 +142,8 @@ def build_manifest(
             "training": list(campaign.training_seeds),
             "pilot": list(campaign.pilot_seeds),
         },
-        "approval": "not approved: REV3 §10.0/§12",
+        "approval": approval["decision_status"],
+        "approval_basis": approval["approval_basis"],
     }
 
     manifest = {

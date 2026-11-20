@@ -3,8 +3,10 @@
 SCIENTIFIC STATUS
     This package assembles existing components into the campaign runner. It
     adds no mechanism and no scientific claim. It does not authorise a
-    campaign: the protocol is not approved (REV4 §10.0, §12), and the only
-    entry point that could start one refuses until that changes.
+    campaign: recorded owner decision D1 approves REV4 §12 and U1-U18 as
+    written, and D2 makes the G3 deviation not applicable to the exact Pilot 1
+    grid only. Pilot 2, the campaign, training and the randomized arms remain
+    refused by the unchanged campaign-wide gate.
 
 Nothing in this package runs an episode by itself. The factory builds
 components, the dispatcher routes one plan entry to the arm implementation
@@ -27,7 +29,10 @@ from .protocol import (
     CampaignProtocolError,
     approval_status,
     assert_campaign_authorized,
+    assert_stage_authorized,
+    g3_applicability,
     protocol_identity,
+    stage_authorization,
     validate_campaign,
 )
 from .status import run_status
@@ -45,8 +50,11 @@ __all__ = [
     "TrainingArtifacts",
     "approval_status",
     "assert_campaign_authorized",
+    "assert_stage_authorized",
     "assert_target_exchange_alignment",
+    "g3_applicability",
     "protocol_identity",
     "run_status",
+    "stage_authorization",
     "validate_campaign",
 ]
