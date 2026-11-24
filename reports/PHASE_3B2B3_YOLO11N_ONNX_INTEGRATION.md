@@ -9,8 +9,9 @@ reporting, explicit CLI modes, and tests.
 The detector is integrated and exercised on one image plus a five-image,
 two-group validation slice. The integration is ready for a controlled
 real-sequence replay, but it is **not** ready for accuracy or gameplay claims:
-the 0.426 confidence and 0.7 IoU values are training-run candidates, not
-calibrated thresholds, and the production zero-tolerance bounds rule rejected
+the 0.426 confidence and 0.7 IoU values are deployment-config candidates
+produced in the training notebook, not calibrated thresholds, and the production
+zero-tolerance bounds rule rejected
 2 of 13 raw detections in the smoke slice.
 
 No full-dataset inference was run. No weights were loaded from `best.pt`, and
@@ -29,7 +30,7 @@ Artifact directory (Git-ignored):
 | `best.onnx` | 10,636,871 | `e6ad18f90cd0be8c71237556f0922d83a6dca4ac54184ddde6536896b6b6aa77` | Inference target |
 | `best.pt` | 5,491,034 | `1b47a43325b18c59b52b9a29cdd45c029d079ee134a7283b49cd0e86366bdef8` | **Never loaded or executed** |
 | `model_config.json` | 1,249 | — | Declares input/output/classes/threshold candidates |
-| `metrics_summary.json` | 216 | — | Training-run metrics, not reproduced here |
+| `metrics_summary.json` | 216 | — | Post-training ONNX CPU re-validation metrics, not reproduced here |
 | `dataset_attribution.txt` | 1,529 | — | Provenance |
 | `SHA256SUMS.json` | 734 | — | Deployment checksums |
 
@@ -47,10 +48,13 @@ NMS     external, per class
 graph supplies probabilities, not logits. The decoder accepts the transposed
 `(18, 8400)` layout and the absence of an objectness channel.
 
-Training-run reference metrics in `metrics_summary.json` (not re-measured by
-this phase): precision 0.937310, recall 0.810829, mAP50 0.897776,
-mAP50-95 0.687726 on 1,128 validation images. These are the training run's
-numbers and are **not** produced by this integration.
+Post-training ONNX CPU re-validation metrics in `metrics_summary.json` (not
+re-measured by this phase): precision 0.937310, recall 0.810829, mAP50 0.897776,
+mAP50-95 0.687726 on 1,128 validation images. These are the post-training ONNX
+re-validation numbers and are **not** produced by this integration. They are
+distinct from the in-training PyTorch validation (last epoch precision 0.917) and
+from the post-training `best.pt` PyTorch validation (precision 0.927); the ONNX
+re-validation's higher precision is not rounding.
 
 ---
 
@@ -315,7 +319,8 @@ independent test set.
 ## 8. Known limitations
 
 1. **Thresholds are not calibrated.** 0.426 confidence and 0.7 IoU come from the
-   training run. No threshold sweep was performed.
+   deployment config produced in the training notebook. No threshold sweep was
+   performed.
 2. **Zero bounds tolerance rejects sub-pixel overflow.** The production
    validator uses `bounds_tolerance_pixels: 0.0`; 2 of 13 raw detections in the
    smoke slice were rejected for lying 0.2–0.3 px outside the image. This is
@@ -333,8 +338,9 @@ independent test set.
 7. **CPU, batch 1.** No GPU path, batching, or throughput claim.
 8. **Not connected to the connectome.** The detector feeds the existing
    perception/GameState layer only; no biological perception is claimed.
-9. **Training-run metrics are not reproduced here.** `metrics_summary.json`
-   remains the training run's own validation result.
+9. **ONNX re-validation metrics are not reproduced here.** `metrics_summary.json`
+   remains the post-training ONNX CPU re-validation result (stage C), not the
+   training run's in-training PyTorch validation.
 10. **`best.pt` remains unused.** The PyTorch checkpoint was never loaded or
     executed.
 

@@ -9,8 +9,9 @@ detection-accuracy number exists.
 > **Later update (2026-11-07).** A trained YOLO11n ONNX detector was integrated
 > and smoke-evaluated; see `reports/PHASE_3B2B3_YOLO11N_ONNX_INTEGRATION.md`.
 > Its validation-split metrics (precision 0.937310, recall 0.810829, mAP@0.5
-> 0.897776, mAP@0.5:0.95 0.687726 on 1,128 fixed-split images) come from the
-> training run, not from this frozen harness on an independent test split.
+> 0.897776, mAP@0.5:0.95 0.687726 on 1,128 fixed-split images) come from a
+> post-training ONNX CPU re-validation, not from this frozen harness on an
+> independent test split.
 > This document's `blocked` status for independent detection accuracy is
 > unchanged: no independent test split exists, `boots-powerup` and
 > `jump-electric` remain unevaluable, and

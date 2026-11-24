@@ -445,6 +445,16 @@ The ZIP contains the export directory itself, so extraction produces
    `imgsz=640` is a starting choice, not a tuned result. The source images are
    606 × 1050.
 
+   > **Superseded by the executed run:** this block is a proposal, not the recipe
+   > that ran. See `docs/research/YOLO11N_TRAINING_PROVENANCE_RECOVERY.md` for the
+   > command that actually ran (50 epochs, Python 3.13.16, `dataset_colab.yaml`,
+   > `optimizer="auto"`).
+   >
+   > **Dataset path trap:** the exported `dataset.yaml` uses `path: '.'`; resolve it
+   > to an absolute root (or run from the export directory) before training. The
+   > recorded run used `dataset_colab.yaml`, identical except for an absolute
+   > `path`.
+
 7. Validate on the group-held-out validation split:
 
    ```python

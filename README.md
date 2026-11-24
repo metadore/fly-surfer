@@ -191,10 +191,14 @@ self-connections, 620,180 reciprocal directed pairs, ascending root-ID order.
 - **How it was used:** as the perception input and evaluation data (YOLO label
   format, group-held-out curation by recording), and 30 frames as illustration
   in paper Figures 9–14. The 12 empty-label files were excluded after individual
-  inspection. The dataset was **not** used to train, fine-tune or tune any
-  project model. Raw images and the derived export are excluded by `.gitignore`
-  and are not redistributed; only the six visual-documentation figures and their
-  provenance index are tracked.
+  inspection. The dataset was used to train the project's YOLO11n detector — a
+  50-epoch fine-tune of a COCO-pretrained checkpoint on the 1,188-image
+  group-held-out training side, run in Google Colab on 2026-11-06 with
+  Ultralytics 8.4.202 — and to evaluate it on the 1,128-image validation side.
+  Raw images and the derived export are excluded by `.gitignore` and are not
+  redistributed; only the six visual-documentation figures and their provenance
+  index are tracked. The trained weights and ONNX export are likewise not
+  redistributed (see §8).
 - **Attribution:** "Subway Surfers Object Dataset" by `horizon-cgt2k` on
   Roboflow Universe, CC BY 4.0. "Subway Surfers" is a trademark of its owners;
   this project is not affiliated with or endorsed by them.
@@ -236,8 +240,10 @@ The YOLO11n checkpoint and ONNX export
 (`models/YOLO11/deployment/yolo11n_v1_deployment/best.onnx`, SHA-256
 `e6ad18f9…6aa77`, 10,636,871 bytes) are **not redistributed**; their size, hash
 and deployment contract are recorded in the model registry and
-`THIRD_PARTY_NOTICES.md`. The detector is used as a fixed, externally trained
-component and was not retrained or fine-tuned.
+`THIRD_PARTY_NOTICES.md`. The detector was fine-tuned once for this project —
+COCO-pretrained YOLO11n to 14 classes, in Colab on 2026-11-06 — outside this
+repository, then frozen as a versioned ONNX artifact. It is not retrained or
+fine-tuned by the simulation code.
 
 External repositories were audited for architectural comparison only
 (`docs/research/EXTERNAL_REPOSITORY_COMPARISON.md`,
@@ -491,8 +497,10 @@ and the Phase 8 stage, training, artifact and Pilot 2-C contracts.
   connectivity bridges.
 - The perception dataset has no player or coin class, no independent test split,
   and only five recording groups; results are grouped-development estimates.
-- The detector was not trained or calibrated here; its reported metrics are
-  provenance from its training environment.
+- The detector was trained outside this repository (a 50-epoch 14-class fine-tune
+  in Colab, 2026-11-06) and is consumed here as a fixed ONNX artifact; it is not
+  retrained or recalibrated by this repository's code. Its reported metrics are
+  validation results from that training environment, not re-measured here.
 - The commercial Subway Surfers game was never instrumented; game outcomes are
   properties of a local surrogate environment.
 - Phase 8 did not estimate C1–C4 or test H1–H3; the N = 16 confirmatory campaign

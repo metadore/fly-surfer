@@ -90,10 +90,11 @@ Independent-image evidence:
 ### 1.4 Why existing data cannot resolve it
 
 - **The validation side is already consumed.** The 1,128 valid images have been
-  used for model selection and reporting: training-run metrics
-  (`models/YOLO11/deployment/yolo11n_v1_deployment/metrics_summary.json`,
-  SHA-256 `57ba3ccb…cd615`: precision 0.937310, recall 0.810829, mAP@0.5
-  0.897776, mAP@0.5:0.95 0.687726 on 1,128 images), threshold choice
+  used for model selection (training-time validation) and reporting
+  (post-training ONNX CPU re-validation metrics: precision 0.937310, recall
+  0.810829, mAP@0.5 0.897776, mAP@0.5:0.95 0.687726 on 1,128 images, from
+  `models/YOLO11/deployment/yolo11n_v1_deployment/metrics_summary.json`,
+  SHA-256 `57ba3ccb…cd615`), threshold choice
   (confidence 0.426, IoU 0.7 in `configs/detector_config.yaml:49-50`), smoke
   folds (`experiments/phase_3b/results/phase_3b2b3_smoke_eval_fold1.json`,
   `..._fold5.json`), and the 100-frame replay
@@ -199,8 +200,8 @@ Supporting facts:
 
 | Metric | Implementation | Measured evidence | Status |
 |---|---|---|---|
-| Per-class precision / recall | `perception/evaluation.py:251` (`ClassMetrics`), `:545` (`evaluate_detections`) | Training-run macro P 0.937310 / R 0.810829 on 1,128 validation images (`metrics_summary.json`); not re-measured independently | **Available with limitation** |
-| mAP@0.5 / mAP@0.5:0.95 | same harness | 0.897776 / 0.687726, same run and split | **Available with limitation** |
+| Per-class precision / recall | `perception/evaluation.py:251` (`ClassMetrics`), `:545` (`evaluate_detections`) | ONNX re-validation macro P 0.937310 / R 0.810829 on 1,128 validation images (`metrics_summary.json`); not re-measured independently | **Available with limitation** |
+| mAP@0.5 / mAP@0.5:0.95 | same harness | 0.897776 / 0.687726, same evaluation and split | **Available with limitation** |
 | Confusion matrix (class-aware, with background) | `perception/evaluation.py:345` (`_taxonomies`); 13 evaluation tests | Harness only; not reported per class in a final table | **Available with limitation** |
 | Classification accuracy (scalar) | Derivable from the class-aware confusion matrix | Not reported as a scalar; gate ≥ 0.85 untested | **Computable, not yet computed** |
 | Localisation IoU | IoU matching inside `evaluate_detections`; AP integrates IoU | mAP@0.5:0.95 reported | **Partial** |
@@ -216,7 +217,7 @@ Supporting facts:
 | Independent test metrics | — | — | **BLOCKED** (same root cause as T5) |
 
 Important limitation on the measured detection numbers: they are the
-**training run's own validation metrics**, imported via
+**post-training ONNX CPU re-validation metrics**, imported via
 `models/YOLO11/deployment/yolo11n_v1_deployment/metrics_summary.json`
 (SHA-256 `57ba3ccb…cd615`). The integration report states they were "not
 re-measured by this phase"
@@ -336,7 +337,7 @@ filenames; no capture metadata exists.
 | Detector config | `configs/detector_config.yaml` | `f31add2ad45f…3c5aa0` |
 | Perception config | `configs/perception_config.yaml` | `bb51060575b1…ee01c` |
 | GameState adapter | `perception/game_state_adapter.py` | `e59fa0bb3666…735d67` |
-| Training-run metrics | `models/YOLO11/deployment/yolo11n_v1_deployment/metrics_summary.json` | `57ba3ccb3fe7…cd615` |
+| ONNX re-validation metrics | `models/YOLO11/deployment/yolo11n_v1_deployment/metrics_summary.json` | `57ba3ccb3fe7…cd615` |
 | ONNX weights | `models/YOLO11/deployment/yolo11n_v1_deployment/best.onnx` | `e6ad18f90cd0…b6aa77` |
 | Phase 3B evaluation protocol | `reports/PHASE_3B_EVALUATION.md` | `13daf389784d…fc1b6` |
 
@@ -540,7 +541,8 @@ action or distance labels.
 ## 9. What this audit does not claim
 
 - It does not claim the detector is accurate or inaccurate. The only numbers
-  quoted are the training run's validation metrics, explicitly marked as such.
+  quoted are the post-training ONNX CPU re-validation metrics, explicitly marked
+  as such.
 - It does not claim the geometric lane assignment is wrong; it claims it is not
   a lane label.
 - It does not claim box-bottom geometry is unrelated to distance; it claims it

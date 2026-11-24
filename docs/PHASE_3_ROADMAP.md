@@ -39,8 +39,9 @@ The Phase 3B/3C code, configurations, tests and reports exist in the working
 tree. They have not been staged or committed. A trained YOLO11n ONNX detector
 was integrated on 2026-11-07 and replayed over 100 real frames; the numbers in
 `reports/PHASE_3B2B3_YOLO11N_ONNX_INTEGRATION.md` and
-`reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md` are training-run validation
-metrics and an engineering replay, not independent detection accuracy. The
+`reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md` are post-training ONNX CPU
+re-validation metrics and an engineering replay, not independent detection
+accuracy. The
 frozen evaluation in `reports/PHASE_3B_EVALUATION.md` remains `blocked` because
 no independent test split exists. Historical status is preserved in
 `reports/PHASE_3B_3C_FINAL_VERIFICATION.md` (2026-11-06).
@@ -233,9 +234,9 @@ passes 16/16 checks. Full detail is in
 (`best.onnx`, SHA-256 `e6ad18f9…b6aa77`; input `[1,3,640,640]`, output
 `[1,18,8400]`, identity 14-class map, confidence 0.426, IoU 0.7, CPU).
 `reports/PHASE_3B2B3_YOLO11N_ONNX_INTEGRATION.md` records validation-split
-metrics taken from the training run — precision 0.937310, recall 0.810829,
-mAP@0.5 0.897776, mAP@0.5:0.95 0.687726 on 1,128 fixed-split images. A
-100-frame real-frame replay followed
+metrics from a **post-training ONNX CPU re-validation** — precision 0.937310,
+recall 0.810829, mAP@0.5 0.897776, mAP@0.5:0.95 0.687726 on 1,128 fixed-split
+images. A 100-frame real-frame replay followed
 (`reports/PHASE_3B2C_REAL_SEQUENCE_REPLAY.md`). These are held-out validation
 and engineering-replay numbers, not independent test accuracy:
 `detector_evaluation.json` remains `status: blocked`, `boots-powerup` and

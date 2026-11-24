@@ -573,8 +573,8 @@ encoding or simulator implementation.
 10. **Boundary policy not promoted to production.** The 1.0 px tolerance is an
     in-memory experiment setting; production remains at 0.0 px.
 11. **Thresholds not recalibrated.** Confidence 0.426 and NMS IoU 0.7 are
-    carried over as candidates from the training run; this phase did not
-    tune them.
+    carried over from the deployment config produced in the training notebook;
+    this phase did not tune them.
 12. **Single-object state.** The existing `GameState` represents at most one
     obstacle, train and coin. Up to 6 eligible tracks per frame were counted
     as unrepresented rather than silently dropped.

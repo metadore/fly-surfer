@@ -81,9 +81,9 @@ are not part of the FlyWire dataset.
 - **Use here:** 12 preview frames are tracked under
   `experiments/phase_3b/previews/` for auditing, and 30 further frames from the
   curated dataset are used as illustration in the six visual-documentation
-  figures (paper Figures 9–14). The dataset is not used to train, fine-tune or
-  tune any project model; the detector weights come from the third-party
-  YOLO11n release (see below).
+  figures (paper Figures 9–14). The dataset was used to fine-tune the project's
+  YOLO11n detector (50 epochs, 2026-11-06); the weights and ONNX export are not
+  redistributed and remain AGPL-3.0 (see below).
 - **Attribution:** "Subway Surfers Object Dataset" by `horizon-cgt2k` on
   Roboflow Universe, licensed CC BY 4.0. The full attribution and modification
   record is reproduced in
@@ -96,7 +96,8 @@ are not part of the FlyWire dataset.
 
 - **Component:** Ultralytics YOLO11n checkpoint and its ONNX export
   (`models/YOLO11/deployment/yolo11n_v1_deployment/best.onnx`, SHA-256
-  `e6ad18f9…6aa77`).
+  `e6ad18f9…6aa77`). The deployed files are a project fine-tune of the upstream
+  YOLO11n release (50 epochs, 2026-11-06), not the upstream checkpoint itself.
 - **Licence:** GNU Affero General Public License v3.0 (AGPL-3.0).
 - **Distribution:** the weights and the ONNX file are **not** redistributed in
   this repository and are excluded by `.gitignore` (`models/`, `*.onnx`,
