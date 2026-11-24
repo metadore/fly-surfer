@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+type: software
+title: "FLY-SURFER"
+abstract: >-
+  Connectome-derived spiking neural simulation of a fruit fly brain driving a
+  game controller. The repository contains the perception, sensory encoding,
+  simulation, motor decoding and plasticity stack, the pre-registered
+  experimental protocols, and the recorded results, including a fully documented
+  negative result: at the recorded operating point the simulated motor
+  populations produced zero spikes.
+authors:
+  - family-names: Kharsan
+    given-names: Pratha
+version: "1.1"
+date-released: "2026-11-24"
+license: MIT
+repository-code: "https://github.com/metadore/fly-surfer"
+url: "https://github.com/metadore/fly-surfer"
+keywords:
+  - connectome
+  - Drosophila melanogaster
+  - spiking neural network
+  - leaky integrate-and-fire
+  - computational neuroscience
+references:
+  - type: preprint
+    title: >-
+      Teaching a Fruit Fly Brain to Play Subway Surfers Through
+      Connectome-Based Neural Simulation: Architecture, Learning Mechanisms,
+      Experimental Evaluation, and Motor-Output Limitations
+    authors:
+      - family-names: Kharsan
+        given-names: Pratha
+    year: 2026
+    doi: "10.5281/zenodo.24506776"
+    url: "https://doi.org/10.5281/zenodo.24506776"

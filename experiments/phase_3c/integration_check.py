@@ -86,12 +86,13 @@ STABLE_SPIKE_LIMIT = 10_000
 
 PROTECTED = {
     # Baseline is the committed README. The README was intentionally expanded on
-    # 2026-11-24 (v1.1) into a full project and data-provenance document; update
-    # this only for intentional, committed README changes. Earlier re-pins are
-    # recorded in reports/RELEASE_CORRECTIONS_1_1.md.
+    # 2026-11-24 (v1.1) into a full project and data-provenance document, and
+    # later that day gained the Zenodo publication record; update this only for
+    # intentional, committed README changes. All re-pins are recorded in
+    # reports/RELEASE_CORRECTIONS_1_1.md.
     "README.md": (
         PROJECT_ROOT / "README.md",
-        "9dab9dc47281261c6c60996764adaf951276c173e5c40acce91b6e2e9914ef54",
+        "15a17de886d29c8b325c00791d888934e207e8ab65fac7560e1fc954fad7a05b",
     ),
     "split_manifest": (
         PROJECT_ROOT / "reports" / "PHASE_3B1_SPLIT_MANIFEST.json",

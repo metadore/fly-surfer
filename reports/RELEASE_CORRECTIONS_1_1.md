@@ -79,3 +79,38 @@ destination:
 The rest of the test is unchanged: the training gate still refuses further
 training, that refusal is still reported only under `training_blockers`, and the
 stage remains non-executable because the training artifacts are not loaded.
+
+## 3. README expansion and Zenodo publication record
+
+### What was wrong
+
+After the re-pin recorded in section 1, `README.md` was intentionally rewritten
+in commit `effa62d` into a full project and data-provenance document. That
+revision changed the protected README digest to `9dab9dc4…ef54` but was not
+recorded here at the time. The README has since been extended with a
+"Research Publication" section and a DOI badge recording the Zenodo release.
+
+### What changed
+
+| File | Line | Old digest | New digest |
+|---|---|---|---|
+| `experiments/phase_3c/integration_check.py` | 95 | `8a79d44d…164` | `15a17de8…05b` |
+| `experiments/phase_3c/p3_3c5_lane_encoding.py` | 115 | `8a79d44d…164` | `15a17de8…05b` |
+| `experiments/phase_3c/p3_t4_1_four_neuron_validation.py` | 70 | `8a79d44d…164` | `15a17de8…05b` |
+| `experiments/phase_3c/temporal_acceptance.py` | 72 | `8a79d44d…164` | `15a17de8…05b` |
+| `configs/causal_control_config.yaml` | 30 | `8a79d44d…164` | `15a17de8…05b` |
+
+Full new digest: `15a17de886d29c8b325c00791d888934e207e8ab65fac7560e1fc954fad7a05b`.
+
+The intermediate value `9dab9dc47281261c6c60996764adaf951276c173e5c40acce91b6e2e9914ef54`
+(commit `effa62d`) is recorded here only for completeness; it never appeared in
+a public release.
+
+### Why this is not a scientific change
+
+As in section 1, this is documentation only. No experiment parameter, condition,
+seed, duration, threshold or current changed, no experimental code or frozen
+research artifact was modified, and no recorded result was altered. The
+publication record states the same qualified negative result as the rest of the
+repository. Historical result files that embed the configuration hash are left
+untouched.

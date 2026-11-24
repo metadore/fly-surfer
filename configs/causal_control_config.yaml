@@ -24,9 +24,10 @@ reference:
   connectome_sha256: 3f568f24e3d77134a8d2d38f82856b8d685c310a1b0cfe941a1c95eeab5f33d8
   readme: README.md
   # Documentation baseline only: the v1.1 README revision of 2026-11-24 added
-  # project-wide results, dataset provenance and citations.
+  # project-wide results, dataset provenance, citations and the Zenodo
+  # publication record (DOI 10.5281/zenodo.24506776).
   # No experiment parameter, protocol value or recorded result changed.
-  readme_sha256: 9dab9dc47281261c6c60996764adaf951276c173e5c40acce91b6e2e9914ef54
+  readme_sha256: 15a17de886d29c8b325c00791d888934e207e8ab65fac7560e1fc954fad7a05b
   sensory_config: configs/sensory_config.yaml
   sensory_config_sha256: 26d782a3b5910c05d433fa6678557f7c806dc9947ee8ad279e246fa34f4e96db
   simulation_config: configs/simulation_config.yaml

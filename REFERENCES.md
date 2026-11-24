@@ -66,7 +66,20 @@ data or claiming a specific release.
 
 ## Citing this repository
 
-No archived release or `CITATION.cff` has been created yet, and no project-wide
-source licence has been selected. Until those exist, cite the repository URL
-and the exact commit hash used. The underlying FlyWire data must still be
-attributed separately under its CC BY 4.0 terms.
+The software is released as version 1.1, and machine-readable citation metadata
+are provided in `CITATION.cff`. That file describes the software under its MIT
+licence and records the paper DOI only as a related publication, never as the
+software DOI.
+
+The accompanying research paper is published on Zenodo:
+
+> Kharsan, P. (2026). *Teaching a Fruit Fly Brain to Play Subway Surfers Through
+> Connectome-Based Neural Simulation: Architecture, Learning Mechanisms,
+> Experimental Evaluation, and Motor-Output Limitations* (Version 1.1).
+> Zenodo. <https://doi.org/10.5281/zenodo.24506776>
+
+`10.5281/zenodo.24506776` identifies the v1.1 record; the concept DOI
+`10.5281/zenodo.24506775` identifies the work across versions. Cite the
+version-specific DOI when reproducing these results, and record the exact commit
+hash used. The underlying FlyWire data must still be attributed separately under
+its CC BY 4.0 terms.

@@ -1,5 +1,7 @@
 # FLY-SURFER
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24506776.svg)](https://doi.org/10.5281/zenodo.24506776)
+
 Connectome-derived spiking neural simulation of a fruit fly brain driving a game
 controller, with a fully documented negative result.
 
@@ -41,6 +43,39 @@ activity.
 
 The paper is licensed CC BY 4.0, © 2026 metadore. Original source code is MIT.
 Third-party datasets and model weights keep their own licences (see §8).
+
+## Research Publication
+
+The research paper accompanying this repository is published on Zenodo.
+
+**Teaching a Fruit Fly Brain to Play Subway Surfers Through Connectome-Based
+Neural Simulation: Architecture, Learning Mechanisms, Experimental Evaluation,
+and Motor-Output Limitations**
+
+- **Author:** Pratha Kharsan
+- **Version:** 1.1
+- **Publication date:** 24 November 2026
+- **Publisher:** Zenodo
+- **Resource type:** Preprint
+- **Version-specific DOI:** [10.5281/zenodo.24506776](https://doi.org/10.5281/zenodo.24506776)
+- **Concept DOI (all versions):** [10.5281/zenodo.24506775](https://doi.org/10.5281/zenodo.24506775)
+- **Zenodo record and paper download:** <https://doi.org/10.5281/zenodo.24506776>
+- **Licence (paper content):** CC BY 4.0
+
+The version-specific DOI identifies this exact release (v1.1); the concept DOI
+identifies the work across versions. Use the version-specific DOI when citing
+these results.
+
+### Citation
+
+> Kharsan, P. (2026). *Teaching a Fruit Fly Brain to Play Subway Surfers Through
+> Connectome-Based Neural Simulation: Architecture, Learning Mechanisms,
+> Experimental Evaluation, and Motor-Output Limitations* (Version 1.1).
+> Zenodo. <https://doi.org/10.5281/zenodo.24506776>
+
+Publication does not change the recorded result: the simulated motor populations
+produced zero spikes at the operating point, so this is a qualified negative
+finding, not a demonstration of game-playing or of biological learning. See §11.
 
 ## 1. What the project did
 
