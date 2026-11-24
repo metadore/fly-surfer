@@ -2,19 +2,22 @@
 
 SCIENTIFIC STATUS
     The training *engine* already exists and is tested on synthetic fixtures.
-    This module is the orchestration layer that a future authorised run would
-    call. It adds no learner, no schedule and no default:
+    This module is the orchestration layer a future authorised run would call.
+    Owner decision D4 (2026-11-21) declares the four training-operation
+    contracts, and this module reports them:
 
-    * the campaign-to-training seed pairing (B3) is an explicit caller input;
-    * the training-episode environment-seed schedule (B4) is an explicit
-      caller input — REV4 declares none;
-    * the checkpoint cadence, retention and format (B5) are explicit caller
-      inputs, or checkpoints are simply not written;
-    * bit-identical resume is not claimed (B6): the checkpoint interface
-      restores parameters and counters only.
+    * B3 — the campaign-to-training seed pairing is derived from the declared
+      pools with the D4 SHA-256 namespace, not supplied arbitrarily;
+    * B4 — the training-episode environment-seed schedule is the declared
+      namespace derivation; a caller may instead pass an explicit schedule;
+    * B5 — exact checkpoints after every completed episode, all retained;
+    * B6 — parameters, optimizer moments and every RNG stream are stored, and
+      exactness is only claimed after :func:`~..training.exact_checkpoint.
+      verify_equivalence` demonstrates it.
 
-    ``plan_training_stage`` is read-only and currently refuses because
-    ``design.n_seeds_selected`` is null. ``execute_training_stage`` calls
+    D4 authorises no execution. ``plan_training_stage`` is read-only and still
+    refuses because ``design.n_seeds_selected`` is null.
+    ``execute_training_stage`` calls
     :func:`..training.gate.assert_training_authorized` first, which always
     raises on the present approval state.
 """
@@ -31,11 +34,19 @@ from ..campaign.protocol import CampaignNotAuthorized
 from ..config import ConfigError, MemoryGateError, Phase8Config, load_phase8_config
 from ..training.checkpoint import describe_checkpoint_interface
 from ..training.config import TRAINABLE_CONDITIONS, validate_training_config
+from ..training.contracts import (
+    B3_DERIVATION,
+    B4_DERIVATION,
+    B4_NAMESPACE,
+    describe_training_contracts,
+    derive_b3_pairing,
+)
 from ..training.errors import (
     DesignUnresolvedError,
     TrainingConfigError,
     TrainingNotAuthorized,
 )
+from ..training.exact_checkpoint import describe_exact_checkpoint_interface
 from ..training.gate import (
     assert_training_authorized,
     design_status,
@@ -55,6 +66,7 @@ EXIT_OK = 0
 EXIT_INCOMPLETE = 1
 EXIT_REFUSED = 2
 
+#: Used only when D4 is not applicable: the contracts are not declared.
 DECLARATION_BLOCKERS = (
     "B3: no campaign-to-training seed pairing is declared; supply an explicit "
     "(condition, campaign_seed) -> training_seed map",
@@ -67,8 +79,21 @@ DECLARATION_BLOCKERS = (
 )
 
 
+def derived_pairing(config: Phase8Config) -> dict | None:
+    """The D4 B3 pairing over the declared pools, with its provenance."""
+    try:
+        return derive_b3_pairing(
+            config.campaign.pilot_seeds,
+            config.campaign.training_seeds,
+            master_seed=config.campaign.master_seed,
+        )
+    except TrainingConfigError:
+        return None
+
+
 def describe_training_stage(config: Phase8Config) -> dict:
     training_config = validate_training_config(config)
+    declarations = training_authorization_status()["training_declarations"]
     record = stage_envelope(TRAINING_STAGE)
     record.update(
         {
@@ -77,6 +102,8 @@ def describe_training_stage(config: Phase8Config) -> dict:
             "authorization": training_authorization_status(),
             "campaign_authorization": authorization_snapshot(),
             "checkpoint": describe_checkpoint_interface(),
+            "exact_checkpoint": describe_exact_checkpoint_interface(),
+            "contracts": describe_training_contracts(),
             "training_config": {
                 "sha256": training_config.sha256(),
                 "readout_episodes_per_seed": training_config.readout_episodes_per_seed,
@@ -84,12 +111,30 @@ def describe_training_stage(config: Phase8Config) -> dict:
                 "trainable_conditions": list(TRAINABLE_CONDITIONS),
             },
             "declarations": {
-                "seed_pairing": None,
-                "environment_seed_schedule": None,
-                "checkpoint_policy": None,
-                "bit_identical_resume": False,
+                "owner_decision": "D4",
+                "applicable": declarations["applicable"],
+                "declared": declarations["declared"],
+                "seed_pairing": derived_pairing(config),
+                "seed_pairing_derivation": dict(B3_DERIVATION),
+                "environment_seed_schedule": {
+                    "namespace": B4_NAMESPACE,
+                    "derivation": dict(B4_DERIVATION),
+                    "applied_when": "environment_seed_for_episode is None",
+                },
+                "checkpoint_policy": describe_exact_checkpoint_interface()["b5"],
+                "bit_identical_resume": {
+                    "supported": True,
+                    "claimed": False,
+                    "verification": "exact_checkpoint.verify_equivalence",
+                    "reason": (
+                        "the components are stored; exactness is demonstrated "
+                        "by comparing an uninterrupted run with an "
+                        "interrupted-and-resumed run, never assumed"
+                    ),
+                },
+                "failures": declarations["failures"],
             },
-            "execution_blockers": list(DECLARATION_BLOCKERS),
+            "execution_blockers": list(training_authorization_status()["blockers"]),
             "training_performed": False,
             "artifacts_written": 0,
             "note": NO_EXECUTION_NOTE,
@@ -178,19 +223,26 @@ def execute_training_stage(
 ) -> None:
     """Refuse to train until the protocol is approved.
 
-    Every argument after ``pairing`` exists so a future authorised call cannot
-    silently invent B4, B5 or B6. The authorisation gate runs first.
+    The authorisation gate runs first and always raises on the present state.
+    Past that gate the D4 contracts are enforced: a non-applicable D4 is a
+    refusal, an absent environment schedule selects the declared B4 namespace,
+    and a bit-identical-resume requirement needs the declared B5 policy.
     """
     assert_training_authorized()
-    if environment_seed_for_episode is None:
+    declarations = training_authorization_status()["training_declarations"]
+    if not declarations["applicable"]:
         raise StageRefusal(
             TRAINING_STAGE,
-            [DECLARATION_BLOCKERS[1]],
+            list(declarations["undischarged"].values()),
         )
-    if require_bit_identical_resume:
+    if require_bit_identical_resume and checkpoint_policy is None:
         raise StageRefusal(
             TRAINING_STAGE,
-            [DECLARATION_BLOCKERS[3]],
+            [
+                "bit-identical resume is only claimed under the D4 B5 checkpoint "
+                "policy and after exact_checkpoint.verify_equivalence; supply a "
+                "checkpoint policy"
+            ],
         )
     plan = plan_training_stage(config, pairing=pairing)
     run_training(plan, root=root)
@@ -292,9 +344,10 @@ def main(argv: list[str] | None = None) -> int:
 __all__ = [
     "DECLARATION_BLOCKERS",
     "TRAINING_STAGE",
+    "derived_pairing",
+    "describe_training_stage",
     "execute_training_stage",
     "load_pairing",
     "main",
     "plan_training_stage",
-    "describe_training_stage",
 ]

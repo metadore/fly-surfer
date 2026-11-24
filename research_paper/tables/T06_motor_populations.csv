@@ -1,0 +1,8 @@
+﻿population,size,basis,role
+LEFT,185,annotation: left leg effectors,decoded action
+RIGHT,186,annotation: right leg effectors,decoded action
+JUMP,20,annotation: tergotrochanter candidates (10 L / 10 R),decoded action
+unassigned,414,motor neurons without LEFT/RIGHT/JUMP label,never decoded
+TOTAL,805,annotation-defined motor neurons,
+ROLL,0,unsupported,"reported, not invented"
+DUCK,0,unsupported,"reported, not invented"

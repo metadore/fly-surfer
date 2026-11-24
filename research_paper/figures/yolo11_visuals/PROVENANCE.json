@@ -1,0 +1,2674 @@
+{
+  "task": "YOLO11n visual documentation figures (Figures 9-14)",
+  "generated_utc": "2026-11-23T14:37:27Z",
+  "figures": {
+    "9": {
+      "file": "figures/yolo11_visuals/Y01_training_samples.png",
+      "pixel_size": [
+        3467,
+        2421
+      ],
+      "caption": "Six unmodified curated training images, one for each of six high-frequency classes, shown without annotation. Their ground truth is drawn in Figure 10.",
+      "data_source": "datasets/exports/phase_3b2b1_yolo11n/train/images (originals under datasets/external/.../v15)",
+      "note": "Six unmodified curated training images, one per high-frequency class.",
+      "images": [
+        {
+          "name": "subwayedited2_mp4-126_jpg.rf.048ee9c2e9c53dbe1a5cc70aea1fbb00.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayedited2_mp4-126_jpg.rf.048ee9c2e9c53dbe1a5cc70aea1fbb00.jpg",
+          "original_path": "datasets/external/subway surfers/roboflow_v15_yolov8/subway surfers object dataset.v15-added.yolov8/train/images/subwayedited2_mp4-126_jpg.rf.048ee9c2e9c53dbe1a5cc70aea1fbb00.jpg",
+          "sha256": "e9f6d031b2e8c667a2fde31692f7032d33a69f81c69a143bb1a9aab9ba836b6c",
+          "label_sha256": "e74e3660bc62a834eb4d282b9d5e16cda9f404aebbc1cd5567c8da97e55741e8",
+          "boxes": 3
+        },
+        {
+          "name": "subwayedited2_mp4-226_jpg.rf.06e5611632b20f0221ea1400b4267f59.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayedited2_mp4-226_jpg.rf.06e5611632b20f0221ea1400b4267f59.jpg",
+          "original_path": "datasets/external/subway surfers/roboflow_v15_yolov8/subway surfers object dataset.v15-added.yolov8/train/images/subwayedited2_mp4-226_jpg.rf.06e5611632b20f0221ea1400b4267f59.jpg",
+          "sha256": "0d97d59e04862e4b327ee0ce81c73b6f2031b26b06057e160cd6d8c23cc58b6c",
+          "label_sha256": "65becdc7b42e6048c6fe12b5f92fc77622d9873dd7a329a99afbf4c801229d42",
+          "boxes": 5
+        },
+        {
+          "name": "subwayedtied_mp4-59_jpg.rf.23133e519a4ca7a9adf6a2dfc8fcec7c.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayedtied_mp4-59_jpg.rf.23133e519a4ca7a9adf6a2dfc8fcec7c.jpg",
+          "original_path": "datasets/external/subway surfers/roboflow_v15_yolov8/subway surfers object dataset.v15-added.yolov8/valid/images/subwayedtied_mp4-59_jpg.rf.23133e519a4ca7a9adf6a2dfc8fcec7c.jpg",
+          "sha256": "bbc3c397a25b61accdfe25a4658e47602245f15713f0210f263ee1e6c1baaa3a",
+          "label_sha256": "e18be23691b3760216b2bf722dc702f76984f52bc87d72e11e047a3c23f5e15c",
+          "boxes": 4
+        },
+        {
+          "name": "subwayedtied_mp4-163_jpg.rf.ecc60997dfab88d97acfb9ec5dddaa7e.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayedtied_mp4-163_jpg.rf.ecc60997dfab88d97acfb9ec5dddaa7e.jpg",
+          "original_path": "datasets/external/subway surfers/roboflow_v15_yolov8/subway surfers object dataset.v15-added.yolov8/valid/images/subwayedtied_mp4-163_jpg.rf.ecc60997dfab88d97acfb9ec5dddaa7e.jpg",
+          "sha256": "3b70c814b5af38cf09ed6e8ee9503406db590dddc08daa9d37277634f21288b3",
+          "label_sha256": "a840275c7d3568714b73317214125fc6260e9f14d116cdac3bbb34145959beed",
+          "boxes": 4
+        },
+        {
+          "name": "subwayavitomp4_mp4-907_jpg.rf.30cf28613c091e5ca32a7b53991df15e.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayavitomp4_mp4-907_jpg.rf.30cf28613c091e5ca32a7b53991df15e.jpg",
+          "original_path": "datasets/external/subway surfers/roboflow_v15_yolov8/subway surfers object dataset.v15-added.yolov8/train/images/subwayavitomp4_mp4-907_jpg.rf.30cf28613c091e5ca32a7b53991df15e.jpg",
+          "sha256": "9b9a99a1a8322cee0fa88d6efb6914d0028bb8928fd3a92305ee1fa107566684",
+          "label_sha256": "6675ad3c8f9cf8ef91680cc8796213f611258adff5f3181f6ee7b1fab4f16611",
+          "boxes": 2
+        },
+        {
+          "name": "subwayavitomp4_mp4-449_jpg.rf.6409b26145a57f4adffe35e9b0c318b7.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayavitomp4_mp4-449_jpg.rf.6409b26145a57f4adffe35e9b0c318b7.jpg",
+          "original_path": "datasets/external/subway surfers/roboflow_v15_yolov8/subway surfers object dataset.v15-added.yolov8/train/images/subwayavitomp4_mp4-449_jpg.rf.6409b26145a57f4adffe35e9b0c318b7.jpg",
+          "sha256": "4f6f9f8ff7e275efc19a412db425d017148aefb8b17b462da7e79582abc36b62",
+          "label_sha256": "3724d980b5149f5c9e57922d126ea5d4d5209a5ca80a5a1e497c17d0881473d6",
+          "boxes": 4
+        }
+      ]
+    },
+    "10": {
+      "file": "figures/yolo11_visuals/Y02_ground_truth.png",
+      "pixel_size": [
+        3467,
+        2579
+      ],
+      "caption": "Ground-truth annotations for the six curated training images of Figure 9, drawn from the original label files at the original image scale.",
+      "data_source": "the six Figure 9 images; labels in datasets/exports/phase_3b2b1_yolo11n/train/labels",
+      "note": "Ground-truth boxes for the six Figure 9 images."
+    },
+    "11": {
+      "file": "figures/yolo11_visuals/Y03_class_diversity.png",
+      "pixel_size": [
+        2023,
+        2342
+      ],
+      "caption": "One labelled instance for each of the 14 classes from the curated training split, with the per-class support in that split. Classes with fewer than 40 images are marked, and the two classes absent from the validation split are named.",
+      "data_source": "datasets/exports/phase_3b2b1_yolo11n/train (images and labels)",
+      "note": "One labelled instance for each of the 14 classes; low-support classes marked.",
+      "images": [
+        {
+          "class": "boots-powerup",
+          "name": "subwayedtied_mp4-242_jpg.rf.0aa3f3d74d1ba3c96573b82658d9865c.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayedtied_mp4-242_jpg.rf.0aa3f3d74d1ba3c96573b82658d9865c.jpg",
+          "sha256": "937da73cd79d8b6523c740245e2b4157a15cf1b9b0d1c0119b393bbcccf3a878",
+          "label_sha256": "b958f06503c06123dca9e827b4eb1707a54e9d9e3d988ed6d4410dc8df9a5333",
+          "target_box": [
+            403.92,
+            456.69,
+            516.08,
+            565.13
+          ],
+          "support_images": 24,
+          "support_boxes": 24
+        },
+        {
+          "class": "boxtrain",
+          "name": "subwayedited2_mp4-133_jpg.rf.b3443abdc6a8684ba2568721daffc62b.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayedited2_mp4-133_jpg.rf.b3443abdc6a8684ba2568721daffc62b.jpg",
+          "sha256": "a065ec25c50a25be4c9d9ae62a535fa23300c0fbc51c912ae7b0dc8377e32344",
+          "label_sha256": "bde3e1de1935efdd37a2b490afff906b2839cc99b74d1af7337dd1c41e7a3c78",
+          "target_box": [
+            2.355,
+            462.96,
+            568.885,
+            1050.0
+          ],
+          "support_images": 482,
+          "support_boxes": 625
+        },
+        {
+          "class": "jump-barrier",
+          "name": "subwayavitomp4_mp4-449_jpg.rf.6409b26145a57f4adffe35e9b0c318b7.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayavitomp4_mp4-449_jpg.rf.6409b26145a57f4adffe35e9b0c318b7.jpg",
+          "sha256": "4f6f9f8ff7e275efc19a412db425d017148aefb8b17b462da7e79582abc36b62",
+          "label_sha256": "3724d980b5149f5c9e57922d126ea5d4d5209a5ca80a5a1e497c17d0881473d6",
+          "target_box": [
+            61.515,
+            729.01,
+            506.825,
+            1022.55
+          ],
+          "support_images": 221,
+          "support_boxes": 254
+        },
+        {
+          "class": "jump-electric",
+          "name": "subwayedited2_mp4-331_jpg.rf.a903cda9ec6704f0316b128c14774a22.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayedited2_mp4-331_jpg.rf.a903cda9ec6704f0316b128c14774a22.jpg",
+          "sha256": "ee5f948f34d244fc3c447accd5234b5d36717388cb9e50a69776fa98851b170b",
+          "label_sha256": "b5b8ed2b667ce642500840099b8502bcd2e1a879a97bd1873ca9ece3ee62d748",
+          "target_box": [
+            31.375,
+            673.815,
+            356.125,
+            844.625
+          ],
+          "support_images": 14,
+          "support_boxes": 14
+        },
+        {
+          "class": "jump-hedge",
+          "name": "subwayedited2_mp4-247_jpg.rf.35239622834c694909031b7eaa0edb85.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayedited2_mp4-247_jpg.rf.35239622834c694909031b7eaa0edb85.jpg",
+          "sha256": "6d586d17f9287d21f0a91e7ba065577678682920d13394a45642a32608bfeba1",
+          "label_sha256": "25418d9e3e956ca5c3185433f8182b1c6acadf7c7e0e70c3f5939fa979184ca0",
+          "target_box": [
+            244.16,
+            562.905,
+            452.62,
+            750.535
+          ],
+          "support_images": 17,
+          "support_boxes": 18
+        },
+        {
+          "class": "jump-roll-barrier",
+          "name": "subwayavitomp4_mp4-907_jpg.rf.30cf28613c091e5ca32a7b53991df15e.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayavitomp4_mp4-907_jpg.rf.30cf28613c091e5ca32a7b53991df15e.jpg",
+          "sha256": "9b9a99a1a8322cee0fa88d6efb6914d0028bb8928fd3a92305ee1fa107566684",
+          "label_sha256": "6675ad3c8f9cf8ef91680cc8796213f611258adff5f3181f6ee7b1fab4f16611",
+          "target_box": [
+            0.355,
+            35.74,
+            196.385,
+            1043.7
+          ],
+          "support_images": 359,
+          "support_boxes": 407
+        },
+        {
+          "class": "jump-trash",
+          "name": "subwayavitomp4_mp4-1030_jpg.rf.6f33b72001341aaa1cb19804d5496bd0.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayavitomp4_mp4-1030_jpg.rf.6f33b72001341aaa1cb19804d5496bd0.jpg",
+          "sha256": "d737901a11625cdf2b8af335f1bfb2c3c612304b84015cc4307207ef674af0f7",
+          "label_sha256": "46204677e14140a71288145f7e88c4b07f797a11bacb3339bd7e3d2f9a3a92bf",
+          "target_box": [
+            186.025,
+            639.415,
+            572.235,
+            950.985
+          ],
+          "support_images": 33,
+          "support_boxes": 34
+        },
+        {
+          "class": "ledge",
+          "name": "subwayedited2_mp4-335_jpg.rf.534bbf697711e1721faf544d143bdb97.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayedited2_mp4-335_jpg.rf.534bbf697711e1721faf544d143bdb97.jpg",
+          "sha256": "ccefb4c68ef00bcda7d21dfd76fa583c4e7f82015c2cddb14a9db163f579b1f3",
+          "label_sha256": "111f19823610ce31766163b2a85dcd81f33b0787f4fb4bc2087efc6250674e48",
+          "target_box": [
+            207.62,
+            667.385,
+            482.32,
+            787.135
+          ],
+          "support_images": 57,
+          "support_boxes": 87
+        },
+        {
+          "class": "pogstick-powerup",
+          "name": "subwayedtied_mp4-185_jpg.rf.f5c07ee1beb7a957c383a8f652a25090.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayedtied_mp4-185_jpg.rf.f5c07ee1beb7a957c383a8f652a25090.jpg",
+          "sha256": "48dca5b1f6cc23523ea1004cf677dc9e92e7b67557ace5f060167c442fb203ff",
+          "label_sha256": "8121853b7ca063ad58836f91de41412813a5a0c9d9e5d3209c29620b9f92691c",
+          "target_box": [
+            428.605,
+            507.205,
+            572.755,
+            840.875
+          ],
+          "support_images": 53,
+          "support_boxes": 53
+        },
+        {
+          "class": "ramp",
+          "name": "subwayedtied_mp4-59_jpg.rf.23133e519a4ca7a9adf6a2dfc8fcec7c.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayedtied_mp4-59_jpg.rf.23133e519a4ca7a9adf6a2dfc8fcec7c.jpg",
+          "sha256": "bbc3c397a25b61accdfe25a4658e47602245f15713f0210f263ee1e6c1baaa3a",
+          "label_sha256": "e18be23691b3760216b2bf722dc702f76984f52bc87d72e11e047a3c23f5e15c",
+          "target_box": [
+            1.0,
+            411.0,
+            573.0,
+            1050.0
+          ],
+          "support_images": 444,
+          "support_boxes": 606
+        },
+        {
+          "class": "roll-barrier",
+          "name": "subwayedited2_mp4-112_jpg.rf.0a854a3c66515f8fad8c3914120090a4.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayedited2_mp4-112_jpg.rf.0a854a3c66515f8fad8c3914120090a4.jpg",
+          "sha256": "33dfc748e793e1cc7d619c031eef56ff0ef4745b8d5550244d122729aef53faf",
+          "label_sha256": "1ae178c59e5581070d07c2bbc2153895e26fb17542d4f395e887ac78c03edd6d",
+          "target_box": [
+            0.0,
+            387.28,
+            530.32,
+            1050.0
+          ],
+          "support_images": 141,
+          "support_boxes": 147
+        },
+        {
+          "class": "train",
+          "name": "subwayedited2_mp4-126_jpg.rf.048ee9c2e9c53dbe1a5cc70aea1fbb00.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayedited2_mp4-126_jpg.rf.048ee9c2e9c53dbe1a5cc70aea1fbb00.jpg",
+          "sha256": "e9f6d031b2e8c667a2fde31692f7032d33a69f81c69a143bb1a9aab9ba836b6c",
+          "label_sha256": "e74e3660bc62a834eb4d282b9d5e16cda9f404aebbc1cd5567c8da97e55741e8",
+          "target_box": [
+            66.825,
+            347.14,
+            500.295,
+            1050.0
+          ],
+          "support_images": 883,
+          "support_boxes": 1617
+        },
+        {
+          "class": "undercover-barrier",
+          "name": "subwayavitomp4_mp4-465_jpg.rf.5f7bfafae28c4fe5838ad3b9eb82d1a3.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayavitomp4_mp4-465_jpg.rf.5f7bfafae28c4fe5838ad3b9eb82d1a3.jpg",
+          "sha256": "6e2c95aade2910f7501e1d7e6076e5e03243231243d4bf84a2d71808f722535f",
+          "label_sha256": "1a32b7bff1a6f5212847e56ee8854b0e8f6701b4d5bb580421e06b66ccbd7e9f",
+          "target_box": [
+            388.805,
+            286.065,
+            546.135,
+            744.775
+          ],
+          "support_images": 84,
+          "support_boxes": 196
+        },
+        {
+          "class": "wall",
+          "name": "subwayedited2_mp4-187_jpg.rf.648b2a5e066bcb66af76dc37589c6d88.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/train/images/subwayedited2_mp4-187_jpg.rf.648b2a5e066bcb66af76dc37589c6d88.jpg",
+          "sha256": "e42298701bc329dfd761fbdf9eb21988e69e5441b232f6f805c0d63f4bf68e8a",
+          "label_sha256": "35ec262f8e3513b64a36c712dd1e6e77766ec950b342d367377b268d05b32082",
+          "target_box": [
+            291.0,
+            22.0,
+            572.0,
+            1050.0
+          ],
+          "support_images": 279,
+          "support_boxes": 622
+        }
+      ]
+    },
+    "12": {
+      "file": "figures/yolo11_visuals/Y04_predictions.png",
+      "pixel_size": [
+        3476,
+        2619
+      ],
+      "caption": "Actual predictions of the deployed YOLO11n ONNX model on curated validation images at the deployment confidence and NMS settings, with predicted class and confidence. No accuracy metric is re-estimated.",
+      "data_source": "curated validation images + deployment best.onnx (SHA-256 e6ad18f9...6aa77)",
+      "note": "Six curated validation images with actual ONNX detections at the deployment thresholds.",
+      "images": [
+        {
+          "name": "datasetfootage_mp4-111_jpg.rf.9c94c489144333ad643331ec11166aa8.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/valid/images/datasetfootage_mp4-111_jpg.rf.9c94c489144333ad643331ec11166aa8.jpg",
+          "sha256": "c371ab52ceea42d819446842f131193cb5aee587037f282ec8b713bb5e28bc72",
+          "label_sha256": "7fe842a86c69529c0aa14be7737fbd07292c174a383b86f0800d885bf521561f",
+          "gt_boxes": [
+            [
+              186.1,
+              309.49,
+              256.14,
+              374.65
+            ],
+            [
+              165.74,
+              355.505,
+              191.4,
+              375.055
+            ],
+            [
+              275.285,
+              295.645,
+              358.355,
+              391.755
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 11,
+              "confidence": 0.932056,
+              "box": [
+                183.052,
+                309.161,
+                255.239,
+                371.711
+              ]
+            },
+            {
+              "class_id": 1,
+              "confidence": 0.923093,
+              "box": [
+                273.331,
+                294.708,
+                355.313,
+                393.392
+              ]
+            },
+            {
+              "class_id": 5,
+              "confidence": 0.460442,
+              "box": [
+                163.679,
+                355.217,
+                193.931,
+                380.05
+              ]
+            }
+          ]
+        },
+        {
+          "name": "datasetfootage_mp4-11_jpg.rf.b9a41c0c0af4f913b7542d9bc25283ac.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/valid/images/datasetfootage_mp4-11_jpg.rf.b9a41c0c0af4f913b7542d9bc25283ac.jpg",
+          "sha256": "f7e5db441a27db8736c91902ecb37c374169d189dcbdeca1f25fe7a534a1a4e1",
+          "label_sha256": "6701dee21e8d223a1266fc1fbef494a87d67b0fabcd596d59abfa4da1e778fe7",
+          "gt_boxes": [
+            [
+              0.005,
+              286.775,
+              366.935,
+              779.025
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 1,
+              "confidence": 0.854034,
+              "box": [
+                0.0,
+                291.429,
+                365.079,
+                782.128
+              ]
+            }
+          ]
+        },
+        {
+          "name": "datasetfootage_mp4-160_jpg.rf.e08632470fabc8383d3e4f0b79ead5c4.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/valid/images/datasetfootage_mp4-160_jpg.rf.e08632470fabc8383d3e4f0b79ead5c4.jpg",
+          "sha256": "6c30ab6914d90200da3d1c1a12af6fa931a16a0b0fa3a08c2cbbe7521fe568e2",
+          "label_sha256": "d76362e74fac85f8ca3583bb64c87a4d9fdd243133e18137d8e496cdb16aa2ff",
+          "gt_boxes": [
+            [
+              174.18,
+              291.95,
+              283.48,
+              455.55
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 9,
+              "confidence": 0.958648,
+              "box": [
+                174.116,
+                290.333,
+                284.396,
+                455.841
+              ]
+            }
+          ]
+        },
+        {
+          "name": "datasetfootage_mp4-200_jpg.rf.ba24aac5f964e1c2d40e2a294ae55ab9.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/valid/images/datasetfootage_mp4-200_jpg.rf.ba24aac5f964e1c2d40e2a294ae55ab9.jpg",
+          "sha256": "b9c55387c49553b132bcca41aeab0702f366ca8b45462a26c328b5c89a2e44c3",
+          "label_sha256": "6596433d516e257841ad6fdf024b6b5e3ea0393bd766bcfe523eae4a235c0f63",
+          "gt_boxes": [
+            [
+              173.15,
+              313.32,
+              211.17,
+              370.58
+            ],
+            [
+              292.255,
+              296.835,
+              332.105,
+              398.065
+            ],
+            [
+              217.585,
+              294.085,
+              291.795,
+              400.815
+            ],
+            [
+              327.525,
+              295.915,
+              554.275,
+              530.445
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 1,
+              "confidence": 0.954975,
+              "box": [
+                326.218,
+                292.94,
+                544.897,
+                529.043
+              ]
+            },
+            {
+              "class_id": 11,
+              "confidence": 0.934435,
+              "box": [
+                212.5,
+                293.926,
+                296.187,
+                403.07
+              ]
+            },
+            {
+              "class_id": 9,
+              "confidence": 0.833665,
+              "box": [
+                171.968,
+                313.443,
+                211.781,
+                372.06
+              ]
+            },
+            {
+              "class_id": 9,
+              "confidence": 0.73085,
+              "box": [
+                285.109,
+                295.582,
+                359.737,
+                397.372
+              ]
+            }
+          ]
+        },
+        {
+          "name": "datasetfootage_mp4-266_jpg.rf.150650a46b175c1a983765d32f4231a2.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/valid/images/datasetfootage_mp4-266_jpg.rf.150650a46b175c1a983765d32f4231a2.jpg",
+          "sha256": "42d3df6cea05a74eaf99e59bfbab680111d09a0ce3fab12e3098592f53d48172",
+          "label_sha256": "c5f92d9729cb07ea65fe59577235a259d0590fc2883cb809eb3bc9358f9d17d5",
+          "gt_boxes": [
+            [
+              165.16,
+              291.755,
+              306.82,
+              475.605
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 1,
+              "confidence": 0.969062,
+              "box": [
+                165.767,
+                294.195,
+                304.968,
+                477.651
+              ]
+            }
+          ]
+        },
+        {
+          "name": "datasetfootage_mp4-306_jpg.rf.a4dedacfee7bb4698d43edabf8f32cf0.jpg",
+          "export_path": "datasets/exports/phase_3b2b1_yolo11n/valid/images/datasetfootage_mp4-306_jpg.rf.a4dedacfee7bb4698d43edabf8f32cf0.jpg",
+          "sha256": "fcb583b27b37ac1a6e486220fa86c87e8f4c610b61ad7122fab0712ccd4efc45",
+          "label_sha256": "96ac6b00829656c89063e26aee240e1cab705d26bb15174ef0bf631c9ce33068",
+          "gt_boxes": [
+            [
+              141.43,
+              292.855,
+              224.29,
+              401.425
+            ],
+            [
+              307.145,
+              291.425,
+              452.855,
+              472.855
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 9,
+              "confidence": 0.931079,
+              "box": [
+                305.677,
+                290.933,
+                450.71,
+                468.507
+              ]
+            },
+            {
+              "class_id": 11,
+              "confidence": 0.910223,
+              "box": [
+                138.603,
+                293.591,
+                222.423,
+                403.838
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "13": {
+      "file": "figures/yolo11_visuals/Y05_gt_vs_prediction.png",
+      "pixel_size": [
+        2426,
+        1988
+      ],
+      "caption": "Paired ground-truth and detection panels for four curated validation images at identical scale, with unmatched boxes counted under the stated matching rule.",
+      "data_source": "curated validation labels + deployment best.onnx",
+      "note": "Four paired ground-truth/detection comparisons on identical images and scale.",
+      "images": [
+        {
+          "name": "datasetfootage_mp4-111_jpg.rf.9c94c489144333ad643331ec11166aa8.jpg",
+          "sha256": "c371ab52ceea42d819446842f131193cb5aee587037f282ec8b713bb5e28bc72",
+          "label_sha256": "7fe842a86c69529c0aa14be7737fbd07292c174a383b86f0800d885bf521561f",
+          "gt_boxes": [
+            [
+              186.1,
+              309.49,
+              256.14,
+              374.65
+            ],
+            [
+              165.74,
+              355.505,
+              191.4,
+              375.055
+            ],
+            [
+              275.285,
+              295.645,
+              358.355,
+              391.755
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 11,
+              "confidence": 0.932056,
+              "box": [
+                183.052,
+                309.161,
+                255.239,
+                371.711
+              ]
+            },
+            {
+              "class_id": 1,
+              "confidence": 0.923093,
+              "box": [
+                273.331,
+                294.708,
+                355.313,
+                393.392
+              ]
+            },
+            {
+              "class_id": 5,
+              "confidence": 0.460442,
+              "box": [
+                163.679,
+                355.217,
+                193.931,
+                380.05
+              ]
+            }
+          ],
+          "matched": [
+            {
+              "gt_index": 2,
+              "pred_index": 1,
+              "iou": 0.9175
+            },
+            {
+              "gt_index": 0,
+              "pred_index": 0,
+              "iou": 0.9005
+            },
+            {
+              "gt_index": 1,
+              "pred_index": 2,
+              "iou": 0.6678
+            }
+          ],
+          "missed_gt": [],
+          "extra_pred": []
+        },
+        {
+          "name": "datasetfootage_mp4-11_jpg.rf.b9a41c0c0af4f913b7542d9bc25283ac.jpg",
+          "sha256": "f7e5db441a27db8736c91902ecb37c374169d189dcbdeca1f25fe7a534a1a4e1",
+          "label_sha256": "6701dee21e8d223a1266fc1fbef494a87d67b0fabcd596d59abfa4da1e778fe7",
+          "gt_boxes": [
+            [
+              0.005,
+              286.775,
+              366.935,
+              779.025
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 1,
+              "confidence": 0.854034,
+              "box": [
+                0.0,
+                291.429,
+                365.079,
+                782.128
+              ]
+            }
+          ],
+          "matched": [
+            {
+              "gt_index": 0,
+              "pred_index": 0,
+              "iou": 0.9794
+            }
+          ],
+          "missed_gt": [],
+          "extra_pred": []
+        },
+        {
+          "name": "datasetfootage_mp4-128_jpg.rf.13ca4d313d3eb2863888fde6ab4133b7.jpg",
+          "sha256": "a174d8712d88cff9e464ddce66e58402ec3f533caaba8d05610d430a84376e40",
+          "label_sha256": "70d75e392eee31c124b630cec9a31c0b13ea41111e45bf0269aa7ca4df16bbcf",
+          "gt_boxes": [
+            [
+              181.14,
+              358.7,
+              233.78,
+              434.54
+            ],
+            [
+              141.88,
+              390.825,
+              182.92,
+              423.835
+            ],
+            [
+              224.42,
+              370.47,
+              439.34,
+              610.33
+            ],
+            [
+              0.005,
+              423.905,
+              238.675,
+              1049.995
+            ],
+            [
+              157.92,
+              607.185,
+              573.52,
+              1049.995
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 11,
+              "confidence": 0.972282,
+              "box": [
+                0.199,
+                418.525,
+                237.592,
+                1046.1
+              ]
+            },
+            {
+              "class_id": 9,
+              "confidence": 0.955149,
+              "box": [
+                143.609,
+                605.563,
+                573.606,
+                1049.677
+              ]
+            },
+            {
+              "class_id": 11,
+              "confidence": 0.834486,
+              "box": [
+                222.512,
+                367.292,
+                446.761,
+                759.118
+              ]
+            },
+            {
+              "class_id": 9,
+              "confidence": 0.827374,
+              "box": [
+                180.441,
+                356.93,
+                235.779,
+                430.618
+              ]
+            },
+            {
+              "class_id": 11,
+              "confidence": 0.781595,
+              "box": [
+                147.002,
+                359.374,
+                182.191,
+                404.878
+              ]
+            }
+          ],
+          "matched": [
+            {
+              "gt_index": 3,
+              "pred_index": 0,
+              "iou": 0.9801
+            },
+            {
+              "gt_index": 4,
+              "pred_index": 1,
+              "iou": 0.9623
+            },
+            {
+              "gt_index": 0,
+              "pred_index": 3,
+              "iou": 0.8837
+            },
+            {
+              "gt_index": 2,
+              "pred_index": 2,
+              "iou": 0.5867
+            }
+          ],
+          "missed_gt": [
+            1
+          ],
+          "extra_pred": [
+            4
+          ]
+        },
+        {
+          "name": "datasetfootage_mp4-144_jpg.rf.96feccc148883a09a538cbf58078efb3.jpg",
+          "sha256": "c1910039417df7b402f21bd7a90d7346b0b7fed907650229a5ca24e868cc744a",
+          "label_sha256": "0d9b753fa9f33349737f1d2fa8a6c32fa6176b29e86ad25675e353c4e16ef17b",
+          "gt_boxes": [
+            [
+              252.13,
+              331.535,
+              275.89,
+              371.525
+            ],
+            [
+              164.035,
+              259.66,
+              260.825,
+              384.28
+            ],
+            [
+              281.105,
+              259.66,
+              390.075,
+              384.28
+            ],
+            [
+              321.1,
+              340.805,
+              381.38,
+              388.915
+            ],
+            [
+              205.76,
+              339.065,
+              263.14,
+              390.075
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 5,
+              "confidence": 0.954927,
+              "box": [
+                323.945,
+                340.857,
+                380.6,
+                387.407
+              ]
+            },
+            {
+              "class_id": 13,
+              "confidence": 0.941334,
+              "box": [
+                281.029,
+                259.219,
+                389.27,
+                385.085
+              ]
+            },
+            {
+              "class_id": 13,
+              "confidence": 0.932397,
+              "box": [
+                164.902,
+                261.658,
+                262.06,
+                383.333
+              ]
+            },
+            {
+              "class_id": 5,
+              "confidence": 0.931825,
+              "box": [
+                206.473,
+                341.706,
+                263.482,
+                387.486
+              ]
+            }
+          ],
+          "matched": [
+            {
+              "gt_index": 2,
+              "pred_index": 1,
+              "iou": 0.9822
+            },
+            {
+              "gt_index": 1,
+              "pred_index": 2,
+              "iou": 0.9557
+            },
+            {
+              "gt_index": 3,
+              "pred_index": 0,
+              "iou": 0.9094
+            },
+            {
+              "gt_index": 4,
+              "pred_index": 3,
+              "iou": 0.8816
+            }
+          ],
+          "missed_gt": [
+            0
+          ],
+          "extra_pred": []
+        }
+      ]
+    },
+    "14": {
+      "file": "figures/yolo11_visuals/Y06_detection_examples.png",
+      "pixel_size": [
+        3426,
+        2658
+      ],
+      "caption": "Detection examples and limitations: correct detections, missed ground-truth objects, extra detections and low-confidence matches, with explicit disclosure of which error categories were observed in the selected panels.",
+      "data_source": "curated validation labels + deployment best.onnx",
+      "note": "Correct, missed, extra and low-confidence cases, with observed-category disclosure.",
+      "images": [
+        {
+          "name": "datasetfootage_mp4-193_jpg.rf.55e7d98f04df72dcf517ea956290b813.jpg",
+          "sha256": "0168bbf14c7657eb41714c7d0996d5128e107f990a5e7f100ad7f7a82412ba05",
+          "label_sha256": "c9429458795404fedcd72e9f74641680504be171f00e644ada938dc11ed2f592",
+          "gt_boxes": [
+            [
+              174.36,
+              313.47,
+              219.14,
+              369.21
+            ],
+            [
+              230.575,
+              299.65,
+              286.785,
+              376.35
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 11,
+              "confidence": 0.941499,
+              "box": [
+                164.838,
+                313.69,
+                219.43,
+                371.554
+              ]
+            },
+            {
+              "class_id": 1,
+              "confidence": 0.872814,
+              "box": [
+                220.404,
+                301.144,
+                286.765,
+                377.405
+              ]
+            }
+          ],
+          "matched": [
+            {
+              "gt_index": 1,
+              "pred_index": 1,
+              "iou": 0.8211
+            },
+            {
+              "gt_index": 0,
+              "pred_index": 0,
+              "iou": 0.7846
+            }
+          ],
+          "missed_gt": [],
+          "extra_pred": [],
+          "low_conf_matched": [],
+          "badge": "correct 2/2"
+        },
+        {
+          "name": "datasetfootage_mp4-225_jpg.rf.cc9bafabe3faa41e7bb6f0ffb4fa94b0.jpg",
+          "sha256": "851a0f549ac56c5791e006f9a1a95c970d74f80047ebf449233d67f08bb4edfd",
+          "label_sha256": "9fabfd2a4ff26f33044766a234569a590d7be470ee189ba22c9a387432c71a38",
+          "gt_boxes": [
+            [
+              182.025,
+              294.455,
+              368.515,
+              526.445
+            ],
+            [
+              0.0,
+              293.565,
+              190.06,
+              944.035
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 11,
+              "confidence": 0.953764,
+              "box": [
+                0.0,
+                290.966,
+                215.712,
+                941.836
+              ]
+            },
+            {
+              "class_id": 1,
+              "confidence": 0.953719,
+              "box": [
+                182.124,
+                295.056,
+                366.756,
+                536.623
+              ]
+            }
+          ],
+          "matched": [
+            {
+              "gt_index": 0,
+              "pred_index": 1,
+              "iou": 0.9464
+            },
+            {
+              "gt_index": 1,
+              "pred_index": 0,
+              "iou": 0.875
+            }
+          ],
+          "missed_gt": [],
+          "extra_pred": [],
+          "low_conf_matched": [],
+          "badge": "correct 2/2"
+        },
+        {
+          "name": "datasetfootage_mp4-258_jpg.rf.43b143cb0c29b76eb109581633f230bd.jpg",
+          "sha256": "944c5ea56984032a16673bf53ae2829034a555d7d84dd44f1db7a6f3a2f8d500",
+          "label_sha256": "e6eefbbab08205be19834ae7e1e59a09b2f50ad06b949bd0225eac44ef6b5c87",
+          "gt_boxes": [
+            [
+              388.58,
+              294.04,
+              572.44,
+              425.74
+            ],
+            [
+              259.4,
+              351.25,
+              313.9,
+              392.63
+            ],
+            [
+              0.0,
+              296.755,
+              302.8,
+              846.845
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 11,
+              "confidence": 0.960978,
+              "box": [
+                0.031,
+                294.445,
+                304.044,
+                847.307
+              ]
+            },
+            {
+              "class_id": 2,
+              "confidence": 0.814348,
+              "box": [
+                259.732,
+                351.794,
+                315.553,
+                391.314
+              ]
+            }
+          ],
+          "matched": [
+            {
+              "gt_index": 2,
+              "pred_index": 0,
+              "iou": 0.9908
+            },
+            {
+              "gt_index": 1,
+              "pred_index": 1,
+              "iou": 0.9225
+            }
+          ],
+          "missed_gt": [
+            0
+          ],
+          "extra_pred": [],
+          "low_conf_matched": [],
+          "badge": "missed 1, extra 0"
+        },
+        {
+          "name": "datasetfootage_mp4-299_jpg.rf.a3e50a68f7f8e68c7d2ab14489c891e6.jpg",
+          "sha256": "2148c4ad2095e920269a62595400f230bf89bba87ddfd8606cf24a47c1672ae7",
+          "label_sha256": "7b7e496d290f8d4a5a47f98607a6257bc5fa1df1311f76c64af99df4d6d58be1",
+          "gt_boxes": [
+            [
+              0.0,
+              117.85,
+              137.34,
+              604.11
+            ],
+            [
+              161.47,
+              117.85,
+              573.49,
+              702.47
+            ],
+            [
+              127.13,
+              564.21,
+              471.41,
+              832.39
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 13,
+              "confidence": 0.942637,
+              "box": [
+                152.368,
+                117.761,
+                573.161,
+                711.741
+              ]
+            },
+            {
+              "class_id": 5,
+              "confidence": 0.893156,
+              "box": [
+                122.518,
+                560.749,
+                469.777,
+                850.337
+              ]
+            },
+            {
+              "class_id": 13,
+              "confidence": 0.857431,
+              "box": [
+                0.0,
+                106.285,
+                132.304,
+                613.784
+              ]
+            },
+            {
+              "class_id": 5,
+              "confidence": 0.5654,
+              "box": [
+                462.0,
+                560.207,
+                574.59,
+                827.763
+              ]
+            }
+          ],
+          "matched": [
+            {
+              "gt_index": 1,
+              "pred_index": 0,
+              "iou": 0.9622
+            },
+            {
+              "gt_index": 0,
+              "pred_index": 2,
+              "iou": 0.9244
+            },
+            {
+              "gt_index": 2,
+              "pred_index": 1,
+              "iou": 0.9098
+            }
+          ],
+          "missed_gt": [],
+          "extra_pred": [
+            3
+          ],
+          "low_conf_matched": [],
+          "badge": "missed 0, extra 1"
+        },
+        {
+          "name": "datasetfootage_mp4-330_jpg.rf.02041097f7d23f09b2e7f3c8cfe2c314.jpg",
+          "sha256": "0f149d582a6ced6ec00e4ef1fb0c75a271020447646af1a2c194bf732c23c434",
+          "label_sha256": "b92fdadaab98913134ab48a49225d7d1bd9f324fa44bec95c65fde3d1a35f916",
+          "gt_boxes": [
+            [
+              307.595,
+              337.065,
+              460.325,
+              483.895
+            ],
+            [
+              414.775,
+              370.295,
+              572.325,
+              706.825
+            ],
+            [
+              130.22,
+              340.285,
+              322.6,
+              447.995
+            ],
+            [
+              0.0,
+              444.945,
+              443.74,
+              1049.995
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 11,
+              "confidence": 0.893241,
+              "box": [
+                293.417,
+                334.434,
+                497.005,
+                503.163
+              ]
+            },
+            {
+              "class_id": 9,
+              "confidence": 0.889608,
+              "box": [
+                411.76,
+                369.89,
+                573.605,
+                708.025
+              ]
+            },
+            {
+              "class_id": 1,
+              "confidence": 0.870571,
+              "box": [
+                127.302,
+                339.226,
+                326.109,
+                639.882
+              ]
+            },
+            {
+              "class_id": 1,
+              "confidence": 0.744551,
+              "box": [
+                0.0,
+                446.57,
+                440.486,
+                1049.773
+              ]
+            },
+            {
+              "class_id": 9,
+              "confidence": 0.491561,
+              "box": [
+                250.629,
+                338.425,
+                299.405,
+                380.38
+              ]
+            }
+          ],
+          "matched": [
+            {
+              "gt_index": 1,
+              "pred_index": 1,
+              "iou": 0.9688
+            },
+            {
+              "gt_index": 0,
+              "pred_index": 0,
+              "iou": 0.6528
+            }
+          ],
+          "missed_gt": [
+            2,
+            3
+          ],
+          "extra_pred": [
+            2,
+            3,
+            4
+          ],
+          "low_conf_matched": [],
+          "badge": "missed 2, extra 3"
+        },
+        {
+          "name": "subwayy1_1_mp4-175_jpg.rf.02828cfd3f8f906ee3fc01bdd5c32725.jpg",
+          "sha256": "bc1776e5714eedc396990b69f70079b279cffd21313ed2308ded1f81fd98c7cf",
+          "label_sha256": "40d0abd6e64bf4376d153d6df0ec54385d19875d25834489928f0bb4c232e1ea",
+          "gt_boxes": [
+            [
+              149.16,
+              303.58,
+              202.7,
+              373.52
+            ],
+            [
+              172.99,
+              349.065,
+              203.01,
+              374.135
+            ],
+            [
+              214.935,
+              303.65,
+              274.085,
+              373.81
+            ],
+            [
+              236.195,
+              347.525,
+              268.085,
+              373.815
+            ],
+            [
+              287.755,
+              327.945,
+              308.685,
+              379.295
+            ],
+            [
+              345.7,
+              295.895,
+              574.68,
+              996.225
+            ]
+          ],
+          "predictions": [
+            {
+              "class_id": 11,
+              "confidence": 0.948778,
+              "box": [
+                345.978,
+                295.27,
+                573.62,
+                964.104
+              ]
+            },
+            {
+              "class_id": 13,
+              "confidence": 0.898036,
+              "box": [
+                216.112,
+                304.697,
+                273.987,
+                374.353
+              ]
+            },
+            {
+              "class_id": 13,
+              "confidence": 0.829369,
+              "box": [
+                152.598,
+                303.827,
+                202.92,
+                371.05
+              ]
+            },
+            {
+              "class_id": 5,
+              "confidence": 0.633183,
+              "box": [
+                169.405,
+                347.748,
+                203.379,
+                373.955
+              ]
+            },
+            {
+              "class_id": 5,
+              "confidence": 0.511564,
+              "box": [
+                237.561,
+                348.406,
+                272.092,
+                375.021
+              ]
+            }
+          ],
+          "matched": [
+            {
+              "gt_index": 2,
+              "pred_index": 1,
+              "iou": 0.9566
+            },
+            {
+              "gt_index": 5,
+              "pred_index": 0,
+              "iou": 0.9477
+            },
+            {
+              "gt_index": 0,
+              "pred_index": 2,
+              "iou": 0.8959
+            },
+            {
+              "gt_index": 1,
+              "pred_index": 3,
+              "iou": 0.8341
+            },
+            {
+              "gt_index": 3,
+              "pred_index": 4,
+              "iou": 0.79
+            }
+          ],
+          "missed_gt": [
+            4
+          ],
+          "extra_pred": [],
+          "low_conf_matched": [
+            4
+          ],
+          "badge": "missed 1, extra 0, low-conf 1"
+        }
+      ]
+    }
+  },
+  "datasets": {
+    "export_root": "datasets/exports/phase_3b2b1_yolo11n",
+    "original_root": "datasets/external/subway surfers/roboflow_v15_yolov8/subway surfers object dataset.v15-added.yolov8",
+    "split_manifest": "reports/PHASE_3B1_SPLIT_MANIFEST.json",
+    "split_manifest_sha256": "ff3f91192e59546798b725b1e2625b5911cf0eb6c5f69e3cc22efdfeadaa357d",
+    "class_names": [
+      "boots-powerup",
+      "boxtrain",
+      "jump-barrier",
+      "jump-electric",
+      "jump-hedge",
+      "jump-roll-barrier",
+      "jump-trash",
+      "ledge",
+      "pogstick-powerup",
+      "ramp",
+      "roll-barrier",
+      "train",
+      "undercover-barrier",
+      "wall"
+    ],
+    "train_images": 1188,
+    "valid_images": 1128,
+    "train_boxes": 4704,
+    "valid_boxes": 3962
+  },
+  "model": {
+    "path": "models/YOLO11/deployment/yolo11n_v1_deployment/best.onnx",
+    "sha256": "e6ad18f90cd0be8c71237556f0922d83a6dca4ac54184ddde6536896b6b6aa77",
+    "input_size": [
+      640,
+      640
+    ],
+    "output_layout": "yolo_raw",
+    "has_objectness": false,
+    "class_activation": "none",
+    "confidence_threshold": 0.426,
+    "nms_iou_threshold": 0.7,
+    "max_detections": 300,
+    "class_id_map": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "detector_config": "configs/detector_config.yaml",
+    "detector_config_sha256": "f31add2ad45f7a6a30e26cbbcf127063a29237063aed5d9269182967933c5aa0",
+    "perception_config": "configs/perception_config.yaml",
+    "perception_config_sha256": "bb51060575b12c8bba93e84dd36a5e1af4eeb98cf38ebc7fbb3dc3b6c41ee01c",
+    "weights_trained_in_this_task": false
+  },
+  "matching_rule": "greedy one-to-one matching by descending IoU among same-class pairs, IoU >= 0.5; unmatched ground-truth boxes are counted as misses, unmatched predictions as extra detections",
+  "selection_relaxations": [
+    [
+      "train",
+      0,
+      12,
+      40
+    ],
+    [
+      "boxtrain",
+      0,
+      12,
+      40
+    ],
+    [
+      "ramp",
+      0,
+      12,
+      40
+    ],
+    [
+      "wall",
+      0,
+      12,
+      40
+    ],
+    [
+      "jump-roll-barrier",
+      0,
+      12,
+      40
+    ],
+    [
+      "jump-barrier",
+      0,
+      12,
+      40
+    ]
+  ],
+  "inference_pool": {
+    "selection": "every ninth curated-validation image in sorted filename order (index % 9 == 4)",
+    "size": 125,
+    "purpose": "example selection only; no aggregate metric is computed or reported",
+    "category_counts": {
+      "clean": 73,
+      "missed": 25,
+      "extra": 7,
+      "missed_extra": 20
+    },
+    "low_confidence_band": [
+      0.426,
+      0.526
+    ],
+    "images": [
+      {
+        "name": "datasetfootage_mp4-103_jpg.rf.49eb7c77bd38e88df21df1f1b22e9bd1.jpg",
+        "predictions": 2,
+        "matched": 1,
+        "missed": 0,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "extra"
+      },
+      {
+        "name": "datasetfootage_mp4-111_jpg.rf.9c94c489144333ad643331ec11166aa8.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 1,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-11_jpg.rf.b9a41c0c0af4f913b7542d9bc25283ac.jpg",
+        "predictions": 1,
+        "matched": 1,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-128_jpg.rf.13ca4d313d3eb2863888fde6ab4133b7.jpg",
+        "predictions": 5,
+        "matched": 4,
+        "missed": 1,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "datasetfootage_mp4-136_jpg.rf.c3ae9bd68d322d706cfa1e6b6849fe7e.jpg",
+        "predictions": 2,
+        "matched": 1,
+        "missed": 3,
+        "extra": 1,
+        "low_conf": 1,
+        "category": "missed_extra"
+      },
+      {
+        "name": "datasetfootage_mp4-144_jpg.rf.96feccc148883a09a538cbf58078efb3.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "datasetfootage_mp4-152_jpg.rf.90f15152165aeffee33655214226dca2.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "datasetfootage_mp4-160_jpg.rf.e08632470fabc8383d3e4f0b79ead5c4.jpg",
+        "predictions": 1,
+        "matched": 1,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-169_jpg.rf.2e7f369e97330eb925066156ae881d43.jpg",
+        "predictions": 4,
+        "matched": 3,
+        "missed": 1,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "datasetfootage_mp4-177_jpg.rf.76d5cf5f8003fb5c26c561d3c7974047.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 2,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "datasetfootage_mp4-185_jpg.rf.b69f15629adcef825680ea95f1e1ddef.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "datasetfootage_mp4-193_jpg.rf.55e7d98f04df72dcf517ea956290b813.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-200_jpg.rf.ba24aac5f964e1c2d40e2a294ae55ab9.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-209_jpg.rf.98a9ccb137296c27bf4e151411ae874a.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-217_jpg.rf.2e8f31f0fd4b080a61dbf0b0bf1a95ab.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-225_jpg.rf.cc9bafabe3faa41e7bb6f0ffb4fa94b0.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-233_jpg.rf.6c5fcf6cc492e9b8754811ea0cd1bf51.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-241_jpg.rf.6d5c4b645c23336158c69fe1d1d8f56f.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "datasetfootage_mp4-24_jpg.rf.37a840cee23f752ddebbc7f1f42b420b.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-258_jpg.rf.43b143cb0c29b76eb109581633f230bd.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "datasetfootage_mp4-266_jpg.rf.150650a46b175c1a983765d32f4231a2.jpg",
+        "predictions": 1,
+        "matched": 1,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-274_jpg.rf.c3cc6ba7d4f7c45bfba2c77b6bf42a65.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "datasetfootage_mp4-282_jpg.rf.940d894b8f0c222b562ce62eebe3e566.jpg",
+        "predictions": 1,
+        "matched": 1,
+        "missed": 5,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "datasetfootage_mp4-290_jpg.rf.58a13a426cc674917610aa45cc7f6325.jpg",
+        "predictions": 5,
+        "matched": 4,
+        "missed": 2,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "datasetfootage_mp4-299_jpg.rf.a3e50a68f7f8e68c7d2ab14489c891e6.jpg",
+        "predictions": 4,
+        "matched": 3,
+        "missed": 0,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "extra"
+      },
+      {
+        "name": "datasetfootage_mp4-306_jpg.rf.a4dedacfee7bb4698d43edabf8f32cf0.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-314_jpg.rf.0408793ba0b2ca658cfe65ed97ae3dff.jpg",
+        "predictions": 5,
+        "matched": 5,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "datasetfootage_mp4-322_jpg.rf.a40f869e672ab2e604ab7525395c5d70.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-330_jpg.rf.02041097f7d23f09b2e7f3c8cfe2c314.jpg",
+        "predictions": 5,
+        "matched": 2,
+        "missed": 2,
+        "extra": 3,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "datasetfootage_mp4-339_jpg.rf.e24a61716c304a0ffc85589152dc692d.jpg",
+        "predictions": 5,
+        "matched": 4,
+        "missed": 1,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "datasetfootage_mp4-347_jpg.rf.03549f16866f63ac8e8893886bb23df2.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-355_jpg.rf.428911944555f2cf0205cbc1a0bb1165.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "datasetfootage_mp4-363_jpg.rf.881792f66d7f831c8c69e5292a4e4750.jpg",
+        "predictions": 1,
+        "matched": 1,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-371_jpg.rf.d32ee525d9c5f85ef7393b2184ff0705.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-37_jpg.rf.19a9e681e55af7d58652a37d4e0890d8.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-388_jpg.rf.ce15102a0e09c8403a99d92017677151.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-396_jpg.rf.550efa8ab9762cfe1e7057357cdd5f8b.jpg",
+        "predictions": 5,
+        "matched": 3,
+        "missed": 1,
+        "extra": 2,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "datasetfootage_mp4-403_jpg.rf.0aff97cecad71952546ac35d32faf35f.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-411_jpg.rf.0199021ecd7aaaffbe8670d441a6ccf7.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-41_jpg.rf.54e405393e61c39de59e37d53d8577a5.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-428_jpg.rf.ef4e59ac1f5ff369798b547764da1ab3.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-436_jpg.rf.01ab3bc357a233c313d2ad202e9e3f23.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-444_jpg.rf.3d69533f65a59543f5da1b234aaed3f7.jpg",
+        "predictions": 1,
+        "matched": 1,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-452_jpg.rf.aeae3bfb720c7c5edd14986b940698c3.jpg",
+        "predictions": 6,
+        "matched": 6,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-460_jpg.rf.e92c44298f239b9edc97f7ee381957f0.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "datasetfootage_mp4-469_jpg.rf.4f42dcaa38b535335c0af3121f461576.jpg",
+        "predictions": 1,
+        "matched": 1,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-477_jpg.rf.b5be6a9fd420dce8dc423fc7909a1b0b.jpg",
+        "predictions": 4,
+        "matched": 3,
+        "missed": 3,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "datasetfootage_mp4-485_jpg.rf.0e9b5afd91a58610eb6278400ff132aa.jpg",
+        "predictions": 3,
+        "matched": 2,
+        "missed": 4,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "datasetfootage_mp4-493_jpg.rf.76eb2769ad0d58b6634e9342fa489cb7.jpg",
+        "predictions": 5,
+        "matched": 5,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-500_jpg.rf.d1a431596bf721ead74f9777b6c6df1a.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-55_jpg.rf.5d493ec5957dca2a582fe8edf59ac756.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-63_jpg.rf.8a32286cc54d0ff5d089c6ae84288285.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-71_jpg.rf.4e0c0aef45b23d59a23807a021e581b7.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-7_jpg.rf.b07c8976b14699ced7db6c6a855292e8.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "datasetfootage_mp4-88_jpg.rf.f24942473089fde4eae9c7d04e4d09c3.jpg",
+        "predictions": 2,
+        "matched": 1,
+        "missed": 0,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "extra"
+      },
+      {
+        "name": "datasetfootage_mp4-96_jpg.rf.132a56efc4f05436c15395024a6bbcbc.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-101_jpg.rf.3995527618134512f43d0752104ee589.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-105_jpg.rf.6d947241f79d5f9802fe45307d77be63.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-10_jpg.rf.901041994b63c4d8d1391ca5f7b5f0a8.jpg",
+        "predictions": 1,
+        "matched": 1,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-113_jpg.rf.6f78d332bd315387b2e09534f44da24b.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-118_jpg.rf.07bb81e18bd93655bd338bce216a13f8.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-121_jpg.rf.bf0b0a15d44bc3c73694c6ebc5cdc013.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "subwayy1_1_mp4-126_jpg.rf.6e86c835c151d2db17e37304132ca155.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-12_jpg.rf.e8a509954664ec905b5a1c0f7f5aa6b8.jpg",
+        "predictions": 1,
+        "matched": 1,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-134_jpg.rf.536bb65e04aeeca8fd799748cce8676b.jpg",
+        "predictions": 5,
+        "matched": 4,
+        "missed": 1,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-138_jpg.rf.dfc19aa31c13c7062583060f47dc2b54.jpg",
+        "predictions": 7,
+        "matched": 6,
+        "missed": 1,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-142_jpg.rf.4a63529ee63a6d68a185ec61b9ad425b.jpg",
+        "predictions": 5,
+        "matched": 5,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-146_jpg.rf.bdc1a382a08643de2bf1e3c658cc5038.jpg",
+        "predictions": 5,
+        "matched": 5,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-150_jpg.rf.693b114a513b06f29714a82c67678d30.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-154_jpg.rf.d55c50783353cefecf763997d5533d47.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-159_jpg.rf.490706a9c5d7a60334f6868b031c6a62.jpg",
+        "predictions": 7,
+        "matched": 7,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-162_jpg.rf.659e7eb60225755ac49fef87f289a4f1.jpg",
+        "predictions": 7,
+        "matched": 6,
+        "missed": 1,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-167_jpg.rf.0b2a538bb793c27b22ff0eb9ae052eff.jpg",
+        "predictions": 4,
+        "matched": 3,
+        "missed": 0,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-170_jpg.rf.da2868d625f48edfc48012ec409cd2b1.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-175_jpg.rf.02828cfd3f8f906ee3fc01bdd5c32725.jpg",
+        "predictions": 5,
+        "matched": 5,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 1,
+        "category": "missed"
+      },
+      {
+        "name": "subwayy1_1_mp4-179_jpg.rf.4044b9c07af1079007c3f752c7eb654f.jpg",
+        "predictions": 5,
+        "matched": 5,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-183_jpg.rf.916e6b951381e8ad1041593314b71635.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 3,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "subwayy1_1_mp4-187_jpg.rf.f39a1671e578ef7b84fdd132205bc90c.jpg",
+        "predictions": 5,
+        "matched": 5,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-191_jpg.rf.2129740e094574b0b39cafec6f5d30cf.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-195_jpg.rf.288acfe9a266ac0236e7ba8ecd919ca8.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "subwayy1_1_mp4-19_jpg.rf.4765a6dab5db0db6f2656e2d55b64c9d.jpg",
+        "predictions": 4,
+        "matched": 2,
+        "missed": 1,
+        "extra": 2,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-202_jpg.rf.98cd667657186e19293aff9ed5ecd4be.jpg",
+        "predictions": 5,
+        "matched": 5,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-207_jpg.rf.464eb9f9495bdabd59308ed51ddd5f05.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-210_jpg.rf.a4b4bb1c86bef77fa1ad7d8c60d2ae9b.jpg",
+        "predictions": 1,
+        "matched": 1,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-215_jpg.rf.b87e70daa87b2169aaedfc57b59232b1.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "subwayy1_1_mp4-21_jpg.rf.7dfc8caed803731bd99ece2ad34ff98a.jpg",
+        "predictions": 3,
+        "matched": 2,
+        "missed": 1,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-224_jpg.rf.32734c8c7e1e545dba1dc1983cde6297.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-228_jpg.rf.3fceea39f7a5e98fd6473e0319bb36b4.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-232_jpg.rf.46bb5523f5cde1c3925051f6b8dc8911.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-236_jpg.rf.e186ce11f5c87e3baf9708b440bad644.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "subwayy1_1_mp4-240_jpg.rf.7b1916dc1bb955e6500860b2446a0fbc.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-244_jpg.rf.c169b5d70ba27e6ba53f41c27db75d3a.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-249_jpg.rf.5881812edbaeb96a6edc178a63be7765.jpg",
+        "predictions": 1,
+        "matched": 1,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-252_jpg.rf.58fcdfe3fc6ea506f9608a6eb7814700.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-257_jpg.rf.082bc855f4e774640bddfa5eeee9d989.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-260_jpg.rf.e4896e33737de94f728fd32a52dde7b7.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 1,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-265_jpg.rf.2b592305c507f3b0c4f9f19a61f19862.jpg",
+        "predictions": 0,
+        "matched": 0,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "subwayy1_1_mp4-26_jpg.rf.3046c34da0b7caf8da50a6f413edb6e9.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-273_jpg.rf.e9fc216be07ce3529d503d4d3cb0a3dc.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "subwayy1_1_mp4-278_jpg.rf.50fc014288bf97328d7525cd2b7f0ac7.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-281_jpg.rf.f126fefc290ef075a0a6bb1f72cae9c9.jpg",
+        "predictions": 3,
+        "matched": 2,
+        "missed": 1,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-286_jpg.rf.1e82743d8c89b9c87c145e5cc6b6cb22.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 2,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "subwayy1_1_mp4-28_jpg.rf.8bf80d102e9de50cf763704bd6a80350.jpg",
+        "predictions": 4,
+        "matched": 3,
+        "missed": 0,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-294_jpg.rf.67d8b34b5cf8e21957b4b8fec074b2ac.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "subwayy1_1_mp4-29_jpg.rf.8d960ae8a89de8629d606f2c86da862a.jpg",
+        "predictions": 5,
+        "matched": 5,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "subwayy1_1_mp4-306_jpg.rf.592ff2bb3497bc4e06c7243d8f31b1c1.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-313_jpg.rf.3bc2bbbc961c451488409bc1090ee75f.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "subwayy1_1_mp4-320_jpg.rf.b6b58f05c25679fbd11242f86e3f5d58.jpg",
+        "predictions": 5,
+        "matched": 4,
+        "missed": 1,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-329_jpg.rf.89bcf40426c093f3add0429efcf298a2.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "subwayy1_1_mp4-35_jpg.rf.f729cdec76916d9cd8eb327564ff5099.jpg",
+        "predictions": 5,
+        "matched": 4,
+        "missed": 1,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-3_jpg.rf.0d37dcbea462f253ba83eeb9739c41ad.jpg",
+        "predictions": 3,
+        "matched": 2,
+        "missed": 1,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-43_jpg.rf.fb9d095c87701605dfee58ceecc4e142.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-48_jpg.rf.37131251edc204b472db0134a7a32be9.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-51_jpg.rf.9b6b8adad915f0b6aabe952b4e86c366.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-56_jpg.rf.4fdeb6ee8122c4ca4cbc0c8b000ddf09.jpg",
+        "predictions": 7,
+        "matched": 6,
+        "missed": 1,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-5_jpg.rf.3ba86221aea185c290c2273af6f568db.jpg",
+        "predictions": 3,
+        "matched": 3,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-64_jpg.rf.0bf95222ca8bb85cb840f6df999aac9e.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-68_jpg.rf.2a04390e0f09a8e4ff3899b0fef7ddd1.jpg",
+        "predictions": 6,
+        "matched": 6,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-72_jpg.rf.68932b23162678bd8d763e68096de7d6.jpg",
+        "predictions": 7,
+        "matched": 6,
+        "missed": 2,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "missed_extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-76_jpg.rf.c4c614431fb50a3d561a1700f3a757d7.jpg",
+        "predictions": 5,
+        "matched": 4,
+        "missed": 0,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-80_jpg.rf.25304044e841860e23effcdd621364fe.jpg",
+        "predictions": 4,
+        "matched": 3,
+        "missed": 0,
+        "extra": 1,
+        "low_conf": 0,
+        "category": "extra"
+      },
+      {
+        "name": "subwayy1_1_mp4-84_jpg.rf.f9b8ed45795417eab398c0431c4c29ce.jpg",
+        "predictions": 4,
+        "matched": 4,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-89_jpg.rf.9bc9bc726f1b0d267e5e7f01f8b405f9.jpg",
+        "predictions": 5,
+        "matched": 5,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      },
+      {
+        "name": "subwayy1_1_mp4-92_jpg.rf.45cd2d70fea96e7db11bfa804ad863a7.jpg",
+        "predictions": 1,
+        "matched": 1,
+        "missed": 1,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "missed"
+      },
+      {
+        "name": "subwayy1_1_mp4-97_jpg.rf.1840c13224f124bb0bb0d4f378a35e68.jpg",
+        "predictions": 2,
+        "matched": 2,
+        "missed": 0,
+        "extra": 0,
+        "low_conf": 0,
+        "category": "clean"
+      }
+    ]
+  },
+  "observed_categories": {
+    "correct (no miss, no extra)": 2,
+    "missed ground truth": 3,
+    "extra detection": 2,
+    "low-confidence match": 1
+  }
+}

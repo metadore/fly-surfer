@@ -1,0 +1,9 @@
+﻿feature,neurons,current_pa,decay_ms,evidence,hypothesis_id
+train_lane,48,200,150,computational convention,H4H4-B
+obstacle_lane,48,200,150,computational convention,H4H4-E
+obstacle_type,24,200,150,computational convention,H4H4-G
+train_present,24,200,150,published annotation,H4H4-A
+obstacle_present,24,200,150,published annotation,H4H4-D
+train_distance,32,200,150,connectivity hypothesis,H4H4-C
+obstacle_distance,32,200,150,connectivity hypothesis,H4H4-F
+TOTAL,232,,,,

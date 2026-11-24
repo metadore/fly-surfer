@@ -1,0 +1,550 @@
+{
+  "architecture": {
+    "kind": "bias_only_readout",
+    "n_features": 3,
+    "seed": 1849113230
+  },
+  "b3": {
+    "evaluation_seed": 9001,
+    "namespace": "phase_8/training/B3/v1",
+    "payload": "phase_8/training/B3/v1|20261116|9001",
+    "pool_index": 7,
+    "pool_size": 20,
+    "probe_steps": 0,
+    "sha256": "dde4300f2c3962c2b80c3640621be1aea2c76cb233e778f7199f0953f7145ae8",
+    "training_seed": 1008
+  },
+  "b4": {
+    "contract": "B4",
+    "environment_seed": 292964687,
+    "episode": 11,
+    "namespace": "phase_8/training/B4/v1",
+    "schedule_size": 20,
+    "version": "D4-v1"
+  },
+  "b5": {
+    "cadence": 1,
+    "format": "exact-checkpoint schema 2",
+    "retention": "all intermediate checkpoints and the final checkpoint"
+  },
+  "b6": {
+    "components": [
+      "python",
+      "numpy",
+      "torch",
+      "sampler"
+    ],
+    "exactness_claimed": false,
+    "note": "exactness is claimed only after verify_equivalence compares an uninterrupted run with this resumed run"
+  },
+  "campaign_config": {
+    "sha256": "b9a2d3d5f9fc397af07e12cda97bb1ae854cb505edc304e5727c0e2d83477e19"
+  },
+  "campaign_seed": 9001,
+  "components": {
+    "bytes": 13946,
+    "file": "components.npz",
+    "optimizer_arrays": [],
+    "sha256": "8f1fc0940f262531ac9360ff2118c379bb6e3bfc44cd226388a3c16fd2d8157a"
+  },
+  "condition_id": "F_beta",
+  "contract_version": "D4-v1",
+  "created": {
+    "numpy": "2.3.4",
+    "python": "3.13.14",
+    "tool": "experiments.phase_8.training.exact_checkpoint",
+    "torch": "2.10.0",
+    "utc": "2026-11-22T19:44:15+00:00"
+  },
+  "digest": {
+    "optimizer": "caef7f0b00108930d9643a9dbd5d2f701779869ec30007270556f4a1ce71907c",
+    "rng_environment": null,
+    "rng_numpy": "3cea36873c2831dc6fbb6b08c31573e69141718bf8ca75e848126fc5441e2a9c",
+    "rng_python": "6f414d91d7532c35231afa7e34518a9b8e69578a180bb69ed3d9d0576979cab1",
+    "rng_sampler": "30969301868318cf9d44cb8a1aac0668976c6a1c667330b1aeb530b62883bc99",
+    "rng_torch": "b9256512a55df2c9bc6f6ebdf5042b4605076d634ce975d437c1f60176143698",
+    "state": "2b61fc5982194b71f2ee8bf4ff80db26557b1a65dba3abed8d899173c444e178",
+    "trainable": "1cf82f472c1927f433d06384d2a6fc2fd692fe0b331f703ecb32d4c8f1140c03"
+  },
+  "init_seed": 1849113230,
+  "kind": "exact_checkpoint",
+  "master_seed": 20261116,
+  "model_kind": "bias_only_readout",
+  "n_features": 3,
+  "optimizer": {
+    "n_arrays": 0,
+    "param_groups": [
+      {
+        "dampening": 0,
+        "differentiable": false,
+        "foreach": null,
+        "fused": null,
+        "lr": 0.01,
+        "maximize": false,
+        "momentum": 0,
+        "nesterov": false,
+        "params": [
+          0
+        ],
+        "weight_decay": 0
+      }
+    ],
+    "state_checkpointed": true
+  },
+  "origin": "synthetic_fixture",
+  "owner_decision": "D4",
+  "parameter_dtypes": {
+    "bias": "float32",
+    "fixed_feature_weights": "float32"
+  },
+  "parameter_names": [
+    "bias",
+    "fixed_feature_weights"
+  ],
+  "parameter_shapes": {
+    "bias": [
+      4
+    ],
+    "fixed_feature_weights": [
+      4,
+      3
+    ]
+  },
+  "parameters": {
+    "bytes": 438,
+    "file": "parameters.npz",
+    "sha256": "751bbf76049e4730baf338a8ad53fe56aa33188303701deea41ebfdd27efa0b3"
+  },
+  "progress": {
+    "budget": {
+      "unit": "episodes",
+      "value": 20
+    },
+    "environment_seeds_used": [
+      3533241704,
+      3240896551,
+      831886502,
+      3332866321,
+      1385114537,
+      2305684297,
+      3351366913,
+      2301138853,
+      1245549892,
+      2102698253,
+      292964687
+    ],
+    "episodes": [
+      {
+        "action_counts": {
+          "JUMP": 80,
+          "LEFT": 73,
+          "NO_ACTION": 102,
+          "RIGHT": 77
+        },
+        "behaviour_sha256": "8619a0697b5c511ae2c503a59e76bb64399548f7cd7963e66d6599ee0daf3dfd",
+        "entropy": null,
+        "environment_seed": 3533241704,
+        "episode": 1,
+        "episode_reward": 6.31,
+        "grad_norm": 0.102965526,
+        "loss": 1.949662566,
+        "mean_return": 1.406384262,
+        "motor_spikes": 0,
+        "n_decisions": 332,
+        "network_seed": 1640285186,
+        "parameter_digest_after": "d242ee92a08af3c0298fff9ee4d74a3629d6ddd4c8d2ebc7e3798ded9977fa68",
+        "parameter_digest_before": "f94b54c9e77efdbf4cc636c1f31b380b4d14fbbfdd168f76d502c691110f058e",
+        "policy_loss": null,
+        "state_digest_after": "4168b099c0bf7d69c1d9eaa545efa31c3b2ae43c1f63fc0b68c804cba6897588",
+        "steps": 332,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 6261,
+        "truncated": false,
+        "updates_after": 1,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      },
+      {
+        "action_counts": {
+          "JUMP": 144,
+          "LEFT": 119,
+          "NO_ACTION": 148,
+          "RIGHT": 114
+        },
+        "behaviour_sha256": "ec72d831b0776af314910831b42a481180f3999d7f102e7f84e37d3c7a0799ae",
+        "entropy": null,
+        "environment_seed": 3240896551,
+        "episode": 2,
+        "episode_reward": 11.24,
+        "grad_norm": 0.113345264,
+        "loss": 2.605124235,
+        "mean_return": 1.879276754,
+        "motor_spikes": 0,
+        "n_decisions": 525,
+        "network_seed": 1640285186,
+        "parameter_digest_after": "4f2fb26fc63fd8663743c3435e31d2ae48b913a88a7b13bde9b4c3157a774acb",
+        "parameter_digest_before": "d242ee92a08af3c0298fff9ee4d74a3629d6ddd4c8d2ebc7e3798ded9977fa68",
+        "policy_loss": null,
+        "state_digest_after": "f056930efe2c0184efe702f37467c8dd220ef014590635e401b794571f6d6dd2",
+        "steps": 525,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 11560,
+        "truncated": false,
+        "updates_after": 2,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      },
+      {
+        "action_counts": {
+          "JUMP": 56,
+          "LEFT": 49,
+          "NO_ACTION": 63,
+          "RIGHT": 45
+        },
+        "behaviour_sha256": "3fe064d65b7ed64ce19f45b41f2ed7ee283cb9eff19237eb1d5bcdc9953aa660",
+        "entropy": null,
+        "environment_seed": 831886502,
+        "episode": 3,
+        "episode_reward": 2.12,
+        "grad_norm": 0.044298929,
+        "loss": 0.756745696,
+        "mean_return": 0.545934242,
+        "motor_spikes": 0,
+        "n_decisions": 213,
+        "network_seed": 1640285186,
+        "parameter_digest_after": "9d92027f29c6975d6ed25e778e5d8fb454d986f6140d331f3cc673ab843b5493",
+        "parameter_digest_before": "4f2fb26fc63fd8663743c3435e31d2ae48b913a88a7b13bde9b4c3157a774acb",
+        "policy_loss": null,
+        "state_digest_after": "e86c7842bf6ac3bee51a9d1c32f258d45433654de0f893bf79468249bd033b20",
+        "steps": 213,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 2274,
+        "truncated": false,
+        "updates_after": 3,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      },
+      {
+        "action_counts": {
+          "JUMP": 57,
+          "LEFT": 50,
+          "NO_ACTION": 63,
+          "RIGHT": 46
+        },
+        "behaviour_sha256": "a48d0f0a7c3af89b264e150678de2f620cd2314dae33695776cb853887995867",
+        "entropy": null,
+        "environment_seed": 3332866321,
+        "episode": 4,
+        "episode_reward": 4.15,
+        "grad_norm": 0.098375741,
+        "loss": 1.759996533,
+        "mean_return": 1.269746739,
+        "motor_spikes": 0,
+        "n_decisions": 216,
+        "network_seed": 1640285186,
+        "parameter_digest_after": "8957e67fd465ff04b60a631cbd0e46817b5b33ff343ebc6da12d070c8777a45c",
+        "parameter_digest_before": "9d92027f29c6975d6ed25e778e5d8fb454d986f6140d331f3cc673ab843b5493",
+        "policy_loss": null,
+        "state_digest_after": "8b2e341e4a8f211c58bba6bcf9bccbc85e9f29ef680d284af1993d724c1f1b56",
+        "steps": 216,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 2361,
+        "truncated": false,
+        "updates_after": 4,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      },
+      {
+        "action_counts": {
+          "JUMP": 57,
+          "LEFT": 50,
+          "NO_ACTION": 64,
+          "RIGHT": 47
+        },
+        "behaviour_sha256": "ed0aea82341a2d4d1b580bb2209bd1211b9883b3d86daea7d9968010a5132eaa",
+        "entropy": null,
+        "environment_seed": 1385114537,
+        "episode": 5,
+        "episode_reward": 3.17,
+        "grad_norm": 0.072207092,
+        "loss": 1.319383025,
+        "mean_return": 0.951915841,
+        "motor_spikes": 0,
+        "n_decisions": 218,
+        "network_seed": 1640285186,
+        "parameter_digest_after": "3fefaee66ab4bc9bf81f0aaf9aa9a2d3b62b59023468b7b0b702cbdc69d6fb56",
+        "parameter_digest_before": "8957e67fd465ff04b60a631cbd0e46817b5b33ff343ebc6da12d070c8777a45c",
+        "policy_loss": null,
+        "state_digest_after": "2f871c93adbd12cf5b330c9cb3a2f9a7464f75fb50fee374b10347b0c3c1073e",
+        "steps": 218,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 2405,
+        "truncated": false,
+        "updates_after": 5,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      },
+      {
+        "action_counts": {
+          "JUMP": 144,
+          "LEFT": 119,
+          "NO_ACTION": 148,
+          "RIGHT": 114
+        },
+        "behaviour_sha256": "a25e51e22a2349656979a022b6ed32e65bb43e084a85b05809ea31badf7ad418",
+        "entropy": null,
+        "environment_seed": 2305684297,
+        "episode": 6,
+        "episode_reward": 13.24,
+        "grad_norm": 0.128949649,
+        "loss": 3.015389681,
+        "mean_return": 2.17552261,
+        "motor_spikes": 0,
+        "n_decisions": 525,
+        "network_seed": 1640285186,
+        "parameter_digest_after": "ca2908e3346613739f5cb347616b44d640489a5232f3f8b0ff9e68ce18732b10",
+        "parameter_digest_before": "3fefaee66ab4bc9bf81f0aaf9aa9a2d3b62b59023468b7b0b702cbdc69d6fb56",
+        "policy_loss": null,
+        "state_digest_after": "1b2d72fdec341be2db15be95cf249d61c66157a4874979f6d7715c240666d307",
+        "steps": 525,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 12052,
+        "truncated": false,
+        "updates_after": 6,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      },
+      {
+        "action_counts": {
+          "JUMP": 80,
+          "LEFT": 70,
+          "NO_ACTION": 101,
+          "RIGHT": 72
+        },
+        "behaviour_sha256": "712148b462be7d2f155a474bbb083005e4df771fc11ed23d130005608e0b4350",
+        "entropy": null,
+        "environment_seed": 3351366913,
+        "episode": 7,
+        "episode_reward": 6.22,
+        "grad_norm": 0.094199158,
+        "loss": 1.971006393,
+        "mean_return": 1.422151143,
+        "motor_spikes": 0,
+        "n_decisions": 323,
+        "network_seed": 1640285186,
+        "parameter_digest_after": "d30c9707a08fc26ec2f80d24a7345c6fa01f871efbc2351610890d40756abdbd",
+        "parameter_digest_before": "ca2908e3346613739f5cb347616b44d640489a5232f3f8b0ff9e68ce18732b10",
+        "policy_loss": null,
+        "state_digest_after": "531eafdef1aaa5a222212ea4de141c39ba35eeea9875e4cec15d06b0ca46b8f9",
+        "steps": 323,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 5414,
+        "truncated": false,
+        "updates_after": 7,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      },
+      {
+        "action_counts": {
+          "JUMP": 56,
+          "LEFT": 49,
+          "NO_ACTION": 63,
+          "RIGHT": 45
+        },
+        "behaviour_sha256": "840938422dabc1acbf11e312cc7f5ee45621544ac9ae9b9b322447883442f1e4",
+        "entropy": null,
+        "environment_seed": 2301138853,
+        "episode": 8,
+        "episode_reward": 4.12,
+        "grad_norm": 0.093310788,
+        "loss": 1.769456267,
+        "mean_return": 1.276824812,
+        "motor_spikes": 0,
+        "n_decisions": 213,
+        "network_seed": 1640285186,
+        "parameter_digest_after": "f20df01d75bde68f23370b1d15692130243204c95f05d20f5dd0b68596a65659",
+        "parameter_digest_before": "d30c9707a08fc26ec2f80d24a7345c6fa01f871efbc2351610890d40756abdbd",
+        "policy_loss": null,
+        "state_digest_after": "3eb19a10e0bc4b71032d82b9e1ba826b810fbac16d59076326d4ba60900a30d8",
+        "steps": 213,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 2274,
+        "truncated": false,
+        "updates_after": 8,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      },
+      {
+        "action_counts": {
+          "JUMP": 57,
+          "LEFT": 50,
+          "NO_ACTION": 63,
+          "RIGHT": 46
+        },
+        "behaviour_sha256": "fb88df99ae31a2a6f821d081f14ccc1088b7beb0889e42b4f4c258e679e3ac5c",
+        "entropy": null,
+        "environment_seed": 1245549892,
+        "episode": 9,
+        "episode_reward": 2.15,
+        "grad_norm": 0.04418288,
+        "loss": 0.764672816,
+        "mean_return": 0.551789147,
+        "motor_spikes": 0,
+        "n_decisions": 216,
+        "network_seed": 1640285186,
+        "parameter_digest_after": "d525c716cba1312fe6c6e4564eefc26734475135b0b3f50e4d8fb4a077426a02",
+        "parameter_digest_before": "f20df01d75bde68f23370b1d15692130243204c95f05d20f5dd0b68596a65659",
+        "policy_loss": null,
+        "state_digest_after": "24dfb724f825abe76f9b73ea6f757b1cfdf4c57ab6f5c770d6fbf59e184b1229",
+        "steps": 216,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 2361,
+        "truncated": false,
+        "updates_after": 9,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      },
+      {
+        "action_counts": {
+          "JUMP": 57,
+          "LEFT": 50,
+          "NO_ACTION": 63,
+          "RIGHT": 46
+        },
+        "behaviour_sha256": "55df0b87416b7b4fbd9ac6f0a90d6eb333365e4e3842c6aaf4a8e7e282204d63",
+        "entropy": null,
+        "environment_seed": 2102698253,
+        "episode": 10,
+        "episode_reward": 3.15,
+        "grad_norm": 0.069251358,
+        "loss": 1.326132178,
+        "mean_return": 0.95699004,
+        "motor_spikes": 0,
+        "n_decisions": 216,
+        "network_seed": 1640285186,
+        "parameter_digest_after": "15767f8449859c00d8da2bfabd5cefd433174899c63deaa5b7cf66ec030be808",
+        "parameter_digest_before": "d525c716cba1312fe6c6e4564eefc26734475135b0b3f50e4d8fb4a077426a02",
+        "policy_loss": null,
+        "state_digest_after": "a7e37c60a7c2dd5da4a4fe83c9c3341657e72a74f7497165815d0e7141f119e8",
+        "steps": 216,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 2361,
+        "truncated": false,
+        "updates_after": 10,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      },
+      {
+        "action_counts": {
+          "JUMP": 56,
+          "LEFT": 49,
+          "NO_ACTION": 63,
+          "RIGHT": 45
+        },
+        "behaviour_sha256": "1f01cd8e2475667bfc3aeee03b63da3fe225df2dbc7ae101444bbc35d7366d74",
+        "entropy": null,
+        "environment_seed": 292964687,
+        "episode": 11,
+        "episode_reward": 4.12,
+        "grad_norm": 0.09292576,
+        "loss": 1.76625073,
+        "mean_return": 1.274641543,
+        "motor_spikes": 0,
+        "n_decisions": 213,
+        "network_seed": 1640285186,
+        "parameter_digest_after": "1cf82f472c1927f433d06384d2a6fc2fd692fe0b331f703ecb32d4c8f1140c03",
+        "parameter_digest_before": "15767f8449859c00d8da2bfabd5cefd433174899c63deaa5b7cf66ec030be808",
+        "policy_loss": null,
+        "state_digest_after": "2b61fc5982194b71f2ee8bf4ff80db26557b1a65dba3abed8d899173c444e178",
+        "steps": 213,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 2274,
+        "truncated": false,
+        "updates_after": 11,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      }
+    ],
+    "episodes_completed": 11,
+    "metrics_sha256": "abaa34171b2c9330ebe662a62395d5afddffec1b29aec9755200dabc7beca373",
+    "sampling_seed": 0,
+    "updates_completed": 11
+  },
+  "protocol": {
+    "id": "PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4",
+    "sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c"
+  },
+  "rng": {
+    "checkpointed": true,
+    "environment": {
+      "present": false,
+      "reason": "the controlled game is reconstructed and reset from its B4 episode seed at the start of every episode; no environment RNG state survives the episode boundary, so the applicable environment provenance is the B4 seed recorded in progress.environment_seeds_used",
+      "sha256": null
+    },
+    "numpy": {
+      "present": true,
+      "sha256": "3cea36873c2831dc6fbb6b08c31573e69141718bf8ca75e848126fc5441e2a9c"
+    },
+    "python": {
+      "present": true,
+      "sha256": "6f414d91d7532c35231afa7e34518a9b8e69578a180bb69ed3d9d0576979cab1"
+    },
+    "sampler": {
+      "present": true,
+      "sha256": "30969301868318cf9d44cb8a1aac0668976c6a1c667330b1aeb530b62883bc99"
+    },
+    "torch": {
+      "present": true,
+      "sha256": "b9256512a55df2c9bc6f6ebdf5042b4605076d634ce975d437c1f60176143698"
+    }
+  },
+  "schema_version": 2,
+  "stage": "training_checkpoint",
+  "tool": "experiments.phase_8.training.exact_checkpoint",
+  "training_config_sha256": "1508a6a4733fbfc0431e19a91e3d62d76624fef5626e4bb683779d62340433df",
+  "training_seed": 1008
+}

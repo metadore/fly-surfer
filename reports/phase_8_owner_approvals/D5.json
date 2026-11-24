@@ -1,0 +1,217 @@
+{
+  "record_kind": "phase_8_owner_decision",
+  "approval_id": "D5",
+  "approval_date": "2026-11-22",
+  "decision": "Approve the exact D5 proposal recorded in reports/PHASE_8_REMAINING_BLOCKERS_B2_B7_DECISION_REVIEW.md (SHA-256 f8d441a4e98bdc73ebcb7405acff02fc7221969a0aa1217ff7f88cfe2e6d3771): authorise the pilot-scoped training of six F and Fbeta readout artifacts on the frozen biological substrate, exactly six artifacts over the three declared evaluation seeds, twenty episodes per artifact, using the D4 B3/B4/B5/B6 training contracts. This decision authorises these six training runs and nothing else. It does not authorise E or E-full, a confirmatory campaign, a Pilot 2-C episode, a floor replay, a randomized graph, or any change to a frozen parameter, statistical constant, hypothesis or protocol document. It discharges no open item and selects no sample size.",
+  "depends_on": {
+    "approval_id": "D4",
+    "record": "reports/phase_8_owner_approvals/D4.json",
+    "record_sha256": "1e15138cf76c11ab8c94ffd7299d6a3657fc407fe7c32a0f8a3c9efcca51a8cf"
+  },
+  "approved_proposal": {
+    "id": "PHASE_8_REMAINING_BLOCKERS_B2_B7_DECISION_REVIEW",
+    "path": "reports/PHASE_8_REMAINING_BLOCKERS_B2_B7_DECISION_REVIEW.md",
+    "sha256": "f8d441a4e98bdc73ebcb7405acff02fc7221969a0aa1217ff7f88cfe2e6d3771",
+    "clause": "section 9 proposed D5 wording"
+  },
+  "frozen_sources": {
+    "rev4": {
+      "id": "PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4",
+      "path": "docs/PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4.md",
+      "sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c"
+    },
+    "amendment": {
+      "id": "PHASE_8_PILOT2C_AMENDMENT",
+      "path": "docs/PHASE_8_PILOT2C_AMENDMENT.md",
+      "sha256": "832ef48579a3d056b85449498558286b86576ab86c15acd90786c8a2ca9667ad"
+    },
+    "d3": {
+      "approval_id": "D3",
+      "path": "reports/phase_8_owner_approvals/D3.json",
+      "sha256": "74f11d2c599ceffb1a1a2be592d7ab903d9b2ba1c59941338283261b42948df8"
+    },
+    "d4": {
+      "approval_id": "D4",
+      "path": "reports/phase_8_owner_approvals/D4.json",
+      "sha256": "1e15138cf76c11ab8c94ffd7299d6a3657fc407fe7c32a0f8a3c9efcca51a8cf"
+    }
+  },
+  "owner_decisions": [
+    {
+      "id": "OD-1",
+      "text": "Authorise F and Fbeta training on the frozen biological substrate for the exact six (condition, evaluation seed) artifacts below, at twenty episodes per artifact, for a total of one hundred and twenty training episodes. No other condition, seed or episode count is authorised."
+    },
+    {
+      "id": "OD-2",
+      "text": "Use the D4 B3 derivation to pair evaluation seeds 9001, 9002 and 9003 with training seeds from the declared pool. Verified from the on-disk contract: 9001 maps to 1008 (pool index 7), 9002 maps to 1014 (pool index 13), and 9003 maps to 1005 (pool index 4). F and Fbeta at one evaluation seed share the derived training seed and each receives its own independent artifact."
+    },
+    {
+      "id": "OD-3",
+      "text": "Use the D4 B4 derivation for training environment seeds, the D4 B5 per-episode checkpoint policy with full retention, and the D4 B6 exact-resumption components and verification. No training episode uses a Pilot 2-C evaluation environment seed."
+    },
+    {
+      "id": "OD-4",
+      "text": "Write the six trained artifacts under experiments/results/phase_8/training only, with origin=\"trained\" and stage=\"trained\". A synthetic fixture is never an experimental artifact."
+    },
+    {
+      "id": "OD-5",
+      "text": "Preserve design.n_seeds_selected = null. U7 remains open. N stays at 16 primary. No confirmatory sample size is selected and no dispersion is estimated."
+    },
+    {
+      "id": "OD-6",
+      "text": "Do not modify REV4, D1, D2, D3 or D4; do not change any hypothesis, contrast, statistical constant or frozen neural parameter."
+    }
+  ],
+  "authorised_artifacts": [
+    {
+      "condition_id": "F",
+      "evaluation_seed": 9001,
+      "training_seed": 1008,
+      "pool_index": 7,
+      "episodes": 20
+    },
+    {
+      "condition_id": "F",
+      "evaluation_seed": 9002,
+      "training_seed": 1014,
+      "pool_index": 13,
+      "episodes": 20
+    },
+    {
+      "condition_id": "F",
+      "evaluation_seed": 9003,
+      "training_seed": 1005,
+      "pool_index": 4,
+      "episodes": 20
+    },
+    {
+      "condition_id": "F_beta",
+      "evaluation_seed": 9001,
+      "training_seed": 1008,
+      "pool_index": 7,
+      "episodes": 20
+    },
+    {
+      "condition_id": "F_beta",
+      "evaluation_seed": 9002,
+      "training_seed": 1014,
+      "pool_index": 13,
+      "episodes": 20
+    },
+    {
+      "condition_id": "F_beta",
+      "evaluation_seed": 9003,
+      "training_seed": 1005,
+      "pool_index": 4,
+      "episodes": 20
+    }
+  ],
+  "b3_pairing_record": {
+    "contract": "B3",
+    "version": "D4-v1",
+    "master_seed": 20261116,
+    "derivation_sha256": "bc231c796d7efb016c8de904c27921ec44a5c458a48d04f9992a75a143a1f980",
+    "pairing": {
+      "F:9001": 1008,
+      "F:9002": 1014,
+      "F:9003": 1005,
+      "F_beta:9001": 1008,
+      "F_beta:9002": 1014,
+      "F_beta:9003": 1005
+    }
+  },
+  "scope": {
+    "stage": "training",
+    "rev4_step": "10.5",
+    "substrate": "biological_graph",
+    "uses_randomized_graph": false,
+    "constructs_randomized_graph": false,
+    "reads_randomized_graph": false,
+    "conditions": [
+      "F",
+      "F_beta"
+    ],
+    "evaluation_seeds": [
+      9001,
+      9002,
+      9003
+    ],
+    "training_seeds": [
+      1008,
+      1014,
+      1005
+    ],
+    "episodes_per_artifact": 20,
+    "n_artifacts": 6,
+    "n_training_episodes": 120,
+    "independent_artifacts_per_condition_and_seed": true,
+    "shared_training_seed_within_evaluation_seed": true,
+    "origin": "trained",
+    "final_stage": "trained",
+    "results_root": "experiments/results/phase_8/training",
+    "training_contracts": [
+      "B3",
+      "B4",
+      "B5",
+      "B6"
+    ],
+    "checkpoint_history": "every intermediate and the final checkpoint retained",
+    "resume_policy": "resume only from a verified checkpoint with full state restored and equivalence verified",
+    "authorises_training_execution": true,
+    "generates_trained_artifacts": true,
+    "runs_training_episodes": true,
+    "runs_pilot2c_episodes": false,
+    "runs_floor_replays": false,
+    "runs_confirmatory_campaign": false,
+    "runs_e_or_e_full": false,
+    "discharges_u7": false,
+    "sets_n_seeds_selected": false,
+    "modifies_frozen_parameter": false,
+    "modifies_statistical_constant": false,
+    "modifies_hypothesis": false,
+    "modifies_rev4": false,
+    "modifies_d1": false,
+    "modifies_d2": false,
+    "modifies_d3": false,
+    "modifies_d4": false,
+    "changes_pilot2c_grid": false,
+    "adds_experimental_condition": false
+  },
+  "prohibitions": [
+    "do not train any condition other than F and Fbeta",
+    "do not train any evaluation seed other than 9001, 9002 and 9003",
+    "do not use a training seed other than the D4 B3 derivation",
+    "do not run more or fewer than twenty episodes per artifact",
+    "do not construct, read or substitute a randomized graph",
+    "do not run a Pilot 2-C episode or a floor replay",
+    "do not run E, E-full or a confirmatory campaign",
+    "do not start training if a relevant test fails",
+    "do not change a frozen parameter to force training to succeed",
+    "do not silently restart an interrupted artifact under a different seed",
+    "do not lower a resource threshold or reduce the approved workload",
+    "do not claim equivalence without a demonstrated comparison",
+    "do not modify REV4, D1, D2, D3 or D4",
+    "do not change a hypothesis, contrast or statistical constant",
+    "do not discharge U7 or set design.n_seeds_selected",
+    "do not write a trained artifact outside experiments/results/phase_8/training",
+    "do not treat a synthetic fixture as an experimental artifact"
+  ],
+  "does_not_authorise": [
+    "E or E-full",
+    "a confirmatory campaign",
+    "a Pilot 2-C episode",
+    "a floor replay",
+    "a randomized-graph construction or access",
+    "any graph-dependent stage",
+    "any change to a frozen parameter, statistical constant, hypothesis or protocol document",
+    "any change to D1, D2, D3 or D4",
+    "U7 discharge or design.n_seeds_selected selection"
+  ],
+  "authorises": [
+    "the six exact F and Fbeta training runs listed in authorised_artifacts",
+    "one hundred and twenty training episodes on the frozen biological substrate",
+    "the D4 B3/B4/B5/B6 training contracts for those runs",
+    "writing six trained artifacts under experiments/results/phase_8/training",
+    "certification and preflight of those artifacts that execute no Pilot 2-C episode"
+  ]
+}

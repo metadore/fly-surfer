@@ -49,6 +49,11 @@ from .validation import EXPECTED_FEATURES, check_readout_pair
 
 DEFAULT_REQUIRED = ("F", "F_beta", "E")
 
+#: A-2 (D3 OD-3): an artifact may serve campaign seeds or independently
+#: declared pilot evaluation seeds. The two scopes never overlap, and the
+#: pilot scope never falls back to the campaign scope.
+SEED_SCOPES = ("campaign", "pilot")
+
 
 @dataclass(frozen=True, eq=False)
 class LoadedArtifacts:
@@ -91,26 +96,74 @@ def load_training_artifacts(
     allow_synthetic_fixtures: bool = False,
     require_complete: bool = True,
     include_exploratory: bool = True,
+    seed_scope: str = "campaign",
 ) -> LoadedArtifacts:
-    """Read, verify and package every artifact needed by the factory."""
+    """Read, verify and package every artifact needed by the factory.
+
+    ``campaign_seeds`` carries the seeds of the active scope: campaign seeds
+    by default, or pilot evaluation seeds when ``seed_scope="pilot"`` (the A-2
+    contract adopted by D3 OD-3). The pilot scope requires an explicit
+    ``pairing`` and never reuses a campaign seed.
+    """
     if require_trained and allow_synthetic_fixtures:
         raise TrainingConfigError(
             "allow_synthetic_fixtures applies only when require_trained=False; "
             "a campaign may never load a fixture as a trained artifact"
         )
-    seeds = tuple(_int(seed, "campaign_seed") for seed in campaign_seeds)
+    if seed_scope not in SEED_SCOPES:
+        raise TrainingConfigError(
+            f"seed_scope must be one of {list(SEED_SCOPES)}, got {seed_scope!r}"
+        )
+    seeds = tuple(_int(seed, "evaluation_seed") for seed in campaign_seeds)
     if not seeds:
         raise TrainingConfigError("campaign_seeds cannot be empty")
-    undeclared = sorted(set(seeds) - set(config.campaign_seeds))
-    if undeclared:
-        raise TrainingConfigError(
-            f"campaign seeds {undeclared} are not declared in seeds.campaign"
-        )
-
     required = tuple(str(condition) for condition in conditions)
     unknown = sorted(set(required) - set(TRAINABLE_CONDITIONS))
     if unknown:
         raise TrainingConfigError(f"unknown required conditions: {unknown}")
+
+    if seed_scope == "campaign":
+        undeclared = sorted(set(seeds) - set(config.campaign_seeds))
+        if undeclared:
+            raise TrainingConfigError(
+                f"campaign seeds {undeclared} are not declared in seeds.campaign"
+            )
+    else:
+        undeclared = sorted(set(seeds) - set(config.pilot_seeds))
+        if undeclared:
+            raise TrainingConfigError(
+                f"pilot evaluation seeds {undeclared} are not declared in "
+                "seeds.pilot"
+            )
+        overlap = sorted(set(seeds) & set(config.campaign_seeds))
+        if overlap:
+            raise TrainingConfigError(
+                f"pilot evaluation seeds {overlap} are also campaign seeds; the "
+                "pilot scope must stay independent of the campaign"
+            )
+        overlap = sorted(set(seeds) & set(config.training_seeds))
+        if overlap:
+            raise TrainingConfigError(
+                f"pilot evaluation seeds {overlap} are training seeds; an "
+                "evaluation seed may not be reused as a training seed"
+            )
+        if pairing is None:
+            raise TrainingConfigError(
+                "the pilot artifact scope requires an explicit pairing "
+                "(condition, evaluation seed) -> training seed; the loader never "
+                "invents the B3 pairing"
+            )
+        undeclared_pairs = sorted(
+            f"{condition}:{seed}"
+            for seed in seeds
+            for condition in required
+            if (condition, seed) not in pairing
+        )
+        if undeclared_pairs:
+            raise TrainingConfigError(
+                f"the pairing does not declare {undeclared_pairs}"
+            )
+
     allowed = set(required)
     if include_exploratory:
         allowed.update(AGENT_CONDITIONS)
@@ -206,8 +259,10 @@ def load_training_artifacts(
 
     report = {
         "root": str(Path(root)),
+        "seed_scope": seed_scope,
         "campaign_seeds": list(seeds),
         "required_conditions": list(required),
+        "pairing_source": "explicit" if pairing is not None else "none",
         "loaded": sorted(f"{key[0]}:{key[1]}" for key in artifacts),
         "ignored_seeds": sorted(ignored),
         "origins": sorted(origins),
@@ -249,6 +304,46 @@ def prepare_campaign_artifacts(
         campaign_seeds=active,
         pairing=pairing,
         require_trained=True,
+    )
+
+
+def load_pilot_evaluation_artifacts(
+    phase8_config: Any,
+    root: str | Path,
+    *,
+    pairing: Mapping[tuple[str, int], int],
+    evaluation_seeds: Sequence[int] | None = None,
+    conditions: Sequence[str] = ("F", "F_beta"),
+    require_trained: bool = True,
+    allow_synthetic_fixtures: bool = False,
+    require_complete: bool = True,
+) -> LoadedArtifacts:
+    """A-2 entry point: load artifacts for pilot evaluation seeds only.
+
+    This is not gated by ``design.n_seeds_selected``: Pilot 2-C certifies a
+    floor and an identity and selects no campaign N. It is gated by the
+    ``pilot2c`` stage authorisation elsewhere. Loading trains nothing, runs no
+    episode and authorises no campaign.
+    """
+    config = validate_training_config(phase8_config)
+    seeds = tuple(
+        int(seed)
+        for seed in (
+            evaluation_seeds
+            if evaluation_seeds is not None
+            else phase8_config.campaign.pilot_seeds
+        )
+    )
+    return load_training_artifacts(
+        root,
+        config=config,
+        campaign_seeds=seeds,
+        conditions=conditions,
+        pairing=pairing,
+        require_trained=require_trained,
+        allow_synthetic_fixtures=allow_synthetic_fixtures,
+        require_complete=require_complete,
+        seed_scope="pilot",
     )
 
 
@@ -304,8 +399,10 @@ def check_factory_compatibility(
 __all__ = [
     "DEFAULT_REQUIRED",
     "LoadedArtifacts",
+    "SEED_SCOPES",
     "check_factory_compatibility",
     "discover_artifact_directories",
+    "load_pilot_evaluation_artifacts",
     "load_training_artifacts",
     "prepare_campaign_artifacts",
 ]

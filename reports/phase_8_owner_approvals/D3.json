@@ -1,0 +1,122 @@
+{
+  "record_kind": "phase_8_owner_decision",
+  "approval_id": "D3",
+  "approval_date": "2026-11-20",
+  "decision": "Adopt the Pilot 2-C floor-and-identity certification experiment, defined by docs/PHASE_8_PILOT2C_AMENDMENT.md, for the exact grid in scope and for nothing else. The amendment changes REV4 section 10.8 only; REV4, D1 and D2 remain unchanged.",
+  "depends_on": {
+    "approval_id": "D1",
+    "record": "reports/phase_8_owner_approvals/D1.json"
+  },
+  "approved_document": {
+    "id": "PHASE_8_PILOT2C_AMENDMENT",
+    "path": "docs/PHASE_8_PILOT2C_AMENDMENT.md",
+    "sha256": "832ef48579a3d056b85449498558286b86576ab86c15acd90786c8a2ca9667ad"
+  },
+  "amends_document": {
+    "id": "PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4",
+    "path": "docs/PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4.md",
+    "sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c",
+    "clauses_amended": [
+      "10.8"
+    ]
+  },
+  "owner_decisions": [
+    {
+      "id": "OD-1",
+      "text": "Adopt Pilot 2-C floor-and-identity certification using the exact section 2.2 scope and section 2.4 prohibitions of the re-scoping proposal."
+    },
+    {
+      "id": "OD-2",
+      "text": "Exclude C and C_prime. Do not construct randomized graphs. Do not accept or weaken G3/B7."
+    },
+    {
+      "id": "OD-3",
+      "text": "Use artifact-based readout provisioning and the A-2 loader-contract amendment. Pilot seeds remain independent of campaign seeds. Never use A-3."
+    },
+    {
+      "id": "OD-4",
+      "text": "U7 remains open. sigma_max is not evaluable. Do not select N or modify design.n_seeds_selected."
+    },
+    {
+      "id": "OD-5",
+      "text": "Record U1-B as applicable using Pilot 1 and Pilot 2-C evidence."
+    },
+    {
+      "id": "OD-6",
+      "text": "Accept that the report may be valid but non-freeze because of the existing protected-baseline drift. Do not restore or modify protected files."
+    },
+    {
+      "id": "OD-7",
+      "text": "Use manifest-level stage_purpose = floor_and_identity_certification. Do not change the episode-row schema."
+    }
+  ],
+  "scope": {
+    "stage": "pilot2c",
+    "rev4_step": "10.8",
+    "arms": [
+      "A",
+      "B",
+      "F",
+      "F_beta",
+      "A_prime",
+      "floor"
+    ],
+    "neural_arms": [
+      "A",
+      "B",
+      "F",
+      "F_beta",
+      "A_prime"
+    ],
+    "floor_arm": "floor",
+    "seeds": [
+      9001,
+      9002,
+      9003
+    ],
+    "episodes_per_seed": 3,
+    "n_episodes": 54,
+    "neural_episodes": 45,
+    "floor_replays": 9,
+    "uses_randomized_graph": false,
+    "constructs_randomized_graph": false,
+    "uses_trained_artifact": true,
+    "trained_artifact_conditions": [
+      "F",
+      "F_beta"
+    ],
+    "trains_anything_here": false,
+    "g3_applicability": "not_applicable_no_randomized_graph",
+    "accepts_g3_deviation": false,
+    "weakens_graph_certification": false,
+    "estimates_contrasts": false,
+    "hypothesis_tests": [],
+    "selects_n_seeds": false,
+    "discharges_u7": false,
+    "parameter_modifications_authorised": false,
+    "results_root": "experiments/results/phase_8/pilot2c",
+    "stage_purpose": "floor_and_identity_certification"
+  },
+  "prohibitions": [
+    "do not add C, C_prime or D to the grid",
+    "do not construct, read or substitute a randomized graph",
+    "do not accept, resolve or weaken the G3 section 9.3 deviation",
+    "do not estimate C1-C4, H1-H3, paired dispersion or sigma_max",
+    "do not discharge U7 or set design.n_seeds_selected",
+    "do not create, train, retrain or substitute a model artifact",
+    "do not persist synthetic or initialized state in a pilot row",
+    "do not write a pilot row under the campaign results root",
+    "do not merge pilot rows into the campaign dataset",
+    "do not change an episode-row field, frozen parameter or statistical constant",
+    "do not modify REV4, D1 or D2",
+    "do not derive authorisation from the stage's own output"
+  ],
+  "does_not_authorise": [
+    "a confirmatory campaign",
+    "a training run",
+    "a randomized-graph construction",
+    "any stage other than pilot2c",
+    "any grid other than the one in scope",
+    "any change to a frozen parameter or statistical constant"
+  ]
+}

@@ -260,10 +260,21 @@ def test_training_status_declares_b3_to_b6(config):
     record = training_stage.describe_training_stage(config)
     assert record["training_performed"] is False
     assert record["artifacts_written"] == 0
-    assert len(record["execution_blockers"]) == 4
-    assert [item[:2] for item in record["execution_blockers"]] == ["B3", "B4", "B5", "B6"]
+    # D4 declares B3-B6; the remaining execution blockers are the unresolved
+    # design (B2) and the recorded G3 deviation (B7).
+    assert [item[:2] for item in record["execution_blockers"]] == ["B2", "B7"]
     assert record["authorization"]["training_authorized"] is False
-    assert record["declarations"]["seed_pairing"] is None
+    declarations = record["declarations"]
+    assert declarations["applicable"] is True
+    assert set(declarations["declared"]) == {"B3", "B4", "B5", "B6"}
+    pairing = declarations["seed_pairing"]["pairing"]
+    assert pairing["F:9001"] == pairing["F_beta:9001"]
+    assert len({pairing[f"F:{seed}"] for seed in (9001, 9002, 9003)}) == 3
+    assert declarations["environment_seed_schedule"]["namespace"] == (
+        "phase_8/training/B4/v1"
+    )
+    assert declarations["checkpoint_policy"]["cadence"].startswith("one checkpoint")
+    assert declarations["bit_identical_resume"]["claimed"] is False
 
 
 def test_training_plan_refuses_unresolved_design(config):

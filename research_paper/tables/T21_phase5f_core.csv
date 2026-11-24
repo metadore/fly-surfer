@@ -1,0 +1,6 @@
+﻿condition,label,wiring,eta,n_seeds,final_success_mean,final_success_sd,ci_low,ci_high,start_success_mean,final_selective_mean,changed_edges_mean
+fixed_complete,"fixed weights, complete wiring",complete,0.0,10,0.795,0.083997,0.7425,0.8425,0.795,0.12,0.0
+plastic_complete,"plastic weights, complete wiring",complete,1.0,10,0.945,0.022973,0.93,0.9575,0.795,0.2,96.7
+fixed_random,"fixed weights, random wiring",Bernoulli(0.5),0.0,10,0.1025,0.043221,0.0775,0.1275,0.1025,0.2175,0.0
+plastic_random,"plastic weights, random wiring",Bernoulli(0.5),1.0,10,0.1125,0.051707,0.085,0.145,0.1025,0.22,2.4
+conventional_perceptron,conventional supervised perceptron (privileged),dense,n/a,10,1.0,0.0,1.0,1.0,0.25,1.0,6.0

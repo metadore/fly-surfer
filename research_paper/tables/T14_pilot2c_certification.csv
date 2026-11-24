@@ -1,0 +1,9 @@
+﻿claim,title,result,evidence
+P2C-1,floor execution,PASS,9/9 substrate-free replays take NO_ACTION; own no spike or weight
+P2C-2,A-prime identity,PASS,"A' reproduces A on P1-P19 in 9/9 (eta = 0, zero delta)"
+P2C-3,F-beta constancy,PASS,0 feature weights; bias-only readout; state-independent logits
+P2C-4,F behaviour,PASS,12 non-zero feature weights; weights unchanged within episodes
+P2C-5,motor accounting,PASS,every neural episode records a motor block; 0 reported as 0
+P2C-6,plasticity attribution,PASS,"A' delta 0; B 683,100 eligible, 1 edge changed in 4/9, max 0.03265 pA"
+P2C-7,provenance,PASS,7 input hashes + 3 config hashes + evidence kind on every row
+P2C-8,viability,PASS,"54 planned, 54 stored, 0 error rows, survival score recorded"

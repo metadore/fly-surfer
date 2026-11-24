@@ -1,0 +1,156 @@
+{
+  "record_kind": "phase_8_owner_decision",
+  "approval_id": "D4",
+  "approval_date": "2026-11-21",
+  "decision": "Approve and declare the four Pilot 2-C training-operation decisions B3, B4, B5 and B6 exactly as written below, and authorise their implementation as training contracts. This decision declares how F and Fbeta training artifacts would be paired, seeded, checkpointed and resumed. It does not authorise a training run, a generated trained artifact, a Pilot 2-C episode, a floor replay, a randomized graph, or any change to a frozen parameter, statistical constant, hypothesis or protocol document.",
+  "depends_on": {
+    "approval_id": "D3",
+    "record": "reports/phase_8_owner_approvals/D3.json",
+    "record_sha256": "74f11d2c599ceffb1a1a2be592d7ab903d9b2ba1c59941338283261b42948df8"
+  },
+  "frozen_sources": {
+    "rev4": {
+      "id": "PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4",
+      "path": "docs/PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4.md",
+      "sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c"
+    },
+    "amendment": {
+      "id": "PHASE_8_PILOT2C_AMENDMENT",
+      "path": "docs/PHASE_8_PILOT2C_AMENDMENT.md",
+      "sha256": "832ef48579a3d056b85449498558286b86576ab86c15acd90786c8a2ca9667ad"
+    },
+    "d3": {
+      "approval_id": "D3",
+      "path": "reports/phase_8_owner_approvals/D3.json",
+      "sha256": "74f11d2c599ceffb1a1a2be592d7ab903d9b2ba1c59941338283261b42948df8"
+    }
+  },
+  "owner_decisions": [
+    {
+      "id": "B3",
+      "title": "Campaign-to-training seed pairing",
+      "text": "Pair evaluation seeds 9001, 9002 and 9003 with training artifacts for F and Fbeta. Derive each training seed by a documented SHA-256 namespace-based derivation from the master seed and the evaluation seed, mapping the digest deterministically onto the declared seeds.training pool. Do not use arbitrary offsets, evaluation randomness or an implicit default pairing. F and Fbeta at one evaluation seed share the derived training seed, as REV4 section 3.6.2 requires, but each condition receives its own independently traceable artifact directory, manifest and parameter file.",
+      "derivation": {
+        "namespace": "phase_8/training/B3/v1",
+        "hash": "SHA-256",
+        "payload": "namespace|master_seed|evaluation_seed",
+        "pool": "seeds.training declared in configs/phase_8/campaign.yaml",
+        "index_rule": "first four digest bytes as a big-endian uint32, modulo the declared pool length",
+        "collision_rule": "linear forward probe over the declared pool in declaration order; the first unused index wins",
+        "condition_scope": "derived once per evaluation seed, independent of condition, so F and Fbeta share the training seed"
+      }
+    },
+    {
+      "id": "B4",
+      "title": "Training environment seeds",
+      "text": "Derive a deterministic, separate environment-seed stream for every training seed and training episode. The training stream is not the evaluation environment stream: it must never reproduce a Pilot 2-C evaluation episode seed, and no training environment seed may equal a declared evaluation seed.",
+      "derivation": {
+        "namespace": "phase_8/training/B4/v1",
+        "hash": "SHA-256",
+        "payload": "namespace|master_seed|training_seed|episode",
+        "seed_width": "first four digest bytes as a big-endian uint32",
+        "separation": "every derived value is checked against the Pilot 2-C evaluation environment seeds for seeds 9001-9003 and episodes 0-2"
+      }
+    },
+    {
+      "id": "B5",
+      "title": "Checkpoint policy",
+      "text": "Checkpoint after every completed training episode. Preserve the final checkpoint and every intermediate checkpoint needed for recovery and audit, together with complete provenance. No checkpoint is a training artifact and none may be loaded by the campaign loader.",
+      "policy": {
+        "cadence": "one checkpoint after every completed training episode",
+        "retention": "retain every intermediate checkpoint and the final checkpoint",
+        "format": "exact-checkpoint schema 2: manifest.json, parameters.npz, components.npz",
+        "origin": "synthetic_fixture",
+        "stage": "training_checkpoint",
+        "provenance": "condition, campaign seed, derived training seed, init seed, master seed, protocol and training-config digest, environment seeds used, progress counters, and the derivation record"
+      }
+    },
+    {
+      "id": "B6",
+      "title": "Exact resumption",
+      "text": "Checkpoint and restore all relevant state: model parameters; optimizer state and moments; Python RNG state; NumPy RNG state; framework (PyTorch) RNG state; sampler state; and applicable environment RNG state. A checkpoint that claims exactness while any required component is absent must be refused. Define and run a verification procedure that compares an uninterrupted training run with an interrupted-and-resumed run. Do not claim exact resumption until that equivalence has been demonstrated for the run.",
+      "components": [
+        "model parameters and fixed buffers",
+        "optimizer state dictionary including momentum moments",
+        "Python random-module state",
+        "NumPy generator bit-generator state",
+        "PyTorch RNG state",
+        "action-sampler generator state",
+        "caller-supplied environment RNG state, or an explicit record that the environment exposes none"
+      ],
+      "verification": {
+        "method": "run the same declared budget twice: once uninterrupted, once interrupted after a checkpoint and resumed from it with the declared restoration procedure",
+        "compared": [
+          "final trainable-parameter digest",
+          "final full-state digest",
+          "every per-episode metric (loss, return, gradient norm, decisions, update index)",
+          "every environment seed used",
+          "sampler state digest"
+        ],
+        "claim_rule": "equivalence is claimed only when every compared value is identical"
+      }
+    }
+  ],
+  "scope": {
+    "stage": "training_contracts",
+    "rev4_step": "10.5/10.9",
+    "evaluation_seeds": [
+      9001,
+      9002,
+      9003
+    ],
+    "trained_artifact_conditions": [
+      "F",
+      "F_beta"
+    ],
+    "artifact_instances": "one separate artifact per condition and evaluation seed",
+    "shared_training_seed_within_evaluation_seed": true,
+    "uses_declared_training_pool": true,
+    "authorises_training_execution": false,
+    "generates_trained_artifacts": false,
+    "runs_training_episodes": false,
+    "runs_pilot2c_episodes": false,
+    "runs_floor_replays": false,
+    "constructs_randomized_graph": false,
+    "reads_randomized_graph": false,
+    "modifies_frozen_parameter": false,
+    "modifies_statistical_constant": false,
+    "modifies_hypothesis": false,
+    "modifies_rev4": false,
+    "modifies_d1": false,
+    "modifies_d2": false,
+    "modifies_d3": false,
+    "changes_pilot2c_grid": false,
+    "adds_experimental_condition": false,
+    "discharges_u7": false,
+    "sets_n_seeds_selected": false
+  },
+  "prohibitions": [
+    "do not start F or Fbeta training",
+    "do not generate a real trained artifact",
+    "do not run a Pilot 2-C episode",
+    "do not run a floor replay",
+    "do not construct, read or substitute a randomized graph",
+    "do not modify REV4, D1, D2 or D3",
+    "do not modify a frozen neural parameter or statistical constant",
+    "do not change a hypothesis or the approved Pilot 2-C grid",
+    "do not add an experimental condition",
+    "do not discharge U7 or set design.n_seeds_selected",
+    "do not write a checkpoint under a campaign results root",
+    "do not treat a training checkpoint as a training artifact"
+  ],
+  "does_not_authorise": [
+    "a training run",
+    "a trained artifact",
+    "a Pilot 2-C episode or floor replay",
+    "a randomized-graph construction",
+    "a confirmatory campaign",
+    "any change to a frozen parameter, statistical constant, hypothesis or protocol document",
+    "any change to D1, D2 or D3"
+  ],
+  "authorises": [
+    "the declaration of B3, B4, B5 and B6",
+    "the implementation of the B3-B6 training contracts",
+    "focused tests of those contracts that execute no real training"
+  ]
+}

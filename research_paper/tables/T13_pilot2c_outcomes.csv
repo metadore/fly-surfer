@@ -1,0 +1,10 @@
+﻿seed,episode,environment_seed,steps,reward,termination,motor_spikes,no_action_fraction,survival_score
+9001,0,563774599,323,5.22,collision,0,1.0,323.0
+9001,1,2911696168,620,10.19,collision,0,1.0,620.0
+9001,2,4240939637,323,4.22,collision,0,1.0,323.0
+9002,0,2632356062,620,7.19,collision,0,1.0,620.0
+9002,1,307060235,426,3.25,collision,0,1.0,426.0
+9002,2,4241804999,620,8.19,collision,0,1.0,620.0
+9003,0,2839813884,213,3.12,collision,0,1.0,213.0
+9003,1,756850162,426,4.25,collision,0,1.0,426.0
+9003,2,2981106662,213,2.12,collision,0,1.0,213.0

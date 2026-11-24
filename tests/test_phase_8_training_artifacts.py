@@ -1,9 +1,8 @@
 """Focused synthetic tests for the Phase 8 G4 training-artifact pipeline.
 
 Every test uses tiny freshly initialized models and a temporary directory. No
-training update is executed, no game episode runs, no BANC graph is loaded and
-nothing is written under ``experiments/results``. These are infrastructure
-tests, not experimental evidence (G4 brief §5–§7).
+training update is executed, no game episode runs and no BANC graph is loaded.
+These are infrastructure tests, not experimental evidence (G4 brief §5–§7).
 
 Covered: manifest schema, REV4 configuration validation, deterministic
 initialization, separate seed recording, F/Fβ/E separation, Fβ state
@@ -643,5 +642,22 @@ def test_trained_artifact_writes_are_refused(training_config, root):
     assert not (root / "F").exists()
 
 
-def test_no_real_training_directory_is_created():
-    assert not (PROJECT_ROOT / TRAINING_ROOT).exists()
+def test_real_training_storage_holds_only_authorized_trained_artifacts():
+    """Real storage may exist only from an owner-authorized training run.
+
+    Synthetic fixtures are infrastructure evidence, never experimental
+    evidence, so a fixture must never leak into the real training root.
+    """
+    root = PROJECT_ROOT / TRAINING_ROOT
+    if not root.exists():
+        return
+    manifests = sorted(root.glob("*/seed_*/manifest.json"))
+    assert manifests, "the real training root must hold authorized artifacts"
+    for path in manifests:
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+        assert manifest["origin"] == "trained", path
+        assert manifest["stage"] == "trained", path
+        provenance = json.loads(
+            (path.parent / "training_run.json").read_text(encoding="utf-8")
+        )
+        assert provenance["evidence_kind"] == "experimental", path

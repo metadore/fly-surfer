@@ -1,0 +1,383 @@
+{
+  "conditions": {
+    "A": {
+      "controller": "fixed_decoder",
+      "eta": null,
+      "feature_set": null,
+      "id": "A",
+      "init_only": false,
+      "plasticity": "none",
+      "requires_exact_match_of": null,
+      "requires_structure": false,
+      "role": "reference",
+      "state_independent": false,
+      "substrate": "biological",
+      "trains": [
+        "none"
+      ]
+    },
+    "A_prime": {
+      "controller": "fixed_decoder",
+      "eta": 0.0,
+      "feature_set": null,
+      "id": "A_prime",
+      "init_only": false,
+      "plasticity": "three_factor",
+      "requires_exact_match_of": "A",
+      "requires_structure": false,
+      "role": "control",
+      "state_independent": false,
+      "substrate": "biological",
+      "trains": [
+        "none"
+      ]
+    },
+    "B": {
+      "controller": "fixed_decoder",
+      "eta": 0.5,
+      "feature_set": null,
+      "id": "B",
+      "init_only": false,
+      "plasticity": "three_factor",
+      "requires_exact_match_of": null,
+      "requires_structure": false,
+      "role": "condition",
+      "state_independent": false,
+      "substrate": "biological",
+      "trains": [
+        "synapses"
+      ]
+    },
+    "C": {
+      "controller": "fixed_decoder",
+      "eta": null,
+      "feature_set": null,
+      "id": "C",
+      "init_only": false,
+      "plasticity": "none",
+      "requires_exact_match_of": null,
+      "requires_structure": true,
+      "role": "condition",
+      "state_independent": false,
+      "substrate": "random_degree_sign_preserved",
+      "trains": [
+        "none"
+      ]
+    },
+    "C_prime": {
+      "controller": "fixed_decoder",
+      "eta": 0.0,
+      "feature_set": null,
+      "id": "C_prime",
+      "init_only": false,
+      "plasticity": "three_factor",
+      "requires_exact_match_of": "C",
+      "requires_structure": true,
+      "role": "control",
+      "state_independent": false,
+      "substrate": "random_degree_sign_preserved",
+      "trains": [
+        "none"
+      ]
+    },
+    "D": {
+      "controller": "fixed_decoder",
+      "eta": 0.5,
+      "feature_set": null,
+      "id": "D",
+      "init_only": false,
+      "plasticity": "three_factor",
+      "requires_exact_match_of": null,
+      "requires_structure": true,
+      "role": "condition",
+      "state_independent": false,
+      "substrate": "random_degree_sign_preserved",
+      "trains": [
+        "synapses"
+      ]
+    },
+    "E": {
+      "controller": "mlp",
+      "eta": null,
+      "feature_set": "matched_7",
+      "id": "E",
+      "init_only": false,
+      "plasticity": "none",
+      "requires_exact_match_of": null,
+      "requires_structure": false,
+      "role": "condition",
+      "state_independent": false,
+      "substrate": "none",
+      "trains": [
+        "policy"
+      ]
+    },
+    "E_full": {
+      "controller": "mlp",
+      "eta": null,
+      "feature_set": "full_14",
+      "id": "E_full",
+      "init_only": false,
+      "plasticity": "none",
+      "requires_exact_match_of": null,
+      "requires_structure": false,
+      "role": "exploratory",
+      "state_independent": false,
+      "substrate": "none",
+      "trains": [
+        "policy"
+      ]
+    },
+    "F": {
+      "controller": "linear_readout",
+      "eta": null,
+      "feature_set": null,
+      "id": "F",
+      "init_only": false,
+      "plasticity": "none",
+      "requires_exact_match_of": null,
+      "requires_structure": false,
+      "role": "condition",
+      "state_independent": false,
+      "substrate": "biological",
+      "trains": [
+        "readout"
+      ]
+    },
+    "F_beta": {
+      "controller": "bias_only_readout",
+      "eta": null,
+      "feature_set": null,
+      "id": "F_beta",
+      "init_only": false,
+      "plasticity": "none",
+      "requires_exact_match_of": null,
+      "requires_structure": false,
+      "role": "control",
+      "state_independent": true,
+      "substrate": "biological",
+      "trains": [
+        "readout"
+      ]
+    },
+    "F_init": {
+      "controller": "linear_readout",
+      "eta": null,
+      "feature_set": null,
+      "id": "F_init",
+      "init_only": true,
+      "plasticity": "none",
+      "requires_exact_match_of": null,
+      "requires_structure": false,
+      "role": "control",
+      "state_independent": false,
+      "substrate": "biological",
+      "trains": [
+        "none"
+      ]
+    }
+  },
+  "config_hashes": {
+    "campaign": {
+      "path": "configs/phase_8/campaign.yaml",
+      "sha256": "b9a2d3d5f9fc397af07e12cda97bb1ae854cb505edc304e5727c0e2d83477e19"
+    },
+    "conditions": {
+      "path": "configs/phase_8/conditions.yaml",
+      "sha256": "9a93f04771a2489b09a14c2b74418ffb423ad9702d7bc3a47492a2012d42f671"
+    },
+    "environment": {
+      "path": "configs/phase_8/environment.yaml",
+      "sha256": "b391ecf71fd7acac0517a677f9198d6a252a00428aabf8c58d3b6b343a3281dc"
+    }
+  },
+  "created_at": "2026-11-23T03:37:40.893962Z",
+  "design": {
+    "approval": "APPROVED - recorded owner decision D1",
+    "approval_basis": "recorded owner decision (external to the frozen document)",
+    "conditions": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "control_arms": [
+      "A_prime",
+      "C_prime",
+      "F_beta",
+      "F_init"
+    ],
+    "episodes_per_seed": 10,
+    "exploratory_arms": [
+      "E_full"
+    ],
+    "max_game_updates": 900,
+    "n_seeds": null,
+    "n_seeds_fallback": 10,
+    "n_seeds_primary": 16,
+    "seed_indices": {
+      "campaign": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "pilot": [
+        9001,
+        9002,
+        9003
+      ],
+      "training": [
+        1001,
+        1002,
+        1003,
+        1004,
+        1005,
+        1006,
+        1007,
+        1008,
+        1009,
+        1010,
+        1011,
+        1012,
+        1013,
+        1014,
+        1015,
+        1016,
+        1017,
+        1018,
+        1019,
+        1020
+      ]
+    },
+    "stage_purpose": "floor_and_identity_certification"
+  },
+  "environment": {
+    "coin_reward": 1.0,
+    "collision_penalty": -1.0,
+    "distance_horizon": 25.0,
+    "initial_speed": 7.0,
+    "max_speed": 16.0,
+    "max_steps": 900,
+    "observation_schema_version": 1,
+    "obstacle_reward": 0.0,
+    "path": "configs/phase_8/environment.yaml",
+    "render_mode": null,
+    "schema_version": 1,
+    "sha256": "b391ecf71fd7acac0517a677f9198d6a252a00428aabf8c58d3b6b343a3281dc",
+    "survival_reward": 0.01
+  },
+  "environment_capture": {
+    "cpu_count": 12,
+    "implementation": "CPython",
+    "libraries": {
+      "PyYAML": "6.0.3",
+      "matplotlib": "3.10.7",
+      "numpy": "2.3.4",
+      "pandas": "2.3.3",
+      "psutil": "7.1.2",
+      "scipy": "1.16.3",
+      "torch": "2.10.0"
+    },
+    "machine": "AMD64",
+    "memory": {
+      "available_gb": 6.115,
+      "peak_rss_mb": 263.84,
+      "peak_rss_source": "process peak working set",
+      "percent_used": 60.1,
+      "total_gb": 15.342
+    },
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+    "python": "3.13.14"
+  },
+  "input_hashes": {
+    "graph": {
+      "path": "datasets/processed/banc_v888/banc_graph_t5.npz",
+      "sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192"
+    },
+    "motor_decoder": {
+      "path": "configs/motor_decoder.yaml",
+      "sha256": "525f25e9e0d334e58a38ce9d340fcd8fe3ebc148fe1bf9f08656eccc660d9fae"
+    },
+    "neuron_config": {
+      "path": "configs/neuron_config.yaml",
+      "sha256": "9b652bde00a795da205cf22affe8690871670264a3718948f58f3b30583d8b77"
+    },
+    "nodes": {
+      "path": "datasets/processed/banc_v888/banc_nodes.csv.gz",
+      "sha256": "144a2eb09aa1ed2be4f07eff589a6158e98cfe4f18b52db7feef4d2272953e5f"
+    },
+    "plasticity": {
+      "path": "configs/plasticity_banc.yaml",
+      "sha256": "616288a40bf864185c33f92a99742be8dd49e62773cbb58cb9287414ad9e5f70"
+    },
+    "sensory_mapping": {
+      "path": "configs/banc_sensory_mapping.yaml",
+      "sha256": "64c716a42c44ded58c77fccdcd865b0a9732a06b86019d673e6fb4c902dfc4ff"
+    },
+    "synapse_policy": {
+      "path": "configs/banc_synapse_policy.yaml",
+      "sha256": "88f6449289492e79a919fafa56af93c5ac5e916cb50cc1658d7e14eed2dc399e"
+    }
+  },
+  "integrity": {
+    "baseline": null,
+    "checked": false,
+    "non_readme_failures": [],
+    "note": "the 37-file baseline was not checked for this manifest; a report may not be published until it is"
+  },
+  "memory_preflight": {
+    "available_gb": 6.115,
+    "gate_gb": 4.0,
+    "passed": true,
+    "percent_used": 60.1,
+    "reason": "at or above the gate",
+    "source": "psutil.virtual_memory().available",
+    "total_gb": 15.342
+  },
+  "protocol": "PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4",
+  "run_id": "pilot2c_d3_20261123",
+  "schema_version": 1,
+  "seed_derivation": {
+    "condition_codes": {
+      "A": 1,
+      "A_prime": 10,
+      "B": 2,
+      "C": 3,
+      "C_prime": 11,
+      "D": 4,
+      "E": 5,
+      "E_full": 6,
+      "F": 7,
+      "F_beta": 8,
+      "F_init": 9
+    },
+    "environment": "[master, campaign_seed, episode, 1] (condition-independent)",
+    "learning": "[master, condition_code, campaign_seed, 3]",
+    "master_seed": 20261116,
+    "network": "[master, condition_code, campaign_seed, 2]",
+    "note": "environment and structure omit the condition so that paired episodes and the C/D/C\u2032 graph are shared",
+    "stream_codes": {
+      "environment": 1,
+      "learning": 3,
+      "network": 2,
+      "structure": 4
+    },
+    "structure": "[master, campaign_seed, 4] (one graph per seed)"
+  }
+}

@@ -1,0 +1,735 @@
+{
+  "authorization": {
+    "authorized": true,
+    "blockers": [],
+    "exemption": {
+      "applied": true,
+      "approval_date": "2026-11-20",
+      "approval_id": "D3",
+      "reason": "D3 adopts the Pilot 2-C amendment for this exact grid (A, B, F, F_beta, A_prime and the floor; seeds 9001-9003; three episodes per seed; no randomized graph). The grid constructs and reads no randomized graph, so the recorded \u00a79.3 deviation does not apply to it; the deviation remains recorded and unaccepted and B7 stays open for every other stage.",
+      "record": "C:/Users/Hp/fruitfly/FLY-SURFER/reports/phase_8_owner_approvals/D3.json",
+      "scope": {
+        "arms": [
+          "A",
+          "B",
+          "F",
+          "F_beta",
+          "A_prime",
+          "floor"
+        ],
+        "episodes_per_seed": 3,
+        "floor_replays": 9,
+        "n_episodes": 54,
+        "neural_episodes": 45,
+        "seeds": [
+          9001,
+          9002,
+          9003
+        ],
+        "stage": "pilot2c",
+        "stage_purpose": "floor_and_identity_certification",
+        "uses_randomized_graph": false,
+        "uses_trained_artifact": true
+      }
+    },
+    "g3_applicability": {
+      "accepts_g3_deviation": false,
+      "approval_date": "2026-11-20",
+      "approval_id": "D2",
+      "bound_to_rev4": true,
+      "document_matches_rev4": true,
+      "failures": [],
+      "path": "C:/Users/Hp/fruitfly/FLY-SURFER/reports/phase_8_owner_approvals/D2.json",
+      "pilot1_exempt": true,
+      "present": true,
+      "recorded_document_sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c",
+      "scope": {
+        "accepts_g3_deviation": false,
+        "arms": [
+          "A"
+        ],
+        "condition": "A only, biological substrate",
+        "episodes_per_seed": 3,
+        "g3_applicability": "not_applicable_to_pilot1_only",
+        "g3_still_blocks": [
+          "Pilot 2",
+          "the confirmatory campaign",
+          "training",
+          "every condition that loads a randomized graph (C, D, C_prime and any certified-random-graph arm)"
+        ],
+        "n_episodes": 9,
+        "parameter_modifications_authorised": false,
+        "seeds": [
+          9001,
+          9002,
+          9003
+        ],
+        "stage": "pilot1",
+        "uses_randomized_graph": false,
+        "uses_trained_artifact": false,
+        "weakens_graph_certification": false
+      },
+      "valid": true,
+      "weakens_graph_certification": false
+    }
+  },
+  "blockers": [
+    "training: D4 declares B3-B6 and D5 authorises only the six F/F_beta pilot artifacts; the global training gate still refuses any further training, and loadability is reported under training_artifacts"
+  ],
+  "config_hashes": {
+    "campaign": "b9a2d3d5f9fc397af07e12cda97bb1ae854cb505edc304e5727c0e2d83477e19",
+    "conditions": "9a93f04771a2489b09a14c2b74418ffb423ad9702d7bc3a47492a2012d42f671",
+    "environment": "b391ecf71fd7acac0517a677f9198d6a252a00428aabf8c58d3b6b343a3281dc"
+  },
+  "constructs_randomized_graph": false,
+  "d3": {
+    "amendment": "C:/Users/Hp/fruitfly/FLY-SURFER/docs/PHASE_8_PILOT2C_AMENDMENT.md",
+    "amendment_id": "PHASE_8_PILOT2C_AMENDMENT",
+    "amendment_matches_disk": true,
+    "applicable": true,
+    "bound_to_rev4": true,
+    "failures": [],
+    "record": "C:/Users/Hp/fruitfly/FLY-SURFER/reports/phase_8_owner_approvals/D3.json"
+  },
+  "d5_plan": null,
+  "executable": false,
+  "input_hashes": {
+    "graph": {
+      "path": "datasets/processed/banc_v888/banc_graph_t5.npz",
+      "sha256": "6d47f2592a6d07f2c61318b87719039db21b460115143c0faedd3f20543e2192"
+    },
+    "motor_decoder": {
+      "path": "configs/motor_decoder.yaml",
+      "sha256": "525f25e9e0d334e58a38ce9d340fcd8fe3ebc148fe1bf9f08656eccc660d9fae"
+    },
+    "neuron_config": {
+      "path": "configs/neuron_config.yaml",
+      "sha256": "9b652bde00a795da205cf22affe8690871670264a3718948f58f3b30583d8b77"
+    },
+    "nodes": {
+      "path": "datasets/processed/banc_v888/banc_nodes.csv.gz",
+      "sha256": "144a2eb09aa1ed2be4f07eff589a6158e98cfe4f18b52db7feef4d2272953e5f"
+    },
+    "plasticity": {
+      "path": "configs/plasticity_banc.yaml",
+      "sha256": "616288a40bf864185c33f92a99742be8dd49e62773cbb58cb9287414ad9e5f70"
+    },
+    "sensory_mapping": {
+      "path": "configs/banc_sensory_mapping.yaml",
+      "sha256": "64c716a42c44ded58c77fccdcd865b0a9732a06b86019d673e6fb4c902dfc4ff"
+    },
+    "synapse_policy": {
+      "path": "configs/banc_synapse_policy.yaml",
+      "sha256": "88f6449289492e79a919fafa56af93c5ac5e916cb50cc1658d7e14eed2dc399e"
+    }
+  },
+  "memory_preflight": {
+    "available_gb": 7.118,
+    "gate_gb": 4.0,
+    "passed": true,
+    "percent_used": 53.6,
+    "reason": "at or above the gate",
+    "source": "psutil.virtual_memory().available",
+    "total_gb": 15.342
+  },
+  "pairing": {
+    "F:9001": 1008,
+    "F:9002": 1014,
+    "F:9003": 1005,
+    "F_beta:9001": 1008,
+    "F_beta:9002": 1014,
+    "F_beta:9003": 1005
+  },
+  "plan": {
+    "arms": [
+      "A",
+      "B",
+      "F",
+      "F_beta",
+      "A_prime",
+      "floor"
+    ],
+    "campaign_effects_estimated": false,
+    "does_not_establish": "no hypothesis is tested; no C1-C4, H1-H3, paired dispersion or sigma_max is estimated; U7 is not discharged and N is not selected; pilot rows are never merged into the campaign dataset",
+    "entries": [
+      {
+        "arm": "A",
+        "environment_seed": 563774599,
+        "episode": 0,
+        "learning_seed": 2430192945,
+        "network_seed": 3336197789,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A",
+        "environment_seed": 2911696168,
+        "episode": 1,
+        "learning_seed": 2430192945,
+        "network_seed": 3336197789,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A",
+        "environment_seed": 4240939637,
+        "episode": 2,
+        "learning_seed": 2430192945,
+        "network_seed": 3336197789,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A",
+        "environment_seed": 2632356062,
+        "episode": 0,
+        "learning_seed": 1008514826,
+        "network_seed": 2627053973,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A",
+        "environment_seed": 307060235,
+        "episode": 1,
+        "learning_seed": 1008514826,
+        "network_seed": 2627053973,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A",
+        "environment_seed": 4241804999,
+        "episode": 2,
+        "learning_seed": 1008514826,
+        "network_seed": 2627053973,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A",
+        "environment_seed": 2839813884,
+        "episode": 0,
+        "learning_seed": 4049183526,
+        "network_seed": 2618100565,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "A",
+        "environment_seed": 756850162,
+        "episode": 1,
+        "learning_seed": 4049183526,
+        "network_seed": 2618100565,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "A",
+        "environment_seed": 2981106662,
+        "episode": 2,
+        "learning_seed": 4049183526,
+        "network_seed": 2618100565,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "B",
+        "environment_seed": 563774599,
+        "episode": 0,
+        "learning_seed": 3631976640,
+        "network_seed": 1305767235,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "B",
+        "environment_seed": 2911696168,
+        "episode": 1,
+        "learning_seed": 3631976640,
+        "network_seed": 1305767235,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "B",
+        "environment_seed": 4240939637,
+        "episode": 2,
+        "learning_seed": 3631976640,
+        "network_seed": 1305767235,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "B",
+        "environment_seed": 2632356062,
+        "episode": 0,
+        "learning_seed": 672512211,
+        "network_seed": 1498955329,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "B",
+        "environment_seed": 307060235,
+        "episode": 1,
+        "learning_seed": 672512211,
+        "network_seed": 1498955329,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "B",
+        "environment_seed": 4241804999,
+        "episode": 2,
+        "learning_seed": 672512211,
+        "network_seed": 1498955329,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "B",
+        "environment_seed": 2839813884,
+        "episode": 0,
+        "learning_seed": 3857998916,
+        "network_seed": 252343472,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "B",
+        "environment_seed": 756850162,
+        "episode": 1,
+        "learning_seed": 3857998916,
+        "network_seed": 252343472,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "B",
+        "environment_seed": 2981106662,
+        "episode": 2,
+        "learning_seed": 3857998916,
+        "network_seed": 252343472,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "F",
+        "environment_seed": 563774599,
+        "episode": 0,
+        "learning_seed": 1721139275,
+        "network_seed": 684114016,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "F",
+        "environment_seed": 2911696168,
+        "episode": 1,
+        "learning_seed": 1721139275,
+        "network_seed": 684114016,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "F",
+        "environment_seed": 4240939637,
+        "episode": 2,
+        "learning_seed": 1721139275,
+        "network_seed": 684114016,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "F",
+        "environment_seed": 2632356062,
+        "episode": 0,
+        "learning_seed": 648715600,
+        "network_seed": 1762606307,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "F",
+        "environment_seed": 307060235,
+        "episode": 1,
+        "learning_seed": 648715600,
+        "network_seed": 1762606307,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "F",
+        "environment_seed": 4241804999,
+        "episode": 2,
+        "learning_seed": 648715600,
+        "network_seed": 1762606307,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "F",
+        "environment_seed": 2839813884,
+        "episode": 0,
+        "learning_seed": 3414171186,
+        "network_seed": 3388192338,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "F",
+        "environment_seed": 756850162,
+        "episode": 1,
+        "learning_seed": 3414171186,
+        "network_seed": 3388192338,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "F",
+        "environment_seed": 2981106662,
+        "episode": 2,
+        "learning_seed": 3414171186,
+        "network_seed": 3388192338,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 563774599,
+        "episode": 0,
+        "learning_seed": 3540965734,
+        "network_seed": 2176668929,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 2911696168,
+        "episode": 1,
+        "learning_seed": 3540965734,
+        "network_seed": 2176668929,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 4240939637,
+        "episode": 2,
+        "learning_seed": 3540965734,
+        "network_seed": 2176668929,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 2632356062,
+        "episode": 0,
+        "learning_seed": 4267832232,
+        "network_seed": 3110932492,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 307060235,
+        "episode": 1,
+        "learning_seed": 4267832232,
+        "network_seed": 3110932492,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 4241804999,
+        "episode": 2,
+        "learning_seed": 4267832232,
+        "network_seed": 3110932492,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 2839813884,
+        "episode": 0,
+        "learning_seed": 2531179048,
+        "network_seed": 909469107,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 756850162,
+        "episode": 1,
+        "learning_seed": 2531179048,
+        "network_seed": 909469107,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 2981106662,
+        "episode": 2,
+        "learning_seed": 2531179048,
+        "network_seed": 909469107,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 563774599,
+        "episode": 0,
+        "learning_seed": 823007700,
+        "network_seed": 4098891316,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 2911696168,
+        "episode": 1,
+        "learning_seed": 823007700,
+        "network_seed": 4098891316,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 4240939637,
+        "episode": 2,
+        "learning_seed": 823007700,
+        "network_seed": 4098891316,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 2632356062,
+        "episode": 0,
+        "learning_seed": 849851452,
+        "network_seed": 3757967519,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 307060235,
+        "episode": 1,
+        "learning_seed": 849851452,
+        "network_seed": 3757967519,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 4241804999,
+        "episode": 2,
+        "learning_seed": 849851452,
+        "network_seed": 3757967519,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 2839813884,
+        "episode": 0,
+        "learning_seed": 2951756029,
+        "network_seed": 2567414252,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 756850162,
+        "episode": 1,
+        "learning_seed": 2951756029,
+        "network_seed": 2567414252,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 2981106662,
+        "episode": 2,
+        "learning_seed": 2951756029,
+        "network_seed": 2567414252,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 563774599,
+        "episode": 0,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9001,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 2911696168,
+        "episode": 1,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9001,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 4240939637,
+        "episode": 2,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9001,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 2632356062,
+        "episode": 0,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9002,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 307060235,
+        "episode": 1,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9002,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 4241804999,
+        "episode": 2,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9002,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 2839813884,
+        "episode": 0,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9003,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 756850162,
+        "episode": 1,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9003,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 2981106662,
+        "episode": 2,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9003,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      }
+    ],
+    "episodes_per_seed": 3,
+    "establishes": "the floor executes substrate-free and constant, A' reproduces A exactly on P1-P19, F-beta is state-independent, F is state-dependent and frozen at evaluation, motor silence is reported, plasticity is attributable, provenance is complete and every arm is viable",
+    "estimates_contrasts": false,
+    "hypothesis_tests": [],
+    "merged_into_campaign": false,
+    "n_entries": 54,
+    "rev4_step": "10.8 (amended by D3)",
+    "seeds": [
+      9001,
+      9002,
+      9003
+    ],
+    "stage": "pilot2c",
+    "stage_purpose": "floor_and_identity_certification"
+  },
+  "results_destination": "C:/Users/Hp/fruitfly/FLY-SURFER/experiments/results/phase_8/pilot2c",
+  "results_destination_free": true,
+  "results_root": "experiments/results/phase_8",
+  "stage": "pilot2c",
+  "stage_purpose": "floor_and_identity_certification",
+  "training_artifacts": {
+    "campaign_seeds": [
+      9001,
+      9002,
+      9003
+    ],
+    "complete": true,
+    "execution_authorized": false,
+    "ignored_seeds": [],
+    "loaded": [
+      "F:9001",
+      "F:9002",
+      "F:9003",
+      "F_beta:9001",
+      "F_beta:9002",
+      "F_beta:9003"
+    ],
+    "missing": [],
+    "origins": [
+      "trained"
+    ],
+    "pairing_source": "explicit",
+    "provenance": "trained-artifacts",
+    "readout_pairs": {
+      "9001": {
+        "campaign_seed": 9001,
+        "paired": true,
+        "training_seed": 1008
+      },
+      "9002": {
+        "campaign_seed": 9002,
+        "paired": true,
+        "training_seed": 1014
+      },
+      "9003": {
+        "campaign_seed": 9003,
+        "paired": true,
+        "training_seed": 1005
+      }
+    },
+    "require_trained": true,
+    "required_conditions": [
+      "F",
+      "F_beta"
+    ],
+    "root": "C:\\Users\\Hp\\fruitfly\\FLY-SURFER\\experiments\\results\\phase_8\\training",
+    "seed_scope": "pilot",
+    "synthetic_allowed": false,
+    "training_config_sha256": "1508a6a4733fbfc0431e19a91e3d62d76624fef5626e4bb683779d62340433df",
+    "training_performed_here": false
+  },
+  "training_blockers": [
+    "training: D4 declares B3-B6 and D5 authorises only the six F/F_beta pilot artifacts; the global training gate still refuses any further training, and loadability is reported under training_artifacts"
+  ],
+  "uses_randomized_graph": false
+}

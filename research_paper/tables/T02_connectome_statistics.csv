@@ -1,0 +1,5 @@
+﻿graph,threshold_synapses,nodes,directed_edges,summed_synapses,isolated_nodes,mean_weight,max_weight,notes
+FAFB v783,5,139255,3732460,50666648,671,13.575,2633,"reciprocal directed pairs: 620,180"
+BANC v888,1,172433,11596517,34310230,6232,,,metadata-only rows excluded; self-edges excluded
+BANC v888,5,172433,1535710,18552546,24320,,,metadata-only rows excluded; self-edges excluded
+BANC v888,10,172433,570721,12397230,62551,,,metadata-only rows excluded; self-edges excluded

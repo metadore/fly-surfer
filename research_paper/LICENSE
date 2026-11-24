@@ -1,0 +1,52 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 metadore
+
+The original content of this research paper — its text, the tables and figures
+created for it, and its companion methodological documentation — is licensed
+under the Creative Commons Attribution 4.0 International License.
+
+Licence deed:  https://creativecommons.org/licenses/by/4.0/
+Legal code:    https://creativecommons.org/licenses/by/4.0/legalcode
+
+You are free to:
+
+  Share  — copy and redistribute the material in any medium or format.
+  Adapt  — remix, transform, and build upon the material for any purpose,
+           even commercially.
+
+Under the following terms:
+
+  Attribution — You must give appropriate credit to metadore, provide a link
+  to this licence, and indicate if changes were made. You may do so in any
+  reasonable manner, but not in any way that suggests the licensor endorses
+  you or your use.
+
+  No additional restrictions — You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the licence
+  permits.
+
+Recommended attribution:
+
+  "Teaching a Fruit Fly Brain to Play Subway Surfers Through
+  Connectome-Based Neural Simulation: Architecture, Learning Mechanisms,
+  Experimental Evaluation, and Motor-Output Limitations", metadore,
+  version 1.1, 24 November 2026, licensed under CC BY 4.0.
+  https://creativecommons.org/licenses/by/4.0/
+
+Scope and exclusions
+
+This licence applies to original paper content only. It does not apply to
+third-party material reproduced or derived within the paper, including:
+
+  - FlyWire FAFB connectome data (CC BY 4.0, FlyWire Consortium);
+  - BANC connectome data (CC BY 4.0, BANC Consortium);
+  - Subway Surfers Object Dataset images (CC BY 4.0, horizon-cgt2k /
+    Roboflow Universe);
+  - third-party software, model weights and externally produced figures.
+
+Those items remain under their own licences and attribution requirements.
+See `THIRD_PARTY_NOTICES.md` at the repository root for the full notice.
+
+FLY-SURFER source code outside this directory is licensed separately under the
+MIT License; see `LICENSE` at the repository root.

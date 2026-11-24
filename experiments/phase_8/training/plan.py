@@ -224,8 +224,10 @@ def describe_interface() -> dict:
         "agent_budget": "2,000 gradient updates (REV4 Appendix C)",
         "training_authorized": False,
         "reason": (
-            "REV4 §12 is unapproved, U1-U18 are PROPOSED, and "
-            "design.n_seeds_selected is null"
+            "D1 approved REV4 §12 and U1-U18, and D4 declares the B3-B6 "
+            "training-operation contracts, but training is still refused: "
+            "design.n_seeds_selected is null (U7), B7 is open, and neither "
+            "decision authorises a training run"
         ),
         "artifacts_written_by_this_task": 0,
     }

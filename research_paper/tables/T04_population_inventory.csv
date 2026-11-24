@@ -1,0 +1,37 @@
+﻿dataset,population,count,basis
+FAFB v783,optic,77873,super_class
+FAFB v783,central,32381,super_class
+FAFB v783,sensory,16938,super_class
+FAFB v783,visual_projection,7684,super_class
+FAFB v783,ascending,1750,super_class
+FAFB v783,descending,1305,super_class
+FAFB v783,sensory_ascending,612,super_class
+FAFB v783,visual_centrifugal,522,super_class
+FAFB v783,motor,110,super_class
+FAFB v783,endocrine,80,super_class
+BANC v888,optic_lobe_intrinsic,72826,super_class
+BANC v888,central_brain_intrinsic,31347,super_class
+BANC v888,unannotated,20573,super_class
+BANC v888,sensory,15956,super_class
+BANC v888,ventral_nerve_cord_intrinsic,12850,super_class
+BANC v888,visual_projection,7284,super_class
+BANC v888,glia,6281,super_class
+BANC v888,ascending,1849,super_class
+BANC v888,descending,1316,super_class
+BANC v888,motor,805,super_class
+BANC v888,sensory_ascending,514,super_class
+BANC v888,visual_centrifugal,470,super_class
+BANC v888,visceral_circulatory,221,super_class
+BANC v888,trachea,83,super_class
+BANC v888,not_a_neuron,40,super_class
+BANC v888,sensory_descending,13,super_class
+BANC v888,ascending_visceral_circulatory,5,super_class
+BANC v888,motor (LEFT pool),185,decoder annotation
+BANC v888,motor (RIGHT pool),186,decoder annotation
+BANC v888,motor (JUMP pool),20,decoder annotation
+BANC v888,motor unassigned,414,decoder annotation
+BANC v888,tergotrochanter candidates,20,annotation
+BANC v888,descending,1316,is_descending
+BANC v888,ascending,1849,is_ascending
+BANC v888,VNC intrinsic (graph),12850,is_vnc_intrinsic
+BANC sensory mapping,stimulated sensory neurons,232,experimental mapping

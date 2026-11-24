@@ -23,16 +23,19 @@ SCIENTIFIC STATUS
     **Nothing here runs unless a synthetic context is constructed.** A
     ``TrainingRunContext`` with ``mode = "authorized_protocol"`` calls
     :func:`~.gate.assert_training_authorized` in its constructor, and that
-    function always raises while REV4 §12 is unapproved. The protocol loops are
-    therefore present as code but structurally unreachable, and
-    :func:`~.plan.run_training` still refuses before reaching this module. The
-    only runnable context is ``synthetic_fixture``, which exists so the loop
-    mechanics can be tested on tiny fake environments. Synthetic runs may use a
-    reduced budget; that is recorded as ``budget.override = true``.
+    function always raises while the design (U7) and B7 remain open. Owner
+    decision D4 declares B3-B6 but authorises no execution, so the protocol
+    loops remain structurally unreachable, and :func:`~.plan.run_training`
+    still refuses before reaching this module. The only runnable context is
+    ``synthetic_fixture``, which exists so the loop mechanics can be tested on
+    tiny fake environments. Synthetic runs may use a reduced budget; that is
+    recorded as ``budget.override = true``.
 
-    REV4 declares no training-episode environment-seed schedule, no checkpoint
-    cadence and no seed pairing. Each is an explicit caller input
-    (:func:`describe_engine` lists them); none is defaulted or invented here.
+    D4 declares the training-episode environment-seed schedule
+    (:func:`~.contracts.training_environment_seed`), the checkpoint policy and
+    the exact-resumption contract. They are applied only when a caller opts in:
+    ``environment_seed_for_episode=None`` uses the declared B4 schedule, and
+    exact checkpoints are written only under ``exact_checkpoint_root``.
 """
 
 from __future__ import annotations
@@ -62,7 +65,13 @@ from .config import (
     canonical_json,
     sha256_text,
 )
+from .contracts import B4_DERIVATION, B4_NAMESPACE, training_environment_seed
 from .errors import TrainingConfigError, TrainingError
+from .exact_checkpoint import (
+    RestoredExactCheckpoint,
+    apply_exact_restore,
+    write_exact_checkpoint,
+)
 from .gate import assert_training_authorized
 from .initialization import InitializedModel
 from .state import model_state, state_digest, trainable_digest
@@ -192,6 +201,9 @@ class TrainingRun:
     protocol_id: str
     protocol_sha256: str
     checkpoints: tuple[str, ...] = ()
+    rng_restored: bool = False
+    optimizer_state_restored: bool = False
+    checkpoint_kind: str = "v1"
 
     @property
     def n_episodes(self) -> int:
@@ -232,11 +244,12 @@ class TrainingRun:
             "training_config_sha256": self.training_config_sha256,
             "protocol": {"id": self.protocol_id, "sha256": self.protocol_sha256},
             "checkpoints_written": len(self.checkpoints),
+            "checkpoint_kind": self.checkpoint_kind,
             "training_executed": True,
             "training_authorized": False,
             "trained_artifact_written": False,
-            "rng_restored": False,
-            "optimizer_state_restored": False,
+            "rng_restored": bool(self.rng_restored),
+            "optimizer_state_restored": bool(self.optimizer_state_restored),
             "note": (
                 "synthetic training-engine fixture: the loops ran on a caller-"
                 "supplied fixture, no game episode or BANC substrate was used, "
@@ -299,12 +312,9 @@ def _check_initialized(initialized: Any, conditions: Sequence[str]) -> Initializ
     return initialized
 
 
-def _check_resume(
-    resume: Any, initialized: InitializedModel, config: TrainingConfig
-) -> RestoredCheckpoint:
-    if not isinstance(resume, RestoredCheckpoint):
-        raise TrainingError("resume must be a RestoredCheckpoint")
-    manifest = resume.manifest
+def _check_manifest_identity(
+    manifest: Mapping[str, Any], initialized: InitializedModel, config: TrainingConfig
+) -> None:
     if str(manifest["training_config_sha256"]) != config.sha256():
         raise TrainingConfigError(
             "the checkpoint was produced under a different training configuration"
@@ -316,6 +326,7 @@ def _check_resume(
         "campaign_seed": int(manifest["campaign_seed"]) == initialized.campaign_seed,
         "training_seed": int(manifest["training_seed"]) == initialized.training_seed,
         "init_seed": int(manifest["init_seed"]) == initialized.init_seed,
+        "master_seed": int(manifest["master_seed"]) == initialized.master_seed,
         "model_kind": str(manifest["model_kind"]) == initialized.kind,
         "n_features": int(manifest["n_features"]) == initialized.n_features,
     }
@@ -324,7 +335,38 @@ def _check_resume(
         raise TrainingConfigError(
             f"the checkpoint does not belong to this run: {failures}"
         )
+
+
+def _check_resume(
+    resume: Any, initialized: InitializedModel, config: TrainingConfig
+) -> RestoredCheckpoint:
+    if not isinstance(resume, RestoredCheckpoint):
+        raise TrainingError("resume must be a RestoredCheckpoint")
+    _check_manifest_identity(resume.manifest, initialized, config)
     return resume
+
+
+def _check_exact_resume(
+    resume: Any, initialized: InitializedModel, config: TrainingConfig
+) -> RestoredExactCheckpoint:
+    if not isinstance(resume, RestoredExactCheckpoint):
+        raise TrainingError("exact resume requires a RestoredExactCheckpoint")
+    if not resume.rng_restored or not resume.optimizer_state_restored:
+        raise TrainingError(
+            "the exact checkpoint does not carry every B6 component; exact "
+            "resumption cannot be claimed from it"
+        )
+    _check_manifest_identity(resume.manifest, initialized, config)
+    return resume
+
+
+def _declared_environment_schedule(
+    initialized: InitializedModel, episode: int
+) -> int:
+    """D4 B4: the declared training-episode environment seed."""
+    return training_environment_seed(
+        initialized.master_seed, initialized.training_seed, episode
+    )
 
 
 def _seed_from(callable_or_int: Any, episode: int, name: str) -> int:
@@ -391,6 +433,10 @@ def train_readout(
     resume: RestoredCheckpoint | None = None,
     checkpoint_every: int | None = None,
     checkpoint_root: str | Path | None = None,
+    resume_exact: RestoredExactCheckpoint | None = None,
+    exact_checkpoint_root: str | Path | None = None,
+    environment_state_for_episode: Callable[[int], Any] | None = None,
+    b3_provenance: Mapping[str, Any] | None = None,
 ) -> TrainingRun:
     """Run the declared F/Fβ training loop on a caller-supplied fixture.
 
@@ -400,6 +446,12 @@ def train_readout(
     sampled decision and must **not** call ``controller.update()`` — the engine
     applies exactly one REINFORCE update at the end of each episode, as
     :mod:`readout.trainer` defines.
+
+    ``environment_seed_for_episode=None`` selects the declared D4 B4 schedule.
+    ``exact_checkpoint_root`` writes one exact checkpoint after every completed
+    episode (D4 B5); ``resume_exact`` restores parameters, optimizer moments and
+    every B6 RNG component before the next episode. The two checkpoint formats
+    are mutually exclusive within one run.
     """
     initialized = _check_initialized(initialized, READOUT_CONDITIONS)
     if not isinstance(config, TrainingConfig):
@@ -407,11 +459,30 @@ def train_readout(
     context = _require_context(context)
     if not callable(episode_runner):
         raise TrainingError("episode_runner must be callable")
-    if not callable(environment_seed_for_episode) and not isinstance(
+    if resume is not None and resume_exact is not None:
+        raise TrainingConfigError(
+            "supply either a v1 checkpoint (resume) or an exact checkpoint "
+            "(resume_exact), never both"
+        )
+    if exact_checkpoint_root is not None and checkpoint_every is not None:
+        raise TrainingConfigError(
+            "an exact run checkpoints after every episode; it does not also use "
+            "the v1 checkpoint_every cadence"
+        )
+    if environment_state_for_episode is not None and not callable(
+        environment_state_for_episode
+    ):
+        raise TrainingError("environment_state_for_episode must be callable or None")
+    if environment_seed_for_episode is None:
+        environment_seed_for_episode = lambda episode: _declared_environment_schedule(
+            initialized, episode
+        )
+    elif not callable(environment_seed_for_episode) and not isinstance(
         environment_seed_for_episode, int
     ):
         raise TrainingError(
-            "environment_seed_for_episode must be a callable or an integer"
+            "environment_seed_for_episode must be a callable, an integer or None "
+            "(None selects the declared D4 B4 schedule)"
         )
     max_decisions = _positive_int(
         max_decisions_per_episode, "max_decisions_per_episode"
@@ -436,8 +507,29 @@ def train_readout(
         resume_info = {
             "resumed": True,
             "start_episode": start_episode,
+            "checkpoint_kind": "v1",
             "rng_restored": False,
             "optimizer_state_restored": False,
+        }
+    elif resume_exact is not None:
+        resume_exact = _check_exact_resume(resume_exact, initialized, config)
+        model = resume_exact.model
+        start_episode = int(resume_exact.progress["episodes_completed"])
+        seeds_used = list(resume_exact.progress.get("environment_seeds_used", []))
+        run_seeds = list(seeds_used)
+        if start_episode != len(seeds_used):
+            raise TrainingError(
+                "the exact checkpoint's completed-episode count and its recorded "
+                "environment-seed history disagree"
+            )
+        resume_info = {
+            "resumed": True,
+            "start_episode": start_episode,
+            "start_update": int(resume_exact.progress.get("updates_completed", 0)),
+            "checkpoint_kind": "exact",
+            "checkpoint": resume_exact.directory,
+            "rng_restored": True,
+            "optimizer_state_restored": True,
         }
 
     budget = _resolve_budget(
@@ -483,8 +575,21 @@ def train_readout(
         )
     if controller.trainer is None:
         raise TrainingError("a training readout needs a REINFORCE trainer")
+    if resume_exact is not None:
+        applied = apply_exact_restore(
+            controller.trainer.optimizer,
+            controller.sampler,
+            resume_exact,
+            restore_global_rng=True,
+        )
+        resume_info.update(applied)
+        resume_info["resumed"] = True
 
-    episodes: list[dict] = []
+    episodes: list[dict] = (
+        [dict(item) for item in resume_exact.progress.get("episodes", [])]
+        if resume_exact is not None
+        else []
+    )
     checkpoints: list[str] = []
     for episode in range(start_episode, int(budget["value"])):
         environment_seed = _seed_from(
@@ -520,7 +625,54 @@ def train_readout(
             }
         )
         completed = episode + 1
-        if cadence is not None and completed % cadence == 0:
+        if exact_checkpoint_root is not None:
+            environment_state = (
+                environment_state_for_episode(episode)
+                if environment_state_for_episode is not None
+                else None
+            )
+            checkpoints.append(
+                str(
+                    write_exact_checkpoint(
+                        _exact_checkpoint_directory(
+                            exact_checkpoint_root,
+                            initialized.condition_id,
+                            initialized.campaign_seed,
+                            completed,
+                        ),
+                        model,
+                        config=config,
+                        condition_id=initialized.condition_id,
+                        campaign_seed=initialized.campaign_seed,
+                        training_seed=initialized.training_seed,
+                        init_seed=initialized.init_seed,
+                        master_seed=initialized.master_seed,
+                        progress={
+                            "episodes_completed": completed,
+                            "updates_completed": sum(
+                                int(item["updates_applied"]) for item in episodes
+                            ),
+                            "budget": budget,
+                            "environment_seeds_used": seeds_used,
+                            "sampling_seed": sampling_seed,
+                            "metrics_sha256": _metrics_digest(episodes),
+                            "episodes": [dict(item) for item in episodes],
+                            "b3": dict(b3_provenance or {}),
+                            "b4": {
+                                "namespace": B4_NAMESPACE,
+                                "derivation": dict(B4_DERIVATION),
+                                "master_seed": int(initialized.master_seed),
+                                "training_seed": int(initialized.training_seed),
+                                "episodes_completed": completed,
+                            },
+                        },
+                        optimizer=controller.trainer.optimizer,
+                        sampler=controller.sampler,
+                        environment_state=environment_state,
+                    )
+                )
+            )
+        elif cadence is not None and completed % cadence == 0:
             checkpoints.append(
                 _write_run_checkpoint(
                     checkpoint_root,
@@ -567,6 +719,15 @@ def train_readout(
         protocol_id=config.protocol_id,
         protocol_sha256=config.protocol_sha256,
         checkpoints=tuple(checkpoints),
+        rng_restored=bool(resume_info.get("rng_restored", False)),
+        optimizer_state_restored=bool(
+            resume_info.get("optimizer_state_restored", False)
+        ),
+        checkpoint_kind=(
+            "exact"
+            if exact_checkpoint_root is not None or resume_exact is not None
+            else "v1"
+        ),
     )
 
 
@@ -779,6 +940,18 @@ def train_agent(
     )
 
 
+def _exact_checkpoint_directory(
+    root: str | Path, condition_id: str, campaign_seed: int, step: int
+) -> Path:
+    """``<root>/<condition>/seed_<n>/exact_step_<k>``; never shares a v1 path."""
+    return (
+        Path(root)
+        / str(condition_id)
+        / f"seed_{int(campaign_seed)}"
+        / f"exact_step_{int(step)}"
+    )
+
+
 def _write_run_checkpoint(
     root: str | Path | None,
     model: Any,
@@ -834,35 +1007,47 @@ def describe_engine() -> dict:
             SYNTHETIC_MODE: "constructible; fixtures only, never a campaign",
             PROTOCOL_MODE: (
                 "refused by construction: gate.assert_training_authorized always "
-                "raises while REV4 §12 is unapproved"
+                "raises while the design (U7) and B7 remain open and D4 "
+                "authorises no execution"
             ),
+        },
+        "declarations": {
+            "owner_decision": "D4 (2026-11-21)",
+            "B3": "declared: SHA-256 namespace phase_8/training/B3/v1 over the "
+            "declared training pool",
+            "B4": "declared: SHA-256 namespace phase_8/training/B4/v1 per "
+            "training seed and episode",
+            "B5": "declared: exact checkpoint after every completed episode; "
+            "all intermediates and the final checkpoint retained",
+            "B6": "declared: parameters, optimizer moments, python/numpy/torch "
+            "RNG and sampler state; exactness requires verify_equivalence",
         },
         "unresolved_inputs": [
             {
                 "name": "campaign-to-training seed pairing",
-                "status": "caller-declared; REV4 declares none",
-                "interface": "training.seeding.validate_pairing",
+                "status": "declared by D4 (B3); derived from the declared pool",
+                "interface": "training.contracts.derive_b3_pairing",
             },
             {
                 "name": "training-episode environment seed schedule",
-                "status": (
-                    "caller-supplied; REV4 §6.3 declares only the evaluation "
-                    "environment stream"
-                ),
-                "interface": "environment_seed_for_episode",
+                "status": "declared by D4 (B4); used when the caller passes None",
+                "interface": "environment_seed_for_episode / training.contracts",
             },
             {
                 "name": "checkpoint cadence and retention",
-                "status": "caller-supplied; REV4 declares none",
-                "interface": "checkpoint_every / checkpoint_root",
+                "status": (
+                    "declared by D4 (B5): every completed episode, retain all; "
+                    "still an explicit opt-in through exact_checkpoint_root"
+                ),
+                "interface": "exact_checkpoint_root",
             },
             {
                 "name": "sampler RNG and optimizer-state checkpointing",
                 "status": (
-                    "not implemented; resume restores parameters and counters "
-                    "only, so it is parameter-continuous, not bit-identical"
+                    "implemented by D4 (B6) in training.exact_checkpoint; "
+                    "exactness is claimed only after verify_equivalence"
                 ),
-                "interface": "training.checkpoint.describe_checkpoint_interface",
+                "interface": "training.exact_checkpoint.describe_exact_checkpoint_interface",
             },
         ],
         "gates": {

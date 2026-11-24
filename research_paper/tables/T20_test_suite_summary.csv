@@ -1,0 +1,12 @@
+﻿phase,tests,status,note
+Phase 2,68,passed,"LIF, synapses, sampling, recorder, simulator, configs"
+Phase 4D,331,passed,cumulative full suite at BANC graph construction
+Phase 4E,345,passed,cumulative full suite at pathway analysis
+Phase 4F,397,passed,cumulative full suite at decoder development
+Phase 4G,440,passed,cumulative full suite at BANC propagation
+Phase 5G,683,passed,cumulative full suite at plasticity validation
+Phase 6C,748,passed,cumulative full suite at MI analysis
+Phase 6 final,999,"passed, 3 skipped",information analysis and integration
+Phase 7,1012,"passed, 3 skipped, 6 failed",6 pre-existing README-hash failures
+Phase 8 D5/D6,530,passed,after pilot training path
+Phase 8 Pilot 2-C,531,passed,after preflight blocker resolution

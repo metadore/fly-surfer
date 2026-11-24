@@ -58,6 +58,11 @@ class ReadoutController:
         return self.spec.n_features
 
     @property
+    def sampler(self) -> np.random.Generator:
+        """The action-sampling generator; checkpointed for exact resumption."""
+        return self._rng
+
+    @property
     def state_independent(self) -> bool:
         return bool(getattr(self.model, "state_independent", False))
 

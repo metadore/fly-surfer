@@ -9,8 +9,10 @@
 # Raw FlyWire source data (15 gzip files, ~388 MB compressed). Never commit.
 datasets/raw/**
 
-# Third-party visual datasets kept local for auditing. Never commit.
+# Third-party datasets and reference clones kept local for auditing. Never commit.
+datasets/external/
 datasets/external/subway surfers/
+external/
 
 # Incomplete downloads and temporary archives
 *.crdownload
@@ -82,6 +84,20 @@ references/
 
 # Local model weights and exported checkpoints. Never commit.
 models/
+*.onnx
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Large derived connectome artifacts regenerated from the raw downloads
+datasets/processed/banc_v888/
+datasets/processed/banc_v888_random/
+
+# Resume checkpoints, temporary audit outputs and per-run logs
+*.checkpoint.jsonl
+reports/_tmp_*.json
+experiments/results/phase_8_random/logs/
 
 # Intentionally tracked research artifacts (not ignored):
 #   datasets/manifest.json

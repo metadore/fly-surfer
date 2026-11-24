@@ -1,0 +1,9 @@
+﻿id,question,prerequisite,design_note
+Q1,Can a first-hop neuron be driven above threshold by a physiological input regime?,calibrated synapse model,parameter-sensitivity study; no threshold tuning to force a spike
+Q2,Can a motor pathway be validated against electrophysiology?,paired recording/connectome data,requires external data not in this repository
+Q3,Does a trainable readout help once motor activity exists?,a substrate with non-zero motor spikes,C4 evidence bar; campaign design
+Q4,Does biological topology outperform degree/sign-matched nulls?,certified random graphs,C3; G3 gate must be resolved
+Q5,Are the model conclusions stable under weight/scale sensitivity?,declared parameter grid,pre-registered sensitivity campaign
+Q6,Can cell-type-specific LIF parameters change the bottleneck?,annotated physiology,requires measured parameter sets
+Q7,Can a conventional learner solve the same 7-feature task?,E-matched,tests whether the observation interface is sufficient
+Q8,Can the sensory mapping be replaced by a measured receptive-field map?,optic-lobe data,no such map is in this repository

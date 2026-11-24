@@ -1,0 +1,542 @@
+{
+  "evidence_kind": "pilot",
+  "executed": false,
+  "experimental_evidence": false,
+  "note": "construction-only output; this is not experimental evidence",
+  "plan": {
+    "arms": [
+      "A",
+      "B",
+      "F",
+      "F_beta",
+      "A_prime",
+      "floor"
+    ],
+    "campaign_effects_estimated": false,
+    "does_not_establish": "no hypothesis is tested; no C1-C4, H1-H3, paired dispersion or sigma_max is estimated; U7 is not discharged and N is not selected; pilot rows are never merged into the campaign dataset",
+    "entries": [
+      {
+        "arm": "A",
+        "environment_seed": 563774599,
+        "episode": 0,
+        "learning_seed": 2430192945,
+        "network_seed": 3336197789,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A",
+        "environment_seed": 2911696168,
+        "episode": 1,
+        "learning_seed": 2430192945,
+        "network_seed": 3336197789,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A",
+        "environment_seed": 4240939637,
+        "episode": 2,
+        "learning_seed": 2430192945,
+        "network_seed": 3336197789,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A",
+        "environment_seed": 2632356062,
+        "episode": 0,
+        "learning_seed": 1008514826,
+        "network_seed": 2627053973,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A",
+        "environment_seed": 307060235,
+        "episode": 1,
+        "learning_seed": 1008514826,
+        "network_seed": 2627053973,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A",
+        "environment_seed": 4241804999,
+        "episode": 2,
+        "learning_seed": 1008514826,
+        "network_seed": 2627053973,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A",
+        "environment_seed": 2839813884,
+        "episode": 0,
+        "learning_seed": 4049183526,
+        "network_seed": 2618100565,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "A",
+        "environment_seed": 756850162,
+        "episode": 1,
+        "learning_seed": 4049183526,
+        "network_seed": 2618100565,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "A",
+        "environment_seed": 2981106662,
+        "episode": 2,
+        "learning_seed": 4049183526,
+        "network_seed": 2618100565,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "B",
+        "environment_seed": 563774599,
+        "episode": 0,
+        "learning_seed": 3631976640,
+        "network_seed": 1305767235,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "B",
+        "environment_seed": 2911696168,
+        "episode": 1,
+        "learning_seed": 3631976640,
+        "network_seed": 1305767235,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "B",
+        "environment_seed": 4240939637,
+        "episode": 2,
+        "learning_seed": 3631976640,
+        "network_seed": 1305767235,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "B",
+        "environment_seed": 2632356062,
+        "episode": 0,
+        "learning_seed": 672512211,
+        "network_seed": 1498955329,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "B",
+        "environment_seed": 307060235,
+        "episode": 1,
+        "learning_seed": 672512211,
+        "network_seed": 1498955329,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "B",
+        "environment_seed": 4241804999,
+        "episode": 2,
+        "learning_seed": 672512211,
+        "network_seed": 1498955329,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "B",
+        "environment_seed": 2839813884,
+        "episode": 0,
+        "learning_seed": 3857998916,
+        "network_seed": 252343472,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "B",
+        "environment_seed": 756850162,
+        "episode": 1,
+        "learning_seed": 3857998916,
+        "network_seed": 252343472,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "B",
+        "environment_seed": 2981106662,
+        "episode": 2,
+        "learning_seed": 3857998916,
+        "network_seed": 252343472,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "F",
+        "environment_seed": 563774599,
+        "episode": 0,
+        "learning_seed": 1721139275,
+        "network_seed": 684114016,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "F",
+        "environment_seed": 2911696168,
+        "episode": 1,
+        "learning_seed": 1721139275,
+        "network_seed": 684114016,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "F",
+        "environment_seed": 4240939637,
+        "episode": 2,
+        "learning_seed": 1721139275,
+        "network_seed": 684114016,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "F",
+        "environment_seed": 2632356062,
+        "episode": 0,
+        "learning_seed": 648715600,
+        "network_seed": 1762606307,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "F",
+        "environment_seed": 307060235,
+        "episode": 1,
+        "learning_seed": 648715600,
+        "network_seed": 1762606307,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "F",
+        "environment_seed": 4241804999,
+        "episode": 2,
+        "learning_seed": 648715600,
+        "network_seed": 1762606307,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "F",
+        "environment_seed": 2839813884,
+        "episode": 0,
+        "learning_seed": 3414171186,
+        "network_seed": 3388192338,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "F",
+        "environment_seed": 756850162,
+        "episode": 1,
+        "learning_seed": 3414171186,
+        "network_seed": 3388192338,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "F",
+        "environment_seed": 2981106662,
+        "episode": 2,
+        "learning_seed": 3414171186,
+        "network_seed": 3388192338,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 563774599,
+        "episode": 0,
+        "learning_seed": 3540965734,
+        "network_seed": 2176668929,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 2911696168,
+        "episode": 1,
+        "learning_seed": 3540965734,
+        "network_seed": 2176668929,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 4240939637,
+        "episode": 2,
+        "learning_seed": 3540965734,
+        "network_seed": 2176668929,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 2632356062,
+        "episode": 0,
+        "learning_seed": 4267832232,
+        "network_seed": 3110932492,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 307060235,
+        "episode": 1,
+        "learning_seed": 4267832232,
+        "network_seed": 3110932492,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 4241804999,
+        "episode": 2,
+        "learning_seed": 4267832232,
+        "network_seed": 3110932492,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 2839813884,
+        "episode": 0,
+        "learning_seed": 2531179048,
+        "network_seed": 909469107,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 756850162,
+        "episode": 1,
+        "learning_seed": 2531179048,
+        "network_seed": 909469107,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "F_beta",
+        "environment_seed": 2981106662,
+        "episode": 2,
+        "learning_seed": 2531179048,
+        "network_seed": 909469107,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 563774599,
+        "episode": 0,
+        "learning_seed": 823007700,
+        "network_seed": 4098891316,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 2911696168,
+        "episode": 1,
+        "learning_seed": 823007700,
+        "network_seed": 4098891316,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 4240939637,
+        "episode": 2,
+        "learning_seed": 823007700,
+        "network_seed": 4098891316,
+        "seed": 9001,
+        "structure_seed": 3616753530
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 2632356062,
+        "episode": 0,
+        "learning_seed": 849851452,
+        "network_seed": 3757967519,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 307060235,
+        "episode": 1,
+        "learning_seed": 849851452,
+        "network_seed": 3757967519,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 4241804999,
+        "episode": 2,
+        "learning_seed": 849851452,
+        "network_seed": 3757967519,
+        "seed": 9002,
+        "structure_seed": 1436378266
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 2839813884,
+        "episode": 0,
+        "learning_seed": 2951756029,
+        "network_seed": 2567414252,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 756850162,
+        "episode": 1,
+        "learning_seed": 2951756029,
+        "network_seed": 2567414252,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "A_prime",
+        "environment_seed": 2981106662,
+        "episode": 2,
+        "learning_seed": 2951756029,
+        "network_seed": 2567414252,
+        "seed": 9003,
+        "structure_seed": 3464566570
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 563774599,
+        "episode": 0,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9001,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 2911696168,
+        "episode": 1,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9001,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 4240939637,
+        "episode": 2,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9001,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 2632356062,
+        "episode": 0,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9002,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 307060235,
+        "episode": 1,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9002,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 4241804999,
+        "episode": 2,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9002,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 2839813884,
+        "episode": 0,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9003,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 756850162,
+        "episode": 1,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9003,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      },
+      {
+        "arm": "floor",
+        "environment_seed": 2981106662,
+        "episode": 2,
+        "learning_seed": null,
+        "network_seed": null,
+        "seed": 9003,
+        "seed_streams": "none",
+        "structure_seed": null,
+        "substrate": "none"
+      }
+    ],
+    "episodes_per_seed": 3,
+    "establishes": "the floor executes substrate-free and constant, A' reproduces A exactly on P1-P19, F-beta is state-independent, F is state-dependent and frozen at evaluation, motor silence is reported, plasticity is attributable, provenance is complete and every arm is viable",
+    "estimates_contrasts": false,
+    "hypothesis_tests": [],
+    "merged_into_campaign": false,
+    "n_entries": 54,
+    "rev4_step": "10.8 (amended by D3)",
+    "seeds": [
+      9001,
+      9002,
+      9003
+    ],
+    "stage": "pilot2c",
+    "stage_purpose": "floor_and_identity_certification"
+  },
+  "record_kind": "phase_8_stage_record",
+  "rev4_step": "10.8 (amended by D3)",
+  "stage": "pilot2c",
+  "title": "Pilot 2-C \u2014 floor and identity certification"
+}

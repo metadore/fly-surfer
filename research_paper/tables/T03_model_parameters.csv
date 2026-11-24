@@ -1,0 +1,31 @@
+﻿component,parameter,value,unit,status
+neuron,membrane capacitance C_m,200,pF,assumed
+neuron,leak conductance g_L,10,nS,assumed (tau_m = 20 ms)
+neuron,resting potential E_L,-65,mV,assumed
+neuron,threshold V_th,-50,mV,assumed
+neuron,reset V_reset,-68,mV,assumed
+neuron,refractory period,2,ms,assumed
+neuron,membrane floor,-90,mV,assumed
+neuron,rheobase (steady state),150,pA,derived: 15 mV x 10 nS
+simulation,timestep dt,0.5,ms,assumed
+synapse (FAFB),weight transform,12 * count^0.75,pA,calibration
+synapse (BANC),weight transform,"min(5.0 * count^0.75, 300)",pA,calibration
+synapse,excitatory time constant,5,ms,assumed
+synapse,inhibitory time constant,8,ms,assumed
+synapse,uniform delay,1,ms,assumed (effective 1.0 ms at dt 0.5 ms)
+sign,ACh / glutamate,excitatory,-,predicted transmitter
+sign,GABA / glycine,inhibitory,-,predicted transmitter
+sign,DA / SER / OCT,unknown,-,excluded under verified-only policy
+sign,unannotated edge,excluded,-,44.48% of BANC t5 edges carry a sign
+decoder,window,50,ms,half-open
+decoder,activation threshold,0.2,active fraction,declared
+decoder,release threshold,0.1,active fraction,declared
+decoder,gate,>=5 spikes and >=3 active neurons,-,declared
+decoder,priority,LEFT -> RIGHT -> JUMP,-,declared
+plasticity (BANC),learning rate eta,0.5,declared units,"declared, not tuned"
+plasticity (BANC),eligibility time constant,20,ms,assumed
+plasticity (BANC),weight bounds,0.5-2.0 x initial,-,assumed
+plasticity (BANC),max |delta w| per update,5,pA,assumed
+sensory drive,current per active feature,200,pA,declared
+sensory drive,pulse decay,150,ms,declared
+sensory mapping,mapped neurons,232,neurons,7 features

@@ -1,0 +1,12 @@
+﻿id,statement,status,evidence
+C1 = F - A,trainable readout on the biological substrate,not estimated,Pilot 2-C rows show a descriptive zero difference on a motor-silent substrate; campaign not run
+C2 = B - A,three-factor plasticity on the biological substrate,not estimated (structural zero),No motor output channel in the pilot; H1 unevaluable
+C3 = A - C,biological vs degree/sign-matched random graph,undefined,Condition C excluded from Pilot 2-C; no randomized graph used
+C4 = F - F_beta,readout uses motor information,not estimated,F and F_beta both choose NO_ACTION in every pilot episode
+H1,plasticity changes survival (B - A != 0),unevaluable,C2 structural zero
+H2,biological graph outperforms random (A - C > 0),unevaluable,C3 undefined
+H3,readout beats fixed decoder (F - A > 0),unevaluable,C1 degenerate; absence not refutation
+H4,E-matched above floor,not evaluated,E absent from Pilot 2-C
+H5,(B-A) - (D-C) approx 0,not evaluated,C and D absent
+H6,motor activity precedes non-NO_ACTION,no subject,no non-NO_ACTION update exists
+Phase 6 confirmatory,plasticity increases cue->action MI,not supported,mean -0.0863 bits; exact sign-flip p = 0.125; Holm 0.25

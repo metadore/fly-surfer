@@ -1,0 +1,305 @@
+{
+  "architecture": {
+    "kind": "bias_only_readout",
+    "n_features": 3,
+    "seed": 56964545
+  },
+  "b3": {
+    "evaluation_seed": 9003,
+    "namespace": "phase_8/training/B3/v1",
+    "payload": "phase_8/training/B3/v1|20261116|9003",
+    "pool_index": 4,
+    "pool_size": 20,
+    "probe_steps": 0,
+    "sha256": "3b32ce906a58f95e744c0de9989f1825d2fc049db64365d780358e4d7dc00b93",
+    "training_seed": 1005
+  },
+  "b4": {
+    "contract": "B4",
+    "environment_seed": 279063608,
+    "episode": 4,
+    "namespace": "phase_8/training/B4/v1",
+    "schedule_size": 20,
+    "version": "D4-v1"
+  },
+  "b5": {
+    "cadence": 1,
+    "format": "exact-checkpoint schema 2",
+    "retention": "all intermediate checkpoints and the final checkpoint"
+  },
+  "b6": {
+    "components": [
+      "python",
+      "numpy",
+      "torch",
+      "sampler"
+    ],
+    "exactness_claimed": false,
+    "note": "exactness is claimed only after verify_equivalence compares an uninterrupted run with this resumed run"
+  },
+  "campaign_config": {
+    "sha256": "b9a2d3d5f9fc397af07e12cda97bb1ae854cb505edc304e5727c0e2d83477e19"
+  },
+  "campaign_seed": 9003,
+  "components": {
+    "bytes": 13944,
+    "file": "components.npz",
+    "optimizer_arrays": [],
+    "sha256": "2d45ab0ed7ace1e4a3f71711de3801026d4cc41692fc53866e3bdaf7ed6d2929"
+  },
+  "condition_id": "F_beta",
+  "contract_version": "D4-v1",
+  "created": {
+    "numpy": "2.3.4",
+    "python": "3.13.14",
+    "tool": "experiments.phase_8.training.exact_checkpoint",
+    "torch": "2.10.0",
+    "utc": "2026-11-22T19:53:57+00:00"
+  },
+  "digest": {
+    "optimizer": "caef7f0b00108930d9643a9dbd5d2f701779869ec30007270556f4a1ce71907c",
+    "rng_environment": null,
+    "rng_numpy": "3cea36873c2831dc6fbb6b08c31573e69141718bf8ca75e848126fc5441e2a9c",
+    "rng_python": "6f414d91d7532c35231afa7e34518a9b8e69578a180bb69ed3d9d0576979cab1",
+    "rng_sampler": "d64b29cde611681f1e29c143f839a5f49118f018b35deabda1beab01710f73fa",
+    "rng_torch": "b9256512a55df2c9bc6f6ebdf5042b4605076d634ce975d437c1f60176143698",
+    "state": "e5340bdf061c3fad102d5c2b6533362871182cef996300a798070f4368531b85",
+    "trainable": "82789fec3d832a749ac45ea87a92e21a8563502d9647075efc259847ed957177"
+  },
+  "init_seed": 56964545,
+  "kind": "exact_checkpoint",
+  "master_seed": 20261116,
+  "model_kind": "bias_only_readout",
+  "n_features": 3,
+  "optimizer": {
+    "n_arrays": 0,
+    "param_groups": [
+      {
+        "dampening": 0,
+        "differentiable": false,
+        "foreach": null,
+        "fused": null,
+        "lr": 0.01,
+        "maximize": false,
+        "momentum": 0,
+        "nesterov": false,
+        "params": [
+          0
+        ],
+        "weight_decay": 0
+      }
+    ],
+    "state_checkpointed": true
+  },
+  "origin": "synthetic_fixture",
+  "owner_decision": "D4",
+  "parameter_dtypes": {
+    "bias": "float32",
+    "fixed_feature_weights": "float32"
+  },
+  "parameter_names": [
+    "bias",
+    "fixed_feature_weights"
+  ],
+  "parameter_shapes": {
+    "bias": [
+      4
+    ],
+    "fixed_feature_weights": [
+      4,
+      3
+    ]
+  },
+  "parameters": {
+    "bytes": 438,
+    "file": "parameters.npz",
+    "sha256": "f27b300ed023c0f453f528d22a1ca0075a3bfd3b7bddfac9a168b30f0ee27ac0"
+  },
+  "progress": {
+    "budget": {
+      "unit": "episodes",
+      "value": 20
+    },
+    "environment_seeds_used": [
+      1418416103,
+      4028369937,
+      2385272662,
+      279063608
+    ],
+    "episodes": [
+      {
+        "action_counts": {
+          "JUMP": 55,
+          "LEFT": 50,
+          "NO_ACTION": 63,
+          "RIGHT": 48
+        },
+        "behaviour_sha256": "6be5032cc312d618494213c436285e9310ba7a6c7ec0d424b7a3fa36d1952604",
+        "entropy": null,
+        "environment_seed": 1418416103,
+        "episode": 1,
+        "episode_reward": 4.15,
+        "grad_norm": 0.103858232,
+        "loss": 1.753401875,
+        "mean_return": 1.264812075,
+        "motor_spikes": 0,
+        "n_decisions": 216,
+        "network_seed": 2896895314,
+        "parameter_digest_after": "a86b4c6b87dd87114f9bb812797e2b4eacf57163777e8a2c9caa8c6073ae4cca",
+        "parameter_digest_before": "f94b54c9e77efdbf4cc636c1f31b380b4d14fbbfdd168f76d502c691110f058e",
+        "policy_loss": null,
+        "state_digest_after": "3f674d4721360d7c069a01c129ee8fbe515620dfb91e758537dd49c8461169ac",
+        "steps": 216,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 2361,
+        "truncated": false,
+        "updates_after": 1,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      },
+      {
+        "action_counts": {
+          "JUMP": 144,
+          "LEFT": 119,
+          "NO_ACTION": 148,
+          "RIGHT": 114
+        },
+        "behaviour_sha256": "91351ce4f04c3a6bfe696fe7f55299fd588cf02dc6939398095992dd4802d4ba",
+        "entropy": null,
+        "environment_seed": 4028369937,
+        "episode": 2,
+        "episode_reward": 12.24,
+        "grad_norm": 0.128475155,
+        "loss": 2.759598017,
+        "mean_return": 1.99071628,
+        "motor_spikes": 0,
+        "n_decisions": 525,
+        "network_seed": 2896895314,
+        "parameter_digest_after": "6b934bc7cedcac0dc1d308c12bf1b5a617d5744d1b9d1a8080d56e45875ab968",
+        "parameter_digest_before": "a86b4c6b87dd87114f9bb812797e2b4eacf57163777e8a2c9caa8c6073ae4cca",
+        "policy_loss": null,
+        "state_digest_after": "9359e3302353864c90c75c530a34391b777412d6ee864629103b968c513b6d63",
+        "steps": 525,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 12051,
+        "truncated": false,
+        "updates_after": 2,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      },
+      {
+        "action_counts": {
+          "JUMP": 56,
+          "LEFT": 49,
+          "NO_ACTION": 63,
+          "RIGHT": 45
+        },
+        "behaviour_sha256": "f1e788ceb1a0d6bf6160d06eb505f83ea4d5ce9adc1b8bfba159e3e808c42d55",
+        "entropy": null,
+        "environment_seed": 2385272662,
+        "episode": 3,
+        "episode_reward": 3.12,
+        "grad_norm": 0.071347862,
+        "loss": 1.195538163,
+        "mean_return": 0.862507126,
+        "motor_spikes": 0,
+        "n_decisions": 213,
+        "network_seed": 2896895314,
+        "parameter_digest_after": "5048ec8938fd37ac9fbdce49360a8c6f430dc3aca726db2bd044eee969ea9147",
+        "parameter_digest_before": "6b934bc7cedcac0dc1d308c12bf1b5a617d5744d1b9d1a8080d56e45875ab968",
+        "policy_loss": null,
+        "state_digest_after": "bd2fce979313b8969d43af310f217e55fc3cd90777b348c8e12cd118475cac7c",
+        "steps": 213,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 2274,
+        "truncated": false,
+        "updates_after": 3,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      },
+      {
+        "action_counts": {
+          "JUMP": 57,
+          "LEFT": 50,
+          "NO_ACTION": 64,
+          "RIGHT": 47
+        },
+        "behaviour_sha256": "450056938fa8f1b31058a5da2a1c593a0b0de9bcfc1c714195d56d266de9314f",
+        "entropy": null,
+        "environment_seed": 279063608,
+        "episode": 4,
+        "episode_reward": 2.17,
+        "grad_norm": 0.045347519,
+        "loss": 0.76380688,
+        "mean_return": 0.551062265,
+        "motor_spikes": 0,
+        "n_decisions": 218,
+        "network_seed": 2896895314,
+        "parameter_digest_after": "82789fec3d832a749ac45ea87a92e21a8563502d9647075efc259847ed957177",
+        "parameter_digest_before": "5048ec8938fd37ac9fbdce49360a8c6f430dc3aca726db2bd044eee969ea9147",
+        "policy_loss": null,
+        "state_digest_after": "e5340bdf061c3fad102d5c2b6533362871182cef996300a798070f4368531b85",
+        "steps": 218,
+        "substrate": "biological_graph",
+        "terminated": true,
+        "termination_reason": "collision",
+        "total_spikes": 2405,
+        "truncated": false,
+        "updates_after": 4,
+        "updates_applied": 1,
+        "value_loss": null,
+        "weights_after": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5",
+        "weights_before": "4923f0cd45d55fd4cd80d81392974dd5058ca988f18348734d10b45b06d945d5"
+      }
+    ],
+    "episodes_completed": 4,
+    "metrics_sha256": "d52e687626d633b1e116ae093418594074513b4b57ad4837021e66124d802402",
+    "sampling_seed": 0,
+    "updates_completed": 4
+  },
+  "protocol": {
+    "id": "PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4",
+    "sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c"
+  },
+  "rng": {
+    "checkpointed": true,
+    "environment": {
+      "present": false,
+      "reason": "the controlled game is reconstructed and reset from its B4 episode seed at the start of every episode; no environment RNG state survives the episode boundary, so the applicable environment provenance is the B4 seed recorded in progress.environment_seeds_used",
+      "sha256": null
+    },
+    "numpy": {
+      "present": true,
+      "sha256": "3cea36873c2831dc6fbb6b08c31573e69141718bf8ca75e848126fc5441e2a9c"
+    },
+    "python": {
+      "present": true,
+      "sha256": "6f414d91d7532c35231afa7e34518a9b8e69578a180bb69ed3d9d0576979cab1"
+    },
+    "sampler": {
+      "present": true,
+      "sha256": "d64b29cde611681f1e29c143f839a5f49118f018b35deabda1beab01710f73fa"
+    },
+    "torch": {
+      "present": true,
+      "sha256": "b9256512a55df2c9bc6f6ebdf5042b4605076d634ce975d437c1f60176143698"
+    }
+  },
+  "schema_version": 2,
+  "stage": "training_checkpoint",
+  "tool": "experiments.phase_8.training.exact_checkpoint",
+  "training_config_sha256": "1508a6a4733fbfc0431e19a91e3d62d76624fef5626e4bb683779d62340433df",
+  "training_seed": 1005
+}

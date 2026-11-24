@@ -1,0 +1,16 @@
+﻿id,limitation,scope,consequence
+L1,Structural connectivity is not physiological connectivity,all connectome results,"Edge existence and synapse counts do not establish conductance, sign or function"
+L2,Transmitter signs are predictions; 55.52% of BANC t5 edges are unsigned,BANC propagation,A structural path may carry no modelled current
+L3,Weights are an arbitrary calibrated transform,all simulations,"No measurement fixes the scale, exponent or cap"
+L4,One uniform LIF parameter set,all simulations,"No cell-type-specific physiology, adaptation or bursting"
+L5,"Inhibition is a hyperpolarising current, not a conductance",all simulations,No shunting inhibition or reversal potential
+L6,Uniform 1 ms delay; no morphology,all simulations,Conduction distance and dendritic filtering are absent
+L7,Sensory mapping is a convention,"Phase 3A.5, 4H.4, 8",232 neurons for 7 features; no receptive-field map
+L8,The game is not Subway Surfers,Phase 7-8,endless-surfer is a separate controlled implementation
+L9,Decoder labels are annotation-derived,Phase 4F-8,LEFT/RIGHT/JUMP are not identified motor commands; ROLL/DUCK unsupported
+L10,Motor silence blocks the experimental chain,"Phase 4H.4, 7, 8","No motor spikes means no action, no reward channel, no behavioural contrast"
+L11,Pilot evidence is not campaign evidence,Phase 8,3 seeds x 3 episodes; no C1-C4 estimate; N not selected
+L12,Synthetic calibration and decoder tests are not biological evidence,"Phase 3C, 4F, 4G",They test machinery only
+L13,MI is descriptive and does not establish causation,Phase 6,Circular decoder estimate; small replicate counts; bias floor
+L14,Training was behaviourally null,D5/D6,"Zero motor spikes, zero weight change, identical F/F-beta outcomes"
+L15,FAFB is brain-only; the VNC comes from a different dataset,Ch. 3,No limb motor neurons in FAFB; BANC is not merged with FAFB

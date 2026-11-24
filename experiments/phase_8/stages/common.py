@@ -43,7 +43,7 @@ from ..config import (
 )
 from ..manifest import build_manifest, write_manifest
 from ..schema import validate_episode_row
-from ..seeds import environment_seed, seed_plan
+from ..seeds import FLOOR_ID, environment_seed, seed_plan
 from ..store import EpisodeStore, resolve_run_directory
 from ..training.gate import design_status
 
@@ -53,6 +53,10 @@ STAGE_IDS = {
     "training": {"rev4_step": "10.5/10.9", "title": "F/Fβ and E training"},
     "campaign": {"rev4_step": "10.10", "title": "Confirmatory campaign"},
     "pilot2": {"rev4_step": "10.8", "title": "Pilot 2 — paired dispersion"},
+    "pilot2c": {
+        "rev4_step": "10.8 (amended by D3)",
+        "title": "Pilot 2-C — floor and identity certification",
+    },
     "information": {"rev4_step": "10.11 / §5.4", "title": "Information analyses"},
     "report": {"rev4_step": "10.12", "title": "Report and freeze"},
 }
@@ -307,6 +311,8 @@ class PilotPlan:
     establishes: str
     does_not_establish: str
     estimates_contrasts: bool = False
+    #: Recorded at manifest level only when a stage declares one (D3 OD-7).
+    stage_purpose: str | None = None
 
     def entries(self) -> tuple[tuple[str, int, int], ...]:
         return tuple(
@@ -319,18 +325,34 @@ class PilotPlan:
     def as_dict(self, master_seed: int) -> dict:
         entries = []
         for arm, seed, episode in self.entries():
-            plan = seed_plan(master_seed, arm, seed)
-            entries.append(
-                {
-                    "arm": arm,
-                    "seed": seed,
-                    "episode": episode,
-                    "environment_seed": environment_seed(master_seed, seed, episode),
-                    "network_seed": int(plan["network"]),
-                    "learning_seed": int(plan["learning"]),
-                    "structure_seed": int(plan["structure"]),
-                }
-            )
+            record = {
+                "arm": arm,
+                "seed": seed,
+                "episode": episode,
+                "environment_seed": environment_seed(master_seed, seed, episode),
+            }
+            if arm == FLOOR_ID:
+                # The substrate-free floor owns no network, learning or
+                # structure stream; only the paired environment seed exists.
+                record.update(
+                    {
+                        "network_seed": None,
+                        "learning_seed": None,
+                        "structure_seed": None,
+                        "substrate": "none",
+                        "seed_streams": "none",
+                    }
+                )
+            else:
+                plan = seed_plan(master_seed, arm, seed)
+                record.update(
+                    {
+                        "network_seed": int(plan["network"]),
+                        "learning_seed": int(plan["learning"]),
+                        "structure_seed": int(plan["structure"]),
+                    }
+                )
+            entries.append(record)
         return {
             "stage": self.stage,
             "rev4_step": self.rev4_step,
@@ -345,6 +367,11 @@ class PilotPlan:
             "merged_into_campaign": False,
             "establishes": self.establishes,
             "does_not_establish": self.does_not_establish,
+            **(
+                {"stage_purpose": self.stage_purpose}
+                if self.stage_purpose is not None
+                else {}
+            ),
         }
 
 
@@ -422,6 +449,7 @@ def drive_pilot(
         input_hashes=input_hashes,
         integrity=integrity,
         capture=capture,
+        stage_purpose=plan.stage_purpose,
     )
     write_manifest(run_dir / config.campaign.run_manifest_name, manifest)
     write_json(
@@ -439,7 +467,11 @@ def drive_pilot(
             "environment_seed": environment_seed(
                 config.campaign.master_seed, seed, episode
             ),
-            "seed_plan": seed_plan(config.campaign.master_seed, arm, seed),
+            "seed_plan": (
+                None
+                if arm == FLOOR_ID
+                else seed_plan(config.campaign.master_seed, arm, seed)
+            ),
             "config_hashes": {
                 name: entry["sha256"] for name, entry in config.hashes.items()
             },

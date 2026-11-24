@@ -1,0 +1,324 @@
+{
+  "architecture": {
+    "kind": "bias_only_readout",
+    "n_features": 3,
+    "seed": 992595534
+  },
+  "campaign_config": {
+    "path": "configs/phase_8/campaign.yaml",
+    "sha256": "b9a2d3d5f9fc397af07e12cda97bb1ae854cb505edc304e5727c0e2d83477e19"
+  },
+  "campaign_seed": 9002,
+  "condition_id": "F_beta",
+  "created": {
+    "numpy": "2.3.4",
+    "python": "3.13.14",
+    "tool": "experiments.phase_8.training.artifacts",
+    "torch": "2.10.0",
+    "utc": "2026-11-22T19:52:39+00:00"
+  },
+  "digest": {
+    "state": "5842826f11dfa058d979237fda5d4d8793cad55ffa981f9d01121f115aaa5b4e",
+    "trainable": "5f03c88b093e079ef2a1d87e20efb72b7cdc3566af78e74f2d5a4da4062ff5b9"
+  },
+  "init_seed": 992595534,
+  "master_seed": 20261116,
+  "model_kind": "bias_only_readout",
+  "n_features": 3,
+  "origin": "trained",
+  "parameter_dtypes": {
+    "bias": "float32",
+    "fixed_feature_weights": "float32"
+  },
+  "parameter_names": [
+    "bias",
+    "fixed_feature_weights"
+  ],
+  "parameter_shapes": {
+    "bias": [
+      4
+    ],
+    "fixed_feature_weights": [
+      4,
+      3
+    ]
+  },
+  "parameters": {
+    "bytes": 438,
+    "file": "parameters.npz",
+    "sha256": "41abbe4d215fda77d29aa7904659f70219e2f570668c17cc463c7a3bae80e6a8"
+  },
+  "protocol": {
+    "id": "PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4",
+    "matches_expected": true,
+    "path": "C:/Users/Hp/fruitfly/FLY-SURFER/docs/PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4.md",
+    "sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c"
+  },
+  "schema_version": 1,
+  "stage": "trained",
+  "training_config": {
+    "campaign_config": {
+      "path": "configs/phase_8/campaign.yaml",
+      "sha256": "b9a2d3d5f9fc397af07e12cda97bb1ae854cb505edc304e5727c0e2d83477e19"
+    },
+    "checks": [
+      {
+        "actual": 20261116,
+        "expected": 20261116,
+        "name": "campaign.master_seed",
+        "ok": true,
+        "source": "REV4 Appendix C"
+      },
+      {
+        "actual": 20,
+        "expected": 20,
+        "name": "campaign.readout_episodes_per_seed",
+        "ok": true,
+        "source": "REV4 Appendix C: training episodes/seed (F, F\u03b2)"
+      },
+      {
+        "actual": 2000,
+        "expected": 2000,
+        "name": "campaign.e_gradient_updates",
+        "ok": true,
+        "source": "REV4 Appendix C: training episodes (E)"
+      },
+      {
+        "actual": 0.01,
+        "expected": 0.01,
+        "name": "f_readout.DEFAULT_INIT_STD",
+        "ok": true,
+        "source": "REV4 \u00a73.6 row 3: seeded small initialization"
+      },
+      {
+        "actual": [
+          "active_fraction"
+        ],
+        "expected": [
+          "active_fraction"
+        ],
+        "name": "MotorFeatureSpec.fields",
+        "ok": true,
+        "source": "REV4 \u00a73.6.1"
+      },
+      {
+        "actual": 3,
+        "expected": 3,
+        "name": "MotorFeatureSpec.n_features",
+        "ok": true,
+        "source": "REV4 \u00a73.6.1: three motor populations feed the four-way readout"
+      },
+      {
+        "actual": 7,
+        "expected": 7,
+        "name": "conditions.sensory.n_features",
+        "ok": true,
+        "source": "REV4 \u00a73.5 row 1 / row 6"
+      },
+      {
+        "actual": 14,
+        "expected": 14,
+        "name": "conditions.sensory.n_features_full",
+        "ok": true,
+        "source": "REV4 \u00a73.5 row 1 (E-full exploratory)"
+      },
+      {
+        "actual": 64,
+        "expected": 64,
+        "name": "ConventionalAgent.hidden_units",
+        "ok": true,
+        "source": "REV4 \u00a73.5 row 1: 2\u00d764 tanh hidden units"
+      },
+      {
+        "actual": 2,
+        "expected": 2,
+        "name": "ConventionalAgent.hidden_layers",
+        "ok": true,
+        "source": "REV4 \u00a73.5 row 1: 2\u00d764 tanh hidden units"
+      },
+      {
+        "actual": "reinforce_with_value_baseline",
+        "expected": "reinforce_with_value_baseline",
+        "name": "ConventionalAgent.algorithm",
+        "ok": true,
+        "source": "REV4 \u00a73.5 row 5"
+      },
+      {
+        "actual": "adam",
+        "expected": "adam",
+        "name": "ConventionalAgent.optimizer",
+        "ok": true,
+        "source": "REV4 \u00a73.5 row 5"
+      },
+      {
+        "actual": 4,
+        "expected": 4,
+        "name": "readout.N_ACTIONS",
+        "ok": true,
+        "source": "REV4 \u00a73.5 row 1 / \u00a73.6 row 7"
+      },
+      {
+        "actual": [
+          "readout"
+        ],
+        "expected": [
+          "readout"
+        ],
+        "name": "conditions.F.trains",
+        "ok": true,
+        "source": "REV4 \u00a73.5 / \u00a73.6 / \u00a73.7"
+      },
+      {
+        "actual": [
+          "readout"
+        ],
+        "expected": [
+          "readout"
+        ],
+        "name": "conditions.F_beta.trains",
+        "ok": true,
+        "source": "REV4 \u00a73.5 / \u00a73.6 / \u00a73.7"
+      },
+      {
+        "actual": [
+          "policy"
+        ],
+        "expected": [
+          "policy"
+        ],
+        "name": "conditions.E.trains",
+        "ok": true,
+        "source": "REV4 \u00a73.5 / \u00a73.6 / \u00a73.7"
+      },
+      {
+        "actual": [
+          "policy"
+        ],
+        "expected": [
+          "policy"
+        ],
+        "name": "conditions.E_full.trains",
+        "ok": true,
+        "source": "REV4 \u00a73.5 / \u00a73.6 / \u00a73.7"
+      },
+      {
+        "actual": [
+          "none"
+        ],
+        "expected": [
+          "none"
+        ],
+        "name": "conditions.F_init.trains",
+        "ok": true,
+        "source": "REV4 \u00a73.5 / \u00a73.6 / \u00a73.7"
+      },
+      {
+        "actual": true,
+        "expected": true,
+        "name": "len(seeds.training) >= n_seeds_primary",
+        "ok": true,
+        "source": "REV4 \u00a76.3: training seeds are reserved and disjoint"
+      }
+    ],
+    "conditions": [
+      "F",
+      "F_beta",
+      "E",
+      "E_full"
+    ],
+    "declared": {
+      "e_gradient_updates": 2000,
+      "readout_episodes_per_seed": 20
+    },
+    "implementation_constants": {
+      "e_learner": {
+        "action_selection": "categorical sample while training; argmax otherwise",
+        "algorithm": "reinforce_with_value_baseline",
+        "discount": 0.99,
+        "entropy_coefficient": 0.01,
+        "hidden_layers": 2,
+        "hidden_units": 64,
+        "learning_rate": 0.0003,
+        "max_grad_norm": 1.0,
+        "optimizer": "adam",
+        "value_coefficient": 0.5
+      },
+      "features": {
+        "e": 7,
+        "e_full": 14
+      },
+      "motor_feature_spec": {
+        "fields": [
+          "active_fraction"
+        ],
+        "n_features": 3
+      },
+      "readout_init_std": 0.01,
+      "reinforce": {
+        "gamma": 0.99,
+        "learning_rate": 0.01
+      }
+    },
+    "master_seed": 20261116,
+    "protocol": {
+      "id": "PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4",
+      "path": "C:/Users/Hp/fruitfly/FLY-SURFER/docs/PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4.md",
+      "sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c"
+    },
+    "schema_version": 1,
+    "seeds": {
+      "campaign": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "declared": {
+        "n_seeds_fallback": 10,
+        "n_seeds_primary": 16
+      },
+      "pilot": [
+        9001,
+        9002,
+        9003
+      ],
+      "training": [
+        1001,
+        1002,
+        1003,
+        1004,
+        1005,
+        1006,
+        1007,
+        1008,
+        1009,
+        1010,
+        1011,
+        1012,
+        1013,
+        1014,
+        1015,
+        1016,
+        1017,
+        1018,
+        1019,
+        1020
+      ]
+    }
+  },
+  "training_config_sha256": "1508a6a4733fbfc0431e19a91e3d62d76624fef5626e4bb683779d62340433df",
+  "training_environment_seed": 1059419984,
+  "training_seed": 1014
+}

@@ -1,0 +1,26 @@
+﻿phase,objective,implementation,validation,status,key_result,tests
+0,Audit the raw FAFB export,dataset audit,11/11 audit and 8/8 round-trip checks,PASS,artifact trusted as read-only,-
+1,Build the connectome artifact,connectome.npz,"139,255 nodes; 3,732,460 edges; 50,666,648 synapses",PASS,exact counts reproduced,-
+2,LIF simulation over an 800-neuron subset,"LIF, sparse CSR synapses, recorder","1,564 spikes; 79/800 active",PASS,recruitment inside the sample,68
+2.5,Scalability to the full graph,benchmark suite,"800-139,255 neurons; all stability checks pass",PASS WITH LIMITATIONS,"349,846 spikes at full size",-
+3A,Map game features to sensory populations,"14 features, 138 neurons",scripted scene protocols,PASS WITH LIMITATIONS,driven neurons spike; mapping is a convention,-
+3A.5,Calibrate the sensory operating point,sweep over amplitude/sigma/population,"200 pA, sigma 0.20, 4 neurons; 2/6/7 spikes",PASS WITH LIMITATIONS,small threshold-sensitive code,-
+3B.1,Curate the detector dataset,sequence-grouped split,"2,328 images; 8,666 boxes; 14 classes",PASS WITH LIMITATIONS,no independent test split,6
+3B.2A,Perception inference architecture,perception package + mock detector,screenshot -> GameState contract,PASS,no accuracy claim,38
+3B.2B.3,Integrate the trained YOLO11n ONNX model,ONNX runtime decoder,one image + five-image smoke slice,PASS WITH LIMITATIONS,2/13 detections rejected by bounds,13 new
+3B.2C,Replay 100 real frames through perception + neural graph,end-to-end replay,"15,654,631 spikes; 99.976% non-stimulated",PASS WITH LIMITATIONS,not a gameplay result,12 checks
+3C,Temporal features and event scheduler,"tracker, lifecycle, scheduler",50 synthetic sequences; 175/0/0 events,PASS (synthetic),direction 0.996; continuity 0.944,-
+4A,Check dataset compatibility,read-only audit,"139,241 shared root IDs; 14 FAFB-only; 7 annotation-only",PARTIALLY COMPATIBLE,FAFB is brain-only,-
+4B,Investigate locomotor motor pathways,read-only pathway analysis,BANC motor/descending inventory,COMPLETE,no local VNC motor neurons in FAFB,-
+4C.5,Audit BANC integrity,ID/edge/annotation audit,READY WITH LIMITATIONS,PASS WITH LIMITATIONS,"172,433 endpoints",-
+4D,Construct the BANC graph,banc_graph.py,"t1/t5/t10 graphs; t5 1,535,710 edges",PASS WITH LIMITATIONS,5 source hashes match,20 focused / 331 total
+4E,Analyse motor populations and pathways,phase_4e analysis,"805 motor; 1,316 descending; 1,849 ascending",PASS WITH LIMITATIONS,"direct DN->MN edges 17,745 at t1",14 focused / 345 total
+4F,Build a fixed motor decoder,populations + motor_decoder,11 scenarios x 6 amplitudes = 66 runs,PASS WITH LIMITATIONS,correct sets from 180 pA,52 focused / 397 total
+4G,Propagate spikes through BANC and decode,BANC simulator + adapter,"condition C: 1,296 spikes, 492 motor spikes, JUMP x4",PASS WITH LIMITATIONS,positive control works; descending route does not,140 focused / 440 total
+4H.4,Sensory-to-motor round trip,archived event pulses -> BANC,"3,562 spikes, all stimulated; 0 motor",PASS WITH LIMITATIONS,first hop does not spike,47/47 config checks
+5,"Reward, eligibility and three-factor plasticity",plastic simulator; synthetic task,10 seeds; plastic 0.945 vs fixed 0.795,PASS (software); INCONCLUSIVE (biology),"conditioned response, not action selection",186 focused / 683 total
+6,Information-theoretic evaluation,entropy and MI estimators,plastic - fixed cue->action MI = -0.0863 bits; p = 0.125,NOT SUPPORTED,no information gain from plasticity,65 focused / 748 total
+7,Closed-loop game integration,environment adapters + live loop,"seed 42: 213 updates, 2,852 spikes, 0 motor",INTEGRATION PASS,NO_ACTION x213; reward 3.12,19 focused; 1012 passed / 6 pre-existing failures
+8 Pilot 1,A-condition viability grid,production episode runner,"9 episodes; 73,880 spikes; 0 motor",EXECUTED; NOT FREEZE-READY,viability only; baseline drift,-
+8 D5/D6,Train F and F-beta readouts,training engine + checkpointing,6 artifacts; 120/120 episodes,CERTIFIED,behaviourally null training,71 focused / 530 total
+8 Pilot 2-C,Floor and identity certification,pilot2c runner,54/54 rows; A' exact x9; all arms motor-null,EXECUTED AND CERTIFIED,C1-C4 and H1-H3 unevaluable,531 total

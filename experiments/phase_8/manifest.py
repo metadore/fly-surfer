@@ -118,6 +118,7 @@ def build_manifest(
     integrity: Mapping[str, Any] | None = None,
     created_at: datetime | None = None,
     capture: Mapping[str, Any] | None = None,
+    stage_purpose: str | None = None,
 ) -> dict:
     """Assemble and validate the run manifest."""
     # Deferred import: the protocol module imports this package's config.
@@ -145,6 +146,8 @@ def build_manifest(
         "approval": approval["decision_status"],
         "approval_basis": approval["approval_basis"],
     }
+    if stage_purpose is not None:
+        design["stage_purpose"] = str(stage_purpose)
 
     manifest = {
         "schema_version": MANIFEST_SCHEMA_VERSION,

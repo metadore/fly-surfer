@@ -1,0 +1,8 @@
+﻿dataset,version,source,scale,role,repository_path,notes
+FAFB (FlyWire),v783,"FlyWire/FAFB EM volume, adult female brain","139,255 neurons; 3,732,460 directed pairs at >=5 summed synapses",structural connectome,datasets/processed/connectome.npz,"28,013,212 bytes; treated read-only"
+FAFB node annotations,v783,FlyWire-derived predictions,"119,597 annotated / 139,255; nt_type missing for 19,658","cell class, transmitter, side, position",datasets/processed/nodes.csv.gz,"predictions, not measurements"
+BANC,v888,BANC female brain + VNC,"172,433 endpoint nodes; 1,535,710 edges at t5",structural connectome + motor/descending/ascending annotations,datasets/processed/banc_v888/,separate graph; never merged with FAFB
+BANC randomized nulls,seed 1-16,degree- and sign-preserving target-exchange null,"16 certified graphs; same 1,535,710 edges each",null connectivity,datasets/processed/banc_v888_random/,"constructed, certified; G3 memory deviation recorded"
+Subway Surfers detector dataset,Roboflow v15,"2,328 images; 8,666 boxes; 14 classes","5 video sequences, re-split by sequence group",detector supervision,datasets/external/... (not duplicated here),no independent test split
+YOLO11n detector,v1 deployment,Ultralytics YOLO11n exported to ONNX,"10,636,871-byte best.onnx; input 1x3x640x640; output 1x18x8400",visual perception,models/YOLO11/deployment/yolo11n_v1_deployment/,SHA-256 e6ad18f9...6aa77; training metrics not re-measured
+endless-surfer game,standalone,controlled Subway-Surfers-style runner,200-step / 900-step episodes; 25.0-unit observation horizon,closed-loop test environment,external/metadore/endless-surfer,not the commercial Subway Surfers game

@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "estimates_contrasts": false,
+  "evidence_kind": "pilot",
+  "executed": true,
+  "experimental_evidence": true,
+  "memory_preflight": {
+    "available_gb": 6.115,
+    "gate_gb": 4.0,
+    "passed": true,
+    "percent_used": 60.1,
+    "reason": "at or above the gate",
+    "source": "psutil.virtual_memory().available",
+    "total_gb": 15.342
+  },
+  "merged_into_campaign": false,
+  "note": "executed under an authorised protocol",
+  "planned": 54,
+  "record_kind": "phase_8_stage_record",
+  "rev4_step": "10.8 (amended by D3)",
+  "rows_executed": 54,
+  "rows_stored": 54,
+  "run_dir": "C:/Users/Hp/fruitfly/FLY-SURFER/experiments/results/phase_8/pilot2c/pilot2c_d3_20261123",
+  "stage": "pilot2c",
+  "title": "Pilot 2-C \u2014 floor and identity certification"
+}

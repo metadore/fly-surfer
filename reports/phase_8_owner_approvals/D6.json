@@ -1,0 +1,127 @@
+{
+  "record_kind": "phase_8_owner_decision",
+  "approval_id": "D6",
+  "approval_date": "2026-11-22",
+  "decision": "Record that the REV4 section 9.3 memory-gate deviation tracked as blocker B7 has no subject in the exact D5 training plan. D5 trains on the frozen biological substrate only; it constructs, reads without authorisation, or substitutes no randomized graph, so the deviation from the section 9.3 gate cannot be triggered, accepted, resolved or weakened by it. This record preserves G3 status deviation_recorded and gate_weakened false unchanged, keeps all sixteen randomized graph files and their sixteen certificates unchanged, keeps REV4 section 9.3 itself unchanged, and confirms that every graph-dependent stage remains blocked. It authorises no training, no graph construction, no graph access and no graph-dependent stage.",
+  "depends_on": {
+    "approval_id": "D5",
+    "record": "reports/phase_8_owner_approvals/D5.json",
+    "record_sha256": "015598e82217b0655b0c4e851948b5c2fc08c16967023238f04c1389ca8bfe3f"
+  },
+  "approved_proposal": {
+    "id": "PHASE_8_REMAINING_BLOCKERS_B2_B7_DECISION_REVIEW",
+    "path": "reports/PHASE_8_REMAINING_BLOCKERS_B2_B7_DECISION_REVIEW.md",
+    "sha256": "f8d441a4e98bdc73ebcb7405acff02fc7221969a0aa1217ff7f88cfe2e6d3771",
+    "clause": "section 10 proposed D6 wording"
+  },
+  "frozen_sources": {
+    "rev4": {
+      "id": "PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4",
+      "path": "docs/PHASE_8_EXPERIMENTAL_PROTOCOL_DRAFT_REV4.md",
+      "sha256": "e4aa9e0f2f8f414523b1a552d9209ac7f92abcd384bea7656d2a85b4bcb1547c",
+      "section": "9.3"
+    },
+    "amendment": {
+      "id": "PHASE_8_PILOT2C_AMENDMENT",
+      "path": "docs/PHASE_8_PILOT2C_AMENDMENT.md",
+      "sha256": "832ef48579a3d056b85449498558286b86576ab86c15acd90786c8a2ca9667ad"
+    },
+    "d3": {
+      "approval_id": "D3",
+      "path": "reports/phase_8_owner_approvals/D3.json",
+      "sha256": "74f11d2c599ceffb1a1a2be592d7ab903d9b2ba1c59941338283261b42948df8"
+    },
+    "d4": {
+      "approval_id": "D4",
+      "path": "reports/phase_8_owner_approvals/D4.json",
+      "sha256": "1e15138cf76c11ab8c94ffd7299d6a3657fc407fe7c32a0f8a3c9efcca51a8cf"
+    },
+    "d5": {
+      "approval_id": "D5",
+      "path": "reports/phase_8_owner_approvals/D5.json",
+      "sha256": "015598e82217b0655b0c4e851948b5c2fc08c16967023238f04c1389ca8bfe3f"
+    },
+    "g3_summary": {
+      "path": "experiments/results/phase_8_random/campaign_seed_summary.json",
+      "sha256": "d4e85db7787fea487a0e793ad9c87ca189f4332c34d6063165bd6c435f2ea0ef"
+    }
+  },
+  "owner_decisions": [
+    {
+      "id": "OD-1",
+      "text": "Record that B7 has no subject in the D5 plan: the six authorised F and Fbeta training runs use the frozen biological substrate and construct, read or substitute no randomized graph. The section 9.3 memory gate governs BANC-scale graph randomisation, not a constant biological-substrate training run."
+    },
+    {
+      "id": "OD-2",
+      "text": "Preserve the G3 compliance record exactly: status = deviation_recorded, gate_weakened = false, REV4 section 9.3 unchanged. D6 neither accepts nor resolves the deviation and does not re-run the randomised construction."
+    },
+    {
+      "id": "OD-3",
+      "text": "Preserve all sixteen randomized graph files and all sixteen certificates unchanged. Their recorded SHA-256 digests remain the authority. D6 does not regenerate, read, compare against or replace any graph."
+    },
+    {
+      "id": "OD-4",
+      "text": "Confirm every graph-dependent stage remains blocked. D6 grants no exemption to any graph-dependent stage and is non-inheritable: it is scoped only to the exact D5 plan and does not carry to Pilot 2-C, the confirmatory campaign or any other stage beyond the one already covered by D3."
+    }
+  ],
+  "scope": {
+    "stage": "training",
+    "rev4_step": "10.5",
+    "b7_subject_in_d5_plan": false,
+    "reason": "biological substrate only; no randomized graph is constructed, read or substituted",
+    "g3_status_preserved": "deviation_recorded",
+    "gate_weakened": false,
+    "rev4_section_9_3_unchanged": true,
+    "gate_gb": 4.0,
+    "graphs_unchanged": 16,
+    "certificates_unchanged": 16,
+    "all_graphs_certified": true,
+    "graph_dependent_stages_blocked": true,
+    "graph_access_authorised": false,
+    "graph_construction_authorised": false,
+    "graph_substitution_authorised": false,
+    "non_inheritable": true,
+    "authorises_training_execution": false,
+    "grants_b7_exemption": false,
+    "accepts_g3_deviation": false,
+    "resolves_g3_deviation": false,
+    "weakens_graph_certification": false,
+    "modifies_rev4": false,
+    "modifies_g3_summary": false,
+    "regenerates_graph": false,
+    "reads_graph": false,
+    "discharges_u7": false,
+    "sets_n_seeds_selected": false
+  },
+  "blocked_graph_dependent_stages": [
+    "randomized-graph construction",
+    "randomized-graph access or loading",
+    "BANC-scale randomisation",
+    "any stage that reads a randomized graph",
+    "confirmatory campaign on randomized substrates"
+  ],
+  "prohibitions": [
+    "do not construct, read or substitute a randomized graph",
+    "do not accept, resolve or weaken the G3 section 9.3 deviation",
+    "do not alter REV4 section 9.3",
+    "do not regenerate or replace any randomized graph file or certificate",
+    "do not unblock any graph-dependent stage",
+    "do not inherit D6 beyond the exact D5 plan",
+    "do not treat D6 as authorising any training run",
+    "do not modify REV4, D1, D2, D3, D4 or D5",
+    "do not discharge U7 or set design.n_seeds_selected"
+  ],
+  "does_not_authorise": [
+    "a randomized-graph construction, access or substitution",
+    "any graph-dependent stage",
+    "a training run beyond the exact D5 plan",
+    "a Pilot 2-C episode or floor replay",
+    "a confirmatory campaign",
+    "acceptance, resolution or weakening of the G3 section 9.3 deviation",
+    "any change to REV4 or the G3 compliance record"
+  ],
+  "authorises": [
+    "recording that B7 has no subject in the exact D5 plan",
+    "confirming that the D5 biological-substrate training is outside the section 9.3 graph-randomisation gate"
+  ]
+}

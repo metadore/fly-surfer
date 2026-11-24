@@ -1,0 +1,7 @@
+﻿condition,eval_seed,train_seed,checkpoints,episodes,parameter_digest,parameters_sha256,equivalence,recovered
+F,9001,1008,20,20,bd50cc734361...,35918eb7bf8d...,demonstrated,True
+F,9002,1014,20,20,e1c25034b0e6...,a71b47a30f49...,not required,False
+F,9003,1005,20,20,2e188b786436...,3ad5e6be64cf...,not required,False
+F_beta,9001,1008,20,20,0975693e51a6...,1030fe141f15...,not required,False
+F_beta,9002,1014,20,20,5f03c88b093e...,41abbe4d215f...,not required,False
+F_beta,9003,1005,20,20,b157ae1e6091...,b1cd7e70f3e1...,not required,False

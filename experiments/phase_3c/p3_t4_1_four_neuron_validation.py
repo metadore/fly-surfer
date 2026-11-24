@@ -67,7 +67,7 @@ FEATURE = "obstacle_distance"
 PROTECTED = {
     "README.md": (
         PROJECT_ROOT / "README.md",
-        "8ab6a8cc2d0316653e48c0fbb1c72b22b9d27b26799dde6bc71d38cd15590563",
+        "8a79d44d4d5679333a99d475c419f790d3ad14d00c145645c55f6a45dac64164",
     ),
     "connectome.npz": (
         PROJECT_ROOT / "datasets" / "processed" / "connectome.npz",

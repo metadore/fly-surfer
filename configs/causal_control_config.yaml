@@ -23,7 +23,9 @@ reference:
   connectome: datasets/processed/connectome.npz
   connectome_sha256: 3f568f24e3d77134a8d2d38f82856b8d685c310a1b0cfe941a1c95eeab5f33d8
   readme: README.md
-  readme_sha256: 8ab6a8cc2d0316653e48c0fbb1c72b22b9d27b26799dde6bc71d38cd15590563
+  # Documentation baseline only: commit 3bb2a4c re-titled one README section.
+  # No experiment parameter, protocol value or recorded result changed.
+  readme_sha256: 8a79d44d4d5679333a99d475c419f790d3ad14d00c145645c55f6a45dac64164
   sensory_config: configs/sensory_config.yaml
   sensory_config_sha256: 26d782a3b5910c05d433fa6678557f7c806dc9947ee8ad279e246fa34f4e96db
   simulation_config: configs/simulation_config.yaml

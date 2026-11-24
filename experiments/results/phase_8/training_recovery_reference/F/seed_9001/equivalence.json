@@ -1,0 +1,21 @@
+{
+  "compared_episodes": 20,
+  "compared_fields": [
+    "n_decisions",
+    "steps",
+    "updates_applied",
+    "updates_after",
+    "loss",
+    "mean_return",
+    "episode_reward",
+    "policy_loss",
+    "value_loss",
+    "entropy",
+    "grad_norm",
+    "parameter_digest_after"
+  ],
+  "differences": [],
+  "equivalent": true,
+  "exactness_claim": "demonstrated",
+  "method": "uninterrupted versus interrupted-and-resumed run at the same declared budget and seeds"
+}

@@ -1,0 +1,7 @@
+﻿arm,substrate,weights,readout,seeds,episodes_per_seed,purpose
+A,biological BANC t5,fixed,none,3,3,reference
+B,biological BANC t5,three-factor plasticity (eta 0.5),none,3,3,plasticity
+F,biological BANC t5,fixed substrate,trained linear readout (12 non-zero feature weights),3,3,readout
+F_beta,biological BANC t5,fixed substrate,trained bias-only readout,3,3,readout control
+A_prime,biological BANC t5,three-factor with eta = 0,none,3,3,identity control
+floor,none,none,constant NO_ACTION,3,3,substrate-free floor
