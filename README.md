@@ -1,84 +1,239 @@
-# FLY-SURFER development plan
+# FLY-SURFER
 
-A spiking neural simulation layer built on the validated FlyWire FAFB connectome.
-The connectome supplies **measured structure**; the membrane, synapses, sign
-assignments and input protocol are **explicit model assumptions**. Simulated
-activity is not a recording and does not reproduce real fly neural activity.
+Connectome-derived spiking neural simulation of a fruit fly brain driving a game
+controller, with a fully documented negative result.
 
-## Status
+FLY-SURFER asks one question: can a connectome-derived *Drosophila melanogaster*
+network, implemented as a spiking neural simulation with learning mechanisms,
+transform visual game information into functional motor commands in a controlled
+game environment?
 
-| Layer | State |
+The project built the whole chain: game-frame perception, sensory encoding,
+leaky integrate-and-fire (LIF) simulation over the FlyWire FAFB and BANC sparse
+connectomes, annotation-defined motor decoding, a closed-loop game bridge,
+reward-modulated three-factor plasticity, trainable linear readouts, an
+information-theoretic analysis, a pre-registered Phase 8 protocol, and two
+executed pilots. The chain runs end to end and is reproducible.
+
+It does not play the game. Across every closed-loop and pilot configuration the
+motor populations produced **zero spikes**, so the decoder returned NO_ACTION on
+every decision. The failure is localised: first-hop synaptic current reaches the
+post-sensory targets but peaks at **−56.926 mV** against a **−50 mV** threshold,
+a **6.926 mV** shortfall, and no second-hop current is generated. The Phase 6
+information analysis found no confirmatory gain from plasticity (mean paired
+difference **−0.0863 bits**, exact two-sided sign-flip p = 0.125, Holm-adjusted
+p = 0.25). The recorded answer is therefore a **qualified negative at this
+operating point**, not a claim about what the connectome can or cannot support.
+
+The connectome supplies **measured structure**; the membrane, synapses,
+transmitter signs and input protocol are **explicit model assumptions**.
+Simulated activity is not a recording and does not reproduce real fly neural
+activity.
+
+| Document | Location |
 |---|---|
-| Phase 0 dataset audit | Complete; 11/11 audit checks and 8/8 round-trip checks passed |
-| Phase 1 connectome artifact | Verified and treated as read-only |
-| Phase 2 spiking simulation | Complete: LIF neurons, sparse synapses, activity recording, experiment, tests |
-| Phase 2.5 scalability benchmark | Complete: 800 → 139,255 neurons; full connectome stable; memory and speed reports |
-| Reinforcement learning / plasticity / game controls | Not started |
+| Research paper (PDF, 157 pages) | [`research_paper/FLY_SURFER_COMPLETE_RESEARCH_PAPER.pdf`](research_paper/FLY_SURFER_COMPLETE_RESEARCH_PAPER.pdf) |
+| Research paper (Word / Markdown) | `research_paper/FLY_SURFER_COMPLETE_RESEARCH_PAPER.docx`, `.md` |
+| Claim-to-file evidence register | [`research_paper/SOURCE_AND_EVIDENCE_REGISTER.md`](research_paper/SOURCE_AND_EVIDENCE_REGISTER.md) |
+| Paper validation report | [`research_paper/RESEARCH_PAPER_VALIDATION_REPORT.md`](research_paper/RESEARCH_PAPER_VALIDATION_REPORT.md) |
+| Data provenance and audit | [`datasets/README.md`](datasets/README.md), `datasets/manifest.json` |
+| Licences | [`LICENSE`](LICENSE) (MIT, code), `research_paper/LICENSE` (CC BY 4.0, paper), [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) |
 
-Verified structural facts: 139,255 neurons, 3,732,460 directed edges,
-50,666,648 summed synapses, 671 isolated neurons, zero self-connections,
-620,180 reciprocal directed pairs, ascending-root-ID node indices, pair-level
->=5-synapse threshold. See `datasets/README.md` and
-`datasets/processed/connectome_report.json` for provenance and audit details.
+The paper is licensed CC BY 4.0, © 2026 metadore. Original source code is MIT.
+Third-party datasets and model weights keep their own licences (see §8).
 
-## Scientific status of each layer
+## 1. What the project did
 
-| Category | What it includes |
-|---|---|
-| Measured structure | Directed adjacency, summed synapse count per pair, root IDs, positions, predicted cell annotations |
-| Predicted annotations | `nt_type`, super-class, class and side labels from FlyWire-derived predictions |
-| Assumed physiology | LIF capacitance, leak, rest, threshold, reset, refractory and membrane floor; transmitter sign rules; synaptic time constants; uniform 1 ms delay |
-| Computational approximations | Structural synapse counts transformed to current by `12 * count ** 0.75` pA; no receptor saturation, short-term plasticity, neuromodulation or morphology; spikes quantised to 0.5 ms |
-| Controlled input | Experimenter current injection into 64 selected neurons, not sensory stimulation |
-| Simulated activity | Model output only; not evidence of reproducing the living fly |
+| Phase | What was built | Principal recorded outcome |
+|---|---|---|
+| 0 | Audit of 15 FlyWire files: schemas, nulls, IDs, checksums | 29,231,539 rows; 139,255 IDs, 0 outside the reference; no self-connections; pair-level ≥5-synapse filter identified |
+| 1 | Validated CSR connectome artifact | 139,255 neurons, 3,732,460 directed pairs, 50,666,648 summed synapses; treated read-only |
+| 2 | LIF neuron, sparse synapse, sampler, recorder, engine, experiment | 800-neuron connected sample, 1,564 spikes, 79 active neurons, stability checks pass |
+| 2.5 | Scalability and memory benchmark in isolated processes | 800 → 139,255 neurons; full connectome 400 steps in 2.92 s, 270.8 MB peak; all stability checks pass |
+| 3A | Game state, population encoders, sensory mapping, calibration | 14-feature FAFB encoder; calibrated three-level distance code from nine observations |
+| 3B | YOLO11n ONNX detector, tracking, temporal event encoder, replay | 14 classes, 2,328 images, 8,666 boxes; 100-frame replay emits 215 events; grouped split, no independent test set |
+| 3C | Causal control, lane encoding, temporal acceptance, four-neuron validation | Controlled stimulus/analysis machinery; frozen pre-registration; recorded limitations |
+| 4A–4H | BANC brain + VNC graph, motor inventory, decoder, propagation, random controls, sensory round trip | 172,433 endpoints, 1,535,710 edges, 805 motor neurons; first hop propagates, second hop does not |
+| 5 | Reward, eligibility traces, three-factor plasticity, synthetic cued-response task | Success 0.795 (fixed) → 0.945 (plastic) on a synthetic task; not a connectome result |
+| 6 | Information-theoretic analysis of archived runs (entropy, mutual information, permutation tests) | No supported cue-to-action information gain: −0.0863 bits, p = 0.125, Holm 0.25 |
+| 7 | Closed-loop game bridge and demonstration | 213 decisions, 2,852 spikes, all from stimulated sensory neurons, 0 motor spikes, all NO_ACTION |
+| 8 | REV4 pre-registered protocol, Pilot 1, D5/D6 training, Pilot 2-C | Pilot 1: 9 episodes, 3,784 decisions, 0 motor spikes. D5/D6: 6 artifacts, 120 episodes, 0 motor spikes, 0 weight change. Pilot 2-C: 54/54 rows, 8/8 descriptive claims certified, C1–C4 not estimated |
+| Paper | 21 chapters, 39 figures, 24 main tables, 31 references, 189-row evidence register | Version 1.1, 24 November 2026 |
 
-Synapse counts are **never** interpreted as measured physiological weights.
-The power-law scale is a calibration choice for the model current regime.
+Two connectomes are used and never merged. FAFB supplies the brain-only graph
+for perception, simulation, plasticity and information analysis. BANC supplies
+the brain + ventral nerve cord graph with limb motor neurons for motor decoding
+and every Phase 8 execution. No root identifier is transferred between them.
 
-## Quick start
+## 2. Principal recorded results
 
-Dependencies: Python 3.13, NumPy, pandas, PyYAML, matplotlib, psutil and pytest.
-The validated artifact must exist at `datasets/processed/connectome.npz`.
+| Result | Value | Where |
+|---|---|---|
+| Phase 4G positive control (motor pools driven directly) | 1,296 spikes, 492 motor spikes, 82 motor neurons, JUMP ×4 | `experiments/results/phase_4g/` |
+| Phase 4H.4 first hop (BANC) | 232 stimulated, 171 active, 3,562 spikes, 473/607 non-stimulated targets receive current | `reports/` Phase 4H.4 |
+| Peak depolarisation vs threshold | −56.926 mV vs −50 mV, shortfall 6.926 mV; 0 second-hop targets; 0/805 motor neurons spike | bottleneck measurements |
+| Signed BANC t5 edges under the declared sign policy | 683,100 / 1,535,710 (44.48%); the rest are not simulated | Phase 4G.2 |
+| Phase 6 complete-wiring contrast | −0.0863 bits, 95% interval [−0.1751, 0.0052], exact p = 0.125, Holm 0.25 | `experiments/results/phase_6/` |
+| Phase 7 closed loop | 213 decisions, 2,852 spikes, 0 motor spikes, reward 3.12 | Phase 7 record |
+| Pilot 1 | 9 episodes, 3,784 decisions, 126,135 neural steps, 73,880 spikes, 0 motor spikes, reward 47.75 | `experiments/results/phase_8/pilot1/` |
+| D5/D6 training | 6 artifacts, 120 episodes, 0 motor spikes, 0 weight change; F ≡ Fβ | `experiments/results/phase_8/training/` |
+| Pilot 2-C | 54/54 rows executed, six arms, A′ exact identity ×9, all eight descriptive claims pass, C1–C4 not estimated | `experiments/results/phase_8/pilot2c/pilot2c_d3_20261123/` |
 
-```bash
-# Reproduce the Phase 2 experiment (800 neurons, 1 s biological time)
-python main.py --no-progress
+The paper reports every negative result in full, including the Phase 6 null, the
+Phase 7 motor silence, the Pilot 1 outcome, the behaviourally null training, and
+the fact that the N = 16 confirmatory campaign was never executed.
 
-# Equivalent direct entry point
-python -m experiments.baseline
+## 3. Datasets, and where they came from
 
-# Reproduce the Phase 2.5 scalability suite and reports
-python -m experiments.phase_2_5.run_all
+### 3.1 FlyWire FAFB v783 — brain connectome
 
-# Regenerate plots/reports from existing benchmark JSON files
-python -m experiments.phase_2_5.run_all --reports-only
+- **What it is:** the Full Adult Fly Brain (FAFB) electron-microscopy volume of
+  an adult female *Drosophila melanogaster*, materialised as the FlyWire
+  connectome. Brain only; it contains no complete ventral nerve cord and no limb
+  motor neurons.
+- **What was used:** 15 gzip files — 6 annotation tables, 5 connectivity tables,
+  4 neuron tables — totalling 368,874,372 bytes compressed and 29,231,539 rows.
+  The structural input is the filtered pair table
+  (`connections_princeton.csv.gz`, 5,342,446 rows); the 22,285,323-row unfiltered
+  table was used only in the Phase 0 audit.
+- **Where it came from:** the files were downloaded from the FlyWire/Princeton
+  distribution before this repository existed. **No download log or source URL
+  was stored with them.** The version is inferred as **v783** from an incomplete
+  download filename (`fafb_v783_princeton_synapse_table.csv`); row counts and
+  checksums are consistent with that release, but the completed files do not
+  attest it. Verify the SHA-256 prefixes in `datasets/manifest.json` against any
+  release you obtain before claiming exact provenance. Portal and citation
+  requirements: <https://codex.flywire.ai/>.
+- **What is tracked:** only the derived artifacts —
+  `datasets/processed/connectome.npz` (28,013,212 bytes, SHA-256
+  `3f568f24…5f33d8`), `datasets/processed/nodes.csv.gz`,
+  `datasets/processed/connectome_report.json` and `datasets/manifest.json`. The
+  raw downloads live under `datasets/raw/` and are excluded by `.gitignore`; they
+  are **not redistributed** here.
+- **Licence and attribution:** CC BY 4.0. Cite the FlyWire Consortium and the
+  three primary publications listed in §9.
 
-# Run the automated tests
-python -m pytest -q
+Verified structure: 139,255 neurons, 3,732,460 directed pairs at a pair-level
+≥5-synapse threshold, 50,666,648 summed synapses, 671 isolated neurons, zero
+self-connections, 620,180 reciprocal directed pairs, ascending root-ID order.
+
+### 3.2 BANC v888 — brain and ventral nerve cord connectome
+
+- **What it is:** an adult female *Drosophila* brain + ventral nerve cord
+  reconstruction (Brain And Nerve Cord). It supplies the limb motor neurons that
+  FAFB lacks. Coverage: central brain, neck connective, VNC, and the medulla,
+  lobula and lobula plate; no lamina or ocellar ganglion.
+- **What was used:** the v888 materialisation (edgelist v2, size ≥ 5) —
+  172,433 endpoints, 1,535,710 directed edges, 18,552,546 summed synapses,
+  24,320 isolated nodes, 805 motor neurons, 1,316 descending and 1,849 ascending
+  neurons. Five source files and their SHA-256 values are recorded in
+  `datasets/processed/banc_v888/banc_manifest.json`; the derived graphs are kept
+  local and are **not redistributed**.
+- **Where it came from:** the BANC distribution via Harvard Dataverse
+  (<https://doi.org/10.7910/DVN/7WTH1N>) and the BANC portal
+  (<https://banc.community>); browser at <https://codex.flywire.ai/banc>. The
+  v888 materialisation (17 April 2026) is the final-print version.
+- **Primary publication:** *Distributed control circuits across a brain-and-cord
+  connectome*, *Nature* **656** (27 August 2026),
+  doi:[10.1038/s41586-026-10735-w](https://doi.org/10.1038/s41586-026-10735-w),
+  open access, CC BY. Influence scores: Zenodo
+  doi:[10.5281/zenodo.15999929](https://doi.org/10.5281/zenodo.15999929);
+  neurotransmitter predictions: Zenodo
+  doi:[10.5281/zenodo.20818141](https://doi.org/10.5281/zenodo.20818141).
+- **Licence:** CC BY 4.0. Credit the BANC Consortium and the paper above.
+
+### 3.3 Subway Surfers Object Dataset v15 — perception data
+
+- **What it is:** a Roboflow Universe object-detection dataset of Subway Surfers
+  gameplay frames: 2,328 images, 2,328 label files, 8,666 boxes, 14 classes
+  (`train`, `boxtrain`, `ramp`, `wall`, `ledge` and six barrier/power-up
+  classes). It has **no player class and no coin class**, so player pose and
+  coins are unmapped rather than inferred.
+- **Where it came from:** Roboflow Universe, workspace `horizon-cgt2k`, project
+  `subway-surfers-object-dataset`, version 15 —
+  <https://universe.roboflow.com/horizon-cgt2k/subway-surfers-object-dataset/dataset/15>.
+  Licence: **CC BY 4.0**, as declared by the dataset.
+- **How it was used:** as the perception input and evaluation data (YOLO label
+  format, group-held-out curation by recording), and 30 frames as illustration
+  in paper Figures 9–14. The 12 empty-label files were excluded after individual
+  inspection. The dataset was **not** used to train, fine-tune or tune any
+  project model. Raw images and the derived export are excluded by `.gitignore`
+  and are not redistributed; only the six visual-documentation figures and their
+  provenance index are tracked.
+- **Attribution:** "Subway Surfers Object Dataset" by `horizon-cgt2k` on
+  Roboflow Universe, CC BY 4.0. "Subway Surfers" is a trademark of its owners;
+  this project is not affiliated with or endorsed by them.
+
+### 3.4 The game
+
+The game is *Subway Surfers* (SYBO Games, 2012). **The commercial game was never
+instrumented, controlled or modified.** Perception consumed recorded gameplay
+frames; the closed loop ran against a local simulated game state that consumes
+LEFT / RIGHT / JUMP / NO_ACTION decisions. No gameplay result in this repository
+is a claim about the shipped game.
+
+### 3.5 What is deliberately not in this repository
+
+Raw FlyWire and BANC downloads, the Roboflow image tree, YOLO11n weights and the
+ONNX export, cloned third-party repositories, virtual environments, caches,
+credentials and machine-specific paths. They are excluded by `.gitignore`; see
+§8 for licences and §9 for citations.
+
+## 4. Software and other resources
+
+Runtime and test dependencies are pinned in `requirements.txt`.
+
+| Resource | Version | Role | Licence | Link |
+|---|---:|---|---|---|
+| Python | 3.13.14 | runtime | PSF | <https://www.python.org/> |
+| NumPy | 2.3.4 | arrays, CSR simulation | BSD-3-Clause | <https://numpy.org/> |
+| pandas | 2.3.3 | dataset audit, tabular I/O | BSD-3-Clause | <https://pandas.pydata.org/> |
+| Matplotlib | 3.10.7 | figures | Matplotlib (PSF-based) | <https://matplotlib.org/> |
+| PyYAML | 6.0.3 | configuration | MIT | <https://pyyaml.org/> |
+| psutil | 7.1.2 | memory measurement | BSD-3-Clause | <https://github.com/giampaolo/psutil> |
+| Pillow | 12.0.0 | image preprocessing | MIT-CMU | <https://python-pillow.org/> |
+| onnxruntime | 1.29.0 | detector inference (CPU) | MIT | <https://onnxruntime.ai/> |
+| pytest | 7.4.3 | test runner | MIT | <https://pytest.org/> |
+| YOLO11n (ONNX) | deployment artifact | object detection | AGPL-3.0 | <https://docs.ultralytics.com/models/yolo11/> |
+| python-docx / pypdf / Word automation | paper build only | DOCX and PDF rendering | MIT / BSD / proprietary app | — |
+
+The YOLO11n checkpoint and ONNX export
+(`models/YOLO11/deployment/yolo11n_v1_deployment/best.onnx`, SHA-256
+`e6ad18f9…6aa77`, 10,636,871 bytes) are **not redistributed**; their size, hash
+and deployment contract are recorded in the model registry and
+`THIRD_PARTY_NOTICES.md`. The detector is used as a fixed, externally trained
+component and was not retrained or fine-tuned.
+
+External repositories were audited for architectural comparison only
+(`docs/research/EXTERNAL_REPOSITORY_COMPARISON.md`,
+`FLYVERSE_CORE_COMPATIBILITY_AUDIT.md`,
+`EXTERNAL_NEURAL_MODEL_EQUATION_COMPARISON.md`): `tel-0s/flyverse-core`,
+`flyvis`, Gymnasium, Stable-Baselines3, YOLOX and the Male CNS connectome
+project. No code was adopted; the clones are not distributed.
+
+## 5. Repository layout
+
+```text
+brain/                 FAFB connectome loader, LIF neuron, synapses, sampler,
+                       recorder, simulator, BANC graph and BANC adapters
+perception/            YOLO11n ONNX detector, preprocessing, tracking, bridge
+sensory/               game state, population encoders, scheduler
+motor/                 motor-population selection and activity recorder
+learning/ plasticity/  reward, RPE, eligibility traces, three-factor rule
+readout/               trainable linear readout and controller
+information/           entropy, mutual information, permutation estimators
+evaluation/            metrics and acceptance gates
+environment/           game-state bridge used by the closed loop
+configs/               frozen parameters, protocols and reference hashes
+datasets/              audit manifest + tracked derived connectome artifacts
+experiments/           phase_2 … phase_8 code and recorded results
+reports/               phase reports, approvals, certification records
+docs/                  designs, protocols, amendments, external audits
+tests/                 automated test suite
+research_paper/        paper source, figures, tables, build scripts, licences
 ```
 
-`pytest.ini` disables the `anyio` plugin because this environment ships an
-incompatible anyio/trio pair under Python 3.13; none of the tests are async.
-
-## Architecture
-
-| File | Responsibility |
-|---|---|
-| `brain/connectome_loader.py` | Loads the validated `.npz` artifact and exposes read-only CSR adjacency plus annotations. Unmodified by Phase 2. |
-| `brain/neuron_model.py` | Vectorised LIF population with exact exponential-Euler passive integration, threshold/reset, refractory period and membrane floor. |
-| `brain/synapse_model.py` | Sparse CSR spike propagation, sign assignment, weight transform, exponential currents and delayed delivery. |
-| `brain/subgraph.py` | Induced subgraph extraction with local indices and reproducible connected sampling. |
-| `brain/neural_activity.py` | Preallocated spike recorder, firing-rate summaries, raster and rate plots. |
-| `brain/brain_simulator.py` | Time-stepped loop, external stimulation, diagnostics, deterministic seeds and result saving. |
-| `experiments/baseline.py` | Reproducible experiment, metadata, performance metrics, report and CLI. |
-| `experiments/phase_2_5/benchmark.py` | One size per process: sampling or full graph, stage timing, validation, memory and JSON result. |
-| `experiments/phase_2_5/run_all.py` | Suite orchestration, subprocess isolation, timeouts, reproducibility check, plots and reports. |
-| `experiments/phase_2_5/configs/scalability_suite.yaml` | Benchmark sizes, protocol, sampling and resource preflight. |
-| `configs/neuron_config.yaml` | Assumed LIF parameters. |
-| `configs/simulation_config.yaml` | Connectome path, timestep, synapse transform, input protocol and experiment settings. |
-| `tests/` | 68 automated tests covering dynamics, synapses, sampling, recording, simulation, configs, artifact compatibility and benchmark failure handling. |
-
-## Model definition
+## 6. Phase 2 simulation details
 
 Each neuron is a point LIF unit:
 
@@ -92,191 +247,222 @@ The passive part uses the exact exponential-Euler update
 V(t+dt) = E_L + (V(t)-E_L) exp(-dt/tau_m) + I (1-exp(-dt/tau_m)) / g_L
 ```
 
-so the integration is stable for any positive timestep. Threshold crossing is
-checked at the end of a step, spikes reset the membrane, and the refractory
-period is rounded up to whole timesteps. A configurable floor (`-90 mV`)
-represents unmodelled leak and voltage-gated currents; without it, sustained
-inhibition can drive a purely passive membrane to non-physiological values.
+so integration is stable for any positive timestep. Threshold crossing is checked
+at the end of a step; spikes reset the membrane; the refractory period is rounded
+up to whole timesteps; a configurable floor (−90 mV) represents unmodelled leak
+and voltage-gated currents.
 
 Synaptic propagation is sparse. A presynaptic spike indexes its outgoing CSR
-rows; destination currents are accumulated with `numpy.bincount`. No dense
-N x N matrix is built. Each edge inherits the assumed sign of its presynaptic
-neuron:
+rows and destination currents are accumulated with `numpy.bincount`; no dense
+N × N matrix exists. Transmitter predictions set the assumed sign (ACH, GLUT
+excitatory; GABA inhibitory; DA, SER, OCT and unlabelled configurable, excitatory
+in the recorded runs). Currents decay exponentially (tau_exc 5 ms, tau_inh 8 ms),
+with a uniform 1 ms delay. The structural synapse count `w` becomes
+`12 * w ** 0.75` pA; this is an **approximation**, not a measured conductance.
 
-- ACH and GLUT: excitatory
-- GABA: inhibitory
-- DA, SER, OCT: configurable, excitatory in this run
-- unlabeled or unknown: configurable, excitatory in this run
+Measured Phase 2 run (`experiments/results/initial/`): 800 sampled neurons,
+7,500 internal edges, 124,693 internal synapses, 1 connected component, 1,564
+spikes, 79 active neurons (9.88%), mean firing rate 1.96 Hz, 64/64 stimulated
+neurons active, 15 non-stimulated neurons active (371 spikes, 23.7% of all
+spikes). Recurrent recruitment is a property of the model, not a measurement of
+the fly.
 
-Currents decay exponentially (`tau_exc = 5 ms`, `tau_inh = 8 ms`). A uniform
-1 ms delay is implemented with separate excitatory and inhibitory ring buffers.
-The net synaptic current is `I_exc - I_inh`. The structural synapse count `w`
-becomes `12 * w ** 0.75` pA for this calibrated run; this is an approximation,
-not a measured conductance or reversal potential.
+Full-connectome scalability (`experiments/phase_2_5/reports/scalability_report.json`):
 
-## Reproducible experiment
+| Neurons | Edges | Synapses | Simulation (s) | Steps/s | Peak WS (MB) | Spikes | Active | Stable |
+|---:|---:|---:|---:|---:|---:|---:|---:|:---:|
+| 800 | 7,500 | 124,693 | 0.041 | 10,500 | 170.8 | 213 | 78 | yes |
+| 5,000 | 121,092 | 1,931,167 | 0.057 | 7,343 | 171.7 | 145 | 96 | yes |
+| 20,000 | 480,107 | 7,414,940 | 0.331 | 1,231 | 175.8 | 51,387 | 4,551 | yes |
+| 50,000 | 1,620,531 | 23,785,918 | 1.060 | 382 | 222.3 | 151,855 | 11,837 | yes |
+| 139,255 | 3,732,460 | 50,666,648 | 2.923 | 138 | 270.8 | 349,846 | 33,261 | yes |
 
-Settings in `configs/simulation_config.yaml`: 800 neurons sampled with seed 42,
-1,000 ms at 0.5 ms timesteps (2,000 steps), simulation seed 20261104, no
-background current or noise. Sixty-four highest-degree neurons receive 180 pA
-from 100 to 800 ms. The sample is grown as a connected snowball from
-class-stratified candidate hubs; the candidate whose super-class and
-neurotransmitter composition is closest to the eligible population is kept.
-It is not the first N neurons.
+"Stable" means finite state, membrane potentials inside the configured bounds,
+refractory intervals respected, and recorded transmissions equal to the
+out-degree sum of spiking neurons. Activity is not monotonic in size; the 5,000
+neuron sample fired less than the 800 neuron sample, a composition effect.
 
-Measured run summary (`experiments/results/initial/`):
+## 7. Quick start and reproduction
 
-| Quantity | Result |
+Dependencies: Python 3.13, NumPy, pandas, PyYAML, matplotlib, psutil, Pillow,
+onnxruntime and pytest. The validated artifact must exist at
+`datasets/processed/connectome.npz`.
+
+```bash
+# Phase 0 audit (needs datasets/raw/ in place; rewrites datasets/README.md)
+python dataset_audit.py
+
+# Rebuild the processed FAFB artifact and run the round-trip checks
+python -m brain.connectome_loader
+
+# Phase 2 experiment (800 neurons, 1 s biological time)
+python main.py --no-progress
+python -m experiments.baseline
+
+# Phase 2.5 scalability suite, plots and reports
+python -m experiments.phase_2_5.run_all
+python -m experiments.phase_2_5.run_all --reports-only
+
+# Full test suite
+python -m pytest -q
+```
+
+Later phases are executed through their phase runners and require the frozen
+configurations and approval records in `configs/`, `docs/` and `reports/`; each
+report states the exact command and the conditions under which it was run. Phase
+8 executions are gated by the owner-approval records (D3–D6) and refuse to run
+without them.
+
+The paper is rebuilt from `research_paper/src/` with
+`research_paper/scripts/assemble.py`, `build_docx.py` and `render_pdf.py` (the
+last requires Microsoft Word for field refresh and PDF export).
+
+## 8. Licences and citation
+
+| Content | Licence |
 |---|---|
-| Sampled neurons | 800 |
-| Internal directed edges | 7,500 |
-| Internal summed synapses | 124,693 |
-| Weakly connected components | 1 |
-| Structural synapses per edge: median / 95th / max | 9 / 47 / 2,633 |
-| Excitatory / inhibitory edges | 5,149 / 2,351 |
-| Excitatory / inhibitory neurons | 685 / 115 |
-| Effective synaptic delay | 1.0 ms |
-| Spike-to-edge transmissions | 55,319 (35.37 per spike) |
-| Spikes | 1,564 |
-| Active / silent neurons | 79 / 721 (9.88% active) |
-| Mean firing rate | 1.96 Hz |
-| Per-neuron rate: 95th / 99th / max | 12 / 60 / 111 Hz |
-| Peak 10 ms population rate | 8.25 Hz |
-| Stimulated neurons active | 64 / 64 (1,193 spikes) |
-| Non-stimulated neurons active | 15 (371 spikes; 23.7% of all spikes) |
+| Original code (`brain/`, `perception/`, `sensory/`, `motor/`, `learning/`, `plasticity/`, `readout/`, `information/`, `evaluation/`, `experiments/` code, `configs/`, `tests/`) | MIT, © 2026 metadore |
+| Research paper text, tables and figures (`research_paper/`) | CC BY 4.0, © 2026 metadore |
+| FlyWire FAFB data and derived artifacts | CC BY 4.0 (FlyWire Consortium) |
+| BANC data | CC BY 4.0 (BANC Consortium) |
+| Subway Surfers Object Dataset v15 | CC BY 4.0 (`horizon-cgt2k`, Roboflow Universe) |
+| YOLO11n weights / ONNX export | AGPL-3.0, not redistributed |
+| Python and third-party libraries | their own licences |
 
-The 15 active non-stimulated neurons show that recurrent synaptic transmission
-recruits activity beyond the directly injected cells in this seeded run. This
-is a property of the model, not a measurement of the fly.
+Citation of this work: metadore, *Teaching a Fruit Fly Brain to Play Subway
+Surfers Through Connectome-Based Neural Simulation: Architecture, Learning
+Mechanisms, Experimental Evaluation, and Motor-Output Limitations*, version 1.1,
+24 November 2026, plus the exact commit hash. The paper licence text is in
+`research_paper/LICENSE`; full third-party notices are in
+`THIRD_PARTY_NOTICES.md` and `REFERENCES.md`.
 
-## Performance
+## 9. References
 
-| Metric | Result |
-|---|---|
-| Connectome load | 0.325 s |
-| Connected sampling | 0.319 s |
-| Simulation | 0.508 s for 2,000 steps (3,936 steps/s) |
-| End-to-end experiment wall time | 7.66 s (includes imports, plots and report) |
-| Resident memory before simulation | 162.5 MB |
-| Peak process working set | 230.4 MB |
-| Peak traced Python allocations | 106.2 MB |
+[1] Z. Zheng, J. S. Lauritzen, E. Perlman, et al., "A complete electron
+microscopy volume of the brain of adult *Drosophila melanogaster*," *Cell*,
+vol. 174, no. 3, pp. 730–743.e22, 2018.
+doi:[10.1016/j.cell.2018.06.019](https://doi.org/10.1016/j.cell.2018.06.019).
 
-The simulation keeps only CSR adjacency, per-edge weights, ring buffers of size
-`n_neurons`, membrane state and a preallocated spike recorder. Phase 2.5
-measures how those arrays and the per-step loop scale.
+[2] S. Dorkenwald, A. Matsliah, A. R. Sterling, et al. (FlyWire Consortium),
+"Neuronal wiring diagram of an adult brain," *Nature*, vol. 634, pp. 124–138,
+2024. doi:[10.1038/s41586-024-07558-y](https://doi.org/10.1038/s41586-024-07558-y).
 
-## Phase 2.5 scalability and stability
+[3] P. Schlegel, Y. Yin, A. S. Bates, et al. (FlyWire Consortium), "Whole-brain
+annotation and multi-connectome cell typing of *Drosophila*," *Nature*,
+vol. 634, pp. 139–152, 2024.
+doi:[10.1038/s41586-024-07686-5](https://doi.org/10.1038/s41586-024-07686-5).
 
-The suite runs 800, 5,000, 20,000 and 50,000 neurons through the same
-reproducible connected sampling used in Phase 2 (seed 42), plus the full
-139,255-neuron connectome directly from the validated artifact. Each size runs
-in a fresh process. The protocol is 200 ms at 0.5 ms timesteps (400 steps),
-with 64 highest-degree neurons in each graph receiving 180 pA from 50 to
-150 ms and no background current or noise. The full run performs no sampling and no
-subgraph extraction; no raw CSV is read and no dense adjacency matrix exists.
+[4] FlyWire Consortium, "FlyWire whole-brain connectome connectivity data,
+version 783.0," Zenodo, 2 June 2024.
+doi:[10.5281/zenodo.10676866](https://doi.org/10.5281/zenodo.10676866). CC BY 4.0.
 
-Measured results (`experiments/phase_2_5/reports/scalability_report.json`):
+[5] *Distributed control circuits across a brain-and-cord connectome*, *Nature*,
+vol. 656, 27 August 2026.
+doi:[10.1038/s41586-026-10735-w](https://doi.org/10.1038/s41586-026-10735-w).
+(BANC connectome, v888.) CC BY.
 
-| Neurons | Edges | Synapses | Init (s) | Sim (s) | Steps/s | Peak WS (MB) | Retained (MB) | Spikes | Active | Non-stim spike share | Stable |
-|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|:---:|
-| 800 | 7,500 | 124,693 | 0.0006 | 0.041 | 10,500 | 170.8 | 38.39 | 213 | 78 | 19.25% | yes |
-| 5,000 | 121,092 | 1,931,167 | 0.0041 | 0.057 | 7,343 | 171.7 | 41.34 | 145 | 96 | 26.21% | yes |
-| 20,000 | 480,107 | 7,414,940 | 0.0179 | 0.331 | 1,231 | 175.8 | 50.83 | 51,387 | 4,551 | 97.82% | yes |
-| 50,000 | 1,620,531 | 23,785,918 | 0.0820 | 1.060 | 382 | 222.3 | 79.48 | 151,855 | 11,837 | 99.07% | yes |
-| 139,255 | 3,732,460 | 50,666,648 | 0.1700 | 2.923 | 138 | 270.8 | 134.73 | 349,846 | 33,261 | 99.58% | yes |
+[6] BANC Consortium, "BANC v888 connectome data," Harvard Dataverse.
+doi:[10.7910/DVN/7WTH1N](https://doi.org/10.7910/DVN/7WTH1N).
 
-"Stable" means finite state, membrane potentials within the configured
-`[-90, -50]` mV bounds, refractory intervals respected, and recorded
-transmissions exactly equal to the out-degree sum of spiking neurons. The
-800-neuron run repeated in a separate process produced the same activity hash,
-root-ID set, spike count and transmission count.
+[7] FlyWire Consortium, "FlyWire Codex connectome browser and data portal,"
+<https://codex.flywire.ai/> (BANC browser: <https://codex.flywire.ai/banc>;
+BANC portal: <https://banc.community>).
 
-Memory at full size is 134.73 MB of retained arrays: 63.19 MB graph CSR,
-29.67 MB synapse weights/currents, 2.12 MB delay buffers, 1.59 MB neuron state
-and a 38.15 MB preallocated recorder. Process peak working set was 270.8 MB. The
-recorder holds 5,000,000 spikes (40 MB); overflow raises rather than silently
-dropping spikes. Subset peaks include the full source graph loaded for
-sampling, so they overstate subset-only memory. Full details and caveats are in
-`experiments/phase_2_5/reports/memory_report.md`.
+[8] `horizon-cgt2k`, "Subway Surfers Object Dataset," version 15, Roboflow
+Universe, 2024.
+<https://universe.roboflow.com/horizon-cgt2k/subway-surfers-object-dataset/dataset/15>.
+CC BY 4.0.
 
-Activity is **not monotonic in size**: the 5,000-neuron sample fired less than
-the 800-neuron sample, consistent with sampled composition differences. At 20,000 neurons
-and above, more than 97% of spikes came from neurons that never received the
-external stimulus. That demonstrates propagation through the sampled graph,
-but it may also reflect strong excitatory coupling under the model's weight
-and transmitter assumptions. It is not evidence of biological correctness.
-Throughput is a performance measurement, not a scientific score.
+[9] SYBO Games, *Subway Surfers*. Copenhagen, Denmark: SYBO Games, 2012.
 
-All sizes passed every stability check, but the suite covers one seed and one
-200 ms protocol. Longer runs and other stimulation regimes remain untested.
-Phase 2.5 does not implement sensory encoding, motor decoding, reinforcement
-learning or game integration.
+[10] J. Redmon, S. Divvala, R. Girshick, and A. Farhadi, "You only look once:
+Unified, real-time object detection," in *Proc. IEEE CVPR*, 2016, pp. 779–788.
+doi:[10.1109/CVPR.2016.91](https://doi.org/10.1109/CVPR.2016.91).
 
-## Outputs
+[11] Ultralytics, "YOLO11 model documentation," <https://docs.ultralytics.com/models/yolo11/>
+(AGPL-3.0).
 
-`python main.py --no-progress` writes into `experiments/results/initial/`:
+[12] T.-Y. Lin, M. Maire, S. Belongie, et al., "Microsoft COCO: Common objects in
+context," in *Computer Vision – ECCV 2014*, LNCS 8693, pp. 740–755.
+doi:[10.1007/978-3-319-10602-1_48](https://doi.org/10.1007/978-3-319-10602-1_48).
 
-- `selected_neurons.csv` - local and root IDs, annotations, degrees, positions,
-  and whether each neuron was stimulated.
-- `activity.npz` - spike times, neuron indices, neuron count, duration, capacity.
-- `simulation_metadata.json` - model parameters, graph and synapse counts,
-  activity summaries, diagnostics and stimulus root IDs.
-- `raster.png` - spike raster.
-- `firing_rates.png` - per-neuron rate distribution and 10 ms population rate.
-- `experiment_report.json` - full configuration, composition comparison, weight
-  percentiles, performance, environment and scientific-integrity statement.
+[13] Microsoft, "ONNX Runtime," <https://onnxruntime.ai/>.
 
-Phase 2.5 writes `experiments/phase_2_5/results/` (one JSON and log per size),
-`experiments/phase_2_5/plots/` (memory, speed, active-neuron and spike-count
-plots) and `experiments/phase_2_5/reports/` (the JSON report, scalability
-report and memory report).
+[14] W. Gerstner, W. M. Kistler, R. Naud, and L. Paninski, *Neuronal Dynamics:
+From Single Neurons to Networks and Models of Cognition*. Cambridge Univ. Press,
+2014. doi:[10.1017/CBO9781107447615](https://doi.org/10.1017/CBO9781107447615).
 
-## Tests
+[15] N. Frémaux and W. Gerstner, "Neuromodulated spike-timing-dependent
+plasticity, and theory of three-factor learning rules," *Frontiers in Neural
+Circuits*, vol. 9, art. 85, 2016.
+doi:[10.3389/fncir.2015.00085](https://doi.org/10.3389/fncir.2015.00085).
 
-`python -m pytest -q` currently reports **68 passed**. Coverage includes:
+[16] R. S. Sutton and A. G. Barto, *Reinforcement Learning: An Introduction*,
+2nd ed. MIT Press, 2018.
 
-- analytic passive decay, steady state, threshold timing, reset, refractory,
-  membrane floor and vectorised populations;
-- linear and power weight transforms, sign policies, sparse destination sums,
-  delay delivery, exponential decay and validation;
-- induced-subgraph CSR consistency, reproducible connected sampling and
-  component counts;
-- spike capacity, counts, rates, raster subsampling, saving and plotting;
-- simulator equivalence to a standalone LIF loop, no-input quiescence,
-  synaptic recruitment, seeded reproducibility, result saving and summaries;
-- YAML config construction and compatibility with the verified 139,255-neuron
-  artifact and its exact edge/synapse counts;
-- Phase 2.5 benchmark statistics, activity hashing, directional and finite-state
-  validation, low-memory skip recording, size parsing and reproducibility
-  comparison.
+[17] T. M. Cover and J. A. Thomas, *Elements of Information Theory*, 2nd ed.
+Wiley, 2006.
 
-## Known limitations
+[18] S. Holm, "A simple sequentially rejective multiple test procedure,"
+*Scandinavian Journal of Statistics*, vol. 6, no. 2, pp. 65–70, 1979.
 
-- Phase 2's 1 s experiment uses an 800-neuron connected subset. Phase 2.5 runs
-  the full 139,255-neuron graph for 200 ms, but neither establishes whole-brain
-  dynamics over behaviourally relevant timescales.
+[19] E. Maris and R. Oostenveld, "Nonparametric testing in EEG/MEG," *Journal of
+Neuroscience Methods*, vol. 164, no. 1, pp. 177–190, 2007.
+doi:[10.1016/j.jneumeth.2007.03.024](https://doi.org/10.1016/j.jneumeth.2007.03.024).
+
+[20] B. Efron and R. J. Tibshirani, *An Introduction to the Bootstrap*. Chapman &
+Hall, 1993.
+
+[21] C. R. Harris, K. J. Millman, S. J. van der Walt, et al., "Array programming
+with NumPy," *Nature*, vol. 585, pp. 357–362, 2020.
+doi:[10.1038/s41586-020-2649-2](https://doi.org/10.1038/s41586-020-2649-2).
+
+[22] W. McKinney, "Data structures for statistical computing in Python," in
+*Proc. 9th Python in Science Conference*, 2010, pp. 56–61.
+
+[23] J. D. Hunter, "Matplotlib: A 2D graphics environment," *Computing in Science
+& Engineering*, vol. 9, no. 3, pp. 90–95, 2007.
+doi:[10.1109/MCSE.2007.55](https://doi.org/10.1109/MCSE.2007.55).
+
+The research paper carries the full 31-entry IEEE reference list, and
+`REFERENCES.md` records the data-provenance caveats (including the missing FAFB
+download log) and citation requirements.
+
+## 10. Tests
+
+`python -m pytest -q` reports **1,607 passed, 3 skipped, 0 failed** on
+Python 3.13.14. Coverage spans LIF dynamics and reset/refractory rules, sparse
+synapse transforms and sign policies, subgraph sampling, recording, full-connectome
+artifact compatibility, Phase 2.5 benchmark validation, perception and temporal
+encoding, Phase 3 gates and protected-hash integrity, BANC graph invariants,
+motor decoding, plasticity and information estimators, the Phase 7 closed loop,
+and the Phase 8 stage, training, artifact and Pilot 2-C contracts.
+
+## 11. Known limitations and threats to validity
+
+- The central behavioural result is negative: zero motor-population spikes in
+  every executed closed-loop, pilot and training configuration. The cause is
+  localised to a 6.926 mV first-hop shortfall under the current sensory
+  convention and LIF parameters.
+- 55.52% of BANC t5 edges have no verified transmitter sign and are excluded from
+  simulation; the sign policy is a declared approximation.
 - All neurons share one LIF parameter set; cell-type-specific physiology is absent.
-- Transmitter classes are predictions used only as coarse sign assumptions;
-  cotransmission, receptor types and neuromodulation are not modelled.
-- Synaptic weights are an arbitrary calibrated transform of structural counts.
-- Delay is uniform; conduction distance, morphology and dendritic filtering are absent.
-- Inhibition is a hyperpolarising current, not a conductance with a reversal potential;
-  shunting inhibition is not represented.
-- Membrane floor and 0.5 ms spike-time quantisation are modelling choices.
-- No short-term plasticity, adaptation, bursting, gap junctions or learning.
-- The FAFB dataset is an adult female brain without a complete ventral nerve cord.
-- Results have not been compared against electrophysiological recordings.
-- The Phase 2.5 suite uses one seed and one 200 ms protocol; long-run stability,
-  other stimulation regimes and parameter sensitivity are untested.
-- The high non-stimulated spike share at large sizes may indicate excessive
-  excitatory coupling under the current assumptions; it is not a biological result.
-
-## Recommended 
-
-The full-connectome performance envelope is now measured: 400 steps in 2.92 s
-at 139,255 neurons with a 270.8 MB process peak. Phase 3 should add explicit
-sensory input encoding and a motor/readout interface, then study parameter
-sensitivity and longer simulations. Plasticity and reinforcement learning
-should come only after those layers are validated. They are not implemented
-here.
-
+- Synaptic weights are a calibrated power-law transform of structural counts,
+  not measured conductances or reversal potentials.
+- Delay is uniform; morphology, dendritic filtering, receptor saturation,
+  short-term plasticity and neuromodulation are absent.
+- The FAFB volume is brain-only; the BANC graph comes from a different specimen.
+  The two graphs are never merged, and cross-dataset IDs are label bridges, not
+  connectivity bridges.
+- The perception dataset has no player or coin class, no independent test split,
+  and only five recording groups; results are grouped-development estimates.
+- The detector was not trained or calibrated here; its reported metrics are
+  provenance from its training environment.
+- The commercial Subway Surfers game was never instrumented; game outcomes are
+  properties of a local surrogate environment.
+- Phase 8 did not estimate C1–C4 or test H1–H3; the N = 16 confirmatory campaign
+  was not executed, and no campaign-scale inference exists.
+- Structural connectivity is not physiological connectivity; a path in the
+  connectome is a hypothesis about information flow, not a measurement of it.
+- Simulated activity is model output, not recorded neural activity, and no result
+  here is evidence of biological learning or functional game-playing.

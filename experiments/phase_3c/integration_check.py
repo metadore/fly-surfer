@@ -85,13 +85,13 @@ SENSITIVITY_DURATION_MS = 400.0
 STABLE_SPIKE_LIMIT = 10_000
 
 PROTECTED = {
-    # Baseline is the committed README. Commit 3bb2a4c re-titled one project
-    # section after the previous value was recorded; update this only for
-    # intentional, committed README changes. Recorded in
-    # reports/RELEASE_CORRECTIONS_1_1.md.
+    # Baseline is the committed README. The README was intentionally expanded on
+    # 2026-11-24 (v1.1) into a full project and data-provenance document; update
+    # this only for intentional, committed README changes. Earlier re-pins are
+    # recorded in reports/RELEASE_CORRECTIONS_1_1.md.
     "README.md": (
         PROJECT_ROOT / "README.md",
-        "8a79d44d4d5679333a99d475c419f790d3ad14d00c145645c55f6a45dac64164",
+        "9dab9dc47281261c6c60996764adaf951276c173e5c40acce91b6e2e9914ef54",
     ),
     "split_manifest": (
         PROJECT_ROOT / "reports" / "PHASE_3B1_SPLIT_MANIFEST.json",
